@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <div class="banner"><img src="" alt=""></div>
+    <div class="banner"><img :src="imgs" alt=""></div>
     <div class="product_description" id="product_description">
       <h2 class="titles">Groupy是一个基于视频的，让粉丝线上应援爱豆的会员制社群</h2>
       <h4>Groupy：一个与爱豆亲密互动的平台。会员仅有的私密状态查看，一键应援，共同守护爱豆的成长。</h4>
@@ -22,7 +22,7 @@
     <div class="joinUs" id="joinUs">
       <h2 class="titles"> 爱豆主播热烈招募中</h2>
       <p>"Groupy致力于向粉丝提供近距离守护爱豆成长的平台。想让你喜欢的爱豆获得全日本的喜爱？把她推荐到Groupy，为她创造迈向事业巅峰的契机吧！正在寻找一个新的出发点吗？来入驻Groupy，和粉丝更紧密地相连在爱豆界展翅高飞！"</p>
-      <p>"报名方式：请将推荐语或自我介绍、Twitter/SNS账号，30秒以内的短视频发送至groupyinc@gmail.com"</p>
+      <p>"报名方式：请将推荐语或自我介绍、Twitter/SNS账号，30秒以内的短视频发送至contact@groupy.vip"</p>
     </div>
     <div class="videos"></div>
     <div class="company_profile"  id="company_profile">
@@ -39,6 +39,7 @@ export default {
   name: 'index',
   data () {
     return {
+      imgs: '../images/bg.png',
       msg: 'Welcome to Your Vue.js App'
     }
   }

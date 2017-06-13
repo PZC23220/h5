@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://jethome.newsjet.io:8888/',
+    baseURL: 'http://suitvideo.com:9000/',
+    // baseURL: 'http://localhost:9000/',
+    // baseURL: 'http://jethome.newsjet.io/',
     timeout: 20000
 });
 instance.interceptors.response.use(function(response){
@@ -12,5 +14,7 @@ instance.interceptors.response.use(function(response){
     console.error('http请求失败', error);
     // return Promise.reject(error);
 });
+
+// instance.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 export default instance;
