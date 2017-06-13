@@ -3,9 +3,9 @@
     <header class="header">
       <a href="#" class="logo"><img src="./images/logo.png" height="50" width="50" alt=""></a>
       <ul class="menuList">
-        <li><a href="#">产品介绍</a></li>
-        <li><a href="#">爱豆招募</a></li>
-        <li><a href="#">公司介绍</a></li>
+        <li @click="toView(1)">产品介绍</li>
+        <li @click="toView(2)">爱豆招募</li>
+        <li  @click="toView(3)">公司介绍</li>
       </ul>
       <select name="" id="">
         <option value="english">English</option>
@@ -37,25 +37,24 @@
 
 <script>
 export default {
-  name: 'app'
-  // methods: {
-  //   toView: function (val) {
-  //     console.log(1111)
-  //     // var anchor
-  //     // switch (val) {
-  //     //   case 1:
-  //     //     anchor = this.$el.querySelector('.product_description')
-  //     //     break
-  //     //   case 2:
-  //     //     anchor = this.$el.querySelector('.joinUs')
-  //     //     break
-  //     //   case 3:
-  //     //     anchor = this.$el.querySelector('.company_profile')
-  //     //     break
-  //     // }
-  //     // anchor.scrollIntoView()
-  //   }
-  // }
+  name: 'app',
+  methods: {
+    toView: function (val) {
+      var anchor
+      switch (val) {
+        case 1:
+          anchor = this.$el.querySelector('.product_description')
+          break
+        case 2:
+          anchor = this.$el.querySelector('.joinUs')
+          break
+        case 3:
+          anchor = this.$el.querySelector('.company_profile')
+          break
+      }
+      anchor.scrollIntoView()
+    }
+  }
 }
 </script>
 
@@ -75,6 +74,7 @@ export default {
     ul {
       float: left;
       color: #fff;
+      cursor: pointer;
       padding: 10px 20px; 
       margin-top: 3px;
       li {
