@@ -30,7 +30,7 @@
           <a href=""><img src="" alt="" class="downloadlink"></a>
         </div>
       </div>
-      <div class="desc">Copyright  2017 Groupy Inc. All rights reserved.&nbsp;&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/">粤ICP备17068981号</a></div>
+      <div class="desc">Copyright  2017 Groupy Inc. All rights reserved.&nbsp;&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/">粤ICP备17068981号</a><br> 广州市云动科技有限公司</div>
     </footer>
   </div>
 </template>
@@ -124,10 +124,11 @@ export default {
     .desc {
       color: #7b8994;
       background: #27323A;
-      height: 60px;
-      line-height: 60px;
+      height: 40px;
+      line-height: 20px;
       text-align: center;
       font-size: 12px;
+      padding: 10px 0;
       a {
         color: #7b8994;
       }
