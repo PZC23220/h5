@@ -24,26 +24,3 @@
 		</ul>
 	</div>
 </template>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
- .comment_list {
- 	padding: 0 12px;
- 	li {
- 		line-height: 30px;
- 		
- 		.user_img {
- 			width: 30px;
- 			height: 30px;
- 			border-radius: 50%;
- 			margin-right: 9px;
- 			float: left;
- 		}
- 		span {
- 			font-size: 14px;
- 		}
- 		i {
- 			float: right;
- 		}
- 	}
- }
-</style>

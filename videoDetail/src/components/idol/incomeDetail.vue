@@ -3,7 +3,7 @@
          <div class="header">
             <div class="detail">
                 <a href="#" class="back">
-                    <img src="../../images/icon_arrow_back_black.png" alt="">
+                    <img src="" alt="">
                 </a>
                 <span>收入详情</span>
             </div>

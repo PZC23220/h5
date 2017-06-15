@@ -4,7 +4,7 @@
 			<span>发布总数 <i>13</i></span>
 			<span class="right">＋&nbsp;发布状态</span>
 		</div>
-		<ul class="comment_list">
+		<ul class="comment_list dynamic">
 			<li>
 				<div class="userinfo">
 					<img src="" alt="">
@@ -48,35 +48,9 @@
 </template>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-	.publish {
-		padding: 8px 12px; 
-		overflow: hidden;
-		span:first-child {
-			color: #A5A5A5;
-			font-size: 12px;
-			i {
-				font-size: 16px;
-				color: #666666;
-				padding-left:14px;
-			}
-		}
-		.right {
-			float: right;
-			border: 1px solid #666666;
-			border-radius: 4px;
-			width: 136.5px;
-			height: 36px;
-			line-height: 36px;
-			color: #666;
-			font-size: 14px;
-			display: block;
-			text-align: center;
-		}
-	}
  .comment_list {
  	padding: 0;
  	li {
- 		height: auto;
  		padding: 11px 12px;
  		border-bottom: 4px solid #F2F2F2;
  	}

@@ -1,140 +1,229 @@
 <template>
   <div id="app">
     <header class="header">
-      <a href="#" class="logo"><img src="./images/logo.png" height="50" width="50" alt=""></a>
+    <div class="header_content">
+      <a href="#" class="logo"></a>
       <ul class="menuList">
-        <li @click="toView(1)">产品介绍</li>
-        <li @click="toView(2)">爱豆招募</li>
-        <li  @click="toView(3)">公司介绍</li>
+        <li><a href="#" @click="toView(1)" style="color: #FC4083;">产品介绍</a></li>
+        <li><a href="#" @click="toView(2)" style="color: #FF8500;">爱豆招募</a></li>
+        <li><a href="#" @click="toView(3)" style="color: #00B4BC;">公司介绍</a></li>
+        <li  :class="{'activeIdol':$route.path==='/idol'}" ><a href="#idol" style="color: #3CA6D4;">爱豆一览</a></li>
+        <li  :class="{'activeVideos':$route.path==='/videos'}" ><a href="#videos" style="color: #666666;">入驻视频</a></li>
       </ul>
-      <select name="" id="">
-        <option value="english">English</option>
-        <option value="chinese">繁体中文</option>
-      </select>
+      <div class="language"><a href="#" class="active">中文</a><a href="#japanese">日本語</a></div>
+    </div>
     </header>
     <div class="main">
       <router-view></router-view>
     </div>
     <footer class="footer">
-      <div class="download">
-        <div class="left">
-          <a href="#"><img src="./images/logo.png" alt=""></a>
-          <ul class="pages">
-            <li><a href="">爱豆列表&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a></li>
-            <li><a href="">进驻视频&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a></li>
-            <li><a href="">利用规约&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a></li>
-            <li><a href="">privacy policy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a></li>
-          </ul>
-        </div>
-        <div class="right">
-          <a href=""><img src="" alt="" class="downloadlink"></a>
-        </div>
-      </div>
-      <div class="desc">Copyright  2017 Groupy Inc. All rights reserved.&nbsp;&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/">粤ICP备17068981号</a><br> 广州市云动科技有限公司</div>
+      <div class="links"><a href="" class="logo">Groupy</a><a href="" class="facebook"></a><a href="" class="twitter"></a></div>
+      <ul>
+        <li><a href="">爱豆列表</a></li>
+        <li><a href="">进驻视频</a></li>
+        <li><a href="">利用规约</a></li>
+        <li><a href="">Privacy Policy</a></li>
+      </ul>
+      <div class="desc">Copyright  2017 Groupy Inc. All rights reserved.</div>
     </footer>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  methods: {
-    toView: function (val) {
-      var anchor
-      switch (val) {
-        case 1:
-          anchor = this.$el.querySelector('.product_description')
-          break
-        case 2:
-          anchor = this.$el.querySelector('.joinUs')
-          break
-        case 3:
-          anchor = this.$el.querySelector('.company_profile')
-          break
+  export default {
+    name: 'app',
+    methods: {
+      toView: function (val) {
+        var anchor
+        switch (val) {
+          case 1:
+            anchor = this.$el.querySelector('.product_description')
+            break
+          case 2:
+            anchor = this.$el.querySelector('.joinUs')
+            break
+          case 3:
+            anchor = this.$el.querySelector('.company_profile')
+            break
+        }
+        anchor.scrollIntoView()
       }
-      anchor.scrollIntoView()
     }
   }
-}
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-@import './styles/reset.css';
+  @import './styles/reset.css';
+  body {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .activeVideos {
+    border-bottom: 4px solid #666;
+  }
+  .activeIdol {
+    border-bottom: 4px solid #0092D1;
+  }
   .header {
-    overflow: hidden;
-    padding: 0 12px;
-    background: -webkit-linear-gradient(0deg,#fe5187,#8782c4,#16d4ac);
-    background: linear-gradient(90deg,#fe5187,#8782c4,#16d4ac);
-    box-shadow: 0 2px 5px 1px rgba(39,50,58,.3);
-    height: 50px;
+    position: fixed;
+    top: 0;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-image: linear-gradient(90deg, #FD4F66 2%, #E34079 22%, #910FB5 44%, #6451CC 64%, #00E5FF 85%, #00AFC4 100%) 30 30;
+    width: 100%;
+    max-width: 1914px;
+    box-sizing: border-box;
+    height: 80px;
+    padding: 10px 0;
+    z-index: 1;
+    background: #fff;
+    >.header_content {
+      max-width: 1120px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
     .logo {
       float: left;
-      margin-right: 20px;
+      width: 56px;
+      height: 56px;
+      display: block;
+      margin-right: calc(23.5px/2);
+      background: url(./images/index.png);
     }
     ul {
       float: left;
       color: #fff;
-      cursor: pointer;
-      padding: 10px 20px; 
-      margin-top: 3px;
       li {
         float: left;
-        padding: 0 20px;
-        a {
-          display: block;
-          color: #fff;
-        }
-        &:not(:first-child) {
-          border-left: 1px solid #fff;
-        }
+        height: 56px;
+        line-height: 56px;
+        font-size: 20px;
+        padding: 0 calc(23.5px/2);
       }
     }
-     select {
+     .language {
       float: right;
-      display: none;
+      border: 1px solid #FC4083;
+      border-radius: 100px;
+      width: 145px;
+      overflow: hidden;
+      margin-top: 10px;
+      a {
+        color: #FC4083;
+        float: left;
+        display: block;
+        line-height: 26px;
+        height: 26px;
+        margin: 2px;
+        text-align: center;
+        &:first-child {
+          width: 60px;
+        }
+        &:last-child {
+          width: 137px-60px;
+        }
+      }
+      a.active {
+        background: #FC4083;
+        border-radius: 100px;
+        color: #fff;
+      }
      }
   }
   .footer {
-    .download {
+    background: #3A525C;
+    padding: 34px 0 32px;
+    >* {
+      max-width: 1120px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    a {
+      color: #fff;
+    }
+    .links {
       overflow: hidden;
-      padding: 20px 0;
-      display: flex;
-      background: #C7D9E8;
-      div {
-        flex: 1;
-        width: 300px;
-        box-sizing: border-box;
-        padding: 0 calc((50vw - 300px)/2);
+      margin-bottom: 26px;
+      .logo {
+        background-image : url(./images/index.png);
+        display: block;
+        float: left;
+        width: 103px;
+        height: 60px;
+        font-size: 24px;
+        line-height: 60px;
+        padding-left: 84px;
+      }
+      .facebook,.twitter {
+        float: right;
+        width: 51px;
+        height: 51px;
+        background-image : url(./images/index.png);
+        background-position: 0 -3224px;
+
+      }
+      .twitter {
+        margin-right: 43.2px;
+        background-image : url(./images/index.png);
+        background-position: 0 -3164px;
+      }
+    }
+    ul {
+      overflow: hidden;
+      li {
+        float: left;
+        &:not(:first-child) {
+          margin-left: 118px;
+        }
         a {
-          display: inline-block;
-          color: #3d505f;
-          img.downloadlink {
-            width: 300px;
-            height: 300px * 3/4;
-          }
+          display: block;
+          width: 104px;
+          height: 28px;
+          line-height: 28px;
+          padding-left: 24px;
+          background-image: url(./images/index.png);
+          background-position: 0 -1618px;
+          text-align: left;
         }
       }
-     .left {
-      border-right: 1px solid #7b8994;
-      li:not(:first-child) {
-        margin-top: 10px;
-      }
-     }
     }
     .desc {
-      color: #7b8994;
-      background: #27323A;
+      color: #fff;
+      margin-top: 20px;
       height: 40px;
       line-height: 20px;
       text-align: center;
       font-size: 12px;
-      padding: 10px 0;
-      a {
-        color: #7b8994;
-      }
     }
   }
   .main {
     text-align: center;
+    margin-top: 80px;
+    width: 100%;
   }
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #FC4083;
+    -webkit-box-shadow: inset 0 0 8px #FC4083;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #FC4083;
+}
+::-webkit-scrollbar-track-piece {
+  width: 6px;
+}
+::-webkit-resizer {
+  width: 6px;
+}
+
 </style>

@@ -1,15 +1,36 @@
 <template>
     <div class="main">
         <div class="header">
-        <div class="detail">
-            <a href="#" class="back">
-                <img src="../../images/icon_arrow_back_black.png" alt="">
-            </a>
-            <span>详情</span>
-        </div>
+            <div class="detail">
+                <a href="#" class="back">
+                    <img src="../../../static/images/icon_arrow_back_black.png" alt="">
+                </a>
+                <span class="right">
+                    <a href="#"><img src="" alt=""></a>
+                    <a href="#"><img src="" alt=""></a>
+                    <a href="#"><img src="" alt=""></a>
+                </span>
+            </div>
+            <div class="idol_info">
+                <img src="" alt="">
+                <div>
+                    <p class="idol_name">メロメロン</p>
+                    <p>SUPER☆GIRLS/PASSPO☆</p>
+                    <p class="nums"><i>人气值</i><em>34,251(362)</em></p>
+                    <p class="nums"><i>粉丝数</i><em>1,251</em></p>
+                </div>
+                <a href="#">应援</a>
+            </div>
+            <div class="fans_ranking">
+                <a href="">
+                    粉丝排行
+                    <span><img src="" alt=""><img src="" alt=""><img src="" alt="">&gt;</span>
+                </a>
+            </div>
+            <a href="" class="joinin"><img src="" alt=""></a>
             <div class="detailPages">
-                <router-link to="/fans/ranking/GcoinsContribution">G币贡献</router-link>
-                <router-link to="/fans/ranking/popularity">人气</router-link>
+                <router-link to="/fans/index/dynamic">动态</router-link>
+                <router-link to="/fans/index/comment">揭示板</router-link>
             </div>
         </div>
         <div class="content">
@@ -24,54 +45,110 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .header {
-    text-align: center;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    font-size: 17px;
-    color: #fff;
-    overflow: hidden;
     .detail {
-        background: #9C9C9C;
-        padding: 0 12px;
-        height: 54px;
-        line-height: 54px;
-        .back {        
-            position: absolute;
-            display: block;
-            left: 12px;
-            height: 12px;
-            top: (54px-22px)/2;
+        background: #494949;
+        overflow: hidden;
+    }
+    .right {
+        float: right;
+        a {
+            display: inline-block;
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
             img {
-              width: 22px;
-              display: block;  
+                width: 22px;
+                height: 22px;
+                border-radius: 22px;
             }
         }
     }
-    .detailPages {
-        background: #AAAAAA;
-        padding: 0 12px;
+    .idol_info {
+        background: #494949;
+        padding: 10px 21px;
         overflow: hidden;
-        display: flex;
-        a {
-            height: 36px;
-            line-height:36px;
-            color: #fff;
-            display: block;
-            flex: 1;
-            box-sizing: border-box;
-            margin: 0 5%;
+        color: #fff;
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            float: left;
         }
-        .router-link-exact-active.router-link-active {
-            border-bottom: 2.5px solid #fff;
+        div {
+            float: left;
+            text-align: left;
+            margin-left: 16px;
+            .nums {
+                line-height: 20px;
+                i {
+                    font-size: 10px;
+                    -webkit-transform: scale(0.8);
+                    margin-right: 11.5px;
+                }
+                em {
+                    font-size: 14px;
+                }
+            }
+            .idol_name {
+                font-size: 18px;
+                line-height: 18px;
+            }
+            p:nth-child(2) {
+                font-size: 10px;
+                 -webkit-transform: scale(0.8);
+                 margin-left: -10px;
+                 margin-bottom: 5px;
+            }
+        }
+        a {
+            background: #323232;
+            border: 2px solid #FFFFFF;
+            border-radius: 48.5px;
+            color: #fff;
+            float: left;
+            display: block;
+            font-size: 16px;
+            margin-left: 18px;
+            width: 105px;
+            height: 31px;
+            line-height: 31px;
+            text-align: center;
+        }
+    }
+    .fans_ranking {
+        background: #EBEBEB;
+        font-size: 12px;
+        a {
+            height: 25px;
+            line-height: 25px;
+            padding: 6.5px 12px;
+            color: #999;
+            display: block; 
+            overflow: hidden;
+        }
+        text-align: left;
+        span {
+            float: right;
+            overflow: hidden;
+            img {
+                width: 25px;
+                height: 25px;
+                float: left;
+                border-radius: 50%;
+                margin-right: 8.5px;
+            }
+        }
+    }
+    .joinin {
+        display: block;
+        padding: 10px 12px;
+        img {
+            width: 100%;
+            height: 55px;
         }
     }
   }
   .content {
-    position: absolute;
-    top: 90px;
-    left: 0;
-    width: 100%;
+    top: (54px + 105px + 38px + 75px + 36px);
   }
 </style>

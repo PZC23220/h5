@@ -3,7 +3,7 @@
         <div class="header">
             <div class="detail">
                 <a href="#" class="back">
-                    <img src="../../images/icon_arrow_back_black.png" alt="">
+                    <img src="../../../static/images/icon_arrow_back_black.png" alt="">
                 </a>
                 <span class="right">
                     <a href="#"><img src="" alt=""></a>
@@ -47,6 +47,7 @@
   .header {
     .detail {
         background: #494949;
+        overflow: hidden;
     }
     .right {
         float: right;
@@ -66,6 +67,7 @@
         background: #494949;
         padding: 10px 21px;
         overflow: hidden;
+        color: #fff;
         img {
             width: 80px;
             height: 80px;

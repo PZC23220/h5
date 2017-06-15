@@ -2,35 +2,39 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import video from '../views/idol/video.vue';
-import community from '../views/idol/community.vue';
-import comment from '../views/idol/comment.vue';
-import incomeDetail from '../views/idol/incomeDetail.vue';
-import fansdetail from '../views/idol/fansdetail.vue';
-import idol_ranking from '../views/idol/ranking.vue';
-import fans_ranking from '../views/fans/ranking.vue';
-import idol_index from '../views/idol/index.vue';
-import fans_index from '../views/fans/index.vue';
+import video from '../components/idol/video.vue';
+import community from '../components/idol/community.vue';
+import comment from '../components/idol/comment.vue';
+import incomeDetail from '../components/idol/incomeDetail.vue';
+import fansdetail from '../components/idol/fansdetail.vue';
+import idol_ranking from '../components/idol/ranking.vue';
+import fans_ranking from '../components/fans/ranking.vue';
+import idol_index from '../components/idol/index.vue';
+import fans_index from '../components/fans/index.vue';
+import fans_dynamic_comment from '../components/fans/dynamic_comment.vue';
 
-import video_Gcoin from '../views/idol/video/Gcoin.vue';
-import video_comment from '../views/idol/video/comment.vue';
-import video_likes from '../views/idol/video/likes.vue';
+import video_Gcoin from '../components/idol/video/Gcoin.vue';
+import video_comment from '../components/idol/video/comment.vue';
+import video_likes from '../components/idol/video/likes.vue';
 
-import index_comment from '../views/idol/index/comment.vue';
-import index_dynamic from '../views/idol/index/dynamic.vue';
+import idol_index_comment from '../components/idol/index/comment.vue';
+import idol_index_dynamic from '../components/idol/index/dynamic.vue';
 
-import community_comment from '../views/idol/community/comment.vue';
-import community_dynamic from '../views/idol/community/dynamic.vue';
+import fans_index_comment from '../components/fans/index/comment.vue';
+import fans_index_dynamic from '../components/fans/index/dynamic.vue';
 
-import comment_comment from '../views/idol/comment/comment.vue';
-import comment_likes from '../views/idol/comment/likes.vue';
+import community_comment from '../components/idol/community/comment.vue';
+import community_dynamic from '../components/idol/community/dynamic.vue';
 
-import admissionTime from '../views/idol/fansdetail/admissionTime.vue';
-import cheerNumber from '../views/idol/fansdetail/cheerNumber.vue';
-import totalContribution from '../views/idol/fansdetail/totalContribution.vue';
+import comment_comment from '../components/idol/comment/comment.vue';
+import comment_likes from '../components/idol/comment/likes.vue';
 
-import GcoinsContribution from '../views/fans/ranking/GcoinsContribution.vue';
-import popularity from '../views/fans/ranking/popularity.vue';
+import admissionTime from '../components/idol/fansdetail/admissionTime.vue';
+import cheerNumber from '../components/idol/fansdetail/cheerNumber.vue';
+import totalContribution from '../components/idol/fansdetail/totalContribution.vue';
+
+import GcoinsContribution from '../components/fans/ranking/GcoinsContribution.vue';
+import popularity from '../components/fans/ranking/popularity.vue';
 
 export default new VueRouter({
     mode: 'hash',
@@ -43,12 +47,20 @@ export default new VueRouter({
             component: idol_index,
             children: [
                 {path: '', redirect: 'dynamic'},
-                {path: '/idol/index/dynamic', component: index_dynamic},
-                {path: '/idol/index/comment', component: index_comment},
+                {path: '/idol/index/dynamic', component: idol_index_dynamic},
+                {path: '/idol/index/comment', component: idol_index_comment}
             ]
         },{
             path: '/fans/index',
-            component: fans_index
+            component: fans_index,
+            children: [
+                {path: '', redirect: 'dynamic'},
+                {path: '/fans/index/dynamic', component: fans_index_dynamic},
+                {path: '/fans/index/comment', component: fans_index_comment}
+            ]
+        },{
+            path: '/fans/dynamic_comment',
+            component: fans_dynamic_comment
         },{
             path: '/idol/video',
             component: video,
@@ -62,7 +74,7 @@ export default new VueRouter({
             path: '/idol/community',
             component: community,
             children: [
-                {path: '', redirect: 'comment'},
+                {path: '', redirect: 'dynamic'},
                 {path: '/idol/community/comment', component: community_comment},
                 {path: '/idol/community/dynamic', component: community_dynamic}
             ]
