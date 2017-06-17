@@ -103,7 +103,7 @@
           console.log(this.$route.path);
           return;
         }else {
-          location.href = 'http://' +location.host;
+          location.href = 'http://' +location.host + '/index_japanese/japanese';
         }
       }
     },
