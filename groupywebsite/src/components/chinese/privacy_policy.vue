@@ -34,6 +34,19 @@
   </div>
 </template>
 
+<script>
+  export default {
+    created: function() {
+      let self = this;
+        setTimeout(function() {
+            let ele = document.querySelector('.privacy_policy');
+            ele.scrollIntoView();
+        },500);
+    }
+  }
+</script>
+
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  rel="stylesheet/scss" lang="scss" scoped>
   .privacy_policy {

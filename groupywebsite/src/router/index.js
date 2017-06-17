@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import japanese from '@/components/japanese'
 import chinese from '@/components/chinese'
 
+import index_japanese from '@/components/index_japanese'
+import index_chinese from '@/components/index_chinese'
+
 import chinese_videos from '@/components/chinese/videos'
 import chinese_idol from '@/components/chinese/idol'
 import chinese_rule from '@/components/chinese/rule'
@@ -24,9 +27,9 @@ let indexLanguage;
 // 还可以通过language，区分开多国语言版
 
 if(Terminal.language == 'zh-cn') {
-    indexLanguage = chinese
+    indexLanguage = '/index_chinese'
 } else {
-    indexLanguage = japanese
+    indexLanguage = '/index_japanese'
 }
 
 console.log(indexLanguage)
@@ -59,37 +62,29 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: indexLanguage
+      redirect: indexLanguage
     }, {
-	  path: '/chinese',
-	  component: chinese
+      path: '/index_chinese',
+      component: index_chinese,
+      children: [
+        {path: '', redirect: 'chinese'},
+        {path: '/index_chinese/chinese', component: chinese}, 
+        {path: '/index_chinese/chinese_videos',component: chinese_videos}, 
+        {path: '/index_chinese/chinese_idol',component: chinese_idol}, 
+        {path: '/index_chinese/chinese_rule',component: chinese_rule}, 
+        {path: '/index_chinese/chinese_privacy_policy',component: chinese_privacy_policy}
+      ]
     }, {
-      path: '/chinese_videos',
-      component: chinese_videos,
-    }, {
-      path: '/chinese_idol',
-      component: chinese_idol,
-    }, {
-      path: '/chinese_rule',
-      component: chinese_rule,
-    }, {
-      path: '/chinese_privacy_policy',
-      component: chinese_privacy_policy,
-    }, {
-    path: '/japanese',
-    component: japanese
-    }, {
-      path: '/japanese_videos',
-      component: japanese_videos,
-    }, {
-      path: '/japanese_idol',
-      component: japanese_idol,
-    }, {
-      path: '/japanese_rule',
-      component: japanese_rule,
-    }, {
-      path: '/japanese_privacy_policy',
-      component: japanese_privacy_policy,
+      path: '/index_japanese',
+      component: index_japanese,
+      children: [
+        {path: '', redirect: 'japanese'},
+        {path: '/index_japanese/japanese',component: japanese}, 
+        {path: '/index_japanese/japanese_videos',component: japanese_videos}, 
+        {path: '/index_japanese/japanese_idol',component: japanese_idol}, 
+        {path: '/index_japanese/japanese_rule',component: japanese_rule}, 
+        {path: '/index_japanese/japanese_privacy_policy',component: japanese_privacy_policy}
+      ]
     }
   ],
   mode: 'history',

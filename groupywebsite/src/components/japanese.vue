@@ -85,6 +85,100 @@
     </div> -->
   </div>
 </template>
+<script>
+  export default {
+    name: 'app',
+    data() {
+      return {
+        language: 'japanese',
+        commentWords: {
+          product: 'アプリの詳細',
+          join: 'アイドル大募集',
+          idol: 'アイドル一覧',
+          videos: 'ファンへの招待動画',
+          rule: '利用規約',
+          privacy_policy: 'プライバシーポリシー',
+          to_idol: '/japanese_idol',
+          to_videos: '/japanese_videos',
+          to_rule: '/japanese_rule',
+          to_pp: '/japanese_privacy_policy'
+        }
+      }
+    },
+    methods: {
+      changeLanguage(val) {
+        console.log(val,this.language);
+        if(val == 'chinese' && location.pathname.substring(0, 8) != '/chinese') {
+          this.languageList('chinese');
+          location.href = 'http://' + location.host + '/chinese'+location.pathname.substring(9);
+          console.log(location.href);
+        }else if (val == 'japanese' && location.pathname.substring(0, 9) != '/japanese') {
+          this.languageList('japanese');
+          location.href = 'http://' + location.host + '/japanese'+location.pathname.substring(8);
+          console.log(location.href);        
+        }
+      },
+      languageList(val) {
+          if(val == 'chinese') {
+            this.language = 'chinese';
+            this.commentWords = {
+              product: '产品介绍',
+              company: '公司介绍',
+              join: '爱豆招募',
+              idol: '爱豆一览',
+              videos: '入驻视频',
+              rule: '利用规约',
+              privacy_policy: '隐私政策',
+              to_idol: '/chinese_idol',
+              to_videos: '/chinese_videos',
+              to_rule: '/chinese_rule',
+              to_pp: './chinese_privacy_policy'
+            }
+          }else {
+            this.language = 'japanese';
+            this.commentWords = {
+              product: 'アプリの詳細',
+              join: 'アイドル大募集',
+              idol: 'アイドル一覧',
+              videos: 'ファンへの招待動画',
+              rule: '利用規約',
+              privacy_policy: 'プライバシーポリシー',
+              to_idol: '/japanese_idol',
+              to_videos: '/japanese_videos',
+              to_rule: '/japanese_rule',
+              to_pp: './japanese_privacy_policy'
+            }
+          }
+      },
+      to_maoPoint() {
+        if(!this.$route.path || this.$route.path =='/chinese' || this.$route.path == '/japanese' || this.$route.path == '/') {
+          console.log(this.$route.path);
+          return;
+        }else {
+          location.href = 'http://' +location.host;
+        }
+      }
+    },
+    created: function() {
+      let systemLanguage = (navigator.browserLanguage || navigator.language).toLowerCase();
+        console.log(this.$route.path);
+        if(!this.$route.path || this.$route.path == '/') {
+          if(systemLanguage === 'zh-cn') {
+            this.languageList('chinese');
+          } else {
+            this.languageList('japanese');
+          }
+        } else {
+
+          if(this.$route.path == '/chinese' || this.$route.path == '/chinese_videos' || this.$route.path == '/chinese_idol' || this.$route.path == '/chinese_rule' || this.$route.path == '/chinese_privacy_policy') {
+             this.languageList('chinese');
+          } else {
+            this.languageList('japanese');
+          }
+        }
+    }
+  }
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style rel="stylesheet/scss" lang="scss" scoped>
