@@ -88,6 +88,7 @@ html,body {
     -webkit-overflow-scrolling: iscroll;
     line-height: 1.5;
     color: rgb(61, 80, 95);
+    font-family: 'Microsoft YaHei';
 }
 
 a:hover {

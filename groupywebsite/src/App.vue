@@ -2,52 +2,130 @@
   <div id="app">
     <header class="header">
     <div class="header_content">
-      <a href="#" class="logo"></a>
+      <a href="/" class="logo"></a>
       <ul class="menuList">
-        <li><a href="#" @click="toView(1)" style="color: #FC4083;">产品介绍</a></li>
-        <li><a href="#" @click="toView(2)" style="color: #FF8500;">爱豆招募</a></li>
-        <li><a href="#" @click="toView(3)" style="color: #00B4BC;">公司介绍</a></li>
-        <li  :class="{'activeIdol':$route.path==='/idol'}" ><a href="#idol" style="color: #3CA6D4;">爱豆一览</a></li>
-        <li  :class="{'activeVideos':$route.path==='/videos'}" ><a href="#videos" style="color: #666666;">入驻视频</a></li>
+        <li><a href="#product_description" @click="to_maoPoint()" style="color: #FC4083;">{{commentWords.product}}</a></li>
+        <li><a href="#joinUs" @click="to_maoPoint()" style="color: #FF8500;">{{commentWords.join}}</a></li>
+        <li><a href="#company_profile" @click="to_maoPoint()" style="color: #00B4BC;" v-if="commentWords.company === '公司介绍'">公司介绍</a></li>
+       <!--  <li  :class="{'activeIdol':$route.path==='/chinese_idol' || $route.path==='/japanese_idol'}" ><a :href="commentWords.to_idol" style="color: #3CA6D4;">{{commentWords.idol}}</a></li>
+        <li  :class="{'activeVideos':$route.path==='/chinese_videos' || $route.path==='/japanese_videos'}"><a :href="commentWords.to_videos" style="color: #666666;">{{commentWords.videos}}</a></li> -->
       </ul>
-      <div class="language"><a href="#" class="active">中文</a><a href="#japanese">日本語</a></div>
+      <div class="language"><a href="#chinese" :class="{'active':language==='chinese'}" @click="changeLanguage('chinese')">中文</a><a href="#japanese" :class="{'active':language ==='japanese'}" @click="changeLanguage('japanese')">日本語</a></div>
     </div>
     </header>
     <div class="main">
       <router-view></router-view>
+      <footer class="footer">
+        <div class="links">
+          <a href="/" class="logo">Groupy</a>
+          <!-- <a href="" class="facebook"></a> -->
+          <a href="https://twitter.com/GGroupyyy"  target="_blank" class="twitter"></a>
+        </div>
+        <ul>
+         <!--  <li><a :href="commentWords.to_idol">{{commentWords.idol}}</a></li>
+          <li><a :href="commentWords.to_videos">{{commentWords.videos}}</a></li> -->
+          <li><a :href="commentWords.to_rule">{{commentWords.rule}}</a></li>
+          <li><a :href="commentWords.to_pp">{{commentWords.privacy_policy}}</a></li>
+        </ul>
+        <div class="desc">Copyright  2017 Groupy Inc. All rights reserved.<br></div>
+        <div class="desc" style="margin-top: 0;width: 210px;
+        margin: 0 auto;overflow: hidden;" v-if="commentWords.company === '公司介绍'"><img src="./images/gov_cn.png" alt="" style="float: left;margin-top: 4px;margin-right: 5px;"><span style="float: left;">粤公网安备 44010602002595号</span></div>
+      </footer>
     </div>
-    <footer class="footer">
-      <div class="links"><a href="" class="logo">Groupy</a><a href="" class="facebook"></a><a href="" class="twitter"></a></div>
-      <ul>
-        <li><a href="">爱豆列表</a></li>
-        <li><a href="">进驻视频</a></li>
-        <li><a href="">利用规约</a></li>
-        <li><a href="">Privacy Policy</a></li>
-      </ul>
-      <div class="desc">Copyright  2017 Groupy Inc. All rights reserved.</div>
-    </footer>
   </div>
 </template>
 
 <script>
   export default {
     name: 'app',
-    methods: {
-      toView: function (val) {
-        var anchor
-        switch (val) {
-          case 1:
-            anchor = this.$el.querySelector('.product_description')
-            break
-          case 2:
-            anchor = this.$el.querySelector('.joinUs')
-            break
-          case 3:
-            anchor = this.$el.querySelector('.company_profile')
-            break
+    data() {
+      return {
+        language: 'japanese',
+        commentWords: {
+          product: 'アプリの詳細',
+          join: 'アイドル大募集',
+          idol: 'アイドル一覧',
+          videos: 'ファンへの招待動画',
+          rule: '利用規約',
+          privacy_policy: 'プライバシーポリシー',
+          to_idol: '/japanese_idol',
+          to_videos: '/japanese_videos',
+          to_rule: '/japanese_rule',
+          to_pp: '/japanese_privacy_policy'
         }
-        anchor.scrollIntoView()
       }
+    },
+    methods: {
+      changeLanguage(val) {
+        console.log(val,this.language);
+        if(val == 'chinese' && location.pathname.substring(0, 8) != '/chinese') {
+          this.languageList('chinese');
+          location.href = 'http://' + location.host + '/chinese'+location.pathname.substring(9);
+          console.log(location.href);
+        }else if (val == 'japanese' && location.pathname.substring(0, 9) != '/japanese') {
+          this.languageList('japanese');
+          location.href = 'http://' + location.host + '/japanese'+location.pathname.substring(8);
+          console.log(location.href);        
+        }
+      },
+      languageList(val) {
+          if(val == 'chinese') {
+            this.language = 'chinese';
+            this.commentWords = {
+              product: '产品介绍',
+              company: '公司介绍',
+              join: '爱豆招募',
+              idol: '爱豆一览',
+              videos: '入驻视频',
+              rule: '利用规约',
+              privacy_policy: '隐私政策',
+              to_idol: '/chinese_idol',
+              to_videos: '/chinese_videos',
+              to_rule: '/chinese_rule',
+              to_pp: './chinese_privacy_policy'
+            }
+          }else {
+            this.language = 'japanese';
+            this.commentWords = {
+              product: 'アプリの詳細',
+              join: 'アイドル大募集',
+              idol: 'アイドル一覧',
+              videos: 'ファンへの招待動画',
+              rule: '利用規約',
+              privacy_policy: 'プライバシーポリシー',
+              to_idol: '/japanese_idol',
+              to_videos: '/japanese_videos',
+              to_rule: '/japanese_rule',
+              to_pp: './japanese_privacy_policy'
+            }
+          }
+      },
+      to_maoPoint() {
+        if(!this.$route.path || this.$route.path =='/chinese' || this.$route.path == '/japanese' || this.$route.path == '/') {
+          console.log(this.$route.path);
+          return;
+        }else {
+          location.href = 'http://' +location.host;
+        }
+      }
+    },
+    created: function() {
+      let systemLanguage = (navigator.browserLanguage || navigator.language).toLowerCase();
+        console.log(this.$route.path);
+        if(!this.$route.path || this.$route.path == '/') {
+          if(systemLanguage === 'zh-cn') {
+            this.languageList('chinese');
+          } else {
+            this.languageList('japanese');
+          }
+        } else {
+
+          if(this.$route.path == '/chinese' || this.$route.path == '/chinese_videos' || this.$route.path == '/chinese_idol' || this.$route.path == '/chinese_rule' || this.$route.path == '/chinese_privacy_policy') {
+             this.languageList('chinese');
+          } else {
+            this.languageList('japanese');
+          }
+        }
     }
   }
 </script>
@@ -55,9 +133,10 @@
 <style rel="stylesheet/scss" lang="scss">
   @import './styles/reset.css';
   body {
-    max-width: 1920px;
-    margin: 0 auto;
+    // max-width: 1920px;
+    // margin: 0 auto;
     position: relative;
+    overflow: hidden;
   }
   .activeVideos {
     border-bottom: 4px solid #666;
@@ -72,10 +151,12 @@
     border-top-style: solid;
     border-image: linear-gradient(90deg, #FD4F66 2%, #E34079 22%, #910FB5 44%, #6451CC 64%, #00E5FF 85%, #00AFC4 100%) 30 30;
     width: 100%;
-    max-width: 1914px;
+    overflow: hidden;
+    // max-width: 1914px;
     box-sizing: border-box;
     height: 80px;
     padding: 10px 0;
+    box-shadow: 0 2px 4px 0 rgba(208,208,208,0.50);
     z-index: 1;
     background: #fff;
     >.header_content {
@@ -133,7 +214,7 @@
   }
   .footer {
     background: #3A525C;
-    padding: 34px 0 32px;
+    padding: 34px 0 0;
     >* {
       max-width: 1120px;
       margin: 0 auto;
@@ -153,7 +234,7 @@
         height: 60px;
         font-size: 24px;
         line-height: 60px;
-        padding-left: 84px;
+        padding-left: 64px;
       }
       .facebook,.twitter {
         float: right;
@@ -173,8 +254,9 @@
       overflow: hidden;
       li {
         float: left;
+        // display: inline-block;
         &:not(:first-child) {
-          margin-left: 118px;
+          margin-left: 59px;
         }
         a {
           display: block;
@@ -191,16 +273,24 @@
     .desc {
       color: #fff;
       margin-top: 20px;
-      height: 40px;
-      line-height: 20px;
+      margin-bottom: 0;
+      height: 30px;
+      line-height: 30px;
       text-align: center;
       font-size: 12px;
+      &:last-child {
+        padding-bottom: 30px;
+      }
     }
   }
   .main {
     text-align: center;
-    margin-top: 80px;
+    position: fixed;
+    top: 80px;
+    overflow-y: auto;
+    overflow-x: hidden;
     width: 100%;
+    height: calc(100vh - 80px);
   }
 ::-webkit-scrollbar {
     width: 6px;
