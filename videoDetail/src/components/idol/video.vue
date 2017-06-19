@@ -1,12 +1,12 @@
 <template>
     <div class="main">
         <div class="header">
-            <div class="detail">
+            <!-- <div class="detail">
                 <a href="#" class="back">
                     <img src="../../../static/images/icon_arrow_back_black.png" alt="">
                 </a>
                 <span>详情</span>
-            </div>
+            </div> -->
             <div class="detailPages">
                 <router-link to="/idol/video/Gcoin">G币</router-link>
                 <router-link to="/idol/video/comment">评论</router-link>

@@ -1,9 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://suitvideo.com:9000/',
-    // baseURL: 'http://localhost:9000/',
-    // baseURL: 'http://jethome.newsjet.io/',
+    baseURL: 'http://groupy.vip:8080/',
     timeout: 20000
 });
 instance.interceptors.response.use(function(response){

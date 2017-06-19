@@ -2,15 +2,15 @@
   <div class="index">
     <div class="banner"><img src="../images/banner_japanese.png" alt=""></div>
     <div class="product_description" id="product_description">
-      <h2 class="titles" style="letter-spacing: 0;margin-bottom: 22px;"><i style="width: 180px;margin-left: -13px;"></i><span>アイドルとファンをしっかり繋がるアプリ</span></h2>
+      <h2 class="titles" style="letter-spacing: 0;margin-bottom: 22px;"><i style="width: 70px;margin-left: 15px;"></i><span>アイドルとファンを親密につなぐプラットフォーム</span></h2>
       <h4 class="desc">ひと押しだけで応援できるから、アイドルの成長をより身近に守ろう。更にメンバーのみの限定情報も！</h4>
       <div class="features">
         <img src="../images/features_japanese.png" alt="">
-        <p style="left: -400px; top: 163px;text-align: right;">連続ログインしたりシェアしたりすれば<br>コインをボーナスとして貰えます！<br>貯めしてメンバーシップに登録かアイドルにプレゼントしよう</p>
-        <p style="left: -400px; bottom: 30px;text-align: right;"><b>応援の活動量を基準にファンのレベルが表示されます<br>アイドルを守る同時に自分のレベルアップを達成しよう！</b></p>
-        <p style="right: -220px; top: 20px;">アイドルが投稿した日常やパフォーマンスが即時流れます<br>空いた時間にチェックして応援しよう</p>
-        <p style="right: -405px; top: 163px;">アイドルの配信にハートかギフトで応援して<br>ランキング上位に入らせよう<br>ただでハートをいっぱい貰えしてアイドルの注目度を高めよう！</p>
-        <p style="right: -340px; bottom: 30px;"> アイドルのメンバーにご登録後、アイドルの限定投稿・生配信が見れます<br>更にアイドルに会えるかも！</p>
+        <p style="left: -400px; top: 163px;text-align: right;">連続ログイン・クエストで、<br>コインがもらえる！<br>貯めたコインはメンバーシップに登録かギフティングに使おう。</p>
+        <p style="left: -400px; bottom: 30px;text-align: right;">応援すればするほど、レベルアップしていく。<br>アイドルとともに成長しよう！</p>
+        <p style="right: -220px; top: 20px;">アイドルが投稿した日常やパフォーマンスが即時流れます。<br>空いた時間にチェックして応援しよう。</p>
+        <p style="right: -405px; top: 163px;">アイドルの配信にハートかギフトで応援して、<br>ランキング上位に入らせよう。</p>
+        <p style="right: -340px; bottom: 30px;"> アイドルのメンバーにご登録後、アイドルの限定投稿・生配信が見れます。<br>更にアイドルに会えるかも！</p>
       </div>
     </div>
     <div class="joinUs" id="joinUs">
@@ -23,10 +23,10 @@
       <div class="join_way">
         <span></span>
         <div class="left">
-          <h2 style="width: 505px;"><span> お好きなアイドルに大人気になってほしい？？</span></h2>
-          <h4 style="margin-bottom: 55px;">Groupyに推薦して、業界トップになるキッカケを作ってあげよう！</h4>
+          <h2 style="width: 505px;"><span>お好きなアイドルに大人気になってほしい？？</span></h2>
+          <h4 style="margin-bottom: 55px;">Groupyに推薦して、大活躍のキッカケを作ってあげよう！</h4>
           <h2 style="width: 458px; border-color: #ff8500;"><span>新しい一歩を踏みだそうとしています？？</span></h2>
-          <h4>Groupyに応募して、ファンとよりしっかり結んで世間に羽ばたこう！</h4>
+          <h4>Groupyに参加し、ファンたちと一緒に夢に向かおう！</h4>
         </div>
         <div class="right">
           <h3>応募方法</h3>

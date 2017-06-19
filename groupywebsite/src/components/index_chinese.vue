@@ -22,7 +22,7 @@
         <div class="links">
           <a href="/" class="logo">Groupy</a>
           <!-- <a href="" class="facebook"></a> -->
-          <a href="https://twitter.com/GGroupyyy"  target="_blank" class="twitter"></a>
+          <a href="https://twitter.com/GGroupyyy" target="_blank" class="twitter"></a>
         </div>
         <ul>
          <!--  <li><a :href="commentWords.to_idol">{{commentWords.idol}}</a></li>
@@ -30,9 +30,10 @@
           <li><router-link to="/index_chinese/chinese_rule">{{commentWords.rule}}</router-link></li>
           <li><router-link to="/index_chinese/chinese_privacy_policy">{{commentWords.privacy_policy}}</router-link></li>
         </ul>
-        <div class="desc">Copyright  2017 Groupy Inc. All rights reserved.<br></div>
-        <div class="desc" style="margin-top: 0;width: 210px;
-        margin: 0 auto;overflow: hidden;" v-if="commentWords.company === '公司介绍'"><img src="../images/gov_cn.png" alt="" style="float: left;margin-top: 4px;margin-right: 5px;"><span style="float: left;">粤公网安备 44010602002595号</span></div>
+        <div class="desc">Copyright  2017 云动网络 All rights reserved.<br></div>
+        <dic class="desc"><a target="_blank" href="http://www.miitbeian.gov.cn" style="padding: 0 10px;">粤ICP备17068981号-1</a><a href="Mailto:support@groupy.cn" target="_blank">邮箱：support@groupy.cn</a></dic>
+        <div class="desc" style="margin-top: 0;width: 310px;
+        margin: 0 auto;overflow: hidden;" v-if="commentWords.company === '公司介绍'"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602002595"><img src="../images/gov_cn.png" alt="" style="float: left;margin-top: 4px;margin-right: 5px;"><span style="float: left;">粤公网安备 44010602002595号</span></a></div>
       </footer>
     </div>
   </div>
@@ -281,6 +282,9 @@
       line-height: 30px;
       text-align: center;
       font-size: 12px;
+      a {
+        display: inline-block;
+      }
       &:last-child {
         padding-bottom: 30px;
       }
