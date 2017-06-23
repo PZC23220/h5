@@ -5,9 +5,14 @@ Vue.use(VueRouter);
 import video from '../components/idol/video.vue';
 import community from '../components/idol/community.vue';
 import comment from '../components/idol/comment.vue';
+import messageBoard from '../components/idol/messageBoard.vue';
+import copyright from '../components/idol/copyright.vue';
+import ExchangeAndWithdrawals from '../components/idol/ExchangeAndWithdrawals.vue';
+import idolApply from '../components/idol/idolApply.vue';
 import incomeDetail from '../components/idol/incomeDetail.vue';
 import fansdetail from '../components/idol/fansdetail.vue';
 import idol_ranking from '../components/idol/ranking.vue';
+import idol_allRanking from '../components/idol/allRanking.vue';
 import fans_ranking from '../components/fans/ranking.vue';
 import idol_index from '../components/idol/index.vue';
 import fans_index from '../components/fans/index.vue';
@@ -63,13 +68,7 @@ export default new VueRouter({
             component: fans_dynamic_comment
         },{
             path: '/idol/video',
-            component: video,
-            children: [
-                {path: '', redirect: 'Gcoin'},
-                {path: '/idol/video/Gcoin', component: video_Gcoin},
-                {path: '/idol/video/comment', component: video_comment},
-                {path: '/idol/video/likes', component: video_likes}
-            ]
+            component: video
         },{
             path: '/idol/community',
             component: community,
@@ -91,16 +90,25 @@ export default new VueRouter({
             component: incomeDetail
         },{
             path: '/idol/fansdetail',
-            component: fansdetail,
-            children: [
-                {path: '', redirect: 'totalContribution'},
-                {path: '/idol/fansdetail/totalContribution', component: totalContribution},
-                {path: '/idol/fansdetail/admissionTime', component: admissionTime},
-                {path: '/idol/fansdetail/cheerNumber', component: cheerNumber}
-            ]
+            component: fansdetail
         },{
             path: '/idol/ranking',
             component: idol_ranking
+        },{
+            path: '/idol/allRanking',
+            component: idol_allRanking
+        },{
+            path: '/idol/messageBoard',
+            component: messageBoard
+        },{
+            path: '/idol/copyright',
+            component: copyright
+        },{
+            path: '/idol/ExchangeAndWithdrawals',
+            component: ExchangeAndWithdrawals
+        },{
+            path: '/idol/idolApply',
+            component: idolApply
         },{
             path: '/fans/ranking',
             component: fans_ranking,

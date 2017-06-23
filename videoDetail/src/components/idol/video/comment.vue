@@ -3,9 +3,10 @@
 		<ul class="comment_list">
 			<li v-for="(comment,key) in commentList">
 				<div class="comment_info">
-					<img :src="comment.avatar" alt="">
+					<img class="avatar" :src="comment.avatar" alt="">
 					<span>{{comment.nickname}}</span>
-					<i>{{formatTime(comment.createTime)}}</i>
+					<img class="level" :src="comment.level" alt="">
+					<i v-html="formatTime(comment.createTime)"></i>
 				</div>
 				<div class="comment_content" v-html="TransferString(comment.content)"></div>
 			</li>
@@ -25,7 +26,7 @@
 	  methods: {
 	    formatTime(key) {
 	      let timer = new Date(key*1000);
-	      return timer.Format('MM.dd hh:mm')
+	      return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
 	    },
 	    TransferString(content) {
 	       let string = content;    

@@ -39,15 +39,16 @@
                              <span><img src="../../images/timeline_icon_likes.png" alt=""><i>451,689</i></span>
                          </li>
                      </ul>
-                     <div class="all_ranking">全部排名</div>
-                    <div class="integral">
-                        <p><span>我的排名</span><span><i>12位</i><img src="../../images/timeline_icon_likes.png" alt="">34,981</span></p>
-                        <p>（与前一位爱豆相差392人气）</p>
-                    </div>
-
-                    <div class="help">
-                        <h4>Groupy攻略</h4>
-                    </div>
+                     <ul class="comment_list">
+                        <li>
+                            <span>4</span>
+                            <img class="avatar" src="" alt="">
+                            <span>凯平</span>
+                            <i>
+                                <img src="../../images/timeline_icon_likes.svg" alt="">100
+                            </i>
+                        </li>
+                    </ul>
                 </swiper-slide>
                 <swiper-slide id="swiper2">
                     <ul class="top3">
@@ -79,15 +80,16 @@
                              <span><img src="../../images/timeline_icon_likes.png" alt=""><i>451,689</i></span>
                          </li>
                      </ul>
-                     <div class="all_ranking">全部排名</div>
-                    <div class="integral">
-                        <p><span>我的排名</span><span><i>12位</i><img src="../../images/timeline_icon_likes.png" alt="">34,981</span></p>
-                        <p>（与前一位爱豆相差392人气）</p>
-                    </div>
-
-                    <div class="help">
-                        <h4>Groupy攻略</h4>
-                    </div>
+                     <ul class="comment_list">
+                        <li>
+                            <span>4</span>
+                            <img class="avatar" src="" alt="">
+                            <span>凯平</span>
+                            <i>
+                                <img src="../../images/timeline_icon_likes.svg" alt="">100
+                            </i>
+                        </li>
+                    </ul>
                 </swiper-slide>
             </swiper>
          </div>
@@ -184,3 +186,24 @@
         }
     }
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+    .comment_list {
+        padding: 0;
+        color: #666;
+        li {
+            padding-left: 12px;
+            padding-right: 12px;
+            >span:first-child {
+                font-size: 18px;
+                color: #CCCCCC;
+            }
+            >span:nth-child(3) {
+                font-size: 14px;
+            }
+        }
+        li:first-child {
+            border-top: 1px solid #EBEBEB;
+        }
+    }
+</style>
