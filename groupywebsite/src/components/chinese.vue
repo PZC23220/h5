@@ -39,7 +39,7 @@
             </ul>
           </div>
           <div class="contact_email">
-            <span>发送至</span><span>wanted@groupy.vip</span>
+            <span>发送至</span><span>wanted@groupy.cn</span>
           </div>
         </div>
       </div>
