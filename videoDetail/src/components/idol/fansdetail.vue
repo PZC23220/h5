@@ -4,11 +4,11 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">我的粉丝</span>
-                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money">31,256</i></span>
+                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money">{{Number(gcoinList.fansCount).toLocaleString()}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">昨日粉丝</span>
-                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money">31,256</i></span>
+                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money">{{Number(gcoinList.fansIncreased).toLocaleString()}}</i></span>
                 </p>
             </div>
             <div class="detailPages">
@@ -22,40 +22,38 @@
             <!-- slides -->
             <swiper-slide id="swiper1">
                 <ul class="comment_list">
-                    <li v-for="(popularity,key) in popularityList">
+                    <li v-for="(gFans,key) in gcoinList.fansList">
                         <span>
                             <img src="../../images/icon_metal_1.png" alt="" v-if="key==0">
                             <img src="../../images/icon_metal_2.png" alt="" v-if="key==1">
                             <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
-                            <i v-if="key>2">{{key+1}}</i>
+                            <i class="rank_num" v-if="key>2">{{key+1}}</i>
                         </span>
-                        <img class="avatar" :src="popularity.userFans.avatar" alt="">
-                        <span>{{popularity.userFans.nickname}}</span>
-                        <img src="../../images/icon_level.svg" class="level" alt="">
-                        <!-- <embed src="./icon_level.svg" class="level" type="image/svg+xml"pluginspage="http://www.adobe.com/svg/viewer/install/" /> -->
+                        <img class="avatar" :src="gFans.fans.avatar" alt="">
+                        <span>{{gFans.fans.nickname}}</span>
+                        <img :src="gFans.fans.level" class="level" alt="">
                         <i>
-                            <img src="../../images/timeline_icon_coins.png" alt="">{{Number(popularity.totalNums).toLocaleString()}}
+                            <img src="../../images/timeline_icon_coins.png" alt="">{{Number(gFans.expendGprice).toLocaleString()}}
                         </i>
                     </li>
                 </ul>
-                <div class="default_page" v-show="true">
+                <div class="default_page" v-show="gcoinList.fansList.length == 0">
                     <img src="../../images/default_no coin.png" alt="">
                     <p>还没有收到粉丝的G币</p>
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper2">
                 <ul class="comment_list">
-                    <li v-for="(popularity,key) in popularityList">
+                    <li v-for="(popularity,key) in popularityList.fansList">
                         <span>
                             <img src="../../images/icon_metal_1.png" alt="" v-if="key==0">
                             <img src="../../images/icon_metal_2.png" alt="" v-if="key==1">
                             <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
                             <i v-if="key>2">{{key+1}}</i>
                         </span>
-                        <img class="avatar" :src="popularity.userFans.avatar" alt="">
-                        <span>{{popularity.userFans.nickname}}</span>
-                        <img src="../../images/icon_level.svg" class="level" alt="">
-                        <!-- <embed src="./icon_level.svg" class="level" type="image/svg+xml"pluginspage="http://www.adobe.com/svg/viewer/install/" /> -->
+                        <img class="avatar" :src="popularity.fans.avatar" alt="">
+                        <span>{{popularity.fans.nickname}}</span>
+                        <img :src="popularity.fans.level" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_likes.svg" alt="">{{Number(popularity.totalNums).toLocaleString()}}
                         </i>
@@ -68,12 +66,11 @@
             </swiper-slide>
             <swiper-slide id="swiper3">
                 <ul class="comment_list">
-                    <li v-for="(popularity,key) in popularityList">
-                        <img class="avatar" :src="popularity.userFans.avatar" alt="">
-                        <span>{{popularity.userFans.nickname}}</span>
-                        <img src="../../images/icon_level.svg" class="level" alt="">
-                        <!-- <embed src="./icon_level.svg" class="level" type="image/svg+xml"pluginspage="http://www.adobe.com/svg/viewer/install/" /> -->
-                        <i>2017.5.14</i>
+                    <li v-for="(fans,key) in joinList.fansList">
+                        <img class="avatar" :src="fans.fans.avatar" alt="">
+                        <span>{{fans.fans.nickname}}</span>
+                        <img :src="fans.fans.level" class="level" alt="">
+                        <i v-html="formatTime(fans.startdate)"></i>
                     </li>
                 </ul>
                 <div class="default_page" v-show="true">
@@ -90,6 +87,7 @@
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import $ from 'n-zepto';
     import http from '@/utils/http.js';
+    require('../../utils/common.js')
     export default {
         data() {
             return {
@@ -108,9 +106,11 @@
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
                   },
                 },
-                commentList: {},
+                joinList: {},
                 gcoinList: {
-                    total: 0
+                    fansCount: '',
+                    fansIncreased: '',
+                    fansList: []
                 },
                 popularityList: {}
             }
@@ -123,8 +123,8 @@
                 this.swiper.slideTo(val, 500, false)
               },
             formatTime(key) {
-                  let timer = new Date(key*1000);
-                  return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
+                  let timer = new Date(key);
+                  return timer.Format('yyyy.MM.dd');
             },
             TransferString(content) {
                  let string = content;    
@@ -136,17 +136,30 @@
                  }
                  return string;    
             },
-            getIncome(token) {
+            getJoin(token) {
                 let self = this;
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
                 }else {
                     http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                 }
-                http.get('/group/income').then(function(res){
-                    console.log(res);
+                http.get('/statistic/time').then(function(res){
+                    if(res.status == 200) {
+                        self.joinList = res.data;
+                        console.log(self.joinList);
+                    }else {
+                        WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                self.getJoin(responseData.token);
+                            })
+                        })
+                    }
                 }).catch(function(){
-
+                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                            self.getGoin(responseData.token);
+                        })
+                    })
                 });
             },
             getGcoin(token) {
@@ -156,31 +169,21 @@
                 }else {
                     http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                 }
-                console.log(http.defaults.headers.common)
-                http.get('/video/gcoin',{
-                    params: {
-                        videoId: self.$route.query.targetId
-                    }
-                }).then(function(res){
-                    console.log()
+                http.get('/statistic/gb').then(function(res){
                     if(res.status == 200) {
                         self.gcoinList = res.data;
                         console.log(self.gcoinList)
                     }else {
                         WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
-                                alert(1111)
-                                alert(JSON.stringify(responseData));
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getGoin(responseData.token);
                             })
                         })
                     }
-                }).catch(function(err){
-                    console.log(err.response);
+                }).catch(function(){
                     WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
-                            alert(1111)
-                            alert(JSON.stringify(responseData))
+                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                            self.getGoin(responseData.token);
                         })
                     })
                 });
@@ -193,20 +196,13 @@
                     http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                 }
                 console.log(http.defaults.headers.common)
-                http.get('/video/popularity',{
-                    params: {
-                        videoId: self.$route.query.targetId
-                    }
-                }).then(function(res){
-                    console.log()
+                http.get('/statistic/heat').then(function(res){
                     if(res.status == 200) {
                         self.popularityList = res.data;
                         console.log(self.popularityList)
                     }else {
                         WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
-                                alert(1111)
-                                alert(JSON.stringify(responseData));
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getPopularity(responseData.token);
                             })
                         })
@@ -214,9 +210,7 @@
                 }).catch(function(err){
                     console.log(err.response);
                     WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
-                            alert(1111)
-                            alert(JSON.stringify(responseData));
+                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getPopularity(responseData.token);
                         })
                     })
@@ -230,20 +224,9 @@
         },
         created() {
             var self = this;
-            // console.log(self.$route.query);
-            // self.getGcoin();
-                self.getIncome();
-            //调用一个测试函数
-            let _data = {
-                targetType: 1,
-                targetId: 2
-            }
-            // setupWebViewJavascriptBridge(function(bridge) {
-            //     bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
-            //         alert(1111);
-            //         alert(JSON.stringify(responseData));
-            //     })
-            // })
+            self.getGcoin();
+            self.getPopularity();
+            self.getJoin();
 
         }
     }

@@ -18,10 +18,6 @@ import idol_index from '../components/idol/index.vue';
 import fans_index from '../components/fans/index.vue';
 import fans_dynamic_comment from '../components/fans/dynamic_comment.vue';
 
-import video_Gcoin from '../components/idol/video/Gcoin.vue';
-import video_comment from '../components/idol/video/comment.vue';
-import video_likes from '../components/idol/video/likes.vue';
-
 import idol_index_comment from '../components/idol/index/comment.vue';
 import idol_index_dynamic from '../components/idol/index/dynamic.vue';
 
@@ -40,6 +36,8 @@ import totalContribution from '../components/idol/fansdetail/totalContribution.v
 
 import GcoinsContribution from '../components/fans/ranking/GcoinsContribution.vue';
 import popularity from '../components/fans/ranking/popularity.vue';
+
+import shareVideo from '../components/shareVideo.vue';
 
 export default new VueRouter({
     mode: 'hash',
@@ -117,6 +115,9 @@ export default new VueRouter({
                 {path: '/fans/ranking/GcoinsContribution', component: GcoinsContribution},
                 {path: '/fans/ranking/popularity', component: popularity}
             ]   
+        },{
+            path: '/shareVideo',
+            component: shareVideo
         }
     ]
 });

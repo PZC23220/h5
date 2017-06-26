@@ -65,9 +65,10 @@
     </div>
 </template>
 
-<script src="../../utils/common.js"></script>
+<!-- <script src="../../utils/common.js"></script> -->
 <script>
     import http from '@/utils/http.js';
+    require('../../utils/common.js')
     export default {
         data() {
             return {

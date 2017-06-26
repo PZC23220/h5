@@ -1,8 +1,8 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;">
-            <ul class="comment_list dynamic">
-                <li v-for="(comment,key) in commentList" :class="{'idol_comment' : comment.userType == 'idol'}">
+        <div class="content" ref="viewBox" style="top: 0">
+            <ul class="comment_list dynamic" ref="viewBox">
+                <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : commentList.length > 5 && key == commentList.length-1}]">
                     <div class="userinfo">
                         <img :src="comment.avatar" alt="">
                         <span>{{comment.nickname}}</span>
@@ -32,13 +32,19 @@
     </div>
 </template>
 
-<script src="../../utils/common.js"></script>
+<!-- <script src="../../utils/common.js"></script> -->
 <script>
     import http from '@/utils/http.js';
+    require('../../utils/common.js')
     export default {
         data() {
             return {
-                commentList: []
+                commentList: [],
+                // 选择滚动事件的监听对象
+                scrollEventTarget: document.querySelector('.comment_list'),
+                scroll: '',
+                start: 0,
+                num: 6
             }
         },
         methods: {
@@ -47,10 +53,14 @@
                 http.get('/post/list',{
                     params: {
                         targetType: self.$route.query.targetType,
-                        targetId: self.$route.query.targetId
+                        targetId: self.$route.query.targetId,
+                        start: self.start,
+                        rows: self.num
                     }
                 }).then(function(res){
-                    self.commentList = res.data;
+                    for(var i=0;i<res.data.length;i++){
+                        self.commentList.push(res.data[i]);
+                    }                    
                     console.log(res);
                 }).catch(function(){
 
@@ -58,7 +68,7 @@
             },
             formatTime(key) {
                 let timer = new Date(key);
-                return timer.Format('MM.dd') + '&nbsp;&nbsp;' + timer.Format('hh:mm');
+                return timer.Format('MM.dd') + '&nbsp;' + timer.Format('hh:mm');
             },
             changeStatus(val) {
                 let _html;
@@ -79,7 +89,21 @@
                 WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('showImage', {'url': url})
                 })
+            },
+            menu() {
+                console.log(1111)
+                this.scroll = document.querySelector('.main').getBoundingClientRect().bottom;
+                console.log(this.scroll)
             }
+        },
+        mounted() {
+          this.box = this.$refs.viewBox
+          this.box.addEventListener('scroll', () => {
+              if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom) == window.innerHeight) {
+                this.start = this.start + this.num;
+                this.getComments();
+              }
+            }, false)
         },
         created() {
             var self = this;

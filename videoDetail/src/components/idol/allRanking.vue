@@ -15,37 +15,37 @@
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
-                                 <img src="" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList[1].avatar" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">結月 みおな</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>451,689</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList[1].name}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[1].score).toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
-                                 <img src="" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList[0].avatar" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">結月 みおな</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>451,689</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList[0].name}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[0].score).toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img src="" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList[2].avatar" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">結月 みおな</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>451,689</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList[2].name}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[2].score).toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">
-                        <li>
-                            <span>4</span>
-                            <img class="avatar" src="" alt="">
-                            <span>凯平</span>
+                        <li v-for="(idol,key) in rakingListToday.rankingList" v-if="key > 2">
+                            <span>{{idol.position}}</span>
+                            <img class="avatar" :src="idol.avatar" alt="">
+                            <span>{{idol.name}}</span>
                             <i>
-                                <img src="../../images/timeline_icon_likes.svg" alt="">100
+                                <img src="../../images/timeline_icon_likes.svg" alt="">{{Number(idol.score).toLocaleString()}}
                             </i>
                         </li>
                     </ul>
@@ -56,37 +56,37 @@
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
-                                 <img src="" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList[1].avatar" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">結月 みおな</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>451,689</i></span>
+                             <p class="idol_name">{{rakingList.rankingList[1].name}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[1].score).toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
-                                 <img src="" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList[0].avatar" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">結月 みおな</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>451,689</i></span>
+                             <p class="idol_name">{{rakingList.rankingList[0].name}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[0].score).toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img src="" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList[2].avatar" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">結月 みおな</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>451,689</i></span>
+                             <p class="idol_name">{{rakingList.rankingList[2].name}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[2].score).toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">
-                        <li>
-                            <span>4</span>
-                            <img class="avatar" src="" alt="">
-                            <span>凯平</span>
+                        <li v-for="(idol,key) in rakingList.rankingList" v-if="key > 2">
+                            <span>{{idol.position}}</span>
+                            <img class="avatar" :src="idol.avatar" alt="">
+                            <span>{{idol.name}}</span>
                             <i>
-                                <img src="../../images/timeline_icon_likes.svg" alt="">100
+                                <img src="../../images/timeline_icon_likes.svg" alt="">{{Number(idol.score).toLocaleString()}}
                             </i>
                         </li>
                     </ul>
@@ -119,11 +119,8 @@
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
                   },
                 },
-                commentList: {},
-                gcoinList: {
-                    total: ''
-                },
-                popularityList: {}
+                rakingListToday: {},
+                rakingList: {}
             }
         },
         methods: {
@@ -137,39 +134,39 @@
               let timer = new Date(key*1000);
               return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
           },
-          getPopularity(token) {
+          getRanking(val,token) {
             let self = this;
             if(token) {
                 http.defaults.headers.common['Authorization'] = 'Token '+token;
             }else {
                 http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
             }
-            console.log(http.defaults.headers.common)
-            http.get('/video/popularity',{
+            http.get('/ranking/idols',{
                 params: {
-                    videoId: self.$route.query.targetId
+                    filter: val
                 }
             }).then(function(res){
-                console.log()
                 if(res.status == 200) {
-                    self.popularityList = res.data;
-                    console.log(self.popularityList)
+                    if(val == 'all') {
+                        self.rakingList = res.data;
+                    }else {
+                        self.rakingListToday = res.data;
+                    }
+                    
+                    console.log(self.rakingList)
+                    console.log(self.rakingListToday)
                 }else {
                     WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
-                            alert(1111)
-                            alert(JSON.stringify(responseData));
-                            self.getPopularity(responseData.token);
+                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                            self.getRanking(responseData.token);
                         })
                     })
                 }
             }).catch(function(err){
                 console.log(err.response);
                 WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
-                        alert(1111)
-                        alert(JSON.stringify(responseData));
-                        self.getPopularity(responseData.token);
+                    bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                        self.getRanking(responseData.token);
                     })
                 })
             });
@@ -182,7 +179,11 @@
         },
         created() {
             var self = this;
-
+            self.getRanking('today');
+            if(self.$route.query.type =='all') {
+                self.swiperOption.initialSlide = 1;
+            }
+            self.getRanking('all');
         }
     }
 </script>
@@ -200,6 +201,7 @@
             }
             >span:nth-child(3) {
                 font-size: 14px;
+                color: #666;
             }
         }
         li:first-child {

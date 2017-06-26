@@ -88,11 +88,12 @@
     </div>
 </template>
 
-<script src="../../utils/common.js"></script>
+<!-- <script src="../../utils/common.js"></script> -->
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import $ from 'n-zepto';
     import http from '@/utils/http.js';
+    require('../../utils/common.js')
     export default {
         data() {
             return {
@@ -145,7 +146,7 @@
             http.get('/post/list',{
                 params: {
                     targetType: 1,
-                    targetId: self.$route.query.targetId
+                    targetId: self.$route.query.videoId
                 }
             }).then(function(res){
                 if(res.status == 200) {
@@ -238,7 +239,7 @@
             var self = this;
             // console.log(self.$route.query);
             self.getGcoin();
-            self.getPopularity();
+            // self.getPopularity();
             self.getComments();
             //调用一个测试函数
             let _data = {
