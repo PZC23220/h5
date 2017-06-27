@@ -151,6 +151,9 @@
                 </swiper-slide>
             </swiper>
          </div>
+         <div class="bigLoading" v-show="loadingBig">
+            <img src="../../images/loading_2.png" alt="">
+        </div>
     </div>
 </template>
 
@@ -181,7 +184,8 @@
                 rakingListToday: {},
                 isShow: false,
                 tottleImg: './static/images/icon_arrow_gray_down.png',
-                tokens: ''
+                tokens: '',
+                loadingBig: true
             }
         },
         methods: {
@@ -210,6 +214,7 @@
                 }
             }).then(function(res){
                 if(res.status == 200) {
+                    self.loadingBig = false;
                     if(val == 'all') {
                         self.rakingList = res.data;
                     }else {

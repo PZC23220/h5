@@ -93,6 +93,9 @@
                 </swiper-slide>
             </swiper>
          </div>
+         <div class="bigLoading" v-show="loadingBig">
+            <img src="../../images/loading_2.png" alt="">
+        </div>
     </div>
 </template>
 
@@ -120,7 +123,8 @@
                   },
                 },
                 rakingListToday: {},
-                rakingList: {}
+                rakingList: {},
+                loadingBig: true
             }
         },
         methods: {
@@ -146,6 +150,7 @@
                     filter: val
                 }
             }).then(function(res){
+                self.loadingBig = false;
                 if(res.status == 200) {
                     if(val == 'all') {
                         self.rakingList = res.data;

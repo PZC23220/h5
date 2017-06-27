@@ -33,6 +33,7 @@ a {color: #333;}
 	width: 100%;
 	font-size: 14px;
 	overflow: hidden;
+	z-index: 1;
 	.detail {
 	    background: #9C9C9C;
 	    padding: 0 12px;
@@ -79,6 +80,7 @@ a {color: #333;}
     overflow: auto;
     left: 0;
     width: 100%;
+    overflow-x: hidden;
 }
 .detail_title {
 	font-size: 14px;
@@ -253,8 +255,10 @@ img.avatar {
 	height: 11.2px;
 }
 .comment_list {
+	background: #eee;
  	li {
  		padding: 12px;
+ 		background: #fff;
  		overflow: hidden;
  		border-bottom: 1px solid #EBEBEB;
  		line-height: 30px;
@@ -275,7 +279,6 @@ img.avatar {
  		span {
  			float: left;
  			margin-right: 10px;
- 			color: #ccc;
  			min-width: 25px;
  			&:first-child {
  				text-align: center;
@@ -287,7 +290,8 @@ img.avatar {
  			}
  		}
  		>span.level_color {
-			font-size: 18px
+			font-size: 18px;
+			color: #ccc;
 		}
  		&:first-child {
  			>span.level_color {
@@ -322,6 +326,7 @@ img.avatar {
  			float: right;
  			width: 30%;
  			text-align: right;
+ 			color: #999;
  		}
  	}
  	div.userinfo {
@@ -336,8 +341,6 @@ img.avatar {
  		}
  		i {
  			color: #999;
- 			font-size: 10px;
- 			-webkit-transform: scale(0.8);
  		}
 	}
 	.comment_img {
@@ -380,10 +383,10 @@ img.avatar {
 		}
 	}
 	div.comment_content {
-		padding: 8.5px 0 0 39px;
+		padding: 0 0 0 39px;
 		font-size: 16px;
 		color: #2F2F2F;
-		margin-top: 5px;
+		// margin-top: 5px;
 		a {
 			overflow: hidden;
 			display: block;
@@ -607,6 +610,9 @@ img.avatar {
     		}
     	}
     }
+    .rule_2 {
+    	padding-left: 40px;
+    }
     .default_page {
     	text-align: center;
     	padding-top: 60px;
@@ -617,5 +623,81 @@ img.avatar {
     	p {
     		font-size: 14px;
     		color: #999;
+    	}
+    }
+    .loading {
+        position: relative;
+        padding: 5px;
+        display: none;
+        bottom: -19px;
+        p {
+        	color: #999;
+        	text-align: center;
+        	padding: 10px 0;
+        	box-sizing: border-box;
+	        img {
+	            width: 20px;
+	            transform:rotate(360deg);
+	            animation: rotation 1.4s linear infinite;
+	            vertical-align: middle;
+	            margin-right: 5px;
+	        }
+	        &:last-child {
+	        	padding-top: 0px;
+	        }
+        }
+    }
+    .loading_show {
+        display: block;
+        bottom: 0;
+    }
+
+    @keyframes rotation{
+        from {transform: rotate(0deg);}
+        to {transform: rotate(360deg);}
+    }
+	
+	@keyframes rotationTop{
+        from {top: 0;}
+        to {top: -20px;}
+    }
+
+    .loading_top {
+    	position: relative;
+        // margin: 5px auto;
+        text-align: center;
+        overflow: hidden;
+        color: #999;
+        // display: none;
+        height: 0;
+        background: #eee;
+        // animation: rotationTop 0.5s linear;
+    	transition: height 1s;
+		-moz-transition: height 1s;	/* Firefox 4 */
+		-webkit-transition: height 1s;	/* Safari 和 Chrome */
+		-o-transition: height 1s;
+        p {
+        	padding: 3px;
+        }
+        span {
+        	width: 90.5px;
+        	height: 47.5px;
+			display: block;
+			margin: 0 auto;
+        }
+    }
+    .bigLoading {
+    	position: absolute;
+    	left:0;
+    	top: 0;
+    	width: 100%;
+    	height: 100vh;
+    	text-align: center;
+    	background: rgba(0,0,0,0.2);
+    	 z-index: 3;
+    	img {
+    		width: 45px;
+    		margin-top: calc(50vh - 22.5px);
+    		 animation: rotation 1.8s linear infinite;
     	}
     }

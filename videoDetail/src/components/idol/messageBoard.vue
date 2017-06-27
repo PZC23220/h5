@@ -1,8 +1,12 @@
 <template>
     <div class="main">
         <div class="content" ref="viewBox" style="top: 0">
-            <ul class="comment_list dynamic" ref="viewBox">
-                <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : commentList.length > 5 && key == commentList.length-1}]">
+            <ul class="comment_list dynamic">
+                <div class="loading_top" :class="{'loading_top_show': showLoading2}">
+                    <p>加载中</p>
+                    <span></span>
+                </div>
+                <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                     <div class="userinfo">
                         <img :src="comment.avatar" alt="">
                         <span>{{comment.nickname}}</span>
@@ -15,19 +19,18 @@
                             <span :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="img in JSON.parse(comment.imgs)"><img :src="img" alt="" class="autoHeight" @click="showBigImg(img)"></span>
                         </div>                      
                     </div>
-                    <!-- <div class="comment_desc">
-                        <span><img src="" alt="">274,223</span>
-                        <span><img src="" alt="">3434</span>
-                        <span><img src="" alt=""><img src="" alt=""></span>
-                    </div> -->
                 </li>
+                <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">加载中</p><p v-show="havedlast">已加载全部内容</p></div>
             </ul>
             <div class="default_page" v-show="commentList.length == 0">
                 <img src="../../images/default_no message.png" alt="">
                 <p>还没有留言<br>去发布留言，让粉丝来互动吧！</p>
             </div>
-            <div class="publich_comment"><img src="../../images/timeline_icon_edit.png" alt=""><span>发表</span></div>
-            <div class="publich_tips" v-show="commentList.length == 0"><img src="../../images/tips_edit.png" alt="">发表评论</div>
+        </div>
+        <div class="publich_comment"><img src="../../images/timeline_icon_edit.png" alt=""><span>发表</span></div>
+        <div class="publich_tips" v-show="commentList.length == 0"><img src="../../images/tips_edit.png" alt="">发表评论</div>
+        <div class="bigLoading" v-show="loadingBig">
+            <img src="../../images/loading_2.png" alt="">
         </div>
     </div>
 </template>
@@ -41,10 +44,13 @@
             return {
                 commentList: [],
                 // 选择滚动事件的监听对象
-                scrollEventTarget: document.querySelector('.comment_list'),
                 scroll: '',
                 start: 0,
-                num: 6
+                num: 20,
+                showLoading: false,
+                showLoading2: false,
+                loadingBig: true,
+                havedlast: false
             }
         },
         methods: {
@@ -52,16 +58,23 @@
                 let self = this;
                 http.get('/post/list',{
                     params: {
-                        targetType: self.$route.query.targetType,
-                        targetId: self.$route.query.targetId,
+                        targetType: 1,
+                        targetId: 1,
                         start: self.start,
                         rows: self.num
                     }
                 }).then(function(res){
-                    for(var i=0;i<res.data.length;i++){
-                        self.commentList.push(res.data[i]);
-                    }                    
-                    console.log(res);
+                    self.loadingBig = false;
+                    self.showLoading = false;
+                    if(res.data.length > 0 ) {
+
+                        for(var i=0;i<res.data.length;i++){
+                            self.commentList.push(res.data[i]);
+                        }                    
+                    }else {
+                        self.havedlast = true;
+                    }
+                    console.log(self.commentList);
                 }).catch(function(){
 
                 });
@@ -89,19 +102,38 @@
                 WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('showImage', {'url': url})
                 })
-            },
-            menu() {
-                console.log(1111)
-                this.scroll = document.querySelector('.main').getBoundingClientRect().bottom;
-                console.log(this.scroll)
             }
         },
         mounted() {
-          this.box = this.$refs.viewBox
-          this.box.addEventListener('scroll', () => {
-              if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom) == window.innerHeight) {
-                this.start = this.start + this.num;
-                this.getComments();
+            var self = this;
+          self.box = self.$refs.viewBox
+          self.box.addEventListener('scroll', () => {
+              if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom)  == parseInt(document.querySelector('.content').getBoundingClientRect().bottom)) {
+                self.showLoading = true;
+                setTimeout(() => {
+                    self.start = self.start + self.num;
+                    self.getComments();
+                },500)
+                
+              }
+              if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
+                self.showLoading2 = true;
+                setTimeout(() => {
+                    http.get('/post/list',{
+                        params: {
+                            targetType: self.$route.query.targetType,
+                            targetId: self.$route.query.targetId,
+                            start: 0,
+                            rows: self.num
+                        }
+                    }).then(function(res){
+                        self.showLoading2 = false;
+                         self.commentList = res.data;                  
+                        console.log(self.commentList);
+                    }).catch(function(){
+
+                    });
+                },500)
               }
             }, false)
         },
@@ -136,6 +168,9 @@
             margin-bottom: 3px;
         }
     }
+    i {
+        text-align: right;
+    }
     .publich_tips {
         position: fixed;
         right: 126px;
@@ -157,4 +192,19 @@
         height: 100vh;
         background: #eee;
     }
+    .loading_top span {
+        background: url(../../images/pic_loading_1.png);
+        background-size: 100% auto;
+    }
+    .loading_top_show span {
+        animation: changebg 1s linear infinite;
+    }
+    .loading_top_show {
+        height: 80px;
+    }
+    @keyframes changebg{
+        from {background: url(../../images/pic_loading_1.png);background-size: 100% auto;}
+        to {background: url(../../images/pic_loading_2.png);background-size: 100% auto;}
+    }
+    
 </style>

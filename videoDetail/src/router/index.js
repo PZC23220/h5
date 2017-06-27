@@ -7,6 +7,7 @@ import community from '../components/idol/community.vue';
 import comment from '../components/idol/comment.vue';
 import messageBoard from '../components/idol/messageBoard.vue';
 import copyright from '../components/idol/copyright.vue';
+import rule from '../components/idol/rule.vue';
 import ExchangeAndWithdrawals from '../components/idol/ExchangeAndWithdrawals.vue';
 import idolApply from '../components/idol/idolApply.vue';
 import incomeDetail from '../components/idol/incomeDetail.vue';
@@ -101,6 +102,9 @@ export default new VueRouter({
         },{
             path: '/idol/copyright',
             component: copyright
+        },{
+            path: '/idol/rule',
+            component: rule
         },{
             path: '/idol/ExchangeAndWithdrawals',
             component: ExchangeAndWithdrawals

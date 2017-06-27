@@ -117,7 +117,7 @@
       }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import "../styles/share.scss";
     .vjs_video_417-dimensions {
         height: auto !important;

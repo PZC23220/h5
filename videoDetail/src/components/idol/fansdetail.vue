@@ -29,9 +29,9 @@
                             <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
                             <i class="rank_num" v-if="key>2">{{key+1}}</i>
                         </span>
-                        <img class="avatar" :src="gFans.fans.avatar" alt="">
-                        <span>{{gFans.fans.nickname}}</span>
-                        <img :src="gFans.fans.level" class="level" alt="">
+                        <img class="avatar" :src="gFans.fans?gFans.fans.avatar:''" alt="">
+                        <span>{{gFans.fans?gFans.fans.nickname:''}}</span>
+                        <img :src="gFans.fans?gFans.fans.level:''" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_coins.png" alt="">{{Number(gFans.expendGprice).toLocaleString()}}
                         </i>
@@ -51,15 +51,15 @@
                             <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
                             <i v-if="key>2">{{key+1}}</i>
                         </span>
-                        <img class="avatar" :src="popularity.fans.avatar" alt="">
-                        <span>{{popularity.fans.nickname}}</span>
-                        <img :src="popularity.fans.level" class="level" alt="">
+                        <img class="avatar" :src="popularity.fans?popularity.fans.avatar:''" alt="">
+                        <span>{{popularity.fans?popularity.fans.nickname:''}}</span>
+                        <img :src="popularity.fans?popularity.fans.level:''" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_likes.svg" alt="">{{Number(popularity.totalNums).toLocaleString()}}
                         </i>
                     </li>
                 </ul>
-                <div class="default_page" v-show="true">
+                <div class="default_page" v-show="popularityList.fansList.length == 0">
                     <img src="../../images/default_no like.png" alt="">
                     <p>还没有收到粉丝的点赞人气</p>
                 </div>
@@ -73,12 +73,15 @@
                         <i v-html="formatTime(fans.startdate)"></i>
                     </li>
                 </ul>
-                <div class="default_page" v-show="true">
+                <div class="default_page" v-show="joinList.fansList.length == 0">
                     <img src="../../images/default_no history.png" alt="">
                     <p>还没有会员入会记录</p>
                 </div>
             </swiper-slide>  
           </swiper>
+        </div>
+        <div class="bigLoading" v-show="loadingBig">
+            <img src="../../images/loading_2.png" alt="">
         </div>
     </div>
 </template>
@@ -106,13 +109,18 @@
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
                   },
                 },
-                joinList: {},
+                joinList: {
+                    fansList: []
+                },
                 gcoinList: {
                     fansCount: '',
                     fansIncreased: '',
                     fansList: []
                 },
-                popularityList: {}
+                popularityList: {
+                    fansList: []
+                },
+                loadingBig: true
             }
         },
         methods: {
@@ -170,6 +178,7 @@
                     http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                 }
                 http.get('/statistic/gb').then(function(res){
+                    self.loadingBig = false;
                     if(res.status == 200) {
                         self.gcoinList = res.data;
                         console.log(self.gcoinList)

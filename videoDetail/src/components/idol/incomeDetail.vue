@@ -15,19 +15,19 @@
                 <p class="detail_title">会员费</p>
                 <ul class="income_img">
                     <li>
-                        <img class="gift" src="" alt="">
+                        <img class="gift" src="../../images/pic_vip_free.png" alt="">
                         <p><span class="left">&times;{{Number(incomeList.groupFeeList[0].numbers).toLocaleString()}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="" alt="">
+                        <img class="gift" src="../../images/pic_vip_1 month.png" alt="">
                         <p><span class="left">&times;{{Number(incomeList.groupFeeList[1].numbers).toLocaleString()}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="" alt="">
+                        <img class="gift" src="../../images/pic_vip_3 month.png" alt="">
                         <p><span class="left">&times;{{Number(incomeList.groupFeeList[2].numbers).toLocaleString()}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="" alt="">
+                        <img class="gift" src="../../images/pic_vip_6 month.png" alt="">
                         <p><span class="left">&times;{{Number(incomeList.groupFeeList[3].numbers).toLocaleString()}}</span></p>
                     </li>
                 </ul>
@@ -62,6 +62,9 @@
             </div>
             <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">汇率和提现说明</router-link>
         </div>
+        <div class="bigLoading" v-show="loadingBig">
+            <img src="../../images/loading_2.png" alt="">
+        </div>
     </div>
 </template>
 
@@ -73,9 +76,12 @@
         data() {
             return {
                 incomeList: {
-                    groupFeeList:[{totalNums: ''},{totalNums: ''},{totalNums: ''},{totalNums: ''}],
-                    monthRecordList: []
-                }
+                    groupFeeList:[{totalNums: '',numbers: ''},{totalNums: '',numbers: ''},{totalNums: '',numbers: ''},{totalNums: '',numbers: ''}],
+                    monthRecordList: [],
+                    incomeCurrentMonth: '',
+                    incomeYesterday: ''
+                },
+                loadingBig: true
             }
         },
         methods: {
@@ -87,6 +93,7 @@
                     http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                 }
                 http.get('/group/income').then(function(res){
+                    self.loadingBig = false;
                     self.incomeList = res.data;
                     console.log(self.incomeList);
                 }).catch(function(){
