@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 import video from '../components/idol/video.vue';
 import community from '../components/idol/community.vue';
 import comment from '../components/idol/comment.vue';
+import publishComment from '../components/idol/publishComment.vue';
 import messageBoard from '../components/idol/messageBoard.vue';
 import copyright from '../components/idol/copyright.vue';
 import rule from '../components/idol/rule.vue';
@@ -100,6 +101,9 @@ export default new VueRouter({
             path: '/idol/messageBoard',
             component: messageBoard
         },{
+            path: '/idol/publishComment',
+            component: publishComment
+        },{
             path: '/idol/copyright',
             component: copyright
         },{
@@ -113,12 +117,7 @@ export default new VueRouter({
             component: idolApply
         },{
             path: '/fans/ranking',
-            component: fans_ranking,
-            children: [
-                {path: '', redirect: 'GcoinsContribution'},
-                {path: '/fans/ranking/GcoinsContribution', component: GcoinsContribution},
-                {path: '/fans/ranking/popularity', component: popularity}
-            ]   
+            component: fans_ranking   
         },{
             path: '/shareVideo',
             component: shareVideo

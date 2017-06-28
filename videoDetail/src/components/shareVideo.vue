@@ -2,8 +2,8 @@
     <div class="main">
         <div class="header">
             <img src="../images/icon_groupy_128.png" alt="">
-            <p>会员独有的私密状态查看，一键应援，共同守护爱豆的成长</p>
-            <a href="">下载</a>
+            <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
+            <a href="">インストール</a>
         </div>
         <div class="content">
             <div class="userinfo">
@@ -20,14 +20,14 @@
                     <img src="../images/icon_menbership.png" alt=""> 
                 </div>
                 <div class="vip_download">
-                    <p>本视频仅为会员可见<br>下载Groupy并加入会员，查看爱豆的隐秘视频吧</p>
-                    <a href="" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">下载Groupy查看完整视频</a>
+                    <p>会員のみ視聴可能です<br>会員登録して、アイドルのプライベート動画を見よう</p>
+                    <a href="" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
                 </div>
             </div>
             <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
-            <a href="" class="download">下载Groupy查看更多视频</a>
+            <a href="" class="download">Groupyをダウンロードしてもっと見よう</a>
             <div class="more_video">
-                <h3>还有更多视频</h3>
+                <h3>おすすめ</h3>
                 <ul>
                     <li><a href="" title="">
                     <div class="video_bigImg">
@@ -117,9 +117,12 @@
       }
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
     @import "../styles/share.scss";
-    .vjs_video_417-dimensions {
+</style>
+
+<style>
+     .vjs_video_417-dimensions {
         height: auto !important;
         video {
             position: inherit !important;

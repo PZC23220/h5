@@ -3,7 +3,7 @@
         <div class="content" ref="viewBox" style="top: 0">
             <ul class="comment_list dynamic">
                 <div class="loading_top" :class="{'loading_top_show': showLoading2}">
-                    <p>加载中</p>
+                    <p>読み込み中</p>
                     <span></span>
                 </div>
                 <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
@@ -20,15 +20,15 @@
                         </div>                      
                     </div>
                 </li>
-                <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">加载中</p><p v-show="havedlast">已加载全部内容</p></div>
+                <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div>
             </ul>
             <div class="default_page" v-show="commentList.length == 0">
                 <img src="../../images/default_no message.png" alt="">
-                <p>还没有留言<br>去发布留言，让粉丝来互动吧！</p>
+                <p>まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう</p>
             </div>
         </div>
-        <div class="publich_comment"><img src="../../images/timeline_icon_edit.png" alt=""><span>发表</span></div>
-        <div class="publich_tips" v-show="commentList.length == 0"><img src="../../images/tips_edit.png" alt="">发表评论</div>
+        <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>投稿</span></div>
+        <div class="publich_tips" v-show="commentList.length == 0"><img src="../../images/tips_edit.png" alt="">投稿して<br>盛り上がろう</div>
         <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
         </div>
@@ -98,6 +98,11 @@
                 }
                 return _html;
             },
+            publishComment() {
+                WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('review')
+                })
+            },
             showBigImg(url) {
                 WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('showImage', {'url': url})
@@ -152,14 +157,14 @@
     .publich_comment {
         position: fixed;
         right: 12px;
-        bottom: 24px;
+        bottom: 18px;
         opacity: 0.9;
         background: #00B4BC;
         border-radius: 29px;
         // width: 93.5px;
         height: 40px;
         line-height: 40px;
-        padding: 0 19px;
+        padding: 0 15px;
         color: #fff;
         font-size: 16px;
         img {
@@ -174,12 +179,12 @@
     .publich_tips {
         position: fixed;
         right: 126px;
-        bottom: 24px;
+        bottom: 11px;
         color: #fff;
         font-size: 16px;
         width: 153.5px;
-        height: 44px;
-        line-height: 44px;
+        height: 54px;
+        line-height: 27px;
         text-align: center;
         img {
             position: absolute;

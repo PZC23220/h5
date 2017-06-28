@@ -14,7 +14,7 @@ Vue.use(VideoPlayer);
 //   hls: true // default true
 // })
 
-new Vue({
+ let _vm = new Vue({
   el: '#app',
   router,
   render: h => h(App)

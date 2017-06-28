@@ -3,6 +3,9 @@
 	border-bottom: #FAFAFA solid 1px;
 	box-shadow: 0 1px 4.5px 0 rgba(0,0,0,0.18);
 	box-sizing: border-box;
+	max-height: 64px;
+
+	font-size: 12px;
 	>img:first-child {
 		width: 45px;
 		margin-right: 10.5px;
@@ -10,8 +13,8 @@
 	}
 	>p {
 		float: left;
-		width: calc(100vw - 159px);
-		max-width: 500px - 159px;
+		width: calc(100vw - 164px);
+		max-width: 500px - 164px;
 		text-align: left;
 	}
 	>a {
@@ -19,7 +22,7 @@
 		background: #FC4083;
 		border-radius: 4px;
 		color: #fff;
-		width: 69.5px;
+		width: 74px;
 		height: 30px;
 		line-height: 30px;
 		margin-left: 10px;
@@ -114,7 +117,7 @@
 	}
 	ul {
 		overflow: hidden;
-		padding-bottom: 10px;
+		padding-bottom: 30px;
 		li {
 			float: left;
 			width: calc((100vw - 36px)/2);
@@ -169,3 +172,7 @@
 		line-height: 20px;
 	}
 }
+// @media screen and (min-width: 320px) {
+//     .header {
+//     }
+// }

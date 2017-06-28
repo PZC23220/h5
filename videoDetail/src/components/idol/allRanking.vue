@@ -2,8 +2,8 @@
     <div class="main">
         <div class="header">
             <div class="detailPages">
-                <a class="tabs active" @click="changePages(0)">今日排名</a>
-                <a class="tabs" @click="changePages(1)">总排名</a>
+                <a class="tabs active" @click="changePages(0)">今日のランキング</a>
+                <a class="tabs" @click="changePages(1)">総合ランキング</a>
             </div>
         </div>
          <div class="content">
@@ -15,28 +15,28 @@
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList[1].avatar" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList?rakingListToday.rankingList[1].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList[1].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[1].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[1].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[1].score:'').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList[0].avatar" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList?rakingListToday.rankingList[0].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList[0].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[0].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[0].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[0].score:'').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList[2].avatar" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList?rakingListToday.rankingList[2].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList[2].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[2].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[2].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[2].score:'').toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">
@@ -45,7 +45,7 @@
                             <img class="avatar" :src="idol.avatar" alt="">
                             <span>{{idol.name}}</span>
                             <i>
-                                <img src="../../images/timeline_icon_likes.svg" alt="">{{Number(idol.score).toLocaleString()}}
+                                <img src="../../images/timeline_icon_likes.png" alt="">{{Number(idol.score).toLocaleString()}}
                             </i>
                         </li>
                     </ul>
@@ -56,28 +56,28 @@
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList[1].avatar" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList?rakingList.rankingList[1].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList[1].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[1].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[1].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[1].score:'').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList[0].avatar" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList?rakingList.rankingList[0].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList[0].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[0].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[0].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[0].score:'').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList[2].avatar" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList?rakingList.rankingList[2].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList[2].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[2].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[2].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[2].score:'').toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">
@@ -86,7 +86,7 @@
                             <img class="avatar" :src="idol.avatar" alt="">
                             <span>{{idol.name}}</span>
                             <i>
-                                <img src="../../images/timeline_icon_likes.svg" alt="">{{Number(idol.score).toLocaleString()}}
+                                <img src="../../images/timeline_icon_likes.png" alt="">{{Number(idol.score).toLocaleString()}}
                             </i>
                         </li>
                     </ul>
@@ -161,7 +161,7 @@
                     console.log(self.rakingList)
                     console.log(self.rakingListToday)
                 }else {
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getRanking(responseData.token);
                         })
@@ -169,7 +169,7 @@
                 }
             }).catch(function(err){
                 console.log(err.response);
-                WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                         self.getRanking(responseData.token);
                     })

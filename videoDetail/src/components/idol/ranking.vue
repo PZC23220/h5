@@ -2,8 +2,8 @@
     <div class="main">
         <div class="header">
             <div class="detailPages">
-                <a class="tabs active" @click="changePages(0)">今日排名</a>
-                <a class="tabs" @click="changePages(1)">总排名</a>
+                <a class="tabs active" @click="changePages(0)">今日のランキング</a>
+                <a class="tabs" @click="changePages(1)">総合ランキング</a>
             </div>
         </div>
          <div class="content">
@@ -15,38 +15,38 @@
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList[1].avatar" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList?rakingListToday.rankingList[1].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList[1].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[1].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[1].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[1].score:'').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList[0].avatar" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList?rakingListToday.rankingList[0].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList[0].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[0].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[0].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[0].score:'').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList[2].avatar" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList?rakingListToday.rankingList[2].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList[2].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[2].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[2].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[2].score:'').toLocaleString()}}</i></span>
                          </li>
                      </ul>
-                     <router-link :to="'/idol/allRanking?type=today&token='+tokens" class="all_ranking">全部排名</router-link>
+                     <router-link :to="'/idol/allRanking?type=today&token='+tokens" class="all_ranking">すべて表示</router-link>
                     <div class="integral">
-                        <p><span>我的排名</span><span><i>{{rakingListToday.me.position}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingListToday.me.score).toLocaleString()}}</span></p>
-                        <p>（与前一位爱豆相差{{Number(rakingListToday.me.gapToNext).toLocaleString()}}人气）</p>
+                        <p><span>自分の順位</span><span><i>{{rakingListToday.me?rakingListToday.me.position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingListToday.me?rakingListToday.me.score:'').toLocaleString()}}</span></p>
+                        <p>（あと{{Number(rakingListToday.me?rakingListToday.me.gapToNext:'').toLocaleString()}}Likeでランクアップ！）</p>
                     </div>
 
                     <div class="help">
-                        <h4>Groupy攻略</h4>
+                        <h4>Groupyの人気者になる秘訣を今キャッチ！</h4>
                         <div class="rule_content">
                             <h4 @click="tottleFloor(1)"><span></span>如何使用Groupy for Idol APP发精彩视频？<img :src="tottleImg" alt=""></h4>
                             <p v-show="isShow == 1">您好，Groupy小助理很高兴能为您解答。<br><br><b>在Groupy for Idol App发布视频是爱豆的专属功能。</b><br><br>爱豆下载Groupy-idol的专用app以后可以在App里面使用直接录制和上传视频的功能。录制视频，经过简单的编辑后可以发布给粉丝查看。<br><br><b>爱豆还可以给自己的视频设置任何人可见和仅会员可见两种权限。</b><br><br>另外，如果是自己上传的视频，请注意视频的长度不能超过10分钟。</p>
@@ -85,34 +85,34 @@
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList[1].avatar" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList?rakingList.rankingList[1].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList[1].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[1].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[1].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[1].score:'').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList[0].avatar" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList?rakingList.rankingList[0].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList[0].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[0].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[0].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[0].score:'').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList[2].avatar" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList?rakingList.rankingList[2].avatar:''" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList[2].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[2].score).toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[2].name:''}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[2].score:'').toLocaleString()}}</i></span>
                          </li>
                      </ul>
-                     <router-link :to="'/idol/allRanking?type=all&token='+tokens" class="all_ranking">全部排名</router-link>
+                     <router-link :to="'/idol/allRanking?type=all&token='+tokens" class="all_ranking">すべて表示</router-link>
                     <div class="integral">
-                        <p><span>我的排名</span><span><i>{{rakingList.me.position}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingList.me.score).toLocaleString()}}</span></p>
-                        <p>（与前一位爱豆相差{{Number(rakingList.me.gapToNext).toLocaleString()}}人气）</p>
+                        <p><span>自分の順位</span><span><i>{{rakingList.me?rakingList.me.position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingList.me?rakingList.me.score:'').toLocaleString()}}</span></p>
+                        <p>（あと{{Number(rakingList.me?rakingList.me.gapToNext:'').toLocaleString()}}Likeでランクアップ！）</p>
                     </div>
 
                     <div class="help">
@@ -172,6 +172,7 @@
                   // autoHeight: true,
                   pagination : '.swiper-pagination',
                   paginationClickable :true,
+                  resistanceRatio : 0,
                   //loop : true,
                   observeParents:true,
                   debugger: true,
@@ -180,8 +181,8 @@
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
                   },
                 },
-                rakingList: {},
-                rakingListToday: {},
+                rakingList: [],
+                rakingListToday: [],
                 isShow: false,
                 tottleImg: './static/images/icon_arrow_gray_down.png',
                 tokens: '',
@@ -207,7 +208,6 @@
             }else {
                 http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
             }
-            console.log(http.defaults.headers.common)
             http.get('/ranking/idols',{
                 params: {
                     filter: val
@@ -224,7 +224,7 @@
                     console.log(self.rakingList)
                     console.log(self.rakingListToday)
                 }else {
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getRanking(responseData.token);
                         })
@@ -232,7 +232,7 @@
                 }
             }).catch(function(err){
                 console.log(err.response);
-                WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                         self.getRanking(responseData.token);
                     })

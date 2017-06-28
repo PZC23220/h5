@@ -3,16 +3,16 @@
         <div class="content" style=" top: 0;">
             <div class="income eBorder">
                 <p>
-                    <span class="detail_title">本月收入</span>
+                    <span class="detail_title">今月の収入</span>
                     <span class="detail_gcoin"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money">{{Number(incomeList.incomeCurrentMonth).toLocaleString()}}</i></span>
                 </p>
                 <p>
-                    <span class="detail_title">昨日收入</span>
+                    <span class="detail_title">昨日の収入</span>
                     <span class="detail_gcoin"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money">{{Number(incomeList.incomeYesterday).toLocaleString()}}</i></span>
                 </p>
             </div>
             <div class="income_details eBorder">
-                <p class="detail_title">会员费</p>
+                <p class="detail_title">会員費</p>
                 <ul class="income_img">
                     <li>
                         <img class="gift" src="../../images/pic_vip_free.png" alt="">
@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <div class="income_details eBorder">
-                <p class="detail_title">礼物收入</p>
+                <p class="detail_title">ギフト総数</p>
                 <ul class="income_img">
                     <li v-for="(gift,key) in incomeList.giftList">
                         <img class="gift" :src="gift.img" alt="">
@@ -42,12 +42,12 @@
                 </ul>
             </div>
             <div class="mention_details">
-                <p class="detail_title">提现记录</p>
+                <p class="detail_title">換金履歴</p>
                 <ul class="mention_list">
                     <li>
-                        <p>月份</p>
-                        <p>G币值</p>
-                        <p>状态</p>
+                        <p>時間</p>
+                        <p>コイン数</p>
+                        <p>状態</p>
                     </li>
                     <li v-for="(record,key) in incomeList.monthRecordList">
                         <p>{{formatTime(record.month)}}</p>
@@ -57,10 +57,10 @@
                 </ul>
                 <div class="default_page" v-show="!incomeList.monthRecordList" style="padding-top:32px;">
                     <img src="../../images/default_no income.png" alt="">
-                    <p>还没有提现记录</p>
+                    <p>まだ換金履歴はありません</p>
                 </div>
             </div>
-            <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">汇率和提现说明</router-link>
+            <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">換金・振込みについて</router-link>
         </div>
         <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
@@ -176,7 +176,7 @@
  .reflect_desc {
     display: block;
     margin: 14px auto 29px;
-    width: 121px;
+    width: 150px;
     height: 32px;
     line-height: 32px;
     border: 1px solid #999999;

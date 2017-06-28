@@ -8,9 +8,9 @@
                 <span>详情</span>
             </div> -->
             <div class="detailPages">
-                <a class="tabs active" @click="changePages(0)">G币</a>
-                <a class="tabs" @click="changePages(1)">人气</a>
-                <a class="tabs" @click="changePages(2)">评论</a>
+                <a class="tabs active" @click="changePages(0)">コイン</a>
+                <a class="tabs" @click="changePages(1)">Like</a>
+                <a class="tabs" @click="changePages(2)">コメント</a>
             </div>
         </div>
         <div class="content">
@@ -18,11 +18,11 @@
             <!-- slides -->
             <swiper-slide id="swiper1">
                 <div class="income">
-                    <span class="detail_title" @click="getGcoin()">本视频总收入</span>
+                    <span class="detail_title" @click="getGcoin()">獲得したコイン</span>
                     <span><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money">{{Number(gcoinList.total).toLocaleString()}}</i></span>
                 </div>
                 <div class="income_details">
-                    <p class="detail_title">收入详情</p>
+                    <p class="detail_title">収入詳細</p>
                     <ul class="income_img">
                         <li v-for="(gif,key) in gcoinList.gift">
                             <img class="gift" :src="gif.gift.img" alt="">
@@ -31,10 +31,13 @@
                     </ul>
                 </div>
                 <div class="fans_detail">
-                    <p class="detail_title" :class="{'defalt_no' : gcoinList.rank.length == 0}">粉丝排行</p>
+                    <p class="detail_title" :class="{'defalt_no' : gcoinList.rank.length == 0}">貢献ランキング</p>
                     <ul class="comment_list">
-                        <li v-for="(fans,key) in gcoinList.rank">
-                            <span class="level_color">{{key+1}}</span>
+                        <li v-for="(fans,key) in gcoinList.rank" style="padding: 12px 0;">
+                            <span class="level_color" v-if="key == 0"><img src="../../images/icon_metal_1.png" alt=""></span>
+                            <span class="level_color" v-if="key == 1"><img src="../../images/icon_metal_2.png" alt=""></span>
+                            <span class="level_color" v-if="key == 2"><img src="../../images/icon_metal_3.png" alt=""></span>
+                            <span class="level_color" v-if="key > 2">{{key+1}}</span>
                             <img class="avatar" :src="fans.userFans?fans.userFans.avatar: ''" alt="">
                             <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
                             <img :src="fans.userFans?fans.userFans.level: ''" class="level" alt="">
@@ -45,14 +48,17 @@
                     </ul>
                     <div class="default_page" v-show="gcoinList.rank.length == 0" style="padding-top: 32px;">
                         <img src="../../images/default_no coin.png" alt="">
-                        <p>还没有收到粉丝的G币<br>分享视频能让更多粉丝关注</p>
+                        <p>まだコインはないようです<br>動画を投稿・シェアしてギフトを貰っちゃおう</p>
                     </div>
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper2">
                 <ul class="comment_list">
                     <li v-for="(popularity,key) in popularityList">
-                        <span class="level_color">{{key+1}}</span>
+                        <span class="level_color" v-if="key == 0"><img src="../../images/icon_metal_1.png" alt=""></span>
+                        <span class="level_color" v-if="key == 1"><img src="../../images/icon_metal_2.png" alt=""></span>
+                        <span class="level_color" v-if="key == 2"><img src="../../images/icon_metal_3.png" alt=""></span>
+                        <span class="level_color" v-if="key > 2">{{key+1}}</span>
                         <img class="avatar" :src="popularity.userFans?popularity.userFans.avatar:''" alt="">
                         <span>{{popularity.userFans?popularity.userFans.nickname:''}}</span>
                         <img :src="popularity.userFans?popularity.userFans.level:''" class="level" alt="">
@@ -63,13 +69,13 @@
                 </ul>
                 <div class="default_page" v-show="popularityList.length == 0">
                     <img src="../../images/default_no comment.png" alt="">
-                    <p>还没有收到粉丝的点赞人气<br>分享视频能让更多粉丝关注</p>
+                    <p>まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう</p>
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper3">
                 <ul class="comment_list">
                     <div class="loading_top" :class="{'loading_top_show': showLoading2}">
-                        <p>加载中</p>
+                        <p>読み込み中</p>
                         <span></span>
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
@@ -81,11 +87,11 @@
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>
                     </li>
-                    <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">加载中</p><p v-show="havedlast">已加载全部内容</p></div>
+                    <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div>
                 </ul>
                 <div class="default_page" v-show="commentList.length == 0">
                     <img src="../../images/default_no like.png" alt="">
-                    <p>还没有收到粉丝的评论<br>分享视频能让更多粉丝关注</p>
+                    <p>まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
                 </div>
             </swiper-slide>  
           </swiper>
@@ -194,8 +200,8 @@
                         self.loadingBig = false;
                         console.log(self.gcoinList)
                     }else {
-                        WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','videoId':'2'}, function responseCallback(responseData) {
                                 alert(1111)
                                 alert(JSON.stringify(responseData));
                                 self.getGoin(responseData.token);
@@ -203,10 +209,9 @@
                         })
                     }
                 }).catch(function(err){
-                    console.log(err.response);
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
-                            self.getGoin(responseData.token);
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('getToken', {'targetType':'1','videoId':'2'}, function responseCallback(responseData) {
+                            self.getGcoin(responseData.token);
                         })
                     })
                 });
@@ -227,15 +232,14 @@
                         self.popularityList = res.data;
                         console.log(self.popularityList)
                     }else {
-                        WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','videoId':'2'}, function responseCallback(responseData) {
                                 self.getPopularity(responseData.token);
                             })
                         })
                     }
                 }).catch(function(err){
-                    console.log(err.response);
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
                             self.getPopularity(responseData.token);
                         })
@@ -286,8 +290,8 @@
             var self = this;
             // console.log(self.$route.query);
             self.getGcoin();
-            self.getPopularity();
-            self.getComments();
+            // self.getPopularity();
+            // self.getComments();
 
         }
     }
@@ -311,5 +315,4 @@
         from {background: url(../../images/pic_loading_1.png);background-size: 100% auto;}
         to {background: url(../../images/pic_loading_2.png);background-size: 100% auto;}
     }
-    
 </style>

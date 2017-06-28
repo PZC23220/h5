@@ -14,9 +14,12 @@ i{
 }
 body {
 	background: #fff;
+	overflow: hidden;
 }
 .main {
 	position: relative;
+	// height: 100vh;
+	// overflow: hidden;
 }
 a {color: #333;}
 .fl{float: left;}
@@ -114,7 +117,7 @@ img.icon {
 			margin-right: 6.1px;
 		}
 		&:first-child {
-			margin-right: 20%;
+			margin-right: 5%;
 		}
 		&:nth-child(2) {
 			padding-top: 9px;
@@ -282,6 +285,10 @@ img.avatar {
  			min-width: 25px;
  			&:first-child {
  				text-align: center;
+ 				img {
+ 					width: 25px;
+ 					vertical-align: middle;
+ 				}
  				i {
  					width: 100%;
 				    font-size: 18px;
@@ -513,7 +520,7 @@ img.avatar {
     .all_ranking {
         border: 1px solid #999999;
         border-radius: 50px;
-        width: 65px;
+        width: 74px;
         margin: 0 auto;
         text-align: center;
         display: block;
@@ -595,7 +602,7 @@ img.avatar {
     		color: #FC4083;
     	}
     	>p:first-child {
-    		text-indent: 28px;
+    		text-indent: 14px;
     	}
     	h4 {
     		color: #333;

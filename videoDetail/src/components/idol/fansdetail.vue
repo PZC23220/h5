@@ -3,18 +3,18 @@
         <div class="header">
             <div class="income eBorder">
                 <p>
-                    <span class="detail_title">我的粉丝</span>
+                    <span class="detail_title"> ファン</span>
                     <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money">{{Number(gcoinList.fansCount).toLocaleString()}}</i></span>
                 </p>
                 <p>
-                    <span class="detail_title">昨日粉丝</span>
+                    <span class="detail_title">昨日の新規</span>
                     <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money">{{Number(gcoinList.fansIncreased).toLocaleString()}}</i></span>
                 </p>
             </div>
             <div class="detailPages">
-                <a class="tabs active" @click="changePages(0)">G币贡献</a>
-                <a class="tabs" @click="changePages(1)">人气数</a>
-                <a class="tabs" @click="changePages(2)">入会时间</a>
+                <a class="tabs active" @click="changePages(0)">コイン</a>
+                <a class="tabs" @click="changePages(1)">Like</a>
+                <a class="tabs" @click="changePages(2)">入会日</a>
             </div>
         </div>
         <div class="content">
@@ -39,7 +39,7 @@
                 </ul>
                 <div class="default_page" v-show="gcoinList.fansList.length == 0">
                     <img src="../../images/default_no coin.png" alt="">
-                    <p>还没有收到粉丝的G币</p>
+                    <p>まだコインはないようです</p>
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper2">
@@ -61,21 +61,21 @@
                 </ul>
                 <div class="default_page" v-show="popularityList.fansList.length == 0">
                     <img src="../../images/default_no like.png" alt="">
-                    <p>还没有收到粉丝的点赞人气</p>
+                    <p>まだLikeはないようです</p>
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper3">
                 <ul class="comment_list">
                     <li v-for="(fans,key) in joinList.fansList">
-                        <img class="avatar" :src="fans.fans.avatar" alt="">
-                        <span>{{fans.fans.nickname}}</span>
-                        <img :src="fans.fans.level" class="level" alt="">
+                        <img class="avatar" :src="fans.fans?fans.fans.avatar:''" alt="">
+                        <span>{{fans.fans?fans.fans.nickname:''}}</span>
+                        <img :src="fans.fans?fans.fans.level:''" class="level" alt="">
                         <i v-html="formatTime(fans.startdate)"></i>
                     </li>
                 </ul>
                 <div class="default_page" v-show="joinList.fansList.length == 0">
                     <img src="../../images/default_no history.png" alt="">
-                    <p>还没有会员入会记录</p>
+                    <p>まだメンバーはないようです</p>
                 </div>
             </swiper-slide>  
           </swiper>
@@ -156,14 +156,14 @@
                         self.joinList = res.data;
                         console.log(self.joinList);
                     }else {
-                        WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getJoin(responseData.token);
                             })
                         })
                     }
                 }).catch(function(){
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getGoin(responseData.token);
                         })
@@ -183,14 +183,14 @@
                         self.gcoinList = res.data;
                         console.log(self.gcoinList)
                     }else {
-                        WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getGoin(responseData.token);
                             })
                         })
                     }
                 }).catch(function(){
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getGoin(responseData.token);
                         })
@@ -210,7 +210,7 @@
                         self.popularityList = res.data;
                         console.log(self.popularityList)
                     }else {
-                        WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getPopularity(responseData.token);
                             })
@@ -218,7 +218,7 @@
                     }
                 }).catch(function(err){
                     console.log(err.response);
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getPopularity(responseData.token);
                         })
