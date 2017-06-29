@@ -89,9 +89,10 @@
               },
             getVideo() {
                 var self = this;
+                console.log(location.href.split('/shareVideo/')[1].split('#/')[0])
                 http.get('/video/get',{
                     params: {
-                        videoId: self.$route.query.videoId
+                        videoId: location.href.split('/shareVideo/')[1].split('#/')[0]
                     }
                 }).then(function(res){
                     self.idol = res.data.group;
