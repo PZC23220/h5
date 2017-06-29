@@ -16,11 +16,6 @@ body {
 	background: #fff;
 	overflow: hidden;
 }
-.main {
-	position: relative;
-	// height: 100vh;
-	// overflow: hidden;
-}
 a {color: #333;}
 .fl{float: left;}
 .fr{float: right;}
@@ -626,6 +621,7 @@ img.avatar {
     	box-sizing: border-box;
     	img {
     		margin-bottom: 20px;
+    		width: 120px;
     	}
     	p {
     		font-size: 14px;
@@ -635,8 +631,13 @@ img.avatar {
     .loading {
         position: relative;
         padding: 5px;
-        display: none;
-        bottom: -19px;
+        height: 0;
+        bottom: 0;
+        overflow: hidden;
+        transition: height 1s;
+		-moz-transition: height 1s;	/* Firefox 4 */
+		-webkit-transition: height 1s;	/* Safari 和 Chrome */
+		-o-transition: height 1s;
         p {
         	color: #999;
         	text-align: center;
@@ -655,8 +656,7 @@ img.avatar {
         }
     }
     .loading_show {
-        display: block;
-        bottom: 0;
+        height: 78px;
     }
 
     @keyframes rotation{

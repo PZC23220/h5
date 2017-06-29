@@ -124,7 +124,8 @@
                 },
                 rakingListToday: {},
                 rakingList: {},
-                loadingBig: true
+                loadingBig: true,
+                idx: 0
             }
         },
         methods: {
@@ -140,41 +141,48 @@
           },
           getRanking(val,token) {
             let self = this;
-            if(token) {
-                http.defaults.headers.common['Authorization'] = 'Token '+token;
-            }else {
-                http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-            }
-            http.get('/ranking/idols',{
-                params: {
-                    filter: val
-                }
-            }).then(function(res){
-                self.loadingBig = false;
-                if(res.status == 200) {
-                    if(val == 'all') {
-                        self.rakingList = res.data;
-                    }else {
-                        self.rakingListToday = res.data;
-                    }
-                    
-                    console.log(self.rakingList)
-                    console.log(self.rakingListToday)
+            if(self.idx < 4) {
+                self.idx++;
+                if(token) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+token;
                 }else {
+                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
+                }
+                http.get('/ranking/idols',{
+                    params: {
+                        filter: val
+                    }
+                }).then(function(res){
+                    self.loadingBig = false;
+                    if(res.status == 200) {
+                        if(val == 'all') {
+                            self.rakingList = res.data;
+                        }else {
+                            self.rakingListToday = res.data;
+                        }
+                        
+                        console.log(self.rakingList)
+                        console.log(self.rakingListToday)
+                    }else {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                self.getRanking(responseData.token);
+                            })
+                        })
+                    }
+                }).catch(function(err){
+                    console.log(err);
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getRanking(responseData.token);
                         })
                     })
-                }
-            }).catch(function(err){
-                console.log(err.response);
+                });
+            } else {
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                        self.getRanking(responseData.token);
-                    })
+                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                 })
-            });
+            }
           }
         },
         computed: {
@@ -188,7 +196,7 @@
             if(self.$route.query.type =='all') {
                 self.swiperOption.initialSlide = 1;
             }
-            self.getRanking('all');
+            // self.getRanking('all');
         }
     }
 </script>

@@ -81,24 +81,44 @@
                     incomeCurrentMonth: '',
                     incomeYesterday: ''
                 },
-                loadingBig: true
+                loadingBig: true,
+                idx: 0
             }
         },
         methods: {
             getIncome(token) {
                 let self = this;
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
+                if(self.idx < 2) {
+                    self.idx++;
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
+                    }else {
+                        http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
+                    }
+                    http.get('/group/income').then(function(res){
+                        self.loadingBig = false;
+                        if(res.status == 200) {
+                            self.incomeList = res.data;
+                            console.log(self.incomeList);
+                        }else {
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                    self.getIncome(responseData.token);
+                                })
+                            })
+                        }
+                    }).catch(function(){
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                self.getIncome(responseData.token);
+                            })
+                        })
+                    });
                 }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    })
                 }
-                http.get('/group/income').then(function(res){
-                    self.loadingBig = false;
-                    self.incomeList = res.data;
-                    console.log(self.incomeList);
-                }).catch(function(){
-
-                });
             },
             formatTime(key) {
                 let timer = new Date(key*1000);
@@ -122,7 +142,7 @@
         },
         created() {
             var self = this;
-                self.getIncome();
+            self.getIncome();
 
         }
     }

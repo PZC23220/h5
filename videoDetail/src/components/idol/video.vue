@@ -135,7 +135,9 @@
                 showLoading: false,
                 showLoading2: false,
                 loadingBig: true,
-                havedlast: false
+                havedlast: false,
+                idx: 0,
+                idx1: 0
             }
         },
         methods: {
@@ -164,8 +166,8 @@
                 http.get('/post/list',{
                     params: {
                         targetType: 1,
-                        targetId: 1,
-                        start: self.start,
+                        targetId: self.$route.query.videoId,
+                        form: self.start,
                         rows: self.num
                     }
                 }).then(function(res){
@@ -183,7 +185,9 @@
                 });
           },
           getGcoin(token) {
-                let self = this;
+            let self = this;
+            if(self.idx < 2) {
+                self.idx++;
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
                 }else {
@@ -192,7 +196,7 @@
                 console.log(http.defaults.headers.common)
                 http.get('/video/gcoin',{
                     params: {
-                        videoId: 1
+                        videoId: self.$route.query.videoId
                     }
                 }).then(function(res){
                     if(res.status == 200) {
@@ -201,23 +205,28 @@
                         console.log(self.gcoinList)
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','videoId':'2'}, function responseCallback(responseData) {
-                                alert(1111)
-                                alert(JSON.stringify(responseData));
+                            bridge.callHandler('getToken', {'targetType':'1','videoId':self.$route.query.videoId}, function responseCallback(responseData) {
                                 self.getGoin(responseData.token);
                             })
                         })
                     }
                 }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','videoId':'2'}, function responseCallback(responseData) {
+                        bridge.callHandler('getToken', {'targetType':'1','videoId':self.$route.query.videoId}, function responseCallback(responseData) {
                             self.getGcoin(responseData.token);
                         })
                     })
                 });
+            }else {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                })
+            }
           },
           getPopularity(token) {
-                let self = this;
+            let self = this;
+            if(self.idx1 < 2) {
+                self.idx1++;
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
                 }else {
@@ -225,7 +234,7 @@
                 }
                 http.get('/video/popularity',{
                     params: {
-                        videoId: 1
+                        videoId: self.$route.query.videoId
                     }
                 }).then(function(res){
                     if(res.status == 200) {
@@ -233,18 +242,19 @@
                         console.log(self.popularityList)
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','videoId':'2'}, function responseCallback(responseData) {
+                            bridge.callHandler('getToken', {'targetType':'1','videoId':self.$route.query.videoId}, function responseCallback(responseData) {
                                 self.getPopularity(responseData.token);
                             })
                         })
                     }
                 }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','targetId':'2'}, function responseCallback(responseData) {
+                        bridge.callHandler('getToken', {'targetType':'1','targetId':self.$route.query.videoId}, function responseCallback(responseData) {
                             self.getPopularity(responseData.token);
                         })
                     })
                 });
+            }
           }
         },
         computed: {
@@ -270,8 +280,8 @@
                 setTimeout(() => {
                     http.get('/post/list',{
                         params: {
-                            targetType: self.$route.query.targetType,
-                            targetId: 1,
+                            targetType: 1,
+                            targetId: self.$route.query.videoId,
                             start: 0,
                             rows: self.num
                         }
@@ -288,10 +298,9 @@
         },
         created() {
             var self = this;
-            // console.log(self.$route.query);
             self.getGcoin();
-            // self.getPopularity();
-            // self.getComments();
+            self.getPopularity();
+            self.getComments();
 
         }
     }

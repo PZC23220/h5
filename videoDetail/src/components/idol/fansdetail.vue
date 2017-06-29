@@ -120,7 +120,10 @@
                 popularityList: {
                     fansList: []
                 },
-                loadingBig: true
+                loadingBig: true,
+                idx: 0,
+                idx2: 0,
+                idx1: 1
             }
         },
         methods: {
@@ -146,84 +149,98 @@
             },
             getJoin(token) {
                 let self = this;
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-                }
-                http.get('/statistic/time').then(function(res){
-                    if(res.status == 200) {
-                        self.joinList = res.data;
-                        console.log(self.joinList);
+                if(self.idx1 < 2) {
+                    self.idx1++;
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
                     }else {
-                        window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                                self.getJoin(responseData.token);
-                            })
-                        })
+                        http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                     }
-                }).catch(function(){
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getGoin(responseData.token);
-                        })
-                    })
-                });
-            },
-            getGcoin(token) {
-                let self = this;
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-                }
-                http.get('/statistic/gb').then(function(res){
-                    self.loadingBig = false;
-                    if(res.status == 200) {
-                        self.gcoinList = res.data;
-                        console.log(self.gcoinList)
-                    }else {
+                    http.get('/statistic/time').then(function(res){
+                        if(res.status == 200) {
+                            self.joinList = res.data;
+                            console.log(self.joinList);
+                        }else {
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                    self.getJoin(responseData.token);
+                                })
+                            })
+                        }
+                    }).catch(function(){
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getGoin(responseData.token);
                             })
                         })
+                    });
+                }
+                    
+            },
+            getGcoin(token) {
+                let self = this;
+                if(self.idx < 2) {
+                    self.idx++;
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
+                    }else {
+                        http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                     }
-                }).catch(function(){
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getGoin(responseData.token);
+                    http.get('/statistic/gb').then(function(res){
+                        self.loadingBig = false;
+                        if(res.status == 200) {
+                            self.gcoinList = res.data;
+                            console.log(self.gcoinList)
+                        }else {
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                    self.getGoin(responseData.token);
+                                })
+                            })
+                        }
+                    }).catch(function(){
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                self.getGoin(responseData.token);
+                            })
                         })
+                    });
+                } else {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                     })
-                });
+                }
             },
             getPopularity(token) {
                 let self = this;
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-                }
-                console.log(http.defaults.headers.common)
-                http.get('/statistic/heat').then(function(res){
-                    if(res.status == 200) {
-                        self.popularityList = res.data;
-                        console.log(self.popularityList)
+                if(self.idx2 < 2) {
+                    self.idx2++;
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
                     }else {
+                        http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
+                    }
+                    console.log(http.defaults.headers.common)
+                    http.get('/statistic/heat').then(function(res){
+                        if(res.status == 200) {
+                            self.popularityList = res.data;
+                            console.log(self.popularityList)
+                        }else {
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                    self.getPopularity(responseData.token);
+                                })
+                            })
+                        }
+                    }).catch(function(err){
+                        console.log(err.response);
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getPopularity(responseData.token);
                             })
                         })
-                    }
-                }).catch(function(err){
-                    console.log(err.response);
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getPopularity(responseData.token);
-                        })
-                    })
-                });
+                    });
+                }
             }
         },
         computed: {

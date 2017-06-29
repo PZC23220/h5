@@ -186,7 +186,8 @@
                 isShow: false,
                 tottleImg: './static/images/icon_arrow_gray_down.png',
                 tokens: '',
-                loadingBig: true
+                loadingBig: true,
+                idx: 0
             }
         },
         methods: {
@@ -202,42 +203,49 @@
           },
           getRanking(val,token) {
             let self = this;
-            if(token) {
-                http.defaults.headers.common['Authorization'] = 'Token '+token;
-                self.tokens = token;
-            }else {
-                http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-            }
-            http.get('/ranking/idols',{
-                params: {
-                    filter: val
-                }
-            }).then(function(res){
-                if(res.status == 200) {
-                    self.loadingBig = false;
-                    if(val == 'all') {
-                        self.rakingList = res.data;
-                    }else {
-                        self.rakingListToday = res.data;
-                    }
-                    
-                    console.log(self.rakingList)
-                    console.log(self.rakingListToday)
+            if(self.idx < 4) {
+                self.idx++;
+                if(token) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+token;
+                    self.tokens = token;
                 }else {
+                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
+                }
+                http.get('/ranking/idols',{
+                    params: {
+                        filter: val
+                    }
+                }).then(function(res){
+                    if(res.status == 200) {
+                        self.loadingBig = false;
+                        if(val == 'all') {
+                            self.rakingList = res.data;
+                        }else {
+                            self.rakingListToday = res.data;
+                        }
+                        
+                        console.log(self.rakingList)
+                        console.log(self.rakingListToday)
+                    }else {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                self.getRanking(responseData.token);
+                            })
+                        })
+                    }
+                }).catch(function(err){
+                    console.log(err.response);
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getRanking(responseData.token);
                         })
                     })
-                }
-            }).catch(function(err){
-                console.log(err.response);
+                });
+            }else {
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                        self.getRanking(responseData.token);
-                    })
+                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                 })
-            });
+            }
           },
           tottleFloor(val) {
             if(this.isShow == val) {
