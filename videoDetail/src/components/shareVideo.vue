@@ -3,75 +3,46 @@
         <div class="header">
             <img src="../images/icon_groupy_128.png" alt="">
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
-            <a href="">インストール</a>
+            <a href="itms-apps://itunes.apple.com/app/id1251249933">インストール</a>
         </div>
-        <div class="content">
+        <div class="content" style="height: calc(100vh - 64px);">
             <div class="userinfo">
-                <img src="" alt="">
+                <img :src="idol.bgImg" alt="">
                 <div class="video_desc">
-                    <h3>メロメロン</h3>
-                    <p>爱豆简介おしゃれ大好き♡Jc𗿋みゆです(≧▽≦)みゆ…</p>
+                    <h3>{{idol.idolNickname}}</h3>
+                    <p>{{idol.introduce}}</p>
                 </div>
             </div>
-            <div class="vip_show" v-show="false">
-                <p>初めての写真集です初めての写真集です</p>
+            <div class="vip_show" v-show="vipShow">
+                <p>{{video.title}}</p>
                 <div class="video_banner">
-                    <img src="" alt="">
+                    <img :src="video.thumbnail" alt="">
                     <img src="../images/icon_menbership.png" alt=""> 
                 </div>
+                <div class="video_bg"></div>
                 <div class="vip_download">
                     <p>会員のみ視聴可能です<br>会員登録して、アイドルのプライベート動画を見よう</p>
-                    <a href="" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
+                    <a href="itms-apps://itunes.apple.com/app/id1251249933" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
                 </div>
             </div>
-            <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
-            <a href="" class="download">Groupyをダウンロードしてもっと見よう</a>
+            <div class="public_show"v-show="vipShow == false">
+                <p>{{video.title}}</p>
+                <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
+                <a href="itms-apps://itunes.apple.com/app/id1251249933" class="download">Groupyをダウンロードしてもっと見よう</a>
+            </div>
             <div class="more_video">
                 <h3>おすすめ</h3>
                 <ul>
-                    <li><a href="" title="">
+                    <li v-for="(video,key) in videos"><a href="itms-apps://itunes.apple.com/app/id1251249933" title="">
                     <div class="video_bigImg">
-                        <img src="" class="video_poster" alt=""><img src="../images/timeline_icon_play.png" class="btn_play" alt="">
+                        <img :src="video.thumbnail" class="video_poster" alt=""><img src="../images/timeline_icon_play.png" class="btn_play" alt="">
                         <div>
                             <img src="../images/video_bg_play times.png" class="time_bg" alt="">
                             <img src="../images/video_icon_time.png" class="time_play" alt="">
-                            <span>23:12</span>
+                            <span v-html="formatTime(video.duration)"></span>
                         </div>
                     </div>
-                    <p class="video_content">初めての写真集です初めての写真集です</p>
-                    </a></li>
-                    <li><a href="" title="">
-                    <div class="video_bigImg">
-                        <img src="" class="video_poster" alt=""><img src="../images/timeline_icon_play.png" class="btn_play" alt="">
-                        <div>
-                            <img src="../images/video_bg_play times.png" class="time_bg" alt="">
-                            <img src="../images/video_icon_time.png" class="time_play" alt="">
-                            <span>23:12</span>
-                        </div>
-                    </div>
-                    <p class="video_content">初めての写真集です初めての写真集です</p>
-                    </a></li>
-                    <li><a href="" title="">
-                    <div class="video_bigImg">
-                        <img src="" class="video_poster" alt=""><img src="../images/timeline_icon_play.png" class="btn_play" alt="">
-                        <div>
-                            <img src="../images/video_bg_play times.png" class="time_bg" alt="">
-                            <img src="../images/video_icon_time.png" class="time_play" alt="">
-                            <span>23:12</span>
-                        </div>
-                    </div>
-                    <p class="video_content">初めての写真集です初めての写真集です</p>
-                    </a></li>
-                    <li><a href="" title="">
-                    <div class="video_bigImg">
-                        <img src="" class="video_poster" alt=""><img src="../images/timeline_icon_play.png" class="btn_play" alt="">
-                        <div>
-                            <img src="../images/video_bg_play times.png" class="time_bg" alt="">
-                            <img src="../images/video_icon_time.png" class="time_play" alt="">
-                            <span>23:12</span>
-                        </div>
-                    </div>
-                    <p class="video_content">初めての写真集です初めての写真集です</p>
+                    <p class="video_content">{{video.title}}</p>
                     </a></li>
                 </ul>         
             </div>
@@ -83,7 +54,9 @@
 
 </script>
 <script>
-    import VideoPlayer from 'vue-video-player'
+    import VideoPlayer from 'vue-video-player';
+    import http from '@/utils/http.js';
+    import $ from 'n-zepto';
     export default {
         data() {
           return {
@@ -98,11 +71,47 @@
               playbackRates: [0.7, 1.0, 1.5, 2.0],
               sources: [{
                 type: "video/mp4",
-                src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
+                src: ""
               }],
-              poster: "/static/images/author.jpg",
-            }
+              poster: "",
+            },
+            vipShow: true,
+            video: {},
+            videos:[],
+            idol: {}
           }
+        },
+        methods: {
+            formatTime(key) {
+                let _m = Math.floor(key/60) >= 10 ? Math.floor(key/60) : '0'+ Math.floor(key/60);
+                let _s = (key-Math.floor(key/60)*60) >= 10 ? (key-Math.floor(key/60)*60) : '0'+ (key-Math.floor(key/60)*60);
+                return _m+":"+_s;
+              },
+            getVideo() {
+                var self = this;
+                http.get('/video/get',{
+                    params: {
+                        videoId: self.$route.query.videoId
+                    }
+                }).then(function(res){
+                    self.idol = res.data.group;
+    //                 $('<meta property="og:image" content="'+ res.data.group +'" />')
+                    
+    // <meta property="og:description" content="2017WBCのスケジュールをチェックして、お気に入りの試合の情報を逃さず全て入手！" class="facebook_content"/>
+                    if(res.data.video.publicType == 2) {
+                        self.vipShow = true;
+                    }else {
+                        self.vipShow = false;
+                        self.playerOptions.poster = res.data.video.thumbnail;
+                        let _len = res.data.video.videoItemList.length - 1;
+                        self.playerOptions.sources[0].src = res.data.video.videoItemList[_len].url;
+                    }
+                    self.video = res.data.video;
+                    self.videos = res.data.related;
+                }).catch(function(){
+
+                });
+            }
         },
         mounted() {
           console.log('this is current player instance object', this.player)
@@ -112,7 +121,8 @@
             return this.$refs.videoPlayer.player
           }
         },
-        methods: {
+        created() {
+            this.getVideo();
         }
       }
 </script>
@@ -148,5 +158,17 @@
         border: 1px solid #fff;
         margin-left: -20.5px;
         margin-top: -20.5px;
+    }
+    .public_show >p {
+        font-size: 16px;
+        padding: 0 12px 7.5px;
+    }
+    .video_bg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%);
+        height: 155px;
     }
 </style>

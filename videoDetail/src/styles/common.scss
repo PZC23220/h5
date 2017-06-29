@@ -16,6 +16,9 @@ body {
 	background: #fff;
 	overflow: hidden;
 }
+.main {
+	position: relative;
+}
 a {color: #333;}
 .fl{float: left;}
 .fr{float: right;}
@@ -630,7 +633,7 @@ img.avatar {
     }
     .loading {
         position: relative;
-        padding: 5px;
+        // padding: 5px;
         height: 0;
         bottom: 0;
         overflow: hidden;

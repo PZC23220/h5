@@ -75,6 +75,7 @@
 			position: absolute;
 			left: 12px;
 			top: 8px;
+			width: 75px;
 		}
 	}
 	.vip_download {
@@ -117,10 +118,11 @@
 	}
 	ul {
 		overflow: hidden;
-		padding-bottom: 30px;
+		padding-bottom: 10px;
 		li {
 			float: left;
 			width: calc((100vw - 36px)/2);
+			max-width: calc((500px - 36px)/2);
 			background: #FAFAFA;
 			box-shadow: 0 2px 7px 0 rgba(201,201,201,0.75);
 			border-radius: 2px;
@@ -136,6 +138,7 @@
 			display: block;
 			width: 100%;
 			height: calc((100vw - 36px)/2 * 11/9);
+			max-height: calc((500px - 36px)/2 * 11/9);
 		}
 		.btn_play {
 			position: absolute;
@@ -150,6 +153,7 @@
 			right: 12px;
 			.time_bg {
 				display: block;
+				width: 48px;
 			}
 			.time_play {
 				position: absolute;

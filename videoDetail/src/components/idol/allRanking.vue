@@ -196,7 +196,7 @@
             if(self.$route.query.type =='all') {
                 self.swiperOption.initialSlide = 1;
             }
-            // self.getRanking('all');
+            self.getRanking('all');
         }
     }
 </script>

@@ -137,7 +137,7 @@
                             params: {
                                 targetType: 3,
                                 targetId: self.$route.query.targetId,
-                                start: 0,
+                                from: 0,
                                 rows: self.num
                             }
                         }).then(function(res){
@@ -158,7 +158,7 @@
                         params: {
                             targetType: 3,
                             targetId: self.$route.query.targetId,
-                            start: 0,
+                            from: 0,
                             rows: self.num
                         }
                     }).then(function(res){
@@ -175,6 +175,7 @@
         },
         created() {
             var self = this;
+            // alert(self.$route.query.groupId)
             self.getComments();
 
         }

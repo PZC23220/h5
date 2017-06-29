@@ -40,7 +40,7 @@
                             <span class="level_color" v-if="key > 2">{{key+1}}</span>
                             <img class="avatar" :src="fans.userFans?fans.userFans.avatar: ''" alt="">
                             <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
-                            <img :src="fans.userFans?fans.userFans.level: ''" class="level" alt="">
+                            <img :src="fans.userFans?('icon_level_'+ fans.userFans.level +'.png'): ''" class="level" alt="">
                             <i>
                                 <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{Number(fans.userFans?fans.userFans.gcoin: 0).toLocaleString()}}
                             </i>
@@ -61,7 +61,7 @@
                         <span class="level_color" v-if="key > 2">{{key+1}}</span>
                         <img class="avatar" :src="popularity.userFans?popularity.userFans.avatar:''" alt="">
                         <span>{{popularity.userFans?popularity.userFans.nickname:''}}</span>
-                        <img :src="popularity.userFans?popularity.userFans.level:''" class="level" alt="">
+                        <img :src="popularity.userFans?('icon_level_'+popularity.userFans.level+'.png'):''" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{Number(popularity.userFans?popularity.userFans.gcoin:'').toLocaleString()}}
                         </i>
@@ -73,7 +73,7 @@
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper3">
-                <ul class="comment_list">
+                <ul class="comment_list" style="height: calc(100vh - 31px);background: #fff;">
                     <div class="loading_top" :class="{'loading_top_show': showLoading2}">
                         <p>読み込み中</p>
                         <span></span>
@@ -82,17 +82,17 @@
                         <div class="comment_info">
                             <img class="avatar" :src="comment.avatar" alt="">
                             <span>{{comment.nickname}}</span>
-                            <img class="level" :src="comment.level" alt="">
+                            <img class="level" :src="'icon_level_'+comment.level+'.png'" alt="">
                             <i v-html="formatTime(comment.createTime)"></i>
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>
                     </li>
+                    <div class="default_page default_page3" v-show="commentList.length == 0">
+                        <img src="../../images/default_no like.png" alt="">
+                        <p>まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
+                    </div>
                     <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div>
                 </ul>
-                <div class="default_page" v-show="commentList.length == 0">
-                    <img src="../../images/default_no like.png" alt="">
-                    <p>まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
-                </div>
             </swiper-slide>  
           </swiper>
         </div>
@@ -266,23 +266,49 @@
             let self = this;
             self.box = document.querySelector('#swiper3');
             self.box.addEventListener('scroll', () => {
-              if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom) == parseInt(document.querySelector('.content').getBoundingClientRect().bottom)) {
-                self.showLoading = true;
-                setTimeout(() => {
-                    self.start = self.start + self.num;
-                    self.getComments();
-                },500)
-                
-              }
-              // alert(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top) == parseInt(document.querySelector('.content').getBoundingClientRect().top))
-              if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top) == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
+              if(document.querySelector('.firstLi')) {
+                  if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom)  == parseInt(document.querySelector('.content').getBoundingClientRect().bottom)) {
+                    if(self.havedlast == true) {
+                        self.showLoading = true;
+                        setTimeout(() => {
+                            self.showLoading = false;
+                        },1500)
+                    }else {
+                        self.showLoading = true;
+                        setTimeout(() => {
+                            self.start = self.start + self.num;
+                            self.getComments();
+                        },500)
+                    }                    
+                  }
+                  if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
+                    self.showLoading2 = true;
+                    setTimeout(() => {
+                        http.get('/post/list',{
+                            params: {
+                                targetType: 1,
+                                targetId: self.$route.query.videoId,
+                                from: 0,
+                                rows: self.num
+                            }
+                        }).then(function(res){
+                            self.showLoading2 = false;
+                             self.commentList = res.data;                  
+                            console.log(self.commentList);
+                        }).catch(function(){
+
+                        });
+                    },500)
+                  }
+            }else {
+              if(parseInt(document.querySelector('.default_page3').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
                 self.showLoading2 = true;
                 setTimeout(() => {
                     http.get('/post/list',{
                         params: {
                             targetType: 1,
                             targetId: self.$route.query.videoId,
-                            start: 0,
+                            from: 0,
                             rows: self.num
                         }
                     }).then(function(res){
@@ -294,7 +320,8 @@
                     });
                 },500)
               }
-            }, false)
+            }
+          }, false)
         },
         created() {
             var self = this;

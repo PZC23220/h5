@@ -31,7 +31,7 @@
                         </span>
                         <img class="avatar" :src="gFans.fans?gFans.fans.avatar:''" alt="">
                         <span>{{gFans.fans?gFans.fans.nickname:''}}</span>
-                        <img :src="gFans.fans?gFans.fans.level:''" class="level" alt="">
+                        <img :src="gFans.fans?'../../images/icon_level_'+gFans.fans.level+'.png':''" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_coins.png" alt="">{{Number(gFans.expendGprice).toLocaleString()}}
                         </i>
@@ -53,7 +53,7 @@
                         </span>
                         <img class="avatar" :src="popularity.fans?popularity.fans.avatar:''" alt="">
                         <span>{{popularity.fans?popularity.fans.nickname:''}}</span>
-                        <img :src="popularity.fans?popularity.fans.level:''" class="level" alt="">
+                        <img :src="popularity.fans?'../../images/icon_level_'+popularity.fans.level+'.png':''" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_likes.svg" alt="">{{Number(popularity.totalNums).toLocaleString()}}
                         </i>
@@ -69,7 +69,7 @@
                     <li v-for="(fans,key) in joinList.fansList">
                         <img class="avatar" :src="fans.fans?fans.fans.avatar:''" alt="">
                         <span>{{fans.fans?fans.fans.nickname:''}}</span>
-                        <img :src="fans.fans?fans.fans.level:''" class="level" alt="">
+                        <img :src="fans.fans?'../../images/icon_level_'+fans.fans.level+'.png':''" class="level" alt="">
                         <i v-html="formatTime(fans.startdate)"></i>
                     </li>
                 </ul>
