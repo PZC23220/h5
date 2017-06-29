@@ -41,8 +41,8 @@
                      </ul>
                      <router-link :to="'/idol/allRanking?type=today&token='+tokens" class="all_ranking">すべて表示</router-link>
                     <div class="integral">
-                        <p><span>自分の順位</span><span><i>{{rakingListToday.me?rakingListToday.me.position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingListToday.me?rakingListToday.me.score:'').toLocaleString()}}</span></p>
-                        <p>（あと{{Number(rakingListToday.me?rakingListToday.me.gapToNext:'').toLocaleString()}}Likeでランクアップ！）</p>
+                        <p><span>自分の順位</span><span><i>{{rakingListToday.me?rakingListToday.me[0].position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingListToday.me?rakingListToday.me[0].score:'').toLocaleString()}}</span></p>
+                        <p>（あと{{Number(rakingListToday.me?rakingListToday.me[0].gapToNext:'').toLocaleString()}}Likeでランクアップ！）</p>
                     </div>
 
                     <div class="help">
@@ -111,8 +111,8 @@
                      </ul>
                      <router-link :to="'/idol/allRanking?type=all&token='+tokens" class="all_ranking">すべて表示</router-link>
                     <div class="integral">
-                        <p><span>自分の順位</span><span><i>{{rakingList.me?rakingList.me.position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingList.me?rakingList.me.score:'').toLocaleString()}}</span></p>
-                        <p>（あと{{Number(rakingList.me?rakingList.me.gapToNext:'').toLocaleString()}}Likeでランクアップ！）</p>
+                        <p><span>自分の順位</span><span><i>{{rakingList.me?rakingList.me[0].position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingList.me?rakingList.me[0].score:'').toLocaleString()}}</span></p>
+                        <p>（あと{{Number(rakingList.me?rakingList.me[0].gapToNext:'').toLocaleString()}}Likeでランクアップ！）</p>
                     </div>
 
                     <div class="help">
