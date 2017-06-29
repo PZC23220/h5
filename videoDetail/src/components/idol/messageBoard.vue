@@ -136,7 +136,7 @@
                         http.get('/post/list',{
                             params: {
                                 targetType: 3,
-                                targetId: self.$route.query.targetId,
+                                targetId: self.$route.query.groupId,
                                 from: 0,
                                 rows: self.num
                             }
@@ -163,8 +163,7 @@
                         }
                     }).then(function(res){
                         self.showLoading2 = false;
-                         self.commentList = res.data;                  
-                        console.log(self.commentList);
+                         self.commentList = res.data;
                     }).catch(function(){
 
                     });
