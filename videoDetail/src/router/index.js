@@ -46,7 +46,7 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            redirect: '/idol/index'
+            redirect: '/shareVideo'
         },{
             path: '/idol/index',
             component: idol_index,
