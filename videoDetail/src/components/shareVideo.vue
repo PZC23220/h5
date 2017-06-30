@@ -6,8 +6,8 @@
             <a href="itms-apps://itunes.apple.com/app/id1251249933">インストール</a>
         </div>
         <div class="content" style="height: calc(100vh - 64px);">
-            <div class="userinfo">
-                <img :src="idol.bgImg" alt="">
+            <div class="userinfo" v-if="idolShow">
+                <img :src="idol.bgImg?idol.bgImg: '/static/images/default_img.png'" alt="">
                 <div class="video_desc">
                     <h3>{{idol.idolNickname}}</h3>
                     <p>{{idol.introduce}}</p>
@@ -25,12 +25,17 @@
                     <a href="itms-apps://itunes.apple.com/app/id1251249933" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
                 </div>
             </div>
-            <div class="public_show"v-show="vipShow == false">
+            <div class="public_show"v-show="publicShow">
                 <p>{{video.title}}</p>
                 <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
                 <a href="itms-apps://itunes.apple.com/app/id1251249933" class="download">Groupyをダウンロードしてもっと見よう</a>
             </div>
-            <div class="more_video">
+            <div class="default_page" v-show="pageNone">
+                <img src="../images/default_no like.png" alt="">
+                <p>まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
+                <a href="itms-apps://itunes.apple.com/app/id1251249933" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
+            </div>
+            <div class="more_video" v-if="videos.length > 0">
                 <h3>おすすめ</h3>
                 <ul>
                     <li v-for="(video,key) in videos"><a href="itms-apps://itunes.apple.com/app/id1251249933" title="">
@@ -46,6 +51,9 @@
                     </a></li>
                 </ul>         
             </div>
+        </div>
+        <div class="bigLoading" v-show="loadingBig">
+            <img src="../images/loading_2.png" alt="">
         </div>
     </div>
 </template>
@@ -64,21 +72,26 @@
 
               // component options
               start: 0,
-              playsinline: false,
+              playsinline: true,
               autoplay: true,
+              preload: true,
               // videojs options
               language: 'en',
-              playbackRates: [0.7, 1.0, 1.5, 2.0],
+              // playbackRates: [0.7, 1.0, 1.5, 2.0],
               sources: [{
                 type: "video/mp4",
                 src: ""
               }],
               poster: "",
             },
-            vipShow: true,
+            vipShow: false,
+            publicShow: false,
             video: {},
             videos:[],
-            idol: {}
+            idol: {},
+            pageNone: true,
+            loadingBig: true,
+            idolShow: false
           }
         },
         methods: {
@@ -96,20 +109,43 @@
                     }
                 }).then(function(res){
                     console.log(res);
-                    self.idol = res.data.group;
-    //                 $('<meta property="og:image" content="'+ res.data.group +'" />')
-                    
-    // <meta property="og:description" content="2017WBCのスケジュールをチェックして、お気に入りの試合の情報を逃さず全て入手！" class="facebook_content"/>
-                    if(res.data.video.publicType == 2) {
-                        self.vipShow = true;
+                    if(res) {
+                        if(res.data.video) {
+                            if(res.data.video.active == 1) {
+                                self.pageNone = false;
+                                $('<meta property="og:image" content="'+ res.data.video.thumbnail +'" />').appendTo('head')     
+                                $('<meta property="og:description" content="'+ res.data.video.title +'"/>').appendTo('head')
+                                if(res.data.video.publicType == 2) {
+                                    self.vipShow = true;
+                                    self.publicShow = false;
+                                }else {
+                                    self.vipShow = false;
+                                    self.publicShow = true;
+                                    self.playerOptions.poster = res.data.video.thumbnail;
+                                    let _len = res.data.video.videoItemList.length - 1;
+                                    self.playerOptions.sources[0].src = res.data.video.videoItemList[_len].url;
+                                }
+                                self.video = res.data.video;
+                            } else {
+                                self.pageNone = true;
+                            }
+
+                        }else {
+                            self.pageNone = true;
+                        }
+                        if(res.data.related) {
+                            self.videos = res.data.related;
+                        }
+                        if(res.data.group) {
+                            self.idolShow = true;
+                            self.idol = res.data.group;
+                        }
                     }else {
+                        self.pageNone = true;
                         self.vipShow = false;
-                        self.playerOptions.poster = res.data.video.thumbnail;
-                        let _len = res.data.video.videoItemList.length - 1;
-                        self.playerOptions.sources[0].src = res.data.video.videoItemList[_len].url;
+                        self.publicShow = false;
                     }
-                    self.video = res.data.video;
-                    self.videos = res.data.related;
+                    self.loadingBig = false;
                 }).catch(function(){
 
                 });
@@ -131,6 +167,21 @@
 
 <style scoped lang="scss">
     @import "../styles/share.scss";
+    .default_page {
+        a {
+            display: block;
+            color: #fff;
+            width: 300px;
+            height: 44px;
+            line-height: 44px;
+            opacity: 0.9;
+            background: #FC4083;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 7.5px;
+            margin: 20px auto;
+        }
+    }
 </style>
 
 <style>
