@@ -121,7 +121,16 @@
                   debugger: true,
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
-                    $('.tabs').eq(swiper.activeIndex).addClass('active');
+                    $('.tabs').eq(val).addClass('active');
+                    if(swiper.activeIndex == 0) {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('view_g_coin');
+                        }) 
+                    }else if(swiper.activeIndex == 1) {
+                        bridge.callHandler('view_like');
+                    }else {
+                        bridge.callHandler('view_comment');
+                    }
                   },
                 },
                 commentList: [],
@@ -146,6 +155,15 @@
             tabs.removeClass('active');
             tabs.eq(val).addClass('active')
             this.swiper.slideTo(val, 500, false)
+            if(val == 0) {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('view_g_coin');
+                }) 
+            }else if(val == 1) {
+                bridge.callHandler('view_like');
+            }else {
+                bridge.callHandler('view_comment');
+            }
           },
           formatTime(key) {
               let timer = new Date(key);
@@ -327,8 +345,7 @@
             var self = this;
             self.getGcoin();
             self.getPopularity();
-            self.getComments();
-
+            self.getComments(); 
         }
     }
 </script>

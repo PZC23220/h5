@@ -3,7 +3,7 @@
         <div class="header">
             <img src="../images/icon_groupy_128.png" alt="">
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
-            <a href="itms-apps://itunes.apple.com/app/id1251249933">インストール</a>
+            <a class="down_link" @click="p_log('share_h5_download_groupy')" href="itms-apps://itunes.apple.com/app/id1251249933">インストール</a>
         </div>
         <div class="content" style="height: calc(100vh - 124px);">
             <div class="userinfo" v-if="idolShow">
@@ -22,23 +22,23 @@
                 <div class="video_bg"></div>
                 <div class="vip_download">
                     <p>会員のみ視聴可能です<br>会員登録して、アイドルのプライベート動画を見よう</p>
-                    <a href="itms-apps://itunes.apple.com/app/id1251249933" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
+                    <a class="down_link" @click="p_log('share_h5_download_groupy')" href="itms-apps://itunes.apple.com/app/id1251249933" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
                 </div>
             </div>
             <div class="public_show"v-show="publicShow">
                 <p>{{video.title}}</p>
                 <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
-                <a href="itms-apps://itunes.apple.com/app/id1251249933" class="download">Groupyをダウンロードしてもっと見よう</a>
+                <a @click="p_log('share_h5_download_groupy')" href="itms-apps://itunes.apple.com/app/id1251249933" class="download down_link">Groupyをダウンロードしてもっと見よう</a>
             </div>
             <div class="default_page" v-show="pageNone">
                 <img src="../images/default_no like.png" alt="">
                 <p>まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
-                <a href="itms-apps://itunes.apple.com/app/id1251249933" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
+                <a  class="down_link" @click="p_log('share_h5_download_groupy')" href="itms-apps://itunes.apple.com/app/id1251249933" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
             </div>
             <div class="more_video" v-if="videos.length > 0">
                 <h3>おすすめ</h3>
                 <ul>
-                    <li v-for="(video,key) in videos"><a href="itms-apps://itunes.apple.com/app/id1251249933" title="">
+                    <li v-for="(video,key) in videos"><a class="down_link" @click="p_log('share_h5_watch_more')" href="itms-apps://itunes.apple.com/app/id1251249933" title="">
                     <div class="video_bigImg">
                         <img :src="video.thumbnail" class="video_poster" alt=""><img src="../images/timeline_icon_play.png" class="btn_play" alt="">
                         <div>
@@ -149,6 +149,24 @@
                 }).catch(function(){
 
                 });
+            },
+            p_log(val) {
+                var _data = {
+
+                    topic: "groupy",
+                    app: "groupyIdol",
+                    platform: "h5",
+                    system: navigator.userAgent,
+                    version: "1.0.0",
+                    action: val,
+                    result: "success",
+                    videoId: location.href.split('/shareVideo/')[1].split('#/')[0]
+                }
+                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                    console.log('success');
+                }).catch(function(){
+
+                })
             }
         },
         mounted() {
@@ -161,6 +179,13 @@
         },
         created() {
             this.getVideo();
+            this.p_log('idol_share_h5_open');
+            setTimeout(function(){
+                var ua = navigator.userAgent.toLowerCase();
+                if (!(/iphone|ipad|ipod/.test(ua))) {
+                    document.querySelector('.down_link').href = 'https://itunes.apple.com/app/id1251249933';
+                }
+            },200)
         }
       }
 </script>
