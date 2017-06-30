@@ -10,8 +10,8 @@
             <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                 <!-- slides -->
                 <swiper-slide id="swiper1">
-                    <ul class="top3">
-                        <li>
+                    <ul class="top3" v-if="rakingListToday.rankingList">
+                        <li v-if="rakingListToday.rankingList.length > 0">
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
@@ -20,7 +20,7 @@
                              <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[1].name:''}}</p>
                              <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[1].score:'').toLocaleString()}}</i></span>
                          </li>
-                         <li>
+                         <li v-if="rakingListToday.rankingList.length > 1">
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
@@ -29,14 +29,14 @@
                              <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[0].name:''}}</p>
                              <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[0].score:'').toLocaleString()}}</i></span>
                          </li>
-                         <li>
+                         <li v-if="rakingListToday.rankingList.length > 2">
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList?rakingListToday.rankingList[2].avatar:''" alt="" class="idol_img">
+                                 <img :src="rakingListToday.rankingList[2].avatar" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[2].name:''}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[2].score:'').toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingListToday.rankingList[2].name}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[2].score).toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">
@@ -51,8 +51,8 @@
                     </ul>
                 </swiper-slide>
                 <swiper-slide id="swiper2">
-                    <ul class="top3">
-                        <li>
+                    <ul class="top3" v-if="rakingList.rankingList">
+                        <li v-if="rakingList.rankingList.length > 0">
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
@@ -61,7 +61,7 @@
                              <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[1].name:''}}</p>
                              <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[1].score:'').toLocaleString()}}</i></span>
                          </li>
-                         <li>
+                         <li v-if="rakingList.rankingList.length > 1">
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
@@ -70,14 +70,14 @@
                              <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[0].name:''}}</p>
                              <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[0].score:'').toLocaleString()}}</i></span>
                          </li>
-                         <li>
+                         <li v-if="rakingList.rankingList.length > 2">
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList?rakingList.rankingList[2].avatar:''" alt="" class="idol_img">
+                                 <img :src="rakingList.rankingList[2].avatar" alt="" class="idol_img">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[2].name:''}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[2].score:'').toLocaleString()}}</i></span>
+                             <p class="idol_name">{{rakingList.rankingList[2].name}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[2].score).toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">

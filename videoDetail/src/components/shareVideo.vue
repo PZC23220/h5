@@ -95,6 +95,7 @@
                         videoId: location.href.split('/shareVideo/')[1].split('#/')[0]
                     }
                 }).then(function(res){
+                    console.log(res);
                     self.idol = res.data.group;
     //                 $('<meta property="og:image" content="'+ res.data.group +'" />')
                     
