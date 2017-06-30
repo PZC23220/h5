@@ -44,15 +44,29 @@
         </div>
       </div>
     </div>
-    <!-- <div class="videos">
+    <div class="videos" id="videos">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
-      <h2 class="titles">入驻视频<span></span></h2>
+      <h2 class="titles" style="width: 120px;">入驻视频<span></span></h2>
       <h4 class="desc">来自爱豆的邀请函！陪着爱豆在Groupy重新出发</h4>
       <ul class="videos_list">
-        <li><a href="">
+        <li style="width: 45%;">
+          <video id="video1" controls src="/static/video/cast.mp4" width="100%">
+            您的浏览器不支持HTML5
+        </video>
+          <p class="video_title">CAST</p>
+          <p class="video_desc">日本偶像团体CAST正式入驻Groupy!  能歌善舞，还会舞台剧。。。一切尽在Groupy</p>
+        </li>
+        <li style="width: 45%;">
+          <video id="video2" controls src="/static/video/kuno1.mp4" width="100%">
+            您的浏览器不支持HTML5
+        </video>
+          <p class="video_title">KUNO1</p>
+          <p class="video_desc">日本偶像团体KUNO1入驻Groupy，带来一波日风摇滚。。。你准备好了吗！ </p>
+        </li>
+        <!-- <li><a href="">
           <img src="" alt="">
           <p class="video_title">メロメロン</p>
           <p class="video_desc">これなんだと思います？当と思います</p>
@@ -71,20 +85,10 @@
           <img src="" alt="">
           <p class="video_title">メロメロン</p>
           <p class="video_desc">これなんだと思います？当と思います</p>
-        </a></li>
-        <li><a href="">
-          <img src="" alt="">
-          <p class="video_title">メロメロン</p>
-          <p class="video_desc">これなんだと思います？当と思います</p>
-        </a></li>
-        <li><a href="">
-          <img src="" alt="">
-          <p class="video_title">メロメロン</p>
-          <p class="video_desc">これなんだと思います？当と思います</p>
-        </a></li>
+        </a></li> -->
       </ul>
-      <div class="more_video">查看更多</div>
-    </div> -->
+      <!-- <div class="more_video">查看更多</div> -->
+    </div>
     <div class="company_profile"  id="company_profile">
       <span></span>
       <h2 class="titles"><span>公司&团队介绍</span></h2>
@@ -98,12 +102,42 @@
 
 <script>
   export default {
-    name: 'index',
     data () {
       return {
         // imgs: '../images/bg.png',
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App',
+        idx: 0
       }
+    },
+    mounted() {
+      var self = this;
+      var myVideo = document.getElementById('video1')//获取video元素
+      var myVideo2 = document.getElementById('video2')//获取video元素
+       var _box = document.querySelector('.main');
+       var _con = document.querySelector('.videos_list');
+       _box.addEventListener('scroll', () => {
+              if(_con.getBoundingClientRect().bottom >450 &&  _con.getBoundingClientRect().bottom < 1150 && self.idx <1) {
+                self.idx++;
+                  myVideo.play()
+                  setTimeout(() => {
+                    myVideo2.play()
+                  },24000)
+              }
+          }, false)
+       myVideo.onplay = function() {
+        myVideo2.pause()
+       }
+       myVideo2.onplay = function() {
+        myVideo.pause()
+       }
+       myVideo.onended = function() {
+        myVideo.play()
+        myVideo.pause()
+       }
+       myVideo2.onended = function() {
+        myVideo2.play()
+        myVideo2.pause()
+       }
     }
   }
 </script>
@@ -111,4 +145,12 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style rel="stylesheet/scss" lang="scss">
   @import '../styles/index.scss';
+  @media screen and (max-width: 980px) {
+      .videos_list li {
+        width: 100% !important;
+        a {
+          width: 100% !important;
+        }
+      }
+  }
 </style>

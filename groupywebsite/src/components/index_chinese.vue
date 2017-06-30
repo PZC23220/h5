@@ -7,8 +7,9 @@
         <li><a href="#product_description" @click="to_maoPoint()" style="color: #FC4083;">{{commentWords.product}}</a></li>
         <li><a href="#joinUs" @click="to_maoPoint()" style="color: #FF8500;">{{commentWords.join}}</a></li>
         <li><a href="#company_profile" @click="to_maoPoint()" style="color: #00B4BC;" v-if="commentWords.company === '公司介绍'">公司介绍</a></li>
-       <!--  <li  :class="{'activeIdol':$route.path==='/chinese_idol' || $route.path==='/japanese_idol'}" ><a :href="commentWords.to_idol" style="color: #3CA6D4;">{{commentWords.idol}}</a></li>
-        <li  :class="{'activeVideos':$route.path==='/chinese_videos' || $route.path==='/japanese_videos'}"><a :href="commentWords.to_videos" style="color: #666666;">{{commentWords.videos}}</a></li> -->
+        <li><a href="#videos" @click="to_maoPoint()" style="color: #666666;" v-if="commentWords.m_videos === '入驻视频'">入驻视频</a></li>
+        <!-- <li  :class="{'activeIdol':$route.path==='/chinese_idol' || $route.path==='/japanese_idol'}" ><a :href="commentWords.to_idol" style="color: #3CA6D4;">{{commentWords.idol}}</a></li> -->
+        <!-- <li  :class="{'activeVideos':$route.path==='/index_chinese/chinese_videos' || $route.path==='/japanese_videos'}"><a :href="commentWords.to_videos" style="color: #666666;">{{commentWords.videos}}</a></li> -->
       </ul>
       <div class="language"><router-link to="/index_chinese" class="active">中文</router-link><router-link to="/index_japanese">日本語</router-link></div>
     </div>
@@ -25,13 +26,13 @@
           <a href="https://twitter.com/GGroupyyy" target="_blank" class="twitter"></a>
         </div>
         <ul>
-         <!--  <li><a :href="commentWords.to_idol">{{commentWords.idol}}</a></li>
+          <!-- <li><a :href="commentWords.to_idol">{{commentWords.idol}}</a></li>
           <li><a :href="commentWords.to_videos">{{commentWords.videos}}</a></li> -->
           <li><router-link to="/index_chinese/chinese_rule">{{commentWords.rule}}</router-link></li>
           <li><router-link to="/index_chinese/chinese_privacy_policy">{{commentWords.privacy_policy}}</router-link></li>
         </ul>
         <div class="desc">Copyright  2017 云动网络 All rights reserved.<br></div>
-        <dic class="desc"><a target="_blank" href="http://www.miitbeian.gov.cn" style="padding: 0 10px;">粤ICP备17068981号</a><a href="Mailto:support@groupy.cn" target="_blank">邮箱：support@groupy.cn</a></dic>
+        <div class="desc"><a target="_blank" href="http://www.miitbeian.gov.cn" style="padding: 0 10px;">粤ICP备17068981号</a><a href="Mailto:support@groupy.cn" target="_blank">邮箱：support@groupy.cn</a></div>
         <div class="desc" style="margin-top: 0;width: 310px;
         margin: 0 auto;overflow: hidden;" v-if="commentWords.company === '公司介绍'"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602002595"><img src="../images/gov_cn.png" alt="" style="float: left;margin-top: 4px;margin-right: 5px;"><span style="float: left;">粤公网安备 44010602002595号</span></a></div>
       </footer>
@@ -51,10 +52,11 @@
           idol: '爱豆一览',
           videos: '入驻视频',
           rule: '利用规约',
+          m_videos: '入驻视频',
           privacy_policy: '隐私政策',
           to_idol: '/chinese_idol',
-          to_videos: '/chinese_videos',
-          to_rule: '/chinese_rule',
+          to_videos: '/index_chinese/chinese_videos',
+          to_rule: '/index_chinese/chinese_rule',
           to_pp: './chinese_privacy_policy'
         }
       }
@@ -81,11 +83,12 @@
               join: '爱豆招募',
               idol: '爱豆一览',
               videos: '入驻视频',
+              m_videos: '入驻视频',
               rule: '利用规约',
               privacy_policy: '隐私政策',
-              to_idol: '/chinese_idol',
-              to_videos: '/chinese_videos',
-              to_rule: '/chinese_rule',
+              to_idol: '/index_chinese/chinese_idol',
+              to_videos: '/index_chinese/chinese_videos',
+              to_rule: '/index_chinese/chinese_rule',
               to_pp: './chinese_privacy_policy'
             }
           }else {
@@ -97,9 +100,9 @@
               videos: 'ファンへの招待動画',
               rule: '利用規約',
               privacy_policy: 'プライバシーポリシー',
-              to_idol: '/japanese_idol',
-              to_videos: '/japanese_videos',
-              to_rule: '/japanese_rule',
+              to_idol: '/index_japanese/japanese_idol',
+              to_videos: '/index_japanese/japanese_videos',
+              to_rule: '/index_japanese/japanese_rule',
               to_pp: './japanese_privacy_policy'
             }
           }

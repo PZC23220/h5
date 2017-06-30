@@ -40,7 +40,7 @@
                             <span class="level_color" v-if="key > 2">{{key+1}}</span>
                             <img class="avatar" :src="fans.userFans?fans.userFans.avatar: ''" alt="">
                             <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
-                            <img :src="fans.userFans?('icon_level_'+ fans.userFans.level +'.png'): ''" class="level" alt="">
+                            <img :src="fans.userFans?('../../images/icon_level_'+ fans.userFans.level +'.png'): ''" class="level" alt="">
                             <i>
                                 <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{Number(fans.userFans?fans.userFans.gcoin: 0).toLocaleString()}}
                             </i>
@@ -61,7 +61,7 @@
                         <span class="level_color" v-if="key > 2">{{key+1}}</span>
                         <img class="avatar" :src="popularity.userFans?popularity.userFans.avatar:''" alt="">
                         <span>{{popularity.userFans?popularity.userFans.nickname:''}}</span>
-                        <img :src="popularity.userFans?('icon_level_'+popularity.userFans.level+'.png'):''" class="level" alt="">
+                        <img :src="popularity.userFans?('../../images/icon_level_'+popularity.userFans.level+'.png'):''" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{Number(popularity.userFans?popularity.userFans.gcoin:'').toLocaleString()}}
                         </i>
@@ -82,7 +82,7 @@
                         <div class="comment_info">
                             <img class="avatar" :src="comment.avatar" alt="">
                             <span>{{comment.nickname}}</span>
-                            <img class="level" :src="'icon_level_'+comment.level+'.png'" alt="">
+                            <img class="level" :src="'../../images/icon_level_'+comment.level+'.png'" alt="">
                             <i v-html="formatTime(comment.createTime)"></i>
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>

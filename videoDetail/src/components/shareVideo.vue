@@ -5,7 +5,7 @@
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
             <a href="itms-apps://itunes.apple.com/app/id1251249933">インストール</a>
         </div>
-        <div class="content" style="height: calc(100vh - 64px);">
+        <div class="content" style="height: calc(100vh - 124px);">
             <div class="userinfo" v-if="idolShow">
                 <img :src="idol.bgImg?idol.bgImg: '/static/images/default_img.png'" alt="">
                 <div class="video_desc">
