@@ -115,8 +115,9 @@
           to_idol: '/japanese_idol',
           to_videos: '/japanese_videos',
           to_rule: '/japanese_rule',
-          to_pp: '/japanese_privacy_policy'
-        }
+          to_pp: '/japanese_privacy_policy',
+        },
+          idx: 0
       }
     },
     methods: {
@@ -172,6 +173,36 @@
           location.href = 'http://' +location.host;
         }
       }
+    },
+    mounted() {
+      var self = this;
+      var myVideo = document.getElementById('video1')//获取video元素
+      var myVideo2 = document.getElementById('video2')//获取video元素
+       var _box = document.querySelector('.main');
+       var _con = document.querySelector('.videos_list');
+       _box.addEventListener('scroll', () => {
+              if(_con.getBoundingClientRect().bottom >450 &&  _con.getBoundingClientRect().bottom < 1165 && self.idx <1) {
+                self.idx++;
+                  myVideo.play()
+                  setTimeout(() => {
+                    myVideo2.play()
+                  },24000)
+              }
+          }, false)
+       myVideo.onplay = function() {
+        myVideo2.pause()
+       }
+       myVideo2.onplay = function() {
+        myVideo.pause()
+       }
+       myVideo.onended = function() {
+        myVideo.play()
+        myVideo.pause()
+       }
+       myVideo2.onended = function() {
+        myVideo2.play()
+        myVideo2.pause()
+       }
     },
     created: function() {
       let systemLanguage = (navigator.browserLanguage || navigator.language).toLowerCase();
