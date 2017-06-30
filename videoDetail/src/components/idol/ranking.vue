@@ -242,7 +242,7 @@
                         })
                     }
                 }).catch(function(err){
-                    console.log(err.response);
+                    console.log(err);
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getRanking(responseData.token);
@@ -250,6 +250,7 @@
                     })
                 });
             }else {
+                self.loadingBig = false;
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                 })

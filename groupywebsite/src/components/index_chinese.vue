@@ -7,7 +7,7 @@
         <li><a href="#product_description" @click="to_maoPoint()" style="color: #FC4083;">{{commentWords.product}}</a></li>
         <li><a href="#joinUs" @click="to_maoPoint()" style="color: #FF8500;">{{commentWords.join}}</a></li>
         <li><a href="#company_profile" @click="to_maoPoint()" style="color: #00B4BC;" v-if="commentWords.company === '公司介绍'">公司介绍</a></li>
-        <li><a href="#videos" @click="to_maoPoint()" style="color: #666666;" v-if="commentWords.m_videos === '入驻视频'">入驻视频</a></li>
+        <li><a href="#videos" @click="to_maoPoint()" style="color: #666666;">{{commentWords.videos}}</a></li>
         <!-- <li  :class="{'activeIdol':$route.path==='/chinese_idol' || $route.path==='/japanese_idol'}" ><a :href="commentWords.to_idol" style="color: #3CA6D4;">{{commentWords.idol}}</a></li> -->
         <!-- <li  :class="{'activeVideos':$route.path==='/index_chinese/chinese_videos' || $route.path==='/japanese_videos'}"><a :href="commentWords.to_videos" style="color: #666666;">{{commentWords.videos}}</a></li> -->
       </ul>

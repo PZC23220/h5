@@ -42,15 +42,29 @@
         </div>
       </div>
     </div>
-   <!--  <div class="videos">
+    <div class="videos" id="videos">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
-      <h2 class="titles">ファンへの招待動画<span></span></h2>
+      <h2 class="titles" style="width: 240px;border-bottom: none;"><i style="width: 100%;margin-left:-120px;background: #FFD300;"></i><span style="margin-left:0 !important;width: 100% !important;">ファンへの招待動画</span></h2>
       <h4 class="desc">あなたにメッセージを！一緒にGroupyにて再スタートしよう！</h4>
       <ul class="videos_list">
-        <li><a href="">
+        <li style="width: 45%;">
+          <video id="video1" preload="load" controls src="/static/video/cast.mp4" width="100%">
+            您的浏览器不支持HTML5
+        </video>
+          <p class="video_title">CAST</p>
+          <p class="video_desc">CastがGroupyに参加決定！</p>
+        </li>
+        <li style="width: 45%;">
+          <video id="video2" preload="load" controls src="/static/video/kuno1.mp4" width="100%">
+            您的浏览器不支持HTML5
+        </video>
+          <p class="video_title">KUNO1</p>
+          <p class="video_desc">KUNO1がGroupyに参加決定！</p>
+        </li>
+        <!-- <li><a href="">
           <img src="" alt="">
           <p class="video_title">メロメロン</p>
           <p class="video_desc">これなんだと思います？当と思います</p>
@@ -79,10 +93,10 @@
           <img src="" alt="">
           <p class="video_title">メロメロン</p>
           <p class="video_desc">これなんだと思います？当と思います</p>
-        </a></li>
+        </a></li> -->
       </ul>
-      <div class="more_video">すべて表示</div>
-    </div> -->
+      <!-- <div class="more_video">すべて表示</div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -226,5 +240,13 @@
       float: none;
       margin: 50px auto 0;
     }
+  }
+  @media screen and (max-width: 980px) {
+      .videos_list li {
+        width: 100% !important;
+        a {
+          width: 100% !important;
+        }
+      }
   }
 </style>

@@ -49,18 +49,18 @@
       <span></span>
       <span></span>
       <span></span>
-      <h2 class="titles" style="width: 120px;">入驻视频<span></span></h2>
+      <h2 class="titles" style="width: 110px;border:none;"><i style="margin-left: -50px;width: 100%;background: #FFD300;"></i><span>入驻视频</span></h2>
       <h4 class="desc">来自爱豆的邀请函！陪着爱豆在Groupy重新出发</h4>
       <ul class="videos_list">
         <li style="width: 45%;">
-          <video id="video1" controls src="/static/video/cast.mp4" width="100%">
+          <video id="video1" preload="load" controls src="/static/video/cast.mp4" width="100%">
             您的浏览器不支持HTML5
         </video>
           <p class="video_title">CAST</p>
           <p class="video_desc">日本偶像团体CAST正式入驻Groupy!  能歌善舞，还会舞台剧。。。一切尽在Groupy</p>
         </li>
         <li style="width: 45%;">
-          <video id="video2" controls src="/static/video/kuno1.mp4" width="100%">
+          <video id="video2" preload="load" controls src="/static/video/kuno1.mp4" width="100%">
             您的浏览器不支持HTML5
         </video>
           <p class="video_title">KUNO1</p>

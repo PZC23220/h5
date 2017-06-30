@@ -115,6 +115,7 @@
                         })
                     });
                 }else {
+                    self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                     })
