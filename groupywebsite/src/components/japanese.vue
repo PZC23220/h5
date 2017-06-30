@@ -51,14 +51,14 @@
       <h4 class="desc">あなたにメッセージを！一緒にGroupyにて再スタートしよう！</h4>
       <ul class="videos_list">
         <li style="width: 45%;">
-          <video id="video1" preload="load" controls src="/static/video/cast.mp4" width="100%">
+          <video id="video1" playsinline preload="load" controls src="/static/video/cast.mp4" width="100%">
             您的浏览器不支持HTML5
         </video>
           <p class="video_title">CAST</p>
           <p class="video_desc">CastがGroupyに参加決定！</p>
         </li>
         <li style="width: 45%;">
-          <video id="video2" preload="load" controls src="/static/video/kuno1.mp4" width="100%">
+          <video id="video2" playsinline preload="load" controls src="/static/video/kuno1.mp4" width="100%">
             您的浏览器不支持HTML5
         </video>
           <p class="video_title">KUNO1</p>
