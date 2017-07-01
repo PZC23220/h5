@@ -47,8 +47,8 @@
       <span></span>
       <span></span>
       <span></span>
-      <h2 class="titles" style="width: 240px;border-bottom: none;"><i style="width: 100%;margin-left:-120px;background: #FFD300;"></i><span style="margin-left:0 !important;width: 100% !important;">ファンへの招待動画</span></h2>
-      <h4 class="desc">あなたにメッセージを！一緒にGroupyにて再スタートしよう！</h4>
+      <h2 class="titles" style="width: 240px;border-bottom: none;"><i style="width: 100%;margin-left:-120px;background: #FFD300;"></i><span style="margin-left:0 !important;width: 100% !important;">参加アイドル動画</span></h2>
+      <h4 class="desc">限定コンテンツ満載！Groupyでお待ちしてます♫〜</h4>
       <ul class="videos_list">
         <li style="width: 45%;">
           <video id="video1" playsinline preload="load" controls src="/static/video/cast.mp4" width="100%">

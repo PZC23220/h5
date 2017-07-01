@@ -78,7 +78,10 @@
                     }
                     console.log(self.commentList);
                 }).catch(function(){
-
+                    self.loadingBig = false;
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    })
                 });
             },
             formatTime(key) {
@@ -102,7 +105,7 @@
             },
             publishComment() {
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('toPublish',{'url':'http://192.168.1.152:8020/#/idol/publishComment'})
+                    bridge.callHandlek('toPublish',{'url':'http://192.168.1.152:8020/#/idol/publishComment'})
                 })
             },
             showBigImg(url) {
