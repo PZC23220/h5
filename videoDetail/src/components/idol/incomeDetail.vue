@@ -4,11 +4,11 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">今月の収入</span>
-                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':incomeList.incomeCurrentMonth || incomeList.incomeCurrentMonth == 0}">{{Number(incomeList.incomeCurrentMonth).toLocaleString()}}</i></span>
+                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'video_money_show':incomeList.incomeCurrentMonth || incomeList.incomeCurrentMonth == 0}">{{incomeList.incomeCurrentMonth?Number(incomeList.incomeCurrentMonth).toLocaleString():0}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">昨日の収入</span>
-                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':incomeList.incomeYesterday || incomeList.incomeYesterday == 0}">{{Number(incomeList.incomeYesterday).toLocaleString()}}</i></span>
+                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'video_money_show':incomeList.incomeYesterday || incomeList.incomeYesterday == 0}">{{incomeList.incomeYesterday?Number(incomeList.incomeYesterday).toLocaleString():0}}</i></span>
                 </p>
             </div>
             <div class="income_details eBorder">
@@ -16,19 +16,19 @@
                 <ul class="income_img">
                     <li>
                         <img class="gift" src="../../images/pic_vip_free.png" alt="">
-                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}" v-if="incomeList.groupFeeList">&times;{{Number(incomeList.groupFeeList[0].numbers).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?incomeList.groupFeeList[0].numbers:0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_vip_1 month.png" alt="">
-                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}" v-if="incomeList.groupFeeList">&times;{{Number(incomeList.groupFeeList[1].numbers).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?incomeList.groupFeeList[1].numbers:0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_vip_3 month.png" alt="">
-                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}" v-if="incomeList.groupFeeList">&times;{{Number(incomeList.groupFeeList[2].numbers).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?incomeList.groupFeeList[2].numbers:0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_vip_6 month.png" alt="">
-                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}" v-if="incomeList.groupFeeList">&times;{{Number(incomeList.groupFeeList[3].numbers).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?incomeList.groupFeeList[3].numbers:0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
             </div>
@@ -37,35 +37,35 @@
                 <ul class="income_img">
                     <li>
                         <img class="gift" src="../../images/pic_star.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[0].numbers}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[0].numbers:0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_heart.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[1].numbers}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[1].numbers:0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_rose.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[2].numbers}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[2].numbers:0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_diamond.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[3].numbers}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[3].numbers:0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_bear.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[4].numbers}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[4].numbers:0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_tree.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[5].numbers}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[5].numbers:0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_tower.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[6].numbers}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[6].numbers:0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_castle.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[7].numbers}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[7].numbers:0}}</span></p>
                     </li>
                 </ul>
             </div>  `
@@ -235,7 +235,7 @@
     }
  }
  .left {
-    opacity: 0;
+    opacity: 0.2;
     transition: opacity 0.3s;
  }
 .left_show {

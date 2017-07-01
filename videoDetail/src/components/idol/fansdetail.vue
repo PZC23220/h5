@@ -4,11 +4,11 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title"> ファン</span>
-                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{Number(gcoinList.fansCount).toLocaleString()}}</i></span>
+                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money left" :class="{'left_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{gcoinList.fansCount?Number(gcoinList.fansCount).toLocaleString():0}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">昨日の新規</span>
-                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{Number(gcoinList.fansIncreased).toLocaleString()}}</i></span>
+                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money left" :class="{'left_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{gcoinList.fansIncreased?Number(gcoinList.fansIncreased).toLocaleString():0}}</i></span>
                 </p>
             </div>
             <div class="detailPages">
@@ -31,7 +31,7 @@
                         </span>
                         <img class="avatar" :src="gFans.fans?gFans.fans.avatar:''" alt="">
                         <span>{{gFans.fans?gFans.fans.nickname:''}}</span>
-                        <img :src="gFans.fans?'../../images/icon_level_'+gFans.fans.level+'.png':''" class="level" alt="">
+                        <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.level+1)+'.png':''" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_coins.png" alt="">{{Number(gFans.expendGprice).toLocaleString()}}
                         </i>
@@ -53,9 +53,9 @@
                         </span>
                         <img class="avatar" :src="popularity.fans?popularity.fans.avatar:''" alt="">
                         <span>{{popularity.fans?popularity.fans.nickname:''}}</span>
-                        <img :src="popularity.fans?'../../images/icon_level_'+popularity.fans.level+'.png':''" class="level" alt="">
+                        <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform+1)+'.png':''" class="level" alt="">
                         <i>
-                            <img src="../../images/timeline_icon_likes.svg" alt="">{{Number(popularity.totalNums).toLocaleString()}}
+                            <img src="../../images/timeline_icon_likes.png" alt="">{{Number(popularity.totalNums).toLocaleString()}}
                         </i>
                     </li>
                 </ul>
@@ -69,7 +69,7 @@
                     <li v-for="(fans,key) in joinList.fansList">
                         <img class="avatar" :src="fans.fans?fans.fans.avatar:''" alt="">
                         <span>{{fans.fans?fans.fans.nickname:''}}</span>
-                        <img :src="fans.fans?'../../images/icon_level_'+fans.fans.level+'.png':''" class="level" alt="">
+                        <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform+1)+'.png':''" class="level" alt="">
                         <i v-html="formatTime(fans.startdate)"></i>
                     </li>
                 </ul>
@@ -271,4 +271,11 @@
         height: calc(100vh - 143.5px);
     }
   }
+   .left {
+    opacity: 0.2;
+    transition: opacity 0.3s;
+ }
+.left_show {
+    opacity: 1;
+}
 </style>

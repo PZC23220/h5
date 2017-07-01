@@ -10,7 +10,7 @@
                     <div class="userinfo">
                         <img :src="comment.avatar" alt="">
                         <span>{{comment.nickname}}</span>
-                        <img :src="comment.level" alt="" v-if="comment.userType == 'fans'">
+                        <img :src="comment.level?'/static/images/icon_level_'+(comment.level+1)+'.png':''" alt="" v-if="comment.userType == 'fans'" class="level">
                         <i v-html="formatTime(comment.createTime)"></i>               
                     </div>
                     <div class="comment_content">
@@ -105,7 +105,7 @@
             },
             publishComment() {
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandlek('toPublish',{'url':'http://192.168.1.152:8020/#/idol/publishComment'})
+                    bridge.callHandler('toPublish')
                 })
             },
             showBigImg(url) {
@@ -174,6 +174,9 @@
               }
             }
            }, false)
+          // document.ontouchmove = function(event) {
+          //   event.preventDefault();
+          // }
         },
         created() {
             var self = this;

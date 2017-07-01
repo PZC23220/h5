@@ -41,7 +41,7 @@
                      </ul>
                      <ul class="comment_list">
                         <li>
-                            <span>4</span>
+                            <span>{{rakingListToday.rankingList[3].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[3].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[3].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[3].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[3].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[3].score || rakingListToday.rankingList[3].score==0:false}">
@@ -49,7 +49,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>5</span>
+                            <span>{{rakingListToday.rankingList[4].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[4].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[4].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[4].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[4].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[4].score || rakingListToday.rankingList[4].score==0:false}">
@@ -57,7 +57,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>6</span>
+                            <span>{{rakingListToday.rankingList[5].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[5].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[5].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[5].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[5].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[5].score || rakingListToday.rankingList[5].score==0:false}">
@@ -65,7 +65,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>7</span>
+                            <span>{{rakingListToday.rankingList[6].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[6].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[6].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[6].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[6].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[6].score || rakingListToday.rankingList[6].score==0:false}">
@@ -73,7 +73,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>8</span>
+                            <span>{{rakingListToday.rankingList[7].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[7].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[7].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[7].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[7].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[7].score || rakingListToday.rankingList[7].score==0:false}">
@@ -81,7 +81,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>9</span>
+                            <span>{{rakingListToday.rankingList[9].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[8].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[8].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[8].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[8].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[8].score || rakingListToday.rankingList[8].score==0:false}">
@@ -89,7 +89,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>10</span>
+                            <span>{{rakingListToday.rankingList[9].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[9].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[9].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[9].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[9].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[9].score || rakingListToday.rankingList[9].score==0:false}">
@@ -138,7 +138,7 @@
                      </ul>
                      <ul class="comment_list">
                         <li>
-                            <span>4</span>
+                            <span>{{rakingList.rankingList[3].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[3].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[3].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[3].name:false}">{{rakingList.rankingList?rakingList.rankingList[3].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[3].score || rakingList.rankingList[3].score==0:false}">
@@ -146,7 +146,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>5</span>
+                            <span>{{rakingList.rankingList[4].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[4].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[4].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[4].name:false}">{{rakingList.rankingList?rakingList.rankingList[4].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[4].score || rakingList.rankingList[4].score==0:false}">
@@ -154,7 +154,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>6</span>
+                            <span>{{rakingList.rankingList[5].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[5].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[5].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[5].name:false}">{{rakingList.rankingList?rakingList.rankingList[5].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[5].score || rakingList.rankingList[5].score==0:false}">
@@ -162,7 +162,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>7</span>
+                            <span>{{rakingList.rankingList[6].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[6].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[6].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[6].name:false}">{{rakingList.rankingList?rakingList.rankingList[6].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[6].score || rakingList.rankingList[6].score==0:false}">
@@ -170,7 +170,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>8</span>
+                            <span>{{rakingList.rankingList[7].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[7].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[7].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[7].name:false}">{{rakingList.rankingList?rakingList.rankingList[7].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[7].score || rakingList.rankingList[7].score==0:false}">
@@ -178,7 +178,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>9</span>
+                            <span>{{rakingList.rankingList[8].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[8].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[8].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[8].name:false}">{{rakingList.rankingList?rakingList.rankingList[8].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[8].score || rakingList.rankingList[8].score==0:false}">
@@ -186,7 +186,7 @@
                             </i>
                         </li>
                         <li>
-                            <span>10</span>
+                            <span>{{rakingList.rankingList[9].position}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[9].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[9].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[9].name:false}">{{rakingList.rankingList?rakingList.rankingList[9].name:'...'}}</span>
                             <i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[9].score || rakingList.rankingList[9].score==0:false}">
