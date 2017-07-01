@@ -4,11 +4,11 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">今月の収入</span>
-                    <span class="detail_gcoin"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money">{{Number(incomeList.incomeCurrentMonth).toLocaleString()}}</i></span>
+                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':incomeList.incomeCurrentMonth || incomeList.incomeCurrentMonth == 0}">{{Number(incomeList.incomeCurrentMonth).toLocaleString()}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">昨日の収入</span>
-                    <span class="detail_gcoin"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money">{{Number(incomeList.incomeYesterday).toLocaleString()}}</i></span>
+                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':incomeList.incomeYesterday || incomeList.incomeYesterday == 0}">{{Number(incomeList.incomeYesterday).toLocaleString()}}</i></span>
                 </p>
             </div>
             <div class="income_details eBorder">
@@ -16,31 +16,59 @@
                 <ul class="income_img">
                     <li>
                         <img class="gift" src="../../images/pic_vip_free.png" alt="">
-                        <p><span class="left">&times;{{Number(incomeList.groupFeeList[0].numbers).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}" v-if="incomeList.groupFeeList">&times;{{Number(incomeList.groupFeeList[0].numbers).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_vip_1 month.png" alt="">
-                        <p><span class="left">&times;{{Number(incomeList.groupFeeList[1].numbers).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}" v-if="incomeList.groupFeeList">&times;{{Number(incomeList.groupFeeList[1].numbers).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_vip_3 month.png" alt="">
-                        <p><span class="left">&times;{{Number(incomeList.groupFeeList[2].numbers).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}" v-if="incomeList.groupFeeList">&times;{{Number(incomeList.groupFeeList[2].numbers).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_vip_6 month.png" alt="">
-                        <p><span class="left">&times;{{Number(incomeList.groupFeeList[3].numbers).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}" v-if="incomeList.groupFeeList">&times;{{Number(incomeList.groupFeeList[3].numbers).toLocaleString()}}</span></p>
                     </li>
                 </ul>
             </div>
             <div class="income_details eBorder">
                 <p class="detail_title">ギフト総数</p>
                 <ul class="income_img">
-                    <li v-for="(gift,key) in incomeList.giftList">
-                        <img class="gift" :src="gift.img" alt="">
-                        <p><span class="left">&times;{{gift.numbers}}</span></p>
+                    <li>
+                        <img class="gift" src="../../images/pic_star.png" alt="">
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[0].numbers}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="../../images/pic_heart.png" alt="">
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[1].numbers}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="../../images/pic_rose.png" alt="">
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[2].numbers}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="../../images/pic_diamond.png" alt="">
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[3].numbers}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="../../images/pic_bear.png" alt="">
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[4].numbers}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="../../images/pic_tree.png" alt="">
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[5].numbers}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="../../images/pic_tower.png" alt="">
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[6].numbers}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="../../images/pic_castle.png" alt="">
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}" v-if="incomeList.giftList">&times;{{incomeList.giftList[7].numbers}}</span></p>
                     </li>
                 </ul>
-            </div>
+            </div>  `
             <div class="mention_details">
                 <p class="detail_title">換金履歴</p>
                 <ul class="mention_list">
@@ -62,9 +90,9 @@
             </div>
             <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">換金・振込みについて</router-link>
         </div>
-        <div class="bigLoading" v-show="loadingBig">
+        <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -75,13 +103,8 @@
     export default {
         data() {
             return {
-                incomeList: {
-                    groupFeeList:[{totalNums: '',numbers: ''},{totalNums: '',numbers: ''},{totalNums: '',numbers: ''},{totalNums: '',numbers: ''}],
-                    monthRecordList: [],
-                    incomeCurrentMonth: '',
-                    incomeYesterday: ''
-                },
-                loadingBig: true,
+                incomeList: {},
+                // loadingBig: true,
                 idx: 0
             }
         },
@@ -96,7 +119,7 @@
                         http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                     }
                     http.get('/group/income').then(function(res){
-                        self.loadingBig = false;
+                        // self.loadingBig = false;
                         if(res.status == 200) {
                             self.incomeList = res.data;
                             console.log(self.incomeList);
@@ -115,7 +138,7 @@
                         })
                     });
                 }else {
-                    self.loadingBig = false;
+                    // self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                     })
@@ -211,4 +234,11 @@
         height: 78px;
     }
  }
+ .left {
+    opacity: 0;
+    transition: opacity 0.3s;
+ }
+.left_show {
+    opacity: 1;
+}
 </style>

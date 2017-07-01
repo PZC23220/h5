@@ -4,11 +4,11 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title"> ファン</span>
-                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money">{{Number(gcoinList.fansCount).toLocaleString()}}</i></span>
+                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{Number(gcoinList.fansCount).toLocaleString()}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">昨日の新規</span>
-                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money">{{Number(gcoinList.fansIncreased).toLocaleString()}}</i></span>
+                    <span class="detail_gcoin"><img src="../../images/icon_fans .png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{Number(gcoinList.fansIncreased).toLocaleString()}}</i></span>
                 </p>
             </div>
             <div class="detailPages">
@@ -37,7 +37,7 @@
                         </i>
                     </li>
                 </ul>
-                <div class="default_page" v-show="gcoinList.fansList.length == 0">
+                <div class="default_page" v-show="gcoinList.fansList?gcoinList.fansList.length == 0:false">
                     <img src="../../images/default_no coin.png" alt="">
                     <p>まだコインはないようです</p>
                 </div>
@@ -80,9 +80,9 @@
             </swiper-slide>  
           </swiper>
         </div>
-        <div class="bigLoading" v-show="loadingBig">
+       <!--  <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -112,15 +112,11 @@
                 joinList: {
                     fansList: []
                 },
-                gcoinList: {
-                    fansCount: '',
-                    fansIncreased: '',
-                    fansList: []
-                },
+                gcoinList: {},
                 popularityList: {
                     fansList: []
                 },
-                loadingBig: true,
+                // loadingBig: true,
                 idx: 0,
                 idx2: 0,
                 idx1: 1
@@ -187,7 +183,7 @@
                         http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                     }
                     http.get('/statistic/gb').then(function(res){
-                        self.loadingBig = false;
+                        // self.loadingBig = false;
                         if(res.status == 200) {
                             self.gcoinList = res.data;
                             console.log(self.gcoinList)
@@ -206,7 +202,7 @@
                         })
                     });
                 } else {
-                    self.loadingBig = false;
+                    // self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                     })

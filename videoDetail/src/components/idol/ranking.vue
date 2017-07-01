@@ -10,43 +10,43 @@
             <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                 <!-- slides -->
                 <swiper-slide id="swiper1">
-                    <ul class="top3" v-if="rakingListToday.rankingList">
-                        <li v-if="rakingListToday.rankingList.length > 0">
+                    <ul class="top3" v-if="top3None == false">
+                        <li>
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList?rakingListToday.rankingList[1].avatar:''" alt="" class="idol_img">
+                                 <img :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[1].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[1].avatar:'/static/images/default_img.png'" alt="" class="idol_img con_left">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[1].name:''}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[1].score:'').toLocaleString()}}</i></span>
+                             <p class="idol_name con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[1].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[1].name:'...'}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[1].score || rakingListToday.rankingList[1].score==0:false}">{{Number(rakingListToday.rankingList?rakingListToday.rankingList[1].score:'').toLocaleString()}}</i></span>
                          </li>
-                         <li v-if="rakingListToday.rankingList.length > 1">
+                         <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList?rakingListToday.rankingList[0].avatar:''" alt="" class="idol_img">
+                                 <img :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[0].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[0].avatar:'/static/images/default_img.png'" alt="" class="idol_img con_left">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList?rakingListToday.rankingList[0].name:''}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList?rakingListToday.rankingList[0].score:'').toLocaleString()}}</i></span>
+                             <p class="idol_name con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[0].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[0].name:'...'}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[0].score || rakingListToday.rankingList[0].score==0:false}">{{Number(rakingListToday.rankingList?rakingListToday.rankingList[0].score:'').toLocaleString()}}</i></span>
                          </li>
-                         <li v-if="rakingListToday.rankingList.length > 2">
+                         <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img :src="rakingListToday.rankingList[2].avatar" alt="" class="idol_img">
+                                 <img :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[2].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[2].avatar:'/static/images/default_img.png'" alt="" class="idol_img con_left">
                              </div>
-                             <p class="idol_name">{{rakingListToday.rankingList[2].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingListToday.rankingList[2].score).toLocaleString()}}</i></span>
+                             <p class="idol_name con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[2].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[2].name:'...'}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[2].score || rakingListToday.rankingList[2].score==0:false}">{{Number(rakingListToday.rankingList?rakingListToday.rankingList[2].score:'').toLocaleString()}}</i></span>
                          </li>
                      </ul>
-                     <router-link :to="'/idol/allRanking?type=today&token='+tokens" class="all_ranking" v-show="rakingListToday.rankingList">すべて表示</router-link>
-                     <div class="default_page" v-show="!rakingListToday.rankingList">
+                     <router-link :to="'/idol/allRanking?type=today&token='+tokens" class="all_ranking">すべて表示</router-link>
+                     <div class="default_page" v-show="top3None">
                         <img src="../../images/default_no message.png" alt="">
                         <p>还没有爱豆的排名</p>
                     </div>
-                    <div class="integral" v-show="rakingListToday.me">
-                        <p><span>自分の順位</span><span><i>{{rakingListToday.me?rakingListToday.me[0].position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingListToday.me?rakingListToday.me[0].score:'').toLocaleString()}}</span></p>
-                        <p>（あと{{Number(rakingListToday.me?rakingListToday.me[0].gapToNext:'').toLocaleString()}}Likeでランクアップ！）</p>
+                    <div class="integral">
+                        <p><span>自分の順位</span><span><i class="con_left" :class="{'left_show':rakingListToday.me?rakingListToday.me[0].position:false}">{{rakingListToday.me?rakingListToday.me[0].position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.me?rakingListToday.me[0].position:false}">{{Number(rakingListToday.me?rakingListToday.me[0].score:'').toLocaleString()}}</i></span></p>
+                        <p>（あと<i class="con_left" :class="{'left_show':rakingListToday.me?rakingListToday.me[0].position:false}">{{Number(rakingListToday.me?rakingListToday.me[0].gapToNext:'').toLocaleString()}}</i>Likeでランクアップ！）</p>
                     </div>
 
                     <div class="help">
@@ -84,43 +84,43 @@
                     </div>
                 </swiper-slide>
                 <swiper-slide id="swiper2">
-                    <ul class="top3" v-if="rakingList.rankingList">
-                        <li v-if="rakingList.rankingList.length > 0">
+                    <ul class="top3">
+                        <li>
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
                                  <img src="../../images/bg_2.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList?rakingList.rankingList[1].avatar:''" alt="" class="idol_img">
+                                 <img :class="{'left_show':rakingList.rankingList?rakingList.rankingList[1].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[1].avatar:'/static/images/default_img.png'" alt="" class="idol_img con_left">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[1].name:''}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[1].score:'').toLocaleString()}}</i></span>
+                             <p class="idol_name con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[1].name:false}">{{rakingList.rankingList?rakingList.rankingList[1].name:'...'}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[1].score || rakingList.rankingList[1].score==0:false}">{{Number(rakingList.rankingList?rakingList.rankingList[1].score:'').toLocaleString()}}</i></span>
                          </li>
-                         <li v-if="rakingList.rankingList.length > 1">
+                         <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
                                  <img src="../../images/bg_1.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList?rakingList.rankingList[0].avatar:''" alt="" class="idol_img">
+                                 <img :class="{'left_show':rakingList.rankingList?rakingList.rankingList[0].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[0].avatar:'/static/images/default_img.png'" alt="" class="idol_img con_left">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList?rakingList.rankingList[0].name:''}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList?rakingList.rankingList[0].score:'').toLocaleString()}}</i></span>
+                             <p class="idol_name con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[0].name:false}">{{rakingList.rankingList?rakingList.rankingList[0].name:'...'}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[0].score || rakingList.rankingList[0].score==0:false}">{{Number(rakingList.rankingList?rakingList.rankingList[0].score:'').toLocaleString()}}</i></span>
                          </li>
-                         <li v-if="rakingList.rankingList.length > 2">
+                         <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
                                  <img src="../../images/bg_3.png" alt="" class="crown">
-                                 <img :src="rakingList.rankingList[2].avatar" alt="" class="idol_img">
+                                 <img :class="{'left_show':rakingList.rankingList?rakingList.rankingList[2].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[2].avatar:'/static/images/default_img.png'" alt="" class="idol_img con_left">
                              </div>
-                             <p class="idol_name">{{rakingList.rankingList[2].name}}</p>
-                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i>{{Number(rakingList.rankingList[2].score).toLocaleString()}}</i></span>
+                             <p class="idol_name con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[2].name:false}">{{rakingList.rankingList?rakingList.rankingList[2].name:'...'}}</p>
+                             <span><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[2].score || rakingList.rankingList[2].score==0:false}">{{Number(rakingList.rankingList?rakingList.rankingList[2].score:'').toLocaleString()}}</i></span>
                          </li>
                      </ul>
-                     <router-link :to="'/idol/allRanking?type=all&token='+tokens" class="all_ranking" v-show="rakingList.rankingList">すべて表示</router-link>
-                     <div class="default_page" v-show="!rakingListToday.rankingList">
+                     <router-link :to="'/idol/allRanking?type=all&token='+tokens" class="all_ranking">すべて表示</router-link>
+                     <div class="default_page" v-show="top3None">
                         <img src="../../images/default_no message.png" alt="">
                         <p>还没有爱豆的排名</p>
                     </div>
-                    <div class="integral" v-if="rakingList.me">
-                        <p><span>自分の順位</span><span><i>{{rakingList.me?rakingList.me[0].position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingList.me?rakingList.me[0].score:'').toLocaleString()}}</span></p>
-                        <p>（あと{{Number(rakingList.me?rakingList.me[0].gapToNext:'').toLocaleString()}}Likeでランクアップ！）</p>
+                    <div class="integral">
+                        <p><span>自分の順位</span><span><i class="con_left" :class="{'left_show':rakingList.me?rakingList.me[0].position:false}">{{rakingList.me?rakingList.me[0].position:''}}位</i><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.me?rakingList.me[0].position:false}">{{Number(rakingList.me?rakingList.me[0].score:'').toLocaleString()}}</i></span></p>
+                        <p>（あと<i class="con_left" :class="{'left_show':rakingList.me?rakingList.me[0].position:false}">{{Number(rakingList.me?rakingList.me[0].gapToNext:'').toLocaleString()}}</i>Likeでランクアップ！）</p>
                     </div>
 
                     <div class="help">
@@ -159,9 +159,9 @@
                 </swiper-slide>
             </swiper>
          </div>
-         <div class="bigLoading" v-show="loadingBig">
+         <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -194,7 +194,8 @@
                 isShow: false,
                 tottleImg: './static/images/icon_arrow_gray_down.png',
                 tokens: '',
-                loadingBig: true,
+                // loadingBig: true,
+                top3None: false,
                 idx: 0
             }
         },
@@ -225,8 +226,11 @@
                     }
                 }).then(function(res){
                     if(res.status == 200) {
-                        self.loadingBig = false;
+                        // self.loadingBig = false;
                         if(val == 'all') {
+                            if(!res.data.rankingList) {
+                              self.top3None = true;   
+                            }
                             self.rakingList = res.data;
                         }else {
                             self.rakingListToday = res.data;
@@ -250,7 +254,8 @@
                     })
                 });
             }else {
-                self.loadingBig = false;
+                self.top3None = true;
+                // self.loadingBig = false;
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                 })
@@ -312,5 +317,12 @@
                 color: #2A2A2A;
             }
         }
+    }
+    .con_left {
+        opacity: 0.2;
+        transition: opacity 0.3s;
+     }
+    .left_show {
+        opacity: 1;
     }
 </style>

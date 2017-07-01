@@ -19,19 +19,51 @@
             <swiper-slide id="swiper1">
                 <div class="income">
                     <span class="detail_title" @click="getGcoin()">獲得したコイン</span>
-                    <span><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money">{{Number(gcoinList.total).toLocaleString()}}</i></span>
+                    <span><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':gcoinList.total || gcoinList.total == 0}">{{Number(gcoinList.total).toLocaleString()}}</i></span>
                 </div>
                 <div class="income_details">
                     <p class="detail_title">収入詳細</p>
                     <ul class="income_img">
-                        <li v-for="(gif,key) in gcoinList.gift">
+                        <!-- <li v-for="(gif,key) in gcoinList.gift">
                             <img class="gift" :src="gif.gift.img" alt="">
                             <p><span class="left">&times;{{gif.giftCount}}</span></p>
+                        </li> -->
+                        <li>
+                            <img class="gift" src="../../images/pic_star.png" alt="">
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[0].giftCount}}</span></p>
+                        </li>
+                        <li>
+                            <img class="gift" src="../../images/pic_heart.png" alt="">
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[1].giftCount}}</span></p>
+                        </li>
+                        <li>
+                            <img class="gift" src="../../images/pic_rose.png" alt="">
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[2].giftCount}}</span></p>
+                        </li>
+                        <li>
+                            <img class="gift" src="../../images/pic_diamond.png" alt="">
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[3].giftCount}}</span></p>
+                        </li>
+                        <li>
+                            <img class="gift" src="../../images/pic_bear.png" alt="">
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[4].giftCount}}</span></p>
+                        </li>
+                        <li>
+                            <img class="gift" src="../../images/pic_tree.png" alt="">
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[5].giftCount}}</span></p>
+                        </li>
+                        <li>
+                            <img class="gift" src="../../images/pic_tower.png" alt="">
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[6].giftCount}}</span></p>
+                        </li>
+                        <li>
+                            <img class="gift" src="../../images/pic_castle.png" alt="">
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[7].giftCount}}</span></p>
                         </li>
                     </ul>
                 </div>
                 <div class="fans_detail">
-                    <p class="detail_title" :class="{'defalt_no' : gcoinList.rank.length == 0}">貢献ランキング</p>
+                    <p class="detail_title" :class="{'defalt_no' : gcoinList.rank?gcoinList.rank.length == 0:false}">貢献ランキング</p>
                     <ul class="comment_list">
                         <li v-for="(fans,key) in gcoinList.rank" style="padding: 12px 0;">
                             <span class="level_color" v-if="key == 0"><img src="../../images/icon_metal_1.png" alt=""></span>
@@ -46,7 +78,7 @@
                             </i>
                         </li>
                     </ul>
-                    <div class="default_page" v-show="gcoinList.rank.length == 0" style="padding-top: 32px;">
+                    <div class="default_page" v-show="gcoinList.rank?gcoinList.rank.length == 0:false" style="padding-top: 32px;">
                         <img src="../../images/default_no coin.png" alt="">
                         <p>まだコインはないようです<br>動画を投稿・シェアしてギフトを貰っちゃおう</p>
                     </div>
@@ -96,9 +128,9 @@
             </swiper-slide>  
           </swiper>
         </div>
-        <div class="bigLoading" v-show="loadingBig">
+        <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
@@ -121,29 +153,30 @@
                   debugger: true,
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
-                    $('.tabs').eq(val).addClass('active');
+                    $('.tabs').eq(swiper.activeIndex).addClass('active');
                     if(swiper.activeIndex == 0) {
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('view_g_coin');
                         }) 
                     }else if(swiper.activeIndex == 1) {
-                        bridge.callHandler('view_like');
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('view_like');
+                        })
                     }else {
-                        bridge.callHandler('view_comment');
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('view_comment');
+                        })
                     }
                   },
                 },
                 commentList: [],
-                gcoinList: {
-                    total: '',
-                    rank: []
-                },
+                gcoinList: {},
                 popularityList: [],
                 start: 0,
                 num: 10,
                 showLoading: false,
                 showLoading2: false,
-                loadingBig: true,
+                // loadingBig: true,
                 havedlast: false,
                 idx: 0,
                 idx1: 0
@@ -219,7 +252,7 @@
                 }).then(function(res){
                     if(res.status == 200) {
                         self.gcoinList = res.data;
-                        self.loadingBig = false;
+                        // self.loadingBig = false;
                         console.log(self.gcoinList)
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
@@ -236,7 +269,7 @@
                     })
                 });
             }else {
-                self.loadingBig = false;
+                // self.loadingBig = false;
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                 })
@@ -369,4 +402,11 @@
         from {background: url(../../images/pic_loading_1.png);background-size: 100% auto;}
         to {background: url(../../images/pic_loading_2.png);background-size: 100% auto;}
     }
+    .left {
+    opacity: 0;
+    transition: opacity 0.3s;
+ }
+.left_show {
+    opacity: 1;
+}
 </style>
