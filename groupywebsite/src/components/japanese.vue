@@ -54,7 +54,7 @@
           <!-- <video id="video1" playsinline preload="load" controls src="/static/video/cast.mp4" width="100%">
             您的浏览器不支持HTML5
         </video> -->
-        <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=11752188&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
+        <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=11752211&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
           <p class="video_title">CAST</p>
           <p class="video_desc">CastがGroupyに参加決定！</p>
         </li>
