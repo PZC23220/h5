@@ -74,7 +74,7 @@
             </ul>
         </div>
         <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>投稿</span></div>
-        <div class="publich_tips" v-show="commentList.length == 0"><img src="../../images/tips_edit.png" alt="">投稿して<br>盛り上がろう</div>
+        <div class="publich_tips" v-show="commentList.length == 0 && idx!=0"><img src="../../images/tips_edit.png" alt="">投稿して<br>盛り上がろう</div>
         <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
         </div> -->
