@@ -6,6 +6,52 @@
                     <p>読み込み中</p>
                     <span></span>
                 </div>
+                <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
+                    <li class="defalt_msg" :class="{'firstLi':loadingBig}">
+                        <div class="userinfo">
+                            <img :src="'/static/images/default_img.png'" alt="">
+                            <span></span>
+                            <i></i>               
+                        </div>
+                        <div class="comment_content">
+                            <p></p>
+                            <div class="comment_img"></div>                      
+                        </div>
+                    </li>
+                    <li class="defalt_msg">
+                        <div class="userinfo">
+                            <img :src="'/static/images/default_img.png'" alt="">
+                            <span></span>
+                            <i></i>               
+                        </div>
+                        <div class="comment_content">
+                            <p></p>
+                            <div class="comment_img"></div>                      
+                        </div>
+                    </li>
+                    <li class="defalt_msg">
+                        <div class="userinfo">
+                            <img :src="'/static/images/default_img.png'" alt="">
+                            <span></span>
+                            <i></i>               
+                        </div>
+                        <div class="comment_content">
+                            <p></p>
+                            <div class="comment_img"></div>                      
+                        </div>
+                    </li>
+                    <li class="defalt_msg">
+                        <div class="userinfo">
+                            <img :src="'/static/images/default_img.png'" alt="">
+                            <span></span>
+                            <i></i>               
+                        </div>
+                        <div class="comment_content">
+                            <p></p>
+                            <div class="comment_img"></div>                      
+                        </div>
+                    </li>
+                </div>
                 <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
                     <div class="userinfo">
                         <img :src="comment.avatar" alt="">
@@ -20,7 +66,7 @@
                         </div>                      
                     </div>
                 </li>
-                <div class="default_page" v-show="commentList.length == 0">
+                <div class="default_page" v-show="commentList.length == 0 && idx!=0">
                     <img src="../../images/default_no message.png" alt="">
                     <p>まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう</p>
                 </div>
@@ -29,9 +75,9 @@
         </div>
         <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>投稿</span></div>
         <div class="publich_tips" v-show="commentList.length == 0"><img src="../../images/tips_edit.png" alt="">投稿して<br>盛り上がろう</div>
-        <div class="bigLoading" v-show="loadingBig">
+        <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -51,7 +97,8 @@
                 showLoading2: false,
                 loadingBig: true,
                 havedlast: false,
-                publishLink: ''
+                publishLink: '',
+                idx:0
             }
         },
         methods: {
@@ -65,9 +112,9 @@
                         rows: self.num
                     }
                 }).then(function(res){
+                    self.idx++;
                     self.loadingBig = false;
                     self.showLoading = false;
-                    console.log(self.loadingBig)
                     console.log(res.data);
                     if(res.data.length > 0 ) {
                         for(var i=0;i<res.data.length;i++){
@@ -112,6 +159,23 @@
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('showImage', {'url': url})
                 })
+            },
+            refresh() {
+                var self = this;
+                http.get('/post/list',{
+                    params: {
+                        targetType: 3,
+                        targetId: self.$route.query.groupId,
+                        from: 0,
+                        rows: self.num
+                    }
+                }).then(function(res){
+                    self.showLoading2 = false;
+                     self.commentList = res.data;                  
+                    console.log(self.commentList);
+                }).catch(function(){
+                    self.showLoading2 = false;
+                });
             }
         },
         mounted() {
@@ -119,7 +183,22 @@
           self.box = self.$refs.viewBox
           self.box.addEventListener('scroll', () => {
             if(document.querySelector('.firstLi')) {
-                  if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom)  == parseInt(document.querySelector('.content').getBoundingClientRect().bottom)) {
+                  if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
+                    self.showLoading2 = true;
+                    setTimeout(() => {
+                        self.refresh();
+                    },500)
+                  }
+            }else {
+              if(parseInt(document.querySelector('.default_page').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
+                self.showLoading2 = true;
+                setTimeout(() => {
+                    self.refresh()
+                },500)
+              }
+            }
+            if(document.querySelector('.lastLi')) {
+                if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom)  == parseInt(document.querySelector('.content').getBoundingClientRect().bottom)) {
                     if(self.havedlast == true) {
                         self.showLoading = true;
                         setTimeout(() => {
@@ -133,50 +212,13 @@
                         },500)
                     }                    
                   }
-                  if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
-                    self.showLoading2 = true;
-                    setTimeout(() => {
-                        http.get('/post/list',{
-                            params: {
-                                targetType: 3,
-                                targetId: self.$route.query.groupId,
-                                from: 0,
-                                rows: self.num
-                            }
-                        }).then(function(res){
-                            self.showLoading2 = false;
-                             self.commentList = res.data;                  
-                            console.log(self.commentList);
-                        }).catch(function(){
-
-                        });
-                    },500)
-                  }
-            }else {
-
-              if(parseInt(document.querySelector('.default_page').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
-                self.showLoading2 = true;
-                setTimeout(() => {
-                    http.get('/post/list',{
-                        params: {
-                            targetType: 3,
-                            targetId: self.$route.query.groupId,
-                            from: 0,
-                            rows: self.num
-                        }
-                    }).then(function(res){
-                        self.showLoading2 = false;
-                         self.commentList = res.data;
-                    }).catch(function(){
-
-                    });
-                },500)
-              }
             }
            }, false)
-          // document.ontouchmove = function(event) {
-          //   event.preventDefault();
-          // }
+          window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.registerHandler('comment_refresh', function() {
+                    self.refresh();
+                })
+          });
         },
         created() {
             var self = this;
@@ -254,5 +296,33 @@
     .comment_list {
         height: calc(100vh + 10px;)
     }
-    
+    .defalt_msg {
+        .userinfo {
+            span {
+                width: 50px;
+                height: 14px;
+                background: #eee;
+                margin-top:8px;
+            }
+        }
+        .comment_content {
+            >* {
+
+                margin-top:10px;
+                background: #eee;
+                height: 14px;
+            }
+        }
+    }
+    .page_defalt {
+        height: auto;
+        opacity: 0.8;
+        transition: all 0.3s;
+    }
+    .page_defalt_none {
+        height: 0;
+        padding:0;
+        opacity: 0;
+        border: none;
+    }
 </style>

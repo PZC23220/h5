@@ -137,8 +137,8 @@
 		.video_poster {
 			display: block;
 			width: 100%;
-			height: calc((100vw - 36px)/2 * 11/9);
-			max-height: calc((500px - 36px)/2 * 11/9);
+			// height: calc((100vw - 36px)/2 * 11/9);
+			// max-height: calc((500px - 36px)/2 * 11/9);
 		}
 		.btn_play {
 			position: absolute;

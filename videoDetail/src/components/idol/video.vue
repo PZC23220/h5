@@ -19,7 +19,7 @@
             <swiper-slide id="swiper1">
                 <div class="income">
                     <span class="detail_title" @click="getGcoin()">獲得したコイン</span>
-                    <span><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':gcoinList.total || gcoinList.total == 0}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
+                    <span><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':gcoinList.total || gcoinList.total == 0}">{{Number(gcoinList.total).toLocaleString()}}</i></span>
                 </div>
                 <div class="income_details">
                     <p class="detail_title">収入詳細</p>
@@ -30,35 +30,35 @@
                         </li> -->
                         <li>
                             <img class="gift" src="../../images/pic_star.png" alt="">
-                            <p><span class="left" :class="{'left_show':gcoinList.gift}">&times;{{gcoinList.gift?gcoinList.gift[0].giftCount:0}}</span></p>
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[0].giftCount}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="../../images/pic_heart.png" alt="">
-                            <p><span class="left" :class="{'left_show':gcoinList.gift}">&times;{{gcoinList.gift?gcoinList.gift[1].giftCount:0}}</span></p>
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[1].giftCount}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="../../images/pic_rose.png" alt="">
-                            <p><span class="left" :class="{'left_show':gcoinList.gift}">&times;{{gcoinList.gift?gcoinList.gift[2].giftCount:0}}</span></p>
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[2].giftCount}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="../../images/pic_diamond.png" alt="">
-                            <p><span class="left" :class="{'left_show':gcoinList.gift}">&times;{{gcoinList.gift?gcoinList.gift[3].giftCount:0}}</span></p>
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[3].giftCount}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="../../images/pic_bear.png" alt="">
-                            <p><span class="left" :class="{'left_show':gcoinList.gift}">&times;{{gcoinList.gift?gcoinList.gift[4].giftCount:0}}</span></p>
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[4].giftCount}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="../../images/pic_tree.png" alt="">
-                            <p><span class="left" :class="{'left_show':gcoinList.gift}">&times;{{gcoinList.gift?gcoinList.gift[5].giftCount:0}}</span></p>
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[5].giftCount}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="../../images/pic_tower.png" alt="">
-                            <p><span class="left" :class="{'left_show':gcoinList.gift}">&times;{{gcoinList.gift?gcoinList.gift[6].giftCount:0}}</span></p>
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[6].giftCount}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="../../images/pic_castle.png" alt="">
-                            <p><span class="left" :class="{'left_show':gcoinList.gift}">&times;{{gcoinList.gift?gcoinList.gift[7].giftCount:0}}</span></p>
+                            <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[7].giftCount}}</span></p>
                         </li>
                     </ul>
                 </div>
@@ -72,7 +72,7 @@
                             <span class="level_color" v-if="key > 2">{{key+1}}</span>
                             <img class="avatar" :src="fans.userFans?fans.userFans.avatar: ''" alt="">
                             <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
-                            <img :src="fans.userFans?('/static/images/icon_level_'+ f(ans.userFans.level+1) +'.png'): ''" class="level" alt="">
+                            <img :src="fans.userFans?('../../images/icon_level_'+ fans.userFans.level +'.png'): ''" class="level" alt="">
                             <i>
                                 <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{Number(fans.userFans?fans.userFans.gcoin: 0).toLocaleString()}}
                             </i>
@@ -93,7 +93,7 @@
                         <span class="level_color" v-if="key > 2">{{key+1}}</span>
                         <img class="avatar" :src="popularity.userFans?popularity.userFans.avatar:''" alt="">
                         <span>{{popularity.userFans?popularity.userFans.nickname:''}}</span>
-                        <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.level+1)+'.png'):''" class="level" alt="">
+                        <img :src="popularity.userFans?('../../images/icon_level_'+popularity.userFans.level+'.png'):''" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{Number(popularity.userFans?popularity.userFans.gcoin:'').toLocaleString()}}
                         </i>
@@ -110,11 +110,57 @@
                         <p>読み込み中</p>
                         <span></span>
                     </div>
+                    <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
+                        <li class="defalt_msg" :class="{'firstLi':loadingBig}">
+                            <div class="userinfo">
+                                <img :src="'/static/images/default_img.png'" alt="">
+                                <span></span>
+                                <i></i>               
+                            </div>
+                            <div class="comment_content">
+                                <p></p>
+                                <div class="comment_img"></div>                      
+                            </div>
+                        </li>
+                        <li class="defalt_msg">
+                            <div class="userinfo">
+                                <img :src="'/static/images/default_img.png'" alt="">
+                                <span></span>
+                                <i></i>               
+                            </div>
+                            <div class="comment_content">
+                                <p></p>
+                                <div class="comment_img"></div>                      
+                            </div>
+                        </li>
+                        <li class="defalt_msg">
+                            <div class="userinfo">
+                                <img :src="'/static/images/default_img.png'" alt="">
+                                <span></span>
+                                <i></i>               
+                            </div>
+                            <div class="comment_content">
+                                <p></p>
+                                <div class="comment_img"></div>                      
+                            </div>
+                        </li>
+                        <li class="defalt_msg">
+                            <div class="userinfo">
+                                <img :src="'/static/images/default_img.png'" alt="">
+                                <span></span>
+                                <i></i>               
+                            </div>
+                            <div class="comment_content">
+                                <p></p>
+                                <div class="comment_img"></div>                      
+                            </div>
+                        </li>
+                    </div>
                     <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                         <div class="comment_info">
                             <img class="avatar" :src="comment.avatar" alt="">
                             <span>{{comment.nickname}}</span>
-                            <img class="level" :src="'/static/images/icon_level_'+(comment.level+1)+'.png'" alt="">
+                            <img class="level" :src="'../../images/icon_level_'+comment.level+'.png'" alt="">
                             <i v-html="formatTime(comment.createTime)"></i>
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>
@@ -176,7 +222,7 @@
                 num: 10,
                 showLoading: false,
                 showLoading2: false,
-                // loadingBig: true,
+                loadingBig: true,
                 havedlast: false,
                 idx: 0,
                 idx1: 0
@@ -252,7 +298,7 @@
                 }).then(function(res){
                     if(res.status == 200) {
                         self.gcoinList = res.data;
-                        // self.loadingBig = false;
+                        self.loadingBig = false;
                         console.log(self.gcoinList)
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
@@ -269,7 +315,7 @@
                     })
                 });
             }else {
-                // self.loadingBig = false;
+                self.loadingBig = false;
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                 })
@@ -307,7 +353,24 @@
                     })
                 });
             }
-          }
+          },
+          refresh() {
+                var self = this;
+                http.get('/post/list',{
+                    params: {
+                        targetType: 1,
+                        targetId: self.$route.query.videoId,
+                        from: 0,
+                        rows: self.num
+                    }
+                }).then(function(res){
+                    self.showLoading2 = false;
+                     self.commentList = res.data;                  
+                    console.log(self.commentList);
+                }).catch(function(){
+                    self.showLoading2 = false;
+                });
+            }
         },
         computed: {
             swiper() {
@@ -318,7 +381,7 @@
             let self = this;
             self.box = document.querySelector('#swiper3');
             self.box.addEventListener('scroll', () => {
-              if(document.querySelector('.firstLi')) {
+              if(document.querySelector('.lastLi')) {
                   if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom)  == parseInt(document.querySelector('.content').getBoundingClientRect().bottom)) {
                     if(self.havedlast == true) {
                         self.showLoading = true;
@@ -333,45 +396,21 @@
                         },500)
                     }                    
                   }
-                  if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
-                    self.showLoading2 = true;
-                    setTimeout(() => {
-                        http.get('/post/list',{
-                            params: {
-                                targetType: 1,
-                                targetId: self.$route.query.videoId,
-                                from: 0,
-                                rows: self.num
-                            }
-                        }).then(function(res){
-                            self.showLoading2 = false;
-                             self.commentList = res.data;                  
-                            console.log(self.commentList);
-                        }).catch(function(){
-
-                        });
-                    },500)
-                  }
             }else {
               if(parseInt(document.querySelector('.default_page3').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
                 self.showLoading2 = true;
                 setTimeout(() => {
-                    http.get('/post/list',{
-                        params: {
-                            targetType: 1,
-                            targetId: self.$route.query.videoId,
-                            from: 0,
-                            rows: self.num
-                        }
-                    }).then(function(res){
-                        self.showLoading2 = false;
-                         self.commentList = res.data;                  
-                        console.log(self.commentList);
-                    }).catch(function(){
-
-                    });
+                    self.refresh()
                 },500)
               }
+            }
+            if(document.querySelector('.firstLi')) {
+                if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
+                    self.showLoading2 = true;
+                    setTimeout(() => {
+                       self.refresh()
+                    },500)
+                  }
             }
           }, false)
         },
@@ -403,10 +442,39 @@
         to {background: url(../../images/pic_loading_2.png);background-size: 100% auto;}
     }
     .left {
-    opacity: 0.2;
+    opacity: 0;
     transition: opacity 0.3s;
  }
 .left_show {
     opacity: 1;
 }
+    .defalt_msg {
+        .userinfo {
+            span {
+                width: 50px;
+                height: 14px;
+                background: #eee;
+                margin-top:8px;
+            }
+        }
+        .comment_content {
+            >* {
+
+                margin-top:10px;
+                background: #eee;
+                height: 14px;
+            }
+        }
+    }
+    .page_defalt {
+        height: auto;
+        opacity: 0.8;
+        transition: all 0.3s;
+    }
+    .page_defalt_none {
+        height: 0;
+        padding:0;
+        opacity: 0;
+        border: none;
+    }
 </style>
