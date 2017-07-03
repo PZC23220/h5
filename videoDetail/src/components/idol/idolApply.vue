@@ -20,7 +20,7 @@
             <h3 class="rule_tile">審査・登場について</h3>
             <div class="rule_content">
                 <p style="color: #333;padding-bottom: 20px;">      ご提出して頂いた応募資料を24時間以内審査した上で、結果をメールにてお知らせさせて頂きます。</p>
-                <p style="color: #333;text-indent: 14px;">合格のアイドルは、Groupy for idol APPをダウンロードしてご提供したアカウントやパスワードでログインしてお願いします。パスワードを変更して、Twitter 連携を追加した後、Twitterでログインできます。</p>
+                <p style="color: #333;text-indent: 14px;">合格のアイドルは、メールでお伝えするアカウントとパスワードでGroupy for idol APPにログインしてお願いします。ログイン後、パスワードの変更、Twitterとの連携、またTwitterでログインできます。</p>
             </div>
         </div>
     </div>

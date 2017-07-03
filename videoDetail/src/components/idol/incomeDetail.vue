@@ -3,16 +3,16 @@
         <div class="content" style=" top: 0;">
             <div class="income eBorder">
                 <p>
-                    <span class="detail_title">今月の収入</span>
+                    <span class="detail_title">{{income_text.today}}</span>
                     <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'video_money_show':incomeList.incomeCurrentMonth || incomeList.incomeCurrentMonth == 0}">{{incomeList.incomeCurrentMonth?Number(incomeList.incomeCurrentMonth).toLocaleString():0}}</i></span>
                 </p>
                 <p>
-                    <span class="detail_title">昨日の収入</span>
+                    <span class="detail_title">{{income_text.yesterday}}</span>
                     <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'video_money_show':incomeList.incomeYesterday || incomeList.incomeYesterday == 0}">{{incomeList.incomeYesterday?Number(incomeList.incomeYesterday).toLocaleString():0}}</i></span>
                 </p>
             </div>
             <div class="income_details eBorder">
-                <p class="detail_title">会員費</p>
+                <p class="detail_title">{{income_text.vip}}</p>
                 <ul class="income_img">
                     <li>
                         <img class="gift" src="../../images/pic_vip_free.png" alt="">
@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <div class="income_details eBorder">
-                <p class="detail_title">ギフト総数</p>
+                <p class="detail_title">{{income_text.detail}}</p>
                 <ul class="income_img">
                     <li>
                         <img class="gift" src="../../images/pic_star.png" alt="">
@@ -70,12 +70,12 @@
                 </ul>
             </div>  `
             <div class="mention_details">
-                <p class="detail_title">換金履歴</p>
+                <p class="detail_title">{{income_text.record}}</p>
                 <ul class="mention_list">
                     <li>
-                        <p>時間</p>
-                        <p>コイン数</p>
-                        <p>状態</p>
+                        <p>{{income_text.records.time}}</p>
+                        <p>{{income_text.records.num}}</p>
+                        <p>{{income_text.records.status}}</p>
                     </li>
                     <li v-for="(record,key) in incomeList.monthRecordList">
                         <p>{{formatTime(record.month)}}</p>
@@ -85,10 +85,10 @@
                 </ul>
                 <div class="default_page" v-show="!incomeList.monthRecordList" style="padding-top:32px;">
                     <img src="../../images/default_no income.png" alt="">
-                    <p>まだ換金履歴はありません</p>
+                    <p>{{income_text.records.none}}</p>
                 </div>
             </div>
-            <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">換金・振込みについて</router-link>
+            <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">{{income_text.records.exchange}}</router-link>
         </div>
         <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
@@ -105,7 +105,22 @@
             return {
                 incomeList: {},
                 // loadingBig: true,
-                idx: 0
+                idx: 0,
+                income_text: {
+                    today:'今月の収入',
+                    yesterday: '昨日の収入',
+                    vip: '会員費',
+                    detail: 'ギフト総数',
+                    record: '換金履歴',
+                    records: {
+                        time: '時間',
+                        num :'コイン数',
+                        status: '状態',
+                        none: 'まだ換金履歴はありません',
+                        exchange: '換金・振込みについて'
+                    }
+
+                }
             }
         },
         methods: {
@@ -140,7 +155,12 @@
                 }else {
                     // self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                         if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                         }
                     })
                 }
             },
@@ -150,22 +170,71 @@
             },
             changeStatus(val) {
                 let _html;
-                switch(val) {
-                    case 0:
-                        _html = '未提现'
-                        break;
-                    case 1:
-                        _html = '已提现'
-                        break;
-                    case 2:
-                        _html = '待处理'
-                        break;
-                }
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                 if(_lan === 'zh-cn') {
+                     switch(val) {
+                        case 0:
+                            _html = '未提现'
+                            break;
+                        case 1:
+                            _html = '已提现'
+                            break;
+                        case 2:
+                            _html = '待处理'
+                            break;
+                    }
+                  } else {
+                     switch(val) {
+                        case 0:
+                            _html = '未換金'
+                            break;
+                        case 1:
+                            _html = '換金完了'
+                            break;
+                        case 2:
+                            _html = '処理中'
+                            break;
+                    }
+                  }
                 return _html;
             }
         },
         created() {
             var self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                self.income_text= {
+                    today:'本月收入',
+                    yesterday: '昨日收入',
+                    vip: '会员费',
+                    detail: '礼物收入',
+                    record: '提现记录',
+                    records: {
+                        time: '时间',
+                        num :'G币值',
+                        status: '状态',
+                        none: '还没有提现记录',
+                        exchange: '汇率和提现说明'
+                    }
+
+                }
+              } else {
+                self.income_text= {
+                    today:'今月の収入',
+                    yesterday: '昨日の収入',
+                    vip: '会員費',
+                    detail: 'ギフト総数',
+                    record: '換金履歴',
+                    records: {
+                        time: '時間',
+                        num :'コイン数',
+                        status: '状態',
+                        none: 'まだ換金履歴はありません',
+                        exchange: '換金・振込みについて'
+                    }
+
+                }
+              }
             self.getIncome();
 
         }

@@ -8,21 +8,21 @@
                 <span>详情</span>
             </div> -->
             <div class="detailPages">
-                <a class="tabs active" @click="changePages(0)">コイン</a>
-                <a class="tabs" @click="changePages(1)">Like</a>
-                <a class="tabs" @click="changePages(2)">コメント</a>
+                <a class="tabs active" @click="changePages(0)">{{video_text.Gcoin}}</a>
+                <a class="tabs" @click="changePages(1)">{{video_text.like}}</a>
+                <a class="tabs" @click="changePages(2)">{{video_text.comment}}</a>
             </div>
         </div>
         <div class="content">
           <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
             <!-- slides -->
             <swiper-slide id="swiper1">
-                <div class="income">
-                    <span class="detail_title" @click="getGcoin()">獲得したコイン</span>
-                    <span><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':gcoinList.total || gcoinList.total == 0}">{{Number(gcoinList.total).toLocaleString()}}</i></span>
+                <div class="income eBorder">
+                    <span class="detail_title" @click="getGcoin()">{{video_text.income}}</span>
+                    <span><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':gcoinList.total || gcoinList.total == 0}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():'0'}}</i></span>
                 </div>
-                <div class="income_details">
-                    <p class="detail_title">収入詳細</p>
+                <div class="income_details eBorder">
+                    <p class="detail_title">{{video_text.gift}}</p>
                     <ul class="income_img">
                         <!-- <li v-for="(gif,key) in gcoinList.gift">
                             <img class="gift" :src="gif.gift.img" alt="">
@@ -63,16 +63,16 @@
                     </ul>
                 </div>
                 <div class="fans_detail">
-                    <p class="detail_title" :class="{'defalt_no' : gcoinList.rank?gcoinList.rank.length == 0:false}">貢献ランキング</p>
+                    <p class="detail_title" :class="{'defalt_no' : gcoinList.rank?gcoinList.rank.length == 0:false}">{{video_text.fans}}</p>
                     <ul class="comment_list">
                         <li v-for="(fans,key) in gcoinList.rank" style="padding: 12px 0;">
                             <span class="level_color" v-if="key == 0"><img src="../../images/icon_metal_1.png" alt=""></span>
                             <span class="level_color" v-if="key == 1"><img src="../../images/icon_metal_2.png" alt=""></span>
                             <span class="level_color" v-if="key == 2"><img src="../../images/icon_metal_3.png" alt=""></span>
                             <span class="level_color" v-if="key > 2">{{key+1}}</span>
-                            <img class="avatar" :src="fans.userFans?fans.userFans.avatar: ''" alt="">
+                            <img class="avatar" :src="fans.userFans?fans.userFans.avatar: '/static/images/default_img.png'" alt="">
                             <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
-                            <img :src="fans.userFans?('../../images/icon_level_'+ fans.userFans.level +'.png'): ''" class="level" alt="">
+                            <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform+1) +'.png'): ''" class="level" alt="">
                             <i>
                                 <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{Number(fans.userFans?fans.userFans.gcoin: 0).toLocaleString()}}
                             </i>
@@ -80,7 +80,7 @@
                     </ul>
                     <div class="default_page" v-show="gcoinList.rank?gcoinList.rank.length == 0:false" style="padding-top: 32px;">
                         <img src="../../images/default_no coin.png" alt="">
-                        <p>まだコインはないようです<br>動画を投稿・シェアしてギフトを貰っちゃおう</p>
+                        <p v-html="video_text.noneGcoin"></p>
                     </div>
                 </div>
             </swiper-slide>
@@ -91,9 +91,9 @@
                         <span class="level_color" v-if="key == 1"><img src="../../images/icon_metal_2.png" alt=""></span>
                         <span class="level_color" v-if="key == 2"><img src="../../images/icon_metal_3.png" alt=""></span>
                         <span class="level_color" v-if="key > 2">{{key+1}}</span>
-                        <img class="avatar" :src="popularity.userFans?popularity.userFans.avatar:''" alt="">
+                        <img class="avatar" :src="popularity.userFans?popularity.userFans.avatar:'/static/images/default_img.png'" alt="">
                         <span>{{popularity.userFans?popularity.userFans.nickname:''}}</span>
-                        <img :src="popularity.userFans?('../../images/icon_level_'+popularity.userFans.level+'.png'):''" class="level" alt="">
+                        <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.levelPlatform+1)+'.png'):''" class="level" alt="">
                         <i>
                             <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{Number(popularity.userFans?popularity.userFans.gcoin:'').toLocaleString()}}
                         </i>
@@ -101,7 +101,7 @@
                 </ul>
                 <div class="default_page" v-show="popularityList.length == 0">
                     <img src="../../images/default_no comment.png" alt="">
-                    <p>まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう</p>
+                    <p v-html="video_text.noneLike"></p>
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper3">
@@ -158,16 +158,16 @@
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                         <div class="comment_info">
-                            <img class="avatar" :src="comment.avatar" alt="">
+                            <img class="avatar" :src="comment.avatar?comment.avatar:'/static/images/default_img.png'" alt="">
                             <span>{{comment.nickname}}</span>
-                            <img class="level" :src="'../../images/icon_level_'+comment.level+'.png'" alt="">
+                            <img class="level" :src="'/static/images/icon_level_'+(comment.levelPlatform+1)+'.png'" alt="">
                             <i v-html="formatTime(comment.createTime)"></i>
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>
                     </li>
                     <div class="default_page default_page3" v-show="commentList.length == 0">
                         <img src="../../images/default_no like.png" alt="">
-                        <p>まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
+                        <p v-html="video_text.noneComment"></p>
                     </div>
                     <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div>
                 </ul>
@@ -225,7 +225,18 @@
                 loadingBig: true,
                 havedlast: false,
                 idx: 0,
-                idx1: 0
+                idx1: 0,
+                video_text: {
+                    Gcoin: 'コイン',
+                    like: 'Like',
+                    comment: 'コメント',
+                    income: '収入詳細',
+                    gift: '獲得したコイン',
+                    fans: '貢献ランキング',
+                    noneGcoin: '还没有收到粉丝的G币<br>動画を投稿・シェアしてギフトを貰っちゃおう',
+                    noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
+                    noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
+                }
             }
         },
         methods: {
@@ -317,7 +328,12 @@
             }else {
                 self.loadingBig = false;
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                     if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                     }else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                     }
                 })
             }
           },
@@ -416,6 +432,33 @@
         },
         created() {
             var self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 self.video_text= {
+                    Gcoin: 'G币',
+                    like: '人气',
+                    comment: '评论',
+                    income: '本视频总收入',
+                    gift: '收入详情',
+                    fans: '粉丝排行',
+                    noneGcoin: 'まだコインはないようです<br>分享视频能让更多粉丝关注',
+                    noneLike: '还没有收到粉丝的点赞人气<br>分享视频能让更多粉丝关注',
+                    noneComment: '还没有收到粉丝的评论<br>分享视频能让更多粉丝关注'
+
+                }
+              } else {
+                self.video_text= {
+                    Gcoin: 'コイン',
+                    like: 'Like',
+                    comment: 'コメント',
+                    income: '収入詳細',
+                    gift: '獲得したコイン',
+                    fans: '貢献ランキング',
+                    noneGcoin: 'まだコインはないようです<br>動画を投稿・シェアしてギフトを貰っちゃおう',
+                    noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
+                    noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
+                }
+              }
             self.getGcoin();
             self.getPopularity();
             self.getComments(); 

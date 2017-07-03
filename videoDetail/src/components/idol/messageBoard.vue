@@ -3,7 +3,7 @@
         <div class="content" ref="viewBox" style="top: 0">
             <ul class="comment_list dynamic">
                 <div class="loading_top" :class="{'loading_top_show': showLoading2}">
-                    <p>読み込み中</p>
+                    <p>{{msg_text.load}}</p>
                     <span></span>
                 </div>
                 <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
@@ -56,7 +56,7 @@
                     <div class="userinfo">
                         <img :src="comment.avatar" alt="">
                         <span>{{comment.nickname}}</span>
-                        <img :src="comment.level?'/static/images/icon_level_'+(comment.level+1)+'.png':''" alt="" v-if="comment.userType == 'fans'" class="level">
+                        <img :src="comment.level?'/static/images/icon_level_'+(comment.levelPlatform+1)+'.png':''" alt="" v-if="comment.userType == 'fans'" class="level">
                         <i v-html="formatTime(comment.createTime)"></i>               
                     </div>
                     <div class="comment_content">
@@ -68,13 +68,13 @@
                 </li>
                 <div class="default_page" v-show="commentList.length == 0 && idx!=0">
                     <img src="../../images/default_no message.png" alt="">
-                    <p>まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう</p>
+                    <p v-html="msg_text.noneComment"></p>
                 </div>
-                <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div>
+                <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">{{msg_text.load}}</p><p v-show="havedlast">{{msg_text.loadAll}}</p></div>
             </ul>
         </div>
-        <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>投稿</span></div>
-        <div class="publich_tips" v-show="commentList.length == 0 && idx!=0"><img src="../../images/tips_edit.png" alt="">投稿して<br>盛り上がろう</div>
+        <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div>
+        <div class="publich_tips" v-show="commentList.length == 0 && idx!=0"><img src="../../images/tips_edit.png" alt=""><em v-html="msg_text.pubMsg"></em></div>
         <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
         </div> -->
@@ -98,7 +98,15 @@
                 loadingBig: true,
                 havedlast: false,
                 publishLink: '',
-                idx:0
+                idx:0,
+                msg_text: {
+                    publish: '投稿',
+                    pubMsg: '投稿して<br>盛り上がろう',
+                    noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
+                    load: '読み込み中',
+                    loadAll: '全て表示されました'
+
+                }
             }
         },
         methods: {
@@ -127,28 +135,17 @@
                 }).catch(function(){
                     self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                        if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                         }
                     })
                 });
             },
             formatTime(key) {
                 let timer = new Date(key);
                 return timer.Format('MM.dd') + '&nbsp;' + timer.Format('hh:mm');
-            },
-            changeStatus(val) {
-                let _html;
-                switch(val) {
-                    case 0:
-                        _html = '未提现'
-                        break;
-                    case 1:
-                        _html = '已提现'
-                        break;
-                    case 2:
-                        _html = '待处理'
-                        break;
-                }
-                return _html;
             },
             publishComment() {
                 window.setupWebViewJavascriptBridge(function(bridge) {
@@ -222,7 +219,25 @@
         },
         created() {
             var self = this;
-            // alert(self.$route.query.groupId)
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 self.msg_text= {
+                    publish: '发表',
+                    pubMsg: '发表评论',
+                    noneComment: '还没有留言<br>去发布留言，让粉丝来互动吧！',
+                    load: '加载中',
+                    loadAll: '已加载全部内容'
+
+                }
+              } else {
+                self.msg_text= {
+                    publish: '投稿',
+                    pubMsg: '投稿して<br>盛り上がろう',
+                    noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
+                    load: '読み込み中',
+                    loadAll: '全て表示されました'
+                }
+              }
             self.getComments();
 
         }
