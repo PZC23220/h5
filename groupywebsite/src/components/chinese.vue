@@ -53,16 +53,18 @@
       <h4 class="desc">来自爱豆的邀请函！陪着爱豆在Groupy重新出发</h4>
       <ul class="videos_list">
         <li style="width: 45%;">
-          <video id="video1" playsinline preload="load" controls src="/static/video/cast.mp4" width="100%">
+          <!-- <video id="video1" playsinline preload="load" controls src="/static/video/cast.mp4" width="100%">
             您的浏览器不支持HTML5
-        </video>
+        </video> -->
+        <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=11752188&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
           <p class="video_title">CAST</p>
           <p class="video_desc">日本偶像团体CAST正式入驻Groupy!  能歌善舞，还会舞台剧。。。一切尽在Groupy</p>
         </li>
         <li style="width: 45%;">
-          <video id="video2" playsinline preload="load" controls src="/static/video/kuno1.mp4" width="100%">
+          <!-- <video id="video2" playsinline preload="load" controls src="/static/video/kuno1.mp4" width="100%">
             您的浏览器不支持HTML5
-        </video>
+        </video> -->
+        <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=11752188&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
           <p class="video_title">KUNO1</p>
           <p class="video_desc">日本偶像团体KUNO1入驻Groupy，带来一波日风摇滚。。。你准备好了吗！ </p>
         </li>
@@ -110,34 +112,34 @@
       }
     },
     mounted() {
-      var self = this;
-      var myVideo = document.getElementById('video1')//获取video元素
-      var myVideo2 = document.getElementById('video2')//获取video元素
-       var _box = document.querySelector('.main');
-       var _con = document.querySelector('.videos_list');
-       _box.addEventListener('scroll', () => {
-              if(_con.getBoundingClientRect().bottom >450 &&  _con.getBoundingClientRect().bottom < 1150 && self.idx <1) {
-                self.idx++;
-                  myVideo.play()
-                  setTimeout(() => {
-                    myVideo2.play()
-                  },24000)
-              }
-          }, false)
-       myVideo.onplay = function() {
-        myVideo2.pause()
-       }
-       myVideo2.onplay = function() {
-        myVideo.pause()
-       }
-       myVideo.onended = function() {
-        myVideo.play()
-        myVideo.pause()
-       }
-       myVideo2.onended = function() {
-        myVideo2.play()
-        myVideo2.pause()
-       }
+      // var self = this;
+      // var myVideo = document.getElementById('video1')//获取video元素
+      // var myVideo2 = document.getElementById('video2')//获取video元素
+      //  var _box = document.querySelector('.main');
+      //  var _con = document.querySelector('.videos_list');
+      //  _box.addEventListener('scroll', () => {
+      //         if(_con.getBoundingClientRect().bottom >450 &&  _con.getBoundingClientRect().bottom < 1150 && self.idx <1) {
+      //           self.idx++;
+      //             myVideo.play()
+      //             setTimeout(() => {
+      //               myVideo2.play()
+      //             },24000)
+      //         }
+      //     }, false)
+      //  myVideo.onplay = function() {
+      //   myVideo2.pause()
+      //  }
+      //  myVideo2.onplay = function() {
+      //   myVideo.pause()
+      //  }
+      //  myVideo.onended = function() {
+      //   myVideo.play()
+      //   myVideo.pause()
+      //  }
+      //  myVideo2.onended = function() {
+      //   myVideo2.play()
+      //   myVideo2.pause()
+      //  }
     }
   }
 </script>
