@@ -17,56 +17,41 @@
     export default {
         data() {
             return {
-                content: '',
-                img1: '',
-                img2: '',
-                img3: '',
-                imgs: []
+                content: ''
             }
         },
         methods: {
           publish(token) {
                 let self = this;
-                if(self.img1 != '') {
-                    self.imgs.push(self.img1)
-                }
-                if(self.img2 != '') {
-                    self.imgs.push(self.img2)
-                }
-                if(self.img3 != '') {
-                    self.imgs.push(self.img3)
-                }
-                if(self.content != '' || self.imgs.length > 0) {
-
-                    let _data = {
-                            targetType: 3,
-                            targetId:self.$route.query.groupId,
-                            content: self.content,
-                            imgs: self.imgs
-                    }
-                    alert(JSON.stringify(_data))
+                if(self.content !=""){
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
                     }else {
                         http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                     }
-                    http.post('/post/add',JSON.stringify(_data)).then(function(res){
+                    let _data = {
+                        msg:self.content,
+                    }
+                    http.post('/interact/fbsumit',JSON.stringify(_data)).then(function(res){
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('comment_publish_result', {"status": true})
+                            bridge.callHandler('makeToast', '举报成功！');
+                            setTimeout(function(){
+                                self.close();
+                            },1500)
                         })
                     }).catch(function(err){
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                         })
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'3','targetId':self.$route.query.targetId}, function responseCallback(responseData) {
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.$route.query.token = responseData.token;
                             })
                         })
                     });
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', '请添加文字或图片');
+                        bridge.callHandler('makeToast', '请输入内容');
                     })
                 }
           },
@@ -92,25 +77,6 @@
                 bridge.callHandler('close');
             })
           },
-          delImg(val) {
-            if(val == 1) {
-                this.img1 = '';
-            }
-            if(val == 2) {
-                this.img1 = '';
-            }
-            if(val == 3) {
-                this.img1 = '';
-            }
-          },
-          autoHeight(val) {
-            let _body = document.querySelector('body');
-            _body.style.height = 'calc(100vh - 22px - ' + val/2 + 'px)';
-            let _bottom = document.querySelector('.addImg');
-            _bottom.style.height = 'calc(20px + ' + val/2 + 'px)';
-            let _tex = document.querySelector('textarea');
-            _tex.style.height = 'calc(100vh - 130px - ' + val/2 + 'px)';
-          }
         },
         mounted() {
             var self = this;
@@ -132,6 +98,7 @@
         box-sizing: border-box;
         color: #333;
         overflow: auto;
+        font-size: 14px;
     }
     .header {
         padding: 0 12px;
