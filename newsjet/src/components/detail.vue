@@ -89,6 +89,18 @@
         i {
             color: #151515;
         }
+        a:link {
+            color: #666666;
+        }
+        a:visited {
+            color: #666666;
+        }
+        a:hover {
+            color: #666666;
+        }
+        a:active {
+            color: #666666;
+        }
     }
     article {
       h2 {
@@ -111,6 +123,13 @@
           display: inline-block;
         }
       }
+    }
+  }
+  @media screen and (max-width: 980px) {
+    .news_content {
+      max-width: 980px;
+      padding: 0 12px;
+      box-sizing: border-box;
     }
   }
   .footer {

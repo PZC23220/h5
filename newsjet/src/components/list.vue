@@ -42,4 +42,16 @@
     width: 100%;
   }
 }
+@media screen and (max-width: 980px) {
+  .news{
+    max-width: 980px;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
+    min-height: calc(100vh - 99px - 112px - 159px);
+  }
+  #news .news_list h3 {
+    max-width: 810px;
+  }
+}
 </style>

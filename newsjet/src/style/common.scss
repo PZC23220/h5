@@ -9,6 +9,18 @@
         i {
             color: #151515;
         }
+        a:link {
+            color: #666666;
+        }
+        a:visited {
+            color: #666666;
+        }
+        a:hover {
+            color: #666666;
+        }
+        a:active {
+            color: #666666;
+        }
     }
     .title {
         background: url(../img/Artboard.png);
@@ -49,12 +61,20 @@
             float: left;
             max-width: 1012px;
         }
-        h3 a {
+        h3 a:link {
             font-size: 18px;
             color: #666666;
         }
+        h3 a:visited {
+            color: #666666;
+            opacity: 1;
+        }
         h3 a:hover {
             color: #F3B714;
+        }
+        h3 a:active {
+            color: #F3B714;
+            opacity: 0.7;
         }
     }
     .btn {

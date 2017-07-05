@@ -23,7 +23,7 @@
         <p>たった一分でトップニュースを<i style="color:#F3BB23;">一瞬チェック</i>できる<br><i style="color: #FF9600;">無料</i>のニュースアプリ</p>
         <a href="http://newsjet.co/" target="_blank" class="btn">公式サイト<span></span></a>
       </div>
-      <div class="border"><span style="left: 0;top: 0;">2016.08<i style="margin-left: 14.5px;"></i></span><p></p><span style="right: 0;bottom: 0;"><i style="margin-right: 14.5px;margin-left: 0.5px;"></i>2017.06</span></div>
+      <div class="border"><span style="left: 0;top: 0;">2016.08<i style="margin-left: 13px;"></i></span><p></p><span style="right: 0;bottom: 0;"><i style="margin-right: 14.5px;margin-left: 0.5px;"></i>2017.06</span></div>
       <div class="right">
         <div class="logo"></div>
         <p>ファンが共にアイドルを<i style="color:#FC6B9F;">応援</i>できる<br><i style="color: #00B4BC;">メンバシップ制</i>アプリ</p>
@@ -40,7 +40,7 @@
             <li><h5><span></span>社名</h5><p>株式会社NewsJet</p></li>
             <li><h5><span></span>設立日</h5><p>2017年3月29日</p></li>
             <li><h5><span></span>資本金</h5><p>500万円</p></li>
-            <li><h5><span></span>事業内容</h5><p>ニュースアプリケーションの開発・運営</p></li>
+            <li><h5><span></span>事業内容</h5><p>アプリケーションの開発・運営</p></li>
             <li><h5><span></span>所在地</h5><p>東京都墨田区両国2丁目2-10</p></li>
             <li><h5><span></span>本社名</h5><p>広州市雲動科技有限公司</p></li>
             <li><h5><span></span>所在地</h5><p>中国広東省広州市天河区中山大道西89番天河ソフトウェアパークA#16F北9-12</p></li>
@@ -85,8 +85,8 @@
       <div class="contact_content">
         <h3 class="title"></h3>
         <h4 class="subtitle">お問合せ</h4>
-          <p>サービス利用者の皆様へ<br><br>ニュースジェットをご利用いただき誠にありがとうございます。<br><br>ご意見、ご質問のお申出は、下記の窓口までお願い致します。</p>
-          <p style="font-size: 22px;margin-top: 38px;">E-mail：contact@newsjet-inc.com<br><br>Business: business@newsjet-inc.com</p>
+          <p>ご意見、ご質問のお申出は、下記の窓口までお願い致します。</p>
+          <p style="font-size: 22px;margin-top: 38px;">E-mail：contact@newsjet-inc.com<br><br><i style="font-size: 18px;">業務提携･お仕事の依頼等はこちらの専用窓口までお願い致します。</i><br><br>Business: business@newsjet-inc.com</p>
           <p style="background: #FFFFFF;width: 88px;height: 6px;margin: 56px auto 0;"></p>
       </div>
     </div>
@@ -219,7 +219,7 @@
         overflow: hidden;
     }
     background: url(../img/bg_introduction.png);
-    background-size: 100% auto;
+    background-size: 100% 100%;
     padding: 55px 0 60px;
     color: #fff;
     .title {
@@ -245,7 +245,7 @@
       float: left;
       div:first-child {
         width: 171px;
-        margin-left: calc(1200px * 0.21);
+        margin-left: calc(1200px * 0.23);
         text-align: center;
         span {
           display: block;
@@ -256,9 +256,12 @@
           background-position: 0 -635px;
         }
       }
+      img {
+        width: 100%;
+      }
       div:last-child {
         width: 219px;
-        margin-left: calc(1200px * 0.065);
+        margin-left: calc(1200px * 0.08);
         text-align: center;
         span {
           display: block;
@@ -300,7 +303,7 @@
   }
   #contact {
     background: url(../img/bg_contact.png);
-    background-size: 100% auto;
+    background-size: 100% 100%;
     padding: 47px 0 87px;
     .contact_content {
       max-width: 1200px;
@@ -322,6 +325,34 @@
       font-size: 28px;
       color: #EAFFFF;
        margin-bottom: 55px;
+    }
+  }
+  @media screen and (max-width: 980px) {
+    #product,#contact, #introduction .introduction_content,#news{
+      max-width: 980px;
+    }
+    #product .left,#product .right {
+      width: 400px;
+    }
+    #introduction .right div:first-child {
+      margin-left: calc(980px * 0.22);
+    }
+    #introduction .right div:last-child {
+      margin-left: calc(980px * 0.06);
+    }
+    #introduction .introduction_list li {
+      padding-left: 12px;
+    }
+    #introduction .introduction_list p {
+      max-width: 380px;
+    }
+    #news {
+      padding-left: 12px;
+      padding-right: 12px;
+      box-sizing: border-box;
+    }
+    #news .news_list h3 {
+      max-width: 810px;
     }
   }
 </style>

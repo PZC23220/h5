@@ -87,6 +87,8 @@
         }
         span {
           font-size: 14px;
+          opacity: 0.8;
+          font-weight: 100;
         }
       }
       .last {
@@ -101,6 +103,17 @@
     height: calc( 100vh - 99px);
     overflow: auto;
     overflow-x: hidden;
+  }
+  @media screen and (max-width: 980px) {
+    .header .header_content{
+      max-width: 980px;
+    }
+    .header .last {
+        margin-left: 50px;
+    }
+    .logo {
+      margin-left: 12px;
+    }
   }
   // @font-face{
   //     font-family: 'bige';
