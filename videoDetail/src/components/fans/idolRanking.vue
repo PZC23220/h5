@@ -132,8 +132,7 @@
         data() {
             return {
                 rakingList: {},
-                loadingBig: true,
-                // errorImg01: 'this.src="' + require('../../images/default_img.png') + '"' 
+                loadingBig: true
             }
         },
         methods: {
@@ -171,7 +170,6 @@
                     })
                 }
             }).catch(function(err){
-                console.log(err.response);
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                         self.getRanking(responseData.token);
@@ -179,6 +177,14 @@
                 })
             });
           }
+        },
+        mounted() {
+            var self = this;
+            window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.registerHandler('ranking_refresh', function() {
+                    self.getRanking();
+                })
+            });
         },
         computed: {
             swiper() {

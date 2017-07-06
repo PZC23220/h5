@@ -163,21 +163,15 @@
             }else {
                 http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
             }
-            http.get('/ranking/idols',{
+            http.get('/statistic/heat',{
                 params: {
-                    filter: val
+                    idolId: self.$route.query.idolId
                 }
             }).then(function(res){
                 self.loadingBig = false;
                 if(res.status == 200) {
-                    if(val == 'all') {
                         self.rakingList = res.data;
-                    }else {
-                        self.rakingListToday = res.data;
-                    }
-                    
                     console.log(self.rakingList)
-                    console.log(self.rakingListToday)
                 }else {
                     WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
@@ -202,11 +196,7 @@
         },
         created() {
             var self = this;
-            self.getRanking('today');
-            if(self.$route.query.type =='all') {
-                self.swiperOption.initialSlide = 1;
-            }
-            self.getRanking('all');
+            self.getRanking();
         }
     }
 </script>

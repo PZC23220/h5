@@ -11,44 +11,44 @@
                         <div class="userinfo">
                             <img :src="'/static/images/default_img.png'" alt="">
                             <span></span>
-                            <i></i>               
+                            <i></i>
                         </div>
                         <div class="comment_content">
                             <p></p>
-                            <div class="comment_img"></div>                      
+                            <div class="comment_img"></div>
                         </div>
                     </li>
                     <li class="defalt_msg">
                         <div class="userinfo">
                             <img :src="'/static/images/default_img.png'" alt="">
                             <span></span>
-                            <i></i>               
+                            <i></i>
                         </div>
                         <div class="comment_content">
                             <p></p>
-                            <div class="comment_img"></div>                      
+                            <div class="comment_img"></div>
                         </div>
                     </li>
                     <li class="defalt_msg">
                         <div class="userinfo">
                             <img :src="'/static/images/default_img.png'" alt="">
                             <span></span>
-                            <i></i>               
+                            <i></i>
                         </div>
                         <div class="comment_content">
                             <p></p>
-                            <div class="comment_img"></div>                      
+                            <div class="comment_img"></div>
                         </div>
                     </li>
                     <li class="defalt_msg">
                         <div class="userinfo">
                             <img :src="'/static/images/default_img.png'" alt="">
                             <span></span>
-                            <i></i>               
+                            <i></i>
                         </div>
                         <div class="comment_content">
                             <p></p>
-                            <div class="comment_img"></div>                      
+                            <div class="comment_img"></div>
                         </div>
                     </li>
                 </div>
@@ -57,13 +57,13 @@
                         <img :src="comment.avatar" alt="">
                         <span>{{comment.nickname}}</span>
                         <img :src="comment.level?'/static/images/icon_level_'+(comment.levelPlatform+1)+'.png':''" alt="" v-if="comment.userType == 'fans'" class="level">
-                        <i v-html="formatTime(comment.createTime)"></i>               
+                        <i v-html="formatTime(comment.createTime)"></i>
                     </div>
                     <div class="comment_content">
                         <p>{{comment.content}}</p>
                         <div class="comment_img" v-if="comment.imgs?comment.imgs.length > 0:false">
                             <span :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="img in JSON.parse(comment.imgs)"><img :src="img" alt="" class="autoHeight" @click="showBigImg(img)"></span>
-                        </div>                      
+                        </div>
                     </div>
                 </li>
                 <div class="default_page" v-show="commentList.length == 0 && idx!=0">

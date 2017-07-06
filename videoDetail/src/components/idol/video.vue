@@ -74,7 +74,7 @@
                             <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
                             <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform+1) +'.png'): ''" class="level" alt="">
                             <i>
-                                <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{Number(fans.userFans?fans.userFans.gcoin: 0).toLocaleString()}}
+                                <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{fans.userFans?Number(fans.userFans.gcoin).toLocaleString(): 0}}
                             </i>
                         </li>
                     </ul>
@@ -95,7 +95,7 @@
                         <span>{{popularity.userFans?popularity.userFans.nickname:''}}</span>
                         <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.levelPlatform+1)+'.png'):''" class="level" alt="">
                         <i>
-                            <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{Number(popularity.userFans?popularity.userFans.gcoin:'').toLocaleString()}}
+                            <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{popularity.userFans?Number(popularity.userFans.gcoin).toLocaleString():'0'}}
                         </i>
                     </li>
                 </ul>
@@ -115,44 +115,44 @@
                             <div class="userinfo">
                                 <img :src="'/static/images/default_img.png'" alt="">
                                 <span></span>
-                                <i></i>               
+                                <i></i>
                             </div>
                             <div class="comment_content">
                                 <p></p>
-                                <div class="comment_img"></div>                      
+                                <div class="comment_img"></div>
                             </div>
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
                                 <img :src="'/static/images/default_img.png'" alt="">
                                 <span></span>
-                                <i></i>               
+                                <i></i>
                             </div>
                             <div class="comment_content">
                                 <p></p>
-                                <div class="comment_img"></div>                      
+                                <div class="comment_img"></div>
                             </div>
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
                                 <img :src="'/static/images/default_img.png'" alt="">
                                 <span></span>
-                                <i></i>               
+                                <i></i>
                             </div>
                             <div class="comment_content">
                                 <p></p>
-                                <div class="comment_img"></div>                      
+                                <div class="comment_img"></div>
                             </div>
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
                                 <img :src="'/static/images/default_img.png'" alt="">
                                 <span></span>
-                                <i></i>               
+                                <i></i>
                             </div>
                             <div class="comment_content">
                                 <p></p>
-                                <div class="comment_img"></div>                      
+                                <div class="comment_img"></div>
                             </div>
                         </li>
                     </div>
