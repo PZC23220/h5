@@ -23,11 +23,16 @@ import idolApply_chinese from '../components/idol/idolApply_chinese.vue';
 import incomeDetail from '../components/idol/incomeDetail.vue';
 import fansdetail from '../components/idol/fansdetail.vue';
 
+import purchaseInstructions from '../components/fans/purchaseInstructions.vue';
+import purchaseInstructions_chinese from '../components/fans/purchaseInstructions_chinese.vue';
+
 import idol_ranking from '../components/idol/ranking.vue';
 import idol_ranking_chinese from '../components/idol/ranking_chinese.vue';
 
 import idol_allRanking from '../components/idol/allRanking.vue';
-import fans_ranking from '../components/fans/ranking.vue';
+import fans_fansRanking from '../components/fans/fansRanking.vue';
+import fans_idolRanking from '../components/fans/idolRanking.vue';
+
 import idol_index from '../components/idol/index.vue';
 import fans_index from '../components/fans/index.vue';
 import fans_dynamic_comment from '../components/fans/dynamic_comment.vue';
@@ -67,12 +72,14 @@ if(Terminal.language == 'zh-cn') {
     indexLanguage.ExchangeAndWithdrawals = '/idol/ExchangeAndWithdrawals_chinese';
     indexLanguage.idolApply = '/idol/idolApply_chinese';
     indexLanguage.rule = '/idol/rule_chinese';
+    indexLanguage.purchaseInstructions = '/fans/purchaseInstructions_chinese';
 } else {
     indexLanguage.ranking = '/idol/ranking_japanese';
     indexLanguage.copyright = '/idol/copyright_japanese';
     indexLanguage.ExchangeAndWithdrawals = '/idol/ExchangeAndWithdrawals_japanese';
     indexLanguage.idolApply = '/idol/idolApply_japanese';
     indexLanguage.rule = '/idol/rule_japanese';
+    indexLanguage.purchaseInstructions = '/fans/purchaseInstructions_japanese';
 }
 
 console.log(indexLanguage)
@@ -182,8 +189,20 @@ export default new VueRouter({
             path: '/idol/idolApply_chinese',
             component: idolApply_chinese
         },{
-            path: '/fans/ranking',
-            component: fans_ranking   
+            path: '/fans/fansRanking',
+            component: fans_fansRanking   
+        },{
+            path: '/fans/idolRanking',
+            component: fans_idolRanking   
+        },{
+            path: '/fans/purchaseInstructions',
+            redirect: indexLanguage.purchaseInstructions   
+        },{
+            path: '/fans/purchaseInstructions_japanese',
+            component: purchaseInstructions   
+        },{
+            path: '/fans/purchaseInstructions_chinese',
+            component: purchaseInstructions_chinese   
         },{
             path: '/shareVideo',
             component: shareVideo
