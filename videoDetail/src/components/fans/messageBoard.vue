@@ -3,7 +3,8 @@
         <div class="content" ref="viewBox" style="top: 0">
             <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
-              :on-infinite="infinite">
+              :on-infinite="infinite"
+              :noDataText="noDataText">
                 <ul class="comment_list dynamic">
                     <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
                         <p>{{msg_text.load}}</p>
@@ -55,7 +56,7 @@
                             </div>
                         </li>
                     </div>
-                    <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
+                    <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]" v-if="!joined?key<10:true">
                         <div class="userinfo">
                             <img :src="comment.avatar" alt="" class="avatar">
                             <span>{{comment.nickname}}</span>
@@ -112,16 +113,22 @@
                     load: '読み込み中',
                     loadAll: '全て表示されました'
 
-                }
+                },
+                joined: false,
+                noDataText: '加入会员查看更多留言'
             }
         },
         methods: {
-            getComments() {
+            getComments(token) {
                 let self = this;
-                http.get('/post/list',{
+                if(token) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+token;
+                }else {
+                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
+                }
+                http.get('/post/listByFans',{
                     params: {
-                        targetType: 3,
-                        targetId: self.$route.query.groupId,
+                        idolId: self.$route.query.idolId,
                         from: self.start,
                         rows: self.num
                     }
@@ -130,22 +137,23 @@
                     self.loadingBig = false;
                     self.showLoading = false;
                     console.log(res.data);
-                    if(res.data.length > 0 ) {
-                        for(var i=0;i<res.data.length;i++){
-                            self.commentList.push(res.data[i]);
+                    if(res.data.joined) {
+                        self.noDataText = '没有更多数据'
+                    }
+                    self.joined = res.data.joined;
+                    if(res.data.post.length > 0 ) {
+                        for(var i=0;i<res.data.post.length;i++){
+                            self.commentList.push(res.data.post[i]);
                         }                    
                     }else {
                         self.havedlast = true;
                     }
-                    console.log(self.commentList);
                 }).catch(function(){
                     self.loadingBig = false;
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        if(_lan === 'zh-cn') {
-                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                         }else {
-                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                         }
+                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                            self.getComments(responseData.token);
+                        })
                     })
                 });
             },
@@ -165,10 +173,9 @@
             },
             refresh (done) {
                 var self = this;
-                http.get('/post/list',{
+                http.get('/post/listByFans',{
                     params: {
-                        targetType: 3,
-                        targetId: self.$route.query.groupId,
+                        idolId: self.$route.query.idolId,
                         from: 0,
                         rows: self.num
                     }
@@ -176,7 +183,10 @@
                     self.start = 0;
                     self.havedlast = false;
                     self.showLoading2 = false;
-                     self.commentList = res.data;                  
+                    if(res.data.joined) {
+                        self.noDataText = '没有更多数据'
+                    }
+                     self.commentList = res.data.post;                                       
                     console.log(self.commentList);
                 }).catch(function(){
                     self.showLoading2 = false;

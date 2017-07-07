@@ -105,73 +105,78 @@
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper3">
-                <ul class="comment_list" style="height: calc(100vh - 31px);background: #fff;">
-                    <div class="loading_top" :class="{'loading_top_show': showLoading2}">
-                        <p>読み込み中</p>
-                        <span></span>
-                    </div>
-                    <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
-                        <li class="defalt_msg" :class="{'firstLi':loadingBig}">
-                            <div class="userinfo">
-                                <img :src="'/static/images/default_img.png'" alt="">
-                                <span></span>
-                                <i></i>
-                            </div>
-                            <div class="comment_content">
-                                <p></p>
-                                <div class="comment_img"></div>
-                            </div>
-                        </li>
-                        <li class="defalt_msg">
-                            <div class="userinfo">
-                                <img :src="'/static/images/default_img.png'" alt="">
-                                <span></span>
-                                <i></i>
-                            </div>
-                            <div class="comment_content">
-                                <p></p>
-                                <div class="comment_img"></div>
-                            </div>
-                        </li>
-                        <li class="defalt_msg">
-                            <div class="userinfo">
-                                <img :src="'/static/images/default_img.png'" alt="">
-                                <span></span>
-                                <i></i>
-                            </div>
-                            <div class="comment_content">
-                                <p></p>
-                                <div class="comment_img"></div>
-                            </div>
-                        </li>
-                        <li class="defalt_msg">
-                            <div class="userinfo">
-                                <img :src="'/static/images/default_img.png'" alt="">
-                                <span></span>
-                                <i></i>
-                            </div>
-                            <div class="comment_content">
-                                <p></p>
-                                <div class="comment_img"></div>
-                            </div>
-                        </li>
-                    </div>
-                    <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
-                        <div class="comment_info">
-                            <img class="avatar" :src="comment.avatar?comment.avatar:'/static/images/default_img.png'" alt="">
-                            <span>{{comment.nickname}}</span>
-                            <img class="level" :src="'/static/images/icon_level_'+(comment.levelPlatform+1)+'.png'" alt="">
-                            <i v-html="formatTime(comment.createTime)"></i>
+                <scroller ref="my_scroller" class="my-scroller"
+                  :on-refresh="refresh"
+                  :on-infinite="infinite"
+                  :noDataText="commentList.length == 0 ? '':'没有更多数据'">
+                    <ul class="comment_list" style="background: #fff;">
+                        <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
+                            <p>読み込み中</p>
+                            <span></span>
+                        </div> -->
+                        <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
+                            <li class="defalt_msg" :class="{'firstLi':loadingBig}">
+                                <div class="userinfo">
+                                    <img :src="'/static/images/default_img.png'" alt="">
+                                    <span></span>
+                                    <i></i>
+                                </div>
+                                <div class="comment_content">
+                                    <p></p>
+                                    <div class="comment_img"></div>
+                                </div>
+                            </li>
+                            <li class="defalt_msg">
+                                <div class="userinfo">
+                                    <img :src="'/static/images/default_img.png'" alt="">
+                                    <span></span>
+                                    <i></i>
+                                </div>
+                                <div class="comment_content">
+                                    <p></p>
+                                    <div class="comment_img"></div>
+                                </div>
+                            </li>
+                            <li class="defalt_msg">
+                                <div class="userinfo">
+                                    <img :src="'/static/images/default_img.png'" alt="">
+                                    <span></span>
+                                    <i></i>
+                                </div>
+                                <div class="comment_content">
+                                    <p></p>
+                                    <div class="comment_img"></div>
+                                </div>
+                            </li>
+                            <li class="defalt_msg">
+                                <div class="userinfo">
+                                    <img :src="'/static/images/default_img.png'" alt="">
+                                    <span></span>
+                                    <i></i>
+                                </div>
+                                <div class="comment_content">
+                                    <p></p>
+                                    <div class="comment_img"></div>
+                                </div>
+                            </li>
                         </div>
-                        <div class="comment_content" v-html="TransferString(comment.content)"></div>
-                    </li>
-                    <div class="default_page default_page3" v-show="commentList.length == 0">
-                        <img src="../../images/default_no like.png" alt="">
-                        <p v-html="video_text.noneComment"></p>
-                    </div>
-                    <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div>
-                </ul>
-            </swiper-slide>  
+                        <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
+                            <div class="comment_info">
+                                <img class="avatar" :src="comment.avatar?comment.avatar:'/static/images/default_img.png'" alt="">
+                                <span>{{comment.nickname}}</span>
+                                <img class="level" :src="'/static/images/icon_level_'+(comment.levelPlatform+1)+'.png'" alt="">
+                                <i v-html="formatTime(comment.createTime)"></i>
+                            </div>
+                            <div class="comment_content" v-html="TransferString(comment.content)"></div>
+                        </li>
+                        <div class="default_page default_page3" v-show="commentList.length == 0">
+                            <img src="../../images/default_no like.png" alt="">
+                            <p v-html="video_text.noneComment"></p>
+                        </div>
+                        <!-- <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div> -->
+                    </ul>
+                </scroller>
+            </swiper-slide>
           </swiper>
         </div>
         <!-- <div class="bigLoading" v-show="loadingBig">
@@ -181,6 +186,7 @@
 </template>
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import VueScroller from 'vue-scroller';
     import $ from 'n-zepto';
     import http from '@/utils/http.js';
     require('../../utils/common.js')
@@ -236,7 +242,7 @@
                     noneGcoin: '还没有收到粉丝的G币<br>動画を投稿・シェアしてギフトを貰っちゃおう',
                     noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
                     noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
-                }
+                },
             }
         },
         methods: {
@@ -370,7 +376,7 @@
                 });
             }
           },
-          refresh() {
+          refresh (done) {
                 var self = this;
                 http.get('/post/list',{
                     params: {
@@ -380,13 +386,40 @@
                         rows: self.num
                     }
                 }).then(function(res){
+                    self.start = 0;
+                    self.havedlast = false;
                     self.showLoading2 = false;
                      self.commentList = res.data;                  
                     console.log(self.commentList);
                 }).catch(function(){
                     self.showLoading2 = false;
                 });
+                setTimeout(() => {
+                  done()
+                }, 500)
+          },
+          infinite (done) {
+            var self = this;
+            if(self.commentList.length>0) {
+               if (self.havedlast) {
+                  setTimeout(() => {
+                    done(true)
+                  }, 500)
+                  return;
+                } else {
+                    setTimeout(() => {
+                      self.start = self.start + self.num;
+                      self.getComments();
+                      done()
+                    }, 500)
+                }
+            }else {
+              setTimeout(() => {
+                done(true)
+              }, 1500)
+              return;
             }
+          }
         },
         computed: {
             swiper() {
@@ -395,40 +428,40 @@
         },
          mounted() {
             let self = this;
-            self.box = document.querySelector('#swiper3');
-            self.box.addEventListener('scroll', () => {
-              if(document.querySelector('.lastLi')) {
-                  if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom)  == parseInt(document.querySelector('.content').getBoundingClientRect().bottom)) {
-                    if(self.havedlast == true) {
-                        self.showLoading = true;
-                        setTimeout(() => {
-                            self.showLoading = false;
-                        },1500)
-                    }else {
-                        self.showLoading = true;
-                        setTimeout(() => {
-                            self.start = self.start + self.num;
-                            self.getComments();
-                        },500)
-                    }                    
-                  }
-            }else {
-              if(parseInt(document.querySelector('.default_page3').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
-                self.showLoading2 = true;
-                setTimeout(() => {
-                    self.refresh()
-                },500)
-              }
-            }
-            if(document.querySelector('.firstLi')) {
-                if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
-                    self.showLoading2 = true;
-                    setTimeout(() => {
-                       self.refresh()
-                    },500)
-                  }
-            }
-          }, false)
+          //   self.box = document.querySelector('#swiper3');
+          //   self.box.addEventListener('scroll', () => {
+          //     if(document.querySelector('.lastLi')) {
+          //         if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom)  == parseInt(document.querySelector('.content').getBoundingClientRect().bottom)) {
+          //           if(self.havedlast == true) {
+          //               self.showLoading = true;
+          //               setTimeout(() => {
+          //                   self.showLoading = false;
+          //               },1500)
+          //           }else {
+          //               self.showLoading = true;
+          //               setTimeout(() => {
+          //                   self.start = self.start + self.num;
+          //                   self.getComments();
+          //               },500)
+          //           }                    
+          //         }
+          //   }else {
+          //     if(parseInt(document.querySelector('.default_page3').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
+          //       self.showLoading2 = true;
+          //       setTimeout(() => {
+          //           self.refresh()
+          //       },500)
+          //     }
+          //   }
+          //   if(document.querySelector('.firstLi')) {
+          //       if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
+          //           self.showLoading2 = true;
+          //           setTimeout(() => {
+          //              self.refresh()
+          //           },500)
+          //         }
+          //   }
+          // }, false)
         },
         created() {
             var self = this;
