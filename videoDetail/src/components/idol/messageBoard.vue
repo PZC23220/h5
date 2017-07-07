@@ -121,7 +121,7 @@
                 http.get('/post/list',{
                     params: {
                         targetType: 3,
-                        targetId: self.$route.query.idolId,
+                        targetId: self.$route.query.targetId,
                         from: self.start,
                         rows: self.num
                     }
@@ -168,7 +168,7 @@
                 http.get('/post/list',{
                     params: {
                         targetType: 3,
-                        targetId: self.$route.query.idolId,
+                        targetId: self.$route.query.targetId,
                         from: 0,
                         rows: self.num
                     }
