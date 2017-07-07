@@ -345,6 +345,7 @@
         to {background: url(../../images/pic_loading_2.png);background-size: 100% auto;}
     }
     .defalt_msg {
+         z-index: -1;
         .userinfo {
             span {
                 width: 50px;
@@ -365,8 +366,8 @@
     .page_defalt {
         height: auto;
         opacity: 0.8;
+        overflow: hidden;
         transition: all 0.3s;
-        overflow:hidden;
     }
     .page_defalt_none {
         height: 0;

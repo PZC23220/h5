@@ -250,6 +250,7 @@ img.icon {
 	width: 20.5px;
 	height: 11px;
 	margin-top: 9.5px;
+	margin-right: 3px;
 }
 img.avatar {
 	width: 30px;
@@ -344,7 +345,7 @@ img.avatar {
  	div.userinfo {
  		overflow: hidden;
  		box-sizing: border-box;
- 		img {
+ 		img.avatar {
  			width: 30px;
  			height: 30px;
  			border-radius: 50%;
@@ -362,11 +363,11 @@ img.avatar {
 			box-sizing: border-box;
 			float: left;
 			width: 30%;
-			height: calc((100vw - 93px)/3);
+			// height: calc((100vw - 93px)/3);
 			overflow: hidden;
 			max-height: 132px;
 			border-radius: 4px;
-			border: 1px #ddd solid;
+			// border: 1px #ddd solid;
 			&:last-child {
 				margin-right: 0;
 			}
@@ -718,3 +719,37 @@ img.avatar {
     		 animation: rotation 1.8s linear infinite;
     	}
     }
+     .my-scroller .pull-to-refresh-layer .spinner-holder,.my-scroller .loading-layer .spinner-holder svg
+  {
+    visibility: hidden;
+  }
+.my-scroller .pull-to-refresh-layer,.my-scroller .loading-layer .spinner-holder{
+    background-image: url(/static/images/pic_loading_1.png);
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+    width:  90.5px !important;
+    height: 47.5px !important;
+    margin:  0 auto;
+    border-radius: 50%;
+    transition: all .15s linear;
+    -webkit-transition: all .15s linear;
+    opacity: 0;
+    /* height:  80px !important; */
+  }
+  .my-scroller .pull-to-refresh-layer.active,.my-scroller .loading-layer .spinner-holder.active {
+    background-image: url(/static/images/pic_loading_2.png);
+    opacity: 1;
+    animation: changebg 1s linear infinite;
+  }
+  @keyframes changebg{
+    from {background-image: url(/static/images/pic_loading_1.png);}
+    to {background-image: url(/static/images/pic_loading_2.png);}
+  }
+	.my-scroller .pull-to-refresh-layer {
+	    margin-top:  -47.5px !important;
+	}
+	.my-scroller .loading-layer .spinner-holder {
+	    margin-top: 20px;
+	}

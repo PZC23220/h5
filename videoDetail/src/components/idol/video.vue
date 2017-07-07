@@ -74,7 +74,7 @@
                             <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
                             <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform+1) +'.png'): ''" class="level" alt="">
                             <i>
-                                <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{fans.userFans?Number(fans.userFans.gcoin).toLocaleString(): 0}}
+                                <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{fans.expendGprice?Number(fans.expendGprice).toLocaleString(): 0}}
                             </i>
                         </li>
                     </ul>
@@ -95,7 +95,7 @@
                         <span>{{popularity.userFans?popularity.userFans.nickname:''}}</span>
                         <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.levelPlatform+1)+'.png'):''" class="level" alt="">
                         <i>
-                            <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{popularity.userFans?Number(popularity.userFans.gcoin).toLocaleString():'0'}}
+                            <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{popularity.giftCount?Number(popularity.giftCount).toLocaleString():'0'}}
                         </i>
                     </li>
                 </ul>

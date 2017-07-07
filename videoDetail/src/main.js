@@ -4,6 +4,8 @@ import router from './router';
 import App from './App.vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import VideoPlayer from 'vue-video-player';
+import VueScroller from 'vue-scroller'
+Vue.use(VueScroller)
 
 Vue.use(VueAwesomeSwiper);
 

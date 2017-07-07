@@ -7,6 +7,7 @@ import community from '../components/idol/community.vue';
 import comment from '../components/idol/comment.vue';
 import report from '../components/idol/report.vue';
 import messageBoard from '../components/idol/messageBoard.vue';
+import fans_messageBoard from '../components/idol/messageBoard.vue';
 
 import copyright from '../components/idol/copyright.vue';
 import copyright_chinese from '../components/idol/copyright_chinese.vue';
@@ -149,6 +150,9 @@ export default new VueRouter({
         },{
             path: '/idol/messageBoard',
             component: messageBoard
+        },{
+            path: '/fans/messageBoard',
+            component: fans_messageBoard
         },{
             path: '/idol/report',
             component: report
