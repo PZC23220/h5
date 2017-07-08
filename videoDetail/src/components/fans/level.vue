@@ -2,13 +2,13 @@
     <div class="main">
         <div class="content">
            <div class="desc">
-               <h5>粉丝的勋章是针对每个爱豆都有独立等级的按照为爱豆应援打赏的总人气计算</h5>
+               <h5>{{medal_text.title}}</h5>
                <ul>
-                   <li><img src="../../images/icon_medal_1.png" alt=""><span>青铜守护</span><i>ブロンズキュウシュゴ</i><div><span>价值满</span><i>2000</i></div><p>为单个爱豆或组合送出</p></li>
-                   <li><img src="../../images/icon_medal_2.png" alt=""><span>白金守护</span><i>シルバーキュウシュゴ</i><div><span>价值满</span><i>5000</i></div><p>为单个爱豆或组合送出</p></li>
-                   <li><img src="../../images/icon_medal_3.png" alt=""><span>黄金守护</span><i>ゴールドキュウシュゴ</i><div><span>价值满</span><i>15000</i></div><p>为单个爱豆或组合送出</p></li>
-                   <li><img src="../../images/icon_medal_4.png" alt=""><span>钻石守护</span><i>ダイヤモンドキュウシュゴ</i><div><span>价值满</span><i>30000</i></div><p>为单个爱豆或组合送出</p></li>
-                   <li><img src="../../images/icon_medal_5.png" alt=""><span>王者守护</span><i>キングキュウシュゴ</i><div><span>价值满</span><i>50000</i></div><p>为单个爱豆或组合送出</p></li>
+                   <li><img src="../../images/icon_medal_1.png" alt=""><span>{{medal_text.medal1}}</span><i v-if="medal_text.value=='Like数'">ブロンズキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>2000</i></div><p>{{medal_text.desc}}</p></li>
+                   <li><img src="../../images/icon_medal_2.png" alt=""><span>{{medal_text.medal2}}</span><i v-if="medal_text.value=='Like数'">シルバーキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>5000</i></div><p>{{medal_text.desc}}</p></li>
+                   <li><img src="../../images/icon_medal_3.png" alt=""><span>{{medal_text.medal3}}</span><i v-if="medal_text.value=='Like数'">ゴールドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>15000</i></div><p>{{medal_text.desc}}</p></li>
+                   <li><img src="../../images/icon_medal_4.png" alt=""><span>{{medal_text.medal4}}</span><i v-if="medal_text.value=='Like数'">ダイヤモンドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>30000</i></div><p>{{medal_text.desc}}</p></li>
+                   <li><img src="../../images/icon_medal_5.png" alt=""><span>{{medal_text.medal5}}</span><i v-if="medal_text.value=='Like数'">キングキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>50000</i></div><p>{{medal_text.desc}}</p></li>
                </ul>
            </div>
         </div>
@@ -16,7 +16,57 @@
 </template>
 
 <script>
-    
+   export default {
+        data() {
+            return {
+                medal_text: {
+                    title: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。',
+                    medal1: '青銅級守護',
+                    medal2: '白銀級守護',
+                    medal3: '黄金級守護',
+                    medal4: '金剛級守護',
+                    medal5: '王者級守護',
+                    value: 'Like数',
+                    desc: 'アイドルかユニットごとにLikeと同等価値の応援'
+                }
+            }
+        },
+        methods: {
+            close() {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('close');
+                });
+            }
+        },
+        created() {
+            var self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(_lan === 'zh-cn') {
+                 self.medal_text= {
+                    title: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高',
+                    medal1: '青铜守护',
+                    medal2: '白金守护',
+                    medal3: '黄金守护',
+                    medal4: '钻石守护',
+                    medal5: '王者守护',
+                    value: '价值满',
+                    desc: '为单个爱豆或组合送出'
+
+                }
+            } else {
+                self.medal_text= {
+                    title: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。',
+                    medal1: '青銅級守護',
+                    medal2: '白銀級守護',
+                    medal3: '黄金級守護',
+                    medal4: '金剛級守護',
+                    medal5: '王者級守護',
+                    value: 'Like数',
+                    desc: 'アイドルかユニットごとにLikeと同等価値の応援'
+                }
+            }
+        }
+    } 
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

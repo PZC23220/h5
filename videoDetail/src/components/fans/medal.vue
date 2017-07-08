@@ -5,7 +5,7 @@
                 <div class="back" @click="close()">
                     <img src="../../../static/images/icon_arrow_back_black.png" alt="">
                 </div>
-                <span>Groupy等级</span>
+                <span>{{medal_text.title}}</span>
             </div>
             <div class="header_banner">
                 <div class="level_bg">
@@ -21,9 +21,9 @@
         </div>
         <div class="content">
             <div class="howToUpgrade">
-                <p>如何可以快速升级？</p>
+                <p>{{medal_text.how}}</p>
                 <img src="../../images/pic_upgrade.png" alt="">
-                <p>level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高。<br><br>在Groupy里面也会更有机会与爱豆直接互动，邀请进入VIP社群等福利!</p>
+                <p v-html="medal_text.desc"></p>
             </div>
         </div>
     </div>
@@ -31,11 +31,38 @@
 
 <script>
     export default {
+        data() {
+            return {
+                medal_text: {
+                    title: '成長レベル',
+                    desc: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。<br><br>高レベルのファンに特典（無料会員体験など）もご用意していますので、ぜひレベルアップを！',
+                    how: 'レベルアップのヒントは？'
+                }
+            }
+        },
         methods: {
             close() {
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('close');
                 });
+            }
+        },
+        created() {
+            var self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(_lan === 'zh-cn') {
+                 self.medal_text= {
+                    title: 'Groupy等级',
+                    desc: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高。<br><br>在Groupy里面也会更有机会与爱豆直接互动，邀请进入VIP社群等福利!',
+                    how: '如何可以快速升级？'
+
+                }
+            } else {
+                self.medal_text= {
+                    title: '成長レベル',
+                    desc: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。<br><br>高レベルのファンに特典（無料会員体験など）もご用意していますので、ぜひレベルアップを！',
+                    how: 'レベルアップのヒントは？'
+                }
             }
         }
     }
