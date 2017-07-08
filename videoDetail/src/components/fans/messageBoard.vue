@@ -150,7 +150,7 @@
                     }
                 }).catch(function(){
                     self.loadingBig = false;
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getComments(responseData.token);
                         })

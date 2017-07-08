@@ -54,8 +54,8 @@ import admissionTime from '../components/idol/fansdetail/admissionTime.vue';
 import cheerNumber from '../components/idol/fansdetail/cheerNumber.vue';
 import totalContribution from '../components/idol/fansdetail/totalContribution.vue';
 
-import GcoinsContribution from '../components/fans/ranking/GcoinsContribution.vue';
-import popularity from '../components/fans/ranking/popularity.vue';
+import medal from '../components/fans/medal.vue';
+import level from '../components/fans/level.vue';
 
 import shareVideo from '../components/shareVideo.vue';
 
@@ -207,6 +207,12 @@ export default new VueRouter({
         },{
             path: '/fans/purchaseInstructions_chinese',
             component: purchaseInstructions_chinese   
+        },{
+            path: '/fans/medal',
+            component: medal   
+        },{
+            path: '/fans/level',
+            component: level   
         },{
             path: '/shareVideo',
             component: shareVideo

@@ -86,7 +86,6 @@ html,body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     -webkit-overflow-scrolling: iscroll;
-    font-family: 'Microsoft YaHei';
 }
 
 a,img,button,h4,div{

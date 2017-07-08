@@ -68,8 +68,9 @@
                         <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[7].numbers:0}}</span></p>
                     </li>
                 </ul>
-            </div>  `
-            <div class="mention_details">
+            </div>
+            <p v-html="income_text.desc" class="income_desc"></p>
+           <!--  <div class="mention_details">
                 <p class="detail_title">{{income_text.record}}</p>
                 <ul class="mention_list">
                     <li>
@@ -88,7 +89,7 @@
                     <p>{{income_text.records.none}}</p>
                 </div>
             </div>
-            <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">{{income_text.records.exchange}}</router-link>
+            <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">{{income_text.records.exchange}}</router-link> -->
         </div>
         <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
@@ -107,11 +108,12 @@
                 // loadingBig: true,
                 idx: 0,
                 income_text: {
-                    today:'今月の収入',
-                    yesterday: '昨日の収入',
-                    vip: '会員費',
-                    detail: 'ギフト総数',
+                    today:'今月獲得コイン数',
+                    yesterday: '昨日獲得コイン数',
+                    vip: '会員人数',
+                    detail: 'ギフトリスト',
                     record: '換金履歴',
+                    desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
                     records: {
                         time: '時間',
                         num :'コイン数',
@@ -204,11 +206,12 @@
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(_lan === 'zh-cn') {
                 self.income_text= {
-                    today:'本月收入',
-                    yesterday: '昨日收入',
-                    vip: '会员费',
-                    detail: '礼物收入',
+                    today:' 本月G币',
+                    yesterday: '昨日G币',
+                    vip: '会员数量',
+                    detail: '礼物数量',
                     record: '提现记录',
+                    desc: 'G币是Groupy平台上使用的虚拟货币，并不代表真实货币',
                     records: {
                         time: '时间',
                         num :'G币值',
@@ -220,11 +223,12 @@
                 }
               } else {
                 self.income_text= {
-                    today:'今月の収入',
-                    yesterday: '昨日の収入',
-                    vip: '会員費',
-                    detail: 'ギフト総数',
+                    today:'今月獲得コイン数',
+                    yesterday: '昨日獲得コイン数',
+                    vip: '会員人数',
+                    detail: 'ギフトリスト',
                     record: '換金履歴',
+                    desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
                     records: {
                         time: '時間',
                         num :'コイン数',
@@ -285,6 +289,12 @@
             }
         }
     }
+ }
+ .income_desc {
+    background: #eee;
+    color: #999;
+    padding: 3px 12px;
+    line-height: 20px;
  }
  .reflect_desc {
     display: block;
