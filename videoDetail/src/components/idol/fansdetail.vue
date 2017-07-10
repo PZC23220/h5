@@ -22,19 +22,21 @@
             <!-- slides -->
             <swiper-slide id="swiper1">
                 <ul class="comment_list">
-                    <li v-for="(gFans,key) in gcoinList.fansList">
-                        <span>
-                            <img src="../../images/icon_metal_1.png" alt="" v-if="key==0">
-                            <img src="../../images/icon_metal_2.png" alt="" v-if="key==1">
-                            <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
-                            <i class="rank_num" v-if="key>2">{{key+1}}</i>
-                        </span>
-                        <img class="avatar" :src="gFans.fans?gFans.fans.avatar:''" alt="">
-                        <span>{{gFans.fans?gFans.fans.nickname:''}}</span>
-                        <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.levelPlatform+1)+'.png':''" class="level" alt="">
-                        <i>
-                            <img src="../../images/timeline_icon_coins.png" alt="">{{Number(gFans.expendGprice).toLocaleString()}}
-                        </i>
+                    <li v-for="(gFans,key) in gcoinList.fansList" style="padding: 0;">
+                        <left-slider :index="key" @deleteItem="deleteItem(gFans.fansId)">
+                            <span>
+                                <img src="../../images/icon_metal_1.png" alt="" v-if="key==0">
+                                <img src="../../images/icon_metal_2.png" alt="" v-if="key==1">
+                                <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
+                                <i class="rank_num" v-if="key>2">{{key+1}}</i>
+                            </span>
+                            <img class="avatar" :src="gFans.fans?gFans.fans.avatar:''" alt="">
+                            <span>{{gFans.fans?gFans.fans.nickname:''}}</span>
+                            <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.levelPlatform+1)+'.png':''" class="level" alt="">
+                            <i>
+                                <img src="../../images/timeline_icon_coins.png" alt="">{{Number(gFans.expendGprice).toLocaleString()}}
+                            </i>
+                        </left-slider>
                     </li>
                 </ul>
                 <div class="default_page" v-show="gcoinList.fansList?gcoinList.fansList.length == 0:false">
@@ -44,19 +46,21 @@
             </swiper-slide>
             <swiper-slide id="swiper2">
                 <ul class="comment_list">
-                    <li v-for="(popularity,key) in popularityList.fansList">
-                        <span>
-                            <img src="../../images/icon_metal_1.png" alt="" v-if="key==0">
-                            <img src="../../images/icon_metal_2.png" alt="" v-if="key==1">
-                            <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
-                            <i v-if="key>2">{{key+1}}</i>
-                        </span>
-                        <img class="avatar" :src="popularity.fans?popularity.fans.avatar:''" alt="">
-                        <span>{{popularity.fans?popularity.fans.nickname:''}}</span>
-                        <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform+1)+'.png':''" class="level" alt="">
-                        <i>
-                            <img src="../../images/timeline_icon_likes.png" alt="">{{Number(popularity.totalNums).toLocaleString()}}
-                        </i>
+                    <li v-for="(popularity,key) in popularityList.fansList" style="padding: 0;">
+                        <left-slider :index="key" @deleteItem="deleteItem(popularity.fansId)">
+                            <span>
+                                <img src="../../images/icon_metal_1.png" alt="" v-if="key==0">
+                                <img src="../../images/icon_metal_2.png" alt="" v-if="key==1">
+                                <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
+                                <i v-if="key>2">{{key+1}}</i>
+                            </span>
+                            <img class="avatar" :src="popularity.fans?popularity.fans.avatar:''" alt="">
+                            <span>{{popularity.fans?popularity.fans.nickname:''}}</span>
+                            <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform+1)+'.png':''" class="level" alt="">
+                            <i>
+                                <img src="../../images/timeline_icon_likes.png" alt="">{{Number(popularity.totalNums).toLocaleString()}}
+                            </i>
+                        </left-slider>
                     </li>
                 </ul>
                 <div class="default_page" v-show="popularityList.fansList.length == 0">
@@ -66,18 +70,20 @@
             </swiper-slide>
             <swiper-slide id="swiper3">
                 <ul class="comment_list">
-                    <li v-for="(fans,key) in joinList.fansList">
-                        <img class="avatar" :src="fans.fans?fans.fans.avatar:''" alt="">
-                        <span>{{fans.fans?fans.fans.nickname:''}}</span>
-                        <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform+1)+'.png':''" class="level" alt="">
-                        <i v-html="formatTime(fans.startdate)"></i>
+                    <li v-for="(fans,key) in joinList.fansList" style="padding: 0;">
+                        <left-slider :index="key" @deleteItem="deleteItem(fans.fansId)">
+                            <img class="avatar" :src="fans.fans?fans.fans.avatar:''" alt="">
+                            <span>{{fans.fans?fans.fans.nickname:''}}</span>
+                            <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform+1)+'.png':''" class="level" alt="">
+                            <i v-html="formatTime(fans.startdate)"></i>
+                        </left-slider>
                     </li>
                 </ul>
                 <div class="default_page" v-show="joinList.fansList.length == 0">
                     <img src="../../images/default_no history.png" alt="">
                     <p>{{fans_text.noneComment}}</p>
                 </div>
-            </swiper-slide>  
+            </swiper-slide>
           </swiper>
         </div>
        <!--  <div class="bigLoading" v-show="loadingBig">
@@ -87,6 +93,7 @@
 </template>
 
 <script>
+    import LeftSlider from '../leftSlider.vue';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import $ from 'n-zepto';
     import http from '@/utils/http.js';
@@ -131,6 +138,9 @@
                     noneComment: 'まだメンバーはないようです'
                 }
             }
+        },
+        components: {
+            LeftSlider
         },
         methods: {
             changePages(val) {
@@ -253,6 +263,16 @@
                         })
                     });
                 }
+            },
+            deleteItem: function(index) {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                     if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
+                     }else {
+                        bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
+                     }
+                })
             }
         },
         computed: {
@@ -303,7 +323,7 @@
   }
   .content {
     position: absolute;
-    top: 143.5px;
+    top: 144.5px;
     left: 0;
     width: 100%;
     height: calc(100vh - 143.5px);

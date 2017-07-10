@@ -70,7 +70,21 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
     .header {
+        font-size: 18px;
+        color: #fff;
+        background: #00B4BC;
+        font-weight: 100;
         top: 11px;
+        .detail {
+            height: 44px;
+            line-height: 44px;
+            .back {
+                top: (44px-22px)/2;
+            }
+            span {
+                letter-spacing: 1.2px;
+            }
+        }
     }
     .header_banner {
         width: 320px;

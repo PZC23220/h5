@@ -65,17 +65,19 @@
                 <div class="fans_detail">
                     <p class="detail_title" :class="{'defalt_no' : gcoinList.rank?gcoinList.rank.length == 0:false}">{{video_text.fans}}</p>
                     <ul class="comment_list">
-                        <li v-for="(fans,key) in gcoinList.rank" style="padding: 12px 0;">
-                            <span class="level_color" v-if="key == 0"><img src="../../images/icon_metal_1.png" alt=""></span>
-                            <span class="level_color" v-if="key == 1"><img src="../../images/icon_metal_2.png" alt=""></span>
-                            <span class="level_color" v-if="key == 2"><img src="../../images/icon_metal_3.png" alt=""></span>
-                            <span class="level_color" v-if="key > 2">{{key+1}}</span>
-                            <img class="avatar" :src="fans.userFans?fans.userFans.avatar: '/static/images/default_img.png'" alt="">
-                            <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
-                            <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform+1) +'.png'): ''" class="level" alt="">
-                            <i>
-                                <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{fans.expendGprice?Number(fans.expendGprice).toLocaleString(): 0}}
-                            </i>
+                        <li v-for="(fans,key) in gcoinList.rank" style="padding: 0;">
+                            <left-slider :index="key" @deleteItem="deleteItem(fans.fansId)">
+                                <span class="level_color" v-if="key == 0"><img src="../../images/icon_metal_1.png" alt=""></span>
+                                <span class="level_color" v-if="key == 1"><img src="../../images/icon_metal_2.png" alt=""></span>
+                                <span class="level_color" v-if="key == 2"><img src="../../images/icon_metal_3.png" alt=""></span>
+                                <span class="level_color" v-if="key > 2">{{key+1}}</span>
+                                <img class="avatar" :src="fans.userFans?fans.userFans.avatar: '/static/images/default_img.png'" alt="">
+                                <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
+                                <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform+1) +'.png'): ''" class="level" alt="">
+                                <i>
+                                    <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{fans.expendGprice?Number(fans.expendGprice).toLocaleString(): 0}}
+                                </i>
+                            </left-slider>
                         </li>
                     </ul>
                     <div class="default_page" v-show="gcoinList.rank?gcoinList.rank.length == 0:false" style="padding-top: 32px;">
@@ -85,18 +87,20 @@
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper2">
-                <ul class="comment_list">
-                    <li v-for="(popularity,key) in popularityList">
-                        <span class="level_color" v-if="key == 0"><img src="../../images/icon_metal_1.png" alt=""></span>
-                        <span class="level_color" v-if="key == 1"><img src="../../images/icon_metal_2.png" alt=""></span>
-                        <span class="level_color" v-if="key == 2"><img src="../../images/icon_metal_3.png" alt=""></span>
-                        <span class="level_color" v-if="key > 2">{{key+1}}</span>
-                        <img class="avatar" :src="popularity.userFans?popularity.userFans.avatar:'/static/images/default_img.png'" alt="">
-                        <span>{{popularity.userFans?popularity.userFans.nickname:''}}</span>
-                        <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.levelPlatform+1)+'.png'):''" class="level" alt="">
-                        <i>
-                            <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{popularity.giftCount?Number(popularity.giftCount).toLocaleString():'0'}}
-                        </i>
+                <ul class="comment_list" style="padding: 0;">
+                    <li v-for="(popularity,key) in popularityList" style="padding: 0;">
+                        <left-slider :index="key" @deleteItem="deleteItem(popularity.fansId)">
+                            <span class="level_color" v-if="key == 0"><img src="../../images/icon_metal_1.png" alt=""></span>
+                            <span class="level_color" v-if="key == 1"><img src="../../images/icon_metal_2.png" alt=""></span>
+                            <span class="level_color" v-if="key == 2"><img src="../../images/icon_metal_3.png" alt=""></span>
+                            <span class="level_color" v-if="key > 2">{{key+1}}</span>
+                            <img class="avatar" :src="popularity.userFans?popularity.userFans.avatar:'/static/images/default_img.png'" alt="">
+                            <span>{{popularity.userFans?popularity.userFans.nickname:''}}</span>
+                            <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.levelPlatform+1)+'.png'):''" class="level" alt="">
+                            <i>
+                                <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{popularity.giftCount?Number(popularity.giftCount).toLocaleString():'0'}}
+                            </i>
+                        </left-slider>
                     </li>
                 </ul>
                 <div class="default_page" v-show="popularityList.length == 0">
@@ -185,6 +189,7 @@
     </div>
 </template>
 <script>
+    import LeftSlider from '../leftSlider.vue';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import VueScroller from 'vue-scroller';
     import $ from 'n-zepto';
@@ -244,6 +249,9 @@
                     noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
                 },
             }
+        },
+        components: {
+            LeftSlider
         },
         methods: {
           changePages(val) {
@@ -398,28 +406,38 @@
                   done()
                 }, 500)
           },
-          infinite (done) {
-            var self = this;
-            if(self.commentList.length>0) {
-               if (self.havedlast) {
+            infinite (done) {
+                var self = this;
+                if(self.commentList.length>0) {
+                   if (self.havedlast) {
+                      setTimeout(() => {
+                        done(true)
+                      }, 500)
+                      return;
+                    } else {
+                        setTimeout(() => {
+                          self.start = self.start + self.num;
+                          self.getComments();
+                          done()
+                        }, 500)
+                    }
+                }else {
                   setTimeout(() => {
                     done(true)
-                  }, 500)
+                  }, 1500)
                   return;
-                } else {
-                    setTimeout(() => {
-                      self.start = self.start + self.num;
-                      self.getComments();
-                      done()
-                    }, 500)
                 }
-            }else {
-              setTimeout(() => {
-                done(true)
-              }, 1500)
-              return;
+            },
+            deleteItem: function(index) {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                     if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
+                     }else {
+                        bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
+                     }
+                })
             }
-          }
         },
         computed: {
             swiper() {

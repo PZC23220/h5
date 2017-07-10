@@ -4,11 +4,11 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">{{income_text.today}}</span>
-                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'video_money_show':incomeList.incomeCurrentMonth || incomeList.incomeCurrentMonth == 0}">{{incomeList.incomeCurrentMonth?Number(incomeList.incomeCurrentMonth).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':incomeList.incomeCurrentMonth || incomeList.incomeCurrentMonth == 0}">{{incomeList.incomeCurrentMonth?Number(incomeList.incomeCurrentMonth).toLocaleString():0}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">{{income_text.yesterday}}</span>
-                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'video_money_show':incomeList.incomeYesterday || incomeList.incomeYesterday == 0}">{{incomeList.incomeYesterday?Number(incomeList.incomeYesterday).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':incomeList.incomeYesterday || incomeList.incomeYesterday == 0}">{{incomeList.incomeYesterday?Number(incomeList.incomeYesterday).toLocaleString():0}}</i></span>
                 </p>
             </div>
             <div class="income_details eBorder">
