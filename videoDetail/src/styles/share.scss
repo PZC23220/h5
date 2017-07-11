@@ -4,7 +4,7 @@
 	box-shadow: 0 1px 4.5px 0 rgba(0,0,0,0.18);
 	box-sizing: border-box;
 	max-height: 64px;
-
+	background: #fff;
 	font-size: 12px;
 	>img:first-child {
 		width: 45px;
@@ -33,7 +33,7 @@
 	top: 64px;
 }
 .userinfo {
-	padding: 12px;
+	padding: 12px 12px 5px;
 	overflow: hidden;
 	>img {
 		width: 60px;
@@ -52,8 +52,19 @@
 		}
 		p {
 			color: #999;
+			overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
 		}
 	}
+}
+.video_text {
+	font-size: 16px;
+	padding: 10px 12px;
+	box-sizing: border-box;
+	line-height: 24px;
 }
 .vip_show {
 	position: relative;

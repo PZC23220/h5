@@ -7,9 +7,9 @@
         </div>
         <div class="content">
             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                <img :src="idol.bgImg?idol.bgImg: '/static/images/default_img.png'" alt="">
+                <img :src="idol.avatar?idol.avatar: '/static/images/default_img.png'" alt="">
                 <div class="video_desc">
-                    <h3>{{idol.idolNickname?idol.idolNickname:'Groupy'}}</h3>
+                    <h3>{{idol.nickname?idol.nickname:'Groupy'}}</h3>
                     <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす'}}</p>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <p>{{video.title}}</p>
                 <div class="video_banner">
                     <img :src="video.thumbnail" alt="">
-                    <img src="../images/icon_menbership.png" alt=""> 
+                    <img src="../images/icon_menbership.png" alt="">
                 </div>
                 <div class="video_bg"></div>
                 <div class="vip_download">
@@ -82,7 +82,7 @@
                     </div>
                     <p class="video_content">{{videos.length>3?videos[3].title:'Groupyで待ってまーす'}}</p>
                     </a></li>
-                </ul>         
+                </ul>
             </div>
         </div>
         <!-- <div class="bigLoading" v-show="loadingBig">
@@ -175,9 +175,9 @@
                             self.videos = res.data.related;
                         }
 
-                        if(res.data.group) {
+                        if(res.data.idol) {
                             self.idolShow = true;
-                            self.idol = res.data.group;
+                            self.idol = res.data.idol;
                         }
                     }else {
                         self.pageNone = true;
@@ -249,8 +249,8 @@
     }
 </style>
 
-<style>
-     .vjs_video_417-dimensions {
+<style lang="scss">
+    .vjs_video_417-dimensions {
         height: auto !important;
         video {
             position: inherit !important;
@@ -258,6 +258,10 @@
     }
     .vjs_video_3-dimensions {
         height: auto !important;
+    }
+    .vjs_video_375-dimensions,.vjs_video_388-dimensions {
+        width: 100%;
+        height: auto;
     }
     .video-js .vjs-tech {
         position: inherit !important;

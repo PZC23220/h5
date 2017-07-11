@@ -58,6 +58,7 @@ import medal from '../components/fans/medal.vue';
 import level from '../components/fans/level.vue';
 
 import shareVideo from '../components/shareVideo.vue';
+import index from '../components/index.vue';
 
 let Terminal = {
     // 辨别移动终端的语言：zh-cn、en-us、ko-kr、ja-jp...
@@ -216,6 +217,9 @@ export default new VueRouter({
         },{
             path: '/shareVideo',
             component: shareVideo
+        },{
+            path: '/index',
+            component: index
         }
     ]
 });

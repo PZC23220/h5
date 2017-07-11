@@ -13,7 +13,7 @@
                     <scroller ref="my_scroller" class="my-scroller"
                           :on-refresh="refresh"
                           :on-infinite="infinite">
-                         <ul class="comment_list">
+                         <ul class="comment_list" v-if="default1==false">
                             <h3 class="ranking_type"  :class="{'left_hide':!meObj.position}">我的排名</h3>
                             <li class="con_left" :class="{'left_show':meObj.position}" v-if="meObj.position">
                                 <span v-if="!meObj.position">0</span>
@@ -116,15 +116,19 @@
                                 <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i>
                             </li>
                         </ul>
+                        <div class="default_page default_page3"  v-if="default1">
+                            <img src="../../images/default_no coin.png" alt="">
+                            <p>还没有收到粉丝的G币<br>分享视频能让更多粉丝关注</p>
+                        </div>
                     </scroller>
                 </swiper-slide>
                 <swiper-slide id="swiper2">
                     <scroller ref="my_scroller" class="my-scroller"
                           :on-refresh="refresh2"
                           :on-infinite="infinite2">
-                        <ul class="comment_list">
-                            <h3 class="ranking_type">我的排名</h3>
-                            <li class="con_left" :class="{'left_show':meHeatObj.position}">
+                        <ul class="comment_list" v-if="default2==false">
+                            <h3 class="ranking_type" v-if="meHeatObj.position">我的排名</h3>
+                            <li class="con_left" :class="{'left_show':meHeatObj.position}" v-if="meHeatObj.position">
                                 <span v-if="!meHeatObj.position">0</span>
                                 <span v-if="meHeatObj.position==1"><img src="../../images/icon_metal_1.png" alt=""></span>
                                 <span v-if="meHeatObj.position==2"><img src="../../images/icon_metal_2.png" alt=""></span>
@@ -201,6 +205,10 @@
                                 <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i>
                             </li>
                         </ul>
+                        <div class="default_page default_page3"  v-if="default2">
+                            <img src="../../images/default_no like.png" alt="">
+                            <p>还没有收到粉丝的点赞人气<br>分享视频能让更多粉丝关注</p>
+                        </div>
                     </scroller>
                 </swiper-slide>
             </swiper>
@@ -241,7 +249,9 @@
                 meObj: {},
                 loadingBig: false,
                 len: 20,
-                len2: 20
+                len2: 20,
+                default1: false,
+                default2: false
             }
         },
         methods: {
@@ -269,25 +279,30 @@
             }).then(function(res){
                 if(res.status == 200) {
                     self.loadingBig = true;
-                    self.rakingList = res.data.fansList;
-                    for(var i=0;i<self.rakingList.length;i++) {
-                        // console.log(self.rakingList[i].fansId == 160)
-                        if(self.rakingList[i].fansId == 160) {
-                            self.meObj = self.rakingList[i];
-                            self.meObj.position = (i+1);
-                            console.log(self.rakingList)
-                            return;
+                    if(res.data.fansList.length > 0) {
+                        self.default1 = false;
+                        self.rakingList = res.data.fansList;
+                        for(var i=0;i<self.rakingList.length;i++) {
+                            // console.log(self.rakingList[i].fansId == 160)
+                            if(self.rakingList[i].fansId == 160) {
+                                self.meObj = self.rakingList[i];
+                                self.meObj.position = (i+1);
+                                console.log(self.rakingList)
+                                return;
+                            }
                         }
+                    }else {
+                        self.default1 = true;
                     }
                 }else {
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getRanking(responseData.token);
                         })
                     })
                 }
             }).catch(function(err){
-                WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                         self.getRanking(responseData.token);
                     })
@@ -307,15 +322,20 @@
                 }
             }).then(function(res){
                 if(res.status == 200) {
-                    self.rankingHeat = res.data.fansList;
-                    for(var i=0;i<self.rankingHeat.length;i++) {
-                        if(self.rankingHeat[i].fansId == 6) {
-                            self.meHeatObj = self.rankingHeat[i];
-                            self.meHeatObj.position = (i+1);
-                            console.log(self.rankingHeat)
-                            console.log(self.meHeatObj)
-                            return;
+                    if(res.data.fansList.length > 0) {
+                        self.default2 = false;
+                        self.rankingHeat = res.data.fansList;
+                        for(var i=0;i<self.rankingHeat.length;i++) {
+                            if(self.rankingHeat[i].fansId == 6) {
+                                self.meHeatObj = self.rankingHeat[i];
+                                self.meHeatObj.position = (i+1);
+                                console.log(self.rankingHeat)
+                                console.log(self.meHeatObj)
+                                return;
+                            }
                         }
+                    }else {
+                        self.default2 = true;
                     }
                 }else {
                     WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {

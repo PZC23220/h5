@@ -9,7 +9,7 @@
                     <h3 class="title">我关注的爱豆</h3>
                     <div class="idol_detail" v-for="(idol,key) in rakingList.me">
                         <div class="idol_content">
-                            <i >{{idol.position}}</i>
+                            <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
                                     <img :src="idol.avatar?idol.avatar:'/static/images/default_img.png'" class="avatar" onerror="this.src='/static/images/default_img.png'" alt="">

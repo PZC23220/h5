@@ -128,7 +128,7 @@
                 }
                 http.get('/post/listByFans',{
                     params: {
-                        idolId: self.$route.query.idolId,
+                        idolId: self.$route.query.targetId,
                         from: self.start,
                         rows: self.num
                     }
@@ -175,7 +175,7 @@
                 var self = this;
                 http.get('/post/listByFans',{
                     params: {
-                        idolId: self.$route.query.idolId,
+                        idolId: self.$route.query.targetId,
                         from: 0,
                         rows: self.num
                     }
