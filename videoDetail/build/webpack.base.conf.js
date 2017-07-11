@@ -10,6 +10,7 @@ function resolve (dir) {
 module.exports = {
   entry: {
     app: './src/main.js'
+    // shareIdol: './src/share.js'
   },
   output: {
     path: config.build.assetsRoot,

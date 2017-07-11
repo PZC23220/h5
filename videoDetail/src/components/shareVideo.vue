@@ -293,11 +293,6 @@
         background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%);
         height: 155px;
     }
-    @media screen and (max-width: 500px) {
-        .content {
-            height: calc(100vh - 124px);
-        }
-    }
     .con_left {
         opacity: 0.2;
         transition: opacity 0.3s;

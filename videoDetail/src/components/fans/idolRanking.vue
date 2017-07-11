@@ -153,11 +153,11 @@
           },
           getRanking(token) {
             let self = this;
-            if(token) {
-                http.defaults.headers.common['Authorization'] = 'Token '+token;
-            }else {
-                http.defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
-            }
+            // if(token) {
+            //     http.defaults.headers.common['Authorization'] = 'Token '+token;
+            // }else {
+            //     http.defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
+            // }
             http.get('/ranking/idolsFromFans',{
                 params: {
                     filter: this.$route.query.filter
@@ -167,20 +167,22 @@
                 if(res.status == 200) {
                     self.rakingList = res.data;
                     console.log(self.rakingList)
-                }else {
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getRanking(responseData.token);
-                        })
-                    })
                 }
-            }).catch(function(err){
-                window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                        self.getRanking(responseData.token);
-                    })
-                })
-            });
+                // else {
+                //     window.setupWebViewJavascriptBridge(function(bridge) {
+                //         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                //             self.getRanking(responseData.token);
+                //         })
+                //     })
+                // }
+            })
+            // .catch(function(err){
+            //     window.setupWebViewJavascriptBridge(function(bridge) {
+            //         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+            //             self.getRanking(responseData.token);
+            //         })
+            //     })
+            // });
           },
           refresh (done) {
             var self = this;

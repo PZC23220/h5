@@ -6,6 +6,7 @@
 	max-height: 64px;
 	background: #fff;
 	font-size: 12px;
+	position: fixed;
 	>img:first-child {
 		width: 45px;
 		margin-right: 10.5px;
@@ -31,6 +32,20 @@
 }
 .content {
 	top: 64px;
+	padding-bottom: 20px;
+	box-sizing: border-box;
+}
+@media screen and (max-width: 499px) {
+    .content {
+        height: calc(100vh - 124px);
+    }
+}
+@media screen and (min-width: 500px) {
+	.header {
+		left: 50%;
+		width: 500px;
+		margin-left: -250px;
+	}
 }
 .userinfo {
 	padding: 12px 12px 5px;

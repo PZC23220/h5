@@ -436,6 +436,12 @@
                      }else {
                         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
                      }
+                     http.get('/groupyuser/report',{
+                        params: {
+                            reportingUserId:1,
+                            reportedUserId:1
+                        }
+                     })
                 })
             }
         },
