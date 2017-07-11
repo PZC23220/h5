@@ -272,6 +272,13 @@
                      }else {
                         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
                      }
+                     http.get('/groupyuser/report',{
+                        params: {
+                            reportedUserId:index
+                        }
+                     }).then(function(res){
+                        console.log('举报成功');
+                     })
                 })
             }
         },
@@ -336,6 +343,6 @@
     transition: opacity 0.3s;
  }
 .left_show {
-    opacity: 1;
+    opacity: 1 !important;
 }
 </style>

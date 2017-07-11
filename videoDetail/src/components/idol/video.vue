@@ -438,9 +438,10 @@
                      }
                      http.get('/groupyuser/report',{
                         params: {
-                            reportingUserId:1,
-                            reportedUserId:1
+                            reportedUserId:index
                         }
+                     }).then(function(res){
+                        console.log('举报成功');
                      })
                 })
             }

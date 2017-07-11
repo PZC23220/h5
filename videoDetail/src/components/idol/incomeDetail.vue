@@ -318,6 +318,6 @@
     transition: opacity 0.3s;
  }
 .left_show {
-    opacity: 1;
+    opacity: 1 !important;
 }
 </style>
