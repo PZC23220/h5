@@ -167,7 +167,7 @@
                 }
             },
             formatTime(key) {
-                let timer = new Date(key*1000);
+                let timer = new Date(key);
                 return timer.Format('MM.dd');
             },
             changeStatus(val) {
