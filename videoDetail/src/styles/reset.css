@@ -106,4 +106,21 @@ input,textarea {
     outline: none;
 }
 
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #999;
+    font-weight: 200;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #999;
+    font-weight: 200;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #999;
+    font-weight: 200;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #999;
+    font-weight: 200;
+}
+
 /* 重置样式 end */

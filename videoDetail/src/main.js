@@ -5,7 +5,14 @@ import App from './App.vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import VideoPlayer from 'vue-video-player';
 import VueScroller from 'vue-scroller'
+import VueLazyload from 'vue-lazyload'
 Vue.use(VueScroller)
+Vue.use(VueLazyload, {
+        preLoad: 1.3,
+	    error: 'http://h5.groupy.vip/static/images/default_img.png',
+	    loading: 'http://h5.groupy.vip/static/images/default_img.png',
+	    attempt: 1
+    })
 
 Vue.use(VueAwesomeSwiper);
 

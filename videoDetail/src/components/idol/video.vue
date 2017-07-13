@@ -73,7 +73,8 @@
                                 <span class="level_color" v-if="key > 2">{{key+1}}</span>
                                 <img class="avatar" :src="fans.userFans?fans.userFans.avatar: '/static/images/default_img.png'" alt="">
                                 <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
-                                <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform+1) +'.png'): ''" class="level" alt="">
+                                <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.level+1) +'.png'): ''" class="level" alt="">
+                                <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.medal+1) +'.png'): ''" class="level" alt="">
                                 <i>
                                     <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{fans.expendGprice?Number(fans.expendGprice).toLocaleString(): 0}}
                                 </i>

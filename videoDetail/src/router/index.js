@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import video from '../components/idol/video.vue';
+import fans_video from '../components/fans/video.vue';
 import community from '../components/idol/community.vue';
 import comment from '../components/idol/comment.vue';
 import report from '../components/idol/report.vue';
@@ -214,6 +215,9 @@ export default new VueRouter({
         },{
             path: '/fans/level',
             component: level   
+        },{
+            path: '/fans/video',
+            component: fans_video   
         },{
             path: '/shareVideo',
             component: shareVideo

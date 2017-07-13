@@ -9,14 +9,14 @@
             </div> -->
             <div class="header_banner">
                 <div class="level_bg">
-                    <span>Lv1</span>
+                    <span class="con_left" :class="{'left_show':lvNow}">Lv {{lvNow?lvNow:'0'}}</span>
                     <img src="../../images/bg_level.png" alt="">
                 </div>
-                <p class="score">102/300</p>
+                <p class="score con_left" :class="{'left_show':lvNow}">{{score?score:'0/0'}}</p>
                 <div class="progress">
-                    <span class="active"></span>
+                    <span :style="style"></span>
                 </div>
-                <div class="me_leval"><span>Lv.1</span><span>Lv.2</span></div>
+                <div class="me_leval"><span class="con_left" :class="{'left_show':lvNow}">Lv.{{lvNow?lvNow:'0'}}</span><span class="con_left" :class="{'left_show':lvNext}">Lv.{{lvNext?lvNext:'0'}}</span></div>
             </div>
         </div>
         <div class="content">
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+    import http from '@/utils/http.js';
     export default {
         data() {
             return {
@@ -37,7 +38,11 @@
                     title: '成長レベル',
                     desc: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。<br><br>高レベルのファンに特典（無料会員体験など）もご用意していますので、ぜひレベルアップを！',
                     how: 'レベルアップのヒントは？'
-                }
+                },
+                lvNow: '',
+                lvNext: '',
+                score:'',
+                style: 'width: calc(320px * 0)'
             }
         },
         methods: {
@@ -45,10 +50,33 @@
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('close');
                 });
+            },
+            getLevel(token) {
+                let self = this;
+                if(token) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+token;
+                }else {
+                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
+                }
+                http.get('/groupyuser/fansLevel').then(function(res){
+                    console.log(res);
+                    self.lvNow = res.data.levelLowerLimit.level;
+                    self.lvNext = res.data.levelUpperLimit.level;
+                    self.score = (res.data.fansLevelValue - res.data.levelLowerLimit.popularity)+ '/' +(res.data.levelUpperLimit.popularity - res.data.levelLowerLimit.popularity);
+                    self.style = 'width: calc(320px * '+ score +')'
+                }).catch(function(){
+                    self.loadingBig = false;
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                            self.getLevel(responseData.token);
+                        })
+                    })
+                });
             }
         },
         created() {
             var self = this;
+            self.getLevel();
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if(_lan === 'zh-cn') {
                  self.medal_text= {
@@ -150,10 +178,12 @@
         color: #666;
         height: calc(100vh - 173.5px);
         font-weight: 200;
+        padding-bottom: 20px;
+        box-sizing: border-box;
         background: #eee;
         .howToUpgrade {
             background: #FCFCFC;
-            margin: 14px 12px 0;
+            margin: 14px 12px 20px;
             padding-top: 11px;
             box-sizing: border-box;
             box-shadow: 0 1px 2px 0 rgba(0,0,0,0.20);
@@ -173,5 +203,12 @@
                 padding-right: 8.5px;
             }
         }
+    }
+    .con_left {
+        opacity: 0.2;
+        transition: opacity 0.3s;
+     }
+    .left_show {
+        opacity: 1;
     }
 </style>
