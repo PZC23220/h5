@@ -40,7 +40,7 @@
                          </li>
                      </ul>
                      <ul class="comment_list">
-                        <li>
+                        <!-- <li>
                             <span>{{rakingListToday.rankingList?rakingListToday.rankingList[3].position:'4'}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[3].avatar:false}" :src="rakingListToday.rankingList?rakingListToday.rankingList[3].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[3].name:false}">{{rakingListToday.rankingList?rakingListToday.rankingList[3].name:'...'}}</span>
@@ -95,10 +95,10 @@
                             <i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[9].score || rakingListToday.rankingList[9].score==0:false}">
                                 <img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingListToday.rankingList?rakingListToday.rankingList[9].score:'').toLocaleString()}}
                             </i>
-                        </li>
-                        <li v-for="(idol,key) in rakingListToday.rankingList" v-if="key > 9">
+                        </li> -->
+                        <li v-for="(idol,key) in rakingListToday.rankingList" v-if="key > 2">
                             <span>{{idol.position}}</span>
-                            <img class="avatar" :src="idol.avatar" alt="">
+                            <img class="avatar" :src="idol.avatar?idol.avatar:'/static/images/default_img.png'" alt="">
                             <span>{{idol.name}}</span>
                             <i>
                                 <img src="../../images/timeline_icon_likes.png" alt="">{{Number(idol.score).toLocaleString()}}
@@ -137,7 +137,7 @@
                          </li>
                      </ul>
                      <ul class="comment_list">
-                        <li>
+                       <!--  <li>
                             <span>{{rakingListToday.rankingList?rakingList.rankingList[3].position:'4'}}</span>
                             <img class="avatar con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[3].avatar:false}" :src="rakingList.rankingList?rakingList.rankingList[3].avatar:'/static/images/default_img.png'" alt="">
                             <span class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[3].name:false}">{{rakingList.rankingList?rakingList.rankingList[3].name:'...'}}</span>
@@ -192,10 +192,10 @@
                             <i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[9].score || rakingList.rankingList[9].score==0:false}">
                                 <img src="../../images/timeline_icon_likes.png" alt="">{{Number(rakingList.rankingList?rakingList.rankingList[9].score:'').toLocaleString()}}
                             </i>
-                        </li>
-                        <li v-for="(idol,key) in rakingList.rankingList" v-if="key > 9">
+                        </li> -->
+                        <li v-for="(idol,key) in rakingList.rankingList" v-if="key > 2">
                             <span>{{idol.position}}</span>
-                            <img class="avatar" :src="idol.avatar" alt="">
+                            <img class="avatar" :src="idol.avatar?idol.avatar:'/static/images/default_img.png'" alt="">
                             <span>{{idol.name}}</span>
                             <i>
                                 <img src="../../images/timeline_icon_likes.png" alt="">{{Number(idol.score).toLocaleString()}}
@@ -264,7 +264,7 @@
                 }else {
                     http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                 }
-                http.get('/ranking/idols',{
+                http.get('http://api.groupy.vip:8080/ranking/idols',{
                     params: {
                         filter: val
                     }

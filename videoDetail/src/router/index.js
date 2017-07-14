@@ -4,9 +4,8 @@ Vue.use(VueRouter);
 
 import video from '../components/idol/video.vue';
 import fans_video from '../components/fans/video.vue';
-import community from '../components/idol/community.vue';
-import comment from '../components/idol/comment.vue';
 import report from '../components/idol/report.vue';
+import noviceTask from '../components/idol/noviceTask.vue';
 import messageBoard from '../components/idol/messageBoard.vue';
 import fans_messageBoard from '../components/fans/messageBoard.vue';
 
@@ -34,26 +33,6 @@ import idol_ranking_chinese from '../components/idol/ranking_chinese.vue';
 import idol_allRanking from '../components/idol/allRanking.vue';
 import fans_fansRanking from '../components/fans/fansRanking.vue';
 import fans_idolRanking from '../components/fans/idolRanking.vue';
-
-import idol_index from '../components/idol/index.vue';
-import fans_index from '../components/fans/index.vue';
-import fans_dynamic_comment from '../components/fans/dynamic_comment.vue';
-
-import idol_index_comment from '../components/idol/index/comment.vue';
-import idol_index_dynamic from '../components/idol/index/dynamic.vue';
-
-import fans_index_comment from '../components/fans/index/comment.vue';
-import fans_index_dynamic from '../components/fans/index/dynamic.vue';
-
-import community_comment from '../components/idol/community/comment.vue';
-import community_dynamic from '../components/idol/community/dynamic.vue';
-
-import comment_comment from '../components/idol/comment/comment.vue';
-import comment_likes from '../components/idol/comment/likes.vue';
-
-import admissionTime from '../components/idol/fansdetail/admissionTime.vue';
-import cheerNumber from '../components/idol/fansdetail/cheerNumber.vue';
-import totalContribution from '../components/idol/fansdetail/totalContribution.vue';
 
 import medal from '../components/fans/medal.vue';
 import level from '../components/fans/level.vue';
@@ -94,43 +73,8 @@ export default new VueRouter({
             path: '/',
             redirect: '/shareVideo'
         },{
-            path: '/idol/index',
-            component: idol_index,
-            children: [
-                {path: '', redirect: 'dynamic'},
-                {path: '/idol/index/dynamic', component: idol_index_dynamic},
-                {path: '/idol/index/comment', component: idol_index_comment}
-            ]
-        },{
-            path: '/fans/index',
-            component: fans_index,
-            children: [
-                {path: '', redirect: 'dynamic'},
-                {path: '/fans/index/dynamic', component: fans_index_dynamic},
-                {path: '/fans/index/comment', component: fans_index_comment}
-            ]
-        },{
-            path: '/fans/dynamic_comment',
-            component: fans_dynamic_comment
-        },{
             path: '/idol/video',
             component: video
-        },{
-            path: '/idol/community',
-            component: community,
-            children: [
-                {path: '', redirect: 'dynamic'},
-                {path: '/idol/community/comment', component: community_comment},
-                {path: '/idol/community/dynamic', component: community_dynamic}
-            ]
-        },{
-            path: '/idol/comment',
-            component: comment,
-            children: [
-                {path: '', redirect: 'comment'},
-                {path: '/idol/comment/comment', component: comment_comment},
-                {path: '/idol/comment/likes', component: comment_likes}
-            ]
         },{
             path: '/idol/incomeDetail',
             component: incomeDetail
@@ -158,6 +102,9 @@ export default new VueRouter({
         },{
             path: '/idol/report',
             component: report
+        },{
+            path: '/idol/noviceTask',
+            component: noviceTask
         },{
             path: '/idol/copyright',
             redirect: indexLanguage.copyright

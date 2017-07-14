@@ -57,7 +57,7 @@
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
                         <div class="userinfo">
-                            <img :src="comment.avatar"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                            <img :src="comment.avatar?comment.avatar:'http://h5.groupy.vip/static/images/default_img.png'"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                             <span>{{comment.nickname}}</span>
                             <img :src="comment.level?'/static/images/icon_level_'+(comment.level+1)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
                             <img :src="comment.medal?'/static/images/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
@@ -79,7 +79,7 @@
             </scroller>
         </div>
         <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div>
-        <div class="publich_tips" :class="{'Lheight':msg_text.pubMsg == '发表评论'}" v-show="commentList.length == 0 && idx!=0"><img src="../../images/tips_edit.png" alt=""><em v-html="msg_text.pubMsg"></em></div>
+        <div class="publich_tips" @click="publishComment()" :class="{'Lheight':msg_text.pubMsg == '发表评论'}" v-show="commentList.length == 0 && idx!=0"><img src="../../images/tips_edit.png" alt=""><em v-html="msg_text.pubMsg"></em></div>
         <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
         </div> -->
