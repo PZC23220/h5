@@ -14,10 +14,12 @@ i{
 }
 body {
     background: #fff;
-    overflow: hidden;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
 }
 .main {
-    position: relative;
+    // position: relative;
 }
 a {color: #333;}
 .fl{float: left;}
@@ -39,7 +41,7 @@ a {color: #333;}
         padding: 0 12px;
         height: 54px;
         line-height: 54px;
-        .back {        
+        .back {
             position: absolute;
             display: block;
             left: 12px;

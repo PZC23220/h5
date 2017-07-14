@@ -88,7 +88,7 @@
 
 <!-- <script src="../../utils/common.js"></script> -->
 <script>
-    import http from '@/utils/http.js';
+    import http from '@env/http.js';
     import VueScroller from 'vue-scroller';
     import VueLazyload from 'vue-lazyload'
     require('../../utils/common.js')

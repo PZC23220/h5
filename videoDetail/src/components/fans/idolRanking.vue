@@ -131,7 +131,7 @@
 <script src="../../utils/common.js"></script>
 <script>
     import VueScroller from 'vue-scroller';
-    import http from '@/utils/http.js';
+    import http from '@env/http.js';
     export default {
         data() {
             return {

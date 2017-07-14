@@ -80,7 +80,7 @@
             </scroller>
         </div>
         <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div>
-        <div class="publich_tips" :class="{'Lheight':msg_text.pubMsg == '发表评论'}" v-show="commentList.length == 0 && idx!=0"><img src="../../images/tips_edit.png" alt=""><em v-html="msg_text.pubMsg"></em></div>
+        <div class="publich_tips" @click="publishComment()" :class="{'Lheight':msg_text.pubMsg == '发表评论'}" v-show="commentList.length == 0 && idx!=0"><img src="../../images/tips_edit.png" alt=""><em v-html="msg_text.pubMsg"></em></div>
         <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="../../images/loading_2.png" alt="">
         </div> -->
@@ -89,7 +89,7 @@
 
 <!-- <script src="../../utils/common.js"></script> -->
 <script>
-    import http from '@/utils/http.js';
+    import http from '@env/http.js';
     import VueScroller from 'vue-scroller';
     require('../../utils/common.js')
     export default {

@@ -224,7 +224,7 @@
     import VueScroller from 'vue-scroller';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import $ from 'n-zepto';
-    import http from '@/utils/http.js';
+    import http from '@env/http.js';
     export default {
         data() {
             return {

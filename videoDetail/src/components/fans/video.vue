@@ -4,7 +4,7 @@
             <img src="../../images/close.png" alt="" @click="close()">
             <span>评论({{commentList.length}})</span>
         </div>
-        <div class="content" ref="viewBox">
+        <div class="content" ref="viewBox" :style="autoContent">
             <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
               :on-infinite="infinite">
@@ -75,18 +75,18 @@
                     </div>
                 </ul>
             </scroller>
-            <div class="footer" :style="autoHeight">
-                <input type="" name="" placeholder="添加评论" v-model="comment_text">
-                <img src="../../images/timeline_icon_edit 2.png">
-                <span @click="publish()">发布</span>
-            </div>
+        </div>
+        <div class="footer">
+            <input type="" name="" placeholder="添加评论" v-model="comment_text"  v-on:focus="changeCount()">
+            <img src="../../images/timeline_icon_edit 2.png">
+            <span @click="publish()">发布</span>
         </div>
     </div>
 </template>
 
 <!-- <script src="../../utils/common.js"></script> -->
 <script>
-    import http from '@/utils/http.js';
+    import http from '@env/http.js';
     import VueScroller from 'vue-scroller';
     import VueLazyload from 'vue-lazyload'
     require('../../utils/common.js')
@@ -106,6 +106,8 @@
                 idx:0,
                 comment_text: '',
                 autoHeight: 'bottom:0',
+                autoHarder: 'top:0',
+                autoContent: 'top:66px;height: calc(100vh -114px);',
                 video_text: {
                     Gcoin: 'コイン',
                     like: 'Like',
@@ -120,6 +122,13 @@
             }
         },
         methods: {
+            changeCount() {
+                setTimeout(function(){
+                    document.querySelector('.header').scrollIntoView(false);
+                    // document.querySelector('body').style.height = window.innerHeight + 'px';
+                    // document.querySelector('html').style.height = window.innerHeight + 'px';
+                },0)
+            },
             TransferString(content) {
                  let string = content;    
                  try{    
@@ -177,11 +186,9 @@
                         targetId: self.$route.query.videoId
                     }
                     http.post('/post/add',JSON.stringify(_data)).then(function(res){
+                        self.refresh();
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('makeToast', '发表评论成功');
-                            setTimeout(function(){
-                                self.close();
-                            },1500)
                         })
                     }).catch(function(err){
                         window.setupWebViewJavascriptBridge(function(bridge) {
@@ -211,6 +218,11 @@
             showBigImg(url) {
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('showImage', {'url': url})
+                })
+            },
+            close() {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('close');
                 })
             },
             refresh (done) {
@@ -267,7 +279,9 @@
           });
           window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.registerHandler('keyboard_status_changed', function(data) {
-                    self.autoHeight='bottom:calc(100vh - '+data.height/2+ 'px)';
+                    // self.autoHeight='bottom:'+(data.height)+ 'px;transition: all '+ data.duration +'s;';
+                    // self.autoHarder='top:'+(data.height)+ 'px;transition: all '+ data.duration +'s;';
+                    // self.autoContent='top:'+(data.height+66)+ 'px;height:calc(100vh - '+(data.height+66)+'px);transition: all '+ data.duration +'s;';
                 })
             }) 
         },
@@ -312,7 +326,6 @@
         box-sizing: border-box;
         font-size: 18px;
         line-height: 43px;
-        position: fixed;
         background: #fafafa;
         border-bottom: 1px solid rgba(0,0,0,0.1);
         img {
@@ -333,8 +346,9 @@
         }
     }
     .content {
-        height: calc(100vh - 66px);
+        height: calc(100vh - 114px);
         top: 66px;
+        background: #eee;
     }
     i {
         text-align: right;
@@ -391,9 +405,12 @@
         border: none;
     }
     .footer {
-        position: fixed;
+        position: absolute;
         left: 0;
         width: 100%;
+        // top: calc(100vh - 50px);
+        bottom: 0;
+        z-index: 100;
         background: #fff;
         box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.07);
         height: 48px;
@@ -405,6 +422,7 @@
             width: 18px;
             left: 12px;
             top: 13px;
+            z-index: 1000;
         }
         input {
             width: calc(100vw - 108px);
@@ -428,6 +446,7 @@
             font-size: 16px;
             color: #FC4083;
             text-align: center;
+            z-index: 1000;
         }
     }
 </style>

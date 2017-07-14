@@ -81,9 +81,8 @@ a {
 
 html,body {
     width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: 100%;
+    overflow: hidden;
     -webkit-overflow-scrolling: touch;
     -webkit-overflow-scrolling: iscroll;
 }
@@ -94,9 +93,6 @@ a,img,button,h4,div{
     -webkit-touch-callout: none;   
     outline: none;
     -webkit-user-select: none;
-}
-input{
-   
 }
 input,textarea {
      -webkit-appearance: none;

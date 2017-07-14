@@ -99,7 +99,7 @@
 
 <!-- <script src="../../utils/common.js"></script> -->
 <script>
-    import http from '@/utils/http.js';
+    import http from '@env/http.js';
     require('../../utils/common.js')
     export default {
         data() {

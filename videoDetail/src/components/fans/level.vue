@@ -30,7 +30,7 @@
 </template>
 
 <script>
-    import http from '@/utils/http.js';
+    import http from '@env/http.js';
     export default {
         data() {
             return {

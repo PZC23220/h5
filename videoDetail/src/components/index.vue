@@ -171,7 +171,7 @@
 <script>
     import VideoPlayer from 'vue-video-player';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
-    import http from '@/utils/http.js';
+    import http from '@env/http.js';
     import $ from 'n-zepto';
     export default {
         data() {
