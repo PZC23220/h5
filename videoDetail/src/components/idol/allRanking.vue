@@ -264,7 +264,7 @@
                 }else {
                     http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                 }
-                http.get('http://api.groupy.vip:8080/ranking/idols',{
+                http.get('/ranking/idols',{
                     params: {
                         filter: val
                     }

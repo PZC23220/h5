@@ -35,7 +35,7 @@ module.exports = __webpack_require__.p + "static/img/default_img.6303494.png";
 
 
 const instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: 'http://api.groupy.vip:8080/',
+    baseURL: 'http://api.groupy.cn:8080/',
     timeout: 20000
 });
 instance.interceptors.response.use(function(response){
@@ -2804,7 +2804,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else {
                     __WEBPACK_IMPORTED_MODULE_2__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
                 }
-                __WEBPACK_IMPORTED_MODULE_2__env_http_js__["a" /* default */].get('http://api.groupy.vip:8080/ranking/idols', {
+                __WEBPACK_IMPORTED_MODULE_2__env_http_js__["a" /* default */].get('/ranking/idols', {
                     params: {
                         filter: val
                     }
@@ -15589,4 +15589,4 @@ module.exports = {
 
 /***/ })
 ],[145]);
-//# sourceMappingURL=app.102bb6ba6ff2f72c81f2.js.map
+//# sourceMappingURL=app.da171e08d165c414ab6f.js.map
