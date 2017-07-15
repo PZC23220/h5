@@ -35,7 +35,7 @@ module.exports = __webpack_require__.p + "static/img/default_img.6303494.png";
 
 
 const instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: 'http://api.groupy.vip:8080/',
+    baseURL: 'http://api.groupy.cn:8080/',
     timeout: 20000
 });
 instance.interceptors.response.use(function(response){
@@ -1045,6 +1045,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_n_zepto__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_n_zepto___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_n_zepto__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__env_http_js__ = __webpack_require__(12);
+//
+//
+//
 //
 //
 //
@@ -2798,7 +2801,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getRanking(val, token) {
             let self = this;
             if (self.idx < 4) {
-                self.idx++;
                 if (token) {
                     __WEBPACK_IMPORTED_MODULE_2__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
                 } else {
@@ -2827,7 +2829,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         });
                     }
                 }).catch(function (err) {
-                    console.log(err);
+                    self.idx++;
                     window.setupWebViewJavascriptBridge(function (bridge) {
                         bridge.callHandler('getToken', { 'targetType': '0', 'targetId': '0' }, function responseCallback(responseData) {
                             self.getRanking(responseData.token);
@@ -2882,6 +2884,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_n_zepto__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_n_zepto___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_n_zepto__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__env_http_js__ = __webpack_require__(12);
+//
+//
+//
 //
 //
 //
@@ -3050,7 +3055,6 @@ __webpack_require__(28);
         getJoin(token) {
             let self = this;
             if (self.idx1 < 2) {
-                self.idx1++;
                 if (token) {
                     __WEBPACK_IMPORTED_MODULE_3__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
                 } else {
@@ -3068,6 +3072,7 @@ __webpack_require__(28);
                         });
                     }
                 }).catch(function () {
+                    self.idx1++;
                     window.setupWebViewJavascriptBridge(function (bridge) {
                         bridge.callHandler('getToken', { 'targetType': '0', 'targetId': '0' }, function responseCallback(responseData) {
                             self.getGoin(responseData.token);
@@ -3079,7 +3084,6 @@ __webpack_require__(28);
         getGcoin(token) {
             let self = this;
             if (self.idx < 2) {
-                self.idx++;
                 if (token) {
                     __WEBPACK_IMPORTED_MODULE_3__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
                 } else {
@@ -3098,6 +3102,7 @@ __webpack_require__(28);
                         });
                     }
                 }).catch(function () {
+                    self.idx++;
                     window.setupWebViewJavascriptBridge(function (bridge) {
                         bridge.callHandler('getToken', { 'targetType': '0', 'targetId': '0' }, function responseCallback(responseData) {
                             self.getGoin(responseData.token);
@@ -3119,7 +3124,6 @@ __webpack_require__(28);
         getPopularity(token) {
             let self = this;
             if (self.idx2 < 2) {
-                self.idx2++;
                 if (token) {
                     __WEBPACK_IMPORTED_MODULE_3__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
                 } else {
@@ -3138,7 +3142,7 @@ __webpack_require__(28);
                         });
                     }
                 }).catch(function (err) {
-                    console.log(err.response);
+                    self.idx2++;
                     window.setupWebViewJavascriptBridge(function (bridge) {
                         bridge.callHandler('getToken', { 'targetType': '0', 'targetId': '0' }, function responseCallback(responseData) {
                             self.getPopularity(responseData.token);
@@ -3776,26 +3780,74 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data() {
         return {
-            tasks: []
+            tasks: [],
+            idx: 0,
+            idx2: 0
         };
     },
     methods: {
         getList(token) {
             let self = this;
-            if (token) {
-                __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
-            } else {
-                __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
-            }
-            __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].get('/mission/list ').then(function (err) {
-                self.tasks = res.data;
-            }).catch(function () {
-                window.setupWebViewJavascriptBridge(function (bridge) {
-                    bridge.callHandler('getToken', { 'targetType': '0', 'targetId': '0' }, function responseCallback(responseData) {
-                        self.getList(responseData.token);
+            if (self.idx < 2) {
+                if (token) {
+                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
+                } else {
+                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
+                }
+                __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].get('/mission/list ').then(function (res) {
+                    self.tasks = res.data;
+                    console.log(self.tasks);
+                }).catch(function () {
+                    self.idx++;
+                    window.setupWebViewJavascriptBridge(function (bridge) {
+                        bridge.callHandler('getToken', { 'targetType': '0', 'targetId': '0' }, function responseCallback(responseData) {
+                            self.getList(responseData.token);
+                        });
                     });
                 });
-            });
+            } else {
+                window.setupWebViewJavascriptBridge(function (bridge) {
+                    if (_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    } else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                    }
+                });
+            }
+        },
+        accept(val, e, token) {
+            let self = this;
+            if (self.idx2 < 2) {
+                console.log(e.target.innerHTML);
+                if (token) {
+                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
+                } else {
+                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
+                }
+                __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].get('/mission/accept', {
+                    params: {
+                        id: val
+                    }
+                }).then(function (res) {
+                    e.target.innerHTML = '已领取';
+                    e.target.classList.remove('finish');
+                }).catch(function () {
+                    self.idx2++;
+                    window.setupWebViewJavascriptBridge(function (bridge) {
+                        bridge.callHandler('getToken', { 'targetType': '0', 'targetId': '0' }, function responseCallback(responseData) {
+                            self.getList(responseData.token);
+                        });
+                    });
+                });
+            } else {
+                window.setupWebViewJavascriptBridge(function (bridge) {
+                    if (_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    } else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                    }
+                });
+            }
         },
         status(val) {
             if (val == '0') {
@@ -3803,38 +3855,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 return '已领取';
             }
-        },
-        pickImage() {
-            var self = this;
-            window.setupWebViewJavascriptBridge(function (bridge) {
-                bridge.callHandler('pickImage', function responseCallback(responseData) {
-
-                    if (responseData.length == 1) {
-                        self.img1 = responseData[0];
-                    }
-                    if (responseData.length == 2) {
-                        self.img1 = responseData[1];
-                    }
-                    if (responseData.length == 3) {
-                        self.img1 = responseData[2];
-                    }
-                });
-            });
-        },
-        close() {
-            window.setupWebViewJavascriptBridge(function (bridge) {
-                bridge.callHandler('close');
-            });
         }
     },
-    mounted() {
-        var self = this;
-        window.setupWebViewJavascriptBridge(function (bridge) {
-            bridge.registerHandler('keyboard_status_changed', function (data) {
-                self.autoHeight(data.height);
-            });
-        });
-    },
+    mounted() {},
     created() {
         this.getList();
     }
@@ -5827,8 +5850,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_5_vue_scroller___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_6_vue_lazyload___default.a, {
   preLoad: 1.3,
-  error: 'http://h5.groupy.vip/static/images/default_img.png',
-  loading: 'http://h5.groupy.vip/static/images/default_img.png',
+  error: 'http://h5.groupy.vip/static/images/pic_default_2.png',
+  loading: 'http://h5.groupy.vip/static/images/pic_default_2.png',
   attempt: 1
 });
 
@@ -6080,7 +6103,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.comment_list[data-v-7921be22] {\n  padding: 0;\n  color: #666;\n}\n.comment_list li[data-v-7921be22] {\n    padding-left: 12px;\n    padding-right: 12px;\n}\n.comment_list li > span[data-v-7921be22]:first-child {\n      font-size: 18px;\n      color: #CCCCCC;\n}\n.comment_list li > span[data-v-7921be22]:nth-child(3) {\n      font-size: 14px;\n      color: #666;\n}\n.comment_list li[data-v-7921be22]:first-child {\n    border-top: 1px solid #EBEBEB;\n}\n.con_left[data-v-7921be22] {\n  opacity: 0.2;\n  transition: opacity 0.3s;\n}\n.left_show[data-v-7921be22] {\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\n.comment_list[data-v-7921be22] {\n  padding: 0;\n  color: #666;\n}\n.comment_list li[data-v-7921be22] {\n    padding-left: 12px;\n    padding-right: 12px;\n}\n.comment_list li > span[data-v-7921be22]:first-child {\n      font-size: 18px;\n      color: #CCCCCC;\n}\n.comment_list li > span[data-v-7921be22]:nth-child(3) {\n      font-size: 14px;\n      color: #666;\n      max-width: 53%;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n}\n.comment_list li[data-v-7921be22]:first-child {\n    border-top: 1px solid #EBEBEB;\n}\n.con_left[data-v-7921be22] {\n  opacity: 0.2;\n  transition: opacity 0.3s;\n}\n.left_show[data-v-7921be22] {\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -6122,7 +6145,7 @@ exports = module.exports = __webpack_require__(3)(false);
 exports.i(__webpack_require__(172), "");
 
 // module
-exports.push([module.i, "\n@charset \"UTF-8\";\nhtml, body {\n  font-size: 12px;\n  color: #333;\n  line-height: 1.5;\n  max-width: 500px;\n  margin: 0 auto;\n}\nhtml {\n  background-color: #f7f7f7;\n}\ni {\n  font-style: normal;\n}\nbody {\n  background: #fff;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\na {\n  color: #333;\n}\n.fl {\n  float: left;\n}\n.fr {\n  float: right;\n}\n.w100 {\n  width: 100px;\n}\n.clearfix {\n  overflow: hidden;\n}\n.link {\n  display: inline-block;\n  width: 100%;\n  height: 100%;\n}\n.a-btn {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n}\n.header {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  font-size: 14px;\n  overflow: hidden;\n  z-index: 1;\n}\n.header .detail {\n    padding: 0 12px;\n    height: 54px;\n    line-height: 54px;\n}\n.header .detail .back {\n      position: absolute;\n      display: block;\n      left: 12px;\n      height: 12px;\n      top: 16px;\n}\n.header .detail .back img {\n        width: 22px;\n        display: block;\n}\n.header .detailPages {\n    border-bottom: 1px solid #FC4083;\n    padding: 0 12px;\n    overflow: hidden;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 41px;\n    line-height: 28px;\n    padding: 6px 0;\n    box-sizing: border-box;\n}\n.header .detailPages a {\n      color: #FC4083;\n      display: block;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      margin: 0 7.5%;\n}\n.header .detailPages .active {\n      background: #FC4083;\n      border-radius: 50px;\n      color: #fff;\n}\n.content {\n  position: absolute;\n  top: 41px;\n  height: calc(100vh - 41px);\n  overflow: auto;\n  left: 0;\n  width: 100%;\n  overflow-x: hidden;\n}\n.detail_title {\n  font-size: 14px;\n  border-left: solid 3.5px #666;\n  padding-left: 7.5px;\n  height: 20px;\n  line-height: 20px;\n}\nimg.icon {\n  width: 23.75px;\n}\n.eBorder {\n  border-bottom: 8px solid #eee;\n}\n.detail_title {\n  padding: 0 12px;\n  margin-bottom: 12px;\n  margin-top: 10.5px;\n  font-size: 14px;\n}\n.income {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  line-height: 25px;\n  padding: 13px 12px;\n  overflow: hidden;\n}\n.income > span {\n    float: left;\n}\n.income > span img {\n      float: left;\n      margin-right: 6.1px;\n}\n.income > span:first-child {\n      margin-right: 5%;\n}\n.income > span:nth-child(2) {\n      padding-top: 9px;\n}\n.income .video_money {\n    font-size: 18px;\n    color: #666;\n    font-style: normal;\n    transition: opacity 0.3s;\n    opacity: 0.2;\n}\n.income .video_money_show {\n    opacity: 1;\n}\n.income p {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    overflow: hidden;\n}\n.income p .detail_title {\n      display: block;\n      min-width: 100px;\n}\n.income p:first-child {\n      border-right: 1px solid #e2e2e2;\n}\n.income p:last-child {\n      padding-left: 12.25px;\n}\n.income p .detail_gcoin {\n      display: block;\n      margin-left: 45px;\n      overflow: hidden;\n}\n.income p .detail_gcoin img {\n        float: left;\n        margin-right: 5.5px;\n        width: 25px;\n}\n.income_details {\n  padding: 0 12px;\n}\n.income_details ul {\n    padding-top: 7.5px;\n    padding-bottom: 8px;\n    overflow: hidden;\n}\n.income_details li {\n    float: left;\n    width: calc((100vw - 64px)/4);\n    max-width: 109px;\n    border-radius: 2px;\n    margin-bottom: 12px;\n    position: relative;\n}\n.income_details li:not(:nth-child(4n-3)) {\n      margin-left: 10px;\n}\n.income_details li > img {\n      width: 100%;\n      display: block;\n      margin: 0 auto;\n      width: 78px;\n      border-radius: 5px;\n}\n@media screen and (max-width: 400px) {\n.income_details li > img {\n        padding: 11.5px 5px;\n}\n}\n.income_details li p {\n      overflow: hidden;\n      color: #666;\n      text-align: center;\n      font-size: 14px;\n      height: 21px;\n      overflow: hidden;\n}\n.income_details li .gif_price {\n      position: absolute;\n      bottom: 25px;\n      left: 0;\n      height: 13.3px;\n      line-height: 13.3px;\n      width: 100%;\n      text-align: center;\n}\n.income_details li .gif_price img {\n        width: 13.3px;\n        margin-right: 4.35px;\n}\n.fans_detail {\n  padding: 12px 0;\n}\n.fans_detail .detail_title {\n    margin: 10.5px 12px 12px;\n}\n.fans_detail .fans_list {\n    padding-top: 7.5px;\n    padding-bottom: 30px;\n}\n.fans_detail .fans_list li {\n      height: 30px;\n      line-height: 30px;\n      padding: 12px 0;\n      border-top: 1px solid #F0F0F0;\n}\n.fans_detail .fans_list li:last-child {\n        border-bottom: 1px solid #F0F0F0;\n}\n.fans_detail .fans_list li .fans_img {\n        width: 30px;\n        height: 30px;\n        border-radius: 50%;\n        float: left;\n}\n.fans_detail .fans_list li p {\n        float: left;\n        padding-left: 11px;\n}\n.fans_detail .fans_list li span {\n        float: right;\n        color: #666;\n}\n.level {\n  float: left;\n  width: 20.5px;\n  height: 11px;\n  margin-top: 9.5px;\n  margin-right: 3px;\n}\nimg.avatar {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 8px;\n  float: left;\n}\n.likes {\n  width: 12.55px;\n  height: 11.2px;\n}\n.comment_list {\n  background: #eee;\n}\n.comment_list li {\n    padding: 12px;\n    background: #fff;\n    overflow: hidden;\n    border-bottom: 1px solid #EBEBEB;\n    line-height: 30px;\n}\n.comment_list li i {\n      float: right;\n      color: #666;\n      overflow: hidden;\n      width: 18%;\n      height: 13.3px;\n      line-height: 13.3px;\n      margin-top: 8.35px;\n}\n.comment_list li i img {\n        float: left;\n        width: 13.3px;\n        margin-right: 4.85px;\n}\n.comment_list li span {\n      float: left;\n      margin-right: 10px;\n      min-width: 25px;\n}\n.comment_list li span:first-child {\n        text-align: center;\n}\n.comment_list li span:first-child img {\n          width: 25px;\n          vertical-align: middle;\n}\n.comment_list li span:first-child i {\n          width: 100%;\n          font-size: 18px;\n          color: #CCCCCC;\n}\n.comment_list li > span.level_color {\n      font-size: 18px;\n      color: #ccc;\n}\n.comment_list li:first-child > span.level_color {\n      color: #FABC01;\n}\n.comment_list li:nth-child(2) > span.level_color {\n      color: #999;\n}\n.comment_list li:nth-child(3) > span.level_color {\n      color: #FF8500;\n}\n.comment_list .idol_comment {\n    background: #FFF0F6;\n}\n.comment_list .idol_comment .userinfo > span {\n      color: #FC4083;\n}\n.comment_list .comment_info {\n    overflow: hidden;\n    height: 30px;\n    line-height: 30px;\n    color: #666;\n}\n.comment_list .comment_info i {\n      float: right;\n      width: 30%;\n      text-align: right;\n      color: #999;\n}\n.comment_list div.userinfo {\n    overflow: hidden;\n    box-sizing: border-box;\n}\n.comment_list div.userinfo img.avatar {\n      width: 30px;\n      height: 30px;\n      border-radius: 50%;\n      margin-right: 9px;\n      float: left;\n}\n.comment_list div.userinfo i {\n      color: #999;\n}\n.comment_list .comment_img {\n    overflow: hidden;\n}\n.comment_list .comment_img span {\n      display: block;\n      box-sizing: border-box;\n      float: left;\n      width: 30%;\n      overflow: hidden;\n      max-height: 132px;\n      border-radius: 4px;\n}\n.comment_list .comment_img span:last-child {\n        margin-right: 0;\n}\n.comment_list .comment_img span .autoWidth {\n        height: calc((100vw - 93px)/3);\n        width: auto;\n        position: relative;\n}\n.comment_list .comment_img span .autoHeight {\n        width: 100%;\n        height: auto;\n        position: relative;\n}\n.comment_list .comment_img .oneImg {\n      width: 100%;\n      max-height: calc((100vw - 93px)*3/4);\n}\n.comment_list .comment_img .oneImg .autoWidth {\n        height: calc((100vw - 93px)*3/4);\n        max-height: 327.75px;\n        width: auto;\n        position: relative;\n}\n.comment_list .comment_img .oneImg .autoHeight {\n        width: 100%;\n        height: auto;\n        position: relative;\n}\n.comment_list div.comment_content {\n    padding: 0 0 0 39px;\n    font-size: 16px;\n    color: #2F2F2F;\n}\n.comment_list div.comment_content a {\n      overflow: hidden;\n      display: block;\n}\n.comment_list div.comment_content img {\n      display: block;\n      border-radius: 4px;\n      margin: 0 auto;\n}\n.comment_list .comment_desc {\n    color: #888;\n    font-size: 14px;\n    overflow: hidden;\n}\n.comment_list .comment_desc img {\n      width: 20px;\n      margin-right: 9.5px;\n}\n.comment_list .comment_desc span:first-child {\n      margin-right: 30px;\n}\n.comment_list .comment_desc span:last-child {\n      float: right;\n}\n.comment_list .comment_desc span:last-child img:first-child {\n        margin-right: 16px;\n}\n.comment_list .comment_desc span:last-child img:first-child {\n        margin-right: 0;\n}\n.publish {\n  padding: 8px 12px;\n  overflow: hidden;\n}\n.publish span:first-child {\n    color: #A5A5A5;\n    font-size: 12px;\n}\n.publish span:first-child i {\n      font-size: 16px;\n      color: #666666;\n      padding-left: 14px;\n}\n.publish .right {\n    float: right;\n    border: 1px solid #666666;\n    border-radius: 4px;\n    width: 136.5px;\n    height: 36px;\n    line-height: 36px;\n    color: #666;\n    font-size: 14px;\n    display: block;\n    text-align: center;\n}\n.swiper-slide {\n  height: calc(100vh - 41px);\n  overflow: auto;\n}\n.top3 {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 7.5px 12px 12px;\n  box-sizing: border-box;\n  color: #666;\n}\n.top3 li {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    text-align: center;\n    font-size: 14px;\n}\n.top3 li div {\n      position: relative;\n}\n.top3 li .crown {\n      width: 77.5px;\n      height: 69px;\n}\n.top3 li .idol_img {\n      width: 60px;\n      height: 60px;\n      border-radius: 50%;\n      position: absolute;\n      left: 50%;\n      top: 50%;\n      margin: -33px 0 0 -30px;\n}\n.top3 li:not(:nth-child(2)) .idol_num {\n      padding-top: 14px;\n      font-size: 24px;\n      font-weight: 600;\n      padding-bottom: 7px;\n}\n.top3 li:not(:nth-child(2)) .idol_img {\n      width: 45px;\n      height: 45px;\n      margin: -24.5px 0 0 -22.5px;\n}\n.top3 li:not(:nth-child(2)) .crown {\n      width: 59.5px;\n      height: 54.5px;\n}\n.top3 li .idol_name {\n      margin-bottom: 9.5px;\n}\n.top3 li > span {\n      display: block;\n      font-size: 12px;\n      vertical-align: middle;\n      height: 13px;\n      line-height: 13px;\n}\n.top3 li > span img {\n        margin-right: 3px;\n        width: 15px;\n        vertical-align: middle;\n}\n.all_ranking {\n  border: 1px solid #999999;\n  border-radius: 50px;\n  width: 74px;\n  margin: 0 auto;\n  text-align: center;\n  display: block;\n  margin-bottom: 12px;\n}\n.integral {\n  padding: 12px;\n  border-bottom: 8px #eee solid;\n}\n.integral > p:first-child {\n    overflow: hidden;\n    box-sizing: border-box;\n    padding-bottom: 6px;\n}\n.integral > p:first-child > span:first-child {\n      display: inline-block;\n      padding-left: 5.5px;\n      border-left: solid #666 3.5px;\n      margin-right: calc(50% - 100px);\n}\n.integral > p:first-child > span:last-child {\n      color: #666;\n}\n.integral > p:first-child > span:last-child img {\n        width: 15px;\n        vertical-align: middle;\n        margin-right: 4.5px;\n        margin-left: 12px;\n}\n.integral > p:first-child > span:last-child i {\n        color: #333;\n        font-size: 16px;\n        font-weight: 600;\n}\n.integral > p:last-child {\n    color: #999;\n    text-align: center;\n}\n.help {\n  padding: 15px 12px 0;\n}\n.help h4 {\n    font-size: 14px;\n    color: #666;\n}\n.help .help_list li {\n    font-size: 14px;\n    padding: 16px 0;\n}\n.help .help_list li span {\n      display: inline-block;\n      width: 24px;\n      height: 24px;\n      background: #ebebeb;\n      border-radius: 50%;\n      text-align: center;\n      line-height: 24px;\n      margin-right: 18px;\n}\n.rule_tile {\n  background: #EEEEEE;\n  height: 40px;\n  line-height: 40px;\n  font-size: 14px;\n  color: #FC4083;\n  text-align: center;\n}\n.rule_content {\n  font-size: 14px;\n  line-height: 24px;\n  padding: 15px 12px 8px;\n  color: #666;\n}\n.rule_content > * {\n    padding-bottom: 8px;\n}\n.rule_content i {\n    color: #FC4083;\n}\n.rule_content > p:first-child {\n    text-indent: 14px;\n}\n.rule_content h4 {\n    color: #333;\n    font-weight: 600;\n}\n.rule_content h4 span {\n      display: inline-block;\n      width: 11.5px;\n      height: 11.5px;\n      background: #666;\n      margin-right: 9.5px;\n}\n.rule_2 {\n  padding-left: 40px;\n}\n.default_page {\n  text-align: center;\n  padding-top: 60px;\n  box-sizing: border-box;\n}\n.default_page img {\n    margin-bottom: 20px;\n    width: 120px;\n}\n.default_page p {\n    font-size: 14px;\n    color: #999;\n}\n.loading {\n  position: relative;\n  height: 0;\n  bottom: 0;\n  overflow: hidden;\n  transition: height 1s;\n  -moz-transition: height 1s;\n  /* Firefox 4 */\n  -webkit-transition: height 1s;\n  /* Safari 和 Chrome */\n  -o-transition: height 1s;\n}\n.loading p {\n    color: #999;\n    text-align: center;\n    padding: 10px 0;\n    box-sizing: border-box;\n}\n.loading p img {\n      width: 20px;\n      -webkit-transform: rotate(360deg);\n              transform: rotate(360deg);\n      -webkit-animation: rotation 1.4s linear infinite;\n              animation: rotation 1.4s linear infinite;\n      vertical-align: middle;\n      margin-right: 5px;\n}\n.loading p:last-child {\n      padding-top: 0px;\n}\n.loading_show {\n  height: 78px;\n}\n@-webkit-keyframes rotation {\nfrom {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\nto {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@keyframes rotation {\nfrom {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\nto {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@-webkit-keyframes rotationTop {\nfrom {\n    top: 0;\n}\nto {\n    top: -20px;\n}\n}\n@keyframes rotationTop {\nfrom {\n    top: 0;\n}\nto {\n    top: -20px;\n}\n}\n.loading_top {\n  position: relative;\n  text-align: center;\n  overflow: hidden;\n  color: #999;\n  height: 0;\n  background: #eee;\n  transition: height 1s;\n  -moz-transition: height 1s;\n  /* Firefox 4 */\n  -webkit-transition: height 1s;\n  /* Safari 和 Chrome */\n  -o-transition: height 1s;\n}\n.loading_top p {\n    padding: 3px;\n}\n.loading_top span {\n    width: 90.5px;\n    height: 47.5px;\n    display: block;\n    margin: 0 auto;\n}\n.bigLoading {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100vh;\n  text-align: center;\n  background: rgba(0, 0, 0, 0.2);\n  z-index: 3;\n}\n.bigLoading img {\n    width: 45px;\n    margin-top: calc(50vh - 22.5px);\n    -webkit-animation: rotation 1.8s linear infinite;\n            animation: rotation 1.8s linear infinite;\n}\n.my-scroller .pull-to-refresh-layer .spinner-holder, .my-scroller .loading-layer .spinner-holder svg {\n  visibility: hidden;\n}\n.my-scroller .pull-to-refresh-layer, .my-scroller .loading-layer .spinner-holder {\n  background-image: url(/static/images/pic_loading_1.png);\n  display: block;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: 100% auto;\n  width: 90.5px !important;\n  height: 47.5px !important;\n  margin: 0 auto;\n  border-radius: 50%;\n  transition: all .15s linear;\n  -webkit-transition: all .15s linear;\n  opacity: 0;\n  /* height:  80px !important; */\n}\n.my-scroller .pull-to-refresh-layer.active, .my-scroller .loading-layer .spinner-holder.active {\n  background-image: url(/static/images/pic_loading_2.png);\n  opacity: 1;\n  -webkit-animation: changebg 1s linear infinite;\n          animation: changebg 1s linear infinite;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background-image: url(/static/images/pic_loading_1.png);\n}\nto {\n    background-image: url(/static/images/pic_loading_2.png);\n}\n}\n@keyframes changebg {\nfrom {\n    background-image: url(/static/images/pic_loading_1.png);\n}\nto {\n    background-image: url(/static/images/pic_loading_2.png);\n}\n}\n.my-scroller .pull-to-refresh-layer {\n  margin-top: -47.5px !important;\n}\n.my-scroller .loading-layer .spinner-holder {\n  margin-top: 20px;\n}\n", ""]);
+exports.push([module.i, "\n@charset \"UTF-8\";\nhtml, body {\n  font-size: 12px;\n  color: #333;\n  line-height: 1.5;\n  max-width: 500px;\n  margin: 0 auto;\n}\nhtml {\n  background-color: #f7f7f7;\n}\ni {\n  font-style: normal;\n}\nbody {\n  background: #fff;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\na {\n  color: #333;\n}\n.fl {\n  float: left;\n}\n.fr {\n  float: right;\n}\n.w100 {\n  width: 100px;\n}\n.clearfix {\n  overflow: hidden;\n}\n.link {\n  display: inline-block;\n  width: 100%;\n  height: 100%;\n}\n.a-btn {\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n}\n.header {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  font-size: 14px;\n  overflow: hidden;\n  z-index: 1;\n}\n.header .detail {\n    padding: 0 12px;\n    height: 54px;\n    line-height: 54px;\n}\n.header .detail .back {\n      position: absolute;\n      display: block;\n      left: 12px;\n      height: 12px;\n      top: 16px;\n}\n.header .detail .back img {\n        width: 22px;\n        display: block;\n}\n.header .detailPages {\n    border-bottom: 1px solid #FC4083;\n    padding: 0 12px;\n    overflow: hidden;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 41px;\n    line-height: 28px;\n    padding: 6px 0;\n    box-sizing: border-box;\n}\n.header .detailPages a {\n      color: #FC4083;\n      display: block;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      margin: 0 7.5%;\n}\n.header .detailPages .active {\n      background: #FC4083;\n      border-radius: 50px;\n      color: #fff;\n}\n.content {\n  position: absolute;\n  top: 41px;\n  height: calc(100vh - 41px);\n  overflow: auto;\n  left: 0;\n  width: 100%;\n  overflow-x: hidden;\n}\n.detail_title {\n  font-size: 14px;\n  border-left: solid 3.5px #666;\n  padding-left: 7.5px;\n  height: 20px;\n  line-height: 20px;\n}\nimg.icon {\n  width: 23.75px;\n}\n.eBorder {\n  border-bottom: 8px solid #eee;\n}\n.detail_title {\n  padding: 0 12px;\n  margin-bottom: 12px;\n  margin-top: 10.5px;\n  font-size: 14px;\n}\n.income {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  line-height: 25px;\n  padding: 13px 12px;\n  overflow: hidden;\n}\n.income > span {\n    float: left;\n}\n.income > span img {\n      float: left;\n      margin-right: 6.1px;\n}\n.income > span:first-child {\n      margin-right: 5%;\n}\n.income > span:nth-child(2) {\n      padding-top: 9px;\n}\n.income .video_money {\n    font-size: 18px;\n    color: #666;\n    font-style: normal;\n    transition: opacity 0.3s;\n    opacity: 0.2;\n}\n.income .video_money_show {\n    opacity: 1;\n}\n.income p {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    overflow: hidden;\n}\n.income p .detail_title {\n      display: block;\n      min-width: 100px;\n}\n.income p:first-child {\n      border-right: 1px solid #e2e2e2;\n}\n.income p:last-child {\n      padding-left: 12.25px;\n}\n.income p .detail_gcoin {\n      display: block;\n      margin-left: 45px;\n      overflow: hidden;\n}\n.income p .detail_gcoin img {\n        float: left;\n        margin-right: 5.5px;\n        width: 25px;\n}\n.income_details {\n  padding: 0 12px;\n}\n.income_details ul {\n    padding-top: 7.5px;\n    padding-bottom: 8px;\n    overflow: hidden;\n}\n.income_details li {\n    float: left;\n    width: calc((100vw - 64px)/4);\n    max-width: 109px;\n    border-radius: 2px;\n    margin-bottom: 12px;\n    position: relative;\n}\n.income_details li:not(:nth-child(4n-3)) {\n      margin-left: 10px;\n}\n.income_details li > img {\n      width: 100%;\n      display: block;\n      margin: 0 auto;\n      width: 78px;\n      border-radius: 5px;\n}\n@media screen and (max-width: 400px) {\n.income_details li > img {\n        padding: 11.5px 5px;\n}\n}\n.income_details li p {\n      overflow: hidden;\n      color: #666;\n      text-align: center;\n      font-size: 14px;\n      height: 21px;\n      overflow: hidden;\n}\n.income_details li .gif_price {\n      position: absolute;\n      bottom: 25px;\n      left: 0;\n      height: 13.3px;\n      line-height: 13.3px;\n      width: 100%;\n      text-align: center;\n}\n.income_details li .gif_price img {\n        width: 13.3px;\n        margin-right: 4.35px;\n}\n.fans_detail {\n  padding: 12px 0;\n}\n.fans_detail .detail_title {\n    margin: 10.5px 12px 12px;\n}\n.fans_detail .fans_list {\n    padding-top: 7.5px;\n    padding-bottom: 30px;\n}\n.fans_detail .fans_list li {\n      height: 30px;\n      line-height: 30px;\n      padding: 12px 0;\n      border-top: 1px solid #F0F0F0;\n}\n.fans_detail .fans_list li:last-child {\n        border-bottom: 1px solid #F0F0F0;\n}\n.fans_detail .fans_list li .fans_img {\n        width: 30px;\n        height: 30px;\n        border-radius: 50%;\n        float: left;\n}\n.fans_detail .fans_list li p {\n        float: left;\n        padding-left: 11px;\n}\n.fans_detail .fans_list li span {\n        float: right;\n        color: #666;\n}\n.level {\n  float: left;\n  width: 20.5px;\n  height: 11px;\n  margin-top: 9.5px;\n  margin-right: 3px;\n}\nimg.avatar {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 8px;\n  float: left;\n}\n.likes {\n  width: 12.55px;\n  height: 11.2px;\n}\n.comment_list {\n  background: #eee;\n}\n.comment_list li {\n    padding: 12px;\n    background: #fff;\n    overflow: hidden;\n    border-bottom: 1px solid #EBEBEB;\n    line-height: 30px;\n}\n.comment_list li i {\n      float: right;\n      color: #666;\n      overflow: hidden;\n      width: 18%;\n      height: 13.3px;\n      line-height: 13.3px;\n      margin-top: 8.35px;\n}\n.comment_list li i img {\n        float: left;\n        width: 13.3px;\n        margin-right: 4.85px;\n}\n.comment_list li span {\n      float: left;\n      margin-right: 10px;\n      min-width: 25px;\n}\n.comment_list li span:first-child {\n        text-align: center;\n}\n.comment_list li span:first-child img {\n          width: 25px;\n          vertical-align: middle;\n}\n.comment_list li span:first-child i {\n          width: 100%;\n          font-size: 18px;\n          color: #CCCCCC;\n}\n.comment_list li > span.level_color {\n      font-size: 18px;\n      color: #ccc;\n}\n.comment_list li:first-child > span.level_color {\n      color: #FABC01;\n}\n.comment_list li:nth-child(2) > span.level_color {\n      color: #999;\n}\n.comment_list li:nth-child(3) > span.level_color {\n      color: #FF8500;\n}\n.comment_list .idol_comment {\n    background: #FFF0F6;\n}\n.comment_list .idol_comment .userinfo > span {\n      color: #FC4083;\n}\n.comment_list .comment_info {\n    overflow: hidden;\n    height: 30px;\n    line-height: 30px;\n    color: #666;\n}\n.comment_list .comment_info i {\n      float: right;\n      width: 30%;\n      text-align: right;\n      color: #999;\n}\n.comment_list div.userinfo {\n    overflow: hidden;\n    box-sizing: border-box;\n}\n.comment_list div.userinfo img.avatar {\n      width: 30px;\n      height: 30px;\n      border-radius: 50%;\n      margin-right: 9px;\n      float: left;\n}\n.comment_list div.userinfo i {\n      color: #999;\n}\n.comment_list .comment_img {\n    overflow: hidden;\n}\n.comment_list .comment_img span {\n      display: block;\n      box-sizing: border-box;\n      float: left;\n      width: 30%;\n      overflow: hidden;\n      max-height: 132px;\n      border-radius: 4px;\n}\n.comment_list .comment_img span:last-child {\n        margin-right: 0;\n}\n.comment_list .comment_img span .autoWidth {\n        height: calc((100vw - 93px)/3);\n        width: auto;\n        position: relative;\n}\n.comment_list .comment_img span .autoHeight {\n        width: 100%;\n        height: auto;\n        position: relative;\n}\n.comment_list .comment_img .oneImg {\n      width: 100%;\n      max-height: calc((100vw - 93px)*3/4);\n}\n.comment_list .comment_img .oneImg .autoWidth {\n        height: calc((100vw - 93px)*3/4);\n        max-height: 327.75px;\n        width: auto;\n        position: relative;\n}\n.comment_list .comment_img .oneImg .autoHeight {\n        width: 100%;\n        height: auto;\n        position: relative;\n}\n.comment_list div.comment_content {\n    padding: 0 0 0 39px;\n    font-size: 16px;\n    color: #2F2F2F;\n}\n.comment_list div.comment_content a {\n      overflow: hidden;\n      display: block;\n}\n.comment_list div.comment_content img {\n      display: block;\n      border-radius: 4px;\n      margin: 0 auto;\n}\n.comment_list .comment_desc {\n    color: #888;\n    font-size: 14px;\n    overflow: hidden;\n}\n.comment_list .comment_desc img {\n      width: 20px;\n      margin-right: 9.5px;\n}\n.comment_list .comment_desc span:first-child {\n      margin-right: 30px;\n}\n.comment_list .comment_desc span:last-child {\n      float: right;\n}\n.comment_list .comment_desc span:last-child img:first-child {\n        margin-right: 16px;\n}\n.comment_list .comment_desc span:last-child img:first-child {\n        margin-right: 0;\n}\n.publish {\n  padding: 8px 12px;\n  overflow: hidden;\n}\n.publish span:first-child {\n    color: #A5A5A5;\n    font-size: 12px;\n}\n.publish span:first-child i {\n      font-size: 16px;\n      color: #666666;\n      padding-left: 14px;\n}\n.publish .right {\n    float: right;\n    border: 1px solid #666666;\n    border-radius: 4px;\n    width: 136.5px;\n    height: 36px;\n    line-height: 36px;\n    color: #666;\n    font-size: 14px;\n    display: block;\n    text-align: center;\n}\n.swiper-slide {\n  height: calc(100vh - 41px);\n  overflow: auto;\n}\n.top3 {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 7.5px 12px 12px;\n  box-sizing: border-box;\n  color: #666;\n}\n.top3 li {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    text-align: center;\n    font-size: 14px;\n    overflow: hidden;\n}\n.top3 li div {\n      position: relative;\n}\n.top3 li .crown {\n      width: 77.5px;\n      height: 69px;\n}\n.top3 li .idol_img {\n      width: 60px;\n      height: 60px;\n      border-radius: 50%;\n      position: absolute;\n      left: 50%;\n      top: 50%;\n      margin: -33px 0 0 -30px;\n}\n.top3 li:not(:nth-child(2)) .idol_num {\n      padding-top: 14px;\n      font-size: 24px;\n      font-weight: 600;\n      padding-bottom: 7px;\n}\n.top3 li:not(:nth-child(2)) .idol_img {\n      width: 45px;\n      height: 45px;\n      margin: -24.5px 0 0 -22.5px;\n}\n.top3 li:not(:nth-child(2)) .crown {\n      width: 59.5px;\n      height: 54.5px;\n}\n.top3 li .idol_name {\n      margin-bottom: 9.5px;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n}\n.top3 li > span {\n      display: block;\n      font-size: 12px;\n      vertical-align: middle;\n      height: 14.5px;\n      line-height: 14.5px;\n}\n.top3 li > span img {\n        margin-right: 3px;\n        width: 15px;\n        vertical-align: middle;\n}\n.top3 li > span i {\n        height: 14.5px;\n        line-height: 14.5px;\n        display: inline-block;\n        vertical-align: middle;\n}\n.all_ranking {\n  border: 1px solid #999999;\n  border-radius: 50px;\n  width: 74px;\n  margin: 0 auto;\n  text-align: center;\n  display: block;\n  margin-bottom: 12px;\n}\n.integral {\n  padding: 12px;\n  border-bottom: 8px #eee solid;\n}\n.integral > p:first-child {\n    overflow: hidden;\n    box-sizing: border-box;\n    padding-bottom: 6px;\n}\n.integral > p:first-child > span:first-child {\n      display: inline-block;\n      padding-left: 5.5px;\n      border-left: solid #666 3.5px;\n      margin-right: calc(50% - 100px);\n}\n.integral > p:first-child > span:last-child {\n      color: #666;\n}\n.integral > p:first-child > span:last-child img {\n        width: 15px;\n        vertical-align: middle;\n        margin-right: 4.5px;\n        margin-left: 12px;\n}\n.integral > p:first-child > span:last-child i {\n        color: #333;\n        font-size: 16px;\n        font-weight: 600;\n        display: inline-block;\n        vertical-align: middle;\n}\n.integral > p:last-child {\n    color: #999;\n    text-align: center;\n}\n.help {\n  padding: 15px 12px 0;\n}\n.help h4 {\n    font-size: 14px;\n    color: #666;\n}\n.help .help_list li {\n    font-size: 14px;\n    padding: 16px 0;\n}\n.help .help_list li span {\n      display: inline-block;\n      width: 24px;\n      height: 24px;\n      background: #ebebeb;\n      border-radius: 50%;\n      text-align: center;\n      line-height: 24px;\n      margin-right: 18px;\n}\n.rule_tile {\n  background: #EEEEEE;\n  height: 40px;\n  line-height: 40px;\n  font-size: 14px;\n  color: #FC4083;\n  text-align: center;\n}\n.rule_content {\n  font-size: 14px;\n  line-height: 24px;\n  padding: 15px 12px 8px;\n  color: #666;\n}\n.rule_content > * {\n    padding-bottom: 8px;\n}\n.rule_content i {\n    color: #FC4083;\n}\n.rule_content > p:first-child {\n    text-indent: 14px;\n}\n.rule_content h4 {\n    color: #333;\n    font-weight: 600;\n}\n.rule_content h4 span {\n      display: inline-block;\n      width: 11.5px;\n      height: 11.5px;\n      background: #666;\n      margin-right: 9.5px;\n}\n.rule_2 {\n  padding-left: 40px;\n}\n.default_page {\n  text-align: center;\n  padding-top: 60px;\n  box-sizing: border-box;\n}\n.default_page img {\n    margin-bottom: 20px;\n    width: 120px;\n}\n.default_page p {\n    font-size: 14px;\n    color: #999;\n}\n.loading {\n  position: relative;\n  height: 0;\n  bottom: 0;\n  overflow: hidden;\n  transition: height 1s;\n  -moz-transition: height 1s;\n  /* Firefox 4 */\n  -webkit-transition: height 1s;\n  /* Safari 和 Chrome */\n  -o-transition: height 1s;\n}\n.loading p {\n    color: #999;\n    text-align: center;\n    padding: 10px 0;\n    box-sizing: border-box;\n}\n.loading p img {\n      width: 20px;\n      -webkit-transform: rotate(360deg);\n              transform: rotate(360deg);\n      -webkit-animation: rotation 1.4s linear infinite;\n              animation: rotation 1.4s linear infinite;\n      vertical-align: middle;\n      margin-right: 5px;\n}\n.loading p:last-child {\n      padding-top: 0px;\n}\n.loading_show {\n  height: 78px;\n}\n@-webkit-keyframes rotation {\nfrom {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\nto {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@keyframes rotation {\nfrom {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\nto {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@-webkit-keyframes rotationTop {\nfrom {\n    top: 0;\n}\nto {\n    top: -20px;\n}\n}\n@keyframes rotationTop {\nfrom {\n    top: 0;\n}\nto {\n    top: -20px;\n}\n}\n.loading_top {\n  position: relative;\n  text-align: center;\n  overflow: hidden;\n  color: #999;\n  height: 0;\n  background: #eee;\n  transition: height 1s;\n  -moz-transition: height 1s;\n  /* Firefox 4 */\n  -webkit-transition: height 1s;\n  /* Safari 和 Chrome */\n  -o-transition: height 1s;\n}\n.loading_top p {\n    padding: 3px;\n}\n.loading_top span {\n    width: 90.5px;\n    height: 47.5px;\n    display: block;\n    margin: 0 auto;\n}\n.bigLoading {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100vh;\n  text-align: center;\n  background: rgba(0, 0, 0, 0.2);\n  z-index: 3;\n}\n.bigLoading img {\n    width: 45px;\n    margin-top: calc(50vh - 22.5px);\n    -webkit-animation: rotation 1.8s linear infinite;\n            animation: rotation 1.8s linear infinite;\n}\n.my-scroller .pull-to-refresh-layer .spinner-holder, .my-scroller .loading-layer .spinner-holder svg {\n  visibility: hidden;\n}\n.my-scroller .pull-to-refresh-layer, .my-scroller .loading-layer .spinner-holder {\n  background-image: url(/static/images/pic_loading_1.png);\n  display: block;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: 100% auto;\n  width: 90.5px !important;\n  height: 47.5px !important;\n  margin: 0 auto;\n  border-radius: 50%;\n  transition: all .15s linear;\n  -webkit-transition: all .15s linear;\n  opacity: 0;\n  /* height:  80px !important; */\n}\n.my-scroller .pull-to-refresh-layer.active, .my-scroller .loading-layer .spinner-holder.active {\n  background-image: url(/static/images/pic_loading_2.png);\n  opacity: 1;\n  -webkit-animation: changebg 1s linear infinite;\n          animation: changebg 1s linear infinite;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background-image: url(/static/images/pic_loading_1.png);\n}\nto {\n    background-image: url(/static/images/pic_loading_2.png);\n}\n}\n@keyframes changebg {\nfrom {\n    background-image: url(/static/images/pic_loading_1.png);\n}\nto {\n    background-image: url(/static/images/pic_loading_2.png);\n}\n}\n.my-scroller .pull-to-refresh-layer {\n  margin-top: -47.5px !important;\n}\n.my-scroller .loading-layer .spinner-holder {\n  margin-top: 20px;\n}\n", ""]);
 
 // exports
 
@@ -7841,7 +7864,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "video_money",
     class: {
-      'video_money_show': _vm.gcoinList.total || _vm.gcoinList.total == 0
+      'video_money_show': (_vm.gcoinList.total || _vm.gcoinList.total == 0)
     }
   }, [_vm._v(_vm._s(_vm.gcoinList.total ? Number(_vm.gcoinList.total).toLocaleString() : '0'))])])]), _vm._v(" "), _c('div', {
     staticClass: "income_details eBorder"
@@ -7860,7 +7883,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.gcoinList.gift
     }
-  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[0].giftCount))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[0].giftCount ? _vm.gcoinList.gift[0].giftCount : '0'))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(79),
@@ -7871,7 +7894,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.gcoinList.gift
     }
-  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[1].giftCount))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[1].giftCount ? _vm.gcoinList.gift[1].giftCount : '0'))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(80),
@@ -7882,7 +7905,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.gcoinList.gift
     }
-  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[2].giftCount))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[2].giftCount ? _vm.gcoinList.gift[2].giftCount : '0'))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(78),
@@ -7893,7 +7916,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.gcoinList.gift
     }
-  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[3].giftCount))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[3].giftCount ? _vm.gcoinList.gift[3].giftCount : '0'))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(76),
@@ -7904,7 +7927,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.gcoinList.gift
     }
-  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[4].giftCount))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[4].giftCount ? _vm.gcoinList.gift[4].giftCount : '0'))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(83),
@@ -7915,7 +7938,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.gcoinList.gift
     }
-  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[5].giftCount))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[5].giftCount ? _vm.gcoinList.gift[5].giftCount : '0'))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(82),
@@ -7926,7 +7949,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.gcoinList.gift
     }
-  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[6].giftCount))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[6].giftCount ? _vm.gcoinList.gift[6].giftCount : '0'))]) : _vm._e()])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(77),
@@ -7937,7 +7960,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.gcoinList.gift
     }
-  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[7].giftCount))]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("×" + _vm._s(_vm.gcoinList.gift[7].giftCount ? _vm.gcoinList.gift[7].giftCount : '0'))]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
     staticClass: "fans_detail"
   }, [_c('p', {
     staticClass: "detail_title",
@@ -7986,19 +8009,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(key + 1))]) : _vm._e(), _vm._v(" "), _c('img', {
       staticClass: "avatar",
       attrs: {
-        "src": fans.userFans ? fans.userFans.avatar : '/static/images/default_img.png',
+        "src": fans.userFans ? _vm.f(_vm.ans.userFans.avatar ? _vm.ans.userFans.avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
     }), _vm._v(" "), _c('span', [_vm._v(_vm._s(fans.userFans ? fans.userFans.nickname : ''))]), _vm._v(" "), _c('img', {
       staticClass: "level",
       attrs: {
-        "src": fans.userFans ? ('/static/images/icon_level_' + (fans.userFans.level + 1) + '.png') : '',
-        "alt": ""
-      }
-    }), _vm._v(" "), _c('img', {
-      staticClass: "level",
-      attrs: {
-        "src": fans.userFans ? ('/static/images/icon_level_' + (fans.userFans.medal + 1) + '.png') : '',
+        "src": fans.userFans ? ('/static/images/icon_level_' + (fans.userFans.levelPlatform) + '.png') : '/static/images/icon_level_0.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
         "alt": ""
       }
     }), _vm._v(" "), _c('i', [_c('img', {
@@ -8077,13 +8096,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(key + 1))]) : _vm._e(), _vm._v(" "), _c('img', {
       staticClass: "avatar",
       attrs: {
-        "src": popularity.userFans ? popularity.userFans.avatar : '/static/images/default_img.png',
+        "src": popularity.userFans ? (popularity.userFans.avatar ? popularity.userFans.avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
-    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(popularity.userFans ? popularity.userFans.nickname : ''))]), _vm._v(" "), _c('img', {
+    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(popularity.userFans ? (popularity.userFans.nickname ? popularity.userFans.nickname : '...') : '...'))]), _vm._v(" "), _c('img', {
       staticClass: "level",
       attrs: {
-        "src": popularity.userFans ? ('/static/images/icon_level_' + (popularity.userFans.levelPlatform + 1) + '.png') : '',
+        "src": popularity.userFans ? ('/static/images/icon_level_' + (popularity.userFans.levelPlatform) + '.png') : '',
         "alt": ""
       }
     }), _vm._v(" "), _c('i', [_c('img', {
@@ -8200,12 +8220,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "avatar",
       attrs: {
         "src": comment.avatar ? comment.avatar : '/static/images/default_img.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
     }), _vm._v(" "), _c('span', [_vm._v(_vm._s(comment.nickname))]), _vm._v(" "), _c('img', {
       staticClass: "level",
       attrs: {
-        "src": '/static/images/icon_level_' + (comment.levelPlatform + 1) + '.png',
+        "src": '/static/images/icon_level_' + (comment.levelPlatform) + '.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
         "alt": ""
       }
     }), _vm._v(" "), _c('i', {
@@ -8478,7 +8500,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].avatar ? _vm.rakingListToday.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -8486,7 +8509,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].name ? _vm.rakingListToday.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -8496,7 +8519,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].score || _vm.rakingListToday.rankingList[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].score ? _vm.rakingListToday.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -8515,7 +8538,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].avatar ? _vm.rakingListToday.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -8523,7 +8547,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].name ? _vm.rakingListToday.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -8533,7 +8557,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].score || _vm.rakingListToday.rankingList[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].score ? _vm.rakingListToday.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -8547,10 +8571,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].avatar : false
+      'left_show': _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].avatar ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png') : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].avatar ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -8558,7 +8583,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].name ? _vm.rakingListToday.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -8568,7 +8593,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score || _vm.rakingListToday.rankingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score : '').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].score ? _vm.rakingListToday.rankingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=today&token=' + _vm.tokens
@@ -8593,7 +8618,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : '') + "位")]), _c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : '-') + "位")]), _c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -8603,7 +8628,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('p', [_vm._v("（あと"), _c('i', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.rakingListToday.me && (_vm.rakingListToday.me[0].position > 1)),
+      expression: "rakingListToday.me && (rakingListToday.me[0].position > 1)"
+    }]
+  }, [_vm._v("（あと"), _c('i', {
     staticClass: "con_left",
     class: {
       'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
@@ -8825,7 +8857,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].avatar ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -8833,7 +8866,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].name ? _vm.rakingList.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -8843,7 +8876,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].score || _vm.rakingList.rankingList[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].score ? _vm.rakingList.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -8862,7 +8895,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].avatar ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -8870,7 +8904,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].name ? _vm.rakingList.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -8880,7 +8914,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].score || _vm.rakingList.rankingList[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].score ? _vm.rakingList.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -8897,7 +8931,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].avatar ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -8905,7 +8940,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].name ? _vm.rakingList.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -8915,7 +8950,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score || _vm.rakingList.rankingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score : '').toLocaleString()))])])])]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].score ? _vm.rakingList.rankingList[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=all&token=' + _vm.tokens
@@ -8940,7 +8975,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.me ? _vm.rakingList.me[0].position : '') + "位")]), _c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.me ? _vm.rakingList.me[0].position : '-') + "位")]), _c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -8950,7 +8985,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.me ? _vm.rakingList.me[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('p', [_vm._v("（あと"), _c('i', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.me ? _vm.rakingList.me[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.rakingList.me && (_vm.rakingList.me[0].position > 1)),
+      expression: "rakingList.me && (rakingList.me[0].position > 1)"
+    }]
+  }, [_vm._v("（あと"), _c('i', {
     staticClass: "con_left",
     class: {
       'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
@@ -9215,7 +9257,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].avatar ? _vm.rakingListToday.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -9223,7 +9266,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].name ? _vm.rakingListToday.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9233,7 +9276,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].score || _vm.rakingListToday.rankingList[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].score ? _vm.rakingListToday.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -9252,7 +9295,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].avatar ? _vm.rakingListToday.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -9260,7 +9304,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].name ? _vm.rakingListToday.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9270,7 +9314,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].score || _vm.rakingListToday.rankingList[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].score ? _vm.rakingListToday.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -9287,7 +9331,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].avatar ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -9295,7 +9340,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].name ? _vm.rakingListToday.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9305,7 +9350,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score || _vm.rakingListToday.rankingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score : '').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].score ? _vm.rakingListToday.rankingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=today&token=' + _vm.tokens
@@ -9330,7 +9375,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : '') + "位")]), _c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : '-') + "位")]), _c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9340,7 +9385,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('p', [_vm._v("（与前一位爱豆相差"), _c('i', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('p', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.rakingListToday.me && (_vm.rakingListToday.me[0].position > 1)),
+      expression: "rakingListToday.me && (rakingListToday.me[0].position > 1)"
+    }]
+  }, [_vm._v("（与前一位爱豆相差"), _c('i', {
     staticClass: "con_left",
     class: {
       'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
@@ -9563,6 +9615,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -9570,7 +9623,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].name ? _vm.rakingList.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9580,7 +9633,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].score || _vm.rakingList.rankingList[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].score ? _vm.rakingList.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -9600,6 +9653,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -9607,7 +9661,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].name ? _vm.rakingList.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9617,7 +9671,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].score || _vm.rakingList.rankingList[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].score ? _vm.rakingList.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -9635,6 +9689,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -9642,7 +9697,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].name ? _vm.rakingList.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9652,7 +9707,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score || _vm.rakingList.rankingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score : '').toLocaleString()))])])])]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].score ? _vm.rakingList.rankingList[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=all&token=' + _vm.tokens
@@ -9677,7 +9732,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.me ? _vm.rakingList.me[0].position : '') + "位")]), _c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.me ? _vm.rakingList.me[0].position : '-') + "位")]), _c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9687,7 +9742,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.me ? _vm.rakingList.me[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('p', [_vm._v("（与前一位爱豆相差"), _c('i', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.me ? _vm.rakingList.me[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.rakingList.me && (_vm.rakingList.me[0].position > 1)),
+      expression: "rakingList.me && (rakingList.me[0].position > 1)"
+    }]
+  }, [_vm._v("（与前一位爱豆相差"), _c('i', {
     staticClass: "con_left",
     class: {
       'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
@@ -10003,13 +10065,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }), _vm._v(" "), _c('span', [_vm._v(_vm._s(comment.nickname))]), _vm._v(" "), (comment.userType == 'fans') ? _c('img', {
       staticClass: "level",
       attrs: {
-        "src": comment.level ? '/static/images/icon_level_' + (comment.level + 1) + '.png' : '/static/images/icon_level_1.png',
-        "alt": ""
-      }
-    }) : _vm._e(), _vm._v(" "), (comment.userType == 'fans') ? _c('img', {
-      staticClass: "level",
-      attrs: {
-        "src": comment.medal ? '/static/images/icon_level_' + (comment.medal) + '.png' : '/static/images/icon_level_1.png',
+        "src": comment.level ? '/static/images/icon_level_' + (comment.levelPlatform) + '.png' : '/static/images/icon_level_1.png',
         "alt": ""
       }
     }) : _vm._e(), _vm._v(" "), _c('i', {
@@ -10553,15 +10609,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "avatar",
     attrs: {
       "src": _vm.meObj.fans ? _vm.meObj.fans.avatar : '/static/images/default_img.png',
-      "onerror": "this.src='/static/images/default_img.png'",
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "fans_content"
-  }, [_c('span', [_c('em', [_vm._v(_vm._s(_vm.meObj.fans ? _vm.meObj.fans.nickname : '...'))]), _c('img', {
+  }, [_c('span', [_c('em', [_vm._v(_vm._s(_vm.meObj.fans ? (_vm.meObj.fans.nickname ? _vm.meObj.fans.nickname : '...') : '...'))]), _c('img', {
     staticClass: "level",
     attrs: {
-      "src": _vm.meObj.fans ? ('/static/images/icon_level_' + (_vm.meObj.fans.levelPlatform + 1) + '.png') : '',
+      "src": _vm.meObj.fans ? ('/static/images/icon_level_' + (_vm.meObj.fans.levelPlatform) + '.png') : '/static/images/icon_level_0.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('span', [_c('img', {
@@ -10569,21 +10626,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": __webpack_require__(7),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.meObj.expendGprice ? Number(_vm.meObj.expendGprice).toLocaleString() : 0))])]), _vm._v(" "), _c('i', {
-    staticClass: "fans_medal"
-  }, [_c('img', {
-    staticClass: "avatar",
-    attrs: {
-      "src": "",
-      "alt": ""
-    }
-  }), _c('img', {
-    staticClass: "medal",
-    attrs: {
-      "src": "",
-      "alt": ""
-    }
-  })])]) : _vm._e(), _vm._v(" "), _c('h3', {
+  }), _vm._v(_vm._s(_vm.meObj.expendGprice ? Number(_vm.meObj.expendGprice).toLocaleString() : 0))])])]) : _vm._e(), _vm._v(" "), _c('h3', {
     staticClass: "ranking_type"
   }, [_vm._v("总排行")]), _vm._v(" "), _c('div', {
     staticClass: "con_left",
@@ -10692,15 +10735,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "avatar",
     attrs: {
       "src": _vm.rakingList.length > 0 ? _vm.rakingList[0].fans.avatar : '/static/images/default_img.png',
-      "onerror": "this.src='/static/images/default_img.png'",
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "fans_content"
-  }, [_c('span', [_c('em', [_vm._v(_vm._s(_vm.rakingList.length > 0 ? _vm.rakingList[0].fans.nickname : '...'))]), _c('img', {
+  }, [_c('span', [_c('em', [_vm._v(_vm._s(_vm.rakingList.length > 0 ? _vm.rakingList[0].fans.nickname : '...'))]), _vm._v(" "), _c('img', {
     staticClass: "level",
     attrs: {
-      "src": _vm.rakingList.length > 0 ? ('/static/images/icon_level_' + (_vm.rakingList[0].fans.levelPlatform + 1) + '.png') : '',
+      "src": _vm.rakingList.length > 0 ? ('/static/images/icon_level_' + (_vm.rakingList[0].fans.levelPlatform) + '.png') : 'http://h5.groupy.vip/static/images/icon_level_0.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('span', [_c('img', {
@@ -10708,21 +10752,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": __webpack_require__(7),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.rakingList.length > 0 ? Number(_vm.rakingList[0].expendGprice).toLocaleString() : 0))])]), _vm._v(" "), _c('i', {
-    staticClass: "fans_medal"
-  }, [_c('img', {
-    staticClass: "avatar",
-    attrs: {
-      "src": "",
-      "alt": ""
-    }
-  }), _c('img', {
-    staticClass: "medal",
-    attrs: {
-      "src": "",
-      "alt": ""
-    }
-  })])]) : _vm._e(), _vm._v(" "), (_vm.rakingList.length > 1) ? _c('li', [_c('span', [_c('img', {
+  }), _vm._v(_vm._s(_vm.rakingList.length > 0 ? Number(_vm.rakingList[0].expendGprice).toLocaleString() : 0))])])]) : _vm._e(), _vm._v(" "), (_vm.rakingList.length > 1) ? _c('li', [_c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(18),
       "alt": ""
@@ -10731,7 +10761,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "avatar",
     attrs: {
       "src": _vm.rakingList.length > 1 ? _vm.rakingList[1].fans.avatar : '/static/images/default_img.png',
-      "onerror": "this.src='/static/images/default_img.png'",
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   }), _vm._v(" "), _c('div', {
@@ -10739,7 +10769,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', [_c('em', [_vm._v(_vm._s(_vm.rakingList.length > 1 ? _vm.rakingList[1].fans.nickname : '...'))]), _c('img', {
     staticClass: "level",
     attrs: {
-      "src": _vm.rakingList.length > 1 ? ('/static/images/icon_level_' + (_vm.rakingList[1].fans.levelPlatform + 1) + '.png') : '',
+      "src": _vm.rakingList.length > 1 ? ('/static/images/icon_level_' + (_vm.rakingList[1].fans.levelPlatform + 1) + '.png') : 'http://h5.groupy.vip/static/images/icon_level_0.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('span', [_c('img', {
@@ -10747,21 +10778,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": __webpack_require__(7),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.rakingList.length > 1 ? Number(_vm.rakingList[1].expendGprice).toLocaleString() : 0))])]), _vm._v(" "), _c('i', {
-    staticClass: "fans_medal"
-  }, [_c('img', {
-    staticClass: "avatar",
-    attrs: {
-      "src": "",
-      "alt": ""
-    }
-  }), _c('img', {
-    staticClass: "medal",
-    attrs: {
-      "src": "",
-      "alt": ""
-    }
-  })])]) : _vm._e(), _vm._v(" "), (_vm.rakingList.length > 2) ? _c('li', [_c('span', [_c('img', {
+  }), _vm._v(_vm._s(_vm.rakingList.length > 1 ? Number(_vm.rakingList[1].expendGprice).toLocaleString() : 0))])])]) : _vm._e(), _vm._v(" "), (_vm.rakingList.length > 2) ? _c('li', [_c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(19),
       "alt": ""
@@ -10770,7 +10787,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "avatar",
     attrs: {
       "src": _vm.rakingList.length > 2 ? _vm.rakingList[2].fans.avatar : '/static/images/default_img.png',
-      "onerror": "this.src='/static/images/default_img.png'",
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   }), _vm._v(" "), _c('div', {
@@ -10778,7 +10795,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', [_c('em', [_vm._v(_vm._s(_vm.rakingList.length > 2 ? _vm.rakingList[2].fans.nickname : '...'))]), _c('img', {
     staticClass: "level",
     attrs: {
-      "src": _vm.rakingList.length > 2 ? ('/static/images/icon_level_' + (_vm.rakingList[2].fans.levelPlatform + 2) + '.png') : '',
+      "src": _vm.rakingList.length > 2 ? ('/static/images/icon_level_' + (_vm.rakingList[2].fans.levelPlatform + 2) + '.png') : 'http://h5.groupy.vip/static/images/icon_level_0.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('span', [_c('img', {
@@ -10786,26 +10804,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": __webpack_require__(7),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.rakingList.length > 2 ? Number(_vm.rakingList[2].expendGprice).toLocaleString() : 0))])]), _vm._v(" "), _c('i', {
-    staticClass: "fans_medal"
-  }, [_c('img', {
-    staticClass: "avatar",
-    attrs: {
-      "src": "",
-      "alt": ""
-    }
-  }), _c('img', {
-    staticClass: "medal",
-    attrs: {
-      "src": "",
-      "alt": ""
-    }
-  })])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.rakingList), function(idol, key) {
+  }), _vm._v(_vm._s(_vm.rakingList.length > 2 ? Number(_vm.rakingList[2].expendGprice).toLocaleString() : 0))])])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.rakingList), function(idol, key) {
     return (key > 2 && key < _vm.len) ? _c('li', [_c('span', [_vm._v(_vm._s(key + 1))]), _vm._v(" "), _c('img', {
       staticClass: "avatar",
       attrs: {
         "src": idol.fans ? idol.fans.avatar : '/static/images/default_img.png',
-        "onerror": "this.src='/static/images/default_img.png'",
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
     }), _vm._v(" "), _c('div', {
@@ -10813,7 +10817,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('span', [_c('em', [_vm._v(_vm._s(idol.fans ? idol.fans.nickname : '...'))]), _c('img', {
       staticClass: "level",
       attrs: {
-        "src": idol.fans ? ('/static/images/icon_level_' + (idol.fans.levelPlatform + 1) + '.png') : '',
+        "src": idol.fans ? ('/static/images/icon_level_' + (idol.fans.levelPlatform + 1) + '.png') : 'http://h5.groupy.vip/static/images/icon_level_0.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
         "alt": ""
       }
     })]), _vm._v(" "), _c('span', [_c('img', {
@@ -10821,21 +10826,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": __webpack_require__(7),
         "alt": ""
       }
-    }), _vm._v(_vm._s(idol.expendGprice ? Number(idol.expendGprice).toLocaleString() : 0))])]), _vm._v(" "), _c('i', {
-      staticClass: "fans_medal"
-    }, [_c('img', {
-      staticClass: "avatar",
-      attrs: {
-        "src": "",
-        "alt": ""
-      }
-    }), _c('img', {
-      staticClass: "medal",
-      attrs: {
-        "src": "",
-        "alt": ""
-      }
-    })])]) : _vm._e()
+    }), _vm._v(_vm._s(idol.expendGprice ? Number(idol.expendGprice).toLocaleString() : 0))])])]) : _vm._e()
   })], 2) : _vm._e(), _vm._v(" "), (_vm.default1) ? _c('div', {
     staticClass: "default_page default_page3"
   }, [_c('img', {
@@ -10882,7 +10873,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "avatar",
     attrs: {
       "src": _vm.meHeatObj.fans ? _vm.meHeatObj.fans.avatar : '/static/images/default_img.png',
-      "onerror": "this.src='/static/images/default_img.png'",
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   }), _vm._v(" "), _c('div', {
@@ -10982,7 +10973,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "avatar",
     attrs: {
       "src": _vm.rankingHeat.length > 0 ? _vm.rankingHeat[0].fans.avatar : '/static/images/default_img.png',
-      "onerror": "this.src='/static/images/default_img.png'",
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   }), _vm._v(" "), _c('div', {
@@ -11021,7 +11012,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "avatar",
     attrs: {
       "src": _vm.rankingHeat.length > 1 ? _vm.rankingHeat[1].fans.avatar : '/static/images/default_img.png',
-      "onerror": "this.src='/static/images/default_img.png'",
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   }), _vm._v(" "), _c('div', {
@@ -11060,7 +11051,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "avatar",
     attrs: {
       "src": _vm.rankingHeat.length > 2 ? _vm.rankingHeat[2].fans.avatar : '/static/images/default_img.png',
-      "onerror": "this.src='/static/images/default_img.png'",
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   }), _vm._v(" "), _c('div', {
@@ -11095,7 +11086,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "avatar",
       attrs: {
         "src": idol.fans ? idol.fans.avatar : '/static/images/default_img.png',
-        "onerror": "this.src='/static/images/default_img.png'",
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
     }), _vm._v(" "), _c('div', {
@@ -11362,13 +11353,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(key + 1))]) : _vm._e()]), _vm._v(" "), _c('img', {
       staticClass: "avatar",
       attrs: {
-        "src": gFans.fans ? gFans.fans.avatar : '',
+        "src": gFans.fans ? (gFans.fans.avatar ? gFans.fans.avatar : 'http://h5.groupy.vip/static/images/default_img.png') : 'http://h5.groupy.vip/static/images/default_img.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
-    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(gFans.fans ? gFans.fans.nickname : ''))]), _vm._v(" "), _c('img', {
+    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(gFans.fans ? (gFans.fans.nickname ? gFans.fans.nickname : '...') : '...'))]), _vm._v(" "), _c('img', {
       staticClass: "level",
       attrs: {
-        "src": gFans.fans ? '/static/images/icon_level_' + (gFans.fans.levelPlatform + 1) + '.png' : '',
+        "src": gFans.fans ? '/static/images/icon_level_' + (gFans.fans.levelPlatform) + '.png' : 'http://h5.groupy.vip/static/images/icon_level_0.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
         "alt": ""
       }
     }), _vm._v(" "), _c('i', [_c('img', {
@@ -11376,7 +11369,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": __webpack_require__(7),
         "alt": ""
       }
-    }), _vm._v(_vm._s(Number(gFans.expendGprice).toLocaleString()) + "\n                        ")])])], 1)
+    }), _vm._v(_vm._s(Number(gFans.expendGprice ? gFans.expendGprice : '0').toLocaleString()) + "\n                        ")])])], 1)
   })), _vm._v(" "), _c('div', {
     directives: [{
       name: "show",
@@ -11428,13 +11421,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }) : _vm._e(), _vm._v(" "), (key > 2) ? _c('i', [_vm._v(_vm._s(key + 1))]) : _vm._e()]), _vm._v(" "), _c('img', {
       staticClass: "avatar",
       attrs: {
-        "src": popularity.fans ? popularity.fans.avatar : '',
+        "src": popularity.fans ? (popularity.fans.avatar ? popularity.fans.avatar : 'http://h5.groupy.vip/static/images/default_img.png') : 'http://h5.groupy.vip/static/images/default_img.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
-    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(popularity.fans ? popularity.fans.nickname : ''))]), _vm._v(" "), _c('img', {
+    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(popularity.fans ? (popularity.fans.nickname ? popularity.fans.nickname : '...') : '...'))]), _vm._v(" "), _c('img', {
       staticClass: "level",
       attrs: {
-        "src": popularity.fans ? '/static/images/icon_level_' + (popularity.fans.levelPlatform + 1) + '.png' : '',
+        "src": popularity.fans ? '/static/images/icon_level_' + (popularity.fans.levelPlatform) + '.png' : '/static/images/icon_level_0.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
         "alt": ""
       }
     }), _vm._v(" "), _c('i', [_c('img', {
@@ -11442,7 +11437,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": __webpack_require__(1),
         "alt": ""
       }
-    }), _vm._v(_vm._s(Number(popularity.totalNums).toLocaleString()) + "\n                        ")])])], 1)
+    }), _vm._v(_vm._s(Number(popularity.totalNums ? popularity.totalNums : '0').toLocaleString()) + "\n                        ")])])], 1)
   })), _vm._v(" "), _c('div', {
     directives: [{
       name: "show",
@@ -11479,13 +11474,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('img', {
       staticClass: "avatar",
       attrs: {
-        "src": fans.fans ? fans.fans.avatar : '',
+        "src": fans.fans ? (fans.fans.avatar ? fans.fans.avatar : 'http://h5.groupy.vip/static/images/default_img.png') : 'http://h5.groupy.vip/static/images/default_img.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
-    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(fans.fans ? fans.fans.nickname : ''))]), _vm._v(" "), _c('img', {
+    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(fans.fans ? (fans.fans.nickname ? fans.fans.nickname : '...') : '...'))]), _vm._v(" "), _c('img', {
       staticClass: "level",
       attrs: {
-        "src": fans.fans ? '/static/images/icon_level_' + (fans.fans.levelPlatform + 1) + '.png' : '',
+        "src": fans.fans ? '/static/images/icon_level_' + (fans.fans.levelPlatform) + '.png' : 'http://h5.groupy.vip/static/images/icon_level_0.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/icon_level_0.png'",
         "alt": ""
       }
     }), _vm._v(" "), _c('i', {
@@ -11973,10 +11970,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "main"
   }, [_c('div', {
     staticClass: "content"
-  }, [_c('div', {
-    staticClass: "task"
-  }, [_vm._l((_vm.tasks), function(task, key) {
+  }, _vm._l((_vm.tasks), function(task) {
     return _c('div', {
+      staticClass: "task"
+    }, [_c('div', {
       staticClass: "task_content"
     }, [_c('h5', [_vm._v(_vm._s(task.description))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(task.title))]), _vm._v(" "), (task.targetCount ? task.targetCount > 1 : false) ? _c('div', {
       staticClass: "progress_content"
@@ -11985,21 +11982,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('span', {
       style: ('width:calc(100% * ' + task.currentCount / task.targetCount + ')')
     })]), _vm._v(" "), _c('span', [_vm._v("已完成"), _c('i', [_vm._v(_vm._s(task.currentCount))])])]) : _vm._e(), _vm._v(" "), _c('img', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (task.complete > 0),
+        expression: "task.complete>0"
+      }],
       attrs: {
         "src": __webpack_require__(193)
       }
-    })])
-  }), _vm._v(" "), _c('div', {
-    staticClass: "reward"
-  }, [_c('i', [_vm._v("奖励")]), _c('span', [_c('img', {
-    attrs: {
-      "src": __webpack_require__(7)
-    }
-  }), _vm._v(_vm._s(_vm.task.gprice))]), _c('span', {
-    class: {
-      'finish': _vm.task.complete > 0
-    }
-  }, [_vm._v(_vm._s(_vm.status(_vm.task.accepted)))])])], 2)])])
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "reward"
+    }, [_c('i', [_vm._v("奖励")]), _c('span', [_c('img', {
+      attrs: {
+        "src": __webpack_require__(7)
+      }
+    }), _vm._v(_vm._s(task.gprice))]), _c('span', {
+      class: {
+        'finish': (task.complete > 0 && task.accepted < 1)
+      },
+      on: {
+        "click": function($event) {
+          _vm.accept(task.id, $event)
+        }
+      }
+    }, [_vm._v(_vm._s(_vm.status(task.accepted)))])])])
+  }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -12112,7 +12120,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].avatar ? _vm.rakingListToday.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -12120,7 +12129,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].name ? _vm.rakingListToday.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -12128,9 +12137,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].score : false
+      'left_show': _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].score || _vm.rakingListToday.rankingList[1].score == 0) : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].score ? _vm.rakingListToday.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -12149,7 +12158,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].avatar ? _vm.rakingListToday.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -12157,7 +12167,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].name ? _vm.rakingListToday.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -12165,9 +12175,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].score : false
+      'left_show': _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].score || _vm.rakingListToday.rankingList[0].score == 0) : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].score ? _vm.rakingListToday.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -12184,7 +12194,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].avatar ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -12192,7 +12203,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].name ? _vm.rakingListToday.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -12202,21 +12213,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score || _vm.rakingListToday.rankingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score : '').toLocaleString()))])])])]), _vm._v(" "), _c('ul', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].score ? _vm.rakingListToday.rankingList[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('ul', {
     staticClass: "comment_list"
   }, _vm._l((_vm.rakingListToday.rankingList), function(idol, key) {
-    return (key > 2) ? _c('li', [_c('span', [_vm._v(_vm._s(idol.position))]), _vm._v(" "), _c('img', {
+    return (key > 2) ? _c('li', [_c('span', [_vm._v(_vm._s(idol.position ? idol.position : '0'))]), _vm._v(" "), _c('img', {
       staticClass: "avatar",
       attrs: {
         "src": idol.avatar ? idol.avatar : '/static/images/default_img.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
-    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(idol.name))]), _vm._v(" "), _c('i', [_c('img', {
+    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(idol.name ? idol.name : '...'))]), _vm._v(" "), _c('i', [_c('img', {
       attrs: {
         "src": __webpack_require__(1),
         "alt": ""
       }
-    }), _vm._v(_vm._s(Number(idol.score).toLocaleString()) + "\n                        ")])]) : _vm._e()
+    }), _vm._v(_vm._s(Number(idol.score ? idol.score : '0').toLocaleString()) + "\n                        ")])]) : _vm._e()
   }))]), _vm._v(" "), _c('swiper-slide', {
     attrs: {
       "id": "swiper2"
@@ -12240,7 +12252,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].avatar ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -12248,7 +12261,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].name ? _vm.rakingList.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -12256,9 +12269,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].score : false
+      'left_show': _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].score || _vm.rakingList.rankingList[1].score == 0) : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].score ? _vm.rakingList.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -12277,7 +12290,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].avatar ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -12285,7 +12299,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].name ? _vm.rakingList.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -12293,9 +12307,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].score : false
+      'left_show': _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].score || _vm.rakingList.rankingList[0].name == 0) : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].score ? _vm.rakingList.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -12312,7 +12326,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].avatar ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
@@ -12320,7 +12335,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].name ? _vm.rakingList.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -12330,21 +12345,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score || _vm.rakingList.rankingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score : '').toLocaleString()))])])])]), _vm._v(" "), _c('ul', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].score ? _vm.rakingList.rankingList[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('ul', {
     staticClass: "comment_list"
   }, _vm._l((_vm.rakingList.rankingList), function(idol, key) {
     return (key > 2) ? _c('li', [_c('span', [_vm._v(_vm._s(idol.position))]), _vm._v(" "), _c('img', {
       staticClass: "avatar",
       attrs: {
         "src": idol.avatar ? idol.avatar : '/static/images/default_img.png',
+        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
-    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(idol.name))]), _vm._v(" "), _c('i', [_c('img', {
+    }), _vm._v(" "), _c('span', [_vm._v(_vm._s(idol.name ? idol.name : '...'))]), _vm._v(" "), _c('i', [_c('img', {
       attrs: {
         "src": __webpack_require__(1),
         "alt": ""
       }
-    }), _vm._v(_vm._s(Number(idol.score).toLocaleString()) + "\n                        ")])]) : _vm._e()
+    }), _vm._v(_vm._s(Number(idol.score ? idol.score : '0').toLocaleString()) + "\n                        ")])]) : _vm._e()
   }))])], 1)], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -12953,7 +12969,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.groupFeeList
     }
-  }, [_vm._v("×" + _vm._s(Number(_vm.incomeList.groupFeeList ? _vm.incomeList.groupFeeList[0].numbers : 0).toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(Number(_vm.incomeList.groupFeeList ? (_vm.incomeList.groupFeeList[0].numbers ? _vm.incomeList.groupFeeList[0].numbers : '0') : 0).toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(205),
@@ -12964,7 +12980,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.groupFeeList
     }
-  }, [_vm._v("×" + _vm._s(Number(_vm.incomeList.groupFeeList ? _vm.incomeList.groupFeeList[1].numbers : 0).toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(Number(_vm.incomeList.groupFeeList ? (_vm.incomeList.groupFeeList[1].numbers ? _vm.incomeList.groupFeeList[1].numbers : '0') : 0).toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(206),
@@ -12975,7 +12991,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.groupFeeList
     }
-  }, [_vm._v("×" + _vm._s(Number(_vm.incomeList.groupFeeList ? _vm.incomeList.groupFeeList[2].numbers : 0).toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(Number(_vm.incomeList.groupFeeList ? (_vm.incomeList.groupFeeList[2].numbers ? _vm.incomeList.groupFeeList[2].numbers : '0') : 0).toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(207),
@@ -12986,7 +13002,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.groupFeeList
     }
-  }, [_vm._v("×" + _vm._s(Number(_vm.incomeList.groupFeeList ? _vm.incomeList.groupFeeList[3].numbers : 0).toLocaleString()))])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("×" + _vm._s(Number(_vm.incomeList.groupFeeList ? (_vm.incomeList.groupFeeList[3].numbers ? _vm.incomeList.groupFeeList[3].numbers : '0') : 0).toLocaleString()))])])])])]), _vm._v(" "), _c('div', {
     staticClass: "income_details eBorder"
   }, [_c('p', {
     staticClass: "detail_title"
@@ -13003,7 +13019,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.giftList
     }
-  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? _vm.incomeList.giftList[0].numbers : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? (_vm.incomeList.giftList[0].numbers ? _vm.incomeList.giftList[0].numbers : '0') : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(79),
@@ -13014,7 +13030,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.giftList
     }
-  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? _vm.incomeList.giftList[1].numbers : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? (_vm.incomeList.giftList[1].numbers ? _vm.incomeList.giftList[1].numbers : '0') : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(80),
@@ -13025,7 +13041,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.giftList
     }
-  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? _vm.incomeList.giftList[2].numbers : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? (_vm.incomeList.giftList[2].numbers ? _vm.incomeList.giftList[2].numbers : '0') : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(78),
@@ -13036,7 +13052,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.giftList
     }
-  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? _vm.incomeList.giftList[3].numbers : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? (_vm.incomeList.giftList[3].numbers ? _vm.incomeList.giftList[3].numbers : '0') : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(76),
@@ -13047,7 +13063,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.giftList
     }
-  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? _vm.incomeList.giftList[4].numbers : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? (_vm.incomeList.giftList[4].numbers ? _vm.incomeList.giftList[4].numbers : '0') : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(83),
@@ -13058,7 +13074,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.giftList
     }
-  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? _vm.incomeList.giftList[5].numbers : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? (_vm.incomeList.giftList[5].numbers ? _vm.incomeList.giftList[5].numbers : '0') : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(82),
@@ -13069,7 +13085,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.giftList
     }
-  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? _vm.incomeList.giftList[6].numbers : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
+  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? (_vm.incomeList.giftList[6].numbers ? _vm.incomeList.giftList[6].numbers : '0') : 0))])])]), _vm._v(" "), _c('li', [_c('img', {
     staticClass: "gift",
     attrs: {
       "src": __webpack_require__(77),
@@ -13080,7 +13096,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.incomeList.giftList
     }
-  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? _vm.incomeList.giftList[7].numbers : 0))])])])])]), _vm._v(" "), _c('p', {
+  }, [_vm._v("×" + _vm._s(_vm.incomeList.giftList ? (_vm.incomeList.giftList[7].numbers ? _vm.incomeList.giftList[7].numbers : '0') : 0))])])])])]), _vm._v(" "), _c('p', {
     staticClass: "income_desc",
     domProps: {
       "innerHTML": _vm._s(_vm.income_text.desc)
@@ -13335,6 +13351,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     attrs: {
       "src": _vm.idol.avatar ? _vm.idol.avatar : '/static/images/default_img.png',
+      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   }), _vm._v(" "), _c('div', {
@@ -15589,4 +15606,4 @@ module.exports = {
 
 /***/ })
 ],[145]);
-//# sourceMappingURL=app.6526b0da9980915f331b.js.map
+//# sourceMappingURL=app.0c60b702127d462b8062.js.map
