@@ -12,7 +12,7 @@
                             <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="idol.avatar?idol.avatar:'/static/images/default_img.png'" class="avatar" @click="showIdolPage(idol.idolId)" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="idol.avatar?idol.avatar:'/static/images/default_img.png'" class="avatar" @click="idol.idolId?showIdolPage(idol.idolId):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img v-if="idol.position < 4" :src="'/static/images/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
@@ -34,7 +34,7 @@
                             <i class="_fir">1</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?rakingList.rankingList[0].avatar:'/static/images/default_img.png'" class="avatar" @click="showIdolPage(rakingList.rankingList?rakingList.rankingList[0].idolId:'')" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.rankingList?rakingList.rankingList[0].avatar:'/static/images/default_img.png'" class="avatar" @click="rakingList.rankingList?(rakingList.rankingList[0].idolId?showIdolPage(rakingList.rankingList[0].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img src="../../images/icon_crown_1.png" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
@@ -53,7 +53,7 @@
                             <i class="_sec">2</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?rakingList.rankingList[1].avatar:'/static/images/default_img.png'" class="avatar" @click="showIdolPage(rakingList.rankingList?rakingList.rankingList[0].idolId:'')" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.rankingList?rakingList.rankingList[1].avatar:'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[1].idolId?showIdolPage(rakingList.rankingList[1].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img src="../../images/icon_crown_2.png" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
@@ -72,7 +72,7 @@
                             <i class="_thr">3</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?rakingList.rankingList[2].avatar:'/static/images/default_img.png'" class="avatar" @click="showIdolPage(rakingList.rankingList?rakingList.rankingList[0].idolId:'')" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.rankingList?rakingList.rankingList[2].avatar:'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[2].idolId?showIdolPage(rakingList.rankingList[2].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img src="../../images/icon_crown_3.png" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
@@ -91,7 +91,7 @@
                             <i>4</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?rakingList.rankingList[3].avatar:'/static/images/default_img.png'" class="avatar" @click="showIdolPage(rakingList.rankingList?rakingList.rankingList[0].idolId:'')" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.rankingList?rakingList.rankingList[3].avatar:'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[3].idolId?showIdolPage(rakingList.rankingList[3].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                 </div>
                                 <div class="introduction">
                                     <p class="name">{{rakingList.rankingList?rakingList.rankingList[3].name:'...'}}</p>
@@ -109,7 +109,7 @@
                             <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98}]">{{idol.position}}</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="idol.avatar?idol.avatar:'/static/images/default_img.png'" class="avatar" @click="showIdolPage(rakingList.rankingList?rakingList.rankingList[0].idolId:'')" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="idol.avatar?idol.avatar:'/static/images/default_img.png'" class="avatar" @click="idol.idolId?showIdolPage(idol.idolId):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                 </div>
                                 <div class="introduction">
                                     <p class="name">{{idol.name?idol.name:'...'}}</p>
@@ -148,6 +148,7 @@
             this.swiper.slideTo(val, 500, false)
           },
           showIdolPage(val) {
+            console.log(val)
             window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.callHandler('showIdolPage', {'idolId': val})
             })

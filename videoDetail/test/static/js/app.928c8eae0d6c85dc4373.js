@@ -35,7 +35,7 @@ module.exports = __webpack_require__.p + "static/img/default_img.6303494.png";
 
 
 const instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: 'http://api.groupy.vip:8080/',
+    baseURL: 'http://api.groupy.cn:8080/',
     timeout: 20000
 });
 instance.interceptors.response.use(function(response){
@@ -1632,6 +1632,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.swiper.slideTo(val, 500, false);
         },
         showIdolPage(val) {
+            console.log(val);
             window.setupWebViewJavascriptBridge(function (bridge) {
                 bridge.callHandler('showIdolPage', { 'idolId': val });
             });
@@ -12372,7 +12373,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          _vm.showIdolPage(idol.idolId)
+          idol.idolId ? _vm.showIdolPage(idol.idolId) : false
         }
       }
     }), _vm._v(" "), (idol.position < 4) ? _c('img', {
@@ -12449,7 +12450,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "click": function($event) {
-        _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+        _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].idolId ? _vm.showIdolPage(_vm.rakingList.rankingList[0].idolId) : false) : false
       }
     }
   }), _vm._v(" "), _c('img', {
@@ -12521,7 +12522,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "click": function($event) {
-        _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+        _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].idolId ? _vm.showIdolPage(_vm.rakingList.rankingList[1].idolId) : false) : false
       }
     }
   }), _vm._v(" "), _c('img', {
@@ -12593,7 +12594,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "click": function($event) {
-        _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+        _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].idolId ? _vm.showIdolPage(_vm.rakingList.rankingList[2].idolId) : false) : false
       }
     }
   }), _vm._v(" "), _c('img', {
@@ -12663,7 +12664,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "click": function($event) {
-        _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+        _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[3].idolId ? _vm.showIdolPage(_vm.rakingList.rankingList[3].idolId) : false) : false
       }
     }
   })]), _vm._v(" "), _c('div', {
@@ -12731,7 +12732,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+          idol.idolId ? _vm.showIdolPage(idol.idolId) : false
         }
       }
     })]), _vm._v(" "), _c('div', {
@@ -15582,4 +15583,4 @@ module.exports = {
 
 /***/ })
 ],[145]);
-//# sourceMappingURL=app.5b16a1296313bc39efaf.js.map
+//# sourceMappingURL=app.928c8eae0d6c85dc4373.js.map
