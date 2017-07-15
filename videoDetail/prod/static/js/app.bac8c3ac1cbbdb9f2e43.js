@@ -35,7 +35,7 @@ module.exports = __webpack_require__.p + "static/img/default_img.6303494.png";
 
 
 const instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: 'http://api.groupy.cn:8080/',
+    baseURL: 'http://api.groupy.vip:8080/',
     timeout: 20000
 });
 instance.interceptors.response.use(function(response){
@@ -1631,8 +1631,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             tabs.eq(val).addClass('active');
             this.swiper.slideTo(val, 500, false);
         },
+        showIdolPage(val) {
+            window.setupWebViewJavascriptBridge(function (bridge) {
+                bridge.callHandler('showIdolPage', { 'idolId': val });
+            });
+        },
         formatTime(key) {
-            let timer = new Date(key * 1000);
+            let timer = new Date(key);
             return timer.Format('MM.dd') + '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm');
         },
         getRanking(token) {
@@ -1795,7 +1800,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 self.lvNow = res.data.levelLowerLimit.level;
                 self.lvNext = res.data.levelUpperLimit.level;
                 self.score = res.data.fansLevelValue - res.data.levelLowerLimit.popularity + '/' + (res.data.levelUpperLimit.popularity - res.data.levelLowerLimit.popularity);
-                self.style = 'width: calc(320px * ' + score + ')';
+                self.style = 'width: calc(320px * ' + self.score + ')';
             }).catch(function () {
                 self.loadingBig = false;
                 window.setupWebViewJavascriptBridge(function (bridge) {
@@ -10179,7 +10184,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.lvNow
+      'left_show': _vm.lvNow || _vm.lvNow == 0
     }
   }, [_vm._v("Lv " + _vm._s(_vm.lvNow ? _vm.lvNow : '0'))]), _vm._v(" "), _c('img', {
     attrs: {
@@ -10189,7 +10194,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })]), _vm._v(" "), _c('p', {
     staticClass: "score con_left",
     class: {
-      'left_show': _vm.lvNow
+      'left_show': _vm.lvNow || _vm.lvNow == 0
     }
   }, [_vm._v(_vm._s(_vm.score ? _vm.score : '0/0'))]), _vm._v(" "), _c('div', {
     staticClass: "progress"
@@ -10200,7 +10205,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.lvNow
+      'left_show': _vm.lvNow || _vm.lvNow == 0
     }
   }, [_vm._v("Lv." + _vm._s(_vm.lvNow ? _vm.lvNow : '0'))]), _c('span', {
     staticClass: "con_left",
@@ -12419,6 +12424,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": idol.avatar ? idol.avatar : '/static/images/default_img.png',
         "onerror": "this.src='/static/images/default_img.png'",
         "alt": ""
+      },
+      on: {
+        "click": function($event) {
+          _vm.showIdolPage(idol.idolId)
+        }
       }
     }), _vm._v(" "), (idol.position < 4) ? _c('img', {
       staticClass: "crown",
@@ -12448,7 +12458,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "support",
       on: {
         "click": function($event) {
-          _vm.support(idol ? idol.idolId : '')
+          _vm.support(idol.idolId)
         }
       }
     }, [_vm._v("应援")])])]), _vm._v(" "), _c('div', {
@@ -12491,6 +12501,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png',
       "onerror": "this.src='/static/images/default_img.png'",
       "alt": ""
+    },
+    on: {
+      "click": function($event) {
+        _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+      }
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
@@ -12535,7 +12550,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "alt": ""
       }
     })
-  })) : _vm._e(), (_vm.rakingList.rankingList ? !_vm.rakingList.rankingList[0].fansList : true) ? _c('div', {
+  })) : _vm._e(), (_vm.rakingList.rankingList ? (!_vm.rakingList.rankingList[0].fansList || _vm.rakingList.rankingList[0].fansList.length < 1) : true) ? _c('div', {
     staticClass: "no_fans"
   }, [_vm._v("赶紧来抢占第一位吧！")]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
@@ -12558,6 +12573,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png',
       "onerror": "this.src='/static/images/default_img.png'",
       "alt": ""
+    },
+    on: {
+      "click": function($event) {
+        _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+      }
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
@@ -12602,7 +12622,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "alt": ""
       }
     })
-  })) : _vm._e(), (_vm.rakingList.rankingList ? !_vm.rakingList.rankingList[1].fansList : true) ? _c('div', {
+  })) : _vm._e(), (_vm.rakingList.rankingList ? (!_vm.rakingList.rankingList[1].fansList || _vm.rakingList.rankingList[1].fansList.length < 1) : true) ? _c('div', {
     staticClass: "no_fans"
   }, [_vm._v("赶紧来抢占第一位吧！")]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
@@ -12625,6 +12645,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png',
       "onerror": "this.src='/static/images/default_img.png'",
       "alt": ""
+    },
+    on: {
+      "click": function($event) {
+        _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+      }
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
@@ -12669,7 +12694,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "alt": ""
       }
     })
-  })) : _vm._e(), (_vm.rakingList.rankingList ? !_vm.rakingList.rankingList[2].fansList : true) ? _c('div', {
+  })) : _vm._e(), (_vm.rakingList.rankingList ? (!_vm.rakingList.rankingList[2].fansList || _vm.rakingList.rankingList[2].fansList.length < 1) : true) ? _c('div', {
     staticClass: "no_fans"
   }, [_vm._v("赶紧来抢占第一位吧！")]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
@@ -12690,6 +12715,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[3].avatar : '/static/images/default_img.png',
       "onerror": "this.src='/static/images/default_img.png'",
       "alt": ""
+    },
+    on: {
+      "click": function($event) {
+        _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+      }
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "introduction"
@@ -12728,7 +12758,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "alt": ""
       }
     })
-  })) : _vm._e(), (_vm.rakingList.rankingList ? !_vm.rakingList.rankingList[3].fansList : true) ? _c('div', {
+  })) : _vm._e(), (_vm.rakingList.rankingList ? (!_vm.rakingList.rankingList[3].fansList || _vm.rakingList.rankingList[3].fansList.length < 1) : true) ? _c('div', {
     staticClass: "no_fans"
   }, [_vm._v("赶紧来抢占第一位吧！")]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
@@ -12753,6 +12783,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": idol.avatar ? idol.avatar : '/static/images/default_img.png',
         "onerror": "this.src='/static/images/default_img.png'",
         "alt": ""
+      },
+      on: {
+        "click": function($event) {
+          _vm.showIdolPage(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+        }
       }
     })]), _vm._v(" "), _c('div', {
       staticClass: "introduction"
@@ -12791,7 +12826,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           "alt": ""
         }
       })
-    })) : _vm._e(), (!idol.fansList) ? _c('div', {
+    })) : _vm._e(), ((!idol.fansList || idol.fansList.length < 1)) ? _c('div', {
       staticClass: "no_fans"
     }, [_vm._v("赶紧来抢占第一位吧！")]) : _vm._e()]), _vm._v(" "), _c('div', {
       staticClass: "border_bottom"
@@ -15606,4 +15641,4 @@ module.exports = {
 
 /***/ })
 ],[145]);
-//# sourceMappingURL=app.0c60b702127d462b8062.js.map
+//# sourceMappingURL=app.bac8c3ac1cbbdb9f2e43.js.map

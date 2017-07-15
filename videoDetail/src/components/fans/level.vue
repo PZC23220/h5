@@ -9,14 +9,14 @@
             </div> -->
             <div class="header_banner">
                 <div class="level_bg">
-                    <span class="con_left" :class="{'left_show':lvNow}">Lv {{lvNow?lvNow:'0'}}</span>
+                    <span class="con_left" :class="{'left_show':lvNow||lvNow==0}">Lv {{lvNow?lvNow:'0'}}</span>
                     <img src="../../images/bg_level.png" alt="">
                 </div>
-                <p class="score con_left" :class="{'left_show':lvNow}">{{score?score:'0/0'}}</p>
+                <p class="score con_left" :class="{'left_show':lvNow||lvNow==0}">{{score?score:'0/0'}}</p>
                 <div class="progress">
                     <span :style="style"></span>
                 </div>
-                <div class="me_leval"><span class="con_left" :class="{'left_show':lvNow}">Lv.{{lvNow?lvNow:'0'}}</span><span class="con_left" :class="{'left_show':lvNext}">Lv.{{lvNext?lvNext:'0'}}</span></div>
+                <div class="me_leval"><span class="con_left" :class="{'left_show':lvNow||lvNow==0}">Lv.{{lvNow?lvNow:'0'}}</span><span class="con_left" :class="{'left_show':lvNext}">Lv.{{lvNext?lvNext:'0'}}</span></div>
             </div>
         </div>
         <div class="content">
@@ -63,7 +63,7 @@
                     self.lvNow = res.data.levelLowerLimit.level;
                     self.lvNext = res.data.levelUpperLimit.level;
                     self.score = (res.data.fansLevelValue - res.data.levelLowerLimit.popularity)+ '/' +(res.data.levelUpperLimit.popularity - res.data.levelLowerLimit.popularity);
-                    self.style = 'width: calc(320px * '+ score +')'
+                    self.style = 'width: calc(320px * '+ self.score +')'
                 }).catch(function(){
                     self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
