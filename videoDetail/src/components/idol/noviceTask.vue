@@ -1,17 +1,17 @@
 <template>
     <div class="main">
          <div class="content">
-            <div class="task">
-                <div class="task_content" v-for="(task,key) in tasks">
+            <div class="task" v-for="task in tasks">
+                <div class="task_content">
                     <h5>{{task.description}}</h5>
                     <p>{{task.title}}</p>
                     <div class="progress_content" v-if="task.targetCount?task.targetCount>1:false">
                         <div class="progress"><span :style="'width:calc(100% * '+task.currentCount/task.targetCount+')'"></span></div>
                         <span>已完成<i>{{task.currentCount}}</i></span>
                     </div>
-                    <img src="../../images/icon_finish.png">
+                    <img src="../../images/icon_finish.png" v-show="task.complete>0">
                 </div>
-                <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':task.complete>0}">{{status(task.accepted)}}</span></div>
+                <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="accept(task.id,$event)">{{status(task.accepted)}}</span></div>
             </div>
          </div>
     </div>
@@ -23,26 +23,74 @@
     export default {
         data() {
             return {
-                tasks: []
+                tasks: [],
+                idx: 0,
+                idx2: 0
             }
         },
         methods: {
           getList(token) {
-                let self = this;
+            let self = this;
+            if(self.idx < 2) {
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
                 }else {
                     http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                 }
-                http.get('/mission/list ').then(function(err){
+                http.get('/mission/list ').then(function(res){
                     self.tasks = res.data;
+                    console.log(self.tasks);
                 }).catch(function(){
+                    self.idx++;
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getList(responseData.token);
                         })
                     })
                 });
+            }else {
+                 window.setupWebViewJavascriptBridge(function(bridge) {
+                    if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                     }else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                     }
+                })
+            }
+          },
+          accept(val,e,token) {
+            let self = this;
+            if(self.idx2 < 2) {
+                console.log(e.target.innerHTML);
+                if(token) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+token;
+                }else {
+                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
+                }
+                http.get('/mission/accept',{
+                    params: {
+                        id: val
+                    }
+                }).then(function(res){
+                    e.target.innerHTML = '已领取';
+                    e.target.classList.remove('finish');
+                }).catch(function(){
+                    self.idx2++;
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                            self.getList(responseData.token);
+                        })
+                    })
+                });
+            }else {
+                 window.setupWebViewJavascriptBridge(function(bridge) {
+                    if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                     }else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                     }
+                })
+            }
           },
           status(val) {
             if(val == '0') {
@@ -51,36 +99,8 @@
                 return '已领取';
             }
           },
-          pickImage() {
-            var self = this;
-            window.setupWebViewJavascriptBridge(function(bridge) {
-                bridge.callHandler('pickImage', function responseCallback(responseData) {
-
-                    if(responseData.length == 1) {
-                        self.img1 = responseData[0]
-                    }
-                    if(responseData.length == 2) {
-                        self.img1 = responseData[1]
-                    }
-                    if(responseData.length == 3) {
-                        self.img1 = responseData[2]
-                    }
-                })
-            })
-          },
-          close() {
-            window.setupWebViewJavascriptBridge(function(bridge) {
-                bridge.callHandler('close');
-            })
-          },
         },
         mounted() {
-            var self = this;
-            window.setupWebViewJavascriptBridge(function(bridge) {
-                bridge.registerHandler('keyboard_status_changed', function(data) {
-                    self.autoHeight(data.height);
-                })
-            })  
         },
         created() {
             this.getList();

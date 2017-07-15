@@ -16,19 +16,19 @@
                 <ul class="income_img">
                     <li>
                         <img class="gift" src="../../images/pic_vip_free.png" alt="">
-                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?incomeList.groupFeeList[0].numbers:0).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[0].numbers?incomeList.groupFeeList[0].numbers:'0'):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_vip_1 month.png" alt="">
-                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?incomeList.groupFeeList[1].numbers:0).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[1].numbers?incomeList.groupFeeList[1].numbers:'0'):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_vip_3 month.png" alt="">
-                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?incomeList.groupFeeList[2].numbers:0).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[2].numbers?incomeList.groupFeeList[2].numbers:'0'):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_vip_6 month.png" alt="">
-                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?incomeList.groupFeeList[3].numbers:0).toLocaleString()}}</span></p>
+                        <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[3].numbers?incomeList.groupFeeList[3].numbers:'0'):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
             </div>
@@ -37,35 +37,35 @@
                 <ul class="income_img">
                     <li>
                         <img class="gift" src="../../images/pic_star.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[0].numbers:0}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[0].numbers?incomeList.giftList[0].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_heart.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[1].numbers:0}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[1].numbers?incomeList.giftList[1].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_rose.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[2].numbers:0}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[2].numbers?incomeList.giftList[2].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_diamond.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[3].numbers:0}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[3].numbers?incomeList.giftList[3].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_bear.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[4].numbers:0}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[4].numbers?incomeList.giftList[4].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_tree.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[5].numbers:0}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[5].numbers?incomeList.giftList[5].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_tower.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[6].numbers:0}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[6].numbers?incomeList.giftList[6].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="../../images/pic_castle.png" alt="">
-                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?incomeList.giftList[7].numbers:0}}</span></p>
+                        <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[7].numbers?incomeList.giftList[7].numbers:'0'):0}}</span></p>
                     </li>
                 </ul>
             </div>

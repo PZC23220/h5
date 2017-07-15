@@ -30,11 +30,12 @@
                                 <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
                                 <i class="rank_num" v-if="key>2">{{key+1}}</i>
                             </span>
-                            <img class="avatar" :src="gFans.fans?gFans.fans.avatar:''" alt="">
-                            <span>{{gFans.fans?gFans.fans.nickname:''}}</span>
-                            <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.levelPlatform+1)+'.png':''" class="level" alt="">
+                            <img class="avatar" :src="gFans.fans?(gFans.fans.avatar?gFans.fans.avatar:'http://h5.groupy.vip/static/images/default_img.png'):'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                            <span>{{gFans.fans?(gFans.fans.nickname?gFans.fans.nickname:'...'):'...'}}</span>
+                            <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt="">
+                            <!-- <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i>
-                                <img src="../../images/timeline_icon_coins.png" alt="">{{Number(gFans.expendGprice).toLocaleString()}}
+                                <img src="../../images/timeline_icon_coins.png" alt="">{{Number(gFans.expendGprice?gFans.expendGprice:'0').toLocaleString()}}
                             </i>
                         </left-slider>
                     </li>
@@ -54,11 +55,12 @@
                                 <img src="../../images/icon_metal_3.png" alt="" v-if="key==2">
                                 <i v-if="key>2">{{key+1}}</i>
                             </span>
-                            <img class="avatar" :src="popularity.fans?popularity.fans.avatar:''" alt="">
-                            <span>{{popularity.fans?popularity.fans.nickname:''}}</span>
-                            <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform+1)+'.png':''" class="level" alt="">
+                            <img class="avatar" :src="popularity.fans?(popularity.fans.avatar?popularity.fans.avatar:'http://h5.groupy.vip/static/images/default_img.png'):'http://h5.groupy.vip/static/images/default_img.png'"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                            <span>{{popularity.fans?(popularity.fans.nickname?popularity.fans.nickname:'...'):'...'}}</span>
+                            <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform)+'.png':'/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt="">
+                            <!-- <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i>
-                                <img src="../../images/timeline_icon_likes.png" alt="">{{Number(popularity.totalNums).toLocaleString()}}
+                                <img src="../../images/timeline_icon_likes.png" alt="">{{Number(popularity.totalNums?popularity.totalNums:'0').toLocaleString()}}
                             </i>
                         </left-slider>
                     </li>
@@ -72,9 +74,10 @@
                 <ul class="comment_list">
                     <li v-for="(fans,key) in joinList.fansList" style="padding: 0;">
                         <left-slider :index="key" @deleteItem="deleteItem(fans.fansId)">
-                            <img class="avatar" :src="fans.fans?fans.fans.avatar:''" alt="">
-                            <span>{{fans.fans?fans.fans.nickname:''}}</span>
-                            <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform+1)+'.png':''" class="level" alt="">
+                            <img class="avatar" :src="fans.fans?(fans.fans.avatar?fans.fans.avatar:'http://h5.groupy.vip/static/images/default_img.png'):'http://h5.groupy.vip/static/images/default_img.png'"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                            <span>{{fans.fans?(fans.fans.nickname?fans.fans.nickname:'...'):'...'}}</span>
+                            <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt="">
+                            <!-- <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i v-html="formatTime(fans.startdate)"></i>
                         </left-slider>
                     </li>
@@ -166,7 +169,6 @@
             getJoin(token) {
                 let self = this;
                 if(self.idx1 < 2) {
-                    self.idx1++;
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
                     }else {
@@ -184,6 +186,7 @@
                             })
                         }
                     }).catch(function(){
+                        self.idx1++;
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getGoin(responseData.token);
@@ -196,7 +199,6 @@
             getGcoin(token) {
                 let self = this;
                 if(self.idx < 2) {
-                    self.idx++;
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
                     }else {
@@ -215,6 +217,7 @@
                             })
                         }
                     }).catch(function(){
+                        self.idx++;
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getGoin(responseData.token);
@@ -236,7 +239,6 @@
             getPopularity(token) {
                 let self = this;
                 if(self.idx2 < 2) {
-                    self.idx2++;
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
                     }else {
@@ -255,7 +257,7 @@
                             })
                         }
                     }).catch(function(err){
-                        console.log(err.response);
+                        self.idx2++;
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                                 self.getPopularity(responseData.token);

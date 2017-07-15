@@ -59,8 +59,8 @@
                         <div class="userinfo">
                             <img :src="comment.avatar?comment.avatar:'http://h5.groupy.vip/static/images/default_img.png'"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                             <span>{{comment.nickname}}</span>
-                            <img :src="comment.level?'/static/images/icon_level_'+(comment.level+1)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
-                            <img :src="comment.medal?'/static/images/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
+                            <img :src="comment.level?'/static/images/icon_level_'+(comment.levelPlatform)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
+                            <!-- <img :src="comment.medal?'/static/images/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
                             <i v-html="formatTime(comment.createTime)"></i>
                         </div>
                         <div class="comment_content">
