@@ -61,10 +61,10 @@
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                         <div class="comment_info">
-                            <img class="avatar" :src="comment.avatar?comment.avatar:'/static/images/default_img.png'" alt="">
-                            <span>{{comment.nickname}}</span>
-                            <img class="level" :src="'/static/images/icon_level_'+(comment.level+1)+'.png'" alt="">
-                            <img class="level" :src="'/static/images/icon_level_'+(comment.medal+1)+'.png'" alt="">
+                            <img class="avatar" :src="comment.avatar?comment.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                            <span>{{comment.nickname?comment.nickname:'...'}}</span>
+                            <img class="level" :src="comment.levelPlatform?'/static/images/icon_level_'+(comment.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'"  onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" alt="">
+                            <!-- <img class="level" :src="'/static/images/icon_level_'+(comment.medal+1)+'.png'" alt=""> -->
                             <i v-html="formatTime(comment.createTime)"></i>
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>
@@ -174,6 +174,13 @@
             },
             publish(token) {
                 let self = this;
+                if(self.$route.query.token == '') {
+                    alert('请先登录');
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('makeToast', '请先登录');
+                    })
+                    return;
+                }
                 if(self.comment_text !=""){
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
@@ -187,6 +194,7 @@
                     }
                     http.post('/post/add',JSON.stringify(_data)).then(function(res){
                         self.refresh();
+                        self.comment_text = '';
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('makeToast', '发表评论成功');
                         })
@@ -229,8 +237,8 @@
                 var self = this;
                 http.get('/post/list',{
                     params: {
-                        targetType: 3,
-                        targetId: self.$route.query.targetId,
+                        targetType: 1,
+                        targetId: self.$route.query.videoId,
                         from: 0,
                         rows: self.num
                     }

@@ -139,10 +139,10 @@
                                 <span v-if="meHeatObj.position>3">{{meHeatObj.position}}</span>
                                 <img :src="meHeatObj.fans?meHeatObj.fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{meHeatObj.fans?meHeatObj.fans.nickname:'...'}}</em><img :src="meHeatObj.fans?('/static/images/icon_level_'+ (meHeatObj.fans.levelPlatform+1) +'.png'): ''" class="level" alt=""></span>
+                                    <span><em>{{meHeatObj.fans?meHeatObj.fans.nickname:'...'}}</em><img :src="meHeatObj.fans?('/static/images/icon_level_'+ (meHeatObj.fans.levelPlatform) +'.png'): ''" class="level" alt=""></span>
                                     <span><img src="../../images/timeline_icon_likes.png" alt="">{{meHeatObj.totalNums?Number(meHeatObj.totalNums).toLocaleString(): 0}}</span>
                                 </div>
-                                <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i>
+                                <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <h3 class="ranking_type">总排行</h3>
                             <div class="con_left" :class="{'left_hide':rankingHeat.length>0}">
@@ -173,39 +173,39 @@
                             </div>
                             <li v-if="rankingHeat.length>0">
                                 <span><img src="../../images/icon_metal_1.png" alt=""></span>
-                                <img :src="rankingHeat.length>0?rankingHeat[0].fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="rankingHeat.length>0?(rankingHeat[0].fans.avatar?rankingHeat[0].fans.avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{rankingHeat.length>0?rankingHeat[0].fans.nickname:'...'}}</em><img :src="rankingHeat.length>0?('/static/images/icon_level_'+ (rankingHeat[0].fans.levelPlatform+1) +'.png'): ''" class="level" alt=""></span>
+                                    <span><em>{{rankingHeat.length>0?(rankingHeat[0].fans.nickname?rankingHeat[0].fans.nickname:'...'):'...'}}</em><img :src="rankingHeat.length>0?('/static/images/icon_level_'+ (rankingHeat[0].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
                                     <span><img src="../../images/timeline_icon_likes.png" alt="">{{rankingHeat.length>0?Number(rankingHeat[0].totalNums).toLocaleString(): 0}}</span>
                                 </div>
-                                <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i>
+                                <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <li v-if="rankingHeat.length>1">
                                 <span><img src="../../images/icon_metal_2.png" alt=""></span>
                                 <img :src="rankingHeat.length>1?rankingHeat[1].fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{rankingHeat.length>1?rankingHeat[1].fans.nickname:'...'}}</em><img :src="rankingHeat.length>1?('/static/images/icon_level_'+ (rankingHeat[1].fans.levelPlatform+1) +'.png'): ''" class="level" alt=""></span>
+                                    <span><em>{{rankingHeat.length>1?rankingHeat[1].fans.nickname:'...'}}</em><img :src="rankingHeat.length>1?('/static/images/icon_level_'+ (rankingHeat[1].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
                                     <span><img src="../../images/timeline_icon_likes.png" alt="">{{rankingHeat.length>1?Number(rankingHeat[1].totalNums).toLocaleString(): 0}}</span>
                                 </div>
-                                <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i>
+                                <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <li v-if="rankingHeat.length>2">
                                 <span><img src="../../images/icon_metal_3.png" alt=""></span>
                                 <img :src="rankingHeat.length>2?rankingHeat[2].fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{rankingHeat.length>2?rankingHeat[2].fans.nickname:'...'}}</em><img :src="rankingHeat.length>2?('/static/images/icon_level_'+ (rankingHeat[2].fans.levelPlatform+2) +'.png'): ''" class="level" alt=""></span>
+                                    <span><em>{{rankingHeat.length>2?rankingHeat[2].fans.nickname:'...'}}</em><img :src="rankingHeat.length>2?('/static/images/icon_level_'+ (rankingHeat[2].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
                                     <span><img src="../../images/timeline_icon_likes.png" alt="">{{rankingHeat.length>2?Number(rankingHeat[2].totalNums).toLocaleString(): 0}}</span>
                                 </div>
-                                <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i>
+                                <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <li v-for="(idol,key) in rankingHeat" v-if="key > 2 && key < len2">
                                 <span>{{key+1}}</span>
                                 <img :src="idol.fans?idol.fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{idol.fans?idol.fans.nickname:'...'}}</em><img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform+1) +'.png'): ''" class="level" alt=""></span>
+                                    <span><em>{{idol.fans?idol.fans.nickname:'...'}}</em><img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
                                     <span><img src="../../images/timeline_icon_likes.png" alt="">{{idol.totalNums?Number(idol.totalNums).toLocaleString(): 0}}</span>
                                 </div>
-                                <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i>
+                                <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                         </ul>
                         <div class="default_page default_page3"  v-if="default2">
@@ -442,6 +442,8 @@
             >span:first-child {
                 font-size: 24px;
                 color: #CCCCCC;
+                margin-top: 3px;
+                line-height: 33px;
             }
             >span:nth-child(3) {
                 font-size: 14px;
