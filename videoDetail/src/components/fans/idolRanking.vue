@@ -23,7 +23,7 @@
                                 <div class="support" @click="support(idol.idolId)">应援</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="!idol.fansList">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="!idol.fansList">赶紧来抢占第一位吧！</div></div>
                         <div class="border_bottom" v-if="key < rakingList.me.length-1"></div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                             <i class="_fir">1</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?rakingList.rankingList[0].avatar:'/static/images/default_img.png'" class="avatar" @click="rakingList.rankingList?(rakingList.rankingList[0].idolId?showIdolPage(rakingList.rankingList[0].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.rankingList?(rakingList.rankingList[0].avatar?rakingList.rankingList[0].avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar" @click="rakingList.rankingList?(rakingList.rankingList[0].idolId?showIdolPage(rakingList.rankingList[0].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img src="../../images/icon_crown_1.png" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
@@ -45,7 +45,7 @@
                                 <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[0].idolId:'')">应援</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[0].fansList:false"><img :src="img.avatar" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[0].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[0].fansList || rakingList.rankingList[0].fansList.length < 1):true">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[0].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[0].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[0].fansList || rakingList.rankingList[0].fansList.length < 1):true">赶紧来抢占第一位吧！</div></div>
                         <div class="border_bottom"></div>
                     </div>
                     <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>1:false}">
@@ -53,7 +53,7 @@
                             <i class="_sec">2</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?rakingList.rankingList[1].avatar:'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[1].idolId?showIdolPage(rakingList.rankingList[1].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.rankingList?(rakingList.rankingList[1].avatar?rakingList.rankingList[1].avatar:'http://h5.groupy.vip/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[1].idolId?showIdolPage(rakingList.rankingList[1].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img src="../../images/icon_crown_2.png" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
@@ -64,7 +64,7 @@
                                 <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[1].idolId:'')">应援</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[1].fansList:false"><img :src="img.avatar" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[1].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[1].fansList || rakingList.rankingList[1].fansList.length <1):true">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[1].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[1].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[1].fansList || rakingList.rankingList[1].fansList.length <1):true">赶紧来抢占第一位吧！</div></div>
                         <div class="border_bottom"></div>
                     </div>
                     <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>2:false}">
@@ -72,7 +72,7 @@
                             <i class="_thr">3</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?rakingList.rankingList[2].avatar:'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[2].idolId?showIdolPage(rakingList.rankingList[2].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.rankingList?(rakingList.rankingList[2].avatar?rakingList.rankingList[2].avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[2].idolId?showIdolPage(rakingList.rankingList[2].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img src="../../images/icon_crown_3.png" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
@@ -83,7 +83,7 @@
                                 <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[2].idolId:'')">应援</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[2].fansList:false"><img :src="img.avatar" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[2].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[2].fansList || rakingList.rankingList[2].fansList.length <1):true">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[2].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[2].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[2].fansList || rakingList.rankingList[2].fansList.length <1):true">赶紧来抢占第一位吧！</div></div>
                         <div class="border_bottom"></div>
                     </div>
                     <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>3:false}">
@@ -91,7 +91,7 @@
                             <i>4</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?rakingList.rankingList[3].avatar:'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[3].idolId?showIdolPage(rakingList.rankingList[3].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.rankingList?(rakingList.rankingList[3].avatar?rakingList.rankingList[3].avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[3].idolId?showIdolPage(rakingList.rankingList[3].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                 </div>
                                 <div class="introduction">
                                     <p class="name">{{rakingList.rankingList?rakingList.rankingList[3].name:'...'}}</p>
@@ -101,7 +101,7 @@
                                 <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[3].idolId:'')">应援</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[3].fansList:false"><img :src="img.avatar" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[3].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[3].fansList || rakingList.rankingList[3].fansList.length < 1):true">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[3].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[3].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[3].fansList || rakingList.rankingList[3].fansList.length < 1):true">赶紧来抢占第一位吧！</div></div>
                         <div class="border_bottom"></div>
                     </div>
                     <div class="idol_detail" v-for="(idol,key) in rakingList.rankingList" v-if="rakingList.rankingList?key > 3 && key < len: false">
@@ -119,7 +119,7 @@
                                 <div class="support" @click="support(idol.idolId?idol.idolId:'')">应援</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="(!idol.fansList || idol.fansList.length < 1)">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="(!idol.fansList || idol.fansList.length < 1)">赶紧来抢占第一位吧！</div></div>
                         <div class="border_bottom"></div>
                     </div>
                 </div>

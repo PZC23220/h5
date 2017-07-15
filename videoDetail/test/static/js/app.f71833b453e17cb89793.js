@@ -35,7 +35,7 @@ module.exports = __webpack_require__.p + "static/img/default_img.6303494.png";
 
 
 const instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: 'http://api.groupy.vip:8080/',
+    baseURL: 'http://api.groupy.cn:8080/',
     timeout: 20000
 });
 instance.interceptors.response.use(function(response){
@@ -12414,7 +12414,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, _vm._l((idol.fansList), function(img) {
       return _c('img', {
         attrs: {
-          "src": img.avatar,
+          "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
           "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
           "alt": ""
         }
@@ -12444,7 +12444,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "avatar",
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].avatar ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     },
@@ -12491,7 +12491,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.rakingList.rankingList[0].fansList), function(img) {
     return _c('img', {
       attrs: {
-        "src": img.avatar,
+        "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
         "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
@@ -12516,7 +12516,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "avatar",
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].avatar ? _vm.rakingList.rankingList[1].avatar : 'http://h5.groupy.vip/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     },
@@ -12563,7 +12563,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.rakingList.rankingList[1].fansList), function(img) {
     return _c('img', {
       attrs: {
-        "src": img.avatar,
+        "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
         "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
@@ -12588,7 +12588,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "avatar",
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].avatar ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     },
@@ -12635,7 +12635,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.rakingList.rankingList[2].fansList), function(img) {
     return _c('img', {
       attrs: {
-        "src": img.avatar,
+        "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
         "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
@@ -12658,7 +12658,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "avatar",
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[3].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[3].avatar ? _vm.rakingList.rankingList[3].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     },
@@ -12699,7 +12699,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.rakingList.rankingList[3].fansList), function(img) {
     return _c('img', {
       attrs: {
-        "src": img.avatar,
+        "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
         "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
       }
@@ -12767,7 +12767,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, _vm._l((idol.fansList), function(img) {
       return _c('img', {
         attrs: {
-          "src": img.avatar,
+          "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
           "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
           "alt": ""
         }
@@ -15583,4 +15583,4 @@ module.exports = {
 
 /***/ })
 ],[145]);
-//# sourceMappingURL=app.65883f2a9fa2f67c3616.js.map
+//# sourceMappingURL=app.f71833b453e17cb89793.js.map
