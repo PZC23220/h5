@@ -188,7 +188,7 @@ img.icon {
         }
         @media screen and (max-width: 400px) {
             >img {
-                padding: 11.5px 5px;
+                margin: 11.5px 5px;
             }
         }
         p {
@@ -738,7 +738,7 @@ img.avatar {
              animation: rotation 1.8s linear infinite;
         }
     }
-     .my-scroller .pull-to-refresh-layer .spinner-holder,.my-scroller .loading-layer .spinner-holder svg
+.my-scroller .pull-to-refresh-layer .spinner-holder,.my-scroller .loading-layer .spinner-holder svg
   {
     visibility: hidden;
   }

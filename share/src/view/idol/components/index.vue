@@ -3,7 +3,7 @@
         <div class="header">
             <img src="/img/icon_groupy_128.png" alt="">
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
-            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="_href">インストール</a>
+            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
         </div>
         <div class="content">
             <div class="idol_desc">
@@ -50,15 +50,15 @@
                             </div>
                             <div class="video_desc_content">
                                 <p class="video_text">{{hot.data.title}}</p>
-                                <a :href="_href" class="video_option"><span><img src="/img/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="/img/timeline_icon_likes.png">{{hot.data.popularity}}</span><img src="/img/icon_arrow_gray.png"></a>
+                                <a :href="hrefs" class="video_option"><span><img src="/img/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="/img/timeline_icon_likes.png">{{hot.data.popularity}}</span><img src="/img/icon_arrow_gray.png"></a>
                                 <ul class="comment_list" style="background: #fff;">
                                     <div class="comment_total"><span><img src="/img/idol/icon_comment.png"><i>共{{hot.data.postList.length}}条评论</i><img src="/img/icon_arrow_gray.png" alt=""></span><div @click="boxShow = true;" class="cursor">添加评论</div></div>
                                     <li v-for="comment in hot.data.postList">
                                         <div class="comment_info">
                                             <img :src="comment.avatar" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                             <span>{{comment.nickname}}</span>
-                                            <img :src="comment.level?'/img/icon_level_'+(comment.level+1)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
-                                            <img :src="comment.medal?'/img/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
+                                            <img :src="comment.level?'/img/icon_level_'+(comment.levelPlatform)+'.png':'/img/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
+                                            <!-- <img :src="comment.medal?'/img/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
                                             <i>{{formatTime(comment.createTime)}}</i>
                                         </div>
                                         <div class="comment_content">{{comment.content}}</div>
@@ -66,7 +66,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="_href" class="download" style="margin-bottom: 40px;">Groupyをダウンロードしてもっと見よう</a>
+                        <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">Groupyをダウンロードしてもっと見よう</a>
                     </swiper-slide>
                     <swiper-slide id="swiper2">
                         <ul class="comment_list dynamic">
@@ -124,8 +124,8 @@
                             <div class="userinfo">
                                 <img :src="comment.avatar" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <span>{{comment.nickname}}</span>
-                                <img :src="comment.level?'/static/images/icon_level_'+(comment.level+1)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
-                                <img :src="comment.medal?'/static/images/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
+                                <img :src="comment.level?'/img/icon_level_'+(comment.levelPlatform)+'.png':'/img/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
+                                <!-- <img :src="comment.medal?'/static/images/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
                                 <i v-html="formatTime(comment.createTime)"></i>
                             </div>
                             <div class="comment_content">
@@ -140,7 +140,7 @@
                             <p v-html="msg_text.noneComment"></p>
                         </div>
                     </ul>
-                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="_href" class="download" style="margin-bottom: 40px;">Groupyをダウンロードしてもっと見よう</a>
+                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download" style="margin-bottom: 40px;">Groupyをダウンロードしてもっと見よう</a>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -153,7 +153,7 @@
                     <img src="/img/icon_groupy_120.png" class="groupy">
                     <p class="tips">请下载Groupy查看更多内容</p>
                     <span class="tips2">前往下载</span>
-                    <a :href="_href" class="appstore"><img src="/img/btn_appstore.png"></a>
+                    <a :href="hrefs" class="appstore"><img src="/img/btn_appstore.png"></a>
                 </div>
             </div>
         </div>
@@ -163,8 +163,8 @@
 <script>
     import VideoPlayer from 'vue-video-player';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
-    import http from '../http.js';
-    require('../common.js')
+    import http from '@api/js/http.js';
+    require('@api/js/common.js')
     import $ from 'n-zepto';
     export default {
         data() {
@@ -229,7 +229,7 @@
             hotList:[],
             idol: {},
             fansList: [],
-            _href: 'itms-apps://itunes.apple.com/app/id1251249933',
+            hrefs: 'itms-apps://itunes.apple.com/app/id1251249933',
             Imgsrc: 'http://upload.groupy.vip/post/D4AC388D-F977-4A9A-A973-E3CB18A76978.jpg',
             bigImgShow: false
           }
@@ -252,8 +252,7 @@
                   }],
                   poster: poster,
                 }
-                return playerOptions
-                console.log(playerOptions)
+                return playerOptions;
             },
             showBigImg(img) {
                 this.Imgsrc = img;
@@ -278,6 +277,7 @@
             },
             getIdolInfo() {
                 var self = this;
+                console.log(location.href);
                 http.get('/group/idolHomeAsFans',{
                     params: {
                         idolId: location.href.split('?idolId=')[1].split('#/')[0]
@@ -357,9 +357,9 @@
             // this.p_log('idol_share_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (!(/iphone|ipad|ipod/.test(ua))) {
-                this._href = 'https://itunes.apple.com/app/id1251249933';
+                this.hrefs = 'https://itunes.apple.com/app/id1251249933';
             }else {
-                this._href = 'itms-apps://itunes.apple.com/app/id1251249933';
+                this.hrefs = 'itms-apps://itunes.apple.com/app/id1251249933';
             }
         }
       }

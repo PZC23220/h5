@@ -165,6 +165,7 @@
                 })
             },
             refresh (done) {
+                // console.log(done);
                 var self = this;
                 http.get('/post/list',{
                     params: {
@@ -182,9 +183,7 @@
                 }).catch(function(){
                     self.showLoading2 = false;
                 });
-                setTimeout(() => {
-                  done()
-                }, 500)
+                  done(true)
           },
           infinite (done) {
             var self = this;

@@ -61,6 +61,7 @@
                     }
                 }
                 ev.preventDefault();
+                ev.stopPropagation();
             },
             _touchEnd: function(ev) {
                 if (event.changedTouches.length == 1) {
@@ -75,6 +76,7 @@
 
                 }
                 ev.preventDefault();
+                ev.stopPropagation();
             },
             deleteItem: function(index) {
                 // console.log(index)
@@ -104,8 +106,7 @@
         padding: 12px 12px;
     }
     .move{
-        z-index:2;
-        position: relative;
+        /* position: relative; */
         overflow: hidden;
         transition: all 0.3s;
     }
@@ -118,6 +119,7 @@
         color: #fff;
         height: 55px;
         line-height: 55px;
+        overflow: hidden;
         top:0;
         transition: all 0.3s;
     }

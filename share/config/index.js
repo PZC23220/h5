@@ -26,11 +26,20 @@ module.exports = {
     dev: {
         // 本地调试配置
         env: require('./dev.env'),
-        port: 8080, // 调试地址端口
+        port: 8030, // 调试地址端口
         autoOpenBrowser: true,
         assetsSubDirectory: '.',// 子文件夹前缀
         assetsPublicPath: '/',
-        proxyTable: {}, // 可以在这里配置端口转发(解决本地调试时的跨域问题),这边为了方便，我就直接在dev-server代码中进行修改了
+        proxyTable: {
+            // proxy all requests starting with /api to jsonplaceholder
+            // '/api': {
+            //     target: 'http://api.groupy.cn:8080/',
+            //     changeOrigin: true,
+            //     pathRewrite: {
+            //       '^/api': ''
+            //     }
+            // }
+        }, // 可以在这里配置端口转发(解决本地调试时的跨域问题),这边为了方便，我就直接在dev-server代码中进行修改了
         // CSS Sourcemaps off by default because relative paths are "buggy"
         // with this option, according to the CSS-Loader README
         // (https://github.com/webpack/css-loader#sourcemaps)

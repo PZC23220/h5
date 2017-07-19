@@ -1,11 +1,61 @@
 <template>
     <div class="main">
          <div class="content">
+            <div class="page_loading" :class="{'page_loading_show':tasks.length > 0}">
+                <div class="task">
+                    <div class="task_content">
+                        <h5></h5>
+                        <p></p>
+                        <div class="progress_content">
+                            <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
+                            <span>已完成<i>0</i></span>
+                        </div>
+                        <img src="../../images/icon_finish.png" v-show="false">
+                    </div>
+                    <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>领取</span></div>
+                </div>
+                <div class="task">
+                    <div class="task_content">
+                        <h5></h5>
+                        <p></p>
+                        <div class="progress_content">
+                            <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
+                            <span>已完成<i>0</i></span>
+                        </div>
+                        <img src="../../images/icon_finish.png" v-show="false">
+                    </div>
+                    <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>领取</span></div>
+                </div>
+                <div class="task">
+                    <div class="task_content">
+                        <h5></h5>
+                        <p></p>
+                        <div class="progress_content">
+                            <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
+                            <span>已完成<i>0</i></span>
+                        </div>
+                        <img src="../../images/icon_finish.png" v-show="false">
+                    </div>
+                    <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>领取</span></div>
+                </div>
+                <div class="task">
+                    <div class="task_content">
+                        <h5></h5>
+                        <p></p>
+                        <div class="progress_content">
+                            <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
+                            <span>已完成<i>0</i></span>
+                        </div>
+                        <img src="../../images/icon_finish.png" v-show="false">
+                    </div>
+                    <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>领取</span></div>
+                </div>
+            </div>
             <div class="task" v-for="task in tasks">
                 <div class="task_content">
                     <h5>{{task.description}}</h5>
                     <p>{{task.title}}</p>
-                    <div class="progress_content" v-if="task.targetCount?task.targetCount>1:false">
+                    <div class="progress_content">
                         <div class="progress"><span :style="'width:calc(100% * '+task.currentCount/task.targetCount+')'"></span></div>
                         <span>已完成<i>{{task.currentCount}}</i></span>
                     </div>
@@ -120,7 +170,7 @@
         font-size: 14px;
     }
     .content {
-        background: #eee;
+        background: #fff;
         top: 0;
         height: 100vh;
         .task {
@@ -128,7 +178,7 @@
             background: #fff;
             .task_content {
                 border-left: 3px solid #00B4BC;
-                padding: 12px 8px;
+                padding: 8px 8px 5px;
                 box-sizing: border-box;
                 position: relative;
                 h5 {
@@ -220,5 +270,24 @@
                 }
             }
         }
+    }
+    .page_loading {
+        transition: all 0.3s;
+        opacity: 0.6;
+        height: auto;
+        h5 {
+            width: 50vw;
+            background: #eee;
+            height: 18px;
+        }
+        p {
+            width: 80vw;
+            background: #eee;
+            height: 24px;
+        }
+    }
+    .page_loading_show {
+        opacity: 0;
+        height: 0;
     }
 </style>

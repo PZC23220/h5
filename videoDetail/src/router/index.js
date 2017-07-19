@@ -6,6 +6,9 @@ import video from '../components/idol/video.vue';
 import fans_video from '../components/fans/video.vue';
 import report from '../components/idol/report.vue';
 import noviceTask from '../components/idol/noviceTask.vue';
+import attendance from '../components/idol/attendance.vue';
+import activity from '../components/idol/activity.vue';
+import activity_top10 from '../components/idol/activity_top10.vue';
 import messageBoard from '../components/idol/messageBoard.vue';
 import fans_messageBoard from '../components/fans/messageBoard.vue';
 
@@ -105,6 +108,15 @@ export default new VueRouter({
         },{
             path: '/idol/noviceTask',
             component: noviceTask
+        },{
+            path: '/idol/attendance',
+            component: attendance
+        },{
+            path: '/idol/activity',
+            component: activity
+        },{
+            path: '/idol/activity_top10',
+            component: activity_top10
         },{
             path: '/idol/copyright',
             redirect: indexLanguage.copyright

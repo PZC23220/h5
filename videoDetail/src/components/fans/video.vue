@@ -76,10 +76,12 @@
                 </ul>
             </scroller>
         </div>
-        <div class="footer">
-            <input type="" name="" placeholder="添加评论" v-model="comment_text"  v-on:focus="changeCount()">
-            <img src="../../images/timeline_icon_edit 2.png">
-            <span @click="publish()">发布</span>
+        <!-- <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
+        <div class="publich_comment" @click="autoFocus()"><img src="../../images/timeline_icon_edit.png" alt=""><span>发表评论</span></div>
+        <div class="comment_view" v-show="win_show" @touchmove.prevent>
+            <div class="comment_desc"><img src="../../images/close.png" alt="" @click="win_show=false"><span>发表</span></div>
+            <textarea placeholder="请输入内容"></textarea>
+            <!-- <div class="publish" @click="publish()">发表</div> -->
         </div>
     </div>
 </template>
@@ -119,6 +121,7 @@
                     noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
                     noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
                 },
+                win_show: false
             }
         },
         methods: {
@@ -128,6 +131,12 @@
                     // document.querySelector('body').style.height = window.innerHeight + 'px';
                     // document.querySelector('html').style.height = window.innerHeight + 'px';
                 },0)
+            },
+            autoFocus() {
+                this.win_show = true;
+                setTimeout(function(){
+                    document.querySelector('textarea').focus();
+                },100);
             },
             TransferString(content) {
                  let string = content;    
@@ -291,7 +300,12 @@
                     // self.autoHarder='top:'+(data.height)+ 'px;transition: all '+ data.duration +'s;';
                     // self.autoContent='top:'+(data.height+66)+ 'px;height:calc(100vh - '+(data.height+66)+'px);transition: all '+ data.duration +'s;';
                 })
-            }) 
+            });
+          window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.registerHandler('addComment', function() {
+                    self.win_show = true;
+                })
+          });
         },
         created() {
             var self = this;
@@ -354,7 +368,7 @@
         }
     }
     .content {
-        height: calc(100vh - 114px);
+        height: calc(100vh - 66px);
         top: 66px;
         background: #eee;
     }
@@ -412,49 +426,67 @@
         opacity: 0;
         border: none;
     }
-    .footer {
+    .publich_comment {
+        position: absolute;
+        right: 12px;
+        bottom: 18px;
+        opacity: 0.9;
+        background: #00B4BC;
+        border-radius: 29px;
+        // width: 93.5px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 15px;
+        color: #fff;
+        font-size: 16px;
+        img {
+            vertical-align: middle;
+            margin-right: 6px;
+            margin-bottom: 3px;
+            width: 25px;
+        }
+    }
+    .comment_view {
         position: absolute;
         left: 0;
+        top: 0;
         width: 100%;
-        // top: calc(100vh - 50px);
-        bottom: 0;
-        z-index: 100;
+        height: 100vh;
         background: #fff;
-        box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.07);
-        height: 48px;
+        z-index: 200;
         overflow: hidden;
-        box-sizing: border-box;
-        padding: 0 12px;
-        img {
-            position: absolute;
-            width: 18px;
-            left: 12px;
-            top: 13px;
-            z-index: 1000;
-        }
-        input {
-            width: calc(100vw - 108px);
-            font-size: 18px;
-            height: 32px;
-            line-height: 32px;
-            margin-top: 6px;
-            padding-left: 25px;
+        .comment_desc {
+            padding: 22px 12px 0;
             box-sizing: border-box;
+            border-bottom: 1px solid #eee;
+            img {
+                width: 22px;
+                padding: 10.5px 5px;
+            }
+            span {
+                font-size: 14px;
+                padding: 5px;
+                padding-left: 12px;
+                color: #FC4083;
+                border: 1px solid #FC4083;
+                border-radius: 50px;
+                float: right;
+                opacity: 0.5;
+                width: 60px;
+                height: 22px;
+                line-height: 22px;
+                text-align: center;
+                margin-top: 5px;
+            }
         }
-        span {
-            float: right;
-            display: block;
-            width: 72px;
-            height: 32px;
-            line-height: 32px;
-            opacity: 0.5;
-            border: 1px solid #FC4083;
-            margin-top: 6px;
-            border-radius: 50px;
-            font-size: 16px;
-            color: #FC4083;
-            text-align: center;
-            z-index: 1000;
+        textarea {
+            width: 100%;
+            height: 220px;
+            box-sizing: border-box;
+            border: none;
+            padding: 0 12px;
+            font-size: 14px;
+            line-height: 24px;
         }
     }
 </style>

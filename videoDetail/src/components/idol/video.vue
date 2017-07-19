@@ -29,35 +29,35 @@
                             <p><span class="left">&times;{{gif.giftCount}}</span></p>
                         </li> -->
                         <li>
-                            <img class="gift" src="../../images/pic_star.png" alt="">
+                            <img class="gift" src="../../images/pic_star.png" alt="" style="background: #fffddd;">
                             <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[0].giftCount?gcoinList.gift[0].giftCount:'0'}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="../../images/pic_heart.png" alt="">
+                            <img class="gift" src="../../images/pic_heart.png" alt="" style="background: #ffe7ea;">
                             <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[1].giftCount?gcoinList.gift[1].giftCount:'0'}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="../../images/pic_rose.png" alt="">
+                            <img class="gift" src="../../images/pic_rose.png" alt="" style="background: #ffe9ec;">
                             <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[2].giftCount?gcoinList.gift[2].giftCount:'0'}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="../../images/pic_diamond.png" alt="">
+                            <img class="gift" src="../../images/pic_diamond.png" alt="" style="background: #e1eff2;">
                             <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[3].giftCount?gcoinList.gift[3].giftCount:'0'}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="../../images/pic_bear.png" alt="">
+                            <img class="gift" src="../../images/pic_bear.png" alt="" style="background: #fff1e2;">
                             <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[4].giftCount?gcoinList.gift[4].giftCount:'0'}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="../../images/pic_tree.png" alt="">
+                            <img class="gift" src="../../images/pic_tree.png" alt="" style="background: #ffedf1;">
                             <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[5].giftCount?gcoinList.gift[5].giftCount:'0'}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="../../images/pic_tower.png" alt="">
+                            <img class="gift" src="../../images/pic_tower.png" alt="" style="background: #ffe9ea;">
                             <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[6].giftCount?gcoinList.gift[6].giftCount:'0'}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="../../images/pic_castle.png" alt="">
+                            <img class="gift" src="../../images/pic_castle.png" alt="" style="background: #dbe6f6;">
                             <p><span class="left" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{gcoinList.gift[7].giftCount?gcoinList.gift[7].giftCount:'0'}}</span></p>
                         </li>
                     </ul>
@@ -71,7 +71,7 @@
                                 <span class="level_color" v-if="key == 1"><img src="../../images/icon_metal_2.png" alt=""></span>
                                 <span class="level_color" v-if="key == 2"><img src="../../images/icon_metal_3.png" alt=""></span>
                                 <span class="level_color" v-if="key > 2">{{key+1}}</span>
-                                <img class="avatar" :src="fans.userFans?f(ans.userFans.avatar?ans.userFans.avatar:'/static/images/default_img.png'): '/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                <img class="avatar" :src="fans.userFans?(fans.userFans.avatar?fans.userFans.avatar:'/static/images/default_img.png'): '/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                 <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
                                 <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt="">
                                 <!-- <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.medal) +'.png'): ''" class="level" alt=""> -->
@@ -119,7 +119,7 @@
                             <p>読み込み中</p>
                             <span></span>
                         </div> -->
-                        <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
+                        <!-- <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                             <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                                 <div class="userinfo">
                                     <img :src="'/static/images/default_img.png'" alt="">
@@ -164,7 +164,7 @@
                                     <div class="comment_img"></div>
                                 </div>
                             </li>
-                        </div>
+                        </div> -->
                         <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                             <div class="comment_info">
                                 <img class="avatar" :src="comment.avatar?comment.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
