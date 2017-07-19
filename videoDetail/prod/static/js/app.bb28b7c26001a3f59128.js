@@ -2402,7 +2402,8 @@ __webpack_require__(20);
                 noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
                 noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
             },
-            win_show: false
+            win_show: false,
+            can_publish: true
         };
     },
     methods: {
@@ -2414,10 +2415,17 @@ __webpack_require__(20);
             }, 0);
         },
         autoFocus() {
-            this.win_show = true;
-            setTimeout(function () {
-                document.querySelector('textarea').focus();
-            }, 100);
+            let self = this;
+            window.setupWebViewJavascriptBridge(function (bridge) {
+                bridge.callHandler('can_post', function (res) {
+                    if (res) {
+                        self.win_show = true;
+                        setTimeout(function () {
+                            document.querySelector('textarea').focus();
+                        }, 10);
+                    }
+                });
+            });
         },
         TransferString(content) {
             let string = content;
@@ -2464,44 +2472,43 @@ __webpack_require__(20);
         },
         publish(token) {
             let self = this;
-            if (self.$route.query.token == '') {
-                alert('请先登录');
-                window.setupWebViewJavascriptBridge(function (bridge) {
-                    bridge.callHandler('makeToast', '请先登录');
-                });
-                return;
-            }
-            if (self.comment_text != "") {
-                if (token) {
-                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
-                } else {
-                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
-                }
-                let _data = {
-                    content: self.comment_text,
-                    targetType: 1,
-                    targetId: self.$route.query.videoId
-                };
-                __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].post('/post/add', JSON.stringify(_data)).then(function (res) {
-                    self.refresh();
-                    self.comment_text = '';
-                    window.setupWebViewJavascriptBridge(function (bridge) {
-                        bridge.callHandler('makeToast', '发表评论成功');
-                    });
-                }).catch(function (err) {
-                    window.setupWebViewJavascriptBridge(function (bridge) {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                    });
-                    window.setupWebViewJavascriptBridge(function (bridge) {
-                        bridge.callHandler('getToken', { 'targetType': '1', 'targetId': self.$route.query.videoId }, function responseCallback(responseData) {
-                            self.$route.query.token = responseData.token;
+            if (self.can_publish) {
+                if (self.comment_text != "") {
+                    self.can_publish = false;
+                    if (token) {
+                        __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
+                    } else {
+                        __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
+                    }
+                    let _data = {
+                        content: self.comment_text,
+                        targetType: 1,
+                        targetId: self.$route.query.videoId
+                    };
+                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].post('/post/add', JSON.stringify(_data)).then(function (res) {
+                        self.refresh();
+                        self.comment_text = '';
+                        window.setupWebViewJavascriptBridge(function (bridge) {
+                            bridge.callHandler('makeToast', '发表评论成功');
+                        });
+                        self.win_show = false;
+                        self.can_publish = true;
+                    }).catch(function (err) {
+                        self.can_publish = true;
+                        window.setupWebViewJavascriptBridge(function (bridge) {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                        });
+                        window.setupWebViewJavascriptBridge(function (bridge) {
+                            bridge.callHandler('getToken', { 'targetType': '1', 'targetId': self.$route.query.videoId }, function responseCallback(responseData) {
+                                self.$route.query.token = responseData.token;
+                            });
                         });
                     });
-                });
-            } else {
-                window.setupWebViewJavascriptBridge(function (bridge) {
-                    bridge.callHandler('makeToast', '请输入内容');
-                });
+                } else {
+                    window.setupWebViewJavascriptBridge(function (bridge) {
+                        bridge.callHandler('makeToast', '请输入内容');
+                    });
+                }
             }
         },
         formatTime(key) {
@@ -2584,12 +2591,15 @@ __webpack_require__(20);
         });
         window.setupWebViewJavascriptBridge(function (bridge) {
             bridge.registerHandler('addComment', function () {
-                self.win_show = true;
+                self.autoFocus();
             });
         });
     },
     created() {
         var self = this;
+        if (self.$route.query.addComment == 1) {
+            self.win_show = true;
+        }
         let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
         if (_lan === 'zh-cn') {
             self.video_text = {
@@ -6923,7 +6933,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.header[data-v-cc3c4f4e] {\n  padding: 22px 12px 0;\n  box-sizing: border-box;\n  font-size: 18px;\n  line-height: 43px;\n  background: #fafafa;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.header img[data-v-cc3c4f4e] {\n    float: left;\n    width: 22px;\n    padding: 10.5px 5px;\n}\n.header p[data-v-cc3c4f4e] {\n    float: right;\n    border: 1px solid #FC4083;\n    border-radius: 50px;\n    font-size: 16px;\n    color: #FC4083;\n    width: 72px;\n    height: 32px;\n    line-height: 32px;\n    margin-top: 3px;\n}\n.content[data-v-cc3c4f4e] {\n  height: calc(100vh - 66px);\n  top: 66px;\n  background: #eee;\n}\ni[data-v-cc3c4f4e] {\n  text-align: right;\n}\n.Lheight[data-v-cc3c4f4e] {\n  line-height: 54px;\n}\n.default_page[data-v-cc3c4f4e] {\n  height: calc(100vh - 66px);\n  background: #eee;\n}\n.loading_top span[data-v-cc3c4f4e] {\n  background: url(" + __webpack_require__(16) + ");\n  background-size: 100% auto;\n}\n.loading_top_show span[data-v-cc3c4f4e] {\n  -webkit-animation: changebg-data-v-cc3c4f4e 1s linear infinite;\n          animation: changebg-data-v-cc3c4f4e 1s linear infinite;\n}\n.loading_top_show[data-v-cc3c4f4e] {\n  height: 80px;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-cc3c4f4e {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n.defalt_msg .userinfo span[data-v-cc3c4f4e] {\n  width: 50px;\n  height: 14px;\n  background: #eee;\n  margin-top: 8px;\n}\n.defalt_msg .comment_content > *[data-v-cc3c4f4e] {\n  margin-top: 10px;\n  background: #eee;\n  height: 14px;\n}\n.page_defalt[data-v-cc3c4f4e] {\n  height: auto;\n  opacity: 0.8;\n  transition: all 0.3s;\n  overflow: hidden;\n}\n.page_defalt_none[data-v-cc3c4f4e] {\n  height: 0;\n  padding: 0;\n  opacity: 0;\n  border: none;\n}\n.publich_comment[data-v-cc3c4f4e] {\n  position: absolute;\n  right: 12px;\n  bottom: 18px;\n  opacity: 0.9;\n  background: #00B4BC;\n  border-radius: 29px;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 15px;\n  color: #fff;\n  font-size: 16px;\n}\n.publich_comment img[data-v-cc3c4f4e] {\n    vertical-align: middle;\n    margin-right: 6px;\n    margin-bottom: 3px;\n    width: 25px;\n}\n.comment_view[data-v-cc3c4f4e] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100vh;\n  background: #fff;\n  z-index: 200;\n  overflow: hidden;\n}\n.comment_view .comment_desc[data-v-cc3c4f4e] {\n    padding: 22px 12px 0;\n    box-sizing: border-box;\n    border-bottom: 1px solid #eee;\n}\n.comment_view .comment_desc img[data-v-cc3c4f4e] {\n      width: 22px;\n      padding: 10.5px 5px;\n}\n.comment_view .comment_desc span[data-v-cc3c4f4e] {\n      font-size: 14px;\n      padding: 5px;\n      padding-left: 12px;\n      color: #FC4083;\n      border: 1px solid #FC4083;\n      border-radius: 50px;\n      float: right;\n      opacity: 0.5;\n      width: 60px;\n      height: 22px;\n      line-height: 22px;\n      text-align: center;\n      margin-top: 5px;\n}\n.comment_view textarea[data-v-cc3c4f4e] {\n    width: 100%;\n    height: 220px;\n    box-sizing: border-box;\n    border: none;\n    padding: 0 12px;\n    font-size: 14px;\n    line-height: 24px;\n}\n", ""]);
+exports.push([module.i, "\n.header[data-v-cc3c4f4e] {\n  padding: 22px 12px 0;\n  box-sizing: border-box;\n  font-size: 18px;\n  line-height: 43px;\n  background: #fafafa;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.header img[data-v-cc3c4f4e] {\n    float: left;\n    width: 22px;\n    padding: 10.5px 5px;\n}\n.header p[data-v-cc3c4f4e] {\n    float: right;\n    border: 1px solid #FC4083;\n    border-radius: 50px;\n    font-size: 16px;\n    color: #FC4083;\n    width: 72px;\n    height: 32px;\n    line-height: 32px;\n    margin-top: 3px;\n}\n.content[data-v-cc3c4f4e] {\n  height: calc(100vh - 66px);\n  top: 66px;\n  background: #eee;\n}\ni[data-v-cc3c4f4e] {\n  text-align: right;\n}\n.Lheight[data-v-cc3c4f4e] {\n  line-height: 54px;\n}\n.default_page[data-v-cc3c4f4e] {\n  height: calc(100vh - 66px);\n  background: #eee;\n}\n.loading_top span[data-v-cc3c4f4e] {\n  background: url(" + __webpack_require__(16) + ");\n  background-size: 100% auto;\n}\n.loading_top_show span[data-v-cc3c4f4e] {\n  -webkit-animation: changebg-data-v-cc3c4f4e 1s linear infinite;\n          animation: changebg-data-v-cc3c4f4e 1s linear infinite;\n}\n.loading_top_show[data-v-cc3c4f4e] {\n  height: 80px;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-cc3c4f4e {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n.defalt_msg .userinfo span[data-v-cc3c4f4e] {\n  width: 50px;\n  height: 14px;\n  background: #eee;\n  margin-top: 8px;\n}\n.defalt_msg .comment_content > *[data-v-cc3c4f4e] {\n  margin-top: 10px;\n  background: #eee;\n  height: 14px;\n}\n.page_defalt[data-v-cc3c4f4e] {\n  height: auto;\n  opacity: 0.8;\n  transition: all 0.3s;\n  overflow: hidden;\n}\n.page_defalt_none[data-v-cc3c4f4e] {\n  height: 0;\n  padding: 0;\n  opacity: 0;\n  border: none;\n}\n.publich_comment[data-v-cc3c4f4e] {\n  position: absolute;\n  right: 12px;\n  bottom: 18px;\n  opacity: 0.9;\n  background: #00B4BC;\n  border-radius: 29px;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 15px;\n  color: #fff;\n  font-size: 16px;\n}\n.publich_comment img[data-v-cc3c4f4e] {\n    vertical-align: middle;\n    margin-right: 6px;\n    margin-bottom: 3px;\n    width: 25px;\n}\n.comment_view[data-v-cc3c4f4e] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100vh;\n  background: #fff;\n  z-index: 200;\n  overflow: hidden;\n}\n.comment_view .comment_desc[data-v-cc3c4f4e] {\n    padding: 22px 12px 0;\n    box-sizing: border-box;\n    border-bottom: 1px solid #eee;\n}\n.comment_view .comment_desc img[data-v-cc3c4f4e] {\n      width: 22px;\n      padding: 10.5px 5px;\n}\n.comment_view .comment_desc span[data-v-cc3c4f4e] {\n      font-size: 14px;\n      padding: 5px;\n      color: #FC4083;\n      border: 1px solid #FC4083;\n      border-radius: 50px;\n      float: right;\n      opacity: 0.5;\n      width: 60px;\n      height: 22px;\n      line-height: 22px;\n      text-align: center;\n      margin-top: 5px;\n}\n.comment_view textarea[data-v-cc3c4f4e] {\n    width: 100%;\n    height: 220px;\n    box-sizing: border-box;\n    border: none;\n    padding: 0 12px;\n    font-size: 14px;\n    line-height: 24px;\n}\n", ""]);
 
 // exports
 
@@ -15254,9 +15264,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.win_show = false
       }
     }
-  }), _c('span', [_vm._v("发表")])]), _vm._v(" "), _c('textarea', {
+  }), _c('span', {
+    on: {
+      "click": function($event) {
+        _vm.publish()
+      }
+    }
+  }, [_vm._v("发表")])]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.comment_text),
+      expression: "comment_text"
+    }],
     attrs: {
-      "placeholder": "请输入内容"
+      "placeholder": "请输入内容",
+      "autofocus": ""
+    },
+    domProps: {
+      "value": (_vm.comment_text)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.comment_text = $event.target.value
+      }
     }
   })])])
 },staticRenderFns: []}
@@ -17102,4 +17134,4 @@ module.exports = {
 
 /***/ })
 ],[155]);
-//# sourceMappingURL=app.ac7dbbb920ee17d0bc6e.js.map
+//# sourceMappingURL=app.bb28b7c26001a3f59128.js.map

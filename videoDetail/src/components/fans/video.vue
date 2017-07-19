@@ -79,8 +79,8 @@
         <!-- <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
         <div class="publich_comment" @click="autoFocus()"><img src="../../images/timeline_icon_edit.png" alt=""><span>发表评论</span></div>
         <div class="comment_view" v-show="win_show" @touchmove.prevent>
-            <div class="comment_desc"><img src="../../images/close.png" alt="" @click="win_show=false"><span>发表</span></div>
-            <textarea placeholder="请输入内容"></textarea>
+            <div class="comment_desc"><img src="../../images/close.png" alt="" @click="win_show=false"><span @click="publish()">发表</span></div>
+            <textarea placeholder="请输入内容" autofocus v-model="comment_text"></textarea>
             <!-- <div class="publish" @click="publish()">发表</div> -->
         </div>
     </div>
@@ -121,7 +121,8 @@
                     noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
                     noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
                 },
-                win_show: false
+                win_show: false,
+                can_publish: true
             }
         },
         methods: {
@@ -133,10 +134,17 @@
                 },0)
             },
             autoFocus() {
-                this.win_show = true;
-                setTimeout(function(){
-                    document.querySelector('textarea').focus();
-                },100);
+                let self = this;
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('can_post', function(res){
+                        if(res) {
+                            self.win_show = true;
+                            setTimeout(function(){
+                                document.querySelector('textarea').focus();
+                            },10);
+                        }
+                    });
+                })
             },
             TransferString(content) {
                  let string = content;    
@@ -183,46 +191,45 @@
             },
             publish(token) {
                 let self = this;
-                if(self.$route.query.token == '') {
-                    alert('请先登录');
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', '请先登录');
-                    })
-                    return;
-                }
-                if(self.comment_text !=""){
-                    if(token) {
-                        http.defaults.headers.common['Authorization'] = 'Token '+token;
-                    }else {
-                        http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-                    }
-                    let _data = {
-                        content:self.comment_text,
-                        targetType: 1,
-                        targetId: self.$route.query.videoId
-                    }
-                    http.post('/post/add',JSON.stringify(_data)).then(function(res){
-                        self.refresh();
-                        self.comment_text = '';
-                        window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('makeToast', '发表评论成功');
-                        })
-                    }).catch(function(err){
-                        window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                        })
-                        window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','targetId':self.$route.query.videoId}, function responseCallback(responseData) {
-                                self.$route.query.token = responseData.token;
+                if(self.can_publish) {
+                    if(self.comment_text !=""){
+                        self.can_publish = false;
+                        if(token) {
+                            http.defaults.headers.common['Authorization'] = 'Token '+token;
+                        }else {
+                            http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
+                        }
+                        let _data = {
+                            content:self.comment_text,
+                            targetType: 1,
+                            targetId: self.$route.query.videoId
+                        }
+                        http.post('/post/add',JSON.stringify(_data)).then(function(res){
+                            self.refresh();
+                            self.comment_text = '';
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('makeToast', '发表评论成功');
                             })
+                            self.win_show = false;
+                            self.can_publish = true;
+                        }).catch(function(err){
+                            self.can_publish = true;
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                            })
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'1','targetId':self.$route.query.videoId}, function responseCallback(responseData) {
+                                    self.$route.query.token = responseData.token;
+                                })
+                            })
+                        });
+                    }else {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('makeToast', '请输入内容');
                         })
-                    });
-                }else {
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', '请输入内容');
-                    })
+                    }
                 }
-          },
+            },
             formatTime(key) {
                 let timer = new Date(key);
                 return timer.Format('MM.dd') + '&nbsp;' + timer.Format('hh:mm');
@@ -303,12 +310,15 @@
             });
           window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.registerHandler('addComment', function() {
-                    self.win_show = true;
+                    self.autoFocus()
                 })
           });
         },
         created() {
             var self = this;
+            if(self.$route.query.addComment ==1) {
+                self.win_show = true;
+            }
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(_lan === 'zh-cn') {
                  self.video_text= {
@@ -466,7 +476,6 @@
             span {
                 font-size: 14px;
                 padding: 5px;
-                padding-left: 12px;
                 color: #FC4083;
                 border: 1px solid #FC4083;
                 border-radius: 50px;
