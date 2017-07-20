@@ -336,7 +336,8 @@
         .idol_border {
             border-bottom: 1px #eee solid;
             overflow: hidden;
-            padding-right: 12px;
+            // padding-right: 12px;
+            width: calc(100vw - 44px);
             padding-bottom: 5px;
         }
         .introduction {

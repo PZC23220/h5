@@ -8,11 +8,11 @@
                         <p></p>
                         <div class="progress_content">
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
-                            <span>已完成<i>0</i></span>
+                            <span>{{task_test.current}}<i>0</i></span>
                         </div>
                         <img src="../../images/icon_finish.png" v-show="false">
                     </div>
-                    <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>领取</span></div>
+                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
                 <div class="task">
                     <div class="task_content">
@@ -20,11 +20,11 @@
                         <p></p>
                         <div class="progress_content">
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
-                            <span>已完成<i>0</i></span>
+                            <span>{{task_test.current}}<i>0</i></span>
                         </div>
                         <img src="../../images/icon_finish.png" v-show="false">
                     </div>
-                    <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>领取</span></div>
+                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
                 <div class="task">
                     <div class="task_content">
@@ -32,11 +32,11 @@
                         <p></p>
                         <div class="progress_content">
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
-                            <span>已完成<i>0</i></span>
+                            <span>{{task_test.current}}<i>0</i></span>
                         </div>
                         <img src="../../images/icon_finish.png" v-show="false">
                     </div>
-                    <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>领取</span></div>
+                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
                 <div class="task">
                     <div class="task_content">
@@ -44,11 +44,11 @@
                         <p></p>
                         <div class="progress_content">
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
-                            <span>已完成<i>0</i></span>
+                            <span>{{task_test.current}}<i>0</i></span>
                         </div>
                         <img src="../../images/icon_finish.png" v-show="false">
                     </div>
-                    <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>领取</span></div>
+                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="../../images/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
             </div>
             <div class="task" v-for="task in tasks">
@@ -57,11 +57,11 @@
                     <p>{{task.title}}</p>
                     <div class="progress_content">
                         <div class="progress"><span :style="'width:calc(100% * '+task.currentCount/task.targetCount+')'"></span></div>
-                        <span>已完成<i>{{task.currentCount}}</i></span>
+                        <span>{{task_test.current}}<i>{{task.currentCount}}</i></span>
                     </div>
                     <img src="../../images/icon_finish.png" v-show="task.complete>0">
                 </div>
-                <div class="reward"><i>奖励</i><span><img src="../../images/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="accept(task.id,$event)">{{status(task.accepted)}}</span></div>
+                <div class="reward"><i>{{task_test.reward}}</i><span><img src="../../images/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="accept(task.id,$event)">{{status(task.accepted)}}</span></div>
             </div>
          </div>
     </div>
@@ -75,7 +75,12 @@
             return {
                 tasks: [],
                 idx: 0,
-                idx2: 0
+                idx2: 0,
+                task_test: {
+                    reward: '報酬',
+                    receive: '受け取る',
+                    current: '達成度'
+                }
             }
         },
         methods: {
@@ -110,6 +115,7 @@
           },
           accept(val,e,token) {
             let self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if(self.idx2 < 2) {
                 console.log(e.target.innerHTML);
                 if(token) {
@@ -122,7 +128,11 @@
                         id: val
                     }
                 }).then(function(res){
-                    e.target.innerHTML = '已领取';
+                    if(_lan === 'zh-cn') {
+                        e.target.innerHTML = '已领取';
+                    }else {
+                        e.target.innerHTML = '受取済';
+                    }
                     e.target.classList.remove('finish');
                 }).catch(function(){
                     self.idx2++;
@@ -143,16 +153,39 @@
             }
           },
           status(val) {
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if(val == '0') {
-                return '领取';
+                if(_lan === 'zh-cn') {
+                    return '已领取';
+                }else {
+                    return '受取済';
+                }
             }else {
-                return '已领取';
+                if(_lan === 'zh-cn') {
+                    return '领取';
+                }else {
+                    return '受け取る';
+                }
             }
           },
         },
         mounted() {
         },
         created() {
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(_lan === 'zh-cn') {
+                 this.task_test= {
+                    reward: '奖励',
+                    receive: '领取',
+                    current: '已完成'
+                }
+              } else {
+                this.task_test= {
+                    reward: '報酬',
+                    receive: '受け取る',
+                    current: '達成度'
+                }
+              }
             this.getList();
         }
     }

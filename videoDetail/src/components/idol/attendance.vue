@@ -1,73 +1,73 @@
 <template>
     <div class="main">
          <div class="content">
-            <div class="banner_content">
-                <img src="../../images/Attendance/pic_reward.png" class="banner">
-                <span>12月皆勤</span>
+            <img src="../../images/Attendance/bg.jpg" class="content_bg">
+            <div class="main_content">
+                <div class="banner_content">
+                    <img src="../../images/Attendance/pic_reward.png" class="banner">
+                    <span>{{idols.length>0?idols[1].episode:'-'}}月皆勤</span>
+                </div>
+                <ul class="idolList">
+                    <div class="none_loading" :class="{'none_loading_show':idols.length>0}">
+                        <li>
+                            <img src="../../images/default_img.png" class="idol_avatar">
+                            <img src="../../images/Attendance/attendance.png" class="attendance fans">
+                            <h3>idolName</h3>
+                            <p>idol Introduction</p>
+                        </li>
+                        <li>
+                            <img src="../../images/default_img.png" class="idol_avatar">
+                            <img src="../../images/Attendance/attendance.png" class="attendance">
+                            <h3>idolName</h3>
+                            <p>idol Introduction</p>
+                        </li>
+                        <li>
+                            <img src="../../images/default_img.png" class="idol_avatar">
+                            <img src="../../images/Attendance/attendance.png" class="attendance">
+                            <h3>idolName</h3>
+                            <p>idol Introduction</p>
+                        </li>
+                        <li>
+                            <img src="../../images/default_img.png" class="idol_avatar">
+                            <img src="../../images/Attendance/attendance.png" class="attendance">
+                            <h3>idolName</h3>
+                            <p>idol Introduction</p>
+                        </li>
+                    </div>
+                    <li v-for="idol in idols">
+                        <img v-lazy="idol.avatar" class="idol_avatar">
+                        <img src="../../images/Attendance/attendance.png" class="attendance">
+                        <h3>{{idol.nickname?idol.nickname:'...'}}</h3>
+                        <p>{{idol.introduce?idol.introduce:'...'}}</p>
+                        <span class="idolPage" v-if="isFans">查看主页</span>
+                    </li>
+                </ul>
             </div>
-            <ul class="idolList">
-                <li>
-                    <img src="../../images/default_img.png" class="idol_avatar">
-                    <img src="../../images/Attendance/attendance.png" class="attendance fans">   
-                    <h3>idolNameidolNameidolNameidolNameidolName</h3>
-                    <p>idol IntroductionidolNameidolNameidolNameidolNameidolNameidolName</p>
-                    <span class="idolPage">查看主页</span>
-                </li>
-                <li>
-                    <img src="../../images/default_img.png" class="idol_avatar">
-                    <img src="../../images/Attendance/attendance.png" class="attendance">   
-                    <h3>idolName</h3>
-                    <p>idol Introduction</p>
-                    <span class="idolPage">查看主页</span>
-                </li>
-                <li>
-                    <img src="../../images/default_img.png" class="idol_avatar">
-                    <img src="../../images/Attendance/attendance.png" class="attendance">   
-                    <h3>idolName</h3>
-                    <p>idol Introduction</p>
-                    <span class="idolPage">查看主页</span>
-                </li>
-                <li>
-                    <img src="../../images/default_img.png" class="idol_avatar">
-                    <img src="../../images/Attendance/attendance.png" class="attendance">   
-                    <h3>idolName</h3>
-                    <p>idol Introduction</p>
-                    <span class="idolPage">查看主页</span>
-                </li>
-            </ul>
          </div>
     </div>
 </template>
 <script>
     import http from '@env/http.js';
-    require('../../utils/common.js')
+    require('../../utils/common.js');
+    import VueLazyload from 'vue-lazyload'
     export default {
         data() {
             return {
-                tasks: [],
+                idols: [],
                 idx: 0,
-                idx2: 0
+                isFans: false
             }
         },
         methods: {
-          getList(token) {
+          getIdols(token) {
             let self = this;
             if(self.idx < 2) {
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-                }
-                http.get('/mission/list ').then(function(res){
-                    self.tasks = res.data;
-                    console.log(self.tasks);
+                http.get('/ranking/idolAttendance').then(function(res){
+                    self.idols = res.data;
+                    console.log(self.idols);
                 }).catch(function(){
                     self.idx++;
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getList(responseData.token);
-                        })
-                    })
+                    self.getIdols();
                 });
             }else {
                  window.setupWebViewJavascriptBridge(function(bridge) {
@@ -78,65 +78,40 @@
                      }
                 })
             }
-          },
-          accept(val,e,token) {
-            let self = this;
-            if(self.idx2 < 2) {
-                console.log(e.target.innerHTML);
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-                }
-                http.get('/mission/accept',{
-                    params: {
-                        id: val
-                    }
-                }).then(function(res){
-                    e.target.innerHTML = '已领取';
-                    e.target.classList.remove('finish');
-                }).catch(function(){
-                    self.idx2++;
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getList(responseData.token);
-                        })
-                    })
-                });
-            }else {
-                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                     }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                     }
-                })
-            }
-          },
-          status(val) {
-            if(val == '0') {
-                return '领取';
-            }else {
-                return '已领取';
-            }
-          },
+          }
         },
         mounted() {
         },
         created() {
-            // this.getList();
+            if(this.$route.query.isFans == 1) {
+                this.isFans = true;
+            }
+            this.getIdols();
         }
     }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
     .content {
-        background-image: url(../../images/Attendance/bg.jpg);
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat; 
+        // background-image: url(../../images/Attendance/bg.jpg);
+        // background-size: cover;
+        // background-position: center center;
+        // background-repeat: no-repeat; 
         top: 0;
         height: 100vh;       
+    }
+    .content_bg {
+        width: 100%;
+        height: 100vh;
+        display: block;
+    }
+    .main_content {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        overflow: hidden;
     }
     .banner_content {
         width: 272px;
@@ -180,11 +155,11 @@
             img.attendance {
                 width: 37px;
                 position: absolute;
-                bottom: 46px;
+                bottom: 66px;
                 right: 10px;
             }
             img.attendance.fans {
-                bottom: 66px;
+                bottom: 46px;
             }
             h3 {
                 font-size: 14px;
@@ -211,5 +186,15 @@
                 padding-top: 5px;
             }
         }
+    }
+    .none_loading {
+        height: 440px;
+        opacity: 0.7;
+        overflow:hidden;
+    }
+    .none_loading_show {
+        opacity: 0;
+        height: 0;     
+        transition: all 0.3s;
     }
 </style>

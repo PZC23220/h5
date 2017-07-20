@@ -119,6 +119,7 @@
         methods: {
             getComments() {
                 let self = this;
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 http.get('/post/list',{
                     params: {
                         targetType: 3,

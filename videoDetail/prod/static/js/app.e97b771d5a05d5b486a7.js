@@ -33,7 +33,7 @@ module.exports = __webpack_require__.p + "static/img/default_img.6303494.png";
 
 
 const instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: 'http://api.groupy.cn:8080/',
+    baseURL: 'http://api.groupy.vip:8080/',
     timeout: 20000
 });
 instance.interceptors.response.use(function(response){
@@ -176,58 +176,58 @@ module.exports = __webpack_require__.p + "static/fonts/Helvetica Condensed Bold 
 /* 35 */,
 /* 36 */,
 /* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/img/icon_finish.24c9b77.png";
-
-/***/ }),
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 43 */
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "static/img/icon_finish.24c9b77.png";
+
+/***/ }),
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "static/img/default_no like.323f99e.png";
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAuFJREFUSA29VkGLUlEUzucwrUYdTGkWkrRwUSsZHXFrDm4aHOsPBDPMIqFwFySMIuTSEDSRBoKgnZDlRkbBZc042KbATaSbCScZxE1Eat/3mBtXUV/MDD24vnPP+c537rnvnnPVXZnzjEajxcFg4NfpdMHhcLimKMoKxjLkU4xjyAfAFPV6fQWYX7OodNMMcNRDvwWieK/X+16v14/29/c/NxqNLkbf6XQuYZjX19dvu1yuVaPReB0Bd+Gzh2CDaZxjOgSwYfWfOp1OPRKJPIZxQ2sQRzz96D9GiMlYJgC4sfr3lUqlGAgESpNgrXm5XL7r9/uDyGoDGR0KvCIEroABcrlc/jwByEM/+pNHzkjNBAo9DEfI4ON5A4jF8n2WkQcZrfIbiUy2u93u78sIwCDkIR/ELc4VZLGILGLJZPI1FZf1kA+8cfIrrAMe01Qq9XVegHa7/TQYDF6bh5Ft5CMv+RXsWRB1UJcB02SbzeYpFAovqtXqPZPJxDrSfFhf5FeQ0hoK7YumBwCo7Ks+n+9Bq9V6nkgkbmn5sIDJjwOgrLCStRxku8FguBGNRpPNZvOR1+tdkm2yTF7yM8gyW4Vs/EdZ53A47qTT6fuz8OQlP7frlL1oFnCWHh/1Wzwef+J2u1/NwpCX/Av4OWazQyGezgLLepyWn7Va7U0oFHrX7/eHsm1SJi/5uV0H7KaTgGlzfPAPm5ubD9Gf3moFoD95yc9iLLJdTyOVddlsNmG325+VSqUfsn6eTF7yK7xweB+gXd+c5xAOh/921Xk4YSMfedULjUpE2zk5OdmxWq1xAbroG/fLrsViyaMY86JB7pnN5gV2z4uS05885IO4x7kaRG3HuGh44WQyGTcN533oL11c6lX8f29GrhwZHeLIcSUe7qnWYRDZEkc8/ehPHmFTeeWJkHEQ2GW3UUixs38rdTZR9iK2ClYyC23i30oMPi+59YJHvMe2SyjFG8Eu5X/XH8pDqevOvCcbAAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAGCAYAAADkOT91AAAAAXNSR0IArs4c6QAAADNJREFUCB1j+P//fzYQizDAAJADAu+BOBwkxgjiQSW/AOk1TFAOjGJkAKkAArgWkACKoQDbDCkLP3tTfAAAAABJRU5ErkJggg=="
 
 /***/ }),
-/* 49 */,
 /* 50 */,
 /* 51 */,
 /* 52 */,
@@ -2277,7 +2277,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__env_http_js__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_scroller__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_lazyload__);
 //
 //
@@ -3367,6 +3367,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__env_http_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_lazyload__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_lazyload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_lazyload__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3410,33 +3420,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 __webpack_require__(20);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     data() {
         return {
-            tasks: [],
+            idols: [],
             idx: 0,
-            idx2: 0
+            isFans: false
         };
     },
     methods: {
-        getList(token) {
+        getIdols(token) {
             let self = this;
             if (self.idx < 2) {
-                if (token) {
-                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
-                } else {
-                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
-                }
-                __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].get('/mission/list ').then(function (res) {
-                    self.tasks = res.data;
-                    console.log(self.tasks);
+                __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].get('/ranking/idolAttendance').then(function (res) {
+                    self.idols = res.data;
+                    console.log(self.idols);
                 }).catch(function () {
                     self.idx++;
-                    window.setupWebViewJavascriptBridge(function (bridge) {
-                        bridge.callHandler('getToken', { 'targetType': '0', 'targetId': '0' }, function responseCallback(responseData) {
-                            self.getList(responseData.token);
-                        });
-                    });
+                    self.getIdols();
                 });
             } else {
                 window.setupWebViewJavascriptBridge(function (bridge) {
@@ -3446,53 +3448,15 @@ __webpack_require__(20);
                         bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
                     }
                 });
-            }
-        },
-        accept(val, e, token) {
-            let self = this;
-            if (self.idx2 < 2) {
-                console.log(e.target.innerHTML);
-                if (token) {
-                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + token;
-                } else {
-                    __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
-                }
-                __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].get('/mission/accept', {
-                    params: {
-                        id: val
-                    }
-                }).then(function (res) {
-                    e.target.innerHTML = '已领取';
-                    e.target.classList.remove('finish');
-                }).catch(function () {
-                    self.idx2++;
-                    window.setupWebViewJavascriptBridge(function (bridge) {
-                        bridge.callHandler('getToken', { 'targetType': '0', 'targetId': '0' }, function responseCallback(responseData) {
-                            self.getList(responseData.token);
-                        });
-                    });
-                });
-            } else {
-                window.setupWebViewJavascriptBridge(function (bridge) {
-                    if (_lan === 'zh-cn') {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                    } else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                    }
-                });
-            }
-        },
-        status(val) {
-            if (val == '0') {
-                return '领取';
-            } else {
-                return '已领取';
             }
         }
     },
     mounted() {},
     created() {
-        // this.getList();
+        if (this.$route.query.isFans == 1) {
+            this.isFans = true;
+        }
+        this.getIdols();
     }
 });
 
@@ -4093,7 +4057,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__env_http_js__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_scroller__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_lazyload__);
 //
 //
@@ -4216,6 +4180,7 @@ __webpack_require__(20);
     methods: {
         getComments() {
             let self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             __WEBPACK_IMPORTED_MODULE_0__env_http_js__["a" /* default */].get('/post/list', {
                 params: {
                     targetType: 3,
@@ -4456,7 +4421,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             tasks: [],
             idx: 0,
-            idx2: 0
+            idx2: 0,
+            task_test: {
+                reward: '報酬',
+                receive: '受け取る',
+                current: '達成度'
+            }
         };
     },
     methods: {
@@ -4491,6 +4461,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         accept(val, e, token) {
             let self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if (self.idx2 < 2) {
                 console.log(e.target.innerHTML);
                 if (token) {
@@ -4503,7 +4474,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         id: val
                     }
                 }).then(function (res) {
-                    e.target.innerHTML = '已领取';
+                    if (_lan === 'zh-cn') {
+                        e.target.innerHTML = '已领取';
+                    } else {
+                        e.target.innerHTML = '受取済';
+                    }
                     e.target.classList.remove('finish');
                 }).catch(function () {
                     self.idx2++;
@@ -4524,15 +4499,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         status(val) {
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if (val == '0') {
-                return '领取';
+                if (_lan === 'zh-cn') {
+                    return '已领取';
+                } else {
+                    return '受取済';
+                }
             } else {
-                return '已领取';
+                if (_lan === 'zh-cn') {
+                    return '领取';
+                } else {
+                    return '受け取る';
+                }
             }
         }
     },
     mounted() {},
     created() {
+        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+        if (_lan === 'zh-cn') {
+            this.task_test = {
+                reward: '奖励',
+                receive: '领取',
+                current: '已完成'
+            };
+        } else {
+            this.task_test = {
+                reward: '報酬',
+                receive: '受け取る',
+                current: '達成度'
+            };
+        }
         this.getList();
     }
 });
@@ -6513,7 +6511,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_video_player___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_video_player__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_scroller__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_scroller__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_lazyload__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_lazyload__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_lazyload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_lazyload__);
 
 
@@ -6525,7 +6523,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_5_vue_scroller___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_6_vue_lazyload___default.a, {
-  preLoad: 1.3,
+  preLoad: 1,
   error: 'http://h5.groupy.vip/static/images/pic_default_2.png',
   loading: 'http://h5.groupy.vip/static/images/pic_default_2.png',
   attempt: 1
@@ -6583,7 +6581,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.content[data-v-05ee1683] {\n  background-image: url(" + __webpack_require__(193) + ");\n  background-size: cover;\n  background-position: center center;\n  background-repeat: no-repeat;\n  top: 0;\n  height: 100vh;\n}\n.banner_content[data-v-05ee1683] {\n  width: 272px;\n  display: block;\n  margin: -50px auto 0;\n  position: relative;\n  font-size: 15.55px;\n  color: #fff;\n  line-height: 18.5px;\n  height: 230px;\n  overflow: hidden;\n}\n.banner_content img[data-v-05ee1683] {\n    width: 100%;\n}\n.banner_content span[data-v-05ee1683] {\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    margin-left: -35px;\n    margin-top: 40px;\n    width: 70px;\n    text-align: center;\n}\n.idolList[data-v-05ee1683] {\n  overflow: hidden;\n}\n.idolList li[data-v-05ee1683] {\n    float: left;\n    width: 40vw;\n    margin-left: 6.66%;\n    overflow: hidden;\n    position: relative;\n    background: #fff;\n    box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 0.5);\n    border-radius: 6px;\n    margin-bottom: 16px;\n    padding-bottom: 10px;\n}\n.idolList li img.idol_avatar[data-v-05ee1683] {\n      width: 100%;\n}\n.idolList li img.attendance[data-v-05ee1683] {\n      width: 37px;\n      position: absolute;\n      bottom: 46px;\n      right: 10px;\n}\n.idolList li img.attendance.fans[data-v-05ee1683] {\n      bottom: 66px;\n}\n.idolList li h3[data-v-05ee1683] {\n      font-size: 14px;\n      font-weight: 600;\n      padding-left: 12px;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n}\n.idolList li p[data-v-05ee1683] {\n      font-size: 10px;\n      -webkit-transform: scale(0.85);\n      color: #666;\n      font-weight: 100;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n}\n.idolList li span[data-v-05ee1683] {\n      color: #999;\n      text-align: center;\n      display: block;\n      text-decoration: underline;\n      padding-top: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.content[data-v-05ee1683] {\n  top: 0;\n  height: 100vh;\n}\n.content_bg[data-v-05ee1683] {\n  width: 100%;\n  height: 100vh;\n  display: block;\n}\n.main_content[data-v-05ee1683] {\n  position: absolute;\n  width: 100%;\n  height: 100vh;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n}\n.banner_content[data-v-05ee1683] {\n  width: 272px;\n  display: block;\n  margin: -50px auto 0;\n  position: relative;\n  font-size: 15.55px;\n  color: #fff;\n  line-height: 18.5px;\n  height: 230px;\n  overflow: hidden;\n}\n.banner_content img[data-v-05ee1683] {\n    width: 100%;\n}\n.banner_content span[data-v-05ee1683] {\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    margin-left: -35px;\n    margin-top: 40px;\n    width: 70px;\n    text-align: center;\n}\n.idolList[data-v-05ee1683] {\n  overflow: hidden;\n}\n.idolList li[data-v-05ee1683] {\n    float: left;\n    width: 40vw;\n    margin-left: 6.66%;\n    overflow: hidden;\n    position: relative;\n    background: #fff;\n    box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 0.5);\n    border-radius: 6px;\n    margin-bottom: 16px;\n    padding-bottom: 10px;\n}\n.idolList li img.idol_avatar[data-v-05ee1683] {\n      width: 100%;\n}\n.idolList li img.attendance[data-v-05ee1683] {\n      width: 37px;\n      position: absolute;\n      bottom: 66px;\n      right: 10px;\n}\n.idolList li img.attendance.fans[data-v-05ee1683] {\n      bottom: 46px;\n}\n.idolList li h3[data-v-05ee1683] {\n      font-size: 14px;\n      font-weight: 600;\n      padding-left: 12px;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n}\n.idolList li p[data-v-05ee1683] {\n      font-size: 10px;\n      -webkit-transform: scale(0.85);\n      color: #666;\n      font-weight: 100;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n}\n.idolList li span[data-v-05ee1683] {\n      color: #999;\n      text-align: center;\n      display: block;\n      text-decoration: underline;\n      padding-top: 5px;\n}\n.none_loading[data-v-05ee1683] {\n  height: 440px;\n  opacity: 0.7;\n  overflow: hidden;\n}\n.none_loading_show[data-v-05ee1683] {\n  opacity: 0;\n  height: 0;\n  transition: all 0.3s;\n}\n", ""]);
 
 // exports
 
@@ -6821,7 +6819,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(34) + "\");\n  src: url(\"" + __webpack_require__(61) + "\") format(\"woff2\"), url(\"" + __webpack_require__(34) + "?#iefix\") format(\"embedded-opentype\");\n}\n.content[data-v-7fefba88] {\n  top: 0;\n  height: 100vh;\n}\nh3.title[data-v-7fefba88] {\n  height: 25px;\n  line-height: 25px;\n  font-size: 12px;\n  color: #999999;\n  background: #eee;\n  padding-left: 12px;\n  box-sizing: border-box;\n}\n.not_concerned[data-v-7fefba88] {\n  width: 100%;\n  height: 70px;\n  border-bottom: 4px #eee solid;\n  box-sizing: border-box;\n}\n.border_bottom[data-v-7fefba88] {\n  border-bottom: 4px #eee solid;\n}\n.idol_detail[data-v-7fefba88] {\n  color: #666;\n}\n.avatar_content[data-v-7fefba88] {\n  overflow: hidden;\n  float: left;\n  position: relative;\n  padding: 8px 0 0 4px;\n}\n.avatar_content .crown[data-v-7fefba88] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 25px;\n}\n.idol_content[data-v-7fefba88] {\n  margin: 12px 0 0 12px;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.idol_content > *[data-v-7fefba88] {\n    float: left;\n}\n.idol_content i[data-v-7fefba88] {\n    font-family: 'Helvetica Condensed Bold Italic';\n    font-size: 24px;\n    color: #BBBBBB;\n    margin-top: 14px;\n    width: 20px;\n    text-align: center;\n}\n.idol_content ._fir[data-v-7fefba88] {\n    color: #F3B714;\n}\n.idol_content ._sec[data-v-7fefba88] {\n    color: #888;\n}\n.idol_content ._thr[data-v-7fefba88] {\n    color: #FF8500;\n}\n.idol_content .sizeTwo[data-v-7fefba88] {\n    font-size: 18px;\n}\n.idol_content .sizeThree[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scalc(0.8);\n    margin-top: 24px;\n}\n.idol_content .avatar[data-v-7fefba88] {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-right: 6px;\n    float: left;\n    display: block;\n}\n.idol_content .idol_border[data-v-7fefba88] {\n    border-bottom: 1px #eee solid;\n    overflow: hidden;\n    padding-right: 12px;\n    padding-bottom: 5px;\n}\n.idol_content .introduction[data-v-7fefba88] {\n    width: calc(100vw - 204px);\n    float: left;\n}\n.idol_content .introduction .name[data-v-7fefba88] {\n      font-size: 14px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .signature[data-v-7fefba88] {\n      font-size: 10.5px;\n      -webkit-transform: scale(0.8);\n      margin-left: -18px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .detail[data-v-7fefba88] {\n      font-size: 12px;\n}\n.idol_content .introduction .detail span img[data-v-7fefba88] {\n        width: 20px;\n        vertical-align: middle;\n        margin-right: 5px;\n}\n.idol_content .introduction .detail span[data-v-7fefba88]:first-child {\n        margin-right: 22.4%;\n}\n.idol_content .support[data-v-7fefba88] {\n    float: left;\n    width: 80px;\n    height: 30px;\n    line-height: 30px;\n    text-align: center;\n    color: #00B4BC;\n    float: right;\n    border: 1.5px solid #00B4BC;\n    border-radius: 27px;\n    margin-top: 8px;\n}\n.fans_list[data-v-7fefba88] {\n  padding: 8px 0 8px 34px;\n}\n.fans_list img[data-v-7fefba88] {\n    margin-left: 4px;\n    width: 25px;\n    height: 25px;\n    border-radius: 50%;\n    vertical-align: middle;\n}\n.fans_list img[data-v-7fefba88]:nth-child(1) {\n    margin-left: 9px;\n}\n.fans_list .no_fans[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scale(0.8);\n    display: inline-block;\n}\n.fans_list .fans_imgList[data-v-7fefba88] {\n    display: inline-block;\n}\n.con_left[data-v-7fefba88] {\n  opacity: 0.2;\n  transition: opacity 0.3s;\n}\n.left_show[data-v-7fefba88] {\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(34) + "\");\n  src: url(\"" + __webpack_require__(61) + "\") format(\"woff2\"), url(\"" + __webpack_require__(34) + "?#iefix\") format(\"embedded-opentype\");\n}\n.content[data-v-7fefba88] {\n  top: 0;\n  height: 100vh;\n}\nh3.title[data-v-7fefba88] {\n  height: 25px;\n  line-height: 25px;\n  font-size: 12px;\n  color: #999999;\n  background: #eee;\n  padding-left: 12px;\n  box-sizing: border-box;\n}\n.not_concerned[data-v-7fefba88] {\n  width: 100%;\n  height: 70px;\n  border-bottom: 4px #eee solid;\n  box-sizing: border-box;\n}\n.border_bottom[data-v-7fefba88] {\n  border-bottom: 4px #eee solid;\n}\n.idol_detail[data-v-7fefba88] {\n  color: #666;\n}\n.avatar_content[data-v-7fefba88] {\n  overflow: hidden;\n  float: left;\n  position: relative;\n  padding: 8px 0 0 4px;\n}\n.avatar_content .crown[data-v-7fefba88] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 25px;\n}\n.idol_content[data-v-7fefba88] {\n  margin: 12px 0 0 12px;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.idol_content > *[data-v-7fefba88] {\n    float: left;\n}\n.idol_content i[data-v-7fefba88] {\n    font-family: 'Helvetica Condensed Bold Italic';\n    font-size: 24px;\n    color: #BBBBBB;\n    margin-top: 14px;\n    width: 20px;\n    text-align: center;\n}\n.idol_content ._fir[data-v-7fefba88] {\n    color: #F3B714;\n}\n.idol_content ._sec[data-v-7fefba88] {\n    color: #888;\n}\n.idol_content ._thr[data-v-7fefba88] {\n    color: #FF8500;\n}\n.idol_content .sizeTwo[data-v-7fefba88] {\n    font-size: 18px;\n}\n.idol_content .sizeThree[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scalc(0.8);\n    margin-top: 24px;\n}\n.idol_content .avatar[data-v-7fefba88] {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-right: 6px;\n    float: left;\n    display: block;\n}\n.idol_content .idol_border[data-v-7fefba88] {\n    border-bottom: 1px #eee solid;\n    overflow: hidden;\n    width: calc(100vw - 44px);\n    padding-bottom: 5px;\n}\n.idol_content .introduction[data-v-7fefba88] {\n    width: calc(100vw - 204px);\n    float: left;\n}\n.idol_content .introduction .name[data-v-7fefba88] {\n      font-size: 14px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .signature[data-v-7fefba88] {\n      font-size: 10.5px;\n      -webkit-transform: scale(0.8);\n      margin-left: -18px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .detail[data-v-7fefba88] {\n      font-size: 12px;\n}\n.idol_content .introduction .detail span img[data-v-7fefba88] {\n        width: 20px;\n        vertical-align: middle;\n        margin-right: 5px;\n}\n.idol_content .introduction .detail span[data-v-7fefba88]:first-child {\n        margin-right: 22.4%;\n}\n.idol_content .support[data-v-7fefba88] {\n    float: left;\n    width: 80px;\n    height: 30px;\n    line-height: 30px;\n    text-align: center;\n    color: #00B4BC;\n    float: right;\n    border: 1.5px solid #00B4BC;\n    border-radius: 27px;\n    margin-top: 8px;\n}\n.fans_list[data-v-7fefba88] {\n  padding: 8px 0 8px 34px;\n}\n.fans_list img[data-v-7fefba88] {\n    margin-left: 4px;\n    width: 25px;\n    height: 25px;\n    border-radius: 50%;\n    vertical-align: middle;\n}\n.fans_list img[data-v-7fefba88]:nth-child(1) {\n    margin-left: 9px;\n}\n.fans_list .no_fans[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scale(0.8);\n    display: inline-block;\n}\n.fans_list .fans_imgList[data-v-7fefba88] {\n    display: inline-block;\n}\n.con_left[data-v-7fefba88] {\n  opacity: 0.2;\n  transition: opacity 0.3s;\n}\n.left_show[data-v-7fefba88] {\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -9082,7 +9080,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page default_page3"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(43),
+      "src": __webpack_require__(44),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', {
@@ -9260,12 +9258,17 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "main"
   }, [_c('div', {
     staticClass: "content"
+  }, [_c('img', {
+    staticClass: "content_bg",
+    attrs: {
+      "src": __webpack_require__(193)
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "main_content"
   }, [_c('div', {
     staticClass: "banner_content"
   }, [_c('img', {
@@ -9273,9 +9276,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": __webpack_require__(194)
     }
-  }), _vm._v(" "), _c('span', [_vm._v("12月皆勤")])]), _vm._v(" "), _c('ul', {
+  }), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.idols.length > 0 ? _vm.idols[1].episode : '-') + "月皆勤")])]), _vm._v(" "), _c('ul', {
     staticClass: "idolList"
-  }, [_c('li', [_c('img', {
+  }, [_c('div', {
+    staticClass: "none_loading",
+    class: {
+      'none_loading_show': _vm.idols.length > 0
+    }
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _vm._l((_vm.idols), function(idol) {
+    return _c('li', [_c('img', {
+      directives: [{
+        name: "lazy",
+        rawName: "v-lazy",
+        value: (idol.avatar),
+        expression: "idol.avatar"
+      }],
+      staticClass: "idol_avatar"
+    }), _vm._v(" "), _c('img', {
+      staticClass: "attendance",
+      attrs: {
+        "src": __webpack_require__(37)
+      }
+    }), _vm._v(" "), _c('h3', [_vm._v(_vm._s(idol.nickname ? idol.nickname : '...'))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(idol.introduce ? idol.introduce : '...'))]), _vm._v(" "), (_vm.isFans) ? _c('span', {
+      staticClass: "idolPage"
+    }, [_vm._v("查看主页")]) : _vm._e()])
+  })], 2)])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('img', {
     staticClass: "idol_avatar",
     attrs: {
       "src": __webpack_require__(6)
@@ -9283,11 +9310,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "attendance fans",
     attrs: {
-      "src": __webpack_require__(42)
+      "src": __webpack_require__(37)
     }
-  }), _vm._v(" "), _c('h3', [_vm._v("idolNameidolNameidolNameidolNameidolName")]), _vm._v(" "), _c('p', [_vm._v("idol IntroductionidolNameidolNameidolNameidolNameidolNameidolName")]), _vm._v(" "), _c('span', {
-    staticClass: "idolPage"
-  }, [_vm._v("查看主页")])]), _vm._v(" "), _c('li', [_c('img', {
+  }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('img', {
     staticClass: "idol_avatar",
     attrs: {
       "src": __webpack_require__(6)
@@ -9295,11 +9322,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "attendance",
     attrs: {
-      "src": __webpack_require__(42)
+      "src": __webpack_require__(37)
     }
-  }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")]), _vm._v(" "), _c('span', {
-    staticClass: "idolPage"
-  }, [_vm._v("查看主页")])]), _vm._v(" "), _c('li', [_c('img', {
+  }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('img', {
     staticClass: "idol_avatar",
     attrs: {
       "src": __webpack_require__(6)
@@ -9307,11 +9334,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "attendance",
     attrs: {
-      "src": __webpack_require__(42)
+      "src": __webpack_require__(37)
     }
-  }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")]), _vm._v(" "), _c('span', {
-    staticClass: "idolPage"
-  }, [_vm._v("查看主页")])]), _vm._v(" "), _c('li', [_c('img', {
+  }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('img', {
     staticClass: "idol_avatar",
     attrs: {
       "src": __webpack_require__(6)
@@ -9319,11 +9346,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "attendance",
     attrs: {
-      "src": __webpack_require__(42)
+      "src": __webpack_require__(37)
     }
-  }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")]), _vm._v(" "), _c('span', {
-    staticClass: "idolPage"
-  }, [_vm._v("查看主页")])])])])])
+  }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -9521,7 +9546,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": __webpack_require__(28),
       "alt": ""
     }
-  }), _vm._v(" "), _c('p', [_vm._v("还没有爱豆的排名")])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('p', [_vm._v("ただ今集計中です")])]), _vm._v(" "), _c('div', {
     staticClass: "integral"
   }, [_c('p', [_c('span', [_vm._v("自分の順位")]), _c('span', [_c('i', {
     staticClass: "con_left",
@@ -9560,7 +9585,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.tottleFloor(1)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupy for Idol APPでは、どうやってビデオを投稿できるんでしょうか。")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("Groupy for Idol APPでは、どうやってビデオを投稿できますか。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -9572,7 +9597,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 1),
       expression: "isShow == 1"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうごうざいます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupy for Idol Appで動画を投稿することは、アイドルの専用機能です。アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、Groupyに応募してから、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _c('b', [_vm._v("アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _vm._v("また、Groupyではメンバーシップ制がありますので、アイドルが自分の動画に「公開」と「会員のみ」の二つのプライバシー設定を選べますしかし、ギャラリーからアップロードした動画の再生時間は10分までという制限がありますので、気をつけてください。")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupy for Idol Appで動画を投稿することは、アイドルの専用機能です。アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、Groupyに応募してから、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _c('b', [_vm._v("アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _vm._v("また、Groupyではメンバーシップ制がありますので、アイドルが自分の動画に「公開」と「会員のみ」の二つのプライバシー設定を選べます。しかし、ギャラリーからアップロードした動画の再生時間は10分までという制限がありますので、気をつけてください。")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(2)
@@ -9590,7 +9615,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 2),
       expression: "isShow == 2"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" Groupyは、ファンが共にアイドルを応援できるメンバシップ制アプリです。"), _c('br'), _vm._v("ひと押しだけで応援できる、アイドルの成長をより身近に見守れる、更にメンバーのみの限定情報をいっぱい入手できるアイドルとファンを親密につなぐプラットフォームを作ろうとしています。"), _c('br'), _c('br'), _vm._v("ファンが、アイドル自身のスマホから投稿した面白い動画をリアルタイムでチェックできます。"), _c('br'), _vm._v("アイドルの会員になって、掲示板で応援メッセージが送信できます。更に、最新オフ会情報やアイドルの日常、オフショットをいち早く入手！"), _c('br'), _c('br'), _vm._v("アイドルは、ファンを集めるコミュニティを作って夢を叶えます！Groupyで動画を投稿して、「公開」か「会員のみ」のプライバシー設定してファンにシェアできます。ファンから有力な応援をもらい、ランキングの上位に入って注目度を上げましょう！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" Groupyは、ファンが共にアイドルを応援できるメンバーシップ制アプリです。"), _c('br'), _vm._v("ひと押しだけで応援できて、アイドルの成長をより身近に見守れて、更にメンバーのみの限定情報をいっぱい入手できます。アイドルとファンを親密につなぐプラットフォームを作ろうとしています。"), _c('br'), _c('br'), _vm._v("ファンが、アイドル自身のスマホから投稿した面白い動画をリアルタイムでチェックできます。"), _c('br'), _vm._v("アイドルの会員になって、掲示板で応援メッセージが送信できます。更に、最新オフ会情報やアイドルの日常、オフショットをいち早く入手！"), _c('br'), _c('br'), _vm._v("アイドルは、ファンを集めるコミュニティを作って夢を叶えます！Groupyで動画を投稿して、「公開」か「会員のみ」のプライバシー設定してファンにシェアできます。ファンから有力な応援をもらい、ランキングの上位に入って注目度を上げましょう！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(3)
@@ -9608,7 +9633,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 3),
       expression: "isShow == 3"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v(" Groupyの「今日のランキング」はアイドルの人気順によるものです。"), _c('br'), _vm._v("「今日のランキング」の上位に入るには、以下の方法がおすすめです。"), _c('br'), _c('b', [_vm._v("1.たくさんのファンが投稿にLikeしてくれるほど、人気がアップします。")]), _c('br'), _c('b', [_vm._v("2.たくさんのファンがLikeを購入してくれるほど、人気がアップします。")]), _c('br'), _c('b', [_vm._v("3.掲示板か面白いビデオで盛り上がって、ギフトや応援がたくさんもらえます。")]), _c('br'), _vm._v("ランキングの上位に入ったアイドルはアプリの固定な画面で表示されます。更に総合ランキングもチェックできます。"), _c('br'), _vm._v("簡単に言えば、アイドルはランキングの上位に入れるかどうかはファンからの貢献力から決まります。応援すればするほど、ランクアップしやすくなります。"), _c('br'), _c('br'), _vm._v("Groupyの人気ランキングに入ったら何ができますか。"), _c('br'), _c('b', [_vm._v("1.ランキングの上位に入ったアイドルの投稿はGroupyより中国市場に導入される可能性が高くなります！")]), _c('br'), _c('b', [_vm._v("2.日本や中国のオタクやファンの集まり（Weibo,Blibli,Toutiao等）に注目度が高まります！")]), _c('br'), _vm._v("3"), _c('b', [_vm._v("3.注目度が高くなって、新規ファンも増やしやすいです！")]), _c('br'), _c('br'), _vm._v("詳しくは"), _c('i', [_vm._v("idol@groupy.vip")]), _vm._v("ご連絡ください～何か質問がありましたらもお気軽に！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" Groupyの「今日のランキング」はアイドルの人気順によるものです。"), _c('br'), _vm._v("「今日のランキング」の上位に入るには、以下の方法がおすすめです。"), _c('br'), _c('b', [_vm._v("1.たくさんのファンが投稿にLikeしてくれるほど、人気がアップします。")]), _c('br'), _c('b', [_vm._v("2.たくさんのファンがLikeを購入してくれるほど、人気がアップします。")]), _c('br'), _c('b', [_vm._v("3.掲示板か面白いビデオで盛り上がって、ギフトや応援がたくさんもらえます。")]), _c('br'), _vm._v("ランキングの上位に入ったアイドルはアプリの固定な画面で表示されます。更に総合ランキングもチェックできます。"), _c('br'), _vm._v("簡単に言えば、アイドルはランキングの上位に入れるかどうかはファンからの貢献力から決まります。応援すればするほど、ランクアップしやすくなります。"), _c('br'), _c('br'), _vm._v("Groupyの人気ランキングに入ったら何ができますか。"), _c('br'), _c('b', [_vm._v("1.ランキングの上位に入ったアイドルの投稿はGroupyより中国市場に導入される可能性が高くなります！")]), _c('br'), _c('b', [_vm._v("2.日本や中国のオタクやファンの集まり（Weibo,Blibli,Toutiao等）に注目度が高まります！")]), _c('br'), _c('b', [_vm._v("3.注目度が高くなって、新規ファンも増やしやすいです！")]), _c('br'), _c('br'), _vm._v("詳しくは"), _c('i', [_vm._v("idol@groupy.vip")]), _vm._v("ご連絡ください～何か質問がありましたらもお気軽に！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(4)
@@ -9626,7 +9651,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 4),
       expression: "isShow == 4"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届こうとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分の投稿もホームに載せたい？以下の方法がおすすめです。"), _c('br'), _c('b', [_vm._v("1..積極的に面白いビデオを投稿して、ギフトや応援をいっぱいもらって人気度を高めよう！")]), _c('br'), _c('b', [_vm._v("2.ファンをGroupyのメンバーシップ登録に招待して、 掲示板で盛り上がって、ファンの有力な応援でランクアップしよう！")]), _c('br'), _vm._v("まだGroupyに参加していないアイドルは今すぐ応募して、より多くのファンの応援で夢を叶えよう！"), _c('br'), _c('br'), _vm._v("詳しくは公式サイトからご覧下さい～"), _c('a', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届こうとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分の投稿もホームに載せたい？以下の方法がおすすめです。"), _c('br'), _c('b', [_vm._v("1..積極的に面白いビデオを投稿して、ギフトや応援をいっぱいもらって人気度を高めよう！")]), _c('br'), _c('b', [_vm._v("2.ファンをGroupyのメンバーシップ登録に招待して、 掲示板で盛り上がって、ファンの有力な応援でランクアップしよう！")]), _c('br'), _vm._v("まだGroupyに参加していないアイドルは今すぐ応募して、より多くのファンの応援で夢を叶えよう！"), _c('br'), _c('br'), _vm._v("詳しくは公式サイトからご覧下さい～"), _c('a', {
     attrs: {
       "href": "http://groupy.vip",
       "target": "_blank"
@@ -9637,7 +9662,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.tottleFloor(5)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyについて質問です！何を投稿すれば人気者になれますか。/どんな投稿がおすすめですか")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("何を投稿すれば人気者になれますか。/どんな投稿がおすすめですか")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -9649,13 +9674,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 5),
       expression: "isShow == 5"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届けようとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分のファンはどんな投稿が好きのか知りたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1.掲示板を活用して投票を行い、ファンに直接聞きましょう。"), _c('br'), _vm._v("2.Groupyの調査によると、多くのファンは、アイドルに自分のスケジュールやオフショットをリアルタイムに更新したり、メッセージに返事したりしてほしいようです。また、自分の努力や成績をファンにシェアするのもファンにとって大事なことです。"), _c('br'), _vm._v("3.ホームでの動画は、投稿にウルサイ編集部から動画の投稿時間、人気度、ギフト数などに基づいて選んだものです。参考にしてください～"), _c('br'), _vm._v("また、自分の投稿をTwitter，Ameba等のソーシャルアカウントでシェアすると、多くのファンから意見がいっぱいもらえるでしょう！"), _c('br'), _vm._v("面白い動画をもっと投稿して、ファンから応援をどんどんもらって、人気ランキングの上位に入って夢が叶いますように！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届けようとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分のファンはどんな投稿が好きのか知りたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1.掲示板を活用して投票を行い、ファンに直接聞きましょう。"), _c('br'), _vm._v("2.Groupyの調査によると、多くのファンは、アイドルに自分のスケジュールやオフショットをリアルタイムに更新したり、メッセージに返事したりしてほしいようです。また、自分の努力や成績をファンにシェアするのもファンにとって大事なことです。"), _c('br'), _vm._v("3.ホームでの動画は、投稿にウルサイ編集部から動画の投稿時間、人気度、ギフト数などに基づいて選んだものです。参考にしてください～"), _c('br'), _vm._v("また、自分の投稿をTwitter，Ameba等のソーシャルアカウントでシェアすると、多くのファンから意見がいっぱいもらえるでしょう！"), _c('br'), _vm._v("面白い動画をもっと投稿して、ファンから応援をどんどんもらって、人気ランキングの上位に入って夢が叶いますように！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(6)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyの質問です。どうやってファンを増やすんですか。")]), _vm._v("?"), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("Groupyでどうやってファンを増やすのですか。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -9667,13 +9692,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 6),
       expression: "isShow == 6"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _c('br'), _vm._v("いろんな方法がありますよ。以下の方法がおすすめです"), _c('br'), _vm._v("1.掲示板か面白いビデオで盛り上がって、ファンから有力な応援でGroupyの人気ランキングの上位に入ること（ファンを増やすのに一番効果があるそうです）"), _c('br'), _vm._v("2.Twitter，Line，Facebook等のSNSアカウントで、Groupyでの登場をファンに知らせて、ファンを招待すること。（一番直接な方法）"), _c('br'), _vm._v("3. Ameba等で定期的にブログを書いて、投稿情報を更新すること（より多くのガチヲタができるそうですよ）"), _c('br'), _vm._v("4.Groupyも、登場しているアイドルを公式アカウントやブログで紹介します。（Groupyもアイドルのために必死に頑張ります！）\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('br'), _vm._v("いろんな方法がありますよ。以下の方法がおすすめです"), _c('br'), _vm._v("1.掲示板か面白いビデオで盛り上がって、ファンから有力な応援でGroupyの人気ランキングの上位に入ること（ファンを増やすのに一番効果があるそうです）"), _c('br'), _vm._v("2.Twitter，Line，Facebook等のSNSアカウントで、Groupyでの登場をファンに知らせて、ファンを招待すること。（一番直接な方法）"), _c('br'), _vm._v("3. Ameba等で定期的にブログを書いて、投稿情報を更新すること（より多くのガチヲタができるそうですよ）"), _c('br'), _vm._v("4.Groupyも、登場しているアイドルを公式アカウントやブログで紹介します。（Groupyもアイドルのために必死に頑張ります！）\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(7)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyで投稿してます。どうやって自分の注目度を高めるんですか")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("Groupyでどうやって自分の注目度を高めるのですか。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -9685,13 +9710,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 7),
       expression: "isShow == 7"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("Groupyでは、多くのアイドルは自身の努力やファンの支援の下に、注目度をどんどん上げて、新規ファンを増やせます。以下の方法はおすすめです～"), _c('br'), _c('br'), _vm._v("1.自分の公開動画をSNSアカウントにシェアして、ファンをGroupyに招待すること。"), _c('br'), _vm._v("2.積極的に面白い動画を投稿するなどして、より多くの応援を獲得して、人気ランキングの上位に入って人気者になりましょう。"), _c('br'), _vm._v("3.掲示板を活用して投票にてファンに意見を聞いたり、面白いビデオで盛り上がったりして、ファンから有力な応援をもらい、Groupyの人気ランキングの上位に入ろう。"), _c('br'), _vm._v("4.Groupyは、10億人超えの中国市場の「欲しい」を喚起し、人気アイドルの動画をオタクやファンの集まり（Weibo,Blibli,Toutiao,WeChat公式アカウント及び各動画配信アプリ等）に導入しようとしています。"), _c('br'), _c('br'), _vm._v("Groupyで、より多くのファンの応援で夢が叶いますように！\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyでは、多くのアイドルは自身の努力やファンの支援の下に、注目度をどんどん上げて、新規ファンを増やせます。以下の方法はおすすめです～"), _c('br'), _c('br'), _vm._v("1.自分の公開動画をSNSアカウントにシェアして、ファンをGroupyに招待すること。"), _c('br'), _vm._v("2.積極的に面白い動画を投稿するなどして、より多くの応援を獲得して、人気ランキングの上位に入って人気者になりましょう。"), _c('br'), _vm._v("3.掲示板を活用して投票にてファンに意見を聞いたり、面白いビデオで盛り上がったりして、ファンから有力な応援をもらい、Groupyの人気ランキングの上位に入ろう。"), _c('br'), _vm._v("4.Groupyは、10億人超えの中国市場の「欲しい」を喚起し、人気アイドルの動画をオタクやファンの集まり（Weibo,Blibli,Toutiao,WeChat公式アカウント及び各動画配信アプリ等）に導入しようとしています。"), _c('br'), _c('br'), _vm._v("Groupyで、より多くのファンの応援で夢が叶いますように！\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(8)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyで動画を投稿しているアイドルです。コインを結構貯めたが、現金に換金できますかな。")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("コインを現金に換金したいが、どうすればいいでしょうか")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -9703,13 +9728,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 8),
       expression: "isShow == 8"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("Groupyは、毎月の決まった日に予め約束した割合でアイドルの金額決済を行います。口座情報を確認した上、アイドルはGroupyに換金を申込みしてから、Groupy側は20営業日以内にアイドルの口座に振込みます。"), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの決済詳細ページをご覧下さい～"), _c('br'), _vm._v("その他何か問題ありましたら、お気軽にidol@groupy.vipまでご連絡ください～\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。"), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの決済詳細ページをご覧下さい～"), _c('br'), _vm._v("その他何か問題ありましたら、お気軽にidol@groupy.vipまでご連絡ください～\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(9)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyで動画を投稿しているアイドルです。コインを結構貯めたが、現金に換金できますかな。")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("Groupyでコインを結構貯めたが、現金に換金できますかな。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -9721,7 +9746,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 9),
       expression: "isShow == 9"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("コインをいっぱい貯められて、誠におめでとうございまーす。"), _c('br'), _c('br'), _vm._v("Groupyでは、アイドルの場合は、自分のもらったコインを換金できます。ただし、プラットフォームの通貨流動に伴って換算レートが変わりますので、同じ数のコインでも換金の時間によって貰える金額が違います。詳しくはアイドル専用のGroupy-idol アプリの収入詳細の説明ページをご覧下さい～\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("コインをいっぱい貯められて、誠におめでとうございまーす。"), _c('br'), _c('br'), _vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。"), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの収入詳細の説明ページをご覧下さい～\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(10)
@@ -9739,7 +9764,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 10),
       expression: "isShow == 10"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("アイドルがファンのより親密な応援で夢を叶えるプラットフォームを作ろうとしていますので、事務所の所属なしのアイドルでも、Groupyはみんな大歓迎です！"), _c('br'), _vm._v("具体的な流れは以下のようになっています。"), _c('br'), _c('br'), _vm._v("アプリでの応募方法："), _c('br'), _vm._v("アプリの応募画面に、電話番号、メールアドレスとTwitterアカウントをご記入の上、ご提出願います。"), _c('br'), _c('br'), _vm._v("その他の応援方法："), _c('br'), _vm._v("・メールアドレスや電話番号"), _c('br'), _vm._v("・自己紹介"), _c('br'), _vm._v("・Twitter/SNSのアカウント"), _c('br'), _vm._v("・30秒以内のファンへの招待動画"), _c('br'), _vm._v("上記の応募資料をwanted@groupy.vipまでご送付願います。"), _c('br'), _c('br'), _vm._v("詳しくは 公式サイトからチェックしてください～"), _c('br'), _c('a', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("アイドルがファンのより親密な応援で夢を叶えるプラットフォームを作ろうとしていますので、事務所の所属なしのアイドルでも、Groupyはみんな大歓迎です！"), _c('br'), _vm._v("具体的な流れは以下のようになっています。"), _c('br'), _c('br'), _vm._v("アプリでの応募方法："), _c('br'), _vm._v("アプリの応募画面に、電話番号、メールアドレスとTwitterアカウントをご記入の上、ご提出願います。"), _c('br'), _c('br'), _vm._v("その他の応援方法："), _c('br'), _vm._v("・メールアドレスや電話番号"), _c('br'), _vm._v("・自己紹介"), _c('br'), _vm._v("・Twitter/SNSのアカウント"), _c('br'), _vm._v("・30秒以内のファンへの招待動画"), _c('br'), _vm._v("上記の応募資料をwanted@groupy.vipまでご送付願います。"), _c('br'), _c('br'), _vm._v("詳しくは 公式サイトからチェックしてください～"), _c('br'), _c('a', {
     attrs: {
       "href": "http://groupy.vip",
       "target": "_blank"
@@ -9878,7 +9903,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": __webpack_require__(28),
       "alt": ""
     }
-  }), _vm._v(" "), _c('p', [_vm._v("还没有爱豆的排名")])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('p', [_vm._v("ただ今集計中です")])]), _vm._v(" "), _c('div', {
     staticClass: "integral"
   }, [_c('p', [_c('span', [_vm._v("自分の順位")]), _c('span', [_c('i', {
     staticClass: "con_left",
@@ -9917,7 +9942,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.tottleFloor(11)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupy for Idol APPでは、どうやってビデオを投稿できるんでしょうか。")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("Groupy for Idol APPでは、どうやってビデオを投稿できますか。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -9929,7 +9954,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 11),
       expression: "isShow == 11"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうごうざいます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupy for Idol Appで動画を投稿することは、アイドルの専用機能です。")]), _c('br'), _c('br'), _c('b', [_vm._v("アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _vm._v("また、Groupyではメンバーシップ制がありますので、アイドルが自分の動画に「公開」と「会員のみ」の二つのプライバシー設定を選べますしかし、ギャラリーからアップロードした動画の再生時間は10分までという制限がありますので、気をつけてください。")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupy for Idol Appで動画を投稿することは、アイドルの専用機能です。")]), _c('br'), _c('br'), _c('b', [_vm._v("アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _vm._v("また、Groupyではメンバーシップ制がありますので、アイドルが自分の動画に「公開」と「会員のみ」の二つのプライバシー設定を選べます。しかし、ギャラリーからアップロードした動画の再生時間は10分までという制限がありますので、気をつけてください。")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(22)
@@ -9947,7 +9972,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 22),
       expression: "isShow == 22"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" Groupyは、ファンが共にアイドルを応援できるメンバシップ制アプリです。"), _c('br'), _vm._v("ひと押しだけで応援できる、アイドルの成長をより身近に見守れる、更にメンバーのみの限定情報をいっぱい入手できるアイドルとファンを親密につなぐプラットフォームを作ろうとしています。"), _c('br'), _c('br'), _vm._v("ファンが、アイドル自身のスマホから投稿した面白い動画をリアルタイムでチェックできます。"), _c('br'), _vm._v("アイドルの会員になって、掲示板で応援メッセージが送信できます。更に、最新オフ会情報やアイドルの日常、オフショットをいち早く入手！"), _c('br'), _c('br'), _vm._v("アイドルは、ファンを集めるコミュニティを作って夢を叶えます！Groupyで動画を投稿して、「公開」か「会員のみ」のプライバシー設定してファンにシェアできます。ファンから有力な応援をもらい、ランキングの上位に入って注目度を上げましょう！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" Groupyは、ファンが共にアイドルを応援できるメンバーシップ制アプリです。"), _c('br'), _vm._v("ひと押しだけで応援できて、アイドルの成長をより身近に見守れて、更にメンバーのみの限定情報をいっぱい入手できます。アイドルとファンを親密につなぐプラットフォームを作ろうとしています。"), _c('br'), _c('br'), _vm._v("ファンが、アイドル自身のスマホから投稿した面白い動画をリアルタイムでチェックできます。"), _c('br'), _vm._v("アイドルの会員になって、掲示板で応援メッセージが送信できます。更に、最新オフ会情報やアイドルの日常、オフショットをいち早く入手！"), _c('br'), _c('br'), _vm._v("アイドルは、ファンを集めるコミュニティを作って夢を叶えます！Groupyで動画を投稿して、「公開」か「会員のみ」のプライバシー設定してファンにシェアできます。ファンから有力な応援をもらい、ランキングの上位に入って注目度を上げましょう！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(33)
@@ -9965,7 +9990,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 33),
       expression: "isShow == 33"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v(" Groupyの「今日のランキング」はアイドルの人気順によるものです。"), _c('br'), _vm._v("「今日のランキング」の上位に入るには、以下の方法がおすすめです。"), _c('br'), _vm._v("1.たくさんのファンが投稿にLikeしてくれるほど、人気がアップします。"), _c('br'), _vm._v("2.たくさんのファンがLikeを購入してくれるほど、人気がアップします。"), _c('br'), _vm._v("3.掲示板か面白いビデオで盛り上がって、ギフトや応援がたくさんもらえます。"), _c('br'), _vm._v("ランキングの上位に入ったアイドルはアプリの固定な画面で表示されます。更に総合ランキングもチェックできます。"), _c('br'), _vm._v("簡単に言えば、アイドルはランキングの上位に入れるかどうかはファンからの貢献力から決まります。応援すればするほど、ランクアップしやすくなります。"), _c('br'), _c('br'), _vm._v("Groupyの人気ランキングに入ったら何ができますか。"), _c('br'), _vm._v("1.ランキングの上位に入ったアイドルの投稿はGroupyより中国市場に導入される可能性が高くなります！"), _c('br'), _vm._v("2.日本や中国のオタクやファンの集まり（Weibo,Blibli,Toutiao等）に注目度が高まります！"), _c('br'), _vm._v("3.注目度が高くなって、新規ファンも増やしやすいです！"), _c('br'), _c('br'), _vm._v("詳しくは"), _c('i', [_vm._v("idol@groupy.vip")]), _vm._v("ご連絡ください～何か質問がありましたらもお気軽に！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" Groupyの「今日のランキング」はアイドルの人気順によるものです。"), _c('br'), _vm._v("「今日のランキング」の上位に入るには、以下の方法がおすすめです。"), _c('br'), _c('b', [_vm._v("1.たくさんのファンが投稿にLikeしてくれるほど、人気がアップします。")]), _c('br'), _c('b', [_vm._v("2.たくさんのファンがLikeを購入してくれるほど、人気がアップします。")]), _c('br'), _c('b', [_vm._v("3.掲示板か面白いビデオで盛り上がって、ギフトや応援がたくさんもらえます。")]), _c('br'), _vm._v("ランキングの上位に入ったアイドルはアプリの固定な画面で表示されます。更に総合ランキングもチェックできます。"), _c('br'), _vm._v("簡単に言えば、アイドルはランキングの上位に入れるかどうかはファンからの貢献力から決まります。応援すればするほど、ランクアップしやすくなります。"), _c('br'), _c('br'), _vm._v("Groupyの人気ランキングに入ったら何ができますか。"), _c('br'), _c('b', [_vm._v("1.ランキングの上位に入ったアイドルの投稿はGroupyより中国市場に導入される可能性が高くなります！")]), _c('br'), _c('b', [_vm._v("2.日本や中国のオタクやファンの集まり（Weibo,Blibli,Toutiao等）に注目度が高まります！")]), _c('br'), _c('b', [_vm._v("3.注目度が高くなって、新規ファンも増やしやすいです！")]), _c('br'), _c('br'), _vm._v("詳しくは"), _c('i', [_vm._v("idol@groupy.vip")]), _vm._v("ご連絡ください～何か質問がありましたらもお気軽に！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(44)
@@ -9983,7 +10008,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 44),
       expression: "isShow == 44"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届こうとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分の投稿もホームに載せたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1.積極的に面白いビデオを投稿して、ギフトや応援をいっぱいもらって人気度を高めよう！"), _c('br'), _vm._v("2.ファンをGroupyのメンバーシップ登録に招待して、 掲示板で盛り上がって、ファンの有力な応援でランクアップしよう！"), _c('br'), _vm._v("まだGroupyに参加していないアイドルは今すぐ応募して、より多くのファンの応援で夢を叶えよう！"), _c('br'), _c('br'), _vm._v("1. 主动直接发起投票让粉丝选择想要看到的内容，吸引更多爱豆来应援自己，收货更多高级的铁杆粉丝。"), _c('br'), _c('br'), _vm._v("詳しくは公式サイトからご覧下さい～"), _c('a', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届こうとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分の投稿もホームに載せたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1.積極的に面白いビデオを投稿して、ギフトや応援をいっぱいもらって人気度を高めよう！"), _c('br'), _vm._v("2.ファンをGroupyのメンバーシップ登録に招待して、 掲示板で盛り上がって、ファンの有力な応援でランクアップしよう！"), _c('br'), _vm._v("まだGroupyに参加していないアイドルは今すぐ応募して、より多くのファンの応援で夢を叶えよう！"), _c('br'), _c('br'), _vm._v("1. 主动直接发起投票让粉丝选择想要看到的内容，吸引更多爱豆来应援自己，收货更多高级的铁杆粉丝。"), _c('br'), _c('br'), _vm._v("詳しくは公式サイトからご覧下さい～"), _c('a', {
     attrs: {
       "href": "http://groupy.vip",
       "target": "_blank"
@@ -9994,7 +10019,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.tottleFloor(55)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyについて質問です！何を投稿すれば人気者になれますか。/どんな投稿がおすすめですか")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("何を投稿すれば人気者になれますか。/どんな投稿がおすすめですか")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -10006,13 +10031,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 55),
       expression: "isShow == 55"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届けようとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分のファンはどんな投稿が好きのか知りたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1.掲示板を活用して投票を行い、ファンに直接聞きましょう。"), _c('br'), _vm._v("2.Groupyの調査によると、多くのファンは、アイドルに自分のスケジュールやオフショットをリアルタイムに更新したり、メッセージに返事したりしてほしいようです。また、自分の努力や成績をファンにシェアするのもファンにとって大事なことです。"), _c('br'), _vm._v("3.ホームでの動画は、投稿にウルサイ編集部から動画の投稿時間、人気度、ギフト数などに基づいて選んだものです。参考にしてください～"), _c('br'), _vm._v("また、自分の投稿をTwitter，Ameba等のソーシャルアカウントでシェアすると、多くのファンから意見がいっぱいもらえるでしょう！"), _c('br'), _vm._v("面白い動画をもっと投稿して、ファンから応援をどんどんもらって、人気ランキングの上位に入って夢が叶いますように！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届けようとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分のファンはどんな投稿が好きのか知りたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1.掲示板を活用して投票を行い、ファンに直接聞きましょう。"), _c('br'), _vm._v("2.Groupyの調査によると、多くのファンは、アイドルに自分のスケジュールやオフショットをリアルタイムに更新したり、メッセージに返事したりしてほしいようです。また、自分の努力や成績をファンにシェアするのもファンにとって大事なことです。"), _c('br'), _vm._v("3.ホームでの動画は、投稿にウルサイ編集部から動画の投稿時間、人気度、ギフト数などに基づいて選んだものです。参考にしてください～"), _c('br'), _vm._v("また、自分の投稿をTwitter，Ameba等のソーシャルアカウントでシェアすると、多くのファンから意見がいっぱいもらえるでしょう！"), _c('br'), _vm._v("面白い動画をもっと投稿して、ファンから応援をどんどんもらって、人気ランキングの上位に入って夢が叶いますように！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(66)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyの質問です。どうやってファンを増やすんですか。")]), _vm._v("?"), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("Groupyでどうやってファンを増やすのですか。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -10024,13 +10049,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 66),
       expression: "isShow == 66"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _c('br'), _vm._v("いろんな方法がありますよ。以下の方法がおすすめです"), _c('br'), _vm._v("1.掲示板か面白いビデオで盛り上がって、ファンから有力な応援でGroupyの人気ランキングの上位に入ること（ファンを増やすのに一番効果があるそうです）"), _c('br'), _vm._v("2.Twitter，Line，Facebook等のSNSアカウントで、Groupyでの登場をファンに知らせて、ファンを招待すること。（一番直接な方法）"), _c('br'), _vm._v("3. Ameba等で定期的にブログを書いて、投稿情報を更新すること（より多くのガチヲタができるそうですよ）"), _c('br'), _vm._v("4.Groupyも、登場しているアイドルを公式アカウントやブログで紹介します。（Groupyもアイドルのために必死に頑張ります！）\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('br'), _vm._v("いろんな方法がありますよ。以下の方法がおすすめです"), _c('br'), _vm._v("1.掲示板か面白いビデオで盛り上がって、ファンから有力な応援でGroupyの人気ランキングの上位に入ること（ファンを増やすのに一番効果があるそうです）"), _c('br'), _vm._v("2.Twitter，Line，Facebook等のSNSアカウントで、Groupyでの登場をファンに知らせて、ファンを招待すること。（一番直接な方法）"), _c('br'), _vm._v("3. Ameba等で定期的にブログを書いて、投稿情報を更新すること（より多くのガチヲタができるそうですよ）"), _c('br'), _vm._v("4.Groupyも、登場しているアイドルを公式アカウントやブログで紹介します。（Groupyもアイドルのために必死に頑張ります！）\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(77)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyで投稿してます。どうやって自分の注目度を高めるんですか")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("Groupyでどうやって自分の注目度を高めるのですか。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -10042,13 +10067,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 77),
       expression: "isShow == 77"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("Groupyでは、多くのアイドルは自身の努力やファンの支援の下に、注目度をどんどん上げて、新規ファンを増やせます。以下の方法はおすすめです～"), _c('br'), _c('br'), _vm._v("1.自分の公開動画をSNSアカウントにシェアして、ファンをGroupyに招待すること。"), _c('br'), _vm._v("2.積極的に面白い動画を投稿するなどして、より多くの応援を獲得して、人気ランキングの上位に入って人気者になりましょう。"), _c('br'), _vm._v("3.掲示板を活用して投票にてファンに意見を聞いたり、面白いビデオで盛り上がったりして、ファンから有力な応援をもらい、Groupyの人気ランキングの上位に入ろう。"), _c('br'), _vm._v("4.Groupyは、10億人超えの中国市場の「欲しい」を喚起し、人気アイドルの動画をオタクやファンの集まり（Weibo,Blibli,Toutiao,WeChat公式アカウント及び各動画配信アプリ等）に導入しようとしています。"), _c('br'), _c('br'), _vm._v("Groupyで、より多くのファンの応援で夢が叶いますように！\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyでは、多くのアイドルは自身の努力やファンの支援の下に、注目度をどんどん上げて、新規ファンを増やせます。以下の方法はおすすめです～"), _c('br'), _c('br'), _vm._v("1.自分の公開動画をSNSアカウントにシェアして、ファンをGroupyに招待すること。"), _c('br'), _vm._v("2.積極的に面白い動画を投稿するなどして、より多くの応援を獲得して、人気ランキングの上位に入って人気者になりましょう。"), _c('br'), _vm._v("3.掲示板を活用して投票にてファンに意見を聞いたり、面白いビデオで盛り上がったりして、ファンから有力な応援をもらい、Groupyの人気ランキングの上位に入ろう。"), _c('br'), _vm._v("4.Groupyは、10億人超えの中国市場の「欲しい」を喚起し、人気アイドルの動画をオタクやファンの集まり（Weibo,Blibli,Toutiao,WeChat公式アカウント及び各動画配信アプリ等）に導入しようとしています。"), _c('br'), _c('br'), _vm._v("Groupyで、より多くのファンの応援で夢が叶いますように！\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(88)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyで動画を投稿しているアイドルです。コインを結構貯めたが、現金に換金できますかな。")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("コインを現金に換金したいが、どうすればいいでしょうか")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -10060,13 +10085,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 88),
       expression: "isShow == 88"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("Groupyは、毎月の決まった日に予め約束した割合でアイドルの金額決済を行います。口座情報を確認した上、アイドルはGroupyに換金を申込みしてから、Groupy側は20営業日以内にアイドルの口座に振込みます。"), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの決済詳細ページをご覧下さい～"), _c('br'), _vm._v("その他何か問題ありましたら、お気軽にidol@groupy.vipまでご連絡ください～\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。"), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの決済詳細ページをご覧下さい～"), _c('br'), _vm._v("その他何か問題ありましたら、お気軽にidol@groupy.vipまでご連絡ください～\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(99)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("Groupyで動画を投稿しているアイドルです。コインを結構貯めたが、現金に換金できますかな。")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("Groupyでコインを結構貯めたが、現金に換金できますかな。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -10078,7 +10103,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 99),
       expression: "isShow == 99"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("コインをいっぱい貯められて、誠におめでとうございまーす。"), _c('br'), _c('br'), _vm._v("Groupyでは、アイドルの場合は、自分のもらったコインを換金できます。ただし、プラットフォームの通貨流動に伴って換算レートが変わりますので、同じ数のコインでも換金の時間によって貰える金額が違います。詳しくはアイドル専用のGroupy-idol アプリの収入詳細の説明ページをご覧下さい～\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("コインをいっぱい貯められて、誠におめでとうございまーす。"), _c('br'), _c('br'), _vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。"), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの収入詳細の説明ページをご覧下さい～\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(100)
@@ -10096,7 +10121,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 100),
       expression: "isShow == 100"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとございます。"), _c('br'), _c('br'), _vm._v("アイドルがファンのより親密な応援で夢を叶えるプラットフォームを作ろうとしていますので、事務所の所属なしのアイドルでも、Groupyはみんな大歓迎です！"), _c('br'), _vm._v("具体的な流れは以下のようになっています。"), _c('br'), _c('br'), _vm._v("アプリでの応募方法："), _c('br'), _vm._v("アプリの応募画面に、電話番号、メールアドレスとTwitterアカウントをご記入の上、ご提出願います。"), _c('br'), _c('br'), _vm._v("その他の応援方法："), _c('br'), _vm._v("・メールアドレスや電話番号"), _c('br'), _vm._v("・自己紹介"), _c('br'), _vm._v("・Twitter/SNSのアカウント"), _c('br'), _vm._v("・30秒以内のファンへの招待動画"), _c('br'), _vm._v("上記の応募資料をwanted@groupy.vipまでご送付願います。"), _c('br'), _c('br'), _vm._v("詳しくは 公式サイトからチェックしてください～"), _c('br'), _c('a', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("アイドルがファンのより親密な応援で夢を叶えるプラットフォームを作ろうとしていますので、事務所の所属なしのアイドルでも、Groupyはみんな大歓迎です！"), _c('br'), _vm._v("具体的な流れは以下のようになっています。"), _c('br'), _c('br'), _vm._v("アプリでの応募方法："), _c('br'), _vm._v("アプリの応募画面に、電話番号、メールアドレスとTwitterアカウントをご記入の上、ご提出願います。"), _c('br'), _c('br'), _vm._v("その他の応援方法："), _c('br'), _vm._v("・メールアドレスや電話番号"), _c('br'), _vm._v("・自己紹介"), _c('br'), _vm._v("・Twitter/SNSのアカウント"), _c('br'), _vm._v("・30秒以内のファンへの招待動画"), _c('br'), _vm._v("上記の応募資料をwanted@groupy.vipまでご送付願います。"), _c('br'), _c('br'), _vm._v("詳しくは 公式サイトからチェックしてください～"), _c('br'), _c('a', {
     attrs: {
       "href": "http://groupy.vip",
       "target": "_blank"
@@ -11436,7 +11461,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(44)
+      "src": __webpack_require__(45)
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "avatar",
@@ -11485,7 +11510,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(45)
+      "src": __webpack_require__(46)
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "avatar",
@@ -11534,7 +11559,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(45)
+      "src": __webpack_require__(46)
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "avatar",
@@ -12183,7 +12208,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page default_page3"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(43),
+      "src": __webpack_require__(44),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', [_vm._v("还没有收到粉丝的点赞人气"), _c('br'), _vm._v("分享视频能让更多粉丝关注")])]) : _vm._e()])], 1)], 1)], 1)])
@@ -12510,7 +12535,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(43),
+      "src": __webpack_require__(44),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.fans_text.noneLike))])])]), _vm._v(" "), _c('swiper-slide', {
@@ -13047,7 +13072,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "progress"
   }, [_c('span', {
     style: ('width:calc(100% * 0)')
-  })]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('img', {
+  })]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.task_test.current)), _c('i', [_vm._v("0")])])]), _vm._v(" "), _c('img', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -13055,9 +13080,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "false"
     }],
     attrs: {
-      "src": __webpack_require__(37)
+      "src": __webpack_require__(38)
     }
-  })]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('div', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "reward"
+  }, [_c('i', [_vm._v(_vm._s(_vm.task_test.reward))]), _vm._m(0), _c('span', [_vm._v(_vm._s(_vm.task_test.receive))])])]), _vm._v(" "), _c('div', {
     staticClass: "task"
   }, [_c('div', {
     staticClass: "task_content"
@@ -13067,7 +13094,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "progress"
   }, [_c('span', {
     style: ('width:calc(100% * 0)')
-  })]), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c('img', {
+  })]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.task_test.current)), _c('i', [_vm._v("0")])])]), _vm._v(" "), _c('img', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -13075,9 +13102,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "false"
     }],
     attrs: {
-      "src": __webpack_require__(37)
+      "src": __webpack_require__(38)
     }
-  })]), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _c('div', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "reward"
+  }, [_c('i', [_vm._v(_vm._s(_vm.task_test.reward))]), _vm._m(1), _c('span', [_vm._v(_vm._s(_vm.task_test.receive))])])]), _vm._v(" "), _c('div', {
     staticClass: "task"
   }, [_c('div', {
     staticClass: "task_content"
@@ -13087,7 +13116,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "progress"
   }, [_c('span', {
     style: ('width:calc(100% * 0)')
-  })]), _vm._v(" "), _vm._m(4)]), _vm._v(" "), _c('img', {
+  })]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.task_test.current)), _c('i', [_vm._v("0")])])]), _vm._v(" "), _c('img', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -13095,9 +13124,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "false"
     }],
     attrs: {
-      "src": __webpack_require__(37)
+      "src": __webpack_require__(38)
     }
-  })]), _vm._v(" "), _vm._m(5)]), _vm._v(" "), _c('div', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "reward"
+  }, [_c('i', [_vm._v(_vm._s(_vm.task_test.reward))]), _vm._m(2), _c('span', [_vm._v(_vm._s(_vm.task_test.receive))])])]), _vm._v(" "), _c('div', {
     staticClass: "task"
   }, [_c('div', {
     staticClass: "task_content"
@@ -13107,7 +13138,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "progress"
   }, [_c('span', {
     style: ('width:calc(100% * 0)')
-  })]), _vm._v(" "), _vm._m(6)]), _vm._v(" "), _c('img', {
+  })]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.task_test.current)), _c('i', [_vm._v("0")])])]), _vm._v(" "), _c('img', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -13115,9 +13146,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "false"
     }],
     attrs: {
-      "src": __webpack_require__(37)
+      "src": __webpack_require__(38)
     }
-  })]), _vm._v(" "), _vm._m(7)])]), _vm._v(" "), _vm._l((_vm.tasks), function(task) {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "reward"
+  }, [_c('i', [_vm._v(_vm._s(_vm.task_test.reward))]), _vm._m(3), _c('span', [_vm._v(_vm._s(_vm.task_test.receive))])])])]), _vm._v(" "), _vm._l((_vm.tasks), function(task) {
     return _c('div', {
       staticClass: "task"
     }, [_c('div', {
@@ -13128,7 +13161,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "progress"
     }, [_c('span', {
       style: ('width:calc(100% * ' + task.currentCount / task.targetCount + ')')
-    })]), _vm._v(" "), _c('span', [_vm._v("已完成"), _c('i', [_vm._v(_vm._s(task.currentCount))])])]), _vm._v(" "), _c('img', {
+    })]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.task_test.current)), _c('i', [_vm._v(_vm._s(task.currentCount))])])]), _vm._v(" "), _c('img', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -13136,11 +13169,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         expression: "task.complete>0"
       }],
       attrs: {
-        "src": __webpack_require__(37)
+        "src": __webpack_require__(38)
       }
     })]), _vm._v(" "), _c('div', {
       staticClass: "reward"
-    }, [_c('i', [_vm._v("奖励")]), _c('span', [_c('img', {
+    }, [_c('i', [_vm._v(_vm._s(_vm.task_test.reward))]), _c('span', [_c('img', {
       attrs: {
         "src": __webpack_require__(3)
       }
@@ -13156,45 +13189,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(_vm.status(task.accepted)))])])])
   })], 2)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [_vm._v("已完成"), _c('i', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "reward"
-  }, [_c('i', [_vm._v("奖励")]), _c('span', [_c('img', {
+  return _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(3)
     }
-  }), _vm._v("0")]), _c('span', [_vm._v("领取")])])
+  }), _vm._v("0")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [_vm._v("已完成"), _c('i', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "reward"
-  }, [_c('i', [_vm._v("奖励")]), _c('span', [_c('img', {
+  return _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(3)
     }
-  }), _vm._v("0")]), _c('span', [_vm._v("领取")])])
+  }), _vm._v("0")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [_vm._v("已完成"), _c('i', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "reward"
-  }, [_c('i', [_vm._v("奖励")]), _c('span', [_c('img', {
+  return _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(3)
     }
-  }), _vm._v("0")]), _c('span', [_vm._v("领取")])])
+  }), _vm._v("0")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [_vm._v("已完成"), _c('i', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "reward"
-  }, [_c('i', [_vm._v("奖励")]), _c('span', [_c('img', {
+  return _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(3)
     }
-  }), _vm._v("0")]), _c('span', [_vm._v("领取")])])
+  }), _vm._v("0")])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -13764,7 +13781,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(44),
+      "src": __webpack_require__(45),
       "alt": ""
     }
   })]), _vm._v(" "), _c('div', {
@@ -13836,7 +13853,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(45),
+      "src": __webpack_require__(46),
       "alt": ""
     }
   })]), _vm._v(" "), _c('div', {
@@ -14140,7 +14157,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(44)
+      "src": __webpack_require__(45)
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "idol_content"
@@ -14216,7 +14233,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(44)
+      "src": __webpack_require__(45)
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "idol_content"
@@ -14254,7 +14271,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(45)
+      "src": __webpack_require__(46)
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "idol_content"
@@ -14853,7 +14870,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(43),
+      "src": __webpack_require__(44),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', {
@@ -14904,19 +14921,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('img', {
     staticClass: "btn_play",
     attrs: {
-      "src": __webpack_require__(46),
+      "src": __webpack_require__(47),
       "alt": ""
     }
   }), _vm._v(" "), _c('div', [_c('img', {
     staticClass: "time_bg",
     attrs: {
-      "src": __webpack_require__(47),
+      "src": __webpack_require__(48),
       "alt": ""
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "time_play",
     attrs: {
-      "src": __webpack_require__(48),
+      "src": __webpack_require__(49),
       "alt": ""
     }
   }), _vm._v(" "), _c('span', {
@@ -14952,19 +14969,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('img', {
     staticClass: "btn_play",
     attrs: {
-      "src": __webpack_require__(46),
+      "src": __webpack_require__(47),
       "alt": ""
     }
   }), _vm._v(" "), _c('div', [_c('img', {
     staticClass: "time_bg",
     attrs: {
-      "src": __webpack_require__(47),
+      "src": __webpack_require__(48),
       "alt": ""
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "time_play",
     attrs: {
-      "src": __webpack_require__(48),
+      "src": __webpack_require__(49),
       "alt": ""
     }
   }), _vm._v(" "), _c('span', {
@@ -15000,19 +15017,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('img', {
     staticClass: "btn_play",
     attrs: {
-      "src": __webpack_require__(46),
+      "src": __webpack_require__(47),
       "alt": ""
     }
   }), _vm._v(" "), _c('div', [_c('img', {
     staticClass: "time_bg",
     attrs: {
-      "src": __webpack_require__(47),
+      "src": __webpack_require__(48),
       "alt": ""
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "time_play",
     attrs: {
-      "src": __webpack_require__(48),
+      "src": __webpack_require__(49),
       "alt": ""
     }
   }), _vm._v(" "), _c('span', {
@@ -15048,19 +15065,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('img', {
     staticClass: "btn_play",
     attrs: {
-      "src": __webpack_require__(46),
+      "src": __webpack_require__(47),
       "alt": ""
     }
   }), _vm._v(" "), _c('div', [_c('img', {
     staticClass: "time_bg",
     attrs: {
-      "src": __webpack_require__(47),
+      "src": __webpack_require__(48),
       "alt": ""
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "time_play",
     attrs: {
-      "src": __webpack_require__(48),
+      "src": __webpack_require__(49),
       "alt": ""
     }
   }), _vm._v(" "), _c('span', {
@@ -17134,4 +17151,4 @@ module.exports = {
 
 /***/ })
 ],[155]);
-//# sourceMappingURL=app.7543822ed05dd16459f3.js.map
+//# sourceMappingURL=app.e97b771d5a05d5b486a7.js.map
