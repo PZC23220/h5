@@ -3,11 +3,12 @@
         <div class="content">
             <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
-              :on-infinite="infinite">
-                <div class="not_concerned" v-if="!rakingList.me"><img src="../../images/banner.png" alt=""></div>
-                <div class="concerned" v-if="rakingList.me">
+              :on-infinite="infinite"
+              :noDataText="rakingList.length>0? '全て表示されました':''">
+                <div class="not_concerned" v-if="me.length==0"><img src="../../images/banner.png" alt=""></div>
+                <div class="concerned" v-if="me.length > 0">
                     <h3 class="title">{{idol_text.me}}</h3>
-                    <div class="idol_detail" v-for="(idol,key) in rakingList.me">
+                    <div class="idol_detail" v-for="(idol,key) in me">
                         <div class="idol_content">
                             <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
                             <div class="idol_border">
@@ -20,91 +21,73 @@
                                     <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
                                     <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{Number(idol.popularity).toLocaleString()}}</span><span><img src="../../images/icon_fans.png" alt="">{{Number(idol.fansNums).toLocaleString()}}</span></p>
                                 </div>
-                                <div class="support" @click="support(idol.idolId)">{{idol_text.support}}</div>
+                                <div class="support" @click="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="!idol.fansList">{{idol_text.no1}}</div></div>
-                        <div class="border_bottom" v-if="key < rakingList.me.length-1"></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="meFans[key]?meFans[key].topFans.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in meFans[key].topFans"></div><div class="no_fans" v-if="meFans[key]?(meFans[key].topFans.lenght==0):true">{{idol_text.no1}}</div></div>
+                        <div class="border_bottom" v-if="key < me.length-1"></div>
                     </div>
                 </div>
-                <div class="idol_all">
-                    <h3 class="title" v-if="rakingList.me">{{idol_text.all}}</h3>
-                    <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>0:false}">
+                <div class="idol_all" v-if="top3None ==false">
+                    <h3 class="title" v-if="me.length>0">{{idol_text.all}}</h3>
+                    <div class="idol_detail con_left" :class="{'left_show': rakingList.length>0}">
                         <div class="idol_content">
                             <i class="_fir">1</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?(rakingList.rankingList[0].avatar?rakingList.rankingList[0].avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar" @click="rakingList.rankingList?(rakingList.rankingList[0].idolId?showIdolPage(rakingList.rankingList[0].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.length>0?(rakingList[0].avatar?rakingList[0].avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar" @click="rakingList.length>0?(rakingList[0].idolId?showIdolPage(rakingList[0].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img src="../../images/icon_crown_1.png" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
-                                    <p class="name">{{rakingList.rankingList?rakingList.rankingList[0].name:'...'}}</p>
-                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[0].introduce:idol_text.none}}</p>
-                                    <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[0].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[0].fansNums).toLocaleString():'0'}}</span></p>
+                                    <p class="name">{{rakingList.length>0?rakingList[0].name:'...'}}</p>
+                                    <p class="signature">{{rakingList.length>0?rakingList[0].introduce:idol_text.none}}</p>
+                                    <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.length>0?Number(rakingList[0].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.length>0?Number(rakingList[0].fansNums).toLocaleString():'0'}}</span></p>
                                 </div>
-                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[0].idolId:'')">{{idol_text.support}}</div>
+                                <div class="support" @click="support(rakingList.length>0?rakingList[0].idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[0].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[0].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[0].fansList || rakingList.rankingList[0].fansList.length < 1):true">{{idol_text.no1}}</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="allFans[0]?allFans[0].topFans.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in allFans[0].topFans"></div><div class="no_fans" v-if="allFans[0]?(allFans[0].topFans.length == 0):true">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
-                    <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>1:false}">
+                    <div class="idol_detail con_left" :class="{'left_show': rakingList.length>0?rakingList.length>1:false}">
                         <div class="idol_content">
                             <i class="_sec">2</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?(rakingList.rankingList[1].avatar?rakingList.rankingList[1].avatar:'http://h5.groupy.vip/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[1].idolId?showIdolPage(rakingList.rankingList[1].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.length>1?(rakingList[1].avatar?rakingList[1].avatar:'http://h5.groupy.vip/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar"  @click="rakingList.length>1?(rakingList[1].idolId?showIdolPage(rakingList[1].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img src="../../images/icon_crown_2.png" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
-                                    <p class="name">{{rakingList.rankingList?rakingList.rankingList[1].name:'...'}}</p>
-                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[1].introduce:idol_text.none}}</p>
-                                    <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[1].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[1].fansNums).toLocaleString():'0'}}</span></p>
+                                    <p class="name">{{rakingList.length>1?rakingList[1].name:'...'}}</p>
+                                    <p class="signature">{{rakingList.length>1?rakingList[1].introduce:idol_text.none}}</p>
+                                    <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.length>1?Number(rakingList[1].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.length>1?Number(rakingList[1].fansNums).toLocaleString():'0'}}</span></p>
                                 </div>
-                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[1].idolId:'')">{{idol_text.support}}</div>
+                                <div class="support" @click="support(rakingList.length>1?rakingList[1].idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[1].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[1].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[1].fansList || rakingList.rankingList[1].fansList.length <1):true">{{idol_text.no1}}</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="allFans[1]?allFans[1].topFans.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in allFans[1].topFans"></div><div class="no_fans" v-if="allFans[1]?(allFans[1].topFans.length == 0):true">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
-                    <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>2:false}">
+                    <div class="idol_detail con_left" :class="{'left_show': rakingList.length>0?rakingList.length>2:false}">
                         <div class="idol_content">
                             <i class="_thr">3</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?(rakingList.rankingList[2].avatar?rakingList.rankingList[2].avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[2].idolId?showIdolPage(rakingList.rankingList[2].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                    <img :src="rakingList.length>2?(rakingList[2].avatar?rakingList[2].avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar"  @click="rakingList.length>2?(rakingList[2].idolId?showIdolPage(rakingList[2].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                     <img src="../../images/icon_crown_3.png" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
-                                    <p class="name">{{rakingList.rankingList?rakingList.rankingList[2].name:'...'}}</p>
-                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[2].introduce:idol_text.none}}</p>
-                                    <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[2].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[2].fansNums).toLocaleString():'0'}}</span></p>
+                                    <p class="name">{{rakingList.length>2?rakingList[2].name:'...'}}</p>
+                                    <p class="signature">{{rakingList.length>2?rakingList[2].introduce:idol_text.none}}</p>
+                                    <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.length>2?Number(rakingList[2].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.length>2?Number(rakingList[2].fansNums).toLocaleString():'0'}}</span></p>
                                 </div>
-                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[2].idolId:'')">{{idol_text.support}}</div>
+                                <div class="support" @click="support(rakingList.length>2?rakingList[2].idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[2].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[2].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[2].fansList || rakingList.rankingList[2].fansList.length <1):true">{{idol_text.no1}}</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="allFans[2]?allFans[2].topFans.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in allFans[2].topFans"></div><div class="no_fans" v-if="allFans[2]?(allFans[2].topFans.length == 0):true">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
-                    <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>3:false}">
-                        <div class="idol_content">
-                            <i>4</i>
-                            <div class="idol_border">
-                                <div class="avatar_content">
-                                    <img :src="rakingList.rankingList?(rakingList.rankingList[3].avatar?rakingList.rankingList[3].avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" class="avatar"  @click="rakingList.rankingList?(rakingList.rankingList[3].idolId?showIdolPage(rakingList.rankingList[3].idolId):false):false" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
-                                </div>
-                                <div class="introduction">
-                                    <p class="name">{{rakingList.rankingList?rakingList.rankingList[3].name:'...'}}</p>
-                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[3].introduce:idol_text.none}}</p>
-                                    <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[3].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[3].fansNums).toLocaleString():'0'}}</span></p>
-                                </div>
-                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[3].idolId:'')">{{idol_text.support}}</div>
-                            </div>
-                        </div>
-                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[3].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[3].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[3].fansList || rakingList.rankingList[3].fansList.length < 1):true">{{idol_text.no1}}</div></div>
-                        <div class="border_bottom"></div>
-                    </div>
-                    <div class="idol_detail" v-for="(idol,key) in rakingList.rankingList" v-if="rakingList.rankingList?key > 3 && key < len: false">
+                    <div class="idol_detail" v-for="(idol,key) in rakingList" v-if="rakingList.length>0?key > 2 && key < len: false">
                         <div class="idol_content">
                             <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98}]">{{idol.position}}</i>
                             <div class="idol_border">
@@ -119,9 +102,13 @@
                                 <div class="support" @click="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="(!idol.fansList || idol.fansList.length < 1)">{{idol_text.no1}}</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="allFans[key]?allFans[key].topFans.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in allFans[key].topFans"></div><div class="no_fans" v-if="allFans[key]?(allFans[key].topFans.length == 0):true">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
+                </div>
+                <div class="default_page" v-if="top3None">
+                    <img src="../../images/default_no message.png" alt="">
+                    <p v-html="idol_text.noneIdol"></p>
                 </div>
             </scroller>
         </div>
@@ -135,17 +122,24 @@
     export default {
         data() {
             return {
-                rakingList: {},
+                rakingList: [],
+                me: [],
                 loadingBig: true,
                 len:20,
+                start: 0,
+                num: 20,
                 idol_text: {
                     me: 'お気に入り',
                     all: '全体ランキング',
                     fans: 'ファンランキング',
                     support: '応援',
                     no1: 'No.1になって目立とう！',
-                    none: 'Groupyで待ってまーす。'
+                    none: 'Groupyで待ってまーす。',
+                    noneIdol: 'ただ今集計中です'
                 },
+                top3None: false,
+                allFans: [],
+                meFans: []
             }
         },
         methods: {
@@ -165,38 +159,55 @@
               let timer = new Date(key);
               return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
           },
-          getRanking(token) {
+          getRanking() {
             let self = this;
-            // if(token) {
-            //     http.defaults.headers.common['Authorization'] = 'Token '+token;
-            // }else {
-            //     http.defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
-            // }
+            if(self.$route.query.token) {
+                http.defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
+            }
             http.get('/ranking/idolsFromFans',{
                 params: {
                     filter: this.$route.query.filter
                 }
             }).then(function(res){
                 self.loadingBig = false;
-                if(res.status == 200) {
-                    self.rakingList = res.data;
-                    console.log(self.rakingList)
+                let allFansList = [],meFansList = [];
+                if(res.data) {
+                    if(!res.data.rankingList) {
+                        self.top3None = true;
+                    }else {
+                        self.rakingList = res.data.rankingList;
+                        for(var i=0;i<self.rakingList.length;i++) {
+                            allFansList.push(self.rakingList[i].idolId);
+                        }
+                        self.getFansList(allFansList,'all')
+                    }
+                    if(res.data.me) {
+                        self.me = res.data.me;
+                        for(var j=0;j<self.me.length;j++) {
+                            meFansList.push(self.me[j].idolId);
+                        }
+                        self.getFansList(meFansList,'me')
+                    }
+                    console.log(self.rakingList);
+                    console.log(self.me);
                 }
-                // else {
-                //     window.setupWebViewJavascriptBridge(function(bridge) {
-                //         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                //             self.getRanking(responseData.token);
-                //         })
-                //     })
-                // }
             })
-            // .catch(function(err){
-            //     window.setupWebViewJavascriptBridge(function(bridge) {
-            //         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-            //             self.getRanking(responseData.token);
-            //         })
-            //     })
-            // });
+          },
+          getFansList(_val,arr) {
+            let self = this;
+            http.post('/groupyuser/idolTopFans',{
+                idolIds: _val
+            }).then(function(res){
+                if(res.data.length > 0) {
+                    if(arr == 'all') {
+                        self.allFans = res.data;
+                        console.log(self.allFans);
+                    }else {
+                        self.meFans = res.data;
+                        console.log(self.allFans);
+                    }
+                }
+            })
           },
           refresh (done) {
             var self = this;
@@ -208,8 +219,8 @@
 
           infinite (done) {
             var self = this;
-            if(self.rakingList.rankingList) {
-               if (self.rakingList.rankingList.length < self.len) {
+            if(self.rakingList) {
+               if (self.rakingList.length < self.len) {
                   setTimeout(() => {
                     done(true)
                   }, 500)
@@ -257,7 +268,8 @@
                     fans: ' 粉丝排行',
                     support: '应援',
                     no1: '赶紧来抢占第一位吧！',
-                    none: '我在groupy等你哦!'
+                    none: '我在groupy等你哦!',
+                    noneIdol: '还没有爱豆的排名'
                 }
               } else {
                 this.idol_text= {
@@ -266,7 +278,8 @@
                     fans: 'ファンランキング',
                     support: '応援',
                     no1: 'No.1になって目立とう！',
-                    none: 'Groupyで待ってまーす。'
+                    none: 'Groupyで待ってまーす。',
+                    noneIdol: 'ただ今集計中です'
                 }
               }
             this.getRanking();
@@ -334,7 +347,7 @@
             color: #BBBBBB;
             margin-top: 14px;
             width: 20px;
-            text-align: center;
+            text-align: left;
         }
         ._fir {
             color: #F3B714;

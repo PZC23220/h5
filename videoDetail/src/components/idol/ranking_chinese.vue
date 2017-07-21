@@ -39,7 +39,7 @@
                              <span><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.rankingList?rakingListToday.rankingList[2].score || rakingListToday.rankingList[2].score==0:false}">{{Number(rakingListToday.rankingList?(rakingListToday.rankingList[2].score?rakingListToday.rankingList[2].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                      </ul>
-                     <router-link :to="'/idol/allRanking?type=today&token='+tokens" class="all_ranking">全部排名</router-link>
+                     <router-link :to="'/idol/allRanking?type=today&token='+tokens" class="all_ranking" v-if="top3None == false">全部排名</router-link>
                      <div class="default_page" v-show="top3None">
                         <img src="../../images/default_no message.png" alt="">
                         <p>还没有爱豆的排名</p>
@@ -90,7 +90,7 @@
                     </div>
                 </swiper-slide>
                 <swiper-slide id="swiper2">
-                    <ul class="top3">
+                    <ul class="top3" v-if="top3None == false">
                         <li>
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
@@ -119,7 +119,7 @@
                              <span><img src="../../images/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.rankingList?rakingList.rankingList[2].score || rakingList.rankingList[2].score==0:false}">{{Number(rakingList.rankingList?(rakingList.rankingList[2].score?rakingList.rankingList[2].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                      </ul>
-                     <router-link :to="'/idol/allRanking?type=all&token='+tokens" class="all_ranking">全部排名</router-link>
+                     <router-link :to="'/idol/allRanking?type=all&token='+tokens" class="all_ranking" v-if="top3None == false">全部排名</router-link>
                      <div class="default_page" v-show="top3None">
                         <img src="../../images/default_no message.png" alt="">
                         <p>还没有爱豆的排名</p>

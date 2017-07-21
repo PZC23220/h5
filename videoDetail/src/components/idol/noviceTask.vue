@@ -53,11 +53,11 @@
             </div>
             <div class="task" v-for="task in tasks">
                 <div class="task_content">
-                    <h5>{{task.description}}</h5>
-                    <p>{{task.title}}</p>
+                    <h5>{{task.title}}</h5>
+                    <p>{{task.description}}</p>
                     <div class="progress_content">
                         <div class="progress"><span :style="'width:calc(100% * '+task.currentCount/task.targetCount+')'"></span></div>
-                        <span>{{task_test.current}}<i>{{task.currentCount}}</i></span>
+                        <span>{{task_test.current}}<i>{{task.currentCount>task.targetCount?task.targetCount:task.currentCount}}</i></span>
                     </div>
                     <img src="../../images/icon_finish.png" v-show="task.complete>0">
                 </div>

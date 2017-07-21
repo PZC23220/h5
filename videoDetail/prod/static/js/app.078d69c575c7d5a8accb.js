@@ -33,7 +33,7 @@ module.exports = __webpack_require__.p + "static/img/default_img.6303494.png";
 
 
 const instance = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-    baseURL: 'http://api.groupy.cn:8080/',
+    baseURL: 'http://api.groupy.vip:8080/',
     timeout: 20000
 });
 instance.interceptors.response.use(function(response){
@@ -123,20 +123,20 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAe
 /* 22 */,
 /* 23 */,
 /* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/img/pic_loading_2.e6de4a7.png";
-
-/***/ }),
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "static/img/pic_loading_2.e6de4a7.png";
+
+/***/ }),
+/* 26 */,
+/* 27 */,
+/* 28 */,
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -156,53 +156,53 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAABtCAYAAACb
 
 /***/ }),
 /* 32 */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABIRJREFUWAntV29olVUY/517r9fNddXNfWgmy+6cRiFJEYgWGaVC/mWSX5IwRGxghGRLN0i/uGnRjD6Yo2CEGpIU/iNSCAJJlBRTkGbTGDRoH3QTvNO5P/f0e85737vX3fO+e9/ym/cZ555znvP8+b3Pec5zzoAiFSNQjEAxAo92BNTD/nzdgnJovEO7y9k/zX4a2y0odLA/yb5dbUcfx6HooQLUzagnqGZ6nhrg/TZBNqpGfBkgk18KDVDvpdO72ErNZWxpOplIJyWuJYLbT3CbzDxZ2oEFjb2oXZVGWWUF+m/2ovPYXzjbXIHBexJVUL+N+u+accBPKIB6N1ZhxHxxldeWaqIbEsE1EtwuzkZQu+IM3vhqIVRiglfWjPXwEH7c+Cs6T7xM+ThijOR2tBTIeRgxz9g61LvwPt0e5WIVAZyn0TrGrZrxTIkCcy5NZzuMsoBb1r7ICk4EBLSsi5xQFjuNvpnYfxJ2tsNl5ObSyGcEIFvSilloUGsJ10saWzhNQrZVIheGRK7rqQ6z3Y7+e35qwRHMoslsBXDOCs6xutp0knO2bbV5FjmR9+rb5MjzBai/Y45IqXBob0HkyNefoowfMMOIyIGIQq489Y0dH11fgOjG43ReZvSS+M2qn8WUPF9OaxTyynvtjLHhD3AAA3lZDXuuNqCHuXnPyEkpiUKuvOg34B8/VV+ArFFS/W8ZxSG8aDOgFI8Q0GnWpM5FoVH5P2lHjqGVfAEaaY3vTa+wjTmZtFpQOGj4UoSlzoUhkRN5hxx9H71ggDHsYRTv8/vm4jr26/bRmyNvL4F9JtJyQ0gRDkMiJ/KyQxOCr7xxbxIW0je5kYfpN0aDcuG3MiMvshr28hboEjy8SVay+0HGoW8SI4w6ptJxZ2j/HRegqI131RmZFqxnpL9mi5uiHXQXy5UIbCC4b0Q3iMIB3IPpNPkxnTuPgZxF9y52HehPMA9DZsvmuzxLf47bWq8a8LtlrYBlLx85MVOsbzAPhyFXUZJbfJ39RbZrbN1sD9Iw62KyrA+D/Q/yvTNZH+mf7GUFjX0jqL/AZGRwhFFbQgN/sO3km+WIrSQwBZ5FVh2C1s/lnU1M8VVYA5SUA4MZ4M7fQKYnvwylLiOm31LbcHWUWTjyB9iCAzwc66hyCpVYoTZx8yyUy08pFY+Z5ZmvAfP5bKx6gdMxReI2S+WlNuAKUy87zAeIyhDkOoI8ZjFtWFaAdLqUOfcTJS5wYxepD2HdM57w1xnh02wKFbXAq7uB6lf8fI3y+5gpvzQBXT/LK0nzbzHzmZNCGvOJOYEs3jajOD7wBdeKUkZYXtEK0+YAa0+GAyeGy2cBq78F5tSxRFAfaNNiz0J2gMBLlM3gI5yx6DisAfMOrEE8ofkOBErlf6MIpOLAks+Zp9VyzdXw5pd3ZQFZAbI+PcmQp2wHIm9BY40Z1yxXqHwmz440SEwCnt/sphnDWUhWgIViFo4Ck46UXmxZjMBKS5EwNNsdePv/DhC5J1jqCa+96OPUdOeguPaiWyhqFCNQjEAxAv8nAv8CcKFQQhnDjG0AAAAASUVORK5CYII="
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABF5JREFUWAntV19slEUQn9nvrkBre9RqIFT+BUwwEIHE8KAJAVvPNhhelAeshvgoDyU24aG2TZrSCob6QkxUUg36gMSgIgbJNe1djVg0EUnBlD8VqRREU1sasfTa3rfjzF2vcne9/b6vfeT2Zb/d+c3Mb2d3Z+cDyLVcBHIRyEXgwY4Aelk+bX1ruw32LiTYDIjc0WXujqllpW145LVoui16rvkpHYMann8WCIq4v8Z63yo/vI/tdb+k42cauyJIwYMF9uT4F0AUnNEIwg1lwS7saOgSOTVGfLrr+4P8uYcXkeGDF2UDUrMVbmgUvKllKKeDqfJQkR395zSTexqLCgiDaxHL1wEsyAO6OAB0tBvojzscGNAcpWq1INDG+JOyGGQW+MJGxG0bAArnA/TeAjrbBzrSG3eDoOqtrrqWdJ/3jx0J2lubPyGiV3HxQlBNLwE8Uni/PsCkDXSMSX55jiRaTOoy92twYQGpmkqEdUtT8Tyi0AWgw2HirzGV73sMT9XeyQBNTVjZBDJPFftXUEwfRr8PVevLmEFOQJYCXL9ciCP89BuBghIszJfFIDy+WBAZDVcvArrxN9LAsB9sGmm6Hj6TAZqa8GUTyLwej1XzMn1qyxOZkUtTxLK1gI8yydKHEf4dA1hakoZIHarK9WDzdvPBqGLJgVTp/yMjQSLkw0OAQtBNe3JZAlXykDN6dTK6lPyYUUfNODs1yQc0cYDSz51Jya1svh9QsQfEYj7jWe+CkSBfwiVxf4F8t2694fJ8fNnJgudbszowEwT8M+5x8K43x27QI/eAopOS74ewfe9oNhUjQb4gl0SR+gez6c9+/nrCJqck44tiJMgHIxwn2GG0MSuS1H0lrsep/DuTASNBFSj4iLdglHp+51f0L5MdbzLeWjrTxxsEoOZZH5uUjQTxxBsjnGXeEwP6UCj+apiMuZXR8R+Axid4gzCCodpfTXpGgqKoVpQ2sKVLNDAE9GHEZMud7NYw0Mnz8iZqC629TkqOBKWMUkq9wiSjuv0i0PEfnWxml9+bAP3210AxW6LXhpHac9nBCYkjQYFhuO5nZVk7pUzSUr2EepzsZsq5qNDvnAK6OSyp5YLyz5M60bG5IihWsPPNE4T0unzrD8K8TY6LF2ii8aXQLV8Bne8HrnYG+QHZbsp9STXpOdTeGpdfu/nivCullXpxE2DVM2YDnJD1AS4Pr94WcrdVHgbdVtNi2DNBUYptaa5CoCNS6eCmVaD2VMQLWJGltN6boFu/IRoZlTqxXykqx3DDtRSMw2BWBMUmle2r0DYe5UgWx4vZ3eUwXZzyZaBP+aye7iHSmrlhp6WwCjvrPCfTWROMkwzuW6kn4HOO5EYZ44blgIsCQN19RHfHOGoQ4wK2RW2ub8JG1ILx2uZEUJzRjs/y9NDVaj6X9VyZBKYJIIYspWr4ciV+QKYF3j7mTDDpjrbtL4YolWmtl3De7JgrsaTdXJ+LQC4CuQg86BH4D05ogVXvnETsAAAAAElFTkSuQmCC"
-
-/***/ }),
-/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "static/fonts/Helvetica Condensed Bold Italic.b4c5e12.eot";
 
 /***/ }),
-/* 35 */,
-/* 36 */,
-/* 37 */
+/* 33 */,
+/* 34 */,
+/* 35 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 38 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 39 */
+/* 37 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAkCAYAAADLsGk3AAAAAXNSR0IArs4c6QAABvlJREFUWAnNWH1IVWcYf/0odUlLqUww58wi21LSCCZsTMVtTZmMjaBiUIzpxjZaCjq1JoywbP+MYvThmvunEQyi5SxdOCnnF6X7o6aGpoZYmJhRfuXHdb/f6T537+49J6963Xrh3Pc5z/uc5/n9zvO8H+d6qWewHTx4MGJ8fDwD0PrDw8OP7d69e2wmmL4zGfzX40eOHPG7f/9+DeKGMfbt27fXo8uk/LTm/bTB/2NsaGjoRcQ1SNjjv+4OjmeOSFRUVLuvr2+3Bv6cJluKXpYjsxg4dOjQ848fP/5menp6jY+Pz9H9+/e7FdwsRF1dXcDk5OSNvr6+SGTn6K5du/Z4eXlNm9nqOo9kxE7iIzhOmpqa+pmTVQ8yG9nb2/vrxYsXR65evVqtW7cu3B0S9O8RIvATQWf25gsy4XIzm76xsXEz7PcCvIIPhcy8WV1dHeiOD08R+Q7BJhkwICBgJC4urted4LrNtWvXFqE0T4GED0nYbDaS8ceVqttZyR4hUlhY+Iu/v/+aiIiI49HR0c8hWH1lZeVrVkHN9BMTE7kgEUMCdhJGD/17ZvbOOo9MdnFaXl6eBrmMpYFan8DE/zQlJaVExq36+vr6aNj/iXE/AGdJSWlRHg4KClqRkJAwavU89R7JiARAabSQhP1iqZysqqo6ijq33HhhAw7ep+DDjwT0jLDEcC25d+/eWxLDqvcokdTU1G6QGNHIKAD9DMErsKwGm4FoaGjg+CsELSVlJ2BkxS6/b/asrvMoERCw4WrTieBtM14yzk6NLCE9eHNz8wsovyKQdZCQstJJodzSLly44Kc/6yx7lAidA/hfdvBGiVFnJxYFkA21tbWOVQgAT4LEEgGvZ0XKzK5b2t/fn0JfVs2ydq0emEkP0C20IRk9M3Z5KfrzyEwexvtg9oYO3ll2Isjy+pW+zdqCZEQn4JwdTm4AKcb1vV4+QkLAy6RnTx2ud06cOLHIjAR1HicCn/rKZcSV7LAXGYR4AjAmtBAiYJE55kQqCGNJhkOTH48TSUpK6gLYUT0rIjO+yEJCAAsBnYzoaDMyMqJwiCwoLS31N+Hh+YwAqA1EWgWwZID3IuskKBOwENDBc2x4eFgNDAwYPQ6nr965c+cnMyIuO3txcXHY2NjYVzD2xim0KC8vr9PsQSsdj+FYjU5j/F0CF/BCjEstQUvZmOzkxtjo6KgaHBxUWLb/FQp+ppcvXx6YmZk5og+4rFogcQ7B4mkEJwk4zMX29vauwMfOSqhWwNFKrP0OGUANmT0vPBOov30JRh0b37j+1p3vSYwZQDyVlpammpqa+LkrbrjBdmRkZIyCiENHwYUIdC9rFut7enrGAdwITjC8GJxvmo1vWGTei43ec5z3kgUpIz0zLCN8qxtZoH+crRQOoHTpIAIfPJx+jt7lQ8uFCICV4tmP6QCHNRtI+FAmEAFEWe5ljPdmspCUueDcE/TDhw/Vxo0bVWxsrLp48SIntZEJvqS2tjbGugHfXxQUFFQZQUx+XOYIHvY6cOBAImx9N23axPMRJxd8PSFCH+TGe7mEoPRiKz0BsWRIQnpmgxP57t27CjWvdu7cSdcKZy+Fg6Yh4/kBCIVr1649vm3btilDafHjkhE8zLT9LvZlZWUhAPgtQcnFMZHNep0QSUgpSTZCQ0NVcHCw6uzsVO3t7QZBfKMbupaWFrqfhN9j8FOIxWaQipmaS0bMHsCBrRhOczgmIPVe9KIjOZFJggRkPlCfnJzsCFNRUWGUEZ9hpmH3G2z25ufnG4wchjMILhkxs9+6deuX+OILRYAP9AwQFBt7kfVxfUV68OCB6u7udkxgicPM2FsH7LP37dt3XhSz6d3a2QGOa/eH6Ct1oAwk95RJRu5ZUswE9wOuRiwZ7s43b95Ujx49ornCBqeuX78+hGdyMA9eQhbmRIK+3CotGrLxHw0ArEbgzQJYB6/L3Mi6urpUfHy82rBhg2ptbVVnz541/GCjVWFhYTZk6Qw2vSysRjwJz6u5VVoSITExcejKlStvowTqoIsiGWlCjD2OEaqjo8N44+np6YZJSEiImHKj/QMk94BAs0M5T+EfJLNwVFNTEwlzkuGKZpQTe+4HLJ1Vq1apmJgYdenSJcW3v2XLFmNCY6ntAdEcEDgzi3Bumc6JCD3j4ygOc+AygAVyRbp165aRCY5t375dRUZGGpsbPmep4nf8YfzndTgrK+up/4bQeC5tzkQYDJtXCiZw+dWrVxdxo5O2bNkyhcmrSAJleAbHipzs7OweGV+Ifl5ECKikpOQ0NrMdzuCQgSZce7AS1TqPLcT9rCa7GQD85/QD9A4iAM8VCPjzf4RsM3tmIXTzzghBFRUVfYIS2gHgl3H8Ls7NzX2yUSwEYguffwM4kSb5kL+C8AAAAABJRU5ErkJggg=="
 
 /***/ }),
-/* 40 */
+/* 38 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 41 */
+/* 39 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABIRJREFUWAntV29olVUY/517r9fNddXNfWgmy+6cRiFJEYgWGaVC/mWSX5IwRGxghGRLN0i/uGnRjD6Yo2CEGpIU/iNSCAJJlBRTkGbTGDRoH3QTvNO5P/f0e85737vX3fO+e9/ym/cZ555znvP8+b3Pec5zzoAiFSNQjEAxAo92BNTD/nzdgnJovEO7y9k/zX4a2y0odLA/yb5dbUcfx6HooQLUzagnqGZ6nhrg/TZBNqpGfBkgk18KDVDvpdO72ErNZWxpOplIJyWuJYLbT3CbzDxZ2oEFjb2oXZVGWWUF+m/2ovPYXzjbXIHBexJVUL+N+u+accBPKIB6N1ZhxHxxldeWaqIbEsE1EtwuzkZQu+IM3vhqIVRiglfWjPXwEH7c+Cs6T7xM+ThijOR2tBTIeRgxz9g61LvwPt0e5WIVAZyn0TrGrZrxTIkCcy5NZzuMsoBb1r7ICk4EBLSsi5xQFjuNvpnYfxJ2tsNl5ObSyGcEIFvSilloUGsJ10saWzhNQrZVIheGRK7rqQ6z3Y7+e35qwRHMoslsBXDOCs6xutp0knO2bbV5FjmR9+rb5MjzBai/Y45IqXBob0HkyNefoowfMMOIyIGIQq489Y0dH11fgOjG43ReZvSS+M2qn8WUPF9OaxTyynvtjLHhD3AAA3lZDXuuNqCHuXnPyEkpiUKuvOg34B8/VV+ArFFS/W8ZxSG8aDOgFI8Q0GnWpM5FoVH5P2lHjqGVfAEaaY3vTa+wjTmZtFpQOGj4UoSlzoUhkRN5hxx9H71ggDHsYRTv8/vm4jr26/bRmyNvL4F9JtJyQ0gRDkMiJ/KyQxOCr7xxbxIW0je5kYfpN0aDcuG3MiMvshr28hboEjy8SVay+0HGoW8SI4w6ptJxZ2j/HRegqI131RmZFqxnpL9mi5uiHXQXy5UIbCC4b0Q3iMIB3IPpNPkxnTuPgZxF9y52HehPMA9DZsvmuzxLf47bWq8a8LtlrYBlLx85MVOsbzAPhyFXUZJbfJ39RbZrbN1sD9Iw62KyrA+D/Q/yvTNZH+mf7GUFjX0jqL/AZGRwhFFbQgN/sO3km+WIrSQwBZ5FVh2C1s/lnU1M8VVYA5SUA4MZ4M7fQKYnvwylLiOm31LbcHWUWTjyB9iCAzwc66hyCpVYoTZx8yyUy08pFY+Z5ZmvAfP5bKx6gdMxReI2S+WlNuAKUy87zAeIyhDkOoI8ZjFtWFaAdLqUOfcTJS5wYxepD2HdM57w1xnh02wKFbXAq7uB6lf8fI3y+5gpvzQBXT/LK0nzbzHzmZNCGvOJOYEs3jajOD7wBdeKUkZYXtEK0+YAa0+GAyeGy2cBq78F5tSxRFAfaNNiz0J2gMBLlM3gI5yx6DisAfMOrEE8ofkOBErlf6MIpOLAks+Zp9VyzdXw5pd3ZQFZAbI+PcmQp2wHIm9BY40Z1yxXqHwmz440SEwCnt/sphnDWUhWgIViFo4Ck46UXmxZjMBKS5EwNNsdePv/DhC5J1jqCa+96OPUdOeguPaiWyhqFCNQjEAxAv8nAv8CcKFQQhnDjG0AAAAASUVORK5CYII="
+
+/***/ }),
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "static/img/icon_finish.24c9b77.png";
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABF5JREFUWAntV19slEUQn9nvrkBre9RqIFT+BUwwEIHE8KAJAVvPNhhelAeshvgoDyU24aG2TZrSCob6QkxUUg36gMSgIgbJNe1djVg0EUnBlD8VqRREU1sasfTa3rfjzF2vcne9/b6vfeT2Zb/d+c3Mb2d3Z+cDyLVcBHIRyEXgwY4Aelk+bX1ruw32LiTYDIjc0WXujqllpW145LVoui16rvkpHYMann8WCIq4v8Z63yo/vI/tdb+k42cauyJIwYMF9uT4F0AUnNEIwg1lwS7saOgSOTVGfLrr+4P8uYcXkeGDF2UDUrMVbmgUvKllKKeDqfJQkR395zSTexqLCgiDaxHL1wEsyAO6OAB0tBvojzscGNAcpWq1INDG+JOyGGQW+MJGxG0bAArnA/TeAjrbBzrSG3eDoOqtrrqWdJ/3jx0J2lubPyGiV3HxQlBNLwE8Uni/PsCkDXSMSX55jiRaTOoy92twYQGpmkqEdUtT8Tyi0AWgw2HirzGV73sMT9XeyQBNTVjZBDJPFftXUEwfRr8PVevLmEFOQJYCXL9ciCP89BuBghIszJfFIDy+WBAZDVcvArrxN9LAsB9sGmm6Hj6TAZqa8GUTyLwej1XzMn1qyxOZkUtTxLK1gI8yydKHEf4dA1hakoZIHarK9WDzdvPBqGLJgVTp/yMjQSLkw0OAQtBNe3JZAlXykDN6dTK6lPyYUUfNODs1yQc0cYDSz51Jya1svh9QsQfEYj7jWe+CkSBfwiVxf4F8t2694fJ8fNnJgudbszowEwT8M+5x8K43x27QI/eAopOS74ewfe9oNhUjQb4gl0SR+gez6c9+/nrCJqck44tiJMgHIxwn2GG0MSuS1H0lrsep/DuTASNBFSj4iLdglHp+51f0L5MdbzLeWjrTxxsEoOZZH5uUjQTxxBsjnGXeEwP6UCj+apiMuZXR8R+Axid4gzCCodpfTXpGgqKoVpQ2sKVLNDAE9GHEZMud7NYw0Mnz8iZqC629TkqOBKWMUkq9wiSjuv0i0PEfnWxml9+bAP3210AxW6LXhpHac9nBCYkjQYFhuO5nZVk7pUzSUr2EepzsZsq5qNDvnAK6OSyp5YLyz5M60bG5IihWsPPNE4T0unzrD8K8TY6LF2ii8aXQLV8Bne8HrnYG+QHZbsp9STXpOdTeGpdfu/nivCullXpxE2DVM2YDnJD1AS4Pr94WcrdVHgbdVtNi2DNBUYptaa5CoCNS6eCmVaD2VMQLWJGltN6boFu/IRoZlTqxXykqx3DDtRSMw2BWBMUmle2r0DYe5UgWx4vZ3eUwXZzyZaBP+aye7iHSmrlhp6WwCjvrPCfTWROMkwzuW6kn4HOO5EYZ44blgIsCQN19RHfHOGoQ4wK2RW2ub8JG1ILx2uZEUJzRjs/y9NDVaj6X9VyZBKYJIIYspWr4ciV+QKYF3j7mTDDpjrbtL4YolWmtl3De7JgrsaTdXJ+LQC4CuQg86BH4D05ogVXvnETsAAAAAElFTkSuQmCC"
 
 /***/ }),
 /* 42 */,
@@ -1098,7 +1098,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_scroller__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_scroller__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_scroller__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_awesome_swiper__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_awesome_swiper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_awesome_swiper__);
@@ -1612,22 +1612,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_scroller__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_scroller__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_scroller__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__env_http_js__ = __webpack_require__(10);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -1752,17 +1739,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data() {
         return {
-            rakingList: {},
+            rakingList: [],
+            me: [],
             loadingBig: true,
             len: 20,
+            start: 0,
+            num: 20,
             idol_text: {
                 me: 'お気に入り',
                 all: '全体ランキング',
                 fans: 'ファンランキング',
                 support: '応援',
                 no1: 'No.1になって目立とう！',
-                none: 'Groupyで待ってまーす。'
-            }
+                none: 'Groupyで待ってまーす。',
+                noneIdol: 'ただ今集計中です'
+            },
+            top3None: false,
+            allFans: [],
+            meFans: []
         };
     },
     methods: {
@@ -1782,38 +1776,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             let timer = new Date(key);
             return timer.Format('MM.dd') + '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm');
         },
-        getRanking(token) {
+        getRanking() {
             let self = this;
-            // if(token) {
-            //     http.defaults.headers.common['Authorization'] = 'Token '+token;
-            // }else {
-            //     http.defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
-            // }
+            if (self.$route.query.token) {
+                __WEBPACK_IMPORTED_MODULE_1__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
+            }
             __WEBPACK_IMPORTED_MODULE_1__env_http_js__["a" /* default */].get('/ranking/idolsFromFans', {
                 params: {
                     filter: this.$route.query.filter
                 }
             }).then(function (res) {
                 self.loadingBig = false;
-                if (res.status == 200) {
-                    self.rakingList = res.data;
+                let allFansList = [],
+                    meFansList = [];
+                if (res.data) {
+                    if (!res.data.rankingList) {
+                        self.top3None = true;
+                    } else {
+                        self.rakingList = res.data.rankingList;
+                        for (var i = 0; i < self.rakingList.length; i++) {
+                            allFansList.push(self.rakingList[i].idolId);
+                        }
+                        self.getFansList(allFansList, 'all');
+                    }
+                    if (res.data.me) {
+                        self.me = res.data.me;
+                        for (var j = 0; j < self.me.length; j++) {
+                            meFansList.push(self.me[j].idolId);
+                        }
+                        self.getFansList(meFansList, 'me');
+                    }
                     console.log(self.rakingList);
+                    console.log(self.me);
                 }
-                // else {
-                //     window.setupWebViewJavascriptBridge(function(bridge) {
-                //         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                //             self.getRanking(responseData.token);
-                //         })
-                //     })
-                // }
             });
-            // .catch(function(err){
-            //     window.setupWebViewJavascriptBridge(function(bridge) {
-            //         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-            //             self.getRanking(responseData.token);
-            //         })
-            //     })
-            // });
+        },
+        getFansList(_val, arr) {
+            let self = this;
+            __WEBPACK_IMPORTED_MODULE_1__env_http_js__["a" /* default */].post('/groupyuser/idolTopFans', {
+                idolIds: _val
+            }).then(function (res) {
+                if (res.data.length > 0) {
+                    if (arr == 'all') {
+                        self.allFans = res.data;
+                        console.log(self.allFans);
+                    } else {
+                        self.meFans = res.data;
+                        console.log(self.allFans);
+                    }
+                }
+            });
         },
         refresh(done) {
             var self = this;
@@ -1825,8 +1837,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         infinite(done) {
             var self = this;
-            if (self.rakingList.rankingList) {
-                if (self.rakingList.rankingList.length < self.len) {
+            if (self.rakingList) {
+                if (self.rakingList.length < self.len) {
                     setTimeout(() => {
                         done(true);
                     }, 500);
@@ -1874,7 +1886,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 fans: ' 粉丝排行',
                 support: '应援',
                 no1: '赶紧来抢占第一位吧！',
-                none: '我在groupy等你哦!'
+                none: '我在groupy等你哦!',
+                noneIdol: '还没有爱豆的排名'
             };
         } else {
             this.idol_text = {
@@ -1883,7 +1896,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 fans: 'ファンランキング',
                 support: '応援',
                 no1: 'No.1になって目立とう！',
-                none: 'Groupyで待ってまーす。'
+                none: 'Groupyで待ってまーす。',
+                noneIdol: 'ただ今集計中です'
             };
         }
         this.getRanking();
@@ -2077,7 +2091,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__env_http_js__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_scroller__);
 //
 //
@@ -2373,7 +2387,7 @@ __webpack_require__(20);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__env_http_js__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_scroller__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_lazyload__);
@@ -4245,7 +4259,7 @@ __webpack_require__(20);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__env_http_js__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_scroller__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_lazyload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_lazyload__);
@@ -5464,7 +5478,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__leftSlider_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__leftSlider_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_awesome_swiper__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_awesome_swiper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_awesome_swiper__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_scroller__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_scroller__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_scroller__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_n_zepto__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_n_zepto___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_n_zepto__);
@@ -6721,7 +6735,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_awesome_swiper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_awesome_swiper__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_video_player__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_video_player___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_video_player__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_scroller__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_scroller__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_scroller__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_lazyload__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_lazyload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_lazyload__);
@@ -6765,7 +6779,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.defalt_no[data-v-00750ad1] {\n        color: #999;\n}\n.loading_top span[data-v-00750ad1] {\n        background: url(" + __webpack_require__(16) + ");\n        background-size: 100% auto;\n}\n.loading_top_show[data-v-00750ad1] {\n        height: 80px;\n}\n.loading_top_show span[data-v-00750ad1] {\n        -webkit-animation: changebg-data-v-00750ad1 1s linear infinite;\n                animation: changebg-data-v-00750ad1 1s linear infinite;\n}\n@-webkit-keyframes changebg{\nfrom {background: url(" + __webpack_require__(16) + ");background-size: 100% auto;\n}\nto {background: url(" + __webpack_require__(24) + ");background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-00750ad1{\nfrom {background: url(" + __webpack_require__(16) + ");background-size: 100% auto;\n}\nto {background: url(" + __webpack_require__(24) + ");background-size: 100% auto;\n}\n}\n.left[data-v-00750ad1] {\n    opacity: 0;\n    transition: opacity 0.3s;\n}\n.left_show[data-v-00750ad1] {\n    opacity: 1;\n}\n.defalt_msg[data-v-00750ad1] {\n.userinfo {\nspan {\n                width: 50px;\n                height: 14px;\n                background: #eee;\n                margin-top:8px;\n}\n}\n.comment_content {\n>* {\n\n                margin-top:10px;\n                background: #eee;\n                height: 14px;\n}\n}\n}\n.page_defalt[data-v-00750ad1] {\n        height: auto;\n        opacity: 0.8;\n        transition: all 0.3s;\n}\n.page_defalt_none[data-v-00750ad1] {\n        height: 0;\n        padding:0;\n        opacity: 0;\n        border: none;\n}\n", ""]);
+exports.push([module.i, "\n.defalt_no[data-v-00750ad1] {\n        color: #999;\n}\n.loading_top span[data-v-00750ad1] {\n        background: url(" + __webpack_require__(16) + ");\n        background-size: 100% auto;\n}\n.loading_top_show[data-v-00750ad1] {\n        height: 80px;\n}\n.loading_top_show span[data-v-00750ad1] {\n        -webkit-animation: changebg-data-v-00750ad1 1s linear infinite;\n                animation: changebg-data-v-00750ad1 1s linear infinite;\n}\n@-webkit-keyframes changebg{\nfrom {background: url(" + __webpack_require__(16) + ");background-size: 100% auto;\n}\nto {background: url(" + __webpack_require__(25) + ");background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-00750ad1{\nfrom {background: url(" + __webpack_require__(16) + ");background-size: 100% auto;\n}\nto {background: url(" + __webpack_require__(25) + ");background-size: 100% auto;\n}\n}\n.left[data-v-00750ad1] {\n    opacity: 0;\n    transition: opacity 0.3s;\n}\n.left_show[data-v-00750ad1] {\n    opacity: 1;\n}\n.defalt_msg[data-v-00750ad1] {\n.userinfo {\nspan {\n                width: 50px;\n                height: 14px;\n                background: #eee;\n                margin-top:8px;\n}\n}\n.comment_content {\n>* {\n\n                margin-top:10px;\n                background: #eee;\n                height: 14px;\n}\n}\n}\n.page_defalt[data-v-00750ad1] {\n        height: auto;\n        opacity: 0.8;\n        transition: all 0.3s;\n}\n.page_defalt_none[data-v-00750ad1] {\n        height: 0;\n        padding:0;\n        opacity: 0;\n        border: none;\n}\n", ""]);
 
 // exports
 
@@ -6849,7 +6863,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.content[data-v-2e12898e] {\n  height: 100vh;\n}\n.publich_comment[data-v-2e12898e] {\n  position: fixed;\n  right: 12px;\n  bottom: 18px;\n  opacity: 0.9;\n  background: #00B4BC;\n  border-radius: 29px;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 15px;\n  color: #fff;\n  font-size: 16px;\n}\n.publich_comment img[data-v-2e12898e] {\n    vertical-align: middle;\n    margin-right: 6px;\n    margin-bottom: 3px;\n    width: 25px;\n}\ni[data-v-2e12898e] {\n  text-align: right;\n}\n.publich_tips[data-v-2e12898e] {\n  position: fixed;\n  right: 126px;\n  bottom: 11px;\n  color: #fff;\n  font-size: 16px;\n  width: 153.5px;\n  height: 54px;\n  line-height: 27px;\n  text-align: center;\n}\n.publich_tips img[data-v-2e12898e] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1;\n    width: 100%;\n    height: 54px;\n}\n.Lheight[data-v-2e12898e] {\n  line-height: 54px;\n}\n.default_page[data-v-2e12898e] {\n  height: 100vh;\n  background: #eee;\n}\n.loading_top span[data-v-2e12898e] {\n  background: url(" + __webpack_require__(16) + ");\n  background-size: 100% auto;\n}\n.loading_top_show span[data-v-2e12898e] {\n  -webkit-animation: changebg-data-v-2e12898e 1s linear infinite;\n          animation: changebg-data-v-2e12898e 1s linear infinite;\n}\n.loading_top_show[data-v-2e12898e] {\n  height: 80px;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-2e12898e {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n.defalt_msg .userinfo span[data-v-2e12898e] {\n  width: 50px;\n  height: 14px;\n  background: #eee;\n  margin-top: 8px;\n}\n.defalt_msg .comment_content > *[data-v-2e12898e] {\n  margin-top: 10px;\n  background: #eee;\n  height: 14px;\n}\n.page_defalt[data-v-2e12898e] {\n  height: auto;\n  opacity: 0.8;\n  transition: all 0.3s;\n  overflow: hidden;\n}\n.page_defalt_none[data-v-2e12898e] {\n  height: 0;\n  padding: 0;\n  opacity: 0;\n  border: none;\n}\n", ""]);
+exports.push([module.i, "\n.content[data-v-2e12898e] {\n  height: 100vh;\n}\n.publich_comment[data-v-2e12898e] {\n  position: fixed;\n  right: 12px;\n  bottom: 18px;\n  opacity: 0.9;\n  background: #00B4BC;\n  border-radius: 29px;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 15px;\n  color: #fff;\n  font-size: 16px;\n}\n.publich_comment img[data-v-2e12898e] {\n    vertical-align: middle;\n    margin-right: 6px;\n    margin-bottom: 3px;\n    width: 25px;\n}\ni[data-v-2e12898e] {\n  text-align: right;\n}\n.publich_tips[data-v-2e12898e] {\n  position: fixed;\n  right: 126px;\n  bottom: 11px;\n  color: #fff;\n  font-size: 16px;\n  width: 153.5px;\n  height: 54px;\n  line-height: 27px;\n  text-align: center;\n}\n.publich_tips img[data-v-2e12898e] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1;\n    width: 100%;\n    height: 54px;\n}\n.Lheight[data-v-2e12898e] {\n  line-height: 54px;\n}\n.default_page[data-v-2e12898e] {\n  height: 100vh;\n  background: #eee;\n}\n.loading_top span[data-v-2e12898e] {\n  background: url(" + __webpack_require__(16) + ");\n  background-size: 100% auto;\n}\n.loading_top_show span[data-v-2e12898e] {\n  -webkit-animation: changebg-data-v-2e12898e 1s linear infinite;\n          animation: changebg-data-v-2e12898e 1s linear infinite;\n}\n.loading_top_show[data-v-2e12898e] {\n  height: 80px;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(25) + ");\n    background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-2e12898e {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(25) + ");\n    background-size: 100% auto;\n}\n}\n.defalt_msg .userinfo span[data-v-2e12898e] {\n  width: 50px;\n  height: 14px;\n  background: #eee;\n  margin-top: 8px;\n}\n.defalt_msg .comment_content > *[data-v-2e12898e] {\n  margin-top: 10px;\n  background: #eee;\n  height: 14px;\n}\n.page_defalt[data-v-2e12898e] {\n  height: auto;\n  opacity: 0.8;\n  transition: all 0.3s;\n  overflow: hidden;\n}\n.page_defalt_none[data-v-2e12898e] {\n  height: 0;\n  padding: 0;\n  opacity: 0;\n  border: none;\n}\n", ""]);
 
 // exports
 
@@ -7031,7 +7045,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(34) + "\");\n  src: url(\"" + __webpack_require__(60) + "\") format(\"woff2\"), url(\"" + __webpack_require__(34) + "?#iefix\") format(\"embedded-opentype\");\n}\n.content[data-v-7fefba88] {\n  top: 0;\n  height: 100vh;\n}\nh3.title[data-v-7fefba88] {\n  height: 25px;\n  line-height: 25px;\n  font-size: 12px;\n  color: #999999;\n  background: #eee;\n  padding-left: 12px;\n  box-sizing: border-box;\n}\n.not_concerned[data-v-7fefba88] {\n  width: 100%;\n  border-bottom: 4px #eee solid;\n  box-sizing: border-box;\n}\n.not_concerned img[data-v-7fefba88] {\n    width: 100%;\n    display: block;\n}\n.border_bottom[data-v-7fefba88] {\n  border-bottom: 4px #eee solid;\n}\n.idol_detail[data-v-7fefba88] {\n  color: #666;\n}\n.avatar_content[data-v-7fefba88] {\n  overflow: hidden;\n  float: left;\n  position: relative;\n  padding: 8px 0 0 4px;\n}\n.avatar_content .crown[data-v-7fefba88] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 25px;\n}\n.idol_content[data-v-7fefba88] {\n  margin: 12px 0 0 12px;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.idol_content > *[data-v-7fefba88] {\n    float: left;\n}\n.idol_content i[data-v-7fefba88] {\n    font-family: 'Helvetica Condensed Bold Italic';\n    font-size: 24px;\n    color: #BBBBBB;\n    margin-top: 14px;\n    width: 20px;\n    text-align: center;\n}\n.idol_content ._fir[data-v-7fefba88] {\n    color: #F3B714;\n}\n.idol_content ._sec[data-v-7fefba88] {\n    color: #888;\n}\n.idol_content ._thr[data-v-7fefba88] {\n    color: #FF8500;\n}\n.idol_content .sizeTwo[data-v-7fefba88] {\n    font-size: 18px;\n}\n.idol_content .sizeThree[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scalc(0.8);\n    margin-top: 24px;\n}\n.idol_content .avatar[data-v-7fefba88] {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-right: 6px;\n    float: left;\n    display: block;\n}\n.idol_content .idol_border[data-v-7fefba88] {\n    border-bottom: 1px #eee solid;\n    overflow: hidden;\n    width: calc(100vw - 44px);\n    padding-bottom: 5px;\n}\n.idol_content .introduction[data-v-7fefba88] {\n    width: calc(100vw - 204px);\n    float: left;\n}\n.idol_content .introduction .name[data-v-7fefba88] {\n      font-size: 14px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .signature[data-v-7fefba88] {\n      font-size: 10.5px;\n      -webkit-transform: scale(0.8);\n      margin-left: -18px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .detail[data-v-7fefba88] {\n      font-size: 12px;\n}\n.idol_content .introduction .detail span img[data-v-7fefba88] {\n        width: 20px;\n        vertical-align: middle;\n        margin-right: 5px;\n}\n.idol_content .introduction .detail span[data-v-7fefba88]:first-child {\n        margin-right: 22.4%;\n}\n.idol_content .support[data-v-7fefba88] {\n    float: left;\n    width: 80px;\n    height: 30px;\n    line-height: 30px;\n    text-align: center;\n    color: #00B4BC;\n    float: right;\n    border: 1.5px solid #00B4BC;\n    border-radius: 27px;\n    margin-top: 8px;\n}\n.fans_list[data-v-7fefba88] {\n  padding: 8px 0 8px 34px;\n}\n.fans_list img[data-v-7fefba88] {\n    margin-left: 4px;\n    width: 25px;\n    height: 25px;\n    border-radius: 50%;\n    vertical-align: middle;\n}\n.fans_list img[data-v-7fefba88]:nth-child(1) {\n    margin-left: 9px;\n}\n.fans_list .no_fans[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scale(0.8);\n    display: inline-block;\n}\n.fans_list .fans_imgList[data-v-7fefba88] {\n    display: inline-block;\n}\n.con_left[data-v-7fefba88] {\n  opacity: 0.2;\n  transition: opacity 0.3s;\n}\n.left_show[data-v-7fefba88] {\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(32) + "\");\n  src: url(\"" + __webpack_require__(60) + "\") format(\"woff2\"), url(\"" + __webpack_require__(32) + "?#iefix\") format(\"embedded-opentype\");\n}\n.content[data-v-7fefba88] {\n  top: 0;\n  height: 100vh;\n}\nh3.title[data-v-7fefba88] {\n  height: 25px;\n  line-height: 25px;\n  font-size: 12px;\n  color: #999999;\n  background: #eee;\n  padding-left: 12px;\n  box-sizing: border-box;\n}\n.not_concerned[data-v-7fefba88] {\n  width: 100%;\n  border-bottom: 4px #eee solid;\n  box-sizing: border-box;\n}\n.not_concerned img[data-v-7fefba88] {\n    width: 100%;\n    display: block;\n}\n.border_bottom[data-v-7fefba88] {\n  border-bottom: 4px #eee solid;\n}\n.idol_detail[data-v-7fefba88] {\n  color: #666;\n}\n.avatar_content[data-v-7fefba88] {\n  overflow: hidden;\n  float: left;\n  position: relative;\n  padding: 8px 0 0 4px;\n}\n.avatar_content .crown[data-v-7fefba88] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 25px;\n}\n.idol_content[data-v-7fefba88] {\n  margin: 12px 0 0 12px;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.idol_content > *[data-v-7fefba88] {\n    float: left;\n}\n.idol_content i[data-v-7fefba88] {\n    font-family: 'Helvetica Condensed Bold Italic';\n    font-size: 24px;\n    color: #BBBBBB;\n    margin-top: 14px;\n    width: 20px;\n    text-align: left;\n}\n.idol_content ._fir[data-v-7fefba88] {\n    color: #F3B714;\n}\n.idol_content ._sec[data-v-7fefba88] {\n    color: #888;\n}\n.idol_content ._thr[data-v-7fefba88] {\n    color: #FF8500;\n}\n.idol_content .sizeTwo[data-v-7fefba88] {\n    font-size: 18px;\n}\n.idol_content .sizeThree[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scalc(0.8);\n    margin-top: 24px;\n}\n.idol_content .avatar[data-v-7fefba88] {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-right: 6px;\n    float: left;\n    display: block;\n}\n.idol_content .idol_border[data-v-7fefba88] {\n    border-bottom: 1px #eee solid;\n    overflow: hidden;\n    width: calc(100vw - 44px);\n    padding-bottom: 5px;\n}\n.idol_content .introduction[data-v-7fefba88] {\n    width: calc(100vw - 204px);\n    float: left;\n}\n.idol_content .introduction .name[data-v-7fefba88] {\n      font-size: 14px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .signature[data-v-7fefba88] {\n      font-size: 10.5px;\n      -webkit-transform: scale(0.8);\n      margin-left: -18px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .detail[data-v-7fefba88] {\n      font-size: 12px;\n}\n.idol_content .introduction .detail span img[data-v-7fefba88] {\n        width: 20px;\n        vertical-align: middle;\n        margin-right: 5px;\n}\n.idol_content .introduction .detail span[data-v-7fefba88]:first-child {\n        margin-right: 22.4%;\n}\n.idol_content .support[data-v-7fefba88] {\n    float: left;\n    width: 80px;\n    height: 30px;\n    line-height: 30px;\n    text-align: center;\n    color: #00B4BC;\n    float: right;\n    border: 1.5px solid #00B4BC;\n    border-radius: 27px;\n    margin-top: 8px;\n}\n.fans_list[data-v-7fefba88] {\n  padding: 8px 0 8px 34px;\n}\n.fans_list img[data-v-7fefba88] {\n    margin-left: 4px;\n    width: 25px;\n    height: 25px;\n    border-radius: 50%;\n    vertical-align: middle;\n}\n.fans_list img[data-v-7fefba88]:nth-child(1) {\n    margin-left: 9px;\n}\n.fans_list .no_fans[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scale(0.8);\n    display: inline-block;\n}\n.fans_list .fans_imgList[data-v-7fefba88] {\n    display: inline-block;\n}\n.con_left[data-v-7fefba88] {\n  opacity: 0.2;\n  transition: opacity 0.3s;\n}\n.left_show[data-v-7fefba88] {\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -7045,7 +7059,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.content[data-v-8610d656] {\n  top: 0;\n  color: #666;\n  height: 100vh;\n  font-weight: 200;\n  background: #eee;\n}\n.content .desc[data-v-8610d656] {\n    padding: 8px 12px;\n}\n.content .desc h5[data-v-8610d656] {\n      color: #999;\n}\n.content .desc ul[data-v-8610d656] {\n      overflow: hidden;\n      padding-top: 8.5px;\n}\n.content .desc ul li[data-v-8610d656] {\n        float: left;\n        box-sizing: border-box;\n        width: calc(50% - 6px);\n        background: #FCFCFC;\n        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);\n        border-radius: 4px;\n        margin-bottom: 12px;\n        text-align: center;\n        padding-top: 19.5px;\n        padding-bottom: 5px;\n}\n.content .desc ul li[data-v-8610d656]:nth-child(2n) {\n          margin-left: 12px;\n}\n.content .desc ul li > img[data-v-8610d656] {\n          width: 105px;\n          display: block;\n          margin: 0 auto 15px;\n}\n.content .desc ul li > span[data-v-8610d656] {\n          font-size: 14px;\n}\n.content .desc ul li > i[data-v-8610d656] {\n          display: block;\n          color: #999;\n          font-size: 10px;\n          -webkit-transform: scale(0.8);\n}\n.content .desc ul li > div[data-v-8610d656] {\n          padding-top: 5px;\n}\n.content .desc ul li > div span[data-v-8610d656] {\n            display: inline-block;\n            width: 58px;\n            height: 16px;\n            line-height: 16px;\n            background: url(" + __webpack_require__(204) + ") no-repeat;\n            background-size: 100% 100%;\n            color: #fff;\n            font-size: 9px;\n            -webkit-transform: scale(0.75);\n}\n.content .desc ul li > div i[data-v-8610d656] {\n            font-family: 'Helvetica Condensed Bold Italic';\n            font-size: 18px;\n            color: #333;\n}\n.content .desc ul li > p[data-v-8610d656] {\n          color: #999;\n          font-size: 10px;\n          -webkit-transform: scale(0.8);\n}\n.content .desc ul li[data-v-8610d656]:last-child {\n          width: 100%;\n}\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(34) + "\");\n  src: url(\"" + __webpack_require__(60) + "\") format(\"woff2\"), url(\"" + __webpack_require__(34) + "?#iefix\") format(\"embedded-opentype\");\n}\n", ""]);
+exports.push([module.i, "\n.content[data-v-8610d656] {\n  top: 0;\n  color: #666;\n  height: 100vh;\n  font-weight: 200;\n  background: #eee;\n}\n.content .desc[data-v-8610d656] {\n    padding: 8px 12px;\n}\n.content .desc h5[data-v-8610d656] {\n      color: #999;\n}\n.content .desc ul[data-v-8610d656] {\n      overflow: hidden;\n      padding-top: 8.5px;\n}\n.content .desc ul li[data-v-8610d656] {\n        float: left;\n        box-sizing: border-box;\n        width: calc(50% - 6px);\n        background: #FCFCFC;\n        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);\n        border-radius: 4px;\n        margin-bottom: 12px;\n        text-align: center;\n        padding-top: 19.5px;\n        padding-bottom: 5px;\n}\n.content .desc ul li[data-v-8610d656]:nth-child(2n) {\n          margin-left: 12px;\n}\n.content .desc ul li > img[data-v-8610d656] {\n          width: 105px;\n          display: block;\n          margin: 0 auto 15px;\n}\n.content .desc ul li > span[data-v-8610d656] {\n          font-size: 14px;\n}\n.content .desc ul li > i[data-v-8610d656] {\n          display: block;\n          color: #999;\n          font-size: 10px;\n          -webkit-transform: scale(0.8);\n}\n.content .desc ul li > div[data-v-8610d656] {\n          padding-top: 5px;\n}\n.content .desc ul li > div span[data-v-8610d656] {\n            display: inline-block;\n            width: 58px;\n            height: 16px;\n            line-height: 16px;\n            background: url(" + __webpack_require__(204) + ") no-repeat;\n            background-size: 100% 100%;\n            color: #fff;\n            font-size: 9px;\n            -webkit-transform: scale(0.75);\n}\n.content .desc ul li > div i[data-v-8610d656] {\n            font-family: 'Helvetica Condensed Bold Italic';\n            font-size: 18px;\n            color: #333;\n}\n.content .desc ul li > p[data-v-8610d656] {\n          color: #999;\n          font-size: 10px;\n          -webkit-transform: scale(0.8);\n}\n.content .desc ul li[data-v-8610d656]:last-child {\n          width: 100%;\n}\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(32) + "\");\n  src: url(\"" + __webpack_require__(60) + "\") format(\"woff2\"), url(\"" + __webpack_require__(32) + "?#iefix\") format(\"embedded-opentype\");\n}\n", ""]);
 
 // exports
 
@@ -7059,7 +7073,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(34) + "\");\n  src: url(\"" + __webpack_require__(60) + "\") format(\"woff2\"), url(\"" + __webpack_require__(34) + "?#iefix\") format(\"embedded-opentype\");\n}\n.content[data-v-a001c7ae] {\n  background: #fff3f6;\n  top: 0;\n  height: 100vh;\n  box-sizing: border-box;\n  padding-bottom: 20px;\n}\n.banner[data-v-a001c7ae] {\n  width: 100%;\n  display: block;\n}\nh2[data-v-a001c7ae] {\n  background: #E493A5;\n  color: #fff;\n  font-size: 16px;\n  text-align: center;\n  height: 40px;\n  line-height: 40px;\n  font-weight: 100;\n}\nh4[data-v-a001c7ae] {\n  display: inline-block;\n  background-image: linear-gradient(150deg, #FF92AA 0%, #EE538A 100%);\n  border-radius: 1px 35px 35px 1px;\n  line-height: 27px;\n  color: #fff;\n  padding-left: 12px;\n  padding-right: 19px;\n  margin-top: 13.5px;\n}\n.duration_time[data-v-a001c7ae] {\n  overflow: hidden;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  box-sizing: border-box;\n  margin: 0 12px;\n  padding: 13px 0;\n  opacity: 0.8;\n  border-bottom: #FC4083 solid 1px;\n}\n.duration_time p[data-v-a001c7ae] {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n}\n.duration_time p span[data-v-a001c7ae] {\n      font-size: 10px;\n      display: inline-block;\n      padding: 0 3px;\n      font-weight: 100;\n      -webkit-transform: scale(0.8);\n      color: #fff;\n      background: #42C8E4;\n      border-radius: 2px;\n      margin-right: 28px;\n      vertical-align: middle;\n}\n.duration_time p i[data-v-a001c7ae] {\n      font-size: 16px;\n      display: inline-block;\n      vertical-align: middle;\n}\n.activity_rule[data-v-a001c7ae] {\n  padding-bottom: 8px;\n}\n.activity_rule p[data-v-a001c7ae] {\n    padding: 12px 12px 0;\n    box-sizing: border-box;\n    font-size: 14px;\n    line-height: 20px;\n}\n.activity_rule p i[data-v-a001c7ae] {\n      color: #fc4c86;\n}\n.activity_ranking[data-v-a001c7ae] {\n  font-size: 14px;\n}\n.activity_ranking > p[data-v-a001c7ae] {\n    padding-left: 12px;\n    padding-top: 12px;\n    color: #999;\n}\n.activity_ranking .ranking_list[data-v-a001c7ae] {\n    padding: 12px 12px 0;\n    text-align: center;\n}\n.activity_ranking .ranking_list h5[data-v-a001c7ae] {\n      color: #999;\n      text-align: left;\n}\n.activity_ranking .ranking_list li[data-v-a001c7ae] {\n      text-align: left;\n      overflow: hidden;\n      border-bottom: 1px solid #eee;\n      padding: 10px 0;\n}\n.activity_ranking .ranking_list li > *[data-v-a001c7ae] {\n        float: left;\n}\n.activity_ranking .ranking_list li > span[data-v-a001c7ae] {\n        font-family: 'Helvetica Condensed Bold Italic';\n        font-size: 24px;\n        margin-top: 15px;\n        display: inline-block;\n        width: 28px;\n}\n.activity_ranking .ranking_list li > span.first[data-v-a001c7ae] {\n        color: #F3B714;\n}\n.activity_ranking .ranking_list li > span.second[data-v-a001c7ae] {\n        color: #888;\n}\n.activity_ranking .ranking_list li > span.three[data-v-a001c7ae] {\n        color: #FF8500;\n}\n.activity_ranking .ranking_list li > .img_content[data-v-a001c7ae] {\n        width: 50px;\n        position: relative;\n        padding-top: 9px;\n        padding-left: 4px;\n        margin-right: calc(100vw * 0.04);\n}\n.activity_ranking .ranking_list li > .img_content img.avatar[data-v-a001c7ae] {\n          width: 50px;\n          height: 50px;\n          border-radius: 50%;\n          border: 1px solid #888;\n}\n.activity_ranking .ranking_list li > .img_content img.crown[data-v-a001c7ae] {\n          position: absolute;\n          left: 0;\n          top: 0;\n          width: 25px;\n}\n.activity_ranking .ranking_list li .idol_content[data-v-a001c7ae] {\n        overflow: hidden;\n        width: 63vw;\n}\n.activity_ranking .ranking_list li .idol_content > span[data-v-a001c7ae] {\n          display: block;\n          overflow: hidden;\n          text-overflow: ellipsis;\n          white-space: nowrap;\n          font-size: 16px;\n          font-weight: 600;\n          color: #666;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc[data-v-a001c7ae] {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p[data-v-a001c7ae] {\n            -webkit-box-flex: 1;\n                -ms-flex: 1;\n                    flex: 1;\n            text-align: left;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p > span[data-v-a001c7ae] {\n              display: block;\n              text-align: center;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p > span img[data-v-a001c7ae] {\n                width: 12px;\n                vertical-align: middle;\n                margin-right: 5.5px;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p > span em[data-v-a001c7ae] {\n                display: inline-block;\n                vertical-align: middle;\n                font-size: 14px;\n                font-weight: 600;\n                color: #333;\n                max-width: calc(100% - 18px);\n                overflow: hidden;\n                text-overflow: ellipsis;\n                white-space: nowrap;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p i[data-v-a001c7ae] {\n              color: #999;\n              display: block;\n              font-size: 10px;\n              text-align: center;\n              -webkit-transform: scale(0.8);\n}\n.activity_ranking .ranking_list .reard_more[data-v-a001c7ae] {\n      text-align: center;\n      text-decoration: underline;\n      color: #666;\n      font-size: 14px;\n      display: inline-block;\n      padding: 12px 0 0;\n}\n.activity_reward li[data-v-a001c7ae] {\n  overflow: hidden;\n  background: #F9EDEF;\n  border: 1px solid #F5D9DE;\n  border-radius: 2px;\n  margin: 12px 12px 0;\n  padding: 12px;\n}\n.activity_reward li > img[data-v-a001c7ae] {\n    vertical-align: middle;\n    width: 54px;\n}\n.activity_reward li .reward_desc[data-v-a001c7ae] {\n    display: inline-block;\n    vertical-align: middle;\n    margin-left: 3px;\n    width: calc(100% - 62px);\n}\n.activity_reward li .reward_desc p[data-v-a001c7ae] {\n      overflow: hidden;\n      line-height: 20px;\n}\n.activity_reward li .reward_desc p span[data-v-a001c7ae] {\n        display: inline-block;\n        width: 4px;\n        height: 4px;\n        border-radius: 50%;\n        background: #FABC01;\n        float: left;\n        margin-right: 8px;\n        margin-top: 8px;\n}\n.activity_reward li .reward_desc p i[data-v-a001c7ae] {\n        float: left;\n        display: inline-block;\n        width: calc(100% - 12px);\n}\n.activity_reward li:nth-child(3) .reward_desc p span[data-v-a001c7ae] {\n  background: #BBBBBB;\n}\n.activity_reward li:nth-child(4) .reward_desc p span[data-v-a001c7ae] {\n  background: #F5966D;\n}\n.none_loading[data-v-a001c7ae] {\n  transition: all 0.3s;\n  height: 255px;\n  opacity: 0.7;\n  overflow: hidden;\n}\n.none_loading_show[data-v-a001c7ae] {\n  opacity: 0;\n  height: 0;\n}\n", ""]);
+exports.push([module.i, "\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(32) + "\");\n  src: url(\"" + __webpack_require__(60) + "\") format(\"woff2\"), url(\"" + __webpack_require__(32) + "?#iefix\") format(\"embedded-opentype\");\n}\n.content[data-v-a001c7ae] {\n  background: #fff3f6;\n  top: 0;\n  height: 100vh;\n  box-sizing: border-box;\n  padding-bottom: 20px;\n}\n.banner[data-v-a001c7ae] {\n  width: 100%;\n  display: block;\n}\nh2[data-v-a001c7ae] {\n  background: #E493A5;\n  color: #fff;\n  font-size: 16px;\n  text-align: center;\n  height: 40px;\n  line-height: 40px;\n  font-weight: 100;\n}\nh4[data-v-a001c7ae] {\n  display: inline-block;\n  background-image: linear-gradient(150deg, #FF92AA 0%, #EE538A 100%);\n  border-radius: 1px 35px 35px 1px;\n  line-height: 27px;\n  color: #fff;\n  padding-left: 12px;\n  padding-right: 19px;\n  margin-top: 13.5px;\n}\n.duration_time[data-v-a001c7ae] {\n  overflow: hidden;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  box-sizing: border-box;\n  margin: 0 12px;\n  padding: 13px 0;\n  opacity: 0.8;\n  border-bottom: #FC4083 solid 1px;\n}\n.duration_time p[data-v-a001c7ae] {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n}\n.duration_time p span[data-v-a001c7ae] {\n      font-size: 10px;\n      display: inline-block;\n      padding: 0 3px;\n      font-weight: 100;\n      -webkit-transform: scale(0.8);\n      color: #fff;\n      background: #42C8E4;\n      border-radius: 2px;\n      margin-right: 28px;\n      vertical-align: middle;\n}\n.duration_time p i[data-v-a001c7ae] {\n      font-size: 16px;\n      display: inline-block;\n      vertical-align: middle;\n}\n.activity_rule[data-v-a001c7ae] {\n  padding-bottom: 8px;\n}\n.activity_rule p[data-v-a001c7ae] {\n    padding: 12px 12px 0;\n    box-sizing: border-box;\n    font-size: 14px;\n    line-height: 20px;\n}\n.activity_rule p i[data-v-a001c7ae] {\n      color: #fc4c86;\n}\n.activity_ranking[data-v-a001c7ae] {\n  font-size: 14px;\n}\n.activity_ranking > p[data-v-a001c7ae] {\n    padding-left: 12px;\n    padding-top: 12px;\n    color: #999;\n}\n.activity_ranking .ranking_list[data-v-a001c7ae] {\n    padding: 12px 12px 0;\n    text-align: center;\n}\n.activity_ranking .ranking_list h5[data-v-a001c7ae] {\n      color: #999;\n      text-align: left;\n}\n.activity_ranking .ranking_list li[data-v-a001c7ae] {\n      text-align: left;\n      overflow: hidden;\n      border-bottom: 1px solid #eee;\n      padding: 10px 0;\n}\n.activity_ranking .ranking_list li > *[data-v-a001c7ae] {\n        float: left;\n}\n.activity_ranking .ranking_list li > span[data-v-a001c7ae] {\n        font-family: 'Helvetica Condensed Bold Italic';\n        font-size: 24px;\n        margin-top: 15px;\n        display: inline-block;\n        width: 28px;\n}\n.activity_ranking .ranking_list li > span.first[data-v-a001c7ae] {\n        color: #F3B714;\n}\n.activity_ranking .ranking_list li > span.second[data-v-a001c7ae] {\n        color: #888;\n}\n.activity_ranking .ranking_list li > span.three[data-v-a001c7ae] {\n        color: #FF8500;\n}\n.activity_ranking .ranking_list li > .img_content[data-v-a001c7ae] {\n        width: 50px;\n        position: relative;\n        padding-top: 9px;\n        padding-left: 4px;\n        margin-right: calc(100vw * 0.04);\n}\n.activity_ranking .ranking_list li > .img_content img.avatar[data-v-a001c7ae] {\n          width: 50px;\n          height: 50px;\n          border-radius: 50%;\n          border: 1px solid #888;\n}\n.activity_ranking .ranking_list li > .img_content img.crown[data-v-a001c7ae] {\n          position: absolute;\n          left: 0;\n          top: 0;\n          width: 25px;\n}\n.activity_ranking .ranking_list li .idol_content[data-v-a001c7ae] {\n        overflow: hidden;\n        width: 63vw;\n}\n.activity_ranking .ranking_list li .idol_content > span[data-v-a001c7ae] {\n          display: block;\n          overflow: hidden;\n          text-overflow: ellipsis;\n          white-space: nowrap;\n          font-size: 16px;\n          font-weight: 600;\n          color: #666;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc[data-v-a001c7ae] {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p[data-v-a001c7ae] {\n            -webkit-box-flex: 1;\n                -ms-flex: 1;\n                    flex: 1;\n            text-align: left;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p > span[data-v-a001c7ae] {\n              display: block;\n              text-align: center;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p > span img[data-v-a001c7ae] {\n                width: 12px;\n                vertical-align: middle;\n                margin-right: 5.5px;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p > span em[data-v-a001c7ae] {\n                display: inline-block;\n                vertical-align: middle;\n                font-size: 14px;\n                font-weight: 600;\n                color: #333;\n                max-width: calc(100% - 18px);\n                overflow: hidden;\n                text-overflow: ellipsis;\n                white-space: nowrap;\n}\n.activity_ranking .ranking_list li .idol_content .idol_desc p i[data-v-a001c7ae] {\n              color: #999;\n              display: block;\n              font-size: 10px;\n              text-align: center;\n              -webkit-transform: scale(0.8);\n}\n.activity_ranking .ranking_list .reard_more[data-v-a001c7ae] {\n      text-align: center;\n      text-decoration: underline;\n      color: #666;\n      font-size: 14px;\n      display: inline-block;\n      padding: 12px 0 0;\n}\n.activity_reward li[data-v-a001c7ae] {\n  overflow: hidden;\n  background: #F9EDEF;\n  border: 1px solid #F5D9DE;\n  border-radius: 2px;\n  margin: 12px 12px 0;\n  padding: 12px;\n}\n.activity_reward li > img[data-v-a001c7ae] {\n    vertical-align: middle;\n    width: 54px;\n}\n.activity_reward li .reward_desc[data-v-a001c7ae] {\n    display: inline-block;\n    vertical-align: middle;\n    margin-left: 3px;\n    width: calc(100% - 62px);\n}\n.activity_reward li .reward_desc p[data-v-a001c7ae] {\n      overflow: hidden;\n      line-height: 20px;\n}\n.activity_reward li .reward_desc p span[data-v-a001c7ae] {\n        display: inline-block;\n        width: 4px;\n        height: 4px;\n        border-radius: 50%;\n        background: #FABC01;\n        float: left;\n        margin-right: 8px;\n        margin-top: 8px;\n}\n.activity_reward li .reward_desc p i[data-v-a001c7ae] {\n        float: left;\n        display: inline-block;\n        width: calc(100% - 12px);\n}\n.activity_reward li:nth-child(3) .reward_desc p span[data-v-a001c7ae] {\n  background: #BBBBBB;\n}\n.activity_reward li:nth-child(4) .reward_desc p span[data-v-a001c7ae] {\n  background: #F5966D;\n}\n.none_loading[data-v-a001c7ae] {\n  transition: all 0.3s;\n  height: 255px;\n  opacity: 0.7;\n  overflow: hidden;\n}\n.none_loading_show[data-v-a001c7ae] {\n  opacity: 0;\n  height: 0;\n}\n", ""]);
 
 // exports
 
@@ -7101,7 +7115,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.content[data-v-c2cdb69e] {\n  height: 100vh;\n}\n.publich_comment[data-v-c2cdb69e] {\n  position: fixed;\n  right: 12px;\n  bottom: 18px;\n  opacity: 0.9;\n  background: #00B4BC;\n  border-radius: 29px;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 15px;\n  color: #fff;\n  font-size: 16px;\n}\n.publich_comment img[data-v-c2cdb69e] {\n    vertical-align: middle;\n    margin-right: 6px;\n    margin-bottom: 3px;\n    width: 25px;\n}\ni[data-v-c2cdb69e] {\n  text-align: right;\n}\n.publich_tips[data-v-c2cdb69e] {\n  position: fixed;\n  right: 126px;\n  bottom: 11px;\n  color: #fff;\n  font-size: 16px;\n  width: 153.5px;\n  height: 54px;\n  line-height: 27px;\n  text-align: center;\n}\n.publich_tips img[data-v-c2cdb69e] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1;\n    width: 100%;\n    height: 54px;\n}\n.Lheight[data-v-c2cdb69e] {\n  line-height: 54px;\n}\n.default_page[data-v-c2cdb69e] {\n  height: 100vh;\n  background: #eee;\n}\n.loading_top span[data-v-c2cdb69e] {\n  background: url(" + __webpack_require__(16) + ");\n  background-size: 100% auto;\n}\n.loading_top_show span[data-v-c2cdb69e] {\n  -webkit-animation: changebg-data-v-c2cdb69e 1s linear infinite;\n          animation: changebg-data-v-c2cdb69e 1s linear infinite;\n}\n.loading_top_show[data-v-c2cdb69e] {\n  height: 80px;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-c2cdb69e {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n.defalt_msg[data-v-c2cdb69e] {\n  z-index: -1;\n}\n.defalt_msg .userinfo span[data-v-c2cdb69e] {\n    width: 50px;\n    height: 14px;\n    background: #eee;\n    margin-top: 8px;\n}\n.defalt_msg .comment_content > *[data-v-c2cdb69e] {\n    margin-top: 10px;\n    background: #eee;\n    height: 14px;\n}\n.page_defalt[data-v-c2cdb69e] {\n  height: auto;\n  opacity: 0.8;\n  overflow: hidden;\n  transition: all 0.3s;\n}\n.page_defalt_none[data-v-c2cdb69e] {\n  height: 0;\n  padding: 0;\n  opacity: 0;\n  border: none;\n}\n", ""]);
+exports.push([module.i, "\n.content[data-v-c2cdb69e] {\n  height: 100vh;\n}\n.publich_comment[data-v-c2cdb69e] {\n  position: fixed;\n  right: 12px;\n  bottom: 18px;\n  opacity: 0.9;\n  background: #00B4BC;\n  border-radius: 29px;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 15px;\n  color: #fff;\n  font-size: 16px;\n}\n.publich_comment img[data-v-c2cdb69e] {\n    vertical-align: middle;\n    margin-right: 6px;\n    margin-bottom: 3px;\n    width: 25px;\n}\ni[data-v-c2cdb69e] {\n  text-align: right;\n}\n.publich_tips[data-v-c2cdb69e] {\n  position: fixed;\n  right: 126px;\n  bottom: 11px;\n  color: #fff;\n  font-size: 16px;\n  width: 153.5px;\n  height: 54px;\n  line-height: 27px;\n  text-align: center;\n}\n.publich_tips img[data-v-c2cdb69e] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    z-index: -1;\n    width: 100%;\n    height: 54px;\n}\n.Lheight[data-v-c2cdb69e] {\n  line-height: 54px;\n}\n.default_page[data-v-c2cdb69e] {\n  height: 100vh;\n  background: #eee;\n}\n.loading_top span[data-v-c2cdb69e] {\n  background: url(" + __webpack_require__(16) + ");\n  background-size: 100% auto;\n}\n.loading_top_show span[data-v-c2cdb69e] {\n  -webkit-animation: changebg-data-v-c2cdb69e 1s linear infinite;\n          animation: changebg-data-v-c2cdb69e 1s linear infinite;\n}\n.loading_top_show[data-v-c2cdb69e] {\n  height: 80px;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(25) + ");\n    background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-c2cdb69e {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(25) + ");\n    background-size: 100% auto;\n}\n}\n.defalt_msg[data-v-c2cdb69e] {\n  z-index: -1;\n}\n.defalt_msg .userinfo span[data-v-c2cdb69e] {\n    width: 50px;\n    height: 14px;\n    background: #eee;\n    margin-top: 8px;\n}\n.defalt_msg .comment_content > *[data-v-c2cdb69e] {\n    margin-top: 10px;\n    background: #eee;\n    height: 14px;\n}\n.page_defalt[data-v-c2cdb69e] {\n  height: auto;\n  opacity: 0.8;\n  overflow: hidden;\n  transition: all 0.3s;\n}\n.page_defalt_none[data-v-c2cdb69e] {\n  height: 0;\n  padding: 0;\n  opacity: 0;\n  border: none;\n}\n", ""]);
 
 // exports
 
@@ -7143,7 +7157,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.header[data-v-cc3c4f4e] {\n  padding: 22px 12px 0;\n  box-sizing: border-box;\n  font-size: 18px;\n  line-height: 43px;\n  background: #fafafa;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.header img[data-v-cc3c4f4e] {\n    float: left;\n    width: 22px;\n    padding: 10.5px 5px;\n}\n.header p[data-v-cc3c4f4e] {\n    float: right;\n    border: 1px solid #FC4083;\n    border-radius: 50px;\n    font-size: 16px;\n    color: #FC4083;\n    width: 72px;\n    height: 32px;\n    line-height: 32px;\n    margin-top: 3px;\n}\n.content[data-v-cc3c4f4e] {\n  height: calc(100vh - 66px);\n  top: 66px;\n  background: #eee;\n}\ni[data-v-cc3c4f4e] {\n  text-align: right;\n}\n.Lheight[data-v-cc3c4f4e] {\n  line-height: 54px;\n}\n.default_page[data-v-cc3c4f4e] {\n  height: calc(100vh - 66px);\n  background: #eee;\n}\n.loading_top span[data-v-cc3c4f4e] {\n  background: url(" + __webpack_require__(16) + ");\n  background-size: 100% auto;\n}\n.loading_top_show span[data-v-cc3c4f4e] {\n  -webkit-animation: changebg-data-v-cc3c4f4e 1s linear infinite;\n          animation: changebg-data-v-cc3c4f4e 1s linear infinite;\n}\n.loading_top_show[data-v-cc3c4f4e] {\n  height: 80px;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-cc3c4f4e {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(24) + ");\n    background-size: 100% auto;\n}\n}\n.defalt_msg .userinfo span[data-v-cc3c4f4e] {\n  width: 50px;\n  height: 14px;\n  background: #eee;\n  margin-top: 8px;\n}\n.defalt_msg .comment_content > *[data-v-cc3c4f4e] {\n  margin-top: 10px;\n  background: #eee;\n  height: 14px;\n}\n.page_defalt[data-v-cc3c4f4e] {\n  height: auto;\n  opacity: 0.8;\n  transition: all 0.3s;\n  overflow: hidden;\n}\n.page_defalt_none[data-v-cc3c4f4e] {\n  height: 0;\n  padding: 0;\n  opacity: 0;\n  border: none;\n}\n.publich_comment[data-v-cc3c4f4e] {\n  position: absolute;\n  right: 12px;\n  bottom: 18px;\n  opacity: 0.9;\n  background: #00B4BC;\n  border-radius: 29px;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 15px;\n  color: #fff;\n  font-size: 16px;\n}\n.publich_comment img[data-v-cc3c4f4e] {\n    vertical-align: middle;\n    margin-right: 6px;\n    margin-bottom: 3px;\n    width: 25px;\n}\n.comment_view[data-v-cc3c4f4e] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100vh;\n  background: #fff;\n  z-index: 200;\n  overflow: hidden;\n}\n.comment_view .comment_desc[data-v-cc3c4f4e] {\n    padding: 22px 12px 0;\n    box-sizing: border-box;\n    border-bottom: 1px solid #eee;\n}\n.comment_view .comment_desc img[data-v-cc3c4f4e] {\n      width: 22px;\n      padding: 13.5px 5px 10.5px;\n}\n.comment_view .comment_desc span[data-v-cc3c4f4e] {\n      font-size: 14px;\n      padding: 5px;\n      color: #FC4083;\n      border: 1px solid #FC4083;\n      border-radius: 50px;\n      float: right;\n      opacity: 0.5;\n      width: 60px;\n      height: 22px;\n      line-height: 22px;\n      text-align: center;\n      margin-top: 8px;\n}\n.comment_view textarea[data-v-cc3c4f4e] {\n    width: 100%;\n    height: 220px;\n    box-sizing: border-box;\n    border: none;\n    padding: 5px 12px;\n    font-size: 14px;\n    line-height: 24px;\n}\n", ""]);
+exports.push([module.i, "\n.header[data-v-cc3c4f4e] {\n  padding: 22px 12px 0;\n  box-sizing: border-box;\n  font-size: 18px;\n  line-height: 43px;\n  background: #fafafa;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.header img[data-v-cc3c4f4e] {\n    float: left;\n    width: 22px;\n    padding: 10.5px 5px;\n}\n.header p[data-v-cc3c4f4e] {\n    float: right;\n    border: 1px solid #FC4083;\n    border-radius: 50px;\n    font-size: 16px;\n    color: #FC4083;\n    width: 72px;\n    height: 32px;\n    line-height: 32px;\n    margin-top: 3px;\n}\n.content[data-v-cc3c4f4e] {\n  height: calc(100vh - 66px);\n  top: 66px;\n  background: #eee;\n}\ni[data-v-cc3c4f4e] {\n  text-align: right;\n}\n.Lheight[data-v-cc3c4f4e] {\n  line-height: 54px;\n}\n.default_page[data-v-cc3c4f4e] {\n  height: calc(100vh - 66px);\n  background: #eee;\n}\n.loading_top span[data-v-cc3c4f4e] {\n  background: url(" + __webpack_require__(16) + ");\n  background-size: 100% auto;\n}\n.loading_top_show span[data-v-cc3c4f4e] {\n  -webkit-animation: changebg-data-v-cc3c4f4e 1s linear infinite;\n          animation: changebg-data-v-cc3c4f4e 1s linear infinite;\n}\n.loading_top_show[data-v-cc3c4f4e] {\n  height: 80px;\n}\n@-webkit-keyframes changebg {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(25) + ");\n    background-size: 100% auto;\n}\n}\n@keyframes changebg-data-v-cc3c4f4e {\nfrom {\n    background: url(" + __webpack_require__(16) + ");\n    background-size: 100% auto;\n}\nto {\n    background: url(" + __webpack_require__(25) + ");\n    background-size: 100% auto;\n}\n}\n.defalt_msg .userinfo span[data-v-cc3c4f4e] {\n  width: 50px;\n  height: 14px;\n  background: #eee;\n  margin-top: 8px;\n}\n.defalt_msg .comment_content > *[data-v-cc3c4f4e] {\n  margin-top: 10px;\n  background: #eee;\n  height: 14px;\n}\n.page_defalt[data-v-cc3c4f4e] {\n  height: auto;\n  opacity: 0.8;\n  transition: all 0.3s;\n  overflow: hidden;\n}\n.page_defalt_none[data-v-cc3c4f4e] {\n  height: 0;\n  padding: 0;\n  opacity: 0;\n  border: none;\n}\n.publich_comment[data-v-cc3c4f4e] {\n  position: absolute;\n  right: 12px;\n  bottom: 18px;\n  opacity: 0.9;\n  background: #00B4BC;\n  border-radius: 29px;\n  height: 40px;\n  line-height: 40px;\n  padding: 0 15px;\n  color: #fff;\n  font-size: 16px;\n}\n.publich_comment img[data-v-cc3c4f4e] {\n    vertical-align: middle;\n    margin-right: 6px;\n    margin-bottom: 3px;\n    width: 25px;\n}\n.comment_view[data-v-cc3c4f4e] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100vh;\n  background: #fff;\n  z-index: 200;\n  overflow: hidden;\n}\n.comment_view .comment_desc[data-v-cc3c4f4e] {\n    padding: 22px 12px 0;\n    box-sizing: border-box;\n    border-bottom: 1px solid #eee;\n}\n.comment_view .comment_desc img[data-v-cc3c4f4e] {\n      width: 22px;\n      padding: 13.5px 5px 10.5px;\n}\n.comment_view .comment_desc span[data-v-cc3c4f4e] {\n      font-size: 14px;\n      padding: 5px;\n      color: #FC4083;\n      border: 1px solid #FC4083;\n      border-radius: 50px;\n      float: right;\n      opacity: 0.5;\n      width: 60px;\n      height: 22px;\n      line-height: 22px;\n      text-align: center;\n      margin-top: 8px;\n}\n.comment_view textarea[data-v-cc3c4f4e] {\n    width: 100%;\n    height: 220px;\n    box-sizing: border-box;\n    border: none;\n    padding: 5px 12px;\n    font-size: 14px;\n    line-height: 24px;\n}\n", ""]);
 
 // exports
 
@@ -9517,7 +9531,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }), _vm._v(" "), _c('img', {
       staticClass: "attendance",
       attrs: {
-        "src": __webpack_require__(37)
+        "src": __webpack_require__(35)
       }
     }), _vm._v(" "), _c('h3', [_vm._v(_vm._s(idol.nickname ? idol.nickname : '...'))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(idol.introduce ? idol.introduce : '...'))]), _vm._v(" "), (_vm.isFans) ? _c('span', {
       staticClass: "idolPage"
@@ -9532,7 +9546,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "attendance fans",
     attrs: {
-      "src": __webpack_require__(37)
+      "src": __webpack_require__(35)
     }
   }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9544,7 +9558,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "attendance",
     attrs: {
-      "src": __webpack_require__(37)
+      "src": __webpack_require__(35)
     }
   }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9556,7 +9570,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "attendance",
     attrs: {
-      "src": __webpack_require__(37)
+      "src": __webpack_require__(35)
     }
   }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9568,7 +9582,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "attendance",
     attrs: {
-      "src": __webpack_require__(37)
+      "src": __webpack_require__(35)
     }
   }), _vm._v(" "), _c('h3', [_vm._v("idolName")]), _vm._v(" "), _c('p', [_vm._v("idol Introduction")])])
 }]}
@@ -9765,7 +9779,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(28),
+      "src": __webpack_require__(24),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', [_vm._v("ただ今集計中です")])]), _vm._v(" "), _c('div', {
@@ -9819,7 +9833,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 1),
       expression: "isShow == 1"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupy for Idol Appで動画を投稿することは、アイドルの専用機能です。アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、Groupyに応募してから、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _c('b', [_vm._v("アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _vm._v("また、Groupyではメンバーシップ制がありますので、アイドルが自分の動画に「公開」と「会員のみ」の二つのプライバシー設定を選べます。しかし、ギャラリーからアップロードした動画の再生時間は10分までという制限がありますので、気をつけてください。")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupy for Idol Appで動画を投稿することは、アイドルの専用機能です。アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、Groupyに応募してから、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _vm._v("また、Groupyではメンバーシップ制がありますので、アイドルが自分の動画に「公開」と「会員のみ」の二つのプライバシー設定を選べます。しかし、ギャラリーからアップロードした動画の再生時間は10分までという制限がありますので、気をつけてください。")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(2)
@@ -9837,7 +9851,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 2),
       expression: "isShow == 2"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" Groupyは、ファンが共にアイドルを応援できるメンバーシップ制アプリです。"), _c('br'), _vm._v("ひと押しだけで応援できて、アイドルの成長をより身近に見守れて、更にメンバーのみの限定情報をいっぱい入手できます。アイドルとファンを親密につなぐプラットフォームを作ろうとしています。"), _c('br'), _c('br'), _vm._v("ファンが、アイドル自身のスマホから投稿した面白い動画をリアルタイムでチェックできます。"), _c('br'), _vm._v("アイドルの会員になって、掲示板で応援メッセージが送信できます。更に、最新オフ会情報やアイドルの日常、オフショットをいち早く入手！"), _c('br'), _c('br'), _vm._v("アイドルは、ファンを集めるコミュニティを作って夢を叶えます！Groupyで動画を投稿して、「公開」か「会員のみ」のプライバシー設定してファンにシェアできます。ファンから有力な応援をもらい、ランキングの上位に入って注目度を上げましょう！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" "), _c('b', [_vm._v("Groupyは、ファンが共にアイドルを応援できるメンバーシップ制アプリです。")]), _c('br'), _vm._v("ひと押しだけで応援できて、アイドルの成長をより身近に見守れて、更にメンバーのみの限定情報をいっぱい入手できます。アイドルとファンを親密につなぐプラットフォームを作ろうとしています。"), _c('br'), _c('br'), _c('b', [_vm._v("ファンが、アイドル自身のスマホから投稿した面白い動画をリアルタイムでチェックできます。")]), _c('br'), _vm._v("アイドルの会員になって、掲示板で応援メッセージが送信できます。更に、最新オフ会情報やアイドルの日常、オフショットをいち早く入手！"), _c('br'), _c('br'), _vm._v("アイドルは、ファンを集めるコミュニティを作って夢を叶えます！Groupyで動画を投稿して、「公開」か「会員のみ」のプライバシー設定してファンにシェアできます。ファンから有力な応援をもらい、ランキングの上位に入って注目度を上げましょう！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(3)
@@ -9896,7 +9910,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 5),
       expression: "isShow == 5"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届けようとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分のファンはどんな投稿が好きのか知りたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1.掲示板を活用して投票を行い、ファンに直接聞きましょう。"), _c('br'), _vm._v("2.Groupyの調査によると、多くのファンは、アイドルに自分のスケジュールやオフショットをリアルタイムに更新したり、メッセージに返事したりしてほしいようです。また、自分の努力や成績をファンにシェアするのもファンにとって大事なことです。"), _c('br'), _vm._v("3.ホームでの動画は、投稿にウルサイ編集部から動画の投稿時間、人気度、ギフト数などに基づいて選んだものです。参考にしてください～"), _c('br'), _vm._v("また、自分の投稿をTwitter，Ameba等のソーシャルアカウントでシェアすると、多くのファンから意見がいっぱいもらえるでしょう！"), _c('br'), _vm._v("面白い動画をもっと投稿して、ファンから応援をどんどんもらって、人気ランキングの上位に入って夢が叶いますように！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届けようとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分のファンはどんな投稿が好きのか知りたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1."), _c('b', [_vm._v("掲示板")]), _vm._v("を活用して投票を行い、ファンに直接聞きましょう。"), _c('br'), _vm._v("2.Groupyの調査によると、多くのファンは、アイドルに"), _c('b', [_vm._v("自分のスケジュールやオフショットをリアルタイムに更新したり、メッセージに返事したり")]), _vm._v("してほしいようです。また、"), _c('b', [_vm._v("自分の努力や成績をファンにシェアする")]), _vm._v("のもファンにとって大事なことです。"), _c('br'), _vm._v("3.ホームでの動画は、投稿にウルサイ編集部から動画の投稿時間、人気度、ギフト数などに基づいて選んだものです。参考にしてください～"), _c('br'), _vm._v("また、自分の投稿をTwitter，Ameba等の"), _c('b', [_vm._v("ソーシャルアカウントでシェアする")]), _vm._v("と、多くのファンから意見がいっぱいもらえるでしょう！"), _c('br'), _vm._v("面白い動画をもっと投稿して、ファンから応援をどんどんもらって、人気ランキングの上位に入って夢が叶いますように！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(6)
@@ -10122,7 +10136,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(28),
+      "src": __webpack_require__(24),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', [_vm._v("ただ今集計中です")])]), _vm._v(" "), _c('div', {
@@ -10176,7 +10190,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 11),
       expression: "isShow == 11"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupy for Idol Appで動画を投稿することは、アイドルの専用機能です。")]), _c('br'), _c('br'), _c('b', [_vm._v("アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _vm._v("また、Groupyではメンバーシップ制がありますので、アイドルが自分の動画に「公開」と「会員のみ」の二つのプライバシー設定を選べます。しかし、ギャラリーからアップロードした動画の再生時間は10分までという制限がありますので、気をつけてください。")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupy for Idol Appで動画を投稿することは、アイドルの専用機能です。アイドルは、アイドル専用のGroupy-idol アプリをダウンロードして、Groupyに応募してから、アプリで録画して投稿することができます。")]), _c('br'), _c('br'), _vm._v("また、Groupyではメンバーシップ制がありますので、アイドルが自分の動画に「公開」と「会員のみ」の二つのプライバシー設定を選べます。しかし、ギャラリーからアップロードした動画の再生時間は10分までという制限がありますので、気をつけてください。")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(22)
@@ -10194,7 +10208,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 22),
       expression: "isShow == 22"
     }]
-  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" Groupyは、ファンが共にアイドルを応援できるメンバーシップ制アプリです。"), _c('br'), _vm._v("ひと押しだけで応援できて、アイドルの成長をより身近に見守れて、更にメンバーのみの限定情報をいっぱい入手できます。アイドルとファンを親密につなぐプラットフォームを作ろうとしています。"), _c('br'), _c('br'), _vm._v("ファンが、アイドル自身のスマホから投稿した面白い動画をリアルタイムでチェックできます。"), _c('br'), _vm._v("アイドルの会員になって、掲示板で応援メッセージが送信できます。更に、最新オフ会情報やアイドルの日常、オフショットをいち早く入手！"), _c('br'), _c('br'), _vm._v("アイドルは、ファンを集めるコミュニティを作って夢を叶えます！Groupyで動画を投稿して、「公開」か「会員のみ」のプライバシー設定してファンにシェアできます。ファンから有力な応援をもらい、ランキングの上位に入って注目度を上げましょう！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v(" "), _c('b', [_vm._v("Groupyは、ファンが共にアイドルを応援できるメンバーシップ制アプリです。")]), _c('br'), _vm._v("ひと押しだけで応援できて、アイドルの成長をより身近に見守れて、更にメンバーのみの限定情報をいっぱい入手できます。アイドルとファンを親密につなぐプラットフォームを作ろうとしています。"), _c('br'), _c('br'), _c('b', [_vm._v("ファンが、アイドル自身のスマホから投稿した面白い動画をリアルタイムでチェックできます。")]), _c('br'), _vm._v("アイドルの会員になって、掲示板で応援メッセージが送信できます。更に、最新オフ会情報やアイドルの日常、オフショットをいち早く入手！"), _c('br'), _c('br'), _vm._v("アイドルは、ファンを集めるコミュニティを作って夢を叶えます！Groupyで動画を投稿して、「公開」か「会員のみ」のプライバシー設定してファンにシェアできます。ファンから有力な応援をもらい、ランキングの上位に入って注目度を上げましょう！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(33)
@@ -10253,7 +10267,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 55),
       expression: "isShow == 55"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届けようとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分のファンはどんな投稿が好きのか知りたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1.掲示板を活用して投票を行い、ファンに直接聞きましょう。"), _c('br'), _vm._v("2.Groupyの調査によると、多くのファンは、アイドルに自分のスケジュールやオフショットをリアルタイムに更新したり、メッセージに返事したりしてほしいようです。また、自分の努力や成績をファンにシェアするのもファンにとって大事なことです。"), _c('br'), _vm._v("3.ホームでの動画は、投稿にウルサイ編集部から動画の投稿時間、人気度、ギフト数などに基づいて選んだものです。参考にしてください～"), _c('br'), _vm._v("また、自分の投稿をTwitter，Ameba等のソーシャルアカウントでシェアすると、多くのファンから意見がいっぱいもらえるでしょう！"), _c('br'), _vm._v("面白い動画をもっと投稿して、ファンから応援をどんどんもらって、人気ランキングの上位に入って夢が叶いますように！")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、ホームページにアイドルの投稿した動画を載せます。最新で、人気な内容をファンに届けようとしますので、動画の並び順番は投稿時間、人気度、ギフト数などで決まります。"), _c('br'), _vm._v("自分のファンはどんな投稿が好きのか知りたい？以下の方法がおすすめです。"), _c('br'), _vm._v("1."), _c('b', [_vm._v("掲示板")]), _vm._v("を活用して投票を行い、ファンに直接聞きましょう。"), _c('br'), _vm._v("2.Groupyの調査によると、多くのファンは、アイドルに"), _c('b', [_vm._v("自分のスケジュールやオフショットをリアルタイムに更新したり、メッセージに返事したり")]), _vm._v("してほしいようです。また、"), _c('b', [_vm._v("自分の努力や成績をファンにシェアする")]), _vm._v("のもファンにとって大事なことです。"), _c('br'), _vm._v("3.ホームでの動画は、投稿にウルサイ編集部から動画の投稿時間、人気度、ギフト数などに基づいて選んだものです。参考にしてください～"), _c('br'), _vm._v("また、自分の投稿をTwitter，Ameba等の"), _c('b', [_vm._v("ソーシャルアカウントでシェアする")]), _vm._v("と、多くのファンから意見がいっぱいもらえるでしょう！"), _c('br'), _vm._v("面白い動画をもっと投稿して、ファンから応援をどんどんもらって、人気ランキングの上位に入って夢が叶いますように！")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(66)
@@ -10507,12 +10521,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score || _vm.rakingListToday.rankingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].score ? _vm.rakingListToday.rankingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].score ? _vm.rakingListToday.rankingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), (_vm.top3None == false) ? _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=today&token=' + _vm.tokens
     }
-  }, [_vm._v("全部排名")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("全部排名")]) : _vm._e(), _vm._v(" "), _c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -10522,7 +10536,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(28),
+      "src": __webpack_require__(24),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', [_vm._v("还没有爱豆的排名")])]), _vm._v(" "), _c('div', {
@@ -10752,7 +10766,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "swiper2"
     }
-  }, [_c('ul', {
+  }, [(_vm.top3None == false) ? _c('ul', {
     staticClass: "top3"
   }, [_c('li', [_c('p', {
     staticClass: "idol_num",
@@ -10864,12 +10878,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score || _vm.rakingList.rankingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].score ? _vm.rakingList.rankingList[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].score ? _vm.rakingList.rankingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), (_vm.top3None == false) ? _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=all&token=' + _vm.tokens
     }
-  }, [_vm._v("全部排名")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("全部排名")]) : _vm._e(), _vm._v(" "), _c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -10879,7 +10893,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(28),
+      "src": __webpack_require__(24),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', [_vm._v("还没有爱豆的排名")])]), _vm._v(" "), _c('div', {
@@ -11269,7 +11283,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(28),
+      "src": __webpack_require__(24),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', {
@@ -11649,7 +11663,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(38)
+      "src": __webpack_require__(36)
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "avatar",
@@ -11690,7 +11704,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(39)
+      "src": __webpack_require__(37)
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "avatar",
@@ -11748,7 +11762,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('img', {
       staticClass: "crown",
       attrs: {
-        "src": __webpack_require__(40)
+        "src": __webpack_require__(38)
       }
     }), _vm._v(" "), _c('img', {
       staticClass: "avatar",
@@ -13148,7 +13162,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(28),
+      "src": __webpack_require__(24),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', {
@@ -13303,7 +13317,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "false"
     }],
     attrs: {
-      "src": __webpack_require__(41)
+      "src": __webpack_require__(40)
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "reward"
@@ -13325,7 +13339,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "false"
     }],
     attrs: {
-      "src": __webpack_require__(41)
+      "src": __webpack_require__(40)
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "reward"
@@ -13347,7 +13361,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "false"
     }],
     attrs: {
-      "src": __webpack_require__(41)
+      "src": __webpack_require__(40)
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "reward"
@@ -13369,7 +13383,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "false"
     }],
     attrs: {
-      "src": __webpack_require__(41)
+      "src": __webpack_require__(40)
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "reward"
@@ -13378,13 +13392,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "task"
     }, [_c('div', {
       staticClass: "task_content"
-    }, [_c('h5', [_vm._v(_vm._s(task.description))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(task.title))]), _vm._v(" "), _c('div', {
+    }, [_c('h5', [_vm._v(_vm._s(task.title))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(task.description))]), _vm._v(" "), _c('div', {
       staticClass: "progress_content"
     }, [_c('div', {
       staticClass: "progress"
     }, [_c('span', {
       style: ('width:calc(100% * ' + task.currentCount / task.targetCount + ')')
-    })]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.task_test.current)), _c('i', [_vm._v(_vm._s(task.currentCount))])])]), _vm._v(" "), _c('img', {
+    })]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.task_test.current)), _c('i', [_vm._v(_vm._s(task.currentCount > task.targetCount ? task.targetCount : task.currentCount))])])]), _vm._v(" "), _c('img', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -13392,7 +13406,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         expression: "task.complete>0"
       }],
       attrs: {
-        "src": __webpack_require__(41)
+        "src": __webpack_require__(40)
       }
     })]), _vm._v(" "), _c('div', {
       staticClass: "reward"
@@ -13812,20 +13826,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "my-scroller",
     attrs: {
       "on-refresh": _vm.refresh,
-      "on-infinite": _vm.infinite
+      "on-infinite": _vm.infinite,
+      "noDataText": _vm.rakingList.length > 0 ? '全て表示されました' : ''
     }
-  }, [(!_vm.rakingList.me) ? _c('div', {
+  }, [(_vm.me.length == 0) ? _c('div', {
     staticClass: "not_concerned"
   }, [_c('img', {
     attrs: {
       "src": __webpack_require__(202),
       "alt": ""
     }
-  })]) : _vm._e(), _vm._v(" "), (_vm.rakingList.me) ? _c('div', {
+  })]) : _vm._e(), _vm._v(" "), (_vm.me.length > 0) ? _c('div', {
     staticClass: "concerned"
   }, [_c('h3', {
     staticClass: "title"
-  }, [_vm._v(_vm._s(_vm.idol_text.me))]), _vm._v(" "), _vm._l((_vm.rakingList.me), function(idol, key) {
+  }, [_vm._v(_vm._s(_vm.idol_text.me))]), _vm._v(" "), _vm._l((_vm.me), function(idol, key) {
     return _c('div', {
       staticClass: "idol_detail"
     }, [_c('div', {
@@ -13868,26 +13883,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "detail"
     }, [_c('span', [_c('img', {
       attrs: {
-        "src": __webpack_require__(33),
+        "src": __webpack_require__(41),
         "alt": ""
       }
     }), _vm._v(_vm._s(Number(idol.popularity).toLocaleString()))]), _c('span', [_c('img', {
       attrs: {
-        "src": __webpack_require__(32),
+        "src": __webpack_require__(39),
         "alt": ""
       }
     }), _vm._v(_vm._s(Number(idol.fansNums).toLocaleString()))])])]), _vm._v(" "), _c('div', {
       staticClass: "support",
       on: {
         "click": function($event) {
-          _vm.support(idol.idolId)
+          idol.idolId ? _vm.support(idol.idolId) : false
         }
       }
     }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
       staticClass: "fans_list"
-    }, [_vm._v(_vm._s(_vm.idol_text.fans)), (idol.fansList ? idol.fansList.length > 0 : false) ? _c('div', {
+    }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.meFans[key] ? _vm.meFans[key].topFans.length > 0 : false) ? _c('div', {
       staticClass: "fans_imgList"
-    }, _vm._l((idol.fansList), function(img) {
+    }, _vm._l((_vm.meFans[key].topFans), function(img) {
       return _c('img', {
         attrs: {
           "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
@@ -13895,19 +13910,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           "alt": ""
         }
       })
-    })) : _vm._e(), (!idol.fansList) ? _c('div', {
+    })) : _vm._e(), (_vm.meFans[key] ? (_vm.meFans[key].topFans.lenght == 0) : true) ? _c('div', {
       staticClass: "no_fans"
-    }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), (key < _vm.rakingList.me.length - 1) ? _c('div', {
+    }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), (key < _vm.me.length - 1) ? _c('div', {
       staticClass: "border_bottom"
     }) : _vm._e()])
-  })], 2) : _vm._e(), _vm._v(" "), _c('div', {
+  })], 2) : _vm._e(), _vm._v(" "), (_vm.top3None == false) ? _c('div', {
     staticClass: "idol_all"
-  }, [(_vm.rakingList.me) ? _c('h3', {
+  }, [(_vm.me.length > 0) ? _c('h3', {
     staticClass: "title"
   }, [_vm._v(_vm._s(_vm.idol_text.all))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "idol_detail con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList.length > 0 : false
+      'left_show': _vm.rakingList.length > 0
     }
   }, [_c('div', {
     staticClass: "idol_content"
@@ -13920,51 +13935,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "avatar",
     attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].avatar ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 0 ? (_vm.rakingList[0].avatar ? _vm.rakingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     },
     on: {
       "click": function($event) {
-        _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].idolId ? _vm.showIdolPage(_vm.rakingList.rankingList[0].idolId) : false) : false
+        _vm.rakingList.length > 0 ? (_vm.rakingList[0].idolId ? _vm.showIdolPage(_vm.rakingList[0].idolId) : false) : false
       }
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(38),
+      "src": __webpack_require__(36),
       "alt": ""
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "introduction"
   }, [_c('p', {
     staticClass: "name"
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : '...'))]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 0 ? _vm.rakingList[0].name : '...'))]), _vm._v(" "), _c('p', {
     staticClass: "signature"
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].introduce : _vm.idol_text.none))]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 0 ? _vm.rakingList[0].introduce : _vm.idol_text.none))]), _vm._v(" "), _c('p', {
     staticClass: "detail"
   }, [_c('span', [_c('img', {
     attrs: {
-      "src": __webpack_require__(33),
+      "src": __webpack_require__(41),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.rakingList.rankingList ? Number(_vm.rakingList.rankingList[0].popularity).toLocaleString() : '0'))]), _c('span', [_c('img', {
+  }), _vm._v(_vm._s(_vm.rakingList.length > 0 ? Number(_vm.rakingList[0].popularity).toLocaleString() : '0'))]), _c('span', [_c('img', {
     attrs: {
-      "src": __webpack_require__(32),
+      "src": __webpack_require__(39),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.rakingList.rankingList ? Number(_vm.rakingList.rankingList[0].fansNums).toLocaleString() : '0'))])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(_vm._s(_vm.rakingList.length > 0 ? Number(_vm.rakingList[0].fansNums).toLocaleString() : '0'))])])]), _vm._v(" "), _c('div', {
     staticClass: "support",
     on: {
       "click": function($event) {
-        _vm.support(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].idolId : '')
+        _vm.support(_vm.rakingList.length > 0 ? _vm.rakingList[0].idolId : '')
       }
     }
   }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
     staticClass: "fans_list"
-  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].fansList : false) ? _c('div', {
+  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.allFans[0] ? _vm.allFans[0].topFans.length > 0 : false) ? _c('div', {
     staticClass: "fans_imgList"
-  }, _vm._l((_vm.rakingList.rankingList[0].fansList), function(img) {
+  }, _vm._l((_vm.allFans[0].topFans), function(img) {
     return _c('img', {
       attrs: {
         "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
@@ -13972,14 +13987,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "alt": ""
       }
     })
-  })) : _vm._e(), (_vm.rakingList.rankingList ? (!_vm.rakingList.rankingList[0].fansList || _vm.rakingList.rankingList[0].fansList.length < 1) : true) ? _c('div', {
+  })) : _vm._e(), (_vm.allFans[0] ? (_vm.allFans[0].topFans.length == 0) : true) ? _c('div', {
     staticClass: "no_fans"
   }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
   })]), _vm._v(" "), _c('div', {
     staticClass: "idol_detail con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList.length > 1 : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList.length > 1 : false
     }
   }, [_c('div', {
     staticClass: "idol_content"
@@ -13992,51 +14007,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "avatar",
     attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].avatar ? _vm.rakingList.rankingList[1].avatar : 'http://h5.groupy.vip/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 1 ? (_vm.rakingList[1].avatar ? _vm.rakingList[1].avatar : 'http://h5.groupy.vip/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     },
     on: {
       "click": function($event) {
-        _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].idolId ? _vm.showIdolPage(_vm.rakingList.rankingList[1].idolId) : false) : false
+        _vm.rakingList.length > 1 ? (_vm.rakingList[1].idolId ? _vm.showIdolPage(_vm.rakingList[1].idolId) : false) : false
       }
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(39),
+      "src": __webpack_require__(37),
       "alt": ""
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "introduction"
   }, [_c('p', {
     staticClass: "name"
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : '...'))]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 1 ? _vm.rakingList[1].name : '...'))]), _vm._v(" "), _c('p', {
     staticClass: "signature"
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].introduce : _vm.idol_text.none))]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 1 ? _vm.rakingList[1].introduce : _vm.idol_text.none))]), _vm._v(" "), _c('p', {
     staticClass: "detail"
   }, [_c('span', [_c('img', {
     attrs: {
-      "src": __webpack_require__(33),
+      "src": __webpack_require__(41),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.rakingList.rankingList ? Number(_vm.rakingList.rankingList[1].popularity).toLocaleString() : '0'))]), _c('span', [_c('img', {
+  }), _vm._v(_vm._s(_vm.rakingList.length > 1 ? Number(_vm.rakingList[1].popularity).toLocaleString() : '0'))]), _c('span', [_c('img', {
     attrs: {
-      "src": __webpack_require__(32),
+      "src": __webpack_require__(39),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.rakingList.rankingList ? Number(_vm.rakingList.rankingList[1].fansNums).toLocaleString() : '0'))])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(_vm._s(_vm.rakingList.length > 1 ? Number(_vm.rakingList[1].fansNums).toLocaleString() : '0'))])])]), _vm._v(" "), _c('div', {
     staticClass: "support",
     on: {
       "click": function($event) {
-        _vm.support(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].idolId : '')
+        _vm.support(_vm.rakingList.length > 1 ? _vm.rakingList[1].idolId : '')
       }
     }
   }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
     staticClass: "fans_list"
-  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].fansList : false) ? _c('div', {
+  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.allFans[1] ? _vm.allFans[1].topFans.length > 0 : false) ? _c('div', {
     staticClass: "fans_imgList"
-  }, _vm._l((_vm.rakingList.rankingList[1].fansList), function(img) {
+  }, _vm._l((_vm.allFans[1].topFans), function(img) {
     return _c('img', {
       attrs: {
         "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
@@ -14044,14 +14059,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "alt": ""
       }
     })
-  })) : _vm._e(), (_vm.rakingList.rankingList ? (!_vm.rakingList.rankingList[1].fansList || _vm.rakingList.rankingList[1].fansList.length < 1) : true) ? _c('div', {
+  })) : _vm._e(), (_vm.allFans[1] ? (_vm.allFans[1].topFans.length == 0) : true) ? _c('div', {
     staticClass: "no_fans"
   }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
   })]), _vm._v(" "), _c('div', {
     staticClass: "idol_detail con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList.length > 2 : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList.length > 2 : false
     }
   }, [_c('div', {
     staticClass: "idol_content"
@@ -14064,51 +14079,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "avatar",
     attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].avatar ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 2 ? (_vm.rakingList[2].avatar ? _vm.rakingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     },
     on: {
       "click": function($event) {
-        _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].idolId ? _vm.showIdolPage(_vm.rakingList.rankingList[2].idolId) : false) : false
+        _vm.rakingList.length > 2 ? (_vm.rakingList[2].idolId ? _vm.showIdolPage(_vm.rakingList[2].idolId) : false) : false
       }
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(40),
+      "src": __webpack_require__(38),
       "alt": ""
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "introduction"
   }, [_c('p', {
     staticClass: "name"
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : '...'))]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 2 ? _vm.rakingList[2].name : '...'))]), _vm._v(" "), _c('p', {
     staticClass: "signature"
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].introduce : _vm.idol_text.none))]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 2 ? _vm.rakingList[2].introduce : _vm.idol_text.none))]), _vm._v(" "), _c('p', {
     staticClass: "detail"
   }, [_c('span', [_c('img', {
     attrs: {
-      "src": __webpack_require__(33),
+      "src": __webpack_require__(41),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.rakingList.rankingList ? Number(_vm.rakingList.rankingList[2].popularity).toLocaleString() : '0'))]), _c('span', [_c('img', {
+  }), _vm._v(_vm._s(_vm.rakingList.length > 2 ? Number(_vm.rakingList[2].popularity).toLocaleString() : '0'))]), _c('span', [_c('img', {
     attrs: {
-      "src": __webpack_require__(32),
+      "src": __webpack_require__(39),
       "alt": ""
     }
-  }), _vm._v(_vm._s(_vm.rakingList.rankingList ? Number(_vm.rakingList.rankingList[2].fansNums).toLocaleString() : '0'))])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(_vm._s(_vm.rakingList.length > 2 ? Number(_vm.rakingList[2].fansNums).toLocaleString() : '0'))])])]), _vm._v(" "), _c('div', {
     staticClass: "support",
     on: {
       "click": function($event) {
-        _vm.support(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].idolId : '')
+        _vm.support(_vm.rakingList.length > 2 ? _vm.rakingList[2].idolId : '')
       }
     }
   }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
     staticClass: "fans_list"
-  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].fansList : false) ? _c('div', {
+  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.allFans[2] ? _vm.allFans[2].topFans.length > 0 : false) ? _c('div', {
     staticClass: "fans_imgList"
-  }, _vm._l((_vm.rakingList.rankingList[2].fansList), function(img) {
+  }, _vm._l((_vm.allFans[2].topFans), function(img) {
     return _c('img', {
       attrs: {
         "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
@@ -14116,76 +14131,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "alt": ""
       }
     })
-  })) : _vm._e(), (_vm.rakingList.rankingList ? (!_vm.rakingList.rankingList[2].fansList || _vm.rakingList.rankingList[2].fansList.length < 1) : true) ? _c('div', {
+  })) : _vm._e(), (_vm.allFans[2] ? (_vm.allFans[2].topFans.length == 0) : true) ? _c('div', {
     staticClass: "no_fans"
   }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "idol_detail con_left",
-    class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList.length > 3 : false
-    }
-  }, [_c('div', {
-    staticClass: "idol_content"
-  }, [_c('i', [_vm._v("4")]), _vm._v(" "), _c('div', {
-    staticClass: "idol_border"
-  }, [_c('div', {
-    staticClass: "avatar_content"
-  }, [_c('img', {
-    staticClass: "avatar",
-    attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[3].avatar ? _vm.rakingList.rankingList[3].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
-      "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
-      "alt": ""
-    },
-    on: {
-      "click": function($event) {
-        _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[3].idolId ? _vm.showIdolPage(_vm.rakingList.rankingList[3].idolId) : false) : false
-      }
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "introduction"
-  }, [_c('p', {
-    staticClass: "name"
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[3].name : '...'))]), _vm._v(" "), _c('p', {
-    staticClass: "signature"
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[3].introduce : _vm.idol_text.none))]), _vm._v(" "), _c('p', {
-    staticClass: "detail"
-  }, [_c('span', [_c('img', {
-    attrs: {
-      "src": __webpack_require__(33),
-      "alt": ""
-    }
-  }), _vm._v(_vm._s(_vm.rakingList.rankingList ? Number(_vm.rakingList.rankingList[3].popularity).toLocaleString() : '0'))]), _c('span', [_c('img', {
-    attrs: {
-      "src": __webpack_require__(32),
-      "alt": ""
-    }
-  }), _vm._v(_vm._s(_vm.rakingList.rankingList ? Number(_vm.rakingList.rankingList[3].fansNums).toLocaleString() : '0'))])])]), _vm._v(" "), _c('div', {
-    staticClass: "support",
-    on: {
-      "click": function($event) {
-        _vm.support(_vm.rakingList.rankingList ? _vm.rakingList.rankingList[3].idolId : '')
-      }
-    }
-  }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
-    staticClass: "fans_list"
-  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.rakingList.rankingList ? _vm.rakingList.rankingList[3].fansList : false) ? _c('div', {
-    staticClass: "fans_imgList"
-  }, _vm._l((_vm.rakingList.rankingList[3].fansList), function(img) {
-    return _c('img', {
-      attrs: {
-        "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
-        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
-        "alt": ""
-      }
-    })
-  })) : _vm._e(), (_vm.rakingList.rankingList ? (!_vm.rakingList.rankingList[3].fansList || _vm.rakingList.rankingList[3].fansList.length < 1) : true) ? _c('div', {
-    staticClass: "no_fans"
-  }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "border_bottom"
-  })]), _vm._v(" "), _vm._l((_vm.rakingList.rankingList), function(idol, key) {
-    return (_vm.rakingList.rankingList ? key > 3 && key < _vm.len : false) ? _c('div', {
+  })]), _vm._v(" "), _vm._l((_vm.rakingList), function(idol, key) {
+    return (_vm.rakingList.length > 0 ? key > 2 && key < _vm.len : false) ? _c('div', {
       staticClass: "idol_detail"
     }, [_c('div', {
       staticClass: "idol_content"
@@ -14221,12 +14172,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "detail"
     }, [_c('span', [_c('img', {
       attrs: {
-        "src": __webpack_require__(33),
+        "src": __webpack_require__(41),
         "alt": ""
       }
     }), _vm._v(_vm._s(idol.popularity ? Number(idol.popularity).toLocaleString() : '3'))]), _c('span', [_c('img', {
       attrs: {
-        "src": __webpack_require__(32),
+        "src": __webpack_require__(39),
         "alt": ""
       }
     }), _vm._v(_vm._s(idol.fansNums ? Number(idol.fansNums).toLocaleString() : '0'))])])]), _vm._v(" "), _c('div', {
@@ -14238,9 +14189,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
       staticClass: "fans_list"
-    }, [_vm._v(_vm._s(_vm.idol_text.fans)), (idol.fansList ? idol.fansList.length > 0 : false) ? _c('div', {
+    }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.allFans[key] ? _vm.allFans[key].topFans.length > 0 : false) ? _c('div', {
       staticClass: "fans_imgList"
-    }, _vm._l((idol.fansList), function(img) {
+    }, _vm._l((_vm.allFans[key].topFans), function(img) {
       return _c('img', {
         attrs: {
           "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
@@ -14248,12 +14199,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           "alt": ""
         }
       })
-    })) : _vm._e(), ((!idol.fansList || idol.fansList.length < 1)) ? _c('div', {
+    })) : _vm._e(), (_vm.allFans[key] ? (_vm.allFans[key].topFans.length == 0) : true) ? _c('div', {
       staticClass: "no_fans"
     }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), _c('div', {
       staticClass: "border_bottom"
     })]) : _vm._e()
-  })], 2)])], 1)])
+  })], 2) : _vm._e(), _vm._v(" "), (_vm.top3None) ? _c('div', {
+    staticClass: "default_page"
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(24),
+      "alt": ""
+    }
+  }), _vm._v(" "), _c('p', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.idol_text.noneIdol)
+    }
+  })]) : _vm._e()])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -14443,17 +14405,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), (_vm.me.ranking ? _vm.me.ranking == 1 : false) ? _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(38)
+      "src": __webpack_require__(36)
     }
   }) : _vm._e(), (_vm.me.ranking ? _vm.me.ranking == 2 : false) ? _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(39)
+      "src": __webpack_require__(37)
     }
   }) : _vm._e(), (_vm.me.ranking ? _vm.me.ranking > 2 : false) ? _c('img', {
     staticClass: "crown",
     attrs: {
-      "src": __webpack_require__(40)
+      "src": __webpack_require__(38)
     }
   }) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "idol_content"
@@ -14497,17 +14459,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }), (idol.ranking ? idol.ranking == 1 : false) ? _c('img', {
       staticClass: "crown",
       attrs: {
-        "src": __webpack_require__(38)
+        "src": __webpack_require__(36)
       }
     }) : _vm._e(), (idol.ranking ? idol.ranking == 2 : false) ? _c('img', {
       staticClass: "crown",
       attrs: {
-        "src": __webpack_require__(39)
+        "src": __webpack_require__(37)
       }
     }) : _vm._e(), (idol.ranking ? idol.ranking > 2 : false) ? _c('img', {
       staticClass: "crown",
       attrs: {
-        "src": __webpack_require__(40)
+        "src": __webpack_require__(38)
       }
     }) : _vm._e()]), _vm._v(" "), _c('div', {
       staticClass: "idol_content"
@@ -14569,73 +14531,73 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('img', {
     staticClass: "crown",
     attrs: {
+      "src": __webpack_require__(36)
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticStyle: {
+      "text-align": "left",
+      "margin-left": "10px"
+    }
+  }, [_c('em', [_vm._v("0")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', [_c('img', {
+    attrs: {
+      "src": __webpack_require__(3)
+    }
+  }), _c('em', [_vm._v("0")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', [_c('img', {
+    attrs: {
+      "src": __webpack_require__(1)
+    }
+  }), _c('em', [_vm._v("0")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "img_content"
+  }, [_c('img', {
+    staticClass: "avatar",
+    attrs: {
+      "src": __webpack_require__(8)
+    }
+  }), _c('img', {
+    staticClass: "crown",
+    attrs: {
+      "src": __webpack_require__(37)
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticStyle: {
+      "text-align": "left",
+      "margin-left": "10px"
+    }
+  }, [_c('em', [_vm._v("0")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', [_c('img', {
+    attrs: {
+      "src": __webpack_require__(3)
+    }
+  }), _c('em', [_vm._v("0")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', [_c('img', {
+    attrs: {
+      "src": __webpack_require__(1)
+    }
+  }), _c('em', [_vm._v("0")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "img_content"
+  }, [_c('img', {
+    staticClass: "avatar",
+    attrs: {
+      "src": __webpack_require__(8)
+    }
+  }), _c('img', {
+    staticClass: "crown",
+    attrs: {
       "src": __webpack_require__(38)
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticStyle: {
-      "text-align": "left",
-      "margin-left": "10px"
-    }
-  }, [_c('em', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [_c('img', {
-    attrs: {
-      "src": __webpack_require__(3)
-    }
-  }), _c('em', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [_c('img', {
-    attrs: {
-      "src": __webpack_require__(1)
-    }
-  }), _c('em', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "img_content"
-  }, [_c('img', {
-    staticClass: "avatar",
-    attrs: {
-      "src": __webpack_require__(8)
-    }
-  }), _c('img', {
-    staticClass: "crown",
-    attrs: {
-      "src": __webpack_require__(39)
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticStyle: {
-      "text-align": "left",
-      "margin-left": "10px"
-    }
-  }, [_c('em', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [_c('img', {
-    attrs: {
-      "src": __webpack_require__(3)
-    }
-  }), _c('em', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', [_c('img', {
-    attrs: {
-      "src": __webpack_require__(1)
-    }
-  }), _c('em', [_vm._v("0")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "img_content"
-  }, [_c('img', {
-    staticClass: "avatar",
-    attrs: {
-      "src": __webpack_require__(8)
-    }
-  }), _c('img', {
-    staticClass: "crown",
-    attrs: {
-      "src": __webpack_require__(40)
     }
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -15044,7 +15006,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "default_page"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(28),
+      "src": __webpack_require__(24),
       "alt": ""
     }
   }), _vm._v(" "), _c('p', {
@@ -17489,4 +17451,4 @@ module.exports = {
 
 /***/ })
 ],[155]);
-//# sourceMappingURL=app.987726526aeb4628ffc5.js.map
+//# sourceMappingURL=app.078d69c575c7d5a8accb.js.map
