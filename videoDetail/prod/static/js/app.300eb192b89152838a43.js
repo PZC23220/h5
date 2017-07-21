@@ -3464,8 +3464,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     __WEBPACK_IMPORTED_MODULE_1_n_zepto___default()('.tabs').eq(swiper.activeIndex).addClass('active');
                 }
             },
-            rakingListToday: {},
-            rakingList: {},
+            rakingList: [],
+            rakingListme: [],
+            rakingListToday: [],
+            rakingListTodayme: [],
             // loadingBig: true,
             idx: 0,
             ranking_text: {
@@ -3501,9 +3503,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     // self.loadingBig = false;
                     if (res.status == 200) {
                         if (val == 'all') {
-                            self.rakingList = res.data;
+                            if (!res.data.rankingList) {
+                                self.top3None = true;
+                            } else {
+
+                                self.rakingList = res.data.rankingList;
+                            }
                         } else {
-                            self.rakingListToday = res.data;
+                            if (res.data.rankingList) {
+                                self.rakingListToday = res.data.rankingList;
+                            } else {
+                                self.top3NoneToday = true;
+                            }
                         }
 
                         console.log(self.rakingList);
@@ -4968,12 +4979,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             },
             rakingList: [],
+            rakingListme: [],
             rakingListToday: [],
+            rakingListTodayme: [],
             isShow: false,
             tottleImg: './static/images/icon_arrow_gray_down.png',
             tokens: '',
             // loadingBig: true,
             top3None: false,
+            top3NoneToday: false,
             idx: 0
         };
     },
@@ -4998,7 +5012,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else {
                     __WEBPACK_IMPORTED_MODULE_2__env_http_js__["a" /* default */].defaults.headers.common['Authorization'] = 'Token ' + self.$route.query.token;
                 }
-                __WEBPACK_IMPORTED_MODULE_2__env_http_js__["a" /* default */].get('/ranking/idols', {
+                __WEBPACK_IMPORTED_MODULE_2__env_http_js__["a" /* default */].get('ranking/idols', {
                     params: {
                         filter: val
                     }
@@ -5008,10 +5022,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         if (val == 'all') {
                             if (!res.data.rankingList) {
                                 self.top3None = true;
+                            } else {
+
+                                self.rakingList = res.data.rankingList;
                             }
-                            self.rakingList = res.data;
+                            if (res.data.me) {
+                                self.rakingListme = res.data.me;
+                            }
                         } else {
-                            self.rakingListToday = res.data;
+                            if (res.data.rankingList) {
+                                self.rakingListToday = res.data.rankingList;
+                            } else {
+                                self.top3NoneToday = true;
+                            }
+                            if (res.data.me) {
+                                self.rakingListTodayme = res.data.me;
+                            }
                         }
 
                         console.log(self.rakingList);
@@ -5277,12 +5303,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             },
             rakingList: [],
+            rakingListme: [],
             rakingListToday: [],
+            rakingListTodayme: [],
             isShow: false,
             tottleImg: './static/images/icon_arrow_gray_down.png',
             tokens: '',
             // loadingBig: true,
             top3None: false,
+            top3NoneToday: false,
             idx: 0
         };
     },
@@ -5313,14 +5342,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 }).then(function (res) {
                     if (res.status == 200) {
-                        // self.loadingBig = false;
                         if (val == 'all') {
                             if (!res.data.rankingList) {
                                 self.top3None = true;
+                            } else {
+
+                                self.rakingList = res.data.rankingList;
                             }
-                            self.rakingList = res.data;
+                            if (res.data.me) {
+                                self.rakingListme = res.data.me;
+                            }
                         } else {
-                            self.rakingListToday = res.data;
+                            if (res.data.rankingList) {
+                                self.rakingListToday = res.data.rankingList;
+                            } else {
+                                self.top3NoneToday = true;
+                            }
+                            if (res.data.me) {
+                                self.rakingListTodayme = res.data.me;
+                            }
                         }
 
                         console.log(self.rakingList);
@@ -9652,7 +9692,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "swiper1"
     }
-  }, [(_vm.top3None == false) ? _c('ul', {
+  }, [(_vm.top3NoneToday == false) ? _c('ul', {
     staticClass: "top3"
   }, [_c('li', [_c('p', {
     staticClass: "idol_num",
@@ -9668,19 +9708,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].avatar : false
+      'left_show': _vm.rakingListToday.length > 1 ? _vm.rakingListToday[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].avatar ? _vm.rakingListToday.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.length > 1 ? (_vm.rakingListToday[1].avatar ? _vm.rakingListToday[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].name : false
+      'left_show': _vm.rakingListToday.length > 1 ? _vm.rakingListToday[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].name ? _vm.rakingListToday.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.length > 1 ? (_vm.rakingListToday[1].name ? _vm.rakingListToday[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9688,9 +9728,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].score || _vm.rakingListToday.rankingList[1].score == 0 : false
+      'left_show': _vm.rakingListToday.length > 1 ? _vm.rakingListToday[1].score || _vm.rakingListToday[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].score ? _vm.rakingListToday.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.length > 1 ? (_vm.rakingListToday[1].score ? _vm.rakingListToday[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -9706,19 +9746,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].avatar : false
+      'left_show': _vm.rakingListToday.length > 0 ? _vm.rakingListToday[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].avatar ? _vm.rakingListToday.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.length > 0 ? (_vm.rakingListToday[0].avatar ? _vm.rakingListToday[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].name : false
+      'left_show': _vm.rakingListToday.length > 0 ? _vm.rakingListToday[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].name ? _vm.rakingListToday.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.length > 0 ? (_vm.rakingListToday[0].name ? _vm.rakingListToday[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9726,9 +9766,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].score || _vm.rakingListToday.rankingList[0].score == 0 : false
+      'left_show': _vm.rakingListToday.length > 0 ? _vm.rakingListToday[0].score || _vm.rakingListToday[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].score ? _vm.rakingListToday.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.length > 0 ? (_vm.rakingListToday[0].score ? _vm.rakingListToday[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -9742,19 +9782,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].avatar ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png') : false
+      'left_show': _vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].avatar ? _vm.rakingListToday[2].avatar : '/static/images/default_img.png') : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].avatar ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].avatar ? _vm.rakingListToday[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].name : false
+      'left_show': _vm.rakingListToday.length > 2 ? _vm.rakingListToday[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].name ? _vm.rakingListToday.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].name ? _vm.rakingListToday[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9762,19 +9802,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score || _vm.rakingListToday.rankingList[2].score == 0 : false
+      'left_show': _vm.rakingListToday.length > 2 ? _vm.rakingListToday[2].score || _vm.rakingListToday[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].score ? _vm.rakingListToday.rankingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].score ? _vm.rakingListToday[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), (_vm.top3NoneToday == false) ? _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=today&token=' + _vm.tokens
     }
-  }, [_vm._v("すべて表示")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("すべて表示")]) : _vm._e(), _vm._v(" "), _c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.top3None),
-      expression: "top3None"
+      value: (_vm.top3NoneToday),
+      expression: "top3NoneToday"
     }],
     staticClass: "default_page"
   }, [_c('img', {
@@ -9787,9 +9827,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('p', [_c('span', [_vm._v("自分の順位")]), _c('span', [_c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
+      'left_show': _vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].position : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : '-') + "位")]), _c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].position : '-') + "位")]), _c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -9797,21 +9837,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
+      'left_show': _vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.rakingListToday.me && (_vm.rakingListToday.me[0].position > 1)),
-      expression: "rakingListToday.me && (rakingListToday.me[0].position > 1)"
+      value: (_vm.rakingListTodayme.length > 0 && (_vm.rakingListTodayme[0].position > 1)),
+      expression: "rakingListTodayme.length>0 && (rakingListTodayme[0].position > 1)"
     }]
   }, [_vm._v("（あと"), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
+      'left_show': _vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].gapToNext : '').toLocaleString()))]), _vm._v("Likeでランクアップ！）")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].gapToNext : '').toLocaleString()))]), _vm._v("Likeでランクアップ！）")])]), _vm._v(" "), _c('div', {
     staticClass: "help"
   }, [_c('h4', [_vm._v("Groupyの人気者になる秘訣を今キャッチ！")]), _vm._v(" "), _c('div', {
     staticClass: "rule_content"
@@ -10009,7 +10049,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "swiper2"
     }
-  }, [_c('ul', {
+  }, [(_vm.top3None == false) ? _c('ul', {
     staticClass: "top3"
   }, [_c('li', [_c('p', {
     staticClass: "idol_num",
@@ -10025,19 +10065,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : false
+      'left_show': _vm.rakingList.length > 1 ? _vm.rakingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].avatar ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 1 ? (_vm.rakingList[1].avatar ? _vm.rakingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : false
+      'left_show': _vm.rakingList.length > 1 ? _vm.rakingList[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].name ? _vm.rakingList.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 1 ? (_vm.rakingList[1].name ? _vm.rakingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10045,9 +10085,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].score || _vm.rakingList.rankingList[1].score == 0 : false
+      'left_show': _vm.rakingList.length > 1 ? _vm.rakingList[1].score || _vm.rakingList[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].score ? _vm.rakingList.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.length > 1 ? (_vm.rakingList[1].score ? _vm.rakingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -10063,19 +10103,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].avatar : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].avatar ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 0 ? (_vm.rakingList[0].avatar ? _vm.rakingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].name ? _vm.rakingList.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 0 ? (_vm.rakingList[0].name ? _vm.rakingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10083,9 +10123,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].score || _vm.rakingList.rankingList[0].score == 0 : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList[0].score || _vm.rakingList[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].score ? _vm.rakingList.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.length > 0 ? (_vm.rakingList[0].score ? _vm.rakingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -10099,19 +10139,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].avatar : false
+      'left_show': _vm.rakingList.length > 2 ? _vm.rakingList[2].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].avatar ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 2 ? (_vm.rakingList[2].avatar ? _vm.rakingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : false
+      'left_show': _vm.rakingList.length > 2 ? _vm.rakingList[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].name ? _vm.rakingList.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 2 ? (_vm.rakingList[2].name ? _vm.rakingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10119,9 +10159,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score || _vm.rakingList.rankingList[2].score == 0 : false
+      'left_show': _vm.rakingList.length > 2 ? _vm.rakingList[2].score || _vm.rakingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].score ? _vm.rakingList.rankingList[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.length > 2 ? (_vm.rakingList[2].score ? _vm.rakingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=all&token=' + _vm.tokens
@@ -10144,9 +10184,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('p', [_c('span', [_vm._v("自分の順位")]), _c('span', [_c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
+      'left_show': _vm.rakingListme.length > 0 ? _vm.rakingListme[0].position : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.me ? _vm.rakingList.me[0].position : '-') + "位")]), _c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListme.length > 0 ? _vm.rakingListme[0].position : '-') + "位")]), _c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10154,21 +10194,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
+      'left_show': _vm.rakingListme.length > 0 ? _vm.rakingListme[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.me ? _vm.rakingList.me[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListme.length > 0 ? _vm.rakingListme[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.rakingList.me && (_vm.rakingList.me[0].position > 1)),
-      expression: "rakingList.me && (rakingList.me[0].position > 1)"
+      value: (_vm.rakingListme.length > 0 && (_vm.rakingListme[0].position > 1)),
+      expression: "rakingListme.length>0 && (rakingListme[0].position > 1)"
     }]
   }, [_vm._v("（あと"), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
+      'left_show': _vm.rakingListme.length > 0 ? _vm.rakingListme[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.me ? _vm.rakingList.me[0].gapToNext : '').toLocaleString()))]), _vm._v("Likeでランクアップ！）")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListme.length > 0 ? _vm.rakingListme[0].gapToNext : '').toLocaleString()))]), _vm._v("Likeでランクアップ！）")])]), _vm._v(" "), _c('div', {
     staticClass: "help"
   }, [_c('h4', [_vm._v("Groupyの人気者になる秘訣を今キャッチ！")]), _vm._v(" "), _c('div', {
     staticClass: "rule_content"
@@ -10409,7 +10449,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "swiper1"
     }
-  }, [(_vm.top3None == false) ? _c('ul', {
+  }, [(_vm.top3NoneToday == false) ? _c('ul', {
     staticClass: "top3"
   }, [_c('li', [_c('p', {
     staticClass: "idol_num",
@@ -10425,19 +10465,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].avatar : false
+      'left_show': _vm.rakingListToday.length > 1 ? _vm.rakingListToday[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].avatar ? _vm.rakingListToday.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.length > 1 ? (_vm.rakingListToday[1].avatar ? _vm.rakingListToday[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].name : false
+      'left_show': _vm.rakingListToday.length > 1 ? _vm.rakingListToday[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].name ? _vm.rakingListToday.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.length > 1 ? (_vm.rakingListToday[1].name ? _vm.rakingListToday[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10445,9 +10485,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].score || _vm.rakingListToday.rankingList[1].score == 0 : false
+      'left_show': _vm.rakingListToday.length > 1 ? _vm.rakingListToday[1].score || _vm.rakingListToday[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].score ? _vm.rakingListToday.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.length > 1 ? (_vm.rakingListToday[1].score ? _vm.rakingListToday[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -10463,19 +10503,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].avatar : false
+      'left_show': _vm.rakingListToday.length > 0 ? _vm.rakingListToday[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].avatar ? _vm.rakingListToday.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.length > 0 ? (_vm.rakingListToday[0].avatar ? _vm.rakingListToday[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].name : false
+      'left_show': _vm.rakingListToday.length > 0 ? _vm.rakingListToday[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].name ? _vm.rakingListToday.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.length > 0 ? (_vm.rakingListToday[0].name ? _vm.rakingListToday[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10483,9 +10523,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].score || _vm.rakingListToday.rankingList[0].score == 0 : false
+      'left_show': _vm.rakingListToday.length > 0 ? _vm.rakingListToday[0].score || _vm.rakingListToday[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].score ? _vm.rakingListToday.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.length > 0 ? (_vm.rakingListToday[0].score ? _vm.rakingListToday[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -10499,19 +10539,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].avatar : false
+      'left_show': _vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].avatar ? _vm.rakingListToday[2].avatar : '/static/images/default_img.png') : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].avatar ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].avatar ? _vm.rakingListToday[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].name : false
+      'left_show': _vm.rakingListToday.length > 2 ? _vm.rakingListToday[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].name ? _vm.rakingListToday.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].name ? _vm.rakingListToday[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10519,9 +10559,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score || _vm.rakingListToday.rankingList[2].score == 0 : false
+      'left_show': _vm.rakingListToday.length > 2 ? _vm.rakingListToday[2].score || _vm.rakingListToday[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].score ? _vm.rakingListToday.rankingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), (_vm.top3None == false) ? _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].score ? _vm.rakingListToday[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), (_vm.top3NoneToday == false) ? _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=today&token=' + _vm.tokens
@@ -10530,8 +10570,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.top3None),
-      expression: "top3None"
+      value: (_vm.top3NoneToday),
+      expression: "top3NoneToday"
     }],
     staticClass: "default_page"
   }, [_c('img', {
@@ -10544,9 +10584,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('p', [_c('span', [_vm._v("我的排名")]), _c('span', [_c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
+      'left_show': _vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].position : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : '-') + "位")]), _c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].position : '-') + "位")]), _c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10554,21 +10594,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
+      'left_show': _vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].score : '').toLocaleString()))])])]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.rakingListToday.me && (_vm.rakingListToday.me[0].position > 1)),
-      expression: "rakingListToday.me && (rakingListToday.me[0].position > 1)"
+      value: (_vm.rakingListTodayme.length > 0 && (_vm.rakingListTodayme[0].position > 1)),
+      expression: "rakingListTodayme.length>0 && (rakingListTodayme[0].position > 1)"
     }]
   }, [_vm._v("（与前一位爱豆相差"), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.me ? _vm.rakingListToday.me[0].position : false
+      'left_show': _vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.me ? _vm.rakingListToday.me[0].gapToNext : '').toLocaleString()))]), _vm._v("人气）")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListTodayme.length > 0 ? _vm.rakingListTodayme[0].gapToNext : '').toLocaleString()))]), _vm._v("人气）")])]), _vm._v(" "), _c('div', {
     staticClass: "help"
   }, [_c('h4', [_vm._v("Groupy攻略")]), _vm._v(" "), _c('div', {
     staticClass: "rule_content"
@@ -10782,19 +10822,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : false
+      'left_show': _vm.rakingList.length > 1 ? _vm.rakingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 1 ? (_vm.rakingList[1].avatar ? _vm.rakingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : false
+      'left_show': _vm.rakingList.length > 1 ? _vm.rakingList[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].name ? _vm.rakingList.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 1 ? (_vm.rakingList[1].name ? _vm.rakingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10802,9 +10842,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].score || _vm.rakingList.rankingList[1].score == 0 : false
+      'left_show': _vm.rakingList.length > 1 ? _vm.rakingList[1].score || _vm.rakingList[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].score ? _vm.rakingList.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.length > 1 ? (_vm.rakingList[1].score ? _vm.rakingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -10820,19 +10860,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].avatar : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 0 ? (_vm.rakingList[0].avatar ? _vm.rakingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].name ? _vm.rakingList.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 0 ? (_vm.rakingList[0].name ? _vm.rakingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10840,9 +10880,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].score || _vm.rakingList.rankingList[0].score == 0 : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList[0].score || _vm.rakingList[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].score ? _vm.rakingList.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.length > 0 ? (_vm.rakingList[0].score ? _vm.rakingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -10856,19 +10896,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].avatar : false
+      'left_show': _vm.rakingList.length > 2 ? _vm.rakingList[2].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 2 ? (_vm.rakingList[2].avatar ? _vm.rakingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : false
+      'left_show': _vm.rakingList.length > 2 ? _vm.rakingList[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].name ? _vm.rakingList.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 2 ? (_vm.rakingList[2].name ? _vm.rakingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10876,9 +10916,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score || _vm.rakingList.rankingList[2].score == 0 : false
+      'left_show': _vm.rakingList.length > 2 ? _vm.rakingList[2].score || _vm.rakingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].score ? _vm.rakingList.rankingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), (_vm.top3None == false) ? _c('router-link', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.length > 2 ? (_vm.rakingList[2].score ? _vm.rakingList[2].score : '0') : '0').toLocaleString()))])])])]) : _vm._e(), _vm._v(" "), (_vm.top3None == false) ? _c('router-link', {
     staticClass: "all_ranking",
     attrs: {
       "to": '/idol/allRanking?type=all&token=' + _vm.tokens
@@ -10901,9 +10941,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('p', [_c('span', [_vm._v("我的排名")]), _c('span', [_c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
+      'left_show': _vm.rakingListme.length > 0 ? _vm.rakingListme[0].position : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.me ? _vm.rakingList.me[0].position : '-') + "位")]), _c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListme.length > 0 ? _vm.rakingListme[0].position : '-') + "位")]), _c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -10911,21 +10951,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
+      'left_show': _vm.rakingListme.length > 0 ? _vm.rakingListme[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.me ? _vm.rakingList.me[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListme.length > 0 ? _vm.rakingListme[0].score : '0').toLocaleString()))])])]), _vm._v(" "), _c('p', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.rakingList.me && (_vm.rakingList.me[0].position > 1)),
-      expression: "rakingList.me && (rakingList.me[0].position > 1)"
+      value: (_vm.rakingListme.length > 0 && (_vm.rakingListme[0].position > 1)),
+      expression: "rakingListme.length>0 && (rakingListme[0].position > 1)"
     }]
   }, [_vm._v("（与前一位爱豆相差"), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.me ? _vm.rakingList.me[0].position : false
+      'left_show': _vm.rakingListme.length > 0 ? _vm.rakingListme[0].position : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.me ? _vm.rakingList.me[0].gapToNext : '').toLocaleString()))]), _vm._v("人气）")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListme.length > 0 ? _vm.rakingListme[0].gapToNext : '').toLocaleString()))]), _vm._v("人气）")])]), _vm._v(" "), _c('div', {
     staticClass: "help"
   }, [_c('h4', [_vm._v("Groupy攻略")]), _vm._v(" "), _c('div', {
     staticClass: "rule_content"
@@ -13558,19 +13598,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].avatar : false
+      'left_show': _vm.rakingListToday.length > 1 ? _vm.rakingListToday[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].avatar ? _vm.rakingListToday.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.length > 1 ? (_vm.rakingListToday[1].avatar ? _vm.rakingListToday[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[1].name : false
+      'left_show': _vm.rakingListToday.length > 1 ? _vm.rakingListToday[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].name ? _vm.rakingListToday.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.length > 1 ? (_vm.rakingListToday[1].name ? _vm.rakingListToday[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -13578,9 +13618,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].score || _vm.rakingListToday.rankingList[1].score == 0) : false
+      'left_show': _vm.rakingListToday.length > 1 ? _vm.rakingListToday[1].score || _vm.rakingListToday[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[1].score ? _vm.rakingListToday.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.length > 1 ? (_vm.rakingListToday[1].score ? _vm.rakingListToday[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -13596,19 +13636,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].avatar : false
+      'left_show': _vm.rakingListToday.length > 0 ? _vm.rakingListToday[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].avatar ? _vm.rakingListToday.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.length > 0 ? (_vm.rakingListToday[0].avatar ? _vm.rakingListToday[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[0].name : false
+      'left_show': _vm.rakingListToday.length > 0 ? _vm.rakingListToday[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].name ? _vm.rakingListToday.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.length > 0 ? (_vm.rakingListToday[0].name ? _vm.rakingListToday[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -13616,9 +13656,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].score || _vm.rakingListToday.rankingList[0].score == 0) : false
+      'left_show': _vm.rakingListToday.length > 0 ? _vm.rakingListToday[0].score || _vm.rakingListToday[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[0].score ? _vm.rakingListToday.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.length > 0 ? (_vm.rakingListToday[0].score ? _vm.rakingListToday[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -13632,19 +13672,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].avatar : false
+      'left_show': _vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].avatar ? _vm.rakingListToday[2].avatar : '/static/images/default_img.png') : false
     },
     attrs: {
-      "src": _vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].avatar ? _vm.rakingListToday.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].avatar ? _vm.rakingListToday[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].name : false
+      'left_show': _vm.rakingListToday.length > 2 ? _vm.rakingListToday[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].name ? _vm.rakingListToday.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].name ? _vm.rakingListToday[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -13652,11 +13692,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingListToday.rankingList ? _vm.rakingListToday.rankingList[2].score || _vm.rakingListToday.rankingList[2].score == 0 : false
+      'left_show': _vm.rakingListToday.length > 2 ? _vm.rakingListToday[2].score || _vm.rakingListToday[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.rankingList ? (_vm.rakingListToday.rankingList[2].score ? _vm.rakingListToday.rankingList[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('ul', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingListToday.length > 2 ? (_vm.rakingListToday[2].score ? _vm.rakingListToday[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('ul', {
     staticClass: "comment_list"
-  }, _vm._l((_vm.rakingListToday.rankingList), function(idol, key) {
+  }, _vm._l((_vm.rakingListToday), function(idol, key) {
     return (key > 2) ? _c('li', [_c('span', [_vm._v(_vm._s(idol.position ? idol.position : '0'))]), _vm._v(" "), _c('img', {
       staticClass: "avatar",
       attrs: {
@@ -13690,19 +13730,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : false
+      'left_show': _vm.rakingList.length > 1 ? _vm.rakingList[1].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].avatar ? _vm.rakingList.rankingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 1 ? (_vm.rakingList[1].avatar ? _vm.rakingList[1].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].name : false
+      'left_show': _vm.rakingList.length > 1 ? _vm.rakingList[1].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].name ? _vm.rakingList.rankingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 1 ? (_vm.rakingList[1].name ? _vm.rakingList[1].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -13710,9 +13750,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].score || _vm.rakingList.rankingList[1].score == 0) : false
+      'left_show': _vm.rakingList.length > 1 ? _vm.rakingList[1].score || _vm.rakingList[1].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[1].score ? _vm.rakingList.rankingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.length > 1 ? (_vm.rakingList[1].score ? _vm.rakingList[1].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "font-size": "28px",
@@ -13728,19 +13768,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList[0].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].avatar ? _vm.rakingList.rankingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 0 ? (_vm.rakingList[0].avatar ? _vm.rakingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[0].name : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList[0].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].name ? _vm.rakingList.rankingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 0 ? (_vm.rakingList[0].name ? _vm.rakingList[0].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -13748,9 +13788,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].score || _vm.rakingList.rankingList[0].name == 0) : false
+      'left_show': _vm.rakingList.length > 0 ? _vm.rakingList[0].score || _vm.rakingList[0].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[0].score ? _vm.rakingList.rankingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.length > 0 ? (_vm.rakingList[0].score ? _vm.rakingList[0].score : '0') : '0').toLocaleString()))])])]), _vm._v(" "), _c('li', [_c('p', {
     staticClass: "idol_num",
     staticStyle: {
       "color": "#FA8505"
@@ -13764,19 +13804,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('img', {
     staticClass: "idol_img con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[1].avatar : false
+      'left_show': _vm.rakingList.length > 2 ? _vm.rakingList[2].avatar : false
     },
     attrs: {
-      "src": _vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].avatar ? _vm.rakingList.rankingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
+      "src": _vm.rakingList.length > 2 ? (_vm.rakingList[2].avatar ? _vm.rakingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
     }
   })]), _vm._v(" "), _c('p', {
     staticClass: "idol_name con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].name : false
+      'left_show': _vm.rakingList.length > 2 ? _vm.rakingList[2].name : false
     }
-  }, [_vm._v(_vm._s(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].name ? _vm.rakingList.rankingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
+  }, [_vm._v(_vm._s(_vm.rakingList.length > 2 ? (_vm.rakingList[2].name ? _vm.rakingList[2].name : '...') : '...'))]), _vm._v(" "), _c('span', [_c('img', {
     attrs: {
       "src": __webpack_require__(1),
       "alt": ""
@@ -13784,11 +13824,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('i', {
     staticClass: "con_left",
     class: {
-      'left_show': _vm.rakingList.rankingList ? _vm.rakingList.rankingList[2].score || _vm.rakingList.rankingList[2].score == 0 : false
+      'left_show': _vm.rakingList.length > 2 ? _vm.rakingList[2].score || _vm.rakingList[2].score == 0 : false
     }
-  }, [_vm._v(_vm._s(Number(_vm.rakingList.rankingList ? (_vm.rakingList.rankingList[2].score ? _vm.rakingList.rankingList[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('ul', {
+  }, [_vm._v(_vm._s(Number(_vm.rakingList.length > 2 ? (_vm.rakingList[2].score ? _vm.rakingList[2].score : '0') : '0').toLocaleString()))])])])]), _vm._v(" "), _c('ul', {
     staticClass: "comment_list"
-  }, _vm._l((_vm.rakingList.rankingList), function(idol, key) {
+  }, _vm._l((_vm.rakingList), function(idol, key) {
     return (key > 2) ? _c('li', [_c('span', [_vm._v(_vm._s(idol.position))]), _vm._v(" "), _c('img', {
       staticClass: "avatar",
       attrs: {
@@ -17451,4 +17491,4 @@ module.exports = {
 
 /***/ })
 ],[155]);
-//# sourceMappingURL=app.078d69c575c7d5a8accb.js.map
+//# sourceMappingURL=app.300eb192b89152838a43.js.map
