@@ -2,8 +2,8 @@
     <div class="main">
         <div class="header">
             <div class="detailPages">
-                <a class="tabs active" @click="changePages(0)">G币贡献</a>
-                <a class="tabs" @click="changePages(1)">人气贡献</a>
+                <a class="tabs active" @click="changePages(0)">{{fans_text.Gcoin}}</a>
+                <a class="tabs" @click="changePages(1)">{{fans_text.like}}</a>
             </div>
         </div>
          <div class="content">
@@ -12,9 +12,10 @@
                 <swiper-slide id="swiper1">
                     <scroller ref="my_scroller" class="my-scroller"
                           :on-refresh="refresh"
-                          :on-infinite="infinite">
+                          :on-infinite="infinite"
+                          :noDataText="rakingList.length == 0 ? '':'全て表示されました'">
                          <ul class="comment_list" v-if="default1==false">
-                            <h3 class="ranking_type"  :class="{'left_hide':!meObj.position}">我的排名</h3>
+                            <h3 class="ranking_type"  :class="{'left_hide':!meObj.position}">{{fans_text.me}}</h3>
                             <li class="con_left" :class="{'left_show':meObj.position}" v-if="meObj.position">
                                 <span v-if="!meObj.position">0</span>
                                 <span v-if="meObj.position==1"><img src="../../images/icon_metal_1.png" alt=""></span>
@@ -23,12 +24,17 @@
                                 <span v-if="meObj.position>3">{{meObj.position?meObj.position:'0'}}</span>
                                 <img :src="meObj.fans?meObj.fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{meObj.fans?(meObj.fans.nickname?meObj.fans.nickname:'...'):'...'}}</em><img :src="meObj.fans?('/static/images/icon_level_'+ (meObj.fans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
+                                    <span>
+                                        <em>{{meObj.fans?(meObj.fans.nickname?meObj.fans.nickname:'...'):'...'}}</em>
+                                        <!-- <img :src="meObj.fans?('/static/images/icon_level_'+ (meObj.fans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{meObj.fans?(meObj.fans.levelPlatform?meObj.fans.levelPlatform:0):0}}</span>
+                                        <img class="fans_medal" :src="'/static/images/icon_medal_'+(meObj.fans.medal)+'.png'" v-if="meObj.fans.medal&&meObj.fans.medal>0" alt="">
+                                    </span>
                                     <span><img src="../../images/timeline_icon_coins.png" alt="">{{meObj.expendGprice?Number(meObj.expendGprice).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
-                            <h3 class="ranking_type">总排行</h3>
+                            <h3 class="ranking_type">{{fans_text.all}}</h3>
                             <div class="con_left" :class="{'left_hide':rakingList.length>0}">
                                 <li>
                                     <span><img src="../../images/icon_metal_1.png" alt=""></span>
@@ -85,7 +91,9 @@
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList.length>0?rakingList[0].fans.nickname:'...'}}</em>
-                                        <img :src="rakingList.length>0?('/static/images/icon_level_'+ (rakingList[0].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt="">
+                                        <!-- <img :src="rakingList.length>0?('/static/images/icon_level_'+ (rakingList[0].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{rakingList.length>0?(rakingList[0].fans.levelPlatform?rakingList[0].fans.levelPlatform:0):0}}</span>
+                                        <img class="fans_medal" :src="'/static/images/icon_medal_'+(rakingList[0].fans.medal)+'.png'" v-if="rakingList[0].fans.medal&&rakingList[0].fans.medal>0" alt="">
                                     </span>
                                     <span><img src="../../images/timeline_icon_coins.png" alt="">{{rakingList.length>0?Number(rakingList[0].expendGprice).toLocaleString(): 0}}</span>
                                 </div>
@@ -95,7 +103,12 @@
                                 <span><img src="../../images/icon_metal_2.png" alt=""></span>
                                 <img :src="rakingList.length>1?rakingList[1].fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{rakingList.length>1?rakingList[1].fans.nickname:'...'}}</em><img :src="rakingList.length>1?('/static/images/icon_level_'+ (rakingList[1].fans.levelPlatform+1) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
+                                    <span>
+                                        <em>{{rakingList.length>1?rakingList[1].fans.nickname:'...'}}</em>
+                                        <!-- <img :src="rakingList.length>1?('/static/images/icon_level_'+ (rakingList[1].fans.levelPlatform+1) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{rakingList.length>1?(rakingList[1].fans.levelPlatform?rakingList[1].fans.levelPlatform:0):0}}</span>
+                                        <img class="fans_medal" :src="'/static/images/icon_medal_'+(rakingList[1].fans.medal)+'.png'" v-if="rakingList[1].fans.medal&&rakingList[1].fans.medal>0" alt="">
+                                    </span>
                                     <span><img src="../../images/timeline_icon_coins.png" alt="">{{rakingList.length>1?Number(rakingList[1].expendGprice).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
@@ -104,7 +117,12 @@
                                 <span><img src="../../images/icon_metal_3.png" alt=""></span>
                                 <img :src="rakingList.length>2?rakingList[2].fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{rakingList.length>2?rakingList[2].fans.nickname:'...'}}</em><img :src="rakingList.length>2?('/static/images/icon_level_'+ (rakingList[2].fans.levelPlatform+2) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
+                                    <span>
+                                        <em>{{rakingList.length>2?rakingList[2].fans.nickname:'...'}}</em>
+                                        <!-- <img :src="rakingList.length>2?('/static/images/icon_level_'+ (rakingList[2].fans.levelPlatform+2) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{rakingList.length>2?(rakingList[2].fans.levelPlatform?rakingList[2].fans.levelPlatform:0):0}}</span>
+                                        <img class="fans_medal" :src="'/static/images/icon_medal_'+(rakingList[2].fans.medal)+'.png'" v-if="rakingList[2].fans.medal&&rakingList[2].fans.medal>0" alt="">
+                                    </span>
                                     <span><img src="../../images/timeline_icon_coins.png" alt="">{{rakingList.length>2?Number(rakingList[2].expendGprice).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
@@ -113,7 +131,12 @@
                                 <span>{{key+1}}</span>
                                 <img :src="idol.fans?idol.fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{idol.fans?idol.fans.nickname:'...'}}</em><img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform+1) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
+                                    <span>
+                                        <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
+                                        <!-- <img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform+1) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{idol.fans?(ridol.fans.levelPlatform?ridol.fans.levelPlatform:0):0}}</span>
+                                        <img class="fans_medal" :src="'/static/images/icon_medal_'+(ridol.fans.medal)+'.png'" v-if="ridol.fans.medal&&ridol.fans.medal>0" alt="">
+                                    </span>
                                     <span><img src="../../images/timeline_icon_coins.png" alt="">{{idol.expendGprice?Number(idol.expendGprice).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
@@ -121,16 +144,17 @@
                         </ul>
                         <div class="default_page default_page3"  v-if="default1">
                             <img src="../../images/default_no coin.png" alt="">
-                            <p>还没有收到粉丝的G币<br>分享视频能让更多粉丝关注</p>
+                            <p v-html="fans_text.noneGcoin"></p>
                         </div>
                     </scroller>
                 </swiper-slide>
                 <swiper-slide id="swiper2">
                     <scroller ref="my_scroller" class="my-scroller"
                           :on-refresh="refresh2"
-                          :on-infinite="infinite2">
+                          :on-infinite="infinite2"
+                          :noDataText="rankingHeat.length == 0 ? '':'全て表示されました'">
                         <ul class="comment_list" v-if="default2==false">
-                            <h3 class="ranking_type" v-if="meHeatObj.position">我的排名</h3>
+                            <h3 class="ranking_type" v-if="meHeatObj.position">{{fans_text.me}}</h3>
                             <li class="con_left" :class="{'left_show':meHeatObj.position}" v-if="meHeatObj.position">
                                 <span v-if="!meHeatObj.position">0</span>
                                 <span v-if="meHeatObj.position==1"><img src="../../images/icon_metal_1.png" alt=""></span>
@@ -144,7 +168,7 @@
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
-                            <h3 class="ranking_type">总排行</h3>
+                            <h3 class="ranking_type">{{fans_text.all}}</h3>
                             <div class="con_left" :class="{'left_hide':rankingHeat.length>0}">
                                 <li>
                                     <span><img src="../../images/icon_metal_1.png" alt=""></span>
@@ -175,7 +199,12 @@
                                 <span><img src="../../images/icon_metal_1.png" alt=""></span>
                                 <img :src="rankingHeat.length>0?(rankingHeat[0].fans.avatar?rankingHeat[0].fans.avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{rankingHeat.length>0?(rankingHeat[0].fans.nickname?rankingHeat[0].fans.nickname:'...'):'...'}}</em><img :src="rankingHeat.length>0?('/static/images/icon_level_'+ (rankingHeat[0].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
+                                    <span>
+                                        <em>{{rankingHeat.length>0?(rankingHeat[0].fans.nickname?rankingHeat[0].fans.nickname:'...'):'...'}}</em>
+                                        <!-- <img :src="rankingHeat.length>0?('/static/images/icon_level_'+ (rankingHeat[0].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{rankingHeat.length>0?(rankingHeat[0].fans.levelPlatform?rankingHeat[0].fans.levelPlatform:0):0}}</span>
+                                        <img class="fans_medal" :src="'/static/images/icon_medal_'+(rankingHeat[0].fans.medal)+'.png'" v-if="rankingHeat[0].fans.medal&&rankingHeat[0].fans.medal>0" alt="">
+                                    </span>
                                     <span><img src="../../images/timeline_icon_likes.png" alt="">{{rankingHeat.length>0?Number(rankingHeat[0].totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
@@ -184,7 +213,12 @@
                                 <span><img src="../../images/icon_metal_2.png" alt=""></span>
                                 <img :src="rankingHeat.length>1?rankingHeat[1].fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{rankingHeat.length>1?rankingHeat[1].fans.nickname:'...'}}</em><img :src="rankingHeat.length>1?('/static/images/icon_level_'+ (rankingHeat[1].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
+                                    <span>
+                                        <em>{{rankingHeat.length>1?rankingHeat[1].fans.nickname:'...'}}</em>
+                                        <!-- <img :src="rankingHeat.length>1?('/static/images/icon_level_'+ (rankingHeat[1].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{rankingHeat.length>1?(rankingHeat[1].fans.levelPlatform?rankingHeat[1].fans.levelPlatform:0):0}}</span>
+                                        <img class="fans_medal" :src="'/static/images/icon_medal_'+(rankingHeat[1].fans.medal)+'.png'" v-if="rankingHeat[1].fans.medal&&rankingHeat[1].fans.medal>0" alt="">
+                                    </span>
                                     <span><img src="../../images/timeline_icon_likes.png" alt="">{{rankingHeat.length>1?Number(rankingHeat[1].totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
@@ -193,7 +227,12 @@
                                 <span><img src="../../images/icon_metal_3.png" alt=""></span>
                                 <img :src="rankingHeat.length>2?rankingHeat[2].fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{rankingHeat.length>2?rankingHeat[2].fans.nickname:'...'}}</em><img :src="rankingHeat.length>2?('/static/images/icon_level_'+ (rankingHeat[2].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
+                                    <span>
+                                        <em>{{rankingHeat.length>2?rankingHeat[2].fans.nickname:'...'}}</em>
+                                        <!-- <img :src="rankingHeat.length>2?('/static/images/icon_level_'+ (rankingHeat[2].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{rankingHeat.length>2?(rankingHeat[2].fans.levelPlatform?rankingHeat[2].fans.levelPlatform:0):0}}</span>
+                                        <img class="fans_medal" :src="'/static/images/icon_medal_'+(rankingHeat[2].fans.medal)+'.png'" v-if="rankingHeat[2].fans.medal&&rankingHeat[2].fans.medal>0" alt="">
+                                    </span>
                                     <span><img src="../../images/timeline_icon_likes.png" alt="">{{rankingHeat.length>2?Number(rankingHeat[2].totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
@@ -202,7 +241,12 @@
                                 <span>{{key+1}}</span>
                                 <img :src="idol.fans?idol.fans.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{idol.fans?idol.fans.nickname:'...'}}</em><img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""></span>
+                                    <span>
+                                        <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
+                                        <!-- <img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{idol.fans?(idol.fans.levelPlatform?idol.fans.levelPlatform:0):0}}</span>
+                                        <img class="fans_medal" :src="'/static/images/icon_medal_'+(idol.fans.medal)+'.png'" v-if="idol.fans.medal&&idol.fans.medal>0" alt="">
+                                    </span>
                                     <span><img src="../../images/timeline_icon_likes.png" alt="">{{idol.totalNums?Number(idol.totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
@@ -210,7 +254,7 @@
                         </ul>
                         <div class="default_page default_page3"  v-if="default2">
                             <img src="../../images/default_no like.png" alt="">
-                            <p>还没有收到粉丝的点赞人气<br>分享视频能让更多粉丝关注</p>
+                            <p v-html="fans_text.noneLike"></p>
                         </div>
                     </scroller>
                 </swiper-slide>
@@ -254,7 +298,15 @@
                 len: 20,
                 len2: 20,
                 default1: false,
-                default2: false
+                default2: false,
+                fans_text: {
+                    Gcoin: 'コイン',
+                    like: 'Like',
+                    me: '自分の順位',
+                    all: '総合ランキング',
+                    noneGcoin: 'まだコインはないようです',
+                    noneLike: 'まだLikeはないようです',
+                },
             }
         },
         methods: {
@@ -421,6 +473,27 @@
         },
         created() {
             var self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 self.fans_text= {
+                    Gcoin: 'G币贡献',
+                    like: '人气贡献',
+                    me: '我的排名',
+                    all: '总排名',
+                    noneGcoin: '还没有收到粉丝的G币',
+                    noneLike: '还没有收到粉丝的点赞人气',
+
+                }
+              } else {
+                self.fans_text= {
+                    Gcoin: 'コイン',
+                    like: 'Like',
+                    me: '自分の順位',
+                    all: '総合ランキング',
+                    noneGcoin: 'まだコインはないようです',
+                    noneLike: 'まだLikeはないようです',
+                }
+              }
             self.getRanking();
             self.getRankingHeat();
         }
@@ -476,7 +549,7 @@
                     float: left;
                 }
                 .level {
-                    margin-top: 4px;
+                    margin-top: 2px;
                     margin-left: 5px;
                     float: left;
                 }                    

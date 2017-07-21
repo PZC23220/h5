@@ -17,6 +17,7 @@ body {
     position: absolute;
     top: 0; bottom: 0;
     left: 0; right: 0;
+    font-family: 'SimHei','Hiragino Kaku Gothic Pro W3','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
 }
 .main {
     // position: relative;
@@ -212,7 +213,7 @@ img.icon {
                 width: 13.3px;
                 margin-right: 4.35px;
             }
-        } 
+        }
     }
 }
 .fans_detail {
@@ -251,10 +252,23 @@ img.icon {
  }
 .level {
     float: left;
-    width: 20.5px;
-    height: 11px;
-    margin-top: 9.5px;
-    margin-right: 3px;
+    background: #FFA600;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 10px;
+    height: 15px;
+    line-height: 15px !important;
+    color: #fff;
+    -webkit-transform: scale(0.65);
+    padding: 1px 3px;
+    margin-top: 6.5px;
+    font-weight: bold;
+    text-align: center;
+}
+.fans_medal {
+    float: left;
+    width: 15px;
+    margin-top: 6.5px;
 }
 img.avatar {
     width: 30px;
@@ -291,10 +305,11 @@ img.avatar {
         }
         span {
             float: left;
-            margin-right: 10px;
+            margin-right: 3px;
             min-width: 25px;
             &:first-child {
                 text-align: center;
+                margin-right: 10px;
                 img {
                     width: 25px;
                     vertical-align: middle;
@@ -367,7 +382,7 @@ img.avatar {
             box-sizing: border-box;
             float: left;
             width: 30%;
-            // height: calc((100vw - 93px)/3);
+            max-height: calc(30% * 3/4) !important;
             overflow: hidden;
             max-height: 132px;
             border-radius: 4px;
@@ -388,7 +403,7 @@ img.avatar {
         }
         .oneImg {
             width: 100%;
-            max-height: calc((100vw - 93px)*3/4);
+            max-height: calc((100vw - 93px)*4/3) !important;
             // max-height: 437px * 3/4;
             .autoWidth {
                 height: calc((100vw - 93px)*3/4);

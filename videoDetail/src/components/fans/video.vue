@@ -2,12 +2,13 @@
     <div class="main">
         <div class="header">
             <img src="../../images/close.png" alt="" @click="close()">
-            <span>评论({{commentList.length}})</span>
+            <span>{{video_text.pubMsg}}({{commentList.length}})</span>
         </div>
         <div class="content" ref="viewBox" :style="autoContent">
             <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
-              :on-infinite="infinite">
+              :on-infinite="infinite" 
+              :noDataText="'全て表示されました'">
                 <ul class="comment_list dynamic">
                     <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
                         <p>{{msg_text.load}}</p>
@@ -69,7 +70,7 @@
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>
                     </li>
-                    <div class="default_page default_page3" v-show="commentList.length == 0">
+                    <div class="default_page default_page3" v-show="commentList.length == 0 && loadingBig == false">
                         <img src="../../images/default_no comment.png" alt="">
                         <p v-html="video_text.noneComment"></p>
                     </div>
@@ -77,10 +78,10 @@
             </scroller>
         </div>
         <!-- <div class="publich_comment" @click="publishComment()"><img src="../../images/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
-        <div class="publich_comment" @click="autoFocus()"><img src="../../images/timeline_icon_edit.png" alt=""><span>发表评论</span></div>
+        <div class="publich_comment" @click="autoFocus()"><img src="../../images/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
         <div class="comment_view" v-show="win_show" @touchmove.prevent>
-            <div class="comment_desc"><img src="../../images/close.png" alt="" @click="win_show=false"><span @click="publish()">发表</span></div>
-            <textarea placeholder="请输入内容" autofocus v-model="comment_text"></textarea>
+            <div class="comment_desc"><img src="../../images/close.png" alt="" @click="win_show=false"><span @click="publish()">{{video_text.load}}</span></div>
+            <textarea :placeholder="video_text.pla" autofocus v-model="comment_text"></textarea>
             <!-- <div class="publish" @click="publish()">发表</div> -->
         </div>
     </div>
@@ -111,17 +112,13 @@
                 autoHarder: 'top:0',
                 autoContent: 'top:66px;height: calc(100vh -114px);',
                 video_text: {
-                    Gcoin: 'コイン',
-                    like: 'Like',
-                    comment: 'コメント',
-                    income: '獲得コイン数',
-                    gift: 'ギフトリスト',
-                    fans: '貢献ランキング',
-                    noneGcoin: 'まだコインはないようです<br>動画を投稿・シェアしてギフトを貰っちゃおう',
-                    noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
-                    noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
+                    publish: 'コメントする',
+                    pubMsg: 'コメント',
+                    noneComment: 'まだ書き込みはないようです',
+                    load: '送信',
+                    pla: 'アイドルにあなたの大切な想いを届けよう...'
                 },
-                win_show: false,
+                win_show: true,
                 can_publish: true
             }
         },
@@ -322,28 +319,19 @@
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(_lan === 'zh-cn') {
                  self.video_text= {
-                    Gcoin: 'G币',
-                    like: '人气',
-                    comment: '评论',
-                    income: '本视频G币',
-                    gift: '礼物数量',
-                    fans: '粉丝排行',
-                    noneGcoin: '还没有收到粉丝的G币<br>分享视频能让更多粉丝关注',
-                    noneLike: '还没有收到粉丝的点赞人气<br>分享视频能让更多粉丝关注',
-                    noneComment: '还没有评论<br>快来和爱豆互动吧'
-
+                    publish: '添加评论',
+                    pubMsg: '评论',
+                    noneComment: '还没有留言',
+                    load: '发布',
+                    pla: '添加评论...'
                 }
               } else {
                 self.video_text= {
-                    Gcoin: 'コイン',
-                    like: 'Like',
-                    comment: 'コメント',
-                    income: '獲得コイン数',
-                    gift: 'ギフトリスト',
-                    fans: '貢献ランキング',
-                    noneGcoin: 'まだコインはないようです<br>動画を投稿・シェアしてギフトを貰っちゃおう',
-                    noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
-                    noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
+                    publish: 'コメントする',
+                    pubMsg: 'コメント',
+                    noneComment: 'まだ書き込みはないようです',
+                    load: '送信',
+                    pla: 'アイドルにあなたの大切な想いを届けよう...'
                 }
               }
             self.getComments();
@@ -471,7 +459,7 @@
             border-bottom: 1px solid #eee;
             img {
                 width: 22px;
-                padding: 10.5px 5px;
+                padding: 13.5px 5px 10.5px;
             }
             span {
                 font-size: 14px;
@@ -485,7 +473,7 @@
                 height: 22px;
                 line-height: 22px;
                 text-align: center;
-                margin-top: 5px;
+                margin-top: 8px;
             }
         }
         textarea {
@@ -493,7 +481,7 @@
             height: 220px;
             box-sizing: border-box;
             border: none;
-            padding: 0 12px;
+            padding: 5px 12px;
             font-size: 14px;
             line-height: 24px;
         }

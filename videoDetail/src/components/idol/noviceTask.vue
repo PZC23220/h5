@@ -61,7 +61,7 @@
                     </div>
                     <img src="../../images/icon_finish.png" v-show="task.complete>0">
                 </div>
-                <div class="reward"><i>{{task_test.reward}}</i><span><img src="../../images/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="accept(task.id,$event)">{{status(task.accepted)}}</span></div>
+                <div class="reward"><i>{{task_test.reward}}</i><span><img src="../../images/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="(task.complete>0 && task.accepted<1)?accept(task.id,$event):false">{{status(task.accepted)}}</span></div>
             </div>
          </div>
     </div>
@@ -84,22 +84,27 @@
             }
         },
         methods: {
-          getList(token) {
+          getList(_val,token) {
             let self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if(self.idx < 2) {
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
                 }else {
                     http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
                 }
-                http.get('/mission/list ').then(function(res){
+                http.get('/mission/list',{
+                    params: {
+                        language: _val
+                    }
+                }).then(function(res){
                     self.tasks = res.data;
                     console.log(self.tasks);
                 }).catch(function(){
                     self.idx++;
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getList(responseData.token);
+                            self.getList(_val,responseData.token);
                         })
                     })
                 });
@@ -154,7 +159,7 @@
           },
           status(val) {
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(val == '0') {
+            if(val == '1') {
                 if(_lan === 'zh-cn') {
                     return '已领取';
                 }else {
@@ -173,20 +178,23 @@
         },
         created() {
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            let _val;
             if(_lan === 'zh-cn') {
                  this.task_test= {
                     reward: '奖励',
                     receive: '领取',
                     current: '已完成'
                 }
+                _val = 'cn';
               } else {
                 this.task_test= {
                     reward: '報酬',
                     receive: '受け取る',
                     current: '達成度'
                 }
+                _val = 'jp';
               }
-            this.getList();
+            this.getList(_val);
         }
     }
 </script>
@@ -307,7 +315,8 @@
     .page_loading {
         transition: all 0.3s;
         opacity: 0.6;
-        height: auto;
+        height: 572px;
+        overflow: hidden;
         h5 {
             width: 50vw;
             background: #eee;

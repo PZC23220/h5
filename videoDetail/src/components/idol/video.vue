@@ -73,8 +73,10 @@
                                 <span class="level_color" v-if="key > 2">{{key+1}}</span>
                                 <img class="avatar" :src="fans.userFans?(fans.userFans.avatar?fans.userFans.avatar:'/static/images/default_img.png'): '/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                 <span>{{fans.userFans?fans.userFans.nickname: ''}}</span>
-                                <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt="">
-                                <!-- <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.medal) +'.png'): ''" class="level" alt=""> -->
+                                <!-- <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                <!-- <img :src="fans.userFans?('/static/images/icon_medal_'+ (fans.userFans.medal) +'.png'): ''" class="level" alt=""> -->
+                                <span class="level">Lv.{{fans.userFans?(fans.userFans.levelPlatform?fans.userFans.levelPlatform:0):0}}</span>
+                                <img class="fans_medal" :src="'/static/images/icon_medal_'+(fans.userFans.medal)+'.png'" v-if="fans.userFans.medal&&fans.userFans.medal>0" alt="">
                                 <i>
                                     <img src="../../images/timeline_icon_coins.png" class="likes" alt="">{{fans.expendGprice?Number(fans.expendGprice).toLocaleString(): 0}}
                                 </i>
@@ -97,7 +99,9 @@
                             <span class="level_color" v-if="key > 2">{{key+1}}</span>
                             <img class="avatar" :src="popularity.userFans?(popularity.userFans.avatar?popularity.userFans.avatar:'/static/images/default_img.png'):'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                             <span>{{popularity.userFans?(popularity.userFans.nickname?popularity.userFans.nickname:'...'):'...'}}</span>
-                            <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.levelPlatform)+'.png'):''" class="level" alt="">
+                            <!-- <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.levelPlatform)+'.png'):''" class="level" alt=""> -->
+                            <span class="level">Lv.{{popularity.userFans?(popularity.userFans.levelPlatform?popularity.userFans.levelPlatform:0):0}}</span>
+                            <img class="fans_medal" :src="'/static/images/icon_medal_'+(popularity.userFans.medal)+'.png'" v-if="popularity.userFans.medal&&popularity.userFans.medal>0" alt="">
                             <i>
                                 <img src="../../images/timeline_icon_likes.png" class="likes" alt="">{{popularity.giftCount?Number(popularity.giftCount).toLocaleString():'0'}}
                             </i>
@@ -113,7 +117,7 @@
                 <scroller ref="my_scroller" class="my-scroller"
                   :on-refresh="refresh"
                   :on-infinite="infinite"
-                  :noDataText="commentList.length == 0 ? '':'没有更多数据'">
+                  :noDataText="commentList.length == 0 ? '':'全て表示されました'">
                     <ul class="comment_list" style="background: #fff;">
                         <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
                             <p>読み込み中</p>
@@ -169,7 +173,9 @@
                             <div class="comment_info">
                                 <img class="avatar" :src="comment.avatar?comment.avatar:'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                 <span>{{comment.nickname}}</span>
-                                <img class="level" :src="'/static/images/icon_level_'+(comment.levelPlatform)+'.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" alt="">
+                                <!-- <img class="level" :src="'/static/images/icon_level_'+(comment.levelPlatform)+'.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" alt=""> -->
+                                <span class="level">Lv.{{comment.levelPlatform}}</span>
+                                <img class="fans_medal" :src="'/static/images/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                                 <i v-html="formatTime(comment.createTime)"></i>
                             </div>
                             <div class="comment_content" v-html="TransferString(comment.content)"></div>

@@ -2,82 +2,63 @@
     <div class="main">
         <div class="content">
             <img src="../../images/activity/banner.jpg" class="banner">
-            <h2><span style="left: 0;"></span>当前排名<span style="right: 0;"></span></h2>
+            <h2><span style="left: 0;"></span>{{activity.theme}}<span style="right: 0;"></span></h2>
             <ul class="ranking_list">
                 <li>
                     <div class="img_content">
                         <img src="../../images/icon_crown_1.png" class="crown">
-                        <img src="../../images/default_img.png" class="avatar">
+                        <img :src="ranking.length>0?(ranking[0].avatar?ranking[0].avatar:'../../images/default_img.png'):'../../images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" class="avatar">
                         <img src="../../images/activity/pic_ranking_1.png" class="ranking_pic">
                         <span class="idol_level">NO.1</span>
                     </div>
-                    <div class="name">idolName</div>
+                    <div class="name">{{ranking.length>0?(ranking[0].nickname?ranking[0].nickname:'...'):'...'}}</div>
                     <div class="idol_desc">
-                        <p><span><em>9</em></span><i>参赛视频</i></p>
-                        <p><span><img src="../../images/timeline_icon_coins.png"><em>6,490</em></span><i>获得G币</i></p>
-                        <p><span><img src="../../images/timeline_icon_likes.png"><em>25,496</em></span><i>获得Like</i></p>
+                        <p><span><em>{{Number(ranking.length>0?(ranking[0].videoCount?ranking[0].videoCount:0):0).toLocaleString()}}</em></span><i>{{activity.works}}</i></p>
+                        <p><span><img src="../../images/timeline_icon_coins.png"><em>{{Number(ranking.length>0?(ranking[0].gcoin?ranking[0].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
+                        <p><span><img src="../../images/timeline_icon_likes.png"><em>{{Number(ranking.length>0?(ranking[0].popularity?ranking[0].popularity:0):0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
                     </div>
-                    <div class="reard_moer">查看主页</div>
+                    <div class="reard_moer" v-if="isFans" @click="ranking.length>0?(ranking[0].idol_id?showIdolPage(ranking[0].idol_id):false):false">{{activity.idolPage}}</div>
                 </li>
                 <li>
                     <div class="idolranking_content">
                         <div class="img_content">
                             <img src="../../images/icon_crown_2.png" class="crown">
-                            <img src="../../images/default_img.png" class="avatar">
+                            <img :src="ranking.length>1?(ranking[1].avatar?ranking[1].avatar:'../../images/default_img.png'):'../../images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" class="avatar">
                             <img src="../../images/activity/pic_ranking_2.png" class="ranking_pic">
                             <span class="idol_level">NO.2</span>
                         </div>
                         <div class="idol_content">
-                            <div class="name">idolName</div>
+                            <div class="name">{{ranking.length>1?(ranking[1].nickname?ranking[1].nickname:'...'):'...'}}</div>
                             <div class="idol_desc">
-                                <p style="text-align: left;"><span style="margin-left: 18px;"><em>9</em></span><i style="margin-left: -5px;">参赛视频</i></p>
-                                <p><span><img src="../../images/timeline_icon_coins.png"><em>6,490</em></span><i>获得G币</i></p>
-                                <p><span><img src="../../images/timeline_icon_likes.png"><em>25,496</em></span><i>获得Like</i></p>
+                                <p style="flex: 1;"><span style="text-align: left;margin-left: 10px;"><em>{{Number(ranking.length>1?(ranking[1].videoCount?ranking[1].videoCount:0):0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
+                                <p><span><img src="../../images/timeline_icon_coins.png"><em>{{Number(ranking.length>1?(ranking[1].gcoin?ranking[1].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
+                                <p><span><img src="../../images/timeline_icon_likes.png"><em>{{Number(ranking.length>1?(ranking[1].popularity?ranking[1].popularity:0):0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
                             </div>
                         </div>
                     </div>
-                    <div class="reard_moer">查看主页</div>
+                    <div class="reard_moer" v-if="isFans" @click="ranking.length>1?(ranking[1].idol_id?showIdolPage(ranking[1].idol_id):false):false">{{activity.idolPage}}</div>
                 </li>
-                <li>
+                <li v-for="(idol,key) in ranking" v-if="key>1">
                     <div class="idolranking_content">
                         <div class="img_content">
                             <img src="../../images/icon_crown_3.png" class="crown">
-                            <img src="../../images/default_img.png" class="avatar">
+                            <img :src="idol.avatar?idol.avatar:'../../images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" class="avatar">
                             <img src="../../images/activity/pic_ranking_2.png" class="ranking_pic">
-                            <span class="idol_level">NO.3</span>
+                            <span class="idol_level">NO.{{key+1}}</span>
                         </div>
                         <div class="idol_content">
-                            <div class="name">idolName</div>
+                            <div class="name">{{idol.nickname?idol.nickname:'...'}}</div>
                             <div class="idol_desc">
-                                <p style="text-align: left;"><span style="margin-left: 18px;"><em>9</em></span><i style="margin-left: -5px;">参赛视频</i></p>
-                                <p><span><img src="../../images/timeline_icon_coins.png"><em>6,490</em></span><i>获得G币</i></p>
-                                <p><span><img src="../../images/timeline_icon_likes.png"><em>25,496</em></span><i>获得Like</i></p>
+                                <p style="flex: 1;"><span style="text-align: left;margin-left: 10px;"><em>{{Number(idol.videoCount?idol.videoCount:0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
+                                <p><span><img src="../../images/timeline_icon_coins.png"><em>{{Number(idol.gcoin?idol.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
+                                <p><span><img src="../../images/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
                             </div>
                         </div>
                     </div>
-                    <div class="reard_moer">查看主页</div>
-                </li>
-                <li>
-                    <div class="idolranking_content">
-                        <div class="img_content">
-                            <img src="../../images/icon_crown_3.png" class="crown">
-                            <img src="../../images/default_img.png" class="avatar">
-                            <img src="../../images/activity/pic_ranking_2.png" class="ranking_pic">
-                            <span class="idol_level">NO.4</span>
-                        </div>
-                        <div class="idol_content">
-                            <div class="name">idolName</div>
-                            <div class="idol_desc">
-                                <p style="text-align: left;"><span style="margin-left: 18px;"><em>9</em></span><i style="margin-left: -5px;">参赛视频</i></p>
-                                <p><span><img src="../../images/timeline_icon_coins.png"><em>6,490</em></span><i>获得G币</i></p>
-                                <p><span><img src="../../images/timeline_icon_likes.png"><em>25,496</em></span><i>获得Like</i></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="reard_moer">查看主页</div>
+                    <div class="reard_moer" v-if="isFans" @click="idol.idol_id?showIdolPage(idol.idol_id):false">{{activity.idolPage}}</div>
                 </li>
             </ul>
-            <div class="read_videos">查看参赛视频</div>    
+            <div class="read_videos">{{activity.videos}}</div>
         </div>
     </div>
 </template>
@@ -87,64 +68,38 @@
     export default {
         data() {
             return {
-                tasks: [],
+                ranking: [],
                 idx: 0,
-                idx2: 0
+                idx2: 0,
+                isFans: false,
+                activity: {
+                    theme: 'ランキング',
+                    works: '作品',
+                    Gcoin: 'コイン',
+                    like: 'Like',
+                    videos: '参加作品一覧',
+                    idolPage: 'プロフィールへ'
+                }
             }
         },
         methods: {
-          getList(token) {
+          getList() {
             let self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if(self.idx < 2) {
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-                }
-                http.get('/mission/list ').then(function(res){
-                    self.tasks = res.data;
-                    console.log(self.tasks);
-                }).catch(function(){
-                    self.idx++;
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getList(responseData.token);
-                        })
-                    })
-                });
-            }else {
-                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                     }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                     }
-                })
-            }
-          },
-          accept(val,e,token) {
-            let self = this;
-            if(self.idx2 < 2) {
-                console.log(e.target.innerHTML);
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+self.$route.query.token;
-                }
-                http.get('/mission/accept',{
+                http.get('/video/activityIdols',{
                     params: {
-                        id: val
+                        activityId:1000,
+                        rows: 10
                     }
                 }).then(function(res){
-                    e.target.innerHTML = '已领取';
-                    e.target.classList.remove('finish');
+                    self.ranking = res.data.ranking;
+                    self.me = res.data.self;
+                    self.loadingShow = true;
+                    console.log(self.ranking);
+                    console.log(self.me);
                 }).catch(function(){
-                    self.idx2++;
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getList(responseData.token);
-                        })
-                    })
+                    self.idx++;
                 });
             }else {
                  window.setupWebViewJavascriptBridge(function(bridge) {
@@ -156,18 +111,40 @@
                 })
             }
           },
-          status(val) {
-            if(val == '0') {
-                return '领取';
-            }else {
-                return '已领取';
-            }
+          showIdolPage(val) {
+            console.log(val)
+            window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.callHandler('showIdolPage', {'idolId': val})
+            })
           },
         },
         mounted() {
         },
         created() {
-            // this.getList();
+            if(this.$route.query.isFans == 1) {
+                this.isFans = true;
+            }
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 this.activity= {
+                    theme: '当前排名',
+                    works: '参赛视频',
+                    Gcoin: '获得G币',
+                    like: '获得Like',
+                    videos: '查看参赛视频',
+                    idolPage: '查看主页'
+                }
+              } else {
+                this.activity= {
+                    theme: 'ランキング',
+                    works: '作品',
+                    Gcoin: 'コイン',
+                    like: 'Like',
+                    videos: '参加作品一覧',
+                    idolPage: 'プロフィールへ'
+                }
+              }
+            this.getList();
         }
     }
 </script>
@@ -208,6 +185,7 @@
         padding: 12px 12px 0;
         li {
             overflow: hidden;
+            text-align: center;
             border-bottom: 1px solid #eee;
             padding: 10px 12px;
             background-color: #FFF5F7;
@@ -267,20 +245,24 @@
                 font-weight: 600;
                 text-align: left;
                 margin-top: 8px;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
             }
             .idol_content {
                 overflow: hidden;
-                width: 63vw;
+                width: calc(100% - 90px);
             }
             .idol_desc {
                 display: flex;
                 overflow: hidden;
                 margin-top: 8px;
                 p {
-                    flex: 1;
+                    flex: 1.5;
                     text-align: left;
                     >span {
                         display: block;
+                        text-align: center;
                         img {
                             width: 12px;
                             vertical-align: middle;
@@ -292,11 +274,16 @@
                             font-size: 14px;
                             font-weight: 600;
                             color: #333;
+                            max-width: calc(100% - 18px);
+                            overflow: hidden;
+                            text-overflow:ellipsis;
+                            white-space: nowrap;
                         }
                     }
                     i {
                         color: #999;
                         display: block;
+                        text-align: center;
                         font-size: 10px;
                         margin-left: 10px;
                         -webkit-transform: scale(0.8);
@@ -354,8 +341,7 @@
             text-decoration: underline;
             color: #666;
             font-size: 14px;
-            width: 60px;
-            margin: 0 auto;
+            display: inline-block;
             padding: 12px 0 0;
             float: none;
             color: #999;

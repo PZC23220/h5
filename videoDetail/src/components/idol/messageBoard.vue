@@ -3,7 +3,8 @@
         <div class="content" ref="viewBox" style="top: 0">
             <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
-              :on-infinite="infinite">
+              :on-infinite="infinite" 
+              :noDataText="noDataText">
                 <ul class="comment_list dynamic">
                     <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
                         <p>{{msg_text.load}}</p>
@@ -59,7 +60,9 @@
                         <div class="userinfo">
                             <img :src="comment.avatar?comment.avatar:'http://h5.groupy.vip/static/images/default_img.png'"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
                             <span>{{comment.nickname}}</span>
-                            <img :src="comment.level?'/static/images/icon_level_'+(comment.levelPlatform)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
+                            <!-- <img :src="comment.level?'/static/images/icon_level_'+(comment.levelPlatform)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
+                            <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
+                                <img class="fans_medal" :src="'/static/images/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                             <!-- <img :src="comment.medal?'/static/images/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
                             <i v-html="formatTime(comment.createTime)"></i>
                         </div>
@@ -113,7 +116,8 @@
                     load: '読み込み中',
                     loadAll: '全て表示されました'
 
-                }
+                },
+                noDataText: '全て表示されました'
             }
         },
         methods: {
@@ -184,7 +188,11 @@
                 }).catch(function(){
                     self.showLoading2 = false;
                 });
-                  done(true)
+                setTimeout(() => {
+                    done(true);
+                    console.log(document.querySelector('._v-content'));
+                    document.querySelector('._v-content').style.transform = 'translate3d(0px, 0px, 0px) scale(1) !important';
+                }, 500)
           },
           infinite (done) {
             var self = this;

@@ -32,7 +32,9 @@
                             </span>
                             <img class="avatar" :src="gFans.fans?(gFans.fans.avatar?gFans.fans.avatar:'http://h5.groupy.vip/static/images/default_img.png'):'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                             <span>{{gFans.fans?(gFans.fans.nickname?gFans.fans.nickname:'...'):'...'}}</span>
-                            <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt="">
+                            <!-- <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                            <span class="level">Lv.{{gFans.fans?(gFans.fans.levelPlatform?gFans.fans.levelPlatform:0):0}}</span>
+                            <img class="fans_medal" :src="'/static/images/icon_medal_'+(gFans.fans.medal)+'.png'" v-if="gFans.fans.medal&&gFans.fans.medal>0" alt="">
                             <!-- <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i>
                                 <img src="../../images/timeline_icon_coins.png" alt="">{{Number(gFans.expendGprice?gFans.expendGprice:'0').toLocaleString()}}
@@ -57,7 +59,9 @@
                             </span>
                             <img class="avatar" :src="popularity.fans?(popularity.fans.avatar?popularity.fans.avatar:'http://h5.groupy.vip/static/images/default_img.png'):'http://h5.groupy.vip/static/images/default_img.png'"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                             <span>{{popularity.fans?(popularity.fans.nickname?popularity.fans.nickname:'...'):'...'}}</span>
-                            <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform)+'.png':'/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt="">
+                            <!-- <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform)+'.png':'/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                            <span class="level">Lv.{{popularity.fans?(popularity.fans.levelPlatform?popularity.fans.levelPlatform:0):0}}</span>
+                            <img class="fans_medal" :src="'/static/images/icon_medal_'+(popularity.fans.medal)+'.png'" v-if="popularity.fans.medal&&popularity.fans.medal>0" alt="">
                             <!-- <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i>
                                 <img src="../../images/timeline_icon_likes.png" alt="">{{Number(popularity.totalNums?popularity.totalNums:'0').toLocaleString()}}
@@ -76,9 +80,11 @@
                         <left-slider :index="key" @deleteItem="deleteItem(fans.fansId)">
                             <img class="avatar" :src="fans.fans?(fans.fans.avatar?fans.fans.avatar:'http://h5.groupy.vip/static/images/default_img.png'):'http://h5.groupy.vip/static/images/default_img.png'"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                             <span>{{fans.fans?(fans.fans.nickname?fans.fans.nickname:'...'):'...'}}</span>
-                            <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt="">
+                            <!-- <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                            <span class="level">Lv.{{fans.fans?(fans.fans.levelPlatform?fans.fans.levelPlatform:0):0}}</span>
+                            <img class="fans_medal" :src="'/static/images/icon_medal_'+(fans.fans.medal)+'.png'" v-if="fans.fans.medal&&fans.fans.medal>0" alt="">
                             <!-- <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.medal)+'.png':''" class="level" alt=""> -->
-                            <i v-html="formatTime(fans.startdate)"></i>
+                            <i style="width: 20%;" v-html="formatTime(fans.startdate)"></i>
                         </left-slider>
                     </li>
                 </ul>
@@ -136,9 +142,9 @@
                     Gcoin: 'コイン',
                     like: 'Like',
                     time: '入会日',
-                    noneGcoin: 'まだコインはないようです',
-                    noneLike: 'まだLikeはないようです',
-                    noneComment: 'まだメンバーはないようです'
+                    noneGcoin: 'まだコインを獲得したことないです',
+                    noneLike: 'まだLikeしたファンはいないです',
+                    noneComment: 'まだ入会したファンはいないです'
                 }
             }
         },
@@ -311,9 +317,9 @@
                     Gcoin: 'コイン',
                     like: 'Like',
                     time: '入会日',
-                    noneGcoin: 'まだコインはないようです',
-                    noneLike: 'まだLikeはないようです',
-                    noneComment: 'まだメンバーはないようです'
+                    noneGcoin: 'まだコインを獲得したことないです',
+                    noneLike: 'まだLikeしたファンはいないです',
+                    noneComment: 'まだ入会したファンはいないです'
                 }
               }
             self.getGcoin();

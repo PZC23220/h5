@@ -4,9 +4,9 @@
             <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
               :on-infinite="infinite">
-                <div class="not_concerned" v-if="!rakingList.me"><img src="" alt=""></div>
+                <div class="not_concerned" v-if="!rakingList.me"><img src="../../images/banner.png" alt=""></div>
                 <div class="concerned" v-if="rakingList.me">
-                    <h3 class="title">我关注的爱豆</h3>
+                    <h3 class="title">{{idol_text.me}}</h3>
                     <div class="idol_detail" v-for="(idol,key) in rakingList.me">
                         <div class="idol_content">
                             <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
@@ -17,18 +17,18 @@
                                 </div>
                                 <div class="introduction">
                                     <p class="name">{{idol.name?idol.name:'...'}}</p>
-                                    <p class="signature">{{idol.introduce?idol.introduce:'我在Groupy等你哦！'}}</p>
+                                    <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
                                     <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{Number(idol.popularity).toLocaleString()}}</span><span><img src="../../images/icon_fans.png" alt="">{{Number(idol.fansNums).toLocaleString()}}</span></p>
                                 </div>
-                                <div class="support" @click="support(idol.idolId)">应援</div>
+                                <div class="support" @click="support(idol.idolId)">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="!idol.fansList">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="!idol.fansList">{{idol_text.no1}}</div></div>
                         <div class="border_bottom" v-if="key < rakingList.me.length-1"></div>
                     </div>
                 </div>
                 <div class="idol_all">
-                    <h3 class="title" v-if="rakingList.me">全部爱豆</h3>
+                    <h3 class="title" v-if="rakingList.me">{{idol_text.all}}</h3>
                     <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>0:false}">
                         <div class="idol_content">
                             <i class="_fir">1</i>
@@ -39,13 +39,13 @@
                                 </div>
                                 <div class="introduction">
                                     <p class="name">{{rakingList.rankingList?rakingList.rankingList[0].name:'...'}}</p>
-                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[0].introduce:'我在Groupy等你哦！'}}</p>
+                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[0].introduce:idol_text.none}}</p>
                                     <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[0].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[0].fansNums).toLocaleString():'0'}}</span></p>
                                 </div>
-                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[0].idolId:'')">应援</div>
+                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[0].idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[0].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[0].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[0].fansList || rakingList.rankingList[0].fansList.length < 1):true">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[0].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[0].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[0].fansList || rakingList.rankingList[0].fansList.length < 1):true">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
                     <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>1:false}">
@@ -58,13 +58,13 @@
                                 </div>
                                 <div class="introduction">
                                     <p class="name">{{rakingList.rankingList?rakingList.rankingList[1].name:'...'}}</p>
-                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[1].introduce:'我在Groupy等你哦！'}}</p>
+                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[1].introduce:idol_text.none}}</p>
                                     <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[1].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[1].fansNums).toLocaleString():'0'}}</span></p>
                                 </div>
-                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[1].idolId:'')">应援</div>
+                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[1].idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[1].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[1].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[1].fansList || rakingList.rankingList[1].fansList.length <1):true">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[1].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[1].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[1].fansList || rakingList.rankingList[1].fansList.length <1):true">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
                     <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>2:false}">
@@ -77,13 +77,13 @@
                                 </div>
                                 <div class="introduction">
                                     <p class="name">{{rakingList.rankingList?rakingList.rankingList[2].name:'...'}}</p>
-                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[2].introduce:'我在Groupy等你哦！'}}</p>
+                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[2].introduce:idol_text.none}}</p>
                                     <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[2].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[2].fansNums).toLocaleString():'0'}}</span></p>
                                 </div>
-                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[2].idolId:'')">应援</div>
+                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[2].idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[2].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[2].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[2].fansList || rakingList.rankingList[2].fansList.length <1):true">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[2].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[2].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[2].fansList || rakingList.rankingList[2].fansList.length <1):true">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
                     <div class="idol_detail con_left" :class="{'left_show': rakingList.rankingList?rakingList.rankingList.length>3:false}">
@@ -95,13 +95,13 @@
                                 </div>
                                 <div class="introduction">
                                     <p class="name">{{rakingList.rankingList?rakingList.rankingList[3].name:'...'}}</p>
-                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[3].introduce:'我在Groupy等你哦！'}}</p>
+                                    <p class="signature">{{rakingList.rankingList?rakingList.rankingList[3].introduce:idol_text.none}}</p>
                                     <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[3].popularity).toLocaleString():'0'}}</span><span><img src="../../images/icon_fans.png" alt="">{{rakingList.rankingList?Number(rakingList.rankingList[3].fansNums).toLocaleString():'0'}}</span></p>
                                 </div>
-                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[3].idolId:'')">应援</div>
+                                <div class="support" @click="support(rakingList.rankingList?rakingList.rankingList[3].idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[3].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[3].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[3].fansList || rakingList.rankingList[3].fansList.length < 1):true">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="rakingList.rankingList?rakingList.rankingList[3].fansList:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in rakingList.rankingList[3].fansList"></div><div class="no_fans" v-if="rakingList.rankingList?(!rakingList.rankingList[3].fansList || rakingList.rankingList[3].fansList.length < 1):true">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
                     <div class="idol_detail" v-for="(idol,key) in rakingList.rankingList" v-if="rakingList.rankingList?key > 3 && key < len: false">
@@ -113,13 +113,13 @@
                                 </div>
                                 <div class="introduction">
                                     <p class="name">{{idol.name?idol.name:'...'}}</p>
-                                    <p class="signature">{{idol.introduce?idol.introduce:'我在Groupy等你哦！'}}</p>
+                                    <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
                                     <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{idol.popularity?Number(idol.popularity).toLocaleString():'3'}}</span><span><img src="../../images/icon_fans.png" alt="">{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</span></p>
                                 </div>
-                                <div class="support" @click="support(idol.idolId?idol.idolId:'')">应援</div>
+                                <div class="support" @click="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
-                        <div class="fans_list">粉丝排行<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="(!idol.fansList || idol.fansList.length < 1)">赶紧来抢占第一位吧！</div></div>
+                        <div class="fans_list">{{idol_text.fans}}<div class="fans_imgList" v-if="idol.fansList?idol.fansList.length>0:false"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" v-for="img in idol.fansList"></div><div class="no_fans" v-if="(!idol.fansList || idol.fansList.length < 1)">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
                 </div>
@@ -138,6 +138,14 @@
                 rakingList: {},
                 loadingBig: true,
                 len:20,
+                idol_text: {
+                    me: 'お気に入り',
+                    all: '全体ランキング',
+                    fans: 'ファンランキング',
+                    support: '応援',
+                    no1: 'No.1になって目立とう！',
+                    none: 'Groupyで待ってまーす。'
+                },
             }
         },
         methods: {
@@ -221,9 +229,6 @@
           },
           support() {
             window.setupWebViewJavascriptBridge(function(bridge) {
-                bridge.callHandler('makeToast', '为你的爱豆应援成功！');
-            })
-            window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.callHandler('send_gift', {'context':'0','idol_id':1}, function responseCallback(responseData) {
                     self.getRanking();
                 })
@@ -244,6 +249,26 @@
             }
         },
         created() {
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 this.idol_text= {
+                    me: '我关注的爱豆',
+                    all: ' 全部爱豆',
+                    fans: ' 粉丝排行',
+                    support: '应援',
+                    no1: '赶紧来抢占第一位吧！',
+                    none: '我在groupy等你哦!'
+                }
+              } else {
+                this.idol_text= {
+                    me: 'お気に入り',
+                    all: '全体ランキング',
+                    fans: 'ファンランキング',
+                    support: '応援',
+                    no1: 'No.1になって目立とう！',
+                    none: 'Groupyで待ってまーす。'
+                }
+              }
             this.getRanking();
         }
     }
@@ -271,9 +296,12 @@
     }
     .not_concerned {
         width: 100%;
-        height: 70px;
         border-bottom: 4px #eee solid;
         box-sizing: border-box;
+        img {
+            width: 100%;
+            display: block;
+        }
     }
     .border_bottom {
         border-bottom: 4px #eee solid;
