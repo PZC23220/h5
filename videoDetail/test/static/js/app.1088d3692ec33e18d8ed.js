@@ -1856,12 +1856,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return;
             }
         },
-        support() {
+        support(val) {
             window.setupWebViewJavascriptBridge(function (bridge) {
-                bridge.callHandler('send_gift', { 'context': '0', 'idol_id': 1 }, function responseCallback(responseData) {
+                bridge.callHandler('send_gift', { 'context': '0', 'idol_id': val }, function responseCallback(responseData) {
                     self.getRanking();
                 });
             });
+            return;
         }
     },
     mounted() {
@@ -4648,7 +4649,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             task_test: {
                 reward: '報酬',
                 receive: '受け取る',
-                current: '達成度'
+                current: '達成数'
             }
         };
     },
@@ -4758,7 +4759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.task_test = {
                 reward: '報酬',
                 receive: '受け取る',
-                current: '達成度'
+                current: '達成数'
             };
             _val = 'jp';
         }
@@ -9986,13 +9987,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 7),
       expression: "isShow == 7"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyでは、多くのアイドルは自身の努力やファンの支援の下に、注目度をどんどん上げて、新規ファンを増やせます。以下の方法はおすすめです～"), _c('br'), _c('br'), _vm._v("1.自分の公開動画をSNSアカウントにシェアして、ファンをGroupyに招待すること。"), _c('br'), _vm._v("2.積極的に面白い動画を投稿するなどして、より多くの応援を獲得して、人気ランキングの上位に入って人気者になりましょう。"), _c('br'), _vm._v("3.掲示板を活用して投票にてファンに意見を聞いたり、面白いビデオで盛り上がったりして、ファンから有力な応援をもらい、Groupyの人気ランキングの上位に入ろう。"), _c('br'), _vm._v("4.Groupyは、10億人超えの中国市場の「欲しい」を喚起し、人気アイドルの動画をオタクやファンの集まり（Weibo,Blibli,Toutiao,WeChat公式アカウント及び各動画配信アプリ等）に導入しようとしています。"), _c('br'), _c('br'), _vm._v("Groupyで、より多くのファンの応援で夢が叶いますように！\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyでは、多くのアイドルは自身の努力やファンの支援の下に、注目度をどんどん上げて、新規ファンを増やせます。以下の方法はおすすめです～"), _c('br'), _c('br'), _vm._v("1.自分の公開動画を"), _c('b', [_vm._v("SNSアカウントにシェア")]), _vm._v("して、ファンをGroupyに招待すること。"), _c('br'), _vm._v("2."), _c('b', [_vm._v("掲示板")]), _vm._v("を活用して投票にてファンに意見を聞いたり、"), _c('b', [_vm._v("面白いビデオ")]), _vm._v("で盛り上がったりして、ファンから有力な応援をもらい、Groupyの"), _c('b', [_vm._v("人気ランキングの上位に入ろう")]), _vm._v("。"), _c('br'), _vm._v("3.Groupyは、"), _c('b', [_vm._v("10億人超えの中国市場の「欲しい」を喚起")]), _vm._v("し、人気アイドルの動画をオタクやファンの集まり（Weibo,Blibli,Toutiao,WeChat公式アカウント及び各動画配信アプリ等）に導入しようとしています。"), _c('br'), _c('br'), _vm._v("Groupyで、より多くのファンの応援で夢が叶いますように！\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(8)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("コインを現金に換金したいが、どうすればいいでしょうか")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("コインを現金に換金したいが、どうすればいいでしょうか。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -10004,7 +10005,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 8),
       expression: "isShow == 8"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。"), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの決済詳細ページをご覧下さい～"), _c('br'), _vm._v("その他何か問題ありましたら、お気軽にidol@groupy.vipまでご連絡ください～\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。")]), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの決済詳細ページをご覧下さい～"), _c('br'), _vm._v("その他何か問題ありましたら、お気軽にidol@groupy.vipまでご連絡ください～\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(9)
@@ -10022,7 +10023,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 9),
       expression: "isShow == 9"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("コインをいっぱい貯められて、誠におめでとうございまーす。"), _c('br'), _c('br'), _vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。"), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの収入詳細の説明ページをご覧下さい～\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("コインをいっぱい貯められて、誠におめでとうございまーす。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。")]), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの収入詳細の説明ページをご覧下さい～\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(10)
@@ -10343,13 +10344,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 77),
       expression: "isShow == 77"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyでは、多くのアイドルは自身の努力やファンの支援の下に、注目度をどんどん上げて、新規ファンを増やせます。以下の方法はおすすめです～"), _c('br'), _c('br'), _vm._v("1.自分の公開動画をSNSアカウントにシェアして、ファンをGroupyに招待すること。"), _c('br'), _vm._v("2.積極的に面白い動画を投稿するなどして、より多くの応援を獲得して、人気ランキングの上位に入って人気者になりましょう。"), _c('br'), _vm._v("3.掲示板を活用して投票にてファンに意見を聞いたり、面白いビデオで盛り上がったりして、ファンから有力な応援をもらい、Groupyの人気ランキングの上位に入ろう。"), _c('br'), _vm._v("4.Groupyは、10億人超えの中国市場の「欲しい」を喚起し、人気アイドルの動画をオタクやファンの集まり（Weibo,Blibli,Toutiao,WeChat公式アカウント及び各動画配信アプリ等）に導入しようとしています。"), _c('br'), _c('br'), _vm._v("Groupyで、より多くのファンの応援で夢が叶いますように！\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyでは、多くのアイドルは自身の努力やファンの支援の下に、注目度をどんどん上げて、新規ファンを増やせます。以下の方法はおすすめです～"), _c('br'), _c('br'), _vm._v("1.自分の公開動画を"), _c('b', [_vm._v("SNSアカウントにシェア")]), _vm._v("して、ファンをGroupyに招待すること。"), _c('br'), _vm._v("2."), _c('b', [_vm._v("掲示板")]), _vm._v("を活用して投票にてファンに意見を聞いたり、"), _c('b', [_vm._v("面白いビデオ")]), _vm._v("で盛り上がったりして、ファンから有力な応援をもらい、Groupyの"), _c('b', [_vm._v("人気ランキングの上位に入ろう")]), _vm._v("。"), _c('br'), _vm._v("3.Groupyは、"), _c('b', [_vm._v("10億人超えの中国市場の「欲しい」を喚起")]), _vm._v("し、人気アイドルの動画をオタクやファンの集まり（Weibo,Blibli,Toutiao,WeChat公式アカウント及び各動画配信アプリ等）に導入しようとしています。"), _c('br'), _c('br'), _vm._v("Groupyで、より多くのファンの応援で夢が叶いますように！\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(88)
       }
     }
-  }, [_c('span'), _c('em', [_vm._v("コインを現金に換金したいが、どうすればいいでしょうか")]), _c('img', {
+  }, [_c('span'), _c('em', [_vm._v("コインを現金に換金したいが、どうすればいいでしょうか。")]), _c('img', {
     attrs: {
       "src": _vm.tottleImg,
       "alt": ""
@@ -10361,7 +10362,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 88),
       expression: "isShow == 88"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。"), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの決済詳細ページをご覧下さい～"), _c('br'), _vm._v("その他何か問題ありましたら、お気軽にidol@groupy.vipまでご連絡ください～\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("いつもご利用頂き、誠にありがとうございます。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。")]), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの決済詳細ページをご覧下さい～"), _c('br'), _vm._v("その他何か問題ありましたら、お気軽にidol@groupy.vipまでご連絡ください～\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(99)
@@ -10379,7 +10380,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isShow == 99),
       expression: "isShow == 99"
     }]
-  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("コインをいっぱい貯められて、誠におめでとうございまーす。"), _c('br'), _c('br'), _vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。"), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの収入詳細の説明ページをご覧下さい～\n                        ")]), _vm._v(" "), _c('h4', {
+  }, [_vm._v("\n                            こんにちは、Groupyです。"), _c('br'), _vm._v("コインをいっぱい貯められて、誠におめでとうございまーす。"), _c('br'), _c('br'), _c('b', [_vm._v("Groupyは、アイドルのコインの獲得数によって予め約束した割合で金額決済を行い、決まった日にアイドルの口座に振込みます。")]), _c('br'), _c('br'), _vm._v("詳しくはアイドル専用のGroupy-idol アプリの収入詳細の説明ページをご覧下さい～\n                        ")]), _vm._v(" "), _c('h4', {
     on: {
       "click": function($event) {
         _vm.tottleFloor(100)
@@ -13882,7 +13883,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "title"
   }, [_vm._v(_vm._s(_vm.idol_text.me))]), _vm._v(" "), _vm._l((_vm.me), function(idol, key) {
     return _c('div', {
-      staticClass: "idol_detail"
+      staticClass: "idol_detail",
+      on: {
+        "click": function($event) {
+          idol.idolId ? _vm.showIdolPage(idol.idolId) : false
+        }
+      }
     }, [_c('div', {
       staticClass: "idol_content"
     }, [_c('i', {
@@ -13901,11 +13907,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": idol.avatar ? idol.avatar : '/static/images/default_img.png',
         "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
-      },
-      on: {
-        "click": function($event) {
-          idol.idolId ? _vm.showIdolPage(idol.idolId) : false
-        }
       }
     }), _vm._v(" "), (idol.position < 4) ? _c('img', {
       staticClass: "crown",
@@ -13938,23 +13939,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           idol.idolId ? _vm.support(idol.idolId) : false
         }
       }
-    }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
-      staticClass: "fans_list"
-    }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.meFans[key] ? _vm.meFans[key].topFans.length > 0 : false) ? _c('div', {
-      staticClass: "fans_imgList"
-    }, _vm._l((_vm.meFans[key].topFans), function(img) {
-      return _c('img', {
-        attrs: {
-          "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
-          "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
-          "alt": ""
-        }
-      })
-    })) : _vm._e(), (_vm.meFans[key] ? (_vm.meFans[key].topFans.lenght == 0) : true) ? _c('div', {
-      staticClass: "no_fans"
-    }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), (key < _vm.me.length - 1) ? _c('div', {
-      staticClass: "border_bottom"
-    }) : _vm._e()])
+    }, [_vm._v(_vm._s(_vm.idol_text.support))])])])])
   })], 2) : _vm._e(), _vm._v(" "), (_vm.top3None == false) ? _c('div', {
     staticClass: "idol_all"
   }, [(_vm.me.length > 0) ? _c('h3', {
@@ -13963,6 +13948,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "idol_detail con_left",
     class: {
       'left_show': _vm.rakingList.length > 0
+    },
+    on: {
+      "click": function($event) {
+        _vm.rakingList.length > 0 ? (_vm.rakingList[0].idolId ? _vm.showIdolPage(_vm.rakingList[0].idolId) : false) : false
+      }
     }
   }, [_c('div', {
     staticClass: "idol_content"
@@ -13978,11 +13968,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.rakingList.length > 0 ? (_vm.rakingList[0].avatar ? _vm.rakingList[0].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
-    },
-    on: {
-      "click": function($event) {
-        _vm.rakingList.length > 0 ? (_vm.rakingList[0].idolId ? _vm.showIdolPage(_vm.rakingList[0].idolId) : false) : false
-      }
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
@@ -14016,25 +14001,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
-    staticClass: "fans_list"
-  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.allFans[0] ? _vm.allFans[0].topFans.length > 0 : false) ? _c('div', {
-    staticClass: "fans_imgList"
-  }, _vm._l((_vm.allFans[0].topFans), function(img) {
-    return _c('img', {
-      attrs: {
-        "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
-        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
-        "alt": ""
-      }
-    })
-  })) : _vm._e(), (_vm.allFans[0] ? (_vm.allFans[0].topFans.length == 0) : true) ? _c('div', {
-    staticClass: "no_fans"
-  }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
   })]), _vm._v(" "), _c('div', {
     staticClass: "idol_detail con_left",
     class: {
       'left_show': _vm.rakingList.length > 0 ? _vm.rakingList.length > 1 : false
+    },
+    on: {
+      "click": function($event) {
+        _vm.rakingList.length > 1 ? (_vm.rakingList[1].idolId ? _vm.showIdolPage(_vm.rakingList[1].idolId) : false) : false
+      }
     }
   }, [_c('div', {
     staticClass: "idol_content"
@@ -14050,11 +14026,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.rakingList.length > 1 ? (_vm.rakingList[1].avatar ? _vm.rakingList[1].avatar : 'http://h5.groupy.vip/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
-    },
-    on: {
-      "click": function($event) {
-        _vm.rakingList.length > 1 ? (_vm.rakingList[1].idolId ? _vm.showIdolPage(_vm.rakingList[1].idolId) : false) : false
-      }
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
@@ -14088,25 +14059,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
-    staticClass: "fans_list"
-  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.allFans[1] ? _vm.allFans[1].topFans.length > 0 : false) ? _c('div', {
-    staticClass: "fans_imgList"
-  }, _vm._l((_vm.allFans[1].topFans), function(img) {
-    return _c('img', {
-      attrs: {
-        "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
-        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
-        "alt": ""
-      }
-    })
-  })) : _vm._e(), (_vm.allFans[1] ? (_vm.allFans[1].topFans.length == 0) : true) ? _c('div', {
-    staticClass: "no_fans"
-  }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
   })]), _vm._v(" "), _c('div', {
     staticClass: "idol_detail con_left",
     class: {
       'left_show': _vm.rakingList.length > 0 ? _vm.rakingList.length > 2 : false
+    },
+    on: {
+      "click": function($event) {
+        _vm.rakingList.length > 2 ? (_vm.rakingList[2].idolId ? _vm.showIdolPage(_vm.rakingList[2].idolId) : false) : false
+      }
     }
   }, [_c('div', {
     staticClass: "idol_content"
@@ -14122,11 +14084,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.rakingList.length > 2 ? (_vm.rakingList[2].avatar ? _vm.rakingList[2].avatar : '/static/images/default_img.png') : '/static/images/default_img.png',
       "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
       "alt": ""
-    },
-    on: {
-      "click": function($event) {
-        _vm.rakingList.length > 2 ? (_vm.rakingList[2].idolId ? _vm.showIdolPage(_vm.rakingList[2].idolId) : false) : false
-      }
     }
   }), _vm._v(" "), _c('img', {
     staticClass: "crown",
@@ -14160,24 +14117,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
-    staticClass: "fans_list"
-  }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.allFans[2] ? _vm.allFans[2].topFans.length > 0 : false) ? _c('div', {
-    staticClass: "fans_imgList"
-  }, _vm._l((_vm.allFans[2].topFans), function(img) {
-    return _c('img', {
-      attrs: {
-        "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
-        "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
-        "alt": ""
-      }
-    })
-  })) : _vm._e(), (_vm.allFans[2] ? (_vm.allFans[2].topFans.length == 0) : true) ? _c('div', {
-    staticClass: "no_fans"
-  }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
   })]), _vm._v(" "), _vm._l((_vm.rakingList), function(idol, key) {
     return (_vm.rakingList.length > 0 ? key > 2 && key < _vm.len : false) ? _c('div', {
-      staticClass: "idol_detail"
+      staticClass: "idol_detail",
+      on: {
+        "click": function($event) {
+          idol.idolId ? _vm.showIdolPage(idol.idolId) : false
+        }
+      }
     }, [_c('div', {
       staticClass: "idol_content"
     }, [_c('i', {
@@ -14196,11 +14144,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": idol.avatar ? idol.avatar : '/static/images/default_img.png',
         "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
         "alt": ""
-      },
-      on: {
-        "click": function($event) {
-          idol.idolId ? _vm.showIdolPage(idol.idolId) : false
-        }
       }
     })]), _vm._v(" "), _c('div', {
       staticClass: "introduction"
@@ -14228,20 +14171,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
-      staticClass: "fans_list"
-    }, [_vm._v(_vm._s(_vm.idol_text.fans)), (_vm.allFans[key] ? _vm.allFans[key].topFans.length > 0 : false) ? _c('div', {
-      staticClass: "fans_imgList"
-    }, _vm._l((_vm.allFans[key].topFans), function(img) {
-      return _c('img', {
-        attrs: {
-          "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
-          "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
-          "alt": ""
-        }
-      })
-    })) : _vm._e(), (_vm.allFans[key] ? (_vm.allFans[key].topFans.length == 0) : true) ? _c('div', {
-      staticClass: "no_fans"
-    }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]), _vm._v(" "), _c('div', {
       staticClass: "border_bottom"
     })]) : _vm._e()
   })], 2) : _vm._e(), _vm._v(" "), (_vm.top3None) ? _c('div', {
@@ -17491,4 +17420,4 @@ module.exports = {
 
 /***/ })
 ],[155]);
-//# sourceMappingURL=app.7ba5864a4bb23477dbbc.js.map
+//# sourceMappingURL=app.1088d3692ec33e18d8ed.js.map

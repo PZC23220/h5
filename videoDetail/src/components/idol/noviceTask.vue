@@ -79,7 +79,7 @@
                 task_test: {
                     reward: '報酬',
                     receive: '受け取る',
-                    current: '達成度'
+                    current: '達成数'
                 }
             }
         },
@@ -190,7 +190,7 @@
                 this.task_test= {
                     reward: '報酬',
                     receive: '受け取る',
-                    current: '達成度'
+                    current: '達成数'
                 }
                 _val = 'jp';
               }
