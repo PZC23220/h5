@@ -41,7 +41,7 @@
                                     <img src="/img/idol/Like.png" class="cursor" @click="boxShow = true;">10
                                     <img src="/img/idol/gift.png" class="cursor" @click="boxShow = true;">
                                 </div>
-                                <span class="play_times"><img src="/img/video_icon_play times.png">325</span>
+                                <span class="play_times"><img src="/img/video_icon_play times.png">{{hot.data.readCount}}</span>
                                 <div class="Masked2" v-if="hot.data.publicType == 1">
                                     <img src="/img/idol/icon_vip.png">
                                     <p>加入会员才能观看视频</p>
@@ -775,6 +775,7 @@
         position: inherit !important;
         background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.66) 100%) !important;
         height: auto !important;
+        background-color: rgba(0,0,0,0.2);
     }
     .vjs-playback-rate-value {
         display: none;
@@ -785,6 +786,7 @@
     .video-player,.vjs-poster {
         height: calc(100vw * 502/375) !important;
         max-height: calc(500px * 502/375) !important;
+        background-color: rgba(0,0,0,0.2);
     }
     .video-player .video-js.vjs-custom-skin .vjs-big-play-button {
         width: 41px !important;

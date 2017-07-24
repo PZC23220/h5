@@ -8,7 +8,7 @@
                 <div class="not_concerned" v-if="me.length==0"><img src="../../images/banner.png" alt=""></div>
                 <div class="concerned" v-if="me.length > 0">
                     <h3 class="title">{{idol_text.me}}</h3>
-                    <div class="idol_detail" v-for="(idol,key) in me" @click="idol.idolId?showIdolPage(idol.idolId):false">
+                    <div class="idol_detail" v-for="(idol,key) in me" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                         <div class="idol_content">
                             <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
                             <div class="idol_border">
@@ -21,7 +21,7 @@
                                     <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
                                     <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{Number(idol.popularity).toLocaleString()}}</span><span><img src="../../images/icon_fans.png" alt="">{{Number(idol.fansNums).toLocaleString()}}</span></p>
                                 </div>
-                                <div class="support" @click="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
+                                <div class="support" @click.stop="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
                             </div>
                         </div>
                         <div class="fans_list fans_show" :class="{'fans_none': meFans.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
@@ -87,7 +87,7 @@
                             <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
                         </div>
                     </div>
-                    <div class="idol_detail" v-for="(idol,key) in rakingList" v-if="rakingList.length>0?key < len: false" @click="idol.idolId?showIdolPage(idol.idolId):false">
+                    <div class="idol_detail" v-for="(idol,key) in rakingList" v-if="rakingList.length>0?key < len: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                         <div class="idol_content">
                             <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                             <div class="idol_border">
@@ -102,7 +102,7 @@
                                     <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
                                     <p class="detail"><span><img src="../../images/icon_likes.png" alt="">{{idol.popularity?Number(idol.popularity).toLocaleString():'3'}}</span><span><img src="../../images/icon_fans.png" alt="">{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</span></p>
                                 </div>
-                                <div class="support" @click="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
+                                <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                             </div>
                         </div>
                         <div class="fans_list fans_show" :class="{'fans_none': allFans.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
@@ -243,6 +243,7 @@
             }
           },
           support(val) {
+            console.log('support')
             window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
                     self.getRanking();

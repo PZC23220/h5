@@ -315,7 +315,7 @@
     .page_loading {
         transition: all 0.3s;
         opacity: 0.6;
-        height: 572px;
+        // height: 572px;
         overflow: hidden;
         h5 {
             width: 50vw;
@@ -330,6 +330,6 @@
     }
     .page_loading_show {
         opacity: 0;
-        height: 0;
+        // height: 0;
     }
 </style>

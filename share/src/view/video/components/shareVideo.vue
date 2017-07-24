@@ -1,13 +1,13 @@
 <template>
     <div class="main">
         <div class="header">
-            <img src="/static/img/icon_groupy_128.png" alt="">
+            <img src="/img/icon_groupy_128.png" alt="">
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
-            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="_href">インストール</a>
+            <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="href_">インストール</a>
         </div>
         <div class="content">
             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                <img :src="idol.avatar?idol.avatar: 'http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                <img :src="idol.avatar?idol.avatar: '/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                 <div class="video_desc">
                     <h3>{{idol.nickname?idol.nickname:'Groupy'}}</h3>
                     <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす'}}</p>
@@ -17,66 +17,66 @@
                 <p>{{video.title}}</p>
                 <div class="video_banner">
                     <img :src="video.thumbnail" alt="">
-                    <img src="/static/img/icon_menbership.png" alt="">
+                    <img src="/img/icon_menbership.png" alt="">
                 </div>
                 <div class="video_bg"></div>
                 <div class="vip_download">
                     <p>会員のみ視聴可能です<br>会員登録して、アイドルのプライベート動画を見よう</p>
-                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="_href" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
+                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="href_" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
                 </div>
             </div>
             <div class="public_show"v-show="publicShow">
                 <p>{{video.title}}</p>
                 <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
-                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="_href" class="download">Groupyをダウンロードしてもっと見よう</a>
+                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="href_" class="download">Groupyをダウンロードしてもっと見よう</a>
             </div>
             <div class="default_page" v-show="pageNone">
-                <img src="/static/img/default_no like.png" alt="">
+                <img src="/img/default_no like.png" alt="">
                 <p v-show="pageNone2">まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
-                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="_href" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
+                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="href_" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
             </div>
             <div class="more_video">
                 <h3>おすすめ</h3>
                 <ul>
-                    <li class="con_left" :class="{'left_show':videos.length>0}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="_href" title="">
+                    <li class="con_left" :class="{'left_show':videos.length>0}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="href_" title="">
                     <div class="video_bigImg">
-                        <img :src="videos.length>0?videos[0].thumbnail:'http://h5.groupy.vip/static/images/default_img.png'" class="video_poster" alt=""><img src="/static/img/timeline_icon_play.png" class="btn_play" alt="">
+                        <img :src="videos.length>0?videos[0].thumbnail:'/img/video/default_video.png'" class="video_poster" alt=""><img src="/img/timeline_icon_play.png" class="btn_play" alt="">
                         <div>
-                            <img src="/static/img/video_bg_play times.png" class="time_bg" alt="">
-                            <img src="/static/img/video_icon_time.png" class="time_play" alt="">
+                            <img src="/img/video_bg_play times.png" class="time_bg" alt="">
+                            <img src="/img/video_icon_time.png" class="time_play" alt="">
                             <span v-html="videos.length>0?formatTime(videos[0].duration):'00:00'"></span>
                         </div>
                     </div>
                     <p class="video_content">{{videos.length>1?videos[1].title:'Groupyで待ってまーす'}}</p>
                     </a></li>
-                    <li class="con_left" :class="{'left_show':videos.length>1}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="_href" title="">
+                    <li class="con_left" :class="{'left_show':videos.length>1}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="href_" title="">
                     <div class="video_bigImg">
-                        <img :src="videos.length>1?videos[1].thumbnail:'http://h5.groupy.vip/static/images/default_img.png'" class="video_poster" alt=""><img src="/static/img/timeline_icon_play.png" class="btn_play" alt="">
+                        <img :src="videos.length>1?videos[1].thumbnail:'/img/video/default_video.png'" class="video_poster" alt=""><img src="/img/timeline_icon_play.png" class="btn_play" alt="">
                         <div>
-                            <img src="/static/img/video_bg_play times.png" class="time_bg" alt="">
-                            <img src="/static/img/video_icon_time.png" class="time_play" alt="">
+                            <img src="/img/video_bg_play times.png" class="time_bg" alt="">
+                            <img src="/img/video_icon_time.png" class="time_play" alt="">
                             <span v-html="videos.length>1?formatTime(videos[1].duration):'00:00'"></span>
                         </div>
                     </div>
                     <p class="video_content">{{videos.length>1?videos[1].title:'Groupyで待ってまーす'}}</p>
                     </a></li>
-                    <li class="con_left" :class="{'left_show':videos.length>2}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="_href" title="">
+                    <li class="con_left" :class="{'left_show':videos.length>2}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="href_" title="">
                     <div class="video_bigImg">
-                        <img :src="videos.length>2?videos[2].thumbnail:'http://h5.groupy.vip/static/images/default_img.png'" class="video_poster" alt=""><img src="/static/img/timeline_icon_play.png" class="btn_play" alt="">
+                        <img :src="videos.length>2?videos[2].thumbnail:'/img/video/default_video.png'" class="video_poster" alt=""><img src="/img/timeline_icon_play.png" class="btn_play" alt="">
                         <div>
-                            <img src="/static/img/video_bg_play times.png" class="time_bg" alt="">
-                            <img src="/static/img/video_icon_time.png" class="time_play" alt="">
+                            <img src="/img/video_bg_play times.png" class="time_bg" alt="">
+                            <img src="/img/video_icon_time.png" class="time_play" alt="">
                             <span v-html="videos.length>2?formatTime(videos[2].duration):'00:00'"></span>
                         </div>
                     </div>
                     <p class="video_content">{{videos.length>2?videos[2].title:'Groupyで待ってまーす'}}</p>
                     </a></li>
-                    <li class="con_left" :class="{'left_show':videos.length>3}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="_href" title="">
+                    <li class="con_left" :class="{'left_show':videos.length>3}"><a @click="p_log('share_h5_watch_more')" target="_blank" :href="href_" title="">
                     <div class="video_bigImg">
-                        <img :src="videos.length>3?videos[3].thumbnail:'http://h5.groupy.vip/static/images/default_img.png'" class="video_poster" alt=""><img src="/static/img/timeline_icon_play.png" class="btn_play" alt="">
+                        <img :src="videos.length>3?videos[3].thumbnail:'/img/video/default_video.png'" class="video_poster" alt=""><img src="/img/timeline_icon_play.png" class="btn_play" alt="">
                         <div>
-                            <img src="/static/img/video_bg_play times.png" class="time_bg" alt="">
-                            <img src="/static/img/video_icon_time.png" class="time_play" alt="">
+                            <img src="/img/video_bg_play times.png" class="time_bg" alt="">
+                            <img src="/img/video_icon_time.png" class="time_play" alt="">
                             <span v-html="videos.length>3?formatTime(videos[3].duration):'00:00'"></span>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
             </div>
         </div>
         <!-- <div class="bigLoading" v-show="loadingBig">
-            <img src="/static/img/loading_2.png" alt="">
+            <img src="/img/loading_2.png" alt="">
         </div> -->
     </div>
 </template>
@@ -126,7 +126,7 @@
             pageNone2: false,
             // loadingBig: true,
             idolShow: false,
-            _href: 'itms-apps://itunes.apple.com/app/id1251249933'
+            href_: 'itms-apps://itunes.apple.com/app/id1251249933'
           }
         },
         methods: {
@@ -139,7 +139,7 @@
                 var self = this;
                 http.get('/video/get',{
                     params: {
-                        videoId: location.href.split('/shareVideo/')[1].split('#/')[0]
+                        videoId: location.href.split('?videoId=')[1].split('#/')[0]
                     }
                 }).then(function(res){
                     console.log(res);
@@ -200,7 +200,7 @@
                     version: "1.0.0",
                     action: val,
                     result: "success",
-                    videoId: location.href.split('/shareVideo/')[1].split('#/')[0]
+                    videoId: location.href.split('?videoId=')[1].split('#/')[0]
                 }
                 http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
@@ -222,9 +222,9 @@
             this.p_log('idol_share_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (!(/iphone|ipad|ipod/.test(ua))) {
-                this._href = 'https://itunes.apple.com/app/id1251249933';
+                this.href_ = 'https://itunes.apple.com/app/id1251249933';
             }else {
-                this._href = 'itms-apps://itunes.apple.com/app/id1251249933';
+                this.href_ = 'itms-apps://itunes.apple.com/app/id1251249933';
             }
         }
       }
