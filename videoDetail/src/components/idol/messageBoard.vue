@@ -312,6 +312,9 @@
     }
     i {
         text-align: right;
+        font-size: 10px;
+        -webkit-transform: scale(0.8);
+        width: auto !important;
     }
     .publich_tips {
         position: fixed;

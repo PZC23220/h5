@@ -19,7 +19,7 @@ var _fn = __webpack_require__(6);
 
 var Fn = _interopRequireWildcard(_fn);
 
-var _guid = __webpack_require__(33);
+var _guid = __webpack_require__(36);
 
 var Guid = _interopRequireWildcard(_guid);
 
@@ -31,7 +31,7 @@ var _log = __webpack_require__(14);
 
 var _log2 = _interopRequireDefault(_log);
 
-var _toTitleCase = __webpack_require__(34);
+var _toTitleCase = __webpack_require__(37);
 
 var _toTitleCase2 = _interopRequireDefault(_toTitleCase);
 
@@ -2243,7 +2243,7 @@ function applyToTag (styleElement, obj) {
 exports.__esModule = true;
 exports.throttle = exports.bind = undefined;
 
-var _guid = __webpack_require__(33);
+var _guid = __webpack_require__(36);
 
 /**
  * Bind (a.k.a proxy or Context). A simple method for changing the context of a function
@@ -2363,7 +2363,7 @@ var _window = __webpack_require__(11);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _guid = __webpack_require__(33);
+var _guid = __webpack_require__(36);
 
 var Guid = _interopRequireWildcard(_guid);
 
@@ -5754,7 +5754,7 @@ var _dom = __webpack_require__(7);
 
 var Dom = _interopRequireWildcard(_dom);
 
-var _guid = __webpack_require__(33);
+var _guid = __webpack_require__(36);
 
 var Guid = _interopRequireWildcard(_guid);
 
@@ -6277,7 +6277,10 @@ exports['default'] = formatTime;
 /* 30 */,
 /* 31 */,
 /* 32 */,
-/* 33 */
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6308,7 +6311,7 @@ function newGUID() {
 
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6341,9 +6344,6 @@ exports['default'] = toTitleCase;
 
 
 /***/ }),
-/* 35 */,
-/* 36 */,
-/* 37 */,
 /* 38 */,
 /* 39 */,
 /* 40 */,
@@ -10148,7 +10148,7 @@ var _document = __webpack_require__(9);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _guid = __webpack_require__(33);
+var _guid = __webpack_require__(36);
 
 var Guid = _interopRequireWildcard(_guid);
 
@@ -10670,12 +10670,12 @@ var config = ({
   /**
    * Show production mode tip message on boot?
    */
-  productionTip: "test" !== 'production',
+  productionTip: "prod" !== 'production',
 
   /**
    * Whether to enable devtools
    */
-  devtools: "test" !== 'production',
+  devtools: "prod" !== 'production',
 
   /**
    * Whether to record perf
@@ -11313,7 +11313,7 @@ function defineReactive$$1 (
         return
       }
       /* eslint-enable no-self-compare */
-      if ("test" !== 'production' && customSetter) {
+      if ("prod" !== 'production' && customSetter) {
         customSetter();
       }
       if (setter) {
@@ -11344,7 +11344,7 @@ function set (target, key, val) {
   }
   var ob = (target ).__ob__;
   if (target._isVue || (ob && ob.vmCount)) {
-    "test" !== 'production' && warn(
+    "prod" !== 'production' && warn(
       'Avoid adding reactive properties to a Vue instance or its root $data ' +
       'at runtime - declare it upfront in the data option.'
     );
@@ -11369,7 +11369,7 @@ function del (target, key) {
   }
   var ob = (target ).__ob__;
   if (target._isVue || (ob && ob.vmCount)) {
-    "test" !== 'production' && warn(
+    "prod" !== 'production' && warn(
       'Avoid deleting properties on a Vue instance or its root $data ' +
       '- just set it to null.'
     );
@@ -11457,7 +11457,7 @@ strats.data = function (
       return parentVal
     }
     if (typeof childVal !== 'function') {
-      "test" !== 'production' && warn(
+      "prod" !== 'production' && warn(
         'The "data" option should be a function ' +
         'that returns a per-instance value in component ' +
         'definitions.',
@@ -11714,7 +11714,7 @@ function resolveAsset (
   if (hasOwn(assets, PascalCaseId)) { return assets[PascalCaseId] }
   // fallback to prototype chain
   var res = assets[id] || assets[camelizedId] || assets[PascalCaseId];
-  if ("test" !== 'production' && warnMissing && !res) {
+  if ("prod" !== 'production' && warnMissing && !res) {
     warn(
       'Failed to resolve ' + type.slice(0, -1) + ': ' + id,
       options
@@ -11768,7 +11768,7 @@ function getPropDefaultValue (vm, prop, key) {
   }
   var def = prop.default;
   // warn against non-factory defaults for Object & Array
-  if ("test" !== 'production' && isObject(def)) {
+  if ("prod" !== 'production' && isObject(def)) {
     warn(
       'Invalid default value for prop "' + key + '": ' +
       'Props with type Object/Array must use a factory function ' +
@@ -12117,7 +12117,7 @@ function updateListeners (
     old = oldOn[name];
     event = normalizeEvent(name);
     if (isUndef(cur)) {
-      "test" !== 'production' && warn(
+      "prod" !== 'production' && warn(
         "Invalid handler for event \"" + (event.name) + "\": got " + String(cur),
         vm
       );
@@ -12366,7 +12366,7 @@ function resolveAsyncComponent (
     });
 
     var reject = once(function (reason) {
-      "test" !== 'production' && warn(
+      "prod" !== 'production' && warn(
         "Failed to resolve async component: " + (String(factory)) +
         (reason ? ("\nReason: " + reason) : '')
       );
@@ -12780,7 +12780,7 @@ function mountComponent (
 
   var updateComponent;
   /* istanbul ignore if */
-  if ("test" !== 'production' && config.performance && mark) {
+  if ("prod" !== 'production' && config.performance && mark) {
     updateComponent = function () {
       var name = vm._name;
       var id = vm._uid;
@@ -12977,7 +12977,7 @@ function flushSchedulerQueue () {
     has[id] = null;
     watcher.run();
     // in dev build, check and stop circular updates.
-    if ("test" !== 'production' && has[id] != null) {
+    if ("prod" !== 'production' && has[id] != null) {
       circular[id] = (circular[id] || 0) + 1;
       if (circular[id] > MAX_UPDATE_COUNT) {
         warn(
@@ -13111,7 +13111,7 @@ var Watcher = function Watcher (
     this.getter = parsePath(expOrFn);
     if (!this.getter) {
       this.getter = function () {};
-      "test" !== 'production' && warn(
+      "prod" !== 'production' && warn(
         "Failed watching path: \"" + expOrFn + "\" " +
         'Watcher only accepts simple dot-delimited paths. ' +
         'For full control, use a function instead.',
@@ -13401,7 +13401,7 @@ function initData (vm) {
     : data || {};
   if (!isPlainObject(data)) {
     data = {};
-    "test" !== 'production' && warn(
+    "prod" !== 'production' && warn(
       'data functions should return an object:\n' +
       'https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function',
       vm
@@ -13413,7 +13413,7 @@ function initData (vm) {
   var i = keys.length;
   while (i--) {
     if (props && hasOwn(props, keys[i])) {
-      "test" !== 'production' && warn(
+      "prod" !== 'production' && warn(
         "The data property \"" + (keys[i]) + "\" is already declared as a prop. " +
         "Use prop default value instead.",
         vm
@@ -13947,7 +13947,7 @@ function _createElement (
   normalizationType
 ) {
   if (isDef(data) && isDef((data).__ob__)) {
-    "test" !== 'production' && warn(
+    "prod" !== 'production' && warn(
       "Avoid using observed data object as vnode data: " + (JSON.stringify(data)) + "\n" +
       'Always create fresh vnode data objects in each render!',
       context
@@ -14076,7 +14076,7 @@ function renderSlot (
   } else {
     var slotNodes = this.$slots[name];
     // warn duplicate slot usage
-    if (slotNodes && "test" !== 'production') {
+    if (slotNodes && "prod" !== 'production') {
       slotNodes._rendered && warn(
         "Duplicate presence of slot \"" + name + "\" found in the same render tree " +
         "- this will likely cause render errors.",
@@ -14128,7 +14128,7 @@ function bindObjectProps (
 ) {
   if (value) {
     if (!isObject(value)) {
-      "test" !== 'production' && warn(
+      "prod" !== 'production' && warn(
         'v-bind without argument expects an Object or Array value',
         this
       );
@@ -14279,7 +14279,7 @@ function renderMixin (Vue) {
     }
     // return empty vnode in case the render function errored out
     if (!(vnode instanceof VNode)) {
-      if ("test" !== 'production' && Array.isArray(vnode)) {
+      if ("prod" !== 'production' && Array.isArray(vnode)) {
         warn(
           'Multiple root nodes returned from render function. Render function ' +
           'should return a single root node.',
@@ -14324,7 +14324,7 @@ function initMixin (Vue) {
 
     var startTag, endTag;
     /* istanbul ignore if */
-    if ("test" !== 'production' && config.performance && mark) {
+    if ("prod" !== 'production' && config.performance && mark) {
       startTag = "vue-perf-init:" + (vm._uid);
       endTag = "vue-perf-end:" + (vm._uid);
       mark(startTag);
@@ -14363,7 +14363,7 @@ function initMixin (Vue) {
     callHook(vm, 'created');
 
     /* istanbul ignore if */
-    if ("test" !== 'production' && config.performance && mark) {
+    if ("prod" !== 'production' && config.performance && mark) {
       vm._name = formatComponentName(vm, false);
       mark(endTag);
       measure(((vm._name) + " init"), startTag, endTag);
@@ -14450,7 +14450,7 @@ function dedupe (latest, extended, sealed) {
 }
 
 function Vue$3 (options) {
-  if ("test" !== 'production' &&
+  if ("prod" !== 'production' &&
     !(this instanceof Vue$3)
   ) {
     warn('Vue is a constructor and should be called with the `new` keyword');
@@ -14987,7 +14987,7 @@ function query (el) {
   if (typeof el === 'string') {
     var selected = document.querySelector(el);
     if (!selected) {
-      "test" !== 'production' && warn(
+      "prod" !== 'production' && warn(
         'Cannot find element: ' + el
       );
       return document.createElement('div')
@@ -15244,7 +15244,7 @@ function createPatchFunction (backend) {
         insert(parentElm, vnode.elm, refElm);
       }
 
-      if ("test" !== 'production' && data && data.pre) {
+      if ("prod" !== 'production' && data && data.pre) {
         inPre--;
       }
     } else if (isTrue(vnode.isComment)) {
@@ -15489,7 +15489,7 @@ function createPatchFunction (backend) {
         } else {
           elmToMove = oldCh[idxInOld];
           /* istanbul ignore if */
-          if ("test" !== 'production' && !elmToMove) {
+          if ("prod" !== 'production' && !elmToMove) {
             warn(
               'It seems there are duplicate keys that is causing an update error. ' +
               'Make sure each v-for item has a unique key.'
@@ -15618,7 +15618,7 @@ function createPatchFunction (backend) {
           // if childNode is not null, it means the actual childNodes list is
           // longer than the virtual children list.
           if (!childrenMatch || childNode) {
-            if ("test" !== 'production' &&
+            if ("prod" !== 'production' &&
               typeof console !== 'undefined' &&
               !bailed
             ) {
@@ -16109,7 +16109,7 @@ function addHandler (
   // warn prevent and passive modifier
   /* istanbul ignore if */
   if (
-    "test" !== 'production' && warn &&
+    "prod" !== 'production' && warn &&
     modifiers && modifiers.prevent && modifiers.passive
   ) {
     warn(
@@ -17115,7 +17115,7 @@ function enter (vnode, toggleDisplay) {
       : duration
   );
 
-  if ("test" !== 'production' && explicitEnterDuration != null) {
+  if ("prod" !== 'production' && explicitEnterDuration != null) {
     checkDuration(explicitEnterDuration, 'enter', vnode);
   }
 
@@ -17221,7 +17221,7 @@ function leave (vnode, rm) {
       : duration
   );
 
-  if ("test" !== 'production' && isDef(explicitLeaveDuration)) {
+  if ("prod" !== 'production' && isDef(explicitLeaveDuration)) {
     checkDuration(explicitLeaveDuration, 'leave', vnode);
   }
 
@@ -17430,7 +17430,7 @@ function setSelected (el, binding, vm) {
   var value = binding.value;
   var isMultiple = el.multiple;
   if (isMultiple && !Array.isArray(value)) {
-    "test" !== 'production' && warn(
+    "prod" !== 'production' && warn(
       "<select multiple v-model=\"" + (binding.expression) + "\"> " +
       "expects an Array value for its binding, but got " + (Object.prototype.toString.call(value).slice(8, -1)),
       vm
@@ -17651,7 +17651,7 @@ var Transition = {
     }
 
     // warn multiple elements
-    if ("test" !== 'production' && children.length > 1) {
+    if ("prod" !== 'production' && children.length > 1) {
       warn(
         '<transition> can only be used on a single element. Use ' +
         '<transition-group> for lists.',
@@ -17662,7 +17662,7 @@ var Transition = {
     var mode = this.mode;
 
     // warn invalid mode
-    if ("test" !== 'production' &&
+    if ("prod" !== 'production' &&
       mode && mode !== 'in-out' && mode !== 'out-in'
     ) {
       warn(
@@ -17940,14 +17940,14 @@ setTimeout(function () {
   if (config.devtools) {
     if (devtools) {
       devtools.emit('init', Vue$3);
-    } else if ("test" !== 'production' && isChrome) {
+    } else if ("prod" !== 'production' && isChrome) {
       console[console.info ? 'info' : 'log'](
         'Download the Vue Devtools extension for a better development experience:\n' +
         'https://github.com/vuejs/vue-devtools'
       );
     }
   }
-  if ("test" !== 'production' &&
+  if ("prod" !== 'production' &&
     config.productionTip !== false &&
     inBrowser && typeof console !== 'undefined'
   ) {
@@ -18175,7 +18175,7 @@ function parseHTML (html, options) {
 
     if (html === last) {
       options.chars && options.chars(html);
-      if ("test" !== 'production' && !stack.length && options.warn) {
+      if ("prod" !== 'production' && !stack.length && options.warn) {
         options.warn(("Mal-formatted tag at end of template: \"" + html + "\""));
       }
       break
@@ -18282,7 +18282,7 @@ function parseHTML (html, options) {
     if (pos >= 0) {
       // Close all the open elements, up the stack
       for (var i = stack.length - 1; i >= pos; i--) {
-        if ("test" !== 'production' &&
+        if ("prod" !== 'production' &&
           (i > pos || !tagName) &&
           options.warn
         ) {
@@ -18447,7 +18447,7 @@ function parse (
 
       if (isForbiddenTag(element) && !isServerRendering()) {
         element.forbidden = true;
-        "test" !== 'production' && warn$2(
+        "prod" !== 'production' && warn$2(
           'Templates should only be responsible for mapping the state to the ' +
           'UI. Avoid placing tags with side-effects in your templates, such as ' +
           "<" + tag + ">" + ', as they will not be parsed.'
@@ -18635,7 +18635,7 @@ function processRawAttrs (el) {
 function processKey (el) {
   var exp = getBindingAttr(el, 'key');
   if (exp) {
-    if ("test" !== 'production' && el.tag === 'template') {
+    if ("prod" !== 'production' && el.tag === 'template') {
       warn$2("<template> cannot be keyed. Place the key on real elements instead.");
     }
     el.key = exp;
@@ -18655,7 +18655,7 @@ function processFor (el) {
   if ((exp = getAndRemoveAttr(el, 'v-for'))) {
     var inMatch = exp.match(forAliasRE);
     if (!inMatch) {
-      "test" !== 'production' && warn$2(
+      "prod" !== 'production' && warn$2(
         ("Invalid v-for expression: " + exp)
       );
       return
@@ -18715,7 +18715,7 @@ function findPrevElement (children) {
     if (children[i].type === 1) {
       return children[i]
     } else {
-      if ("test" !== 'production' && children[i].text !== ' ') {
+      if ("prod" !== 'production' && children[i].text !== ' ') {
         warn$2(
           "text \"" + (children[i].text.trim()) + "\" between v-if and v-else(-if) " +
           "will be ignored."
@@ -18743,7 +18743,7 @@ function processOnce (el) {
 function processSlot (el) {
   if (el.tag === 'slot') {
     el.slotName = getBindingAttr(el, 'name');
-    if ("test" !== 'production' && el.key) {
+    if ("prod" !== 'production' && el.key) {
       warn$2(
         "`key` does not work on <slot> because slots are abstract outlets " +
         "and can possibly expand into multiple elements. " +
@@ -18823,7 +18823,7 @@ function processAttrs (el) {
           name = name.slice(0, -(arg.length + 1));
         }
         addDirective(el, name, rawName, value, arg, modifiers);
-        if ("test" !== 'production' && name === 'model') {
+        if ("prod" !== 'production' && name === 'model') {
           checkForAliasModel(el, value);
         }
       }
@@ -18869,7 +18869,7 @@ function makeAttrsMap (attrs) {
   var map = {};
   for (var i = 0, l = attrs.length; i < l; i++) {
     if (
-      "test" !== 'production' &&
+      "prod" !== 'production' &&
       map[attrs[i].name] && !isIE && !isEdge
     ) {
       warn$2('duplicate attribute: ' + attrs[i].name);
@@ -19093,7 +19093,7 @@ function genHandlers (
   for (var name in events) {
     var handler = events[name];
     // #5330: warn click.right, since right clicks do not actually fire click events.
-    if ("test" !== 'production' &&
+    if ("prod" !== 'production' &&
       name === 'click' &&
       handler && handler.modifiers && handler.modifiers.right
     ) {
@@ -19276,7 +19276,7 @@ function genOnce (el) {
       parent = parent.parent;
     }
     if (!key) {
-      "test" !== 'production' && warn$3(
+      "prod" !== 'production' && warn$3(
         "v-once can only be used inside v-for that is keyed. "
       );
       return genElement(el)
@@ -19317,7 +19317,7 @@ function genFor (el) {
   var iterator2 = el.iterator2 ? ("," + (el.iterator2)) : '';
 
   if (
-    "test" !== 'production' &&
+    "prod" !== 'production' &&
     maybeComponent(el) && el.tag !== 'slot' && el.tag !== 'template' && !el.key
   ) {
     warn$3(
@@ -19435,7 +19435,7 @@ function genDirectives (el) {
 
 function genInlineTemplate (el) {
   var ast = el.children[0];
-  if ("test" !== 'production' && (
+  if ("prod" !== 'production' && (
     el.children.length > 1 || ast.type !== 1
   )) {
     warn$3('Inline-template components must have exactly one child element.');
@@ -19833,7 +19833,7 @@ function createCompiler (baseOptions) {
 function transformNode (el, options) {
   var warn = options.warn || baseWarn;
   var staticClass = getAndRemoveAttr(el, 'class');
-  if ("test" !== 'production' && staticClass) {
+  if ("prod" !== 'production' && staticClass) {
     var expression = parseText(staticClass, options.delimiters);
     if (expression) {
       warn(
@@ -19975,7 +19975,7 @@ Vue$3.prototype.$mount = function (
 
   /* istanbul ignore if */
   if (el === document.body || el === document.documentElement) {
-    "test" !== 'production' && warn(
+    "prod" !== 'production' && warn(
       "Do not mount Vue to <html> or <body> - mount to normal elements instead."
     );
     return this
@@ -19990,7 +19990,7 @@ Vue$3.prototype.$mount = function (
         if (template.charAt(0) === '#') {
           template = idToTemplate(template);
           /* istanbul ignore if */
-          if ("test" !== 'production' && !template) {
+          if ("prod" !== 'production' && !template) {
             warn(
               ("Template element not found or is empty: " + (options.template)),
               this
@@ -20010,7 +20010,7 @@ Vue$3.prototype.$mount = function (
     }
     if (template) {
       /* istanbul ignore if */
-      if ("test" !== 'production' && config.performance && mark) {
+      if ("prod" !== 'production' && config.performance && mark) {
         mark('compile');
       }
 
@@ -20024,7 +20024,7 @@ Vue$3.prototype.$mount = function (
       options.staticRenderFns = staticRenderFns;
 
       /* istanbul ignore if */
-      if ("test" !== 'production' && config.performance && mark) {
+      if ("prod" !== 'production' && config.performance && mark) {
         mark('compile end');
         measure(((this._name) + " compile"), 'compile', 'compile end');
       }
@@ -20084,7 +20084,10 @@ module.exports = function xhrAdapter(config) {
     // For IE 8/9 CORS support
     // Only supports POST and GET calls and doesn't returns the response headers.
     // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-    if (false) {
+    if ("prod" !== 'test' &&
+        typeof window !== 'undefined' &&
+        window.XDomainRequest && !('withCredentials' in request) &&
+        !isURLSameOrigin(config.url)) {
       request = new window.XDomainRequest();
       loadEvent = 'onload';
       xDomain = true;
@@ -26416,7 +26419,7 @@ var _fn = __webpack_require__(6);
 
 var Fn = _interopRequireWildcard(_fn);
 
-var _toTitleCase = __webpack_require__(34);
+var _toTitleCase = __webpack_require__(37);
 
 var _toTitleCase2 = _interopRequireDefault(_toTitleCase);
 
@@ -27488,7 +27491,7 @@ var _fn = __webpack_require__(6);
 
 var Fn = _interopRequireWildcard(_fn);
 
-var _guid = __webpack_require__(33);
+var _guid = __webpack_require__(36);
 
 var Guid = _interopRequireWildcard(_guid);
 
@@ -27500,7 +27503,7 @@ var _log = __webpack_require__(14);
 
 var _log2 = _interopRequireDefault(_log);
 
-var _toTitleCase = __webpack_require__(34);
+var _toTitleCase = __webpack_require__(37);
 
 var _toTitleCase2 = _interopRequireDefault(_toTitleCase);
 
@@ -36823,7 +36826,7 @@ var _chaptersTrackMenuItem = __webpack_require__(250);
 
 var _chaptersTrackMenuItem2 = _interopRequireDefault(_chaptersTrackMenuItem);
 
-var _toTitleCase = __webpack_require__(34);
+var _toTitleCase = __webpack_require__(37);
 
 var _toTitleCase2 = _interopRequireDefault(_toTitleCase);
 
@@ -40719,7 +40722,7 @@ var _mergeOptions = __webpack_require__(21);
 
 var _mergeOptions2 = _interopRequireDefault(_mergeOptions);
 
-var _toTitleCase = __webpack_require__(34);
+var _toTitleCase = __webpack_require__(37);
 
 var _toTitleCase2 = _interopRequireDefault(_toTitleCase);
 
@@ -42512,7 +42515,7 @@ var _tech = __webpack_require__(44);
 
 var _tech2 = _interopRequireDefault(_tech);
 
-var _toTitleCase = __webpack_require__(34);
+var _toTitleCase = __webpack_require__(37);
 
 var _toTitleCase2 = _interopRequireDefault(_toTitleCase);
 
@@ -46590,7 +46593,7 @@ function assert (condition, message) {
 }
 
 function warn (condition, message) {
-  if ("test" !== 'production' && !condition) {
+  if ("prod" !== 'production' && !condition) {
     typeof console !== 'undefined' && console.warn(("[vue-router] " + message));
   }
 }
@@ -46726,7 +46729,7 @@ function resolveQuery (
   try {
     parsedQuery = parse(query || '');
   } catch (e) {
-    "test" !== 'production' && warn(false, e.message);
+    "prod" !== 'production' && warn(false, e.message);
     parsedQuery = {};
   }
   for (var key in extraQuery) {
@@ -47764,7 +47767,7 @@ function addRouteRecord (
   if (name) {
     if (!nameMap[name]) {
       nameMap[name] = record;
-    } else if ("test" !== 'production' && !matchAs) {
+    } else if ("prod" !== 'production' && !matchAs) {
       warn(
         false,
         "Duplicate named routes definition: " +
@@ -48273,7 +48276,7 @@ function resolveAsyncComponents (matched) {
 
         var reject = once(function (reason) {
           var msg = "Failed to resolve async component " + key + ": " + reason;
-          "test" !== 'production' && warn(false, msg);
+          "prod" !== 'production' && warn(false, msg);
           if (!error) {
             error = isError(reason)
               ? reason
@@ -48933,7 +48936,7 @@ prototypeAccessors.currentRoute.get = function () {
 VueRouter.prototype.init = function init (app /* Vue component instance */) {
     var this$1 = this;
 
-  "test" !== 'production' && assert(
+  "prod" !== 'production' && assert(
     install.installed,
     "not installed. Make sure to call `Vue.use(VueRouter)` " +
     "before creating root instance."
@@ -49239,4 +49242,4 @@ function extend() {
 
 /***/ })
 ]);
-//# sourceMappingURL=vendor.3b095cc917570a09d8a0.js.map
+//# sourceMappingURL=vendor.f05bcdfdfcd5e3a6aeb4.js.map
