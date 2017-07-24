@@ -1733,6 +1733,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -7086,7 +7091,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(32) + "\");\n  src: url(\"" + __webpack_require__(60) + "\") format(\"woff2\"), url(\"" + __webpack_require__(32) + "?#iefix\") format(\"embedded-opentype\");\n}\n.content[data-v-7fefba88] {\n  top: 0;\n  height: 100vh;\n}\nh3.title[data-v-7fefba88] {\n  height: 25px;\n  line-height: 25px;\n  font-size: 12px;\n  color: #999999;\n  background: #eee;\n  padding-left: 12px;\n  box-sizing: border-box;\n}\n.not_concerned[data-v-7fefba88] {\n  width: 100%;\n  border-bottom: 4px #eee solid;\n  box-sizing: border-box;\n}\n.not_concerned img[data-v-7fefba88] {\n    width: 100%;\n    display: block;\n}\n.border_bottom[data-v-7fefba88] {\n  border-bottom: 4px #eee solid;\n}\n.idol_detail[data-v-7fefba88] {\n  color: #666;\n}\n.avatar_content[data-v-7fefba88] {\n  overflow: hidden;\n  float: left;\n  position: relative;\n  padding: 8px 0 0 4px;\n}\n.avatar_content .crown[data-v-7fefba88] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 25px;\n}\n.idol_content[data-v-7fefba88] {\n  margin: 12px 0 0 12px;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.idol_content > *[data-v-7fefba88] {\n    float: left;\n}\n.idol_content i[data-v-7fefba88] {\n    font-family: 'Helvetica Condensed Bold Italic';\n    font-size: 24px;\n    color: #BBBBBB;\n    margin-top: 14px;\n    width: 20px;\n    text-align: left;\n}\n.idol_content ._fir[data-v-7fefba88] {\n    color: #F3B714;\n}\n.idol_content ._sec[data-v-7fefba88] {\n    color: #888;\n}\n.idol_content ._thr[data-v-7fefba88] {\n    color: #FF8500;\n}\n.idol_content .sizeTwo[data-v-7fefba88] {\n    font-size: 18px;\n}\n.idol_content .sizeThree[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scalc(0.8);\n    margin-top: 24px;\n}\n.idol_content .avatar[data-v-7fefba88] {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-right: 6px;\n    float: left;\n    display: block;\n}\n.idol_content .idol_border[data-v-7fefba88] {\n    border-bottom: 1px #eee solid;\n    overflow: hidden;\n    width: calc(100vw - 44px);\n    padding-bottom: 5px;\n}\n.idol_content .introduction[data-v-7fefba88] {\n    width: calc(100vw - 204px);\n    float: left;\n}\n.idol_content .introduction .name[data-v-7fefba88] {\n      font-size: 14px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .signature[data-v-7fefba88] {\n      font-size: 10.5px;\n      -webkit-transform: scale(0.8);\n      margin-left: -18px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .detail[data-v-7fefba88] {\n      font-size: 12px;\n}\n.idol_content .introduction .detail span img[data-v-7fefba88] {\n        width: 20px;\n        vertical-align: middle;\n        margin-right: 5px;\n}\n.idol_content .introduction .detail span[data-v-7fefba88]:first-child {\n        margin-right: 22.4%;\n}\n.idol_content .support[data-v-7fefba88] {\n    float: left;\n    width: 80px;\n    height: 30px;\n    line-height: 30px;\n    text-align: center;\n    color: #00B4BC;\n    float: right;\n    border: 1.5px solid #00B4BC;\n    border-radius: 27px;\n    margin-top: 8px;\n}\n.fans_list[data-v-7fefba88] {\n  padding: 8px 0 8px 34px;\n}\n.fans_list img[data-v-7fefba88] {\n    margin-left: 4px;\n    width: 25px;\n    height: 25px;\n    border-radius: 50%;\n    vertical-align: middle;\n}\n.fans_list img[data-v-7fefba88]:nth-child(1) {\n    margin-left: 9px;\n}\n.fans_list .no_fans[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scale(0.8);\n    display: inline-block;\n}\n.fans_list .fans_imgList[data-v-7fefba88] {\n    display: inline-block;\n}\n.con_left[data-v-7fefba88] {\n  opacity: 0.2;\n  transition: opacity 0.3s;\n}\n.left_show[data-v-7fefba88] {\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\n@font-face {\n  font-family: 'Helvetica Condensed Bold Italic';\n  src: url(\"" + __webpack_require__(32) + "\");\n  src: url(\"" + __webpack_require__(60) + "\") format(\"woff2\"), url(\"" + __webpack_require__(32) + "?#iefix\") format(\"embedded-opentype\");\n}\n.content[data-v-7fefba88] {\n  top: 0;\n  height: 100vh;\n}\nh3.title[data-v-7fefba88] {\n  height: 25px;\n  line-height: 25px;\n  font-size: 12px;\n  color: #999999;\n  background: #eee;\n  padding-left: 12px;\n  box-sizing: border-box;\n}\n.not_concerned[data-v-7fefba88] {\n  width: 100%;\n  border-bottom: 4px #eee solid;\n  box-sizing: border-box;\n}\n.not_concerned img[data-v-7fefba88] {\n    width: 100%;\n    display: block;\n}\n.border_bottom[data-v-7fefba88] {\n  border-bottom: 4px #eee solid;\n}\n.idol_detail[data-v-7fefba88] {\n  color: #666;\n}\n.avatar_content[data-v-7fefba88] {\n  overflow: hidden;\n  float: left;\n  position: relative;\n  padding: 8px 0 0 4px;\n}\n.avatar_content .crown[data-v-7fefba88] {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 25px;\n}\n.idol_content[data-v-7fefba88] {\n  margin: 12px 0 0 12px;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.idol_content > *[data-v-7fefba88] {\n    float: left;\n}\n.idol_content i[data-v-7fefba88] {\n    font-family: 'Helvetica Condensed Bold Italic';\n    font-size: 24px;\n    color: #BBBBBB;\n    margin-top: 14px;\n    width: 20px;\n    text-align: left;\n}\n.idol_content ._fir[data-v-7fefba88] {\n    color: #F3B714;\n}\n.idol_content ._sec[data-v-7fefba88] {\n    color: #888;\n}\n.idol_content ._thr[data-v-7fefba88] {\n    color: #FF8500;\n}\n.idol_content .sizeTwo[data-v-7fefba88] {\n    font-size: 18px;\n}\n.idol_content .sizeThree[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scalc(0.8);\n    margin-top: 24px;\n}\n.idol_content .avatar[data-v-7fefba88] {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    margin-right: 6px;\n    float: left;\n    display: block;\n}\n.idol_content .idol_border[data-v-7fefba88] {\n    border-bottom: 1px #eee solid;\n    overflow: hidden;\n    width: calc(100vw - 44px);\n    padding-bottom: 5px;\n}\n.idol_content .introduction[data-v-7fefba88] {\n    width: calc(100vw - 204px);\n    float: left;\n}\n.idol_content .introduction .name[data-v-7fefba88] {\n      font-size: 14px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .signature[data-v-7fefba88] {\n      font-size: 10.5px;\n      -webkit-transform: scale(0.8);\n      margin-left: -18px;\n      text-overflow: ellipsis;\n      overflow: hidden;\n      white-space: nowrap;\n}\n.idol_content .introduction .detail[data-v-7fefba88] {\n      font-size: 12px;\n}\n.idol_content .introduction .detail span img[data-v-7fefba88] {\n        width: 20px;\n        vertical-align: middle;\n        margin-right: 5px;\n}\n.idol_content .introduction .detail span[data-v-7fefba88]:first-child {\n        margin-right: 22.4%;\n}\n.idol_content .support[data-v-7fefba88] {\n    float: left;\n    width: 80px;\n    height: 30px;\n    line-height: 30px;\n    text-align: center;\n    color: #00B4BC;\n    float: right;\n    border: 1.5px solid #00B4BC;\n    border-radius: 27px;\n    margin-top: 8px;\n}\n.fans_list[data-v-7fefba88] {\n  padding: 8px 0 8px 34px;\n}\n.fans_list img[data-v-7fefba88] {\n    margin-left: 4px;\n    width: 25px;\n    height: 25px;\n    border-radius: 50%;\n    vertical-align: middle;\n}\n.fans_list img[data-v-7fefba88]:nth-child(1) {\n    margin-left: 9px;\n}\n.fans_list .no_fans[data-v-7fefba88] {\n    font-size: 10px;\n    -webkit-transform: scale(0.8);\n    display: inline-block;\n}\n.fans_list .fans_imgList[data-v-7fefba88] {\n    display: inline-block;\n}\n.con_left[data-v-7fefba88] {\n  opacity: 0.2;\n  transition: opacity 0.3s;\n}\n.left_show[data-v-7fefba88] {\n  opacity: 1;\n}\n.fans_show[data-v-7fefba88] {\n  padding: 0;\n  padding-left: 34px;\n  height: 41px;\n  transition: opacity 0.3s;\n  opacity: 0.2;\n  line-height: 41px;\n}\n.fans_none[data-v-7fefba88] {\n  opacity: 0;\n  height: 0;\n}\n", ""]);
 
 // exports
 
@@ -13939,7 +13944,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           idol.idolId ? _vm.support(idol.idolId) : false
         }
       }
-    }, [_vm._v(_vm._s(_vm.idol_text.support))])])])])
+    }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
+      staticClass: "fans_list fans_show",
+      class: {
+        'fans_none': _vm.meFans.length > 0
+      }
+    }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+      staticClass: "no_fans"
+    }, [_vm._v(_vm._s(_vm.idol_text.no1))])]), _vm._v(" "), _vm._l((_vm.meFans), function(fans) {
+      return (fans.id == idol.idolId) ? _c('div', {
+        staticClass: "fans_list"
+      }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+        staticClass: "fans_imgList"
+      }, _vm._l((fans.topFans), function(img) {
+        return _c('img', {
+          attrs: {
+            "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
+            "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
+            "alt": ""
+          }
+        })
+      })), (fans.topFans.length == 0) ? _c('div', {
+        staticClass: "no_fans"
+      }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]) : _vm._e()
+    }), _vm._v(" "), (key < _vm.me.length - 1) ? _c('div', {
+      staticClass: "border_bottom"
+    }) : _vm._e()], 2)
   })], 2) : _vm._e(), _vm._v(" "), (_vm.top3None == false) ? _c('div', {
     staticClass: "idol_all"
   }, [(_vm.me.length > 0) ? _c('h3', {
@@ -14001,8 +14031,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
+    staticClass: "fans_list fans_show",
+    class: {
+      'fans_none': _vm.allFans.length > 0
+    }
+  }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+    staticClass: "no_fans"
+  }, [_vm._v(_vm._s(_vm.idol_text.no1))])]), _vm._v(" "), _vm._l((_vm.allFans), function(fans) {
+    return (_vm.rakingList.length > 0 ? fans.id == _vm.rakingList[0].idolId : false) ? _c('div', {
+      staticClass: "fans_list"
+    }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+      staticClass: "fans_imgList"
+    }, _vm._l((fans.topFans), function(img) {
+      return _c('img', {
+        attrs: {
+          "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
+          "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
+          "alt": ""
+        }
+      })
+    })), (fans.topFans.length == 0) ? _c('div', {
+      staticClass: "no_fans"
+    }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]) : _vm._e()
+  }), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
-  })]), _vm._v(" "), _c('div', {
+  })], 2), _vm._v(" "), _c('div', {
     staticClass: "idol_detail con_left",
     class: {
       'left_show': _vm.rakingList.length > 0 ? _vm.rakingList.length > 1 : false
@@ -14059,8 +14112,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
+    staticClass: "fans_list fans_show",
+    class: {
+      'fans_none': _vm.allFans.length > 0
+    }
+  }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+    staticClass: "no_fans"
+  }, [_vm._v(_vm._s(_vm.idol_text.no1))])]), _vm._v(" "), _vm._l((_vm.allFans), function(fans) {
+    return (_vm.rakingList.length > 1 ? fans.id == _vm.rakingList[1].idolId : false) ? _c('div', {
+      staticClass: "fans_list"
+    }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+      staticClass: "fans_imgList"
+    }, _vm._l((fans.topFans), function(img) {
+      return _c('img', {
+        attrs: {
+          "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
+          "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
+          "alt": ""
+        }
+      })
+    })), (fans.topFans.length == 0) ? _c('div', {
+      staticClass: "no_fans"
+    }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]) : _vm._e()
+  }), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
-  })]), _vm._v(" "), _c('div', {
+  })], 2), _vm._v(" "), _c('div', {
     staticClass: "idol_detail con_left",
     class: {
       'left_show': _vm.rakingList.length > 0 ? _vm.rakingList.length > 2 : false
@@ -14117,8 +14193,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
+    staticClass: "fans_list fans_show",
+    class: {
+      'fans_none': _vm.allFans.length > 0
+    }
+  }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+    staticClass: "no_fans"
+  }, [_vm._v(_vm._s(_vm.idol_text.no1))])]), _vm._v(" "), _vm._l((_vm.allFans), function(fans) {
+    return (_vm.rakingList.length > 2 ? fans.id == _vm.rakingList[2].idolId : false) ? _c('div', {
+      staticClass: "fans_list"
+    }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+      staticClass: "fans_imgList"
+    }, _vm._l((fans.topFans), function(img) {
+      return _c('img', {
+        attrs: {
+          "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
+          "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
+          "alt": ""
+        }
+      })
+    })), (fans.topFans.length == 0) ? _c('div', {
+      staticClass: "no_fans"
+    }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]) : _vm._e()
+  }), _vm._v(" "), _c('div', {
     staticClass: "border_bottom"
-  })]), _vm._v(" "), _vm._l((_vm.rakingList), function(idol, key) {
+  })], 2), _vm._v(" "), _vm._l((_vm.rakingList), function(idol, key) {
     return (_vm.rakingList.length > 0 ? key > 2 && key < _vm.len : false) ? _c('div', {
       staticClass: "idol_detail",
       on: {
@@ -14171,8 +14270,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v(_vm._s(_vm.idol_text.support))])])]), _vm._v(" "), _c('div', {
+      staticClass: "fans_list fans_show",
+      class: {
+        'fans_none': _vm.allFans.length > 0
+      }
+    }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+      staticClass: "no_fans"
+    }, [_vm._v(_vm._s(_vm.idol_text.no1))])]), _vm._v(" "), _vm._l((_vm.allFans), function(fans) {
+      return (fans.id == idol.idolId) ? _c('div', {
+        staticClass: "fans_list"
+      }, [_vm._v(_vm._s(_vm.idol_text.fans)), _c('div', {
+        staticClass: "fans_imgList"
+      }, _vm._l((fans.topFans), function(img) {
+        return _c('img', {
+          attrs: {
+            "src": img.avatar ? img.avatar : 'http://h5.groupy.vip/static/images/default_img.png',
+            "onerror": "this.src='http://h5.groupy.vip/static/images/default_img.png'",
+            "alt": ""
+          }
+        })
+      })), (fans.topFans.length == 0) ? _c('div', {
+        staticClass: "no_fans"
+      }, [_vm._v(_vm._s(_vm.idol_text.no1))]) : _vm._e()]) : _vm._e()
+    }), _vm._v(" "), _c('div', {
       staticClass: "border_bottom"
-    })]) : _vm._e()
+    })], 2) : _vm._e()
   })], 2) : _vm._e(), _vm._v(" "), (_vm.top3None) ? _c('div', {
     staticClass: "default_page"
   }, [_c('img', {
@@ -17420,4 +17542,4 @@ module.exports = {
 
 /***/ })
 ],[155]);
-//# sourceMappingURL=app.6a94e5a6882d089eccdc.js.map
+//# sourceMappingURL=app.b93443ef600665e65a34.js.map
