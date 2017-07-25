@@ -12,7 +12,7 @@ Vue.use(VueLazyload, {
 	    error: 'http://h5.groupy.vip/static/images/pic_default_2.png',
 	    loading: 'http://h5.groupy.vip/static/images/pic_default_2.png',
 	    attempt: 1
-    })
+})
 
 Vue.use(VueAwesomeSwiper);
 

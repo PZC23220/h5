@@ -1,0 +1,138 @@
+/* 重置样式 start */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+fieldset,
+lengend,
+button,
+input,
+textarea,
+th,
+td {
+    /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+    font-style: normal;
+}
+i {
+    font-style: normal;
+}
+
+/* 将斜体扶正 */
+
+img,
+input {
+    border: 0 none;
+}
+
+div,
+a {
+    outline: none
+}
+
+a {
+    text-decoration: none;
+}
+
+.hide {
+    display: none
+}
+
+html,body {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: iscroll;
+}
+
+a,img,button,h4,div{
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-touch-callout: none;   
+    outline: none;
+    -webkit-user-select: none;
+}
+input{
+   
+}
+input,textarea {
+     -webkit-appearance: none;
+     text-decoration: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-touch-callout: none;   
+    outline: none;
+}
+
+html,body {
+    font-size: 12px;
+    color: #333;
+    line-height: 1.5;
+    max-width: 500px;
+    margin: 0 auto;
+}
+html {
+    background-color: #f7f7f7;
+}
+i{
+    font-style: normal;
+}
+body {
+    background: #fff;
+    overflow: hidden;
+}
+.main {
+    position: relative;
+}
+a {color: #333;}
+.fl{float: left;}
+.fr{float: right;}
+.w100{width: 100px;}
+.clearfix{overflow: hidden;}
+.link{display: inline-block;width: 100%;height: 100%;}
+.a-btn{position: absolute;left: 0;right: 0;top: 0;bottom: 0;}
+
+/* 重置样式 end */

@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Helvetica Condensed Bold Italic';
+  src: url('Helvetica Condensed Bold Italic.eot');
+  src: url('Helvetica Condensed Bold Italic.woff2') format('woff2'),
+       url('Helvetica Condensed Bold Italic.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica-Condensed-BoldObl';
+  src: url('Helvetica-Condensed-BoldObl.woff') format('woff'),
+       url('Helvetica-Condensed-BoldObl.ttf') format('truetype'),
+       url('Helvetica-Condensed-BoldObl.svg#Helvetica-Condensed-BoldObl') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+

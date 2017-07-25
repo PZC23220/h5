@@ -17,10 +17,10 @@
                 </div>
             </div>
             <div class="detailPages">
-                <a class="tabs active" @click="changePages(0)">动态</a>
-                <a class="tabs" @click="changePages(1)">留言板</a>
-                <a class="tabs" @click="boxShow = true;">私信</a>
-                <a class="tabs" @click="boxShow = true;">商城</a>
+                <a class="tabs active" @click="changePages(0)">動画</a>
+                <a class="tabs" @click="changePages(1)">掲示板</a>
+                <a class="tabs" @click="boxShow = true;">個チャ</a>
+                <a class="tabs" @click="boxShow = true;">ストア</a>
             </div>
             <div class="share_content">
                 <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
@@ -28,7 +28,7 @@
                     <swiper-slide id="swiper1">
                         <div class="video_content" v-for="hot in hotList">
                             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                                <img :src="idol.avatar?idol.avatar: 'http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                                <img :src="idol.avatar?idol.avatar: 'http://h5.groupy.vip/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                                 <div class="video_desc">
                                     <h3>{{idol.nickname?idol.nickname:'...'}}</h3>
                                     <p>{{formatTime(hot.data.publishTime)}}</p>
@@ -44,20 +44,22 @@
                                 <span class="play_times"><img src="/img/video_icon_play times.png">{{hot.data.readCount}}</span>
                                 <div class="Masked2" v-if="hot.data.publicType == 1">
                                     <img src="/img/idol/icon_vip.png">
-                                    <p>加入会员才能观看视频</p>
-                                    <div @click="boxShow = true;">入会</div>
+                                    <p>この動画は会員のみ視聴可能です</p>
+                                    <div @click="boxShow = true;">会員登録へ</div>
                                 </div>
                             </div>
                             <div class="video_desc_content">
                                 <p class="video_text">{{hot.data.title}}</p>
                                 <a :href="hrefs" class="video_option"><span><img src="/img/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="/img/timeline_icon_likes.png">{{hot.data.popularity}}</span><img src="/img/icon_arrow_gray.png"></a>
                                 <ul class="comment_list" style="background: #fff;">
-                                    <div class="comment_total"><span><img src="/img/idol/icon_comment.png"><i>共{{hot.data.postList.length}}条评论</i><img src="/img/icon_arrow_gray.png" alt=""></span><div @click="boxShow = true;" class="cursor">添加评论</div></div>
+                                    <div class="comment_total"><span><img src="/img/idol/icon_comment.png"><i>コメント{{hot.data.postList.length}}件すべてを表示</i><img src="/img/icon_arrow_gray.png" alt=""></span><div @click="boxShow = true;" class="cursor">コメントする</div></div>
                                     <li v-for="comment in hot.data.postList">
                                         <div class="comment_info">
                                             <img :src="comment.avatar" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
-                                            <span>{{comment.nickname}}</span>
-                                            <img :src="comment.level?'/img/icon_level_'+(comment.levelPlatform)+'.png':'/img/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
+                                            <span>{{comment.nickname?comment.nickname:'...'}}</span>
+                                            <span class="level">Lv.{{comment.levelPlatform?comment.levelPlatform:0}}</span>
+                                            <img class="fans_medal" :src="'/static/images/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                                            <!-- <img :src="comment.level?'/img/icon_level_'+(comment.levelPlatform)+'.png':'/img/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
                                             <!-- <img :src="comment.medal?'/img/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
                                             <i>{{formatTime(comment.createTime)}}</i>
                                         </div>
@@ -277,7 +279,6 @@
             },
             getIdolInfo() {
                 var self = this;
-                console.log(location.href);
                 http.get('/group/idolHomeAsFans',{
                     params: {
                         idolId: location.href.split('?idolId=')[1].split('#/')[0]
@@ -353,7 +354,6 @@
         created() {
             this.getIdolInfo();
             this.getComments();
-            console.log(this.$route.query)
             // this.p_log('idol_share_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (!(/iphone|ipad|ipod/.test(ua))) {
@@ -786,7 +786,7 @@
     .video-player,.vjs-poster {
         height: calc(100vw * 502/375) !important;
         max-height: calc(500px * 502/375) !important;
-        background-color: rgba(0,0,0,0.2);
+        // background-color: rgba(0,0,0,0.2);
     }
     .video-player .video-js.vjs-custom-skin .vjs-big-play-button {
         width: 41px !important;
