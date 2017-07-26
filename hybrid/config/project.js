@@ -27,8 +27,19 @@ module.exports = {
         // 项目列表
         // 组织格式 ： 项目名 => 以项目根目录为基准的index.vue路径
         // 其在webpack中的对应格式为：[name](生成的js名) => [main.js所在路径]
-        fans_idolRanking: './src/view/fans_idolRanking', // 示例项目，新建页面可以直接复制该项目的代码
-        blog: './src/view/blog', // 示例项目，利用个人blog提供公共api进行测试
-        idol: './src/view/idol', // 示例项目，利用个人blog提供公共api进行测试
+        fans_idolRanking: './src/view/fans_idolRanking', 
+        fans_videoComment: './src/view/fans_videoComment', 
+        fans_fansRanking: './src/view/fans_fansRanking', 
+        fans_medal: './src/view/fans_medal', 
+        fans_level: './src/view/fans_level', 
+        rules: './src/view/rules', 
+        idol_activity: './src/view/idol_activity', 
+        idol_attendance: './src/view/idol_attendance', 
+        idol_fansDetail: './src/view/idol_fansDetail', 
+        idol_incomeDetail: './src/view/idol_incomeDetail', 
+        idol_messageBoard: './src/view/idol_messageBoard', 
+        idol_noviceTask: './src/view/idol_noviceTask', 
+        idol_ranking: './src/view/idol_ranking',
+        idol_videoDetail: './src/view/idol_videoDetail'
     },
 };

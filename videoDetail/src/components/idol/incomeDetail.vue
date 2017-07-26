@@ -4,30 +4,30 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">{{income_text.today}}</span>
-                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':incomeList.incomeCurrentMonth || incomeList.incomeCurrentMonth == 0}">{{incomeList.incomeCurrentMonth?Number(incomeList.incomeCurrentMonth).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="/img/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':incomeList.incomeCurrentMonth || incomeList.incomeCurrentMonth == 0}">{{incomeList.incomeCurrentMonth?Number(incomeList.incomeCurrentMonth).toLocaleString():0}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">{{income_text.yesterday}}</span>
-                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="../../images/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':incomeList.incomeYesterday || incomeList.incomeYesterday == 0}">{{incomeList.incomeYesterday?Number(incomeList.incomeYesterday).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="/img/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':incomeList.incomeYesterday || incomeList.incomeYesterday == 0}">{{incomeList.incomeYesterday?Number(incomeList.incomeYesterday).toLocaleString():0}}</i></span>
                 </p>
             </div>
             <div class="income_details eBorder">
                 <p class="detail_title">{{income_text.vip}}</p>
                 <ul class="income_img">
                     <li>
-                        <img class="gift" src="../../images/pic_vip_free.png" alt="">
+                        <img class="gift" src="/img/pic_vip_free.png" alt="">
                         <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[0].numbers?incomeList.groupFeeList[0].numbers:'0'):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_vip_1 month.png" alt="">
+                        <img class="gift" src="/img/pic_vip_1 month.png" alt="">
                         <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[1].numbers?incomeList.groupFeeList[1].numbers:'0'):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_vip_3 month.png" alt="">
+                        <img class="gift" src="/img/pic_vip_3 month.png" alt="">
                         <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[2].numbers?incomeList.groupFeeList[2].numbers:'0'):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_vip_6 month.png" alt="">
+                        <img class="gift" src="/img/pic_vip_6 month.png" alt="">
                         <p><span class="left" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[3].numbers?incomeList.groupFeeList[3].numbers:'0'):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
@@ -36,35 +36,35 @@
                 <p class="detail_title">{{income_text.detail}}</p>
                 <ul class="income_img">
                     <li>
-                        <img class="gift" src="../../images/pic_star.png" alt="">
+                        <img class="gift" src="/img/gift/pic_star.png" alt="">
                         <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[0].numbers?incomeList.giftList[0].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_heart.png" alt="">
+                        <img class="gift" src="/img/gift/pic_heart.png" alt="">
                         <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[1].numbers?incomeList.giftList[1].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_rose.png" alt="">
+                        <img class="gift" src="/img/gift/pic_rose.png" alt="">
                         <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[2].numbers?incomeList.giftList[2].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_diamond.png" alt="">
+                        <img class="gift" src="/img/gift/pic_diamond.png" alt="">
                         <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[3].numbers?incomeList.giftList[3].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_bear.png" alt="">
+                        <img class="gift" src="/img/gift/pic_bear.png" alt="">
                         <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[4].numbers?incomeList.giftList[4].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_tree.png" alt="">
+                        <img class="gift" src="/img/gift/pic_tree.png" alt="">
                         <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[5].numbers?incomeList.giftList[5].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_tower.png" alt="">
+                        <img class="gift" src="/img/gift/pic_tower.png" alt="">
                         <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[6].numbers?incomeList.giftList[6].numbers:'0'):0}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="../../images/pic_castle.png" alt="">
+                        <img class="gift" src="/img/gift/pic_castle.png" alt="">
                         <p><span class="left" :class="{'left_show':incomeList.giftList}">&times;{{incomeList.giftList?(incomeList.giftList[7].numbers?incomeList.giftList[7].numbers:'0'):0}}</span></p>
                     </li>
                 </ul>
@@ -80,27 +80,27 @@
                     </li>
                     <li v-for="(record,key) in incomeList.monthRecordList">
                         <p>{{formatTime(record.month)}}</p>
-                        <p><img src="../../images/timeline_icon_coins.png" class="icon" alt=""><b>{{Number(record.gCoins).toLocaleString()}}</b></p>
+                        <p><img src="/img/timeline_icon_coins.png" class="icon" alt=""><b>{{Number(record.gCoins).toLocaleString()}}</b></p>
                         <p>{{changeStatus(record.status)}}</p>
                     </li>
                 </ul>
                 <div class="default_page" v-show="!incomeList.monthRecordList" style="padding-top:32px;">
-                    <img src="../../images/default_no income.png" alt="">
+                    <img src="/img/default_no income.png" alt="">
                     <p>{{income_text.records.none}}</p>
                 </div>
             </div>
             <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">{{income_text.records.exchange}}</router-link> -->
         </div>
         <!-- <div class="bigLoading" v-show="loadingBig">
-            <img src="../../images/loading_2.png" alt="">
+            <img src="/img/loading_2.png" alt="">
         </div> -->
     </div>
 </template>
 
 <!-- <script src="../../utils/common.js"></script> -->
 <script>
-    import http from '@env/http.js';
-    require('../../utils/common.js')
+    import http from '@api/js/http.js';
+    require('@api/js/common.js')
     export default {
         data() {
             return {

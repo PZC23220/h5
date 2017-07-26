@@ -29,6 +29,7 @@ import fansdetail from '../components/idol/fansdetail.vue';
 
 import purchaseInstructions from '../components/fans/purchaseInstructions.vue';
 import purchaseInstructions_chinese from '../components/fans/purchaseInstructions_chinese.vue';
+import PrivacyPolicy from '../components/fans/PrivacyPolicy.vue';
 
 import idol_ranking from '../components/idol/ranking.vue';
 import idol_ranking_chinese from '../components/idol/ranking_chinese.vue';
@@ -168,6 +169,9 @@ export default new VueRouter({
         },{
             path: '/fans/purchaseInstructions_chinese',
             component: purchaseInstructions_chinese   
+        },{
+            path: '/fans/PrivacyPolicy',
+            component: PrivacyPolicy   
         },{
             path: '/fans/medal',
             component: medal   
