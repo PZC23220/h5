@@ -7,7 +7,7 @@
                 <li>
                     <div class="img_content">
                         <img src="/img/icon_crown_1.png" class="crown">
-                        <img :src="ranking.length>0?(ranking[0].avatar?ranking[0].avatar:'/img/default_img.png'):'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" class="avatar">
+                        <img :src="ranking.length>0?(ranking[0].avatar?ranking[0].avatar:'/img/default_img.png'):'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
                         <img src="/img/activity/pic_ranking_1.png" class="ranking_pic">
                         <span class="idol_level">NO.1</span>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="idolranking_content">
                         <div class="img_content">
                             <img src="/img/icon_crown_2.png" class="crown">
-                            <img :src="ranking.length>1?(ranking[1].avatar?ranking[1].avatar:'/img/default_img.png'):'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" class="avatar">
+                            <img :src="ranking.length>1?(ranking[1].avatar?ranking[1].avatar:'/img/default_img.png'):'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
                             <img src="/img/activity/pic_ranking_2.png" class="ranking_pic">
                             <span class="idol_level">NO.2</span>
                         </div>
@@ -42,7 +42,7 @@
                     <div class="idolranking_content">
                         <div class="img_content">
                             <img src="/img/icon_crown_3.png" class="crown">
-                            <img :src="idol.avatar?idol.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" class="avatar">
+                            <img :src="idol.avatar?idol.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
                             <img src="/img/activity/pic_ranking_2.png" class="ranking_pic">
                             <span class="idol_level">NO.{{key+1}}</span>
                         </div>

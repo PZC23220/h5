@@ -62,7 +62,7 @@
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                         <div class="comment_info">
-                            <img class="avatar" :src="comment.avatar?comment.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                            <img class="avatar" :src="comment.avatar?comment.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                             <span class="level">Lv.{{comment.levelPlatform?comment.levelPlatform:0}}</span>
                             <img class="fans_medal" :src="'/static/images/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">

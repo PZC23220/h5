@@ -58,7 +58,7 @@
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
                         <div class="userinfo">
-                            <img :src="comment.avatar?comment.avatar:'http://h5.groupy.vip/static/images/default_img.png'"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                            <img :src="comment.avatar?comment.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                             <!-- <img :src="comment.level?'/static/images/icon_level_'+(comment.levelPlatform)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
                             <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>

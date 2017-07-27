@@ -92,7 +92,7 @@
                 }else {
                     http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
                 }
-                http.get('/mission/list',{
+                http.get('http://api.groupy.vip:8080/mission/list',{
                     params: {
                         language: _val
                     }
@@ -127,7 +127,7 @@
                 }else {
                     http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
                 }
-                http.get('/mission/accept',{
+                http.get('http://api.groupy.vip:8080/mission/accept',{
                     params: {
                         id: val
                     }

@@ -7,7 +7,7 @@
         </div>
         <div class="content">
             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                <img :src="idol.avatar?idol.avatar: '/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
+                <img :src="idol.avatar?idol.avatar: '/img/default_img.png'" onerror="this.src='/img/default_img.png'" alt="">
                 <div class="video_desc">
                     <h3>{{idol.nickname?idol.nickname:'Groupy'}}</h3>
                     <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす'}}</p>

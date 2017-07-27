@@ -62,7 +62,7 @@
                     <h5 v-if="me.ranking">{{activity.me}}</h5>
                     <li v-if="me.ranking">
                         <span :class="[{'first':me.ranking == 0},{'second':me.ranking == 1},{'three':me.ranking > 1},{'ten':me.ranking > 9}]">{{me.ranking?me.ranking:'-'}}</span>
-                        <div class="img_content"><img :src="me.avatar?me.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" class="avatar"><img src="/img/icon_crown_1.png" class="crown" v-if="me.ranking?me.ranking==1:false"><img src="/img/icon_crown_2.png" class="crown" v-if="me.ranking?me.ranking==2:false"><img src="/img/icon_crown_3.png" class="crown" v-if="me.ranking?me.ranking>2:false"></div>
+                        <div class="img_content"><img :src="me.avatar?me.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar"><img src="/img/icon_crown_1.png" class="crown" v-if="me.ranking?me.ranking==1:false"><img src="/img/icon_crown_2.png" class="crown" v-if="me.ranking?me.ranking==2:false"><img src="/img/icon_crown_3.png" class="crown" v-if="me.ranking?me.ranking>2:false"></div>
                         <div class="idol_content">
                             <span>{{me.nickname?me.nickname:'...'}}</span>
                             <div class="idol_desc">
@@ -75,7 +75,7 @@
                     <h5>{{activity.all}}</h5>
                     <li v-for="(idol,key) in ranking" v-if="key < 3">
                         <span :class="[{'first':key == 0},{'second':key == 1},{'three':key > 1}]">{{key+1}}</span>
-                        <div class="img_content"><img :src="idol.avatar?idol.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" class="avatar"><img src="/img/icon_crown_1.png" class="crown" v-if="idol.ranking?idol.ranking==1:false"><img src="/img/icon_crown_2.png" class="crown" v-if="idol.ranking?idol.ranking==2:false"><img src="/img/icon_crown_3.png" class="crown" v-if="idol.ranking?idol.ranking>2:false"></div>
+                        <div class="img_content"><img :src="idol.avatar?idol.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar"><img src="/img/icon_crown_1.png" class="crown" v-if="idol.ranking?idol.ranking==1:false"><img src="/img/icon_crown_2.png" class="crown" v-if="idol.ranking?idol.ranking==2:false"><img src="/img/icon_crown_3.png" class="crown" v-if="idol.ranking?idol.ranking>2:false"></div>
                         <div class="idol_content">
                             <span>{{idol.nickname?idol.nickname:'...'}}</span>
                             <div class="idol_desc">

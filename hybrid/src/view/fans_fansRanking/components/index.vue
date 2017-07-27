@@ -22,7 +22,7 @@
                                 <span v-if="meObj.position==2"><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
                                 <span v-if="meObj.position==3"><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
                                 <span v-if="meObj.position>3">{{meObj.position?meObj.position:'0'}}</span>
-                                <img :src="meObj.fans?meObj.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="meObj.fans?meObj.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{meObj.fans?(meObj.fans.nickname?meObj.fans.nickname:'...'):'...'}}</em>
@@ -87,7 +87,7 @@
                             </div>
                             <li v-if="rakingList.length>0">
                                 <span><img src="/img/fans_fansRanking/icon_metal_1.png" alt=""></span>
-                                <img :src="rakingList.length>0?rakingList[0].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="rakingList.length>0?rakingList[0].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList.length>0?rakingList[0].fans.nickname:'...'}}</em>
@@ -101,7 +101,7 @@
                             </li>
                             <li v-if="rakingList.length>1">
                                 <span><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
-                                <img :src="rakingList.length>1?rakingList[1].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="rakingList.length>1?rakingList[1].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList.length>1?rakingList[1].fans.nickname:'...'}}</em>
@@ -115,7 +115,7 @@
                             </li>
                             <li v-if="rakingList.length>2">
                                 <span><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
-                                <img :src="rakingList.length>2?rakingList[2].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="rakingList.length>2?rakingList[2].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList.length>2?rakingList[2].fans.nickname:'...'}}</em>
@@ -129,7 +129,7 @@
                             </li>
                             <li v-for="(idol,key) in rakingList" v-if="key > 2 && key < len">
                                 <span>{{key+1}}</span>
-                                <img :src="idol.fans?idol.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="idol.fans?idol.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
@@ -161,7 +161,7 @@
                                 <span v-if="meHeatObj.position==2"><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
                                 <span v-if="meHeatObj.position==3"><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
                                 <span v-if="meHeatObj.position>3">{{meHeatObj.position}}</span>
-                                <img :src="meHeatObj.fans?meHeatObj.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="meHeatObj.fans?meHeatObj.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span><em>{{meHeatObj.fans?meHeatObj.fans.nickname:'...'}}</em><img :src="meHeatObj.fans?('/img/icon_level_'+ (meHeatObj.fans.levelPlatform) +'.png'): ''" class="level" alt=""></span>
                                     <span><img src="/img/timeline_icon_likes.png" alt="">{{meHeatObj.totalNums?Number(meHeatObj.totalNums).toLocaleString(): 0}}</span>
@@ -197,7 +197,7 @@
                             </div>
                             <li v-if="rankingHeat.length>0">
                                 <span><img src="/img/fans_fansRanking/icon_metal_1.png" alt=""></span>
-                                <img :src="rankingHeat.length>0?(rankingHeat[0].fans.avatar?rankingHeat[0].fans.avatar:'/img/default_img.png'):'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="rankingHeat.length>0?(rankingHeat[0].fans.avatar?rankingHeat[0].fans.avatar:'/img/default_img.png'):'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rankingHeat.length>0?(rankingHeat[0].fans.nickname?rankingHeat[0].fans.nickname:'...'):'...'}}</em>
@@ -211,7 +211,7 @@
                             </li>
                             <li v-if="rankingHeat.length>1">
                                 <span><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
-                                <img :src="rankingHeat.length>1?rankingHeat[1].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="rankingHeat.length>1?rankingHeat[1].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rankingHeat.length>1?rankingHeat[1].fans.nickname:'...'}}</em>
@@ -225,7 +225,7 @@
                             </li>
                             <li v-if="rankingHeat.length>2">
                                 <span><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
-                                <img :src="rankingHeat.length>2?rankingHeat[2].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="rankingHeat.length>2?rankingHeat[2].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rankingHeat.length>2?rankingHeat[2].fans.nickname:'...'}}</em>
@@ -239,7 +239,7 @@
                             </li>
                             <li v-for="(idol,key) in rankingHeat" v-if="key > 2 && key < len2">
                                 <span>{{key+1}}</span>
-                                <img :src="idol.fans?idol.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="" class="avatar">
+                                <img :src="idol.fans?idol.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
