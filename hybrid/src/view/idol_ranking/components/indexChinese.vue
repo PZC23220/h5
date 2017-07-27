@@ -1,9 +1,10 @@
 <template>
     <div class="main">
-        <div class="header">
+        <div class="header" style="border-bottom: 1px solid #FC4083;">
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">今日排名</a>
                 <a class="tabs" @click="changePages(1)">总排名</a>
+                <span class="bgActive" style="width: 144px;margin-left: calc((100vw - 24px)* 1/4 - 72px);"></span>
             </div>
         </div>
          <div class="content">
@@ -198,6 +199,7 @@
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
+                    $('.bgActive').css('left','calc((100vw - 24px)* '+ (swiper.activeIndex) +'/2)');
                   },
                 },
                 rakingList: [],
@@ -217,7 +219,8 @@
           changePages(val) {
             let tabs = $('.tabs');
             tabs.removeClass('active');
-            tabs.eq(val).addClass('active')
+            tabs.eq(val).addClass('active');
+            $('.bgActive').css('left','calc((100vw - 24px)* '+ (val) +'/2)');
             this.swiper.slideTo(val, 500, false)
           },
           formatTime(key) {

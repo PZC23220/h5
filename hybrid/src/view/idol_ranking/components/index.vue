@@ -1,9 +1,10 @@
 <template>
     <div class="main">
-        <div class="header">
+        <div class="header" style="border-bottom: 1px solid #FC4083;">
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">今日のランキング</a>
                 <a class="tabs" @click="changePages(1)">総合ランキング</a>
+                <span class="bgActive" style="width: 144px;margin-left: calc((100vw - 24px)* 1/4 - 72px);"></span>
             </div>
         </div>
          <div class="content">
@@ -196,6 +197,7 @@
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
+                    $('.bgActive').css('left','calc((100vw - 24px)* '+ (swiper.activeIndex) +'/2)');
                   },
                 },
                 rakingList: [],
@@ -215,7 +217,8 @@
           changePages(val) {
             let tabs = $('.tabs');
             tabs.removeClass('active');
-            tabs.eq(val).addClass('active')
+            tabs.eq(val).addClass('active');
+            $('.bgActive').css('left','calc((100vw - 24px)* '+ (val) +'/2)');
             this.swiper.slideTo(val, 500, false)
           },
           formatTime(key) {
@@ -281,7 +284,7 @@
                 self.top3None = true;
                 // self.loadingBig = false;
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
                 })
             }
           },

@@ -5,7 +5,7 @@
               :on-refresh="refresh"
               :on-infinite="infinite"
               :noDataText="rakingList.length>0? '全て表示されました':''">
-                <div class="not_concerned" v-if="me.length==0"><img src="/img/fans_idolRanking/banner.png" alt=""></div>
+                <div class="not_concerned" v-if="me.length==0"><img src="/img/fans_idolRanking/banner.jpg" alt=""></div>
                 <div class="concerned" v-if="me.length > 0">
                     <h3 class="title">{{idol_text.me}}</h3>
                     <div class="idol_detail" v-for="(idol,key) in me" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">

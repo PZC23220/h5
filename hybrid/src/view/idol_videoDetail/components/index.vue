@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="header">
+        <div class="header" style="border-bottom: 1px solid #FC4083;">
             <!-- <div class="detail">
                 <a href="#" class="back">
                     <img src="../../../static/images/icon_arrow_back_black.png" alt="">
@@ -11,6 +11,7 @@
                 <a class="tabs active" @click="changePages(0)">{{video_text.Gcoin}}</a>
                 <a class="tabs" @click="changePages(1)">{{video_text.like}}</a>
                 <a class="tabs" @click="changePages(2)">{{video_text.comment}}</a>
+                <span class="bgActive"></span>
             </div>
         </div>
         <div class="content">
@@ -152,6 +153,7 @@
     import $ from 'n-zepto';
     import http from '@api/js/http.js';
     require('@api/js/common.js')
+    // var vConsole = require('@api/js/vconsole.min.js');
     export default {
         data() {
             return {
@@ -168,6 +170,8 @@
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
+                    $('.bgActive').css('left','calc((100vw - 24px)* '+ (swiper.activeIndex) +'/3)');
+                    console.log(this.bgRun)
                     if(swiper.activeIndex == 0) {
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('view_g_coin');
@@ -215,7 +219,8 @@
             let tabs = $('.tabs');
             tabs.removeClass('active');
             tabs.eq(val).addClass('active')
-            this.swiper.slideTo(val, 500, false)
+            this.swiper.slideTo(val, 500, false);
+            $('.bgActive').css('left','calc((100vw - 24px)* '+ (val) +'/3)');
             if(val == 0) {
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('view_g_coin');

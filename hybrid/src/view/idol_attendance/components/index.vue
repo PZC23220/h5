@@ -39,7 +39,7 @@
                         <img src="/img/Attendance/attendance.png" class="attendance">
                         <h3>{{idol.nickname?idol.nickname:'...'}}</h3>
                         <p>{{idol.introduce?idol.introduce:'...'}}</p>
-                        <span class="idolPage" v-if="isFans">查看主页</span>
+                        <span class="idolPage" v-if="isFans">プロフィールへ</span>
                     </li>
                 </ul>
             </div>

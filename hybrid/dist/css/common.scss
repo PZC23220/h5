@@ -56,27 +56,42 @@ a {color: #333;}
             top: (54px-22px)/2;
             img {
               width: 22px;
-              display: block;  
+              display: block;
             }
         }
     }
     .detailPages {
-        border-bottom: 1px solid #FC4083;
-        padding: 0 12px;
+        // border-bottom: 1px solid #FC4083;
         overflow: hidden;
         display: flex;
-        height: 41px;
+        height: 40px;
         line-height:28px;
         padding: 6px 0;
+        margin: 0 12px;
+        position: relative;
         box-sizing: border-box;
         a {
             color: #FC4083;
             display: block;
             flex: 1;
             margin: 0 7.5%;
+            z-index: 2;
+        }
+        span.bgActive {
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 80px;
+            margin-left: calc((100vw - 24px)* 1/6 - 40px);
+            display: block;
+            z-index: 0;
+            height: 28px;
+            border-radius: 50px;
+            background: #FC4083;
+            transition: all 0.3s;
         }
         .active {
-            background: #FC4083;
+            // background: #FC4083;
             border-radius: 50px;
             color: #fff;
         }

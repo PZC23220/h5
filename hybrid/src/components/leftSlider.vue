@@ -1,13 +1,13 @@
 <template>
-    <div class="left-delete">
-        <div class="move"
-             @touchstart.stop="_touchStart"
-             @touchmove.stop="_touchMove"
-             @touchend.stop="_touchEnd"
-             :style="txtStyle">
+    <div class="left-delete"
+        @touchstart.stop="_touchStart"
+        @touchmove.stop="_touchMove"
+        @touchend.stop="_touchEnd"
+        :style="txtStyle">
+        <div class="move">
             <slot></slot>
         </div>
-        <div class="deleteIcon" :style="zIndex"  @click.stop.prevent="deleteItem(index)"><img src="/img/video_icon_report.png" width="18px" style="float: left;margin-top: 17.5px;margin-right: 5px;" alt="">举报</div>
+        <div class="deleteIcon"  @click.stop.prevent="deleteItem(index)"><img src="/img/video_icon_report.png" width="18px" style="float: left;margin-top: 17.5px;margin-right: 5px;" alt="">举报</div>
     </div>
 </template>
 
@@ -50,13 +50,13 @@
                     if(this.disX < 0 || this.disX == 0) {
                         // console.log('没有移动');
                         this.txtStyle = "transform:translateX(0rem)";
-                        this.zIndex = "right:-70px;";
+                        // this.zIndex = "right:-70px;";
                     }else if (this.disX > 0) {
                     //如果是向左滑动，则实时给这个根元素一个向左的偏移-left，当偏移量到达固定值delWidth时，固定元素的偏移量为 delWidth
                         // this.txtStyle = "transform:translateX(-" + this.disX/100 + "rem)";
                         if (this.disX >= this.delWidth/100) {
                             this.txtStyle = "transform:translateX(-" + this.delWidth/100 + "rem)";
-                            this.zIndex = "right:0;";
+                            // this.zIndex = "right:0;";
                         }
                     }
                 }
@@ -98,29 +98,35 @@
 
 <style>
     .left-delete{
-        width:100%;
+        width:calc(100vw + 70px);
         height:100%;
         position:relative;
         overflow: hidden;
         box-sizing: border-box;
-        padding: 12px 12px;
+        padding: 0;
+        padding-left: 12px;
+        transition: all 0.3s;
+        left:  0;
     }
     .move{
         /* position: relative; */
+        width: calc(100vw - 24px);
         overflow: hidden;
         transition: all 0.3s;
+        float: left;
+        padding-right: 12px;
+        padding-top: 12px;
     }
     .deleteIcon{
         width: 50px;
         padding-left: 12px; 
         padding-right: 8px;
         background: #ff2955;
-        position: absolute;
         color: #fff;
         height: 55px;
         line-height: 55px;
         overflow: hidden;
-        top:0;
         transition: all 0.3s;
+        float: left;
     }
 </style>

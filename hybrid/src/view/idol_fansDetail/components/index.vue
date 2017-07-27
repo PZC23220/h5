@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="header">
+        <div class="header" style="border-bottom: 1px solid #FC4083;">
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">{{fans_text.mine}} </span>
@@ -15,6 +15,7 @@
                 <a class="tabs active" @click="changePages(0)">{{fans_text.Gcoin}}</a>
                 <a class="tabs" @click="changePages(1)">{{fans_text.like}}</a>
                 <a class="tabs" @click="changePages(2)">{{fans_text.time}}</a>
+                <span class="bgActive"></span>
             </div>
         </div>
         <div class="content">
@@ -77,7 +78,7 @@
             <swiper-slide id="swiper3">
                 <ul class="comment_list">
                     <li v-for="(fans,key) in joinList.fansList" style="padding: 0;">
-                        <left-slider :index="key" @deleteItem="deleteItem(fans.fansId)">
+                        <left-slider :index="key" @deleteItem.stop="deleteItem(fans.fansId)">
                             <img class="avatar" :src="fans.fans?(fans.fans.avatar?fans.fans.avatar:'http://h5.groupy.vip/static/images/default_img.png'):'http://h5.groupy.vip/static/images/default_img.png'"  onerror="this.src='http://h5.groupy.vip/static/images/default_img.png'" alt="">
                             <span class="name">{{fans.fans?(fans.fans.nickname?fans.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
@@ -123,6 +124,7 @@
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
+                    $('.bgActive').css('left','calc((100vw - 24px)* '+ (swiper.activeIndex) +'/3)');
                   },
                 },
                 joinList: {
@@ -144,7 +146,7 @@
                     time: '入会日',
                     noneGcoin: 'まだコインを獲得したことないです',
                     noneLike: 'まだLikeしたファンはいないです',
-                    noneComment: 'まだ入会したファンはいないです'
+                    noneComment: 'まだメンバーはないようです'
                 }
             }
         },
@@ -155,8 +157,9 @@
             changePages(val) {
                 let tabs = $('.tabs');
                 tabs.removeClass('active');
-                tabs.eq(val).addClass('active')
-                this.swiper.slideTo(val, 500, false)
+                tabs.eq(val).addClass('active');
+                $('.bgActive').css('left','calc((100vw - 24px)* '+ (val) +'/3)');
+                this.swiper.slideTo(val, 500, false);
               },
             formatTime(key) {
                   let timer = new Date(key);
@@ -307,7 +310,7 @@
                     time: '入会时间',
                     noneGcoin: '还没有收到粉丝的G币',
                     noneLike: '还没有收到粉丝的点赞人气',
-                    noneComment: '还没有收到粉丝的评论'
+                    noneComment: '还没有会员入会记录'
 
                 }
               } else {
@@ -319,7 +322,7 @@
                     time: '入会日',
                     noneGcoin: 'まだコインを獲得したことないです',
                     noneLike: 'まだLikeしたファンはいないです',
-                    noneComment: 'まだ入会したファンはいないです'
+                    noneComment: 'まだメンバーはないようです'
                 }
               }
             self.getGcoin();
