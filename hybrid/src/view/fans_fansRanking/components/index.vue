@@ -260,6 +260,7 @@
                     </scroller>
                 </swiper-slide>
             </swiper>
+            <div class="Forbidden"></div>
          </div>
          <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="/img/loading_2.png" alt="">

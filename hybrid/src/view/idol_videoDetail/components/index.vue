@@ -104,7 +104,7 @@
                             <span class="level">Lv.{{popularity.userFans?(popularity.userFans.levelPlatform?popularity.userFans.levelPlatform:0):0}}</span>
                             <img class="fans_medal" :src="'/static/images/icon_medal_'+(popularity.userFans.medal)+'.png'" v-if="popularity.userFans.medal&&popularity.userFans.medal>0" alt="">
                             <i>
-                                <img src="/img/timeline_icon_likes.png" class="likes" alt="">{{popularity.giftCount?Number(popularity.giftCount).toLocaleString():'0'}}
+                                <img src="/img/timeline_icon_likes.png" class="likes" alt="">{{popularity.totalNums?Number(popularity.totalNums).toLocaleString():'0'}}
                             </i>
                         <!-- </left-slider> -->
                     </li>

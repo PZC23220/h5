@@ -101,6 +101,14 @@ a {color: #333;}
     width: 100%;
     overflow-x: hidden;
 }
+.Forbidden {
+    position: fixed;
+    z-index: 100;
+    width: 47px;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
 .detail_title {
     font-size: 14px;
     border-left: solid 3.5px #666;

@@ -1,17 +1,19 @@
 <template>
     <div class="left-delete"
-        @touchstart.stop="_touchStart"
-        @touchmove.stop="_touchMove"
-        @touchend.stop="_touchEnd"
+        @touchstart="_touchStart"
+        @touchmove="_touchMove"
+        @touchend="_touchEnd"
         :style="txtStyle">
-        <div class="move">
+        <div class="move" @click.stop="txtStyle = 'transform:translateX(0rem)'">
             <slot></slot>
         </div>
-        <div class="deleteIcon"  @click.stop.prevent="deleteItem(index)"><img src="/img/video_icon_report.png" width="18px" style="float: left;margin-top: 17.5px;margin-right: 5px;" alt="">举报</div>
+        <div class="deleteIcon"  @click.prevent="deleteItem(index)"><img src="/img/video_icon_report.png" width="18px" style="float: left;margin-top: 17.5px;margin-right: 5px;" alt="">举报</div>
     </div>
 </template>
 
 <script>
+    require('@api/js/vconsole.min.js');
+    // import $ from 'n-zepto';
     export default {
         props: {
             index: Number
@@ -33,35 +35,42 @@
                 if(ev.touches.length == 1){
                     // 手指按下的时候记录按下的位置
                     this.startX = ev.touches[0].clientX;
+                    this.startY = ev.touches[0].clientY;
                     // console.log(this.startX)
                 }
-                ev.preventDefault();
-                 ev.stopPropagation();
+                // ev.preventDefault();
+                //  ev.stopPropagation();
             },
             _touchMove: function(ev) {
                 ev = ev || event;
                 if(ev.touches.length == 1) {
                     // 滑动过程中的实时位置
-                    this.moveX = ev.touches[0].clientX
+                    this.moveX = ev.touches[0].clientX;
+                    this.moveY = ev.touches[0].clientY;
                     // 滑动过程中实时计算滑动距离
                     this.disX = this.startX - this.moveX;
+                    this.disY = this.startY - this.moveY;
                     // console.log('disX==>',this.disX)
                     // 如果是向右滑动或者只是点击，不改变滑动位置
-                    if(this.disX < 0 || this.disX == 0) {
-                        // console.log('没有移动');
-                        this.txtStyle = "transform:translateX(0rem)";
-                        // this.zIndex = "right:-70px;";
-                    }else if (this.disX > 0) {
-                    //如果是向左滑动，则实时给这个根元素一个向左的偏移-left，当偏移量到达固定值delWidth时，固定元素的偏移量为 delWidth
-                        // this.txtStyle = "transform:translateX(-" + this.disX/100 + "rem)";
-                        if (this.disX >= this.delWidth/100) {
-                            this.txtStyle = "transform:translateX(-" + this.delWidth/100 + "rem)";
-                            // this.zIndex = "right:0;";
+                    if(this.disY > -4 && this.disY < 4) {
+                        if(this.disX <= 0) {
+                            // $('.left-delete').css('transform','translateX(0rem)');
+                            ev.preventDefault();
+                            ev.stopPropagation();
+                        }else if (this.disX > 0) {
+                        //如果是向左滑动，则实时给这个根元素一个向左的偏移-left，当偏移量到达固定值delWidth时，固定元素的偏移量为 delWidth
+                            // this.txtStyle = "transform:translateX(-" + this.disX/100 + "rem)";
+                            if (this.disX >= this.delWidth/100) {
+                                console.log(ev)
+                                // $('.left-delete').css('transform','translateX(0rem)');
+                                this.txtStyle = "transform:translateX(-" + this.delWidth/100 + "rem)";
+                                // this.zIndex = "right:0;";
+                            }
+                            ev.preventDefault();
+                            ev.stopPropagation();
                         }
                     }
                 }
-                ev.preventDefault();
-                ev.stopPropagation();
             },
             _touchEnd: function(ev) {
                 if (event.changedTouches.length == 1) {
@@ -75,8 +84,8 @@
                     //如果距离小于删除按钮的1/2，不显示删除按钮
 
                 }
-                ev.preventDefault();
-                ev.stopPropagation();
+                // ev.preventDefault();
+                // ev.stopPropagation();
             },
             deleteItem: function(index) {
                 // console.log(index)
