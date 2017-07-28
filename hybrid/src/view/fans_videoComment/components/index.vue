@@ -190,6 +190,7 @@
             },
             publish(token) {
                 let self = this;
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 if(self.can_publish) {
                     if(self.comment_text !=""){
                         self.can_publish = false;
@@ -201,7 +202,7 @@
                         let _data = {
                             content:self.comment_text,
                             targetType: 1,
-                            targetId: self.$route.query.videoId
+                            targetId: getParams('videoId')
                         }
                         http.post('/post/add',JSON.stringify(_data)).then(function(res){
                             self.refresh();
@@ -214,7 +215,11 @@
                         }).catch(function(err){
                             self.can_publish = true;
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                                if(_lan === 'zh-cn') {
+                                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                                 }else {
+                                    bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                                 }
                             })
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'1','targetId':self.$route.query.videoId}, function responseCallback(responseData) {
@@ -224,7 +229,11 @@
                         });
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('makeToast', '请输入内容');
+                            if(_lan === 'zh-cn') {
+                                    bridge.callHandler('makeToast', '请添加内容');
+                                 }else {
+                                    bridge.callHandler('makeToast', 'コメントを入力してください');
+                                 }
                         })
                     }
                 }

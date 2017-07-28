@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="header" style="border-bottom: 1px solid #FC4083;">
+        <div class="header" style="border-bottom: 1px solid #eee;">
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">{{ranking_text.today}}</a>
                 <a class="tabs" @click="changePages(1)">{{ranking_text.all}}</a>

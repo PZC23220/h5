@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="header" style="border-bottom: 1px solid #FC4083;">
+        <div class="header" style="border-bottom: 1px solid #eee;">
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">{{fans_text.mine}} </span>

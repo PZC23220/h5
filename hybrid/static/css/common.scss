@@ -25,9 +25,6 @@ body {
     left: 0; right: 0;
     font-family: 'SimHei','Hiragino Kaku Gothic Pro W3','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
 }
-.main {
-    // position: relative;
-}
 a {color: #333;}
 .fl{float: left;}
 .fr{float: right;}
@@ -71,7 +68,7 @@ a {color: #333;}
         position: relative;
         box-sizing: border-box;
         a {
-            color: #FC4083;
+            color: #666;
             display: block;
             flex: 1;
             margin: 0 7.5%;
@@ -80,20 +77,18 @@ a {color: #333;}
         span.bgActive {
             position: absolute;
             left: 0;
-            top: 6px;
+            bottom: 0px;
             width: 80px;
             margin-left: calc((100vw - 24px)* 1/6 - 40px);
             display: block;
             z-index: 0;
-            height: 28px;
-            border-radius: 50px;
+            height: 2.5px;
             background: #FC4083;
             transition: all 0.3s;
         }
         .active {
-            // background: #FC4083;
+            color: #FC4083;
             border-radius: 50px;
-            color: #fff;
         }
     }
 }
@@ -116,7 +111,11 @@ a {color: #333;}
 img.icon {
     width: 23.75px;
 }
-
+.line_20 {
+    background-color: #eee;
+    width: 100vw;
+    height: 1px;
+}
 .eBorder {
     border-bottom: 8px solid #eee;
  }
@@ -149,10 +148,11 @@ img.icon {
         color: #666;
         font-style: normal;
         display: inline-block;
-        max-width: calc(100vw - 100px);
+        max-width: calc(50vw - 65px);
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        font-weight: 600;
     }
     .video_money_show {
         opacity: 1;
@@ -173,14 +173,32 @@ img.icon {
          }
          .detail_gcoin {
             display: block;
-            margin-left: 45px;
+            padding-right: 12px;
+            box-sizing: border-box;
+            // margin-left: 45px;
+            text-align: center;
             overflow: hidden;
             img {
-                float: left;
                 margin-right: 5.5px;
                 width: 25px;
             }
          }
+    }
+}
+.coinsTotal {
+    margin-bottom: 13px;
+    span {
+        color: #999;
+        margin-right: 15px;
+    }
+    img {
+        width: 14px;
+        margin-right: 4.5px;
+    }
+    i {
+        font-size: 14px;
+        font-weight: 600;
+        color: #666;
     }
 }
 .income_details {
@@ -587,11 +605,15 @@ img.avatar {
     .all_ranking {
         border: 1px solid #999999;
         border-radius: 50px;
-        width: 74px;
+        width: 80px;
         margin: 0 auto;
+        height: 23px;
+        line-height: 23px;
         text-align: center;
+        font-size: 10px;
+        -webkit-transform: scale(0.8);
         display: block;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
     .integral {
         padding: 12px;

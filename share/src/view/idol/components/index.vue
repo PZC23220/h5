@@ -7,13 +7,13 @@
         </div>
         <div class="content">
             <div class="idol_desc">
-                <div class="idol_desc_bg" :style="idol.avatar?'background-image: url('+ idol.avatar +');':'background-image: url(default_img);'"></div>
+                <div class="idol_desc_bg" :style="idol.avatar?'background-image: url('+ idol.avatar +');':'background-image: url(http://h5.groupy.vip/img/default_img.png);'"></div>
                 <div class="idol_desc_content">
-                    <img :src="idol.avatar?idol.avatar:'default_img'" onerror="this.src='default_img'" class="avatar">
+                    <img :src="idol.avatar?idol.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
                     <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
-                    <div class="idol_support"><span><img src="/img/idol/idol_icon_fans.png">{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}</span><span><img src="/img/idol/idol_icon_likes.png">{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}</span><span><img src="/img/idol/idol_icon_ranking.png">{{idol.rankingPosition?Number(idol.rankingPosition).toLocaleString():0}}位</span><span class="cursor" @click="boxShow = true;">応援</span></div>
+                    <div class="idol_support"><span><img src="http://h5.groupy.vip/img/idol_icon_fans.png">{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}</span><span><img src="/img/idol/idol_icon_likes.png">{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}</span><span><img src="/img/idol/idol_icon_ranking.png">{{idol.rankingPosition?Number(idol.rankingPosition).toLocaleString():0}}位</span><span class="cursor" @click="boxShow = true;">応援</span></div>
                     <p>{{idol.introduce?idol.introduce:'我在groupy等你哦！'}}</p>
-                    <div class="idol_fans_ranking cursor" @click="boxShow = true;"><i>粉丝排行</i><div><img v-for="img in fansList" :src="img.avatar?img.avatar:'default_img'"  onerror="this.src='default_img'"></div><div class="no_fans" v-if="fansList.length<=0">赶紧来抢占第一位吧！</div><img src="/img/icon_arrow_white.png"></div>
+                    <div class="idol_fans_ranking cursor" @click="boxShow = true;"><i>粉丝排行</i><div><img v-for="img in fansList" :src="img.avatar?img.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'"></div><div class="no_fans" v-if="fansList.length<=0">赶紧来抢占第一位吧！</div><img src="/img/icon_arrow_white.png"></div>
                 </div>
             </div>
             <div class="detailPages">
@@ -28,7 +28,7 @@
                     <swiper-slide id="swiper1">
                         <div class="video_content" v-for="hot in hotList">
                             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                                <img :src="idol.avatar?idol.avatar: 'default_img'" onerror="this.src='default_img'" alt="">
+                                <img :src="idol.avatar?idol.avatar: 'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
                                 <div class="video_desc">
                                     <h3>{{idol.nickname?idol.nickname:'...'}}</h3>
                                     <p>{{formatTime(hot.data.publishTime)}}</p>
@@ -55,7 +55,7 @@
                                     <div class="comment_total"><span><img src="/img/idol/icon_comment.png"><i>コメント{{hot.data.postList.length}}件すべてを表示</i><img src="/img/icon_arrow_gray.png" alt=""></span><div @click="boxShow = true;" class="cursor">コメントする</div></div>
                                     <li v-for="comment in hot.data.postList">
                                         <div class="comment_info">
-                                            <img :src="comment.avatar" onerror="this.src='default_img'" alt="" class="avatar">
+                                            <img :src="comment.avatar" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                             <span>{{comment.nickname?comment.nickname:'...'}}</span>
                                             <span class="level">Lv.{{comment.levelPlatform?comment.levelPlatform:0}}</span>
                                             <img class="fans_medal" :src="'/static/images/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
@@ -79,7 +79,7 @@
                         <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                             <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                                 <div class="userinfo">
-                                    <img :src="'default_img'" onerror="this.src='default_img'" alt="" class="avatar">
+                                    <img :src="'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -90,7 +90,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img :src="'default_img'" onerror="this.src='default_img'" alt="" class="avatar">
+                                    <img :src="'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -101,7 +101,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img :src="'default_img'" onerror="this.src='default_img'" alt="" class="avatar">
+                                    <img :src="'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -112,7 +112,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img :src="'default_img'" onerror="this.src='default_img'" alt="" class="avatar">
+                                    <img :src="'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -124,7 +124,7 @@
                         </div>
                         <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
                             <div class="userinfo">
-                                <img :src="comment.avatar" onerror="this.src='default_img'" alt="" class="avatar">
+                                <img :src="comment.avatar" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <span>{{comment.nickname}}</span>
                                 <img :src="comment.level?'/img/icon_level_'+(comment.levelPlatform)+'.png':'/img/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
                                 <!-- <img :src="comment.medal?'/static/images/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->

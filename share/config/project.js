@@ -3,7 +3,7 @@
 // 扩展配置说明
 // 获取项目版本号，用以生成目录
 let fs = require("fs")
-let name = 'multi_vue_demo' // 项目名，提取出来以方便dev环境使用，否则会出现undefined = =
+let name = 'groupy_share' // 项目名，提取出来以方便dev环境使用，否则会出现undefined = =
 let vcs_type = '' // 设定版本控制工具，用于自动获取版本号，默认是0.0.1
 let version = ''
 if (vcs_type == 'git') {
@@ -28,7 +28,6 @@ module.exports = {
         // 组织格式 ： 项目名 => 以项目根目录为基准的index.vue路径
         // 其在webpack中的对应格式为：[name](生成的js名) => [main.js所在路径]
         video: './src/view/video', // 示例项目，新建页面可以直接复制该项目的代码
-        blog: './src/view/blog', // 示例项目，利用个人blog提供公共api进行测试
         idol: './src/view/idol', // 示例项目，利用个人blog提供公共api进行测试
     },
 };

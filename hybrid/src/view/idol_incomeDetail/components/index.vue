@@ -31,6 +31,7 @@
                         <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[3].numbers?incomeList.groupFeeList[3].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
+                <!-- <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div> -->
             </div>
             <div class="income_details eBorder">
                 <p class="detail_title">{{income_text.detail}}</p>
@@ -68,7 +69,12 @@
                         <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[7].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
+                <!-- <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div> -->
             </div>
+           <!--  <div class="income_details eBorder">
+                <p class="detail_title">{{income_text.task}}</p>
+                <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div>
+            </div> -->
             <p v-html="income_text.desc" class="income_desc"></p>
            <!--  <div class="mention_details">
                 <p class="detail_title">{{income_text.record}}</p>
@@ -112,6 +118,7 @@
                     yesterday: '昨日獲得コイン数',
                     vip: '会員人数',
                     detail: 'ギフトリスト',
+                    task: '新規応援ミッション',
                     record: '換金履歴',
                     desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
                     records: {
@@ -210,6 +217,7 @@
                     yesterday: '昨日G币',
                     vip: '会员数量',
                     detail: '礼物数量',
+                    task: '新手任务',
                     record: '提现记录',
                     desc: 'G币是Groupy平台上使用的虚拟货币，并不代表真实货币',
                     records: {
@@ -227,6 +235,7 @@
                     yesterday: '昨日獲得コイン数',
                     vip: '会員人数',
                     detail: 'ギフトリスト',
+                    task: '新規応援ミッション',
                     record: '換金履歴',
                     desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
                     records: {

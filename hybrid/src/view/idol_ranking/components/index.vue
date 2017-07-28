@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="header" style="border-bottom: 1px solid #FC4083;">
+        <div class="header" style="border-bottom: 1px solid #eee;">
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">今日のランキング</a>
                 <a class="tabs" @click="changePages(1)">総合ランキング</a>
@@ -40,7 +40,8 @@
                              <span><img src="/img/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.length>2?rakingListToday[2].score || rakingListToday[2].score==0:false}">{{Number(rakingListToday.length>2?(rakingListToday[2].score?rakingListToday[2].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                      </ul>
-                     <router-link :to="'/allRanking?type=today&token='+tokens" class="all_ranking" v-if="top3NoneToday == false">すべて表示</router-link>
+                     <router-link :to="'/allRanking?type=today'" class="all_ranking" v-if="top3NoneToday == false">すべて表示</router-link>
+                     <div class="line_20"></div>
                      <div class="default_page" v-show="top3NoneToday">
                         <img src="/img/default_no message.png" alt="">
                         <p>ただ今集計中です</p>
@@ -119,7 +120,8 @@
                              <span><img src="/img/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.length>2?rakingList[2].score || rakingList[2].score==0:false}">{{Number(rakingList.length>2?(rakingList[2].score?rakingList[2].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                      </ul>
-                     <router-link :to="'/allRanking?type=all&token='+tokens" class="all_ranking">すべて表示</router-link>
+                     <router-link :to="'/allRanking?type=all'" class="all_ranking">すべて表示</router-link>
+                     <div class="line_20"></div>
                      <div class="default_page" v-show="top3None">
                         <img src="/img/default_no message.png" alt="">
                         <p>ただ今集計中です</p>

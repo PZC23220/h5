@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="header" style="border-bottom: 1px solid #FC4083;">
+        <div class="header" style="border-bottom: 1px solid #eee;">
             <!-- <div class="detail">
                 <a href="#" class="back">
                     <img src="../../../static/images/icon_arrow_back_black.png" alt="">
