@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    require('@api/js/vconsole.min.js');
+    // require('@api/js/vconsole.min.js');
     // import $ from 'n-zepto';
     export default {
         props: {

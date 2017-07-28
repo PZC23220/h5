@@ -135,8 +135,8 @@
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
                                         <!-- <img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform+1) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
-                                        <span class="level">Lv.{{idol.fans?(ridol.fans.levelPlatform?ridol.fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'/img/icon_medal_'+(ridol.fans.medal)+'.png'" v-if="ridol.fans.medal&&ridol.fans.medal>0" alt="">
+                                        <span class="level">Lv.{{idol.fans?(idol.fans.levelPlatform?idol.fans.levelPlatform:0):0}}</span>
+                                        <img class="medal_level" :src="'/img/icon_medal_'+(idol.fans.medal)+'.png'" v-if="idol.fans.medal&&idol.fans.medal>0" alt="">
                                     </span>
                                     <span><img src="/img/timeline_icon_coins.png" alt="">{{idol.expendGprice?Number(idol.expendGprice).toLocaleString(): 0}}</span>
                                 </div>
@@ -332,7 +332,7 @@
             }else {
                 http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
             }
-            http.get('/statistic/gb',{
+            http.get('http://api.groupy.vip:8080/statistic/gb',{
                 params: {
                     idolId: getParams('idolId')
                 }
@@ -376,7 +376,7 @@
             }else {
                 http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
             }
-            http.get('/statistic/heat',{
+            http.get('http://api.groupy.vip:8080/statistic/heat',{
                 params: {
                     idolId: getParams('idolId')
                 }

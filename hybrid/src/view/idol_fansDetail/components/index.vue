@@ -180,7 +180,7 @@
                  }
                  return string;    
             },
-            getJoin(token) { 
+            getJoin(token) {
                 let self = this;
                 if(self.idx1 < 2) {
                     if(token) {
