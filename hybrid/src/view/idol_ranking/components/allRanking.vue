@@ -234,6 +234,7 @@
                   // autoHeight: true,
                   pagination : '.swiper-pagination',
                   paginationClickable :true,
+                  iOSEdgeSwipeDetection : true,
                   //loop : true,
                   observeParents:true,
                   debugger: true,

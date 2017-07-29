@@ -4,7 +4,7 @@
         @touchmove="_touchMove"
         @touchend="_touchEnd"
         :style="txtStyle">
-        <div class="move" @click.stop="txtStyle = 'transform:translateX(0rem)'">
+        <div class="move" @click.stop="_click">
             <slot></slot>
         </div>
         <div class="deleteIcon"  @click.prevent="deleteItem(index)"><img src="/img/video_icon_report.png" width="18px" style="float: left;margin-top: 17.5px;margin-right: 5px;" alt="">举报</div>
@@ -12,8 +12,8 @@
 </template>
 
 <script>
-    // require('@api/js/vconsole.min.js');成都
-    // import $ from 'n-zepto';
+    // require('@api/js/vconsole.min.js');
+    import $ from 'n-zepto';
     export default {
         props: {
             index: Number
@@ -54,16 +54,17 @@
                     // 如果是向右滑动或者只是点击，不改变滑动位置
                     if(this.disY > -4 && this.disY < 4) {
                         if(this.disX <= 0) {
-                            // $('.left-delete').css('transform','translateX(0rem)');
+                            $('.left-delete').css('transform','translateX(0rem)');
                             ev.preventDefault();
                             ev.stopPropagation();
                         }else if (this.disX > 0) {
                         //如果是向左滑动，则实时给这个根元素一个向左的偏移-left，当偏移量到达固定值delWidth时，固定元素的偏移量为 delWidth
                             // this.txtStyle = "transform:translateX(-" + this.disX/100 + "rem)";
                             if (this.disX >= this.delWidth/100) {
-                                console.log(ev)
-                                // $('.left-delete').css('transform','translateX(0rem)');
-                                this.txtStyle = "transform:translateX(-" + this.delWidth/100 + "rem)";
+                                console.log(ev.target.offsetParent.style.transform)
+                                $('.left-delete').css('transform','translateX(0rem)');
+                                ev.target.offsetParent.style.transform = "translateX(-" + this.delWidth/100 + "rem)";
+                                // this.txtStyle = "transform:translateX(-" + this.delWidth/100 + "rem)";
                                 // this.zIndex = "right:0;";
                             }
                             ev.preventDefault();
@@ -89,7 +90,8 @@
             },
             deleteItem: function(index) {
                 // console.log(index)
-                this.txtStyle = "transform:translateX(0rem)";
+                // this.txtStyle = "transform:translateX(0rem)";
+                $('.left-delete').css('transform','translateX(0rem)');
                 this.zIndex = "right:-70px;";
                 this.$emit('deleteItem', index);
                 // window.setupWebViewJavascriptBridge(function(bridge) {
@@ -100,6 +102,9 @@
                 //         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
                 //      }
                 // })
+            },
+            _click: function() {
+                $('.left-delete').css('transform','translateX(0rem)');
             }
         }
     }
@@ -125,6 +130,7 @@
         float: left;
         padding-right: 12px;
         padding-top: 12px;
+        padding-bottom: 12px;
     }
     .deleteIcon{
         width: 50px;

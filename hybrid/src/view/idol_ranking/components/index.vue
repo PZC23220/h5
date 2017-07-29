@@ -44,7 +44,7 @@
                      <div class="line_20"></div>
                      <div class="default_page" v-show="top3NoneToday">
                         <img src="/img/default_no message.png" alt="">
-                        <p>ただ今集計中です</p>
+                        <p>惜しい！もう少しでランクイン</p>
                     </div>
                     <div class="integral">
                         <p><span>自分の順位</span><span><i class="con_left" :class="{'left_show':rakingListTodayme.length>0?rakingListTodayme[0].position:false}">{{rakingListTodayme.length>0?rakingListTodayme[0].position:'-'}}位</i><img src="/img/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListTodayme.length>0?rakingListTodayme[0].position:false}">{{Number(rakingListTodayme.length>0?rakingListTodayme[0].score:'0').toLocaleString()}}</i></span></p>
@@ -124,7 +124,7 @@
                      <div class="line_20"></div>
                      <div class="default_page" v-show="top3None">
                         <img src="/img/default_no message.png" alt="">
-                        <p>ただ今集計中です</p>
+                        <p>惜しい！もう少しでランクイン</p>
                     </div>
                     <div class="integral">
                         <p><span>自分の順位</span><span><i class="con_left" :class="{'left_show':rakingListme.length>0?rakingListme[0].position:false}">{{rakingListme.length>0?rakingListme[0].position:'-'}}位</i><img src="/img/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListme.length>0?rakingListme[0].position:false}">{{Number(rakingListme.length>0?rakingListme[0].score:'0').toLocaleString()}}</i></span></p>
@@ -193,6 +193,7 @@
                   pagination : '.swiper-pagination',
                   paginationClickable :true,
                   resistanceRatio : 0,
+                  iOSEdgeSwipeDetection : true,
                   //loop : true,
                   observeParents:true,
                   debugger: true,

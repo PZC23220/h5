@@ -19,7 +19,7 @@
                                 <div class="introduction">
                                     <p class="name">{{idol.name?idol.name:'...'}}</p>
                                     <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                    <p class="detail"><span><img src="/img/icon_likes.png" alt="">{{Number(idol.popularity).toLocaleString()}}</span><span><img src="/img/icon_fans.png" alt="">{{Number(idol.fansNums).toLocaleString()}}</span></p>
+                                    <p class="detail"><span><img src="/img/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="/img/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
                                 </div>
                                 <div class="support" @click.stop="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
                             </div>
@@ -100,7 +100,7 @@
                                 <div class="introduction">
                                     <p class="name">{{idol.name?idol.name:'...'}}</p>
                                     <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                    <p class="detail"><span><img src="/img/icon_likes.png" alt="">{{idol.popularity?Number(idol.popularity).toLocaleString():'3'}}</span><span><img src="/img/icon_fans.png" alt="">{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</span></p>
+                                    <p class="detail"><span><img src="/img/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="/img/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
                                 </div>
                                 <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                             </div>
@@ -397,15 +397,19 @@
             }
             .detail {
                 font-size: 12px;
+                display: flex;
                 span {
+                    flex: 1;
                     img {
                         width: 20px;
                         vertical-align: middle;
                         margin-right: 5px;
                     }
-                }
-                span:first-child {
-                    margin-right: 22.4%;
+                    em {
+                        display: inline-block;
+                        max-width: calc((100vw - 200px)/2 - 30px);
+                        text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+                    }
                 }
             }
         }

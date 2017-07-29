@@ -6,6 +6,9 @@ html,body {
     max-width: 500px;
     margin: 0 auto;
 }
+img,i,em {
+    vertical-align: middle;
+}
 @font-face {
     font-family: 'Helvetica Condensed Bold Italic';
     src: url('/font/Helvetica Condensed Bold Italic.eot');

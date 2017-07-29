@@ -75,7 +75,7 @@
                     <p>{{fans_text.noneLike}}</p>
                 </div>
             </swiper-slide>
-            <swiper-slide id="swiper3" style="overflow-y: scroll;">
+            <swiper-slide id="swiper3">
                 <ul class="comment_list">
                     <li v-for="(fans,key) in joinList.fansList" style="padding: 0;">
                         <left-slider :index="key" @deleteItem.stop="deleteItem(fans.fansId)">
@@ -347,12 +347,12 @@
   }
   .content {
     position: absolute;
-    top: 150.5px;
+    top: 143.5px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 150.5px);
+    height: calc(100vh - 143.5px);
     .swiper-slide {
-        height: calc(100vh - 150.5px);
+        height: calc(100vh - 143.5px);
     }
   }
   .name {
@@ -374,30 +374,5 @@
  }
 .left_show {
     opacity: 1 !important;
-}
-#swiper3::-webkit-scrollbar-track-piece {
-  background-color: rgba(0, 0, 0, 0);
-  border-left: 1px solid rgba(0, 0, 0, 0);
-}
-#swiper3::-webkit-scrollbar {
-  width: 5px;
-  height: 13px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-#swiper3::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5);
-  background-clip: padding-box;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  min-height: 28px;
-}
-#swiper3::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
 }
 </style>

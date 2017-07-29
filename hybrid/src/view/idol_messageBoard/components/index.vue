@@ -69,7 +69,7 @@
                         <div class="comment_content">
                             <p>{{comment.content}}</p>
                             <div class="comment_img" v-if="comment.imgs?comment.imgs.length > 0:false">
-                                <span :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="img in JSON.parse(comment.imgs)"><img v-lazy="img" alt="" class="autoHeight" @click="showBigImg(img)"></span>
+                                <span :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="(img,idx) in JSON.parse(comment.imgs)"><img v-lazy="img" alt="" class="autoHeight" @click="showBigImg(JSON.parse(comment.imgs),idx)"></span>
                             </div>
                         </div>
                     </li>
@@ -164,9 +164,10 @@
                     bridge.callHandler('toPublish')
                 })
             },
-            showBigImg(url) {
+            showBigImg(url,idx) {
+                console.log(url,idx)
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('showImage', {'url': url})
+                    bridge.callHandler('showImage', {'urls': url,selectedIndex :idx})
                 })
             },
             refresh (done) {
