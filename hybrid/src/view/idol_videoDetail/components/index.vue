@@ -153,7 +153,7 @@
     import $ from 'n-zepto';
     import http from '@api/js/http.js';
     require('@api/js/common.js')
-    // var vConsole = require('@api/js/vconsole.min.js');
+    var vConsole = require('@api/js/vconsole.min.js');
     export default {
         data() {
             return {

@@ -121,7 +121,8 @@
 <script>
     import VueScroller from 'vue-scroller';
     import http from '@api/js/http.js';
-    require('@api/js/common.js')
+    require('@api/js/common.js');
+    // var vConsole = require('@api/js/vconsole.min.js');
     export default {
         data() {
             return {
@@ -460,5 +461,8 @@
     .fans_none {
         opacity: 0;
         height: 0;
+    }
+    .page_none {
+        overflow: hidden;
     }
 </style>

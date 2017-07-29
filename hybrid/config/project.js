@@ -20,7 +20,7 @@ if (vcs_type == 'git') {
 }
 module.exports = {
     // 方便当出现多项目、多页面需求时的进一步扩展。不能与其他项目重名
-    name: name, // 项目名：multi_vue_demo。
+    name: name, // 项目名：groupy。
     version: version, // 版本号，据此生成map.json与项目目录
     static_root: '',// 静态资源路径(线上的assets,html,js文件夹所在路径)
     project: {
