@@ -76,14 +76,6 @@
                             <p v-show="isShow == 7">
                                 您好，Groupy小助理很高兴能为您服务。<br><br>我们已经有很多爱豆在Groupy上经过自己的努力收获了大量粉丝，成为Groupy的明星爱豆，人气满满，希望你也能早日获得更高人气哦！现在为您分享一下如何通过Groupy迅速提高自己知名度的经验。<br><br>1. 一直一直一直强调也是最有效的方法就是：通过积极跟粉丝互动，了解他们的意愿，希望自己更新的内容种类和视频。积极发布能与粉丝互动性强的视频内容可以获得高价值的打赏和应援。不断收获粉丝的人气还可以竞争登上Groupy的每日人气榜，成为人气爱豆！<b>精彩视频还会通过Groupy官方编辑挑选发布到超过10亿用户的中国用户市场，包括宅男和粉丝最大的聚集地：微博，Bilibli，今日头条，微信公众号以及各大短视频相关的网站平台</b><br><br>2. 能够连续成为人气最高的爱豆，可以在极短的时间把Groupy的粉丝招揽成为自己的会员，支持和应援自己。<br><br>3. 每次在Groupy更新的免费内容都可以分享到社交媒体，借助Twitter，youtube和ameblo的社交力量，可以获得更多曝光，并且鼓励粉丝加入成为自己的会员可以迅速提高自己的知名度的！<br><br>以上是收集了明星爱豆的成长经验给大家分享，希望能够帮助爱豆们找到属于自己的舞台，达成自己的梦想！
                             </p>
-                            <h4 @click="tottleFloor(8)"><span></span>我在Groupy上的钱怎么提现？<img :src="tottleImg" alt=""></h4>
-                            <p v-show="isShow == 8">
-                                您好，Groupy小助理很高兴能为您解答。<br><br>Groupy是每月固定时间会按照合约条款的分成数目给个人爱豆结算打款。在爱豆加入的时候会提交自己的银行信息，Groupy的财务小组会及时给爱豆结算的。具体详情可以查看Groupy的爱豆专用App里面的结算详情。另外如果还有其他问题的话可以随时联系Groupy的工作人员哦<i>idol@groupy.vip</i>
-                            </p>
-                            <h4 @click="tottleFloor(9)"><span></span>我在Groupy获得了G币，怎么兑换成现金呢？<img :src="tottleImg" alt=""></h4>
-                            <p v-show="isShow == 9">
-                                您好，Groupy小助理很高兴能为您解答。<br><br>Groupy给爱豆明确有一定的G币兑换规则， 受G币的汇率影响，每个月实时G币可兑换的实际日元可能会因为汇率波动而波动呢。具体细节可以在Groupy for idol的收入详情页查看相关说明！
-                            </p>
                             <h4 @click="tottleFloor(10)"><span></span>我是个人偶像！如何加入Groupy？？<img :src="tottleImg" alt=""></h4>
                             <p v-show="isShow == 10">
                                 您好，Groupy小助理很高兴能为您解答。<br><br>个人偶像可以通过自荐的方式加入Groupy的报名方式：<br>请将自我介绍、Twitter/SNS账号，30秒以内的短视频发送至groupyinc@gmail.com<br>详情还可以进入Groupy官网了解更多哦！期待您的加入，这里有众多粉丝在等你！<br><a href="http://groupy.vip" target="_blank">http://groupy.vip</a>
@@ -157,14 +149,6 @@
                             <p v-show="isShow == 77">
                                 您好，Groupy小助理很高兴能为您服务。<br><br>我们已经有很多爱豆在Groupy上经过自己的努力收获了大量粉丝，成为Groupy的明星爱豆，人气满满，希望你也能早日获得更高人气哦！现在为您分享一下如何通过Groupy迅速提高自己知名度的经验。<br><br>1. 一直一直一直强调也是最有效的方法就是：通过积极跟粉丝互动，了解他们的意愿，希望自己更新的内容种类和视频。积极发布能与粉丝互动性强的视频内容可以获得高价值的打赏和应援。不断收获粉丝的人气还可以竞争登上Groupy的每日人气榜，成为人气爱豆！<b>精彩视频还会通过Groupy官方编辑挑选发布到超过10亿用户的中国用户市场，包括宅男和粉丝最大的聚集地：微博，Bilibli，今日头条，微信公众号以及各大短视频相关的网站平台</b><br><br>2. 能够连续成为人气最高的爱豆，可以在极短的时间把Groupy的粉丝招揽成为自己的会员，支持和应援自己。<br><br>3. 每次在Groupy更新的免费内容都可以分享到社交媒体，借助Twitter，youtube和ameblo的社交力量，可以获得更多曝光，并且鼓励粉丝加入成为自己的会员可以迅速提高自己的知名度的！<br><br>以上是收集了明星爱豆的成长经验给大家分享，希望能够帮助爱豆们找到属于自己的舞台，达成自己的梦想！
                             </p>
-                            <h4 @click="tottleFloor(88)"><span></span>我在Groupy上的钱怎么提现？<img :src="tottleImg" alt=""></h4>
-                            <p v-show="isShow == 88">
-                                您好，Groupy小助理很高兴能为您解答。<br><br>Groupy是每月固定时间会按照合约条款的分成数目给个人爱豆结算打款。在爱豆加入的时候会提交自己的银行信息，Groupy的财务小组会及时给爱豆结算的。具体详情可以查看Groupy的爱豆专用App里面的结算详情。另外如果还有其他问题的话可以随时联系Groupy的工作人员哦<i>idol@groupy.vip</i>
-                            </p>
-                            <h4 @click="tottleFloor(99)"><span></span>我在Groupy获得了G币，怎么兑换成现金呢？<img :src="tottleImg" alt=""></h4>
-                            <p v-show="isShow == 99">
-                                您好，Groupy小助理很高兴能为您解答。<br><br>Groupy给爱豆明确有一定的G币兑换规则， 受G币的汇率影响，每个月实时G币可兑换的实际日元可能会因为汇率波动而波动呢。具体细节可以在Groupy for idol的收入详情页查看相关说明！
-                            </p>
                             <h4 @click="tottleFloor(100)"><span></span>我是个人偶像！如何加入Groupy？？<img :src="tottleImg" alt=""></h4>
                             <p v-show="isShow == 100">
                                 您好，Groupy小助理很高兴能为您解答。<br><br>个人偶像可以通过自荐的方式加入Groupy的报名方式：<br>请将自我介绍、Twitter/SNS账号，30秒以内的短视频发送至groupyinc@gmail.com<br>详情还可以进入Groupy官网了解更多哦！期待您的加入，这里有众多粉丝在等你！<br><a href="http://groupy.vip" target="_blank">http://groupy.vip</a>
@@ -173,6 +157,7 @@
                     </div>
                 </swiper-slide>
             </swiper>
+            <div class="Forbidden"></div>
          </div>
          <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="/img/loading_2.png" alt="">

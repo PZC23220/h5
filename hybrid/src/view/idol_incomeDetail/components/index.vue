@@ -31,7 +31,7 @@
                         <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[3].numbers?incomeList.groupFeeList[3].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
-                <!-- <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div> -->
+                <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div>
             </div>
             <div class="income_details eBorder">
                 <p class="detail_title">{{income_text.detail}}</p>
@@ -69,12 +69,12 @@
                         <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[7].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
-                <!-- <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div> -->
+                <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div>
             </div>
-           <!--  <div class="income_details eBorder">
+            <div class="income_details eBorder">
                 <p class="detail_title">{{income_text.task}}</p>
                 <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div>
-            </div> -->
+            </div>
             <p v-html="income_text.desc" class="income_desc"></p>
            <!--  <div class="mention_details">
                 <p class="detail_title">{{income_text.record}}</p>

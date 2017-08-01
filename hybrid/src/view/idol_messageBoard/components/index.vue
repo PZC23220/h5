@@ -6,10 +6,6 @@
               :on-infinite="infinite" 
               :noDataText="noDataText">
                 <ul class="comment_list dynamic">
-                    <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
-                        <p>{{msg_text.load}}</p>
-                        <span></span>
-                    </div> -->
                     <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                         <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                             <div class="userinfo">
@@ -60,10 +56,8 @@
                         <div class="userinfo">
                             <img :src="comment.avatar?comment.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
-                            <!-- <img :src="comment.level?'/static/images/icon_level_'+(comment.levelPlatform)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
                             <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
                                 <img class="medal_level" :src="'/img/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
-                            <!-- <img :src="comment.medal?'/static/images/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
                             <i v-html="formatTime(comment.createTime)"></i>
                         </div>
                         <div class="comment_content">
@@ -77,15 +71,11 @@
                         <img src="/img/default_no message.png" alt="">
                         <p v-html="msg_text.noneComment"></p>
                     </div>
-                    <!-- <div class="loading" :class="{'loading_show': showLoading}"><p><img src="../../images/loading_1.png" alt="">{{msg_text.load}}</p><p v-show="havedlast">{{msg_text.loadAll}}</p></div> -->
                 </ul>
             </scroller>
         </div>
         <div class="publich_comment" @click="publishComment()"><img src="/img/msg/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div>
         <div class="publich_tips" @click="publishComment()" :class="{'Lheight':msg_text.pubMsg == '发表评论'}" v-show="commentList.length == 0 && idx!=0"><img src="/img/msg/tips_edit.png" alt=""><em v-html="msg_text.pubMsg"></em></div>
-        <!-- <div class="bigLoading" v-show="loadingBig">
-            <img src="../../images/loading_2.png" alt="">
-        </div> -->
     </div>
 </template>
 
@@ -360,6 +350,14 @@
     }
     .loading_top_show {
         height: 80px;
+    }
+    .comment_content p {
+        overflow : hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 10;
+        -webkit-box-orient: vertical;
+        width: 100%;
     }
     @keyframes changebg{
         from {background: url(/img/pic_loading_1.png);background-size: 100% auto;}

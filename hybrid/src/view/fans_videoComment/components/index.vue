@@ -421,12 +421,11 @@
             }
         }
         .comment_content {
-            >* {
-
-                margin-top:10px;
-                background: #eee;
-                height: 14px;
-            }
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
         }
     }
     .page_defalt {
