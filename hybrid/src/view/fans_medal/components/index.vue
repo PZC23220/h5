@@ -2,14 +2,15 @@
     <div class="main">
         <div class="content">
            <div class="desc">
-               <h5>{{medal_text.title}}</h5>
+               <h5 style="color: #333;">{{medal_text.desc}}</h5>
                <ul>
-                   <li><img src="/img/medal/icon_medal_1.png" alt=""><span>{{medal_text.medal1}}</span><i v-if="medal_text.value=='Like数'">ブロンズキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>2000</i></div><p>{{medal_text.desc}}</p></li>
-                   <li><img src="/img/medal/icon_medal_2.png" alt=""><span>{{medal_text.medal2}}</span><i v-if="medal_text.value=='Like数'">シルバーキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>5000</i></div><p>{{medal_text.desc}}</p></li>
-                   <li><img src="/img/medal/icon_medal_3.png" alt=""><span>{{medal_text.medal3}}</span><i v-if="medal_text.value=='Like数'">ゴールドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>15000</i></div><p>{{medal_text.desc}}</p></li>
-                   <li><img src="/img/medal/icon_medal_4.png" alt=""><span>{{medal_text.medal4}}</span><i v-if="medal_text.value=='Like数'">ダイヤモンドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>30000</i></div><p>{{medal_text.desc}}</p></li>
-                   <li><img src="/img/medal/icon_medal_5.png" alt=""><span>{{medal_text.medal5}}</span><i v-if="medal_text.value=='Like数'">キングキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>50000</i></div><p>{{medal_text.desc}}</p></li>
+                   <li><img src="/img/medal/icon_medal_1.png" alt=""><span>{{medal_text.medal1}}</span><i v-if="medal_text.value=='Like数'">ブロンズキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>2000</i></div></li>
+                   <li><img src="/img/medal/icon_medal_2.png" alt=""><span>{{medal_text.medal2}}</span><i v-if="medal_text.value=='Like数'">シルバーキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>5000</i></div></li>
+                   <li><img src="/img/medal/icon_medal_3.png" alt=""><span>{{medal_text.medal3}}</span><i v-if="medal_text.value=='Like数'">ゴールドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>15000</i></div></li>
+                   <li><img src="/img/medal/icon_medal_4.png" alt=""><span>{{medal_text.medal4}}</span><i v-if="medal_text.value=='Like数'">ダイヤモンドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>30000</i></div></li>
+                   <li><img src="/img/medal/icon_medal_5.png" alt=""><span>{{medal_text.medal5}}</span><i v-if="medal_text.value=='Like数'">キングキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>50000</i></div></li>
                </ul>
+               <h5 style="padding-bottom: 10px;">{{medal_text.title}}</h5>
            </div>
         </div>
     </div>
@@ -74,12 +75,13 @@
         top: 0;
         color: #666;
         height: 100vh;
-        font-weight: 200;
+        // font-weight: 200;
         background: #eee;
         .desc {
             padding: 8px 12px;
             h5 {
                 color: #999;
+                font-size: 14px;
             }
             ul {
                 overflow: hidden;
@@ -109,8 +111,8 @@
                     >i {
                         display: block;
                         color: #999;
-                        font-size: 10px;
-                        -webkit-transform: scale(0.8);
+                        font-size: 11px;
+                        -webkit-transform: scale(0.92);
                     }
                     >div {
                         padding-top: 5px;
@@ -122,8 +124,8 @@
                             background: url(/img/medal/bg_medal.png) no-repeat;
                             background-size: 100% 100%;
                             color: #fff;
-                            font-size: 9px;
-                            -webkit-transform: scale(0.75);
+                            font-size: 11px;
+                            -webkit-transform: scale(0.92);
                         }
                         i {
                             font-family: 'Helvetica Condensed Bold Italic';
@@ -133,8 +135,8 @@
                     }
                     >p {
                         color: #999;
-                        font-size: 10px;
-                        -webkit-transform: scale(0.8);
+                        font-size: 11px;
+                        -webkit-transform: scale(0.92);
                     }
                     &:last-child {
                         width: 100%;

@@ -31,7 +31,7 @@
                         <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[3].numbers?incomeList.groupFeeList[3].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
-                <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div>
+                <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">{{incomeList.groupIncome?Number(incomeList.groupIncome).toLocaleString():0}}</i></div>
             </div>
             <div class="income_details eBorder">
                 <p class="detail_title">{{income_text.detail}}</p>
@@ -69,11 +69,11 @@
                         <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[7].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
-                <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div>
+                <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">{{incomeList.giftsIncome?Number(incomeList.giftsIncome).toLocaleString():0}}</i></div>
             </div>
             <div class="income_details eBorder">
                 <p class="detail_title">{{income_text.task}}</p>
-                <div class="coinsTotal"><span>金币总数</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">829</i></div>
+                <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="/img/timeline_icon_coins.png"><i class="totalNum">{{incomeList.incomeMission?Number(incomeList.incomeMission).toLocaleString():0}}</i></div>
             </div>
             <p v-html="income_text.desc" class="income_desc"></p>
            <!--  <div class="mention_details">
@@ -121,6 +121,7 @@
                     task: '新規応援ミッション',
                     record: '換金履歴',
                     desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
+                    coins: '獲得コイン数',
                     records: {
                         time: '時間',
                         num :'コイン数',
@@ -219,6 +220,7 @@
                     detail: '礼物数量',
                     task: '新手任务',
                     record: '提现记录',
+                    coins: '金币总数',
                     desc: 'G币是Groupy平台上使用的虚拟货币，并不代表真实货币',
                     records: {
                         time: '时间',
@@ -237,6 +239,7 @@
                     detail: 'ギフトリスト',
                     task: '新規応援ミッション',
                     record: '換金履歴',
+                    coins: '獲得コイン数',
                     desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
                     records: {
                         time: '時間',

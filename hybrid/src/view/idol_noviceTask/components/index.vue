@@ -61,8 +61,12 @@
                     </div>
                     <img src="/img/task/icon_finish.png" v-show="task.complete>0">
                 </div>
-                <div class="reward"><i>{{task_test.reward}}</i><span><img src="/img/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="(task.complete>0 && task.accepted<1)?accept(task.id,$event):false">{{status(task.accepted)}}</span></div>
+                <div class="reward"><i>{{task_test.reward}}</i><span><img src="/img/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="(task.complete>0 && task.accepted<1)?accept(task.id,task.gprice,$event):false">{{status(task.accepted)}}</span></div>
             </div>
+         </div>
+         <div class="receive_coin" :class="{'receive_coin_show':receiveShow}">
+             <div class="coin_num"><p>{{task_test.receive1}}</p><p>+ {{Gcoins}} {{task_test.receive2}}</p></div>
+             <img src="/img/timeline_icon_coins.png">
          </div>
     </div>
 </template>
@@ -75,10 +79,14 @@
                 tasks: [],
                 idx: 0,
                 idx2: 0,
+                receiveShow: false,
+                Gcoins: 10,
                 task_test: {
                     reward: '報酬',
                     receive: '受け取る',
-                    current: '達成数'
+                    current: '達成数',
+                    receive1: '受け取りました！',
+                    receive2: 'コイン'
                 }
             }
         },
@@ -117,11 +125,11 @@
                 })
             }
           },
-          accept(val,e,token) {
+          accept(val,gprice,e,token) {
             let self = this;
+            self.Gcoins = gprice;
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if(self.idx2 < 2) {
-                console.log(e.target.innerHTML);
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
                 }else {
@@ -132,12 +140,27 @@
                         id: val
                     }
                 }).then(function(res){
-                    if(_lan === 'zh-cn') {
-                        e.target.innerHTML = '已领取';
+                    console.log(res)
+                    if(res) {
+                        if(_lan === 'zh-cn') {
+                            e.target.innerHTML = '已领取';
+                        }else {
+                            e.target.innerHTML = '受取済';
+                        }
+                        self.receiveShow = true;
+                        setTimeout( function() {
+                            self.receiveShow = false;
+                        },1500);
+                        e.target.classList.remove('finish');
                     }else {
-                        e.target.innerHTML = '受取済';
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            if(_lan === 'zh-cn') {
+                                bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                             }else {
+                                bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                             }
+                        })
                     }
-                    e.target.classList.remove('finish');
                 }).catch(function(){
                     self.idx2++;
                     window.setupWebViewJavascriptBridge(function(bridge) {
@@ -182,14 +205,18 @@
                  this.task_test= {
                     reward: '奖励',
                     receive: '领取',
-                    current: '已完成'
+                    current: '已完成',
+                    receive1: '领取成功！',
+                    receive2: 'G币'
                 }
                 _val = 'cn';
               } else {
                 this.task_test= {
                     reward: '報酬',
                     receive: '受け取る',
-                    current: '達成数'
+                    current: '達成数',
+                    receive1: '受け取りました！',
+                    receive2: 'コイン'
                 }
                 _val = 'jp';
               }
@@ -331,5 +358,51 @@
     .page_loading_show {
         opacity: 0;
         height: 0;
+    }
+    .receive_coin {
+        position: absolute;
+        left: 50%;
+        // top: 114.5px;
+        top: 87px;
+        margin-left: -100px;
+        // margin-left: 0;
+        // margin-top: 0;
+        width: 200px;
+        padding-left: 12px;
+        box-sizing: border-box;
+        z-index: 2;
+        height: 55px;
+        transition: all 0.3s;
+        transform: scale(0);
+        overflow: hidden;
+        >img {
+            position: absolute;
+            left: 0;
+            top: 7.5px;
+            width: 41px;
+            z-index: 3;
+        }
+        .coin_num {
+            width: 100%;
+            height: 55px;
+            line-height: 21px;
+            padding-top: 6.5px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 600;
+            // opacity: 0.8;
+            background: #FF8D36;
+            box-shadow: 0 1px 6.5px 0 rgba(242,120,8,0.70);
+            border-radius: 50px;
+        }
+    }
+    .receive_coin_show {
+        transform: scale(1);
+        // width: 200px;
+        // height: 55px;
+        // margin-left: -100px;
+        // margin-top: -27.5px;
     }
 </style>

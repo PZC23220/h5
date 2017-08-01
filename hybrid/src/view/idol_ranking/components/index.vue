@@ -44,11 +44,17 @@
                      <div class="line_20"></div>
                      <div class="default_page" v-show="top3NoneToday">
                         <img src="/img/default_no message.png" alt="">
-                        <p>惜しい！もう少しでランクイン</p>
+                        <p>ただいまランキング集計中！</p>
                     </div>
-                    <div class="integral">
-                        <p><span>自分の順位</span><span><i class="con_left" :class="{'left_show':rakingListTodayme.length>0?rakingListTodayme[0].position:false}">{{rakingListTodayme.length>0?rakingListTodayme[0].position:'-'}}位</i><img src="/img/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListTodayme.length>0?rakingListTodayme[0].position:false}">{{Number(rakingListTodayme.length>0?rakingListTodayme[0].score:'0').toLocaleString()}}</i></span></p>
-                        <p v-show="rakingListTodayme.length>0 && (rakingListTodayme[0].position > 1)">（あと<i class="con_left" :class="{'left_show':rakingListTodayme.length>0?rakingListTodayme[0].position:false}">{{Number(rakingListTodayme.length>0?rakingListTodayme[0].gapToNext:'').toLocaleString()}}</i>Likeでランクアップ！）</p>
+                    <div class="integral con_left" :class="{'left_hide':rakingListTodaymeShow}">
+                        <p style="text-align: left;padding: 0;"><span>自分の順位</span><span><i>-位</i><img src="/img/timeline_icon_likes.png" alt=""><i>0</i></span></p>
+                    </div>
+                    <div class="integral" v-if="rakingListTodayme.length>0">
+                       <p><span>自分の順位</span><span><i>{{rakingListTodayme.length>0?rakingListTodayme[0].position:'-'}}位</i><img src="/img/timeline_icon_likes.png" alt=""><i>{{Number(rakingListTodayme.length>0?rakingListTodayme[0].score:'0').toLocaleString()}}</i></span></p>
+                        <p v-show="rakingListTodayme.length>0 && (rakingListTodayme[0].position > 1)">（あと<i>{{Number(rakingListTodayme.length>0?rakingListTodayme[0].gapToNext:'').toLocaleString()}}</i>Likeでランクアップ！）</p>
+                    </div>
+                    <div class="integral" v-if="rakingListTodayme.length<=0&&rakingListTodaymeShow">
+                        <p style="text-align: left;padding: 0;"><span>自分の順位</span><span>惜しい！もう少しでランクイン</span></p>
                     </div>
 
                     <div class="help">
@@ -124,11 +130,17 @@
                      <div class="line_20"></div>
                      <div class="default_page" v-show="top3None">
                         <img src="/img/default_no message.png" alt="">
-                        <p>惜しい！もう少しでランクイン</p>
+                        <p>ただいまランキング集計中！</p>
                     </div>
-                    <div class="integral">
-                        <p><span>自分の順位</span><span><i class="con_left" :class="{'left_show':rakingListme.length>0?rakingListme[0].position:false}">{{rakingListme.length>0?rakingListme[0].position:'-'}}位</i><img src="/img/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListme.length>0?rakingListme[0].position:false}">{{Number(rakingListme.length>0?rakingListme[0].score:'0').toLocaleString()}}</i></span></p>
-                        <p v-show="rakingListme.length>0 && (rakingListme[0].position > 1)">（あと<i class="con_left" :class="{'left_show':rakingListme.length>0?rakingListme[0].position:false}">{{Number(rakingListme.length>0?rakingListme[0].gapToNext:'').toLocaleString()}}</i>Likeでランクアップ！）</p>
+                    <div class="integral con_left" :class="{'left_hide':rakingListmeShow}">
+                        <p style="text-align: left;padding: 0;"><span>自分の順位</span><span><i>-位</i><img src="/img/timeline_icon_likes.png" alt=""><i>0</i></span></p>
+                    </div>
+                    <div class="integral" v-if="rakingListme.length>0">
+                       <p><span>自分の順位</span><span><i>{{rakingListme.length>0?rakingListme[0].position:'-'}}位</i><img src="/img/timeline_icon_likes.png" alt=""><i>{{Number(rakingListme.length>0?rakingListme[0].score:'0').toLocaleString()}}</i></span></p>
+                        <p v-show="rakingListme.length>0 && (rakingListme[0].position > 1)">（あと<i>{{Number(rakingListme.length>0?rakingListme[0].gapToNext:'').toLocaleString()}}</i>Likeでランクアップ！）</p>
+                    </div>
+                    <div class="integral" v-if="rakingListme.length<=0&&rakingListmeShow">
+                        <p style="text-align: left;padding: 0;"><span>自分の順位</span><span>惜しい！もう少しでランクイン</span></p>
                     </div>
 
                     <div class="help">
@@ -206,8 +218,10 @@
                 },
                 rakingList: [],
                 rakingListme: [],
+                rakingListmeShow: false,
                 rakingListToday: [],
                 rakingListTodayme: [],
+                rakingListTodaymeShow: false,
                 isShow: false,
                 tottleImg: '/img/idol_ranking/icon_arrow_gray_down.png',
                 tokens: '',
@@ -256,6 +270,7 @@
                             if(res.data.me) {
                                 self.rakingListme = res.data.me;
                             }
+                            self.rakingListmeShow = true;
                         }else {
                             if(res.data.rankingList) {
                                 self.rakingListToday = res.data.rankingList;
@@ -265,6 +280,7 @@
                             if(res.data.me) {
                                 self.rakingListTodayme = res.data.me;
                             }
+                            self.rakingListTodaymeShow = true;
                         }
                         
                         console.log(self.rakingList)
@@ -365,5 +381,13 @@
      }
     .left_show {
         opacity: 1;
+    }
+    .left_hide {
+        opacity: 0;
+        overflow: hidden;
+        height: 0;
+        padding: 0;
+        border: 0;
+
     }
 </style>

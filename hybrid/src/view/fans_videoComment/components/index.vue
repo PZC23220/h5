@@ -82,7 +82,7 @@
         <!-- <div class="publich_comment" @click="publishComment()"><img src="/img/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
         <div class="publich_comment" @click="autoFocus()"><img src="/img/msg/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
         <div class="comment_view" v-show="win_show" @touchmove.prevent>
-            <div class="comment_desc"><img src="/img/close.png" alt="" @click="win_show=false"><span @click="publish()">{{video_text.load}}</span></div>
+            <div class="comment_desc"><img src="/img/close.png" alt="" @click="win_show=false"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
             <textarea :placeholder="video_text.pla" autofocus v-model="comment_text"></textarea>
             <!-- <div class="publish" @click="publish()">发表</div> -->
         </div>
@@ -384,11 +384,17 @@
     i {
         text-align: right;
     }
+    .comment_info {
+        .avatar {
+            width: 40px;
+            height: 40px;
+        }
+    }
     .name {
         overflow: hidden;
         text-overflow:ellipsis;
         white-space: nowrap;
-        max-width: calc(100vw - 200px);
+        max-width: calc(100vw - 140px);
     }
     .Lheight {
         line-height: 54px;
@@ -473,9 +479,14 @@
             padding: 22px 12px 0;
             box-sizing: border-box;
             border-bottom: 1px solid #eee;
+            text-align: center;
+            overflow: hidden;
+            line-height: 46px;
+            font-size: 18px;
             img {
                 width: 22px;
                 padding: 13.5px 5px 10.5px;
+                float: left;
             }
             span {
                 font-size: 14px;
@@ -498,7 +509,7 @@
             box-sizing: border-box;
             border: none;
             padding: 5px 12px;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 24px;
         }
     }

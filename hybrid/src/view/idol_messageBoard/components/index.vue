@@ -53,7 +53,7 @@
                         </li>
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
-                        <div class="userinfo">
+                        <div class="comment_info">
                             <img :src="comment.avatar?comment.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                             <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
@@ -282,11 +282,15 @@
         height: 100vh;
     }
     .name {
-        max-width: calc(100vw - 200px);
+        max-width: calc(100vw - 140px);
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
         display: inline-block;
+    }
+    img.avatar {
+        width: 40px;
+        height: 40px;
     }
     .publich_comment {
         position: fixed;
@@ -307,13 +311,6 @@
             margin-bottom: 3px;
             width: 25px;
         }
-    }
-    i {
-        text-align: right;
-        font-size: 10px;
-        -webkit-transform: scale(0.8);
-        width: auto !important;
-        margin-right: -5px;
     }
     .publich_tips {
         position: fixed;
