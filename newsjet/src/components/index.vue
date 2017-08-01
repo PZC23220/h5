@@ -21,7 +21,7 @@
         <img src="../img/NewsJet.png" alt="">
         <div class="logo"></div>
         <p>たった一分でトップニュースを<i style="color:#F3BB23;">一瞬チェック</i>できる<br><i style="color: #FF9600;">無料</i>のニュースアプリ</p>
-        <a href="http://newsjet.co/" target="_blank" class="btn">公式サイト<span></span></a>
+        <a href="http://app.newsjet-inc.com/" target="_blank" class="btn">公式サイト<span></span></a>
       </div>
       <div class="border"><span style="left: 0;top: 0;">2016.08<i style="margin-left: 13px;"></i></span><p></p><span style="right: 0;bottom: 0;"><i style="margin-right: 14.5px;margin-left: 0.5px;"></i>2017.06</span></div>
       <div class="right">
