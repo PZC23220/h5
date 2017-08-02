@@ -207,8 +207,12 @@
                         http.post('/post/add',JSON.stringify(_data)).then(function(res){
                             self.refresh();
                             self.comment_text = '';
+                            console.log(res)
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('makeToast', '发表评论成功');
+                            });
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('post',res);
                             })
                             self.win_show = false;
                             self.can_publish = true;
