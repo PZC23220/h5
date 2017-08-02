@@ -95,6 +95,7 @@
     import VueScroller from 'vue-scroller';
     import http from '@api/js/http.js';
     require('@api/js/common.js')
+    // require('@api/js/vconsole.min.js')
     export default {
         data() {
             return {
@@ -205,15 +206,31 @@
                             targetId: getParams('videoId')
                         }
                         http.post('/post/add',JSON.stringify(_data)).then(function(res){
-                            self.refresh();
-                            self.comment_text = '';
-                            console.log(res)
-                            window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('makeToast', '发表评论成功');
-                            });
-                            window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('post',res);
-                            })
+                            if(res.status) {
+
+                                self.refresh();
+                                self.comment_text = '';
+                                console.log(res)
+                                window.setupWebViewJavascriptBridge(function(bridge) {
+                                    bridge.callHandler('makeToast', '发表评论成功');
+                                });
+                                window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('did_post',{'post':res});
+                                })
+                            }else {
+                                window.setupWebViewJavascriptBridge(function(bridge) {
+                                    if(_lan === 'zh-cn') {
+                                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                                     }else {
+                                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                                     }
+                                });
+                                window.setupWebViewJavascriptBridge(function(bridge) {
+                                    bridge.callHandler('getToken', {'targetType':'1','targetId':self.$route.query.videoId}, function responseCallback(responseData) {
+                                        self.$route.query.token = responseData.token;
+                                    })
+                                })
+                            }
                             self.win_show = false;
                             self.can_publish = true;
                         }).catch(function(err){
