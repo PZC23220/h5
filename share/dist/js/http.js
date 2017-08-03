@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    // baseURL: 'http://localhost:8031/japi/',
+    // baseURL: 'http://192.168.1.107:8031/japi/',
     baseURL: 'http://'+ location.host +'/japi/',
     timeout: 20000
 });

@@ -9,11 +9,13 @@
             <div class="idol_desc">
                 <div class="idol_desc_bg" :style="idol.avatar?'background-image: url('+ idol.avatar +');':'background-image: url(http://h5.groupy.vip/img/default_img.png);'"></div>
                 <div class="idol_desc_content">
-                    <img :src="idol.avatar?idol.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
-                    <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
-                    <div class="idol_support"><span><img src="http://h5.groupy.vip/img/idol_icon_fans.png">{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}</span><span><img src="/img/idol/idol_icon_likes.png">{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}</span><span><img src="/img/idol/idol_icon_ranking.png">{{idol.rankingPosition?Number(idol.rankingPosition).toLocaleString():0}}位</span><span class="cursor" @click="boxShow = true;">応援</span></div>
-                    <p>{{idol.introduce?idol.introduce:'我在groupy等你哦！'}}</p>
-                    <div class="idol_fans_ranking cursor" @click="boxShow = true;"><i>粉丝排行</i><div><img v-for="img in fansList" :src="img.avatar?img.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'"></div><div class="no_fans" v-if="fansList.length<=0">赶紧来抢占第一位吧！</div><img src="/img/icon_arrow_white.png"></div>
+                    <div>
+                        <img :src="idol.avatar?idol.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
+                        <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>ファン</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>Likes</em></span><span class="cursor" @click="boxShow = true;"><img src="/img/icon_join.png"><i>入会</i></span></div>
+                        <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
+                        <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす。'}}</p>
+                        <div class="idol_fans_ranking cursor" @click="boxShow = true;"><i>ファンランキング</i><div><img v-for="img in fansList" :src="img.avatar?img.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="/img/icon_arrow_gray.png"></div>
+                    </div>
                 </div>
             </div>
             <div class="detailPages">
@@ -26,7 +28,7 @@
                 <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                     <!-- slides -->
                     <swiper-slide id="swiper1">
-                        <div class="video_content" v-for="hot in hotList">
+                        <div class="video_content" v-for="(hot,key) in hotList" v-if="key < 5">
                             <div class="userinfo con_left" :class="{'left_show':idolShow}">
                                 <img :src="idol.avatar?idol.avatar: 'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
                                 <div class="video_desc">
@@ -49,21 +51,12 @@
                                 </div>
                             </div>
                             <div class="video_desc_content">
+                                <a :href="hrefs" class="video_option"><span><img src="/img/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="/img/timeline_icon_likes.png">{{hot.data.popularity}}</span><div @click="boxShow = true;" class="cursor"><img src="/img/idol/icon_comment.png">コメントする</div></a>
                                 <p class="video_text">{{hot.data.title}}</p>
-                                <a :href="hrefs" class="video_option"><span><img src="/img/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="/img/timeline_icon_likes.png">{{hot.data.popularity}}</span><img src="/img/icon_arrow_gray.png"></a>
                                 <ul class="comment_list" style="background: #fff;">
-                                    <div class="comment_total"><span><img src="/img/idol/icon_comment.png"><i>コメント{{hot.data.postList.length}}件すべてを表示</i><img src="/img/icon_arrow_gray.png" alt=""></span><div @click="boxShow = true;" class="cursor">コメントする</div></div>
-                                    <li v-for="comment in hot.data.postList">
-                                        <div class="comment_info">
-                                            <img :src="comment.avatar" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
-                                            <span>{{comment.nickname?comment.nickname:'...'}}</span>
-                                            <span class="level">Lv.{{comment.levelPlatform?comment.levelPlatform:0}}</span>
-                                            <img class="fans_medal" :src="'/static/images/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
-                                            <!-- <img :src="comment.level?'/img/icon_level_'+(comment.levelPlatform)+'.png':'/img/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
-                                            <!-- <img :src="comment.medal?'/img/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
-                                            <i>{{formatTime(comment.createTime)}}</i>
-                                        </div>
-                                        <div class="comment_content">{{comment.content}}</div>
+                                    <div class="comment_total"><span><i>コメント{{hot.data.postList.length}}件すべてを表示</i></span></div>
+                                    <li v-for="comment in hot.data.postList" style="border: none;padding: 0 12px 3px;">
+                                       <div class="comment_content"><span>{{comment.nickname?comment.nickname:'...'}}</span>{{comment.content}}</div>
                                     </li>
                                 </ul>
                             </div>
@@ -123,11 +116,11 @@
                             </li>
                         </div>
                         <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
-                            <div class="userinfo">
+                            <div class="comment_info">
                                 <img :src="comment.avatar" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
-                                <span>{{comment.nickname}}</span>
-                                <img :src="comment.level?'/img/icon_level_'+(comment.levelPlatform)+'.png':'/img/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level">
-                                <!-- <img :src="comment.medal?'/static/images/icon_level_'+(comment.medal)+'.png':'/static/images/icon_level_1.png'" alt="" v-if="comment.userType == 'fans'" class="level"> -->
+                                <span>{{comment.nickname?comment.nickname:'...'}}</span>
+                                <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
+                                <img class="medal_level" :src="'http://h5.groupy.vip/img/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                                 <i v-html="formatTime(comment.createTime)"></i>
                             </div>
                             <div class="comment_content">
@@ -147,8 +140,8 @@
                 </swiper>
             </div>
         </div>
-        <div class="bullet_box" :class="{'bullet_box_show':boxShow}">
-            <div class="bullet_box_content">
+        <div class="bullet_box" v-show="boxShow">
+            <div class="bullet_box_content" :class="{'bullet_box_show':boxShow}">
                 <img src="/img/idol/box.png" class="box_bg">
                 <div class="box_content">
                     <img src="/img/icon_cancel_2.png" class="close" @click="boxShow = false">
@@ -374,7 +367,7 @@
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
-            filter: blur(20px);           
+            filter: blur(12px);           
         }
         position: relative;
         width: 100%;
@@ -384,38 +377,58 @@
             left: 0;
             top: 0;
             width: 100%;
-            height: 258px; 
+            height: 258px;
+            padding-top: 95px; 
             background-color: rgba(0,0,0,0.4);
             overflow: hidden;
             text-align: center;
-            color: #fff;
             box-sizing: border-box;
-            padding: 12px;
+            padding-top: 94px;
+            >div {
+                background: #fff;
+                padding: 0 12px 12px;
+                >p {
+                    text-align: left;
+                    overflow : hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+            }
             .avatar {
-                width: 60px;
-                height: 60px;
-                display: block;
-                margin: 0 auto;
-                float: none;
-                margin-bottom: 4px;
+                width: 90px;
+                height: 90px;
+                position: absolute;
+                left: 12px;
+                top: 50px;
+                margin: 0;
             }
             .idol_name {
-                font-size: 16px;
+                font-size: 18px;
+                text-align: left;
+                display: block;
+                max-width: 80%;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                padding: 8px 0;
             }
             .idol_support {
                 overflow: hidden;
-                margin-top: 17px;
+                padding-top: 9px;
+                padding-left: 110px;
                 span {
                     display: block;
                     float: left;
                     width: 41px;
-                    img {
-                        width: 20px;
+                    em {
+                        width: 40px;
                         display: block;
                         margin: 0 auto;
+                        color: #666;
                     }
                     font-size: 12px;
-                    font-weight: 100;
                 }
                 span:nth-child(2) {
                     margin-left: 10%;
@@ -425,22 +438,16 @@
                     float: right;
                     width: 34%;
                     height: 36px;
-                    line-height: 36px;
+                    line-height: 34px;
                     background-image: linear-gradient(124deg, #FF8550 0%, #FF2E79 100%);
                     border-radius: 50px;
-                    font-weight: 500;
-                    font-size: 18px;
+                    font-size: 16px;
+                    color: #fff;
+                    img {
+                        width: 20px;
+                        vertical-align: middle;
+                    }
                 }
-            }
-            >p {
-                text-align: left;
-                overflow : hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                margin-bottom: 20px;
-                margin-top: 12px;
             }
             .idol_fans_ranking {
                 text-align: left;
@@ -527,7 +534,7 @@
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
-        filter: blur(20px);
+        filter: blur(12px);
         overflow: hidden;
         background-image: url(http://videodebugoutput.oss-cn-hongkong.aliyuncs.com/Act-Snapshot/04183d8a5fd54c47aec133494326072a/1000.jpg);
 
@@ -588,30 +595,40 @@
     .video_option {
         overflow: hidden;
         display: block;
-        padding: 0 12px 8px;
-        border-bottom: 1px solid #eee;
+        padding: 5px 12px 0;
+        // border-bottom: 1px solid #eee;
         span {
             float: left;
             box-sizing: border-box;
+            margin-top: 5px;
             img {
-                width: 12px;
+                width: 15px;
                 margin-right: 3px;
+                float: left;
+                margin-top: 2px;
             }
         }
         span:first-child {
             margin-right: 28px;
         }
-        >img {
+        >div {
             float: right;
-            width: 7px;
-        }
+            overflow: hidden;
+            >img {
+                width: 25px;
+                vertical-align: middle;
+                margin-right: 3px;
+            }
+        }   
     }
     .comment_total {
         overflow: hidden;
-        padding: 8px 12px;
+        padding: 0 12px 3px;
+        line-height: 20px;
+        color: #bbb;
         color: #999;
+        font-size: 14px;
         span:first-child {
-            margin-top: 7px;
             display: block;
             float: left;
             img:first-child {
@@ -683,14 +700,14 @@
         width: 100%;
         height: 100vh;
         z-index: 3;
-        opacity: 0;
-        transition: all 0.3s;
         background: rgba(0,0,0,0.2);
-        transform: scale(0);
         .bullet_box_content {
             position: relative;
             width: 260px;
             margin: calc(50vh - 158px) auto;
+            opacity: 0;
+            transition: all 0.3s;
+            transform: scale(0);
         }
         .box_bg {
             width: 100%;
@@ -752,8 +769,8 @@
 
     }
     .bullet_box_show {
-        opacity: 1;
-        transform: scale(1);
+        opacity: 1 !important;
+        transform: scale(1) !important;
     }
 </style>
 <style lang="scss">

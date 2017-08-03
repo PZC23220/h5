@@ -6,6 +6,15 @@ html,body {
     max-width: 500px;
     margin: 0 auto;
 }
+img,i,em {
+    vertical-align: middle;
+}
+@font-face {
+    font-family: 'Helvetica Condensed Bold Italic';
+    src: url('/font/Helvetica Condensed Bold Italic.eot');
+    src: url('/font/Helvetica Condensed Bold Italic.woff2') format('woff2'),
+         url('/font/Helvetica Condensed Bold Italic.eot?#iefix') format('embedded-opentype');
+}
 html {
     background-color: #f7f7f7;
 }
@@ -17,10 +26,7 @@ body {
     position: absolute;
     top: 0; bottom: 0;
     left: 0; right: 0;
-    font-family: 'SimHei','Hiragino Kaku Gothic Pro W3','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
-}
-.main {
-    // position: relative;
+    font-family: 'SimHei';
 }
 a {color: #333;}
 .fl{float: left;}
@@ -50,29 +56,42 @@ a {color: #333;}
             top: (54px-22px)/2;
             img {
               width: 22px;
-              display: block;  
+              display: block;
             }
         }
     }
     .detailPages {
-        border-bottom: 1px solid #FC4083;
-        padding: 0 12px;
+        // border-bottom: 1px solid #FC4083;
         overflow: hidden;
         display: flex;
-        height: 41px;
+        height: 40px;
         line-height:28px;
         padding: 6px 0;
+        margin: 0 12px;
+        position: relative;
         box-sizing: border-box;
         a {
-            color: #FC4083;
+            color: #666;
             display: block;
             flex: 1;
             margin: 0 7.5%;
+            z-index: 2;
+        }
+        span.bgActive {
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            width: 80px;
+            margin-left: calc((100vw - 24px)* 1/6 - 40px);
+            display: block;
+            z-index: 0;
+            height: 2.5px;
+            background: #FC4083;
+            transition: all 0.3s;
         }
         .active {
-            background: #FC4083;
+            color: #FC4083;
             border-radius: 50px;
-            color: #fff;
         }
     }
 }
@@ -85,6 +104,14 @@ a {color: #333;}
     width: 100%;
     overflow-x: hidden;
 }
+.Forbidden {
+    position: fixed;
+    z-index: 100;
+    width: 47px;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
 .detail_title {
     font-size: 14px;
     border-left: solid 3.5px #666;
@@ -95,7 +122,11 @@ a {color: #333;}
 img.icon {
     width: 23.75px;
 }
-
+.line_20 {
+    background-color: #eee;
+    width: 100vw;
+    height: 1px;
+}
 .eBorder {
     border-bottom: 8px solid #eee;
  }
@@ -127,8 +158,12 @@ img.icon {
         font-size: 18px;
         color: #666;
         font-style: normal;
-        transition: opacity 0.3s;
-        opacity: 0.2;
+        display: inline-block;
+        max-width: calc(50vw - 65px);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        font-weight: 600;
     }
     .video_money_show {
         opacity: 1;
@@ -149,14 +184,32 @@ img.icon {
          }
          .detail_gcoin {
             display: block;
-            margin-left: 45px;
+            padding-right: 12px;
+            box-sizing: border-box;
+            // margin-left: 45px;
+            text-align: center;
             overflow: hidden;
             img {
-                float: left;
                 margin-right: 5.5px;
                 width: 25px;
             }
          }
+    }
+}
+.coinsTotal {
+    margin-bottom: 13px;
+    span {
+        color: #999;
+        margin-right: 15px;
+    }
+    img {
+        width: 14px;
+        margin-right: 4.5px;
+    }
+    i {
+        font-size: 14px;
+        font-weight: 600;
+        color: #666;
     }
 }
 .income_details {
@@ -261,14 +314,14 @@ img.icon {
     color: #fff;
     -webkit-transform: scale(0.65);
     padding: 1px 3px;
-    margin-top: 6.5px;
+    margin-top: 1px;
     font-weight: bold;
     text-align: center;
 }
-.fans_medal {
+.medal_level {
     float: left;
-    width: 15px;
-    margin-top: 6.5px;
+    width: 15px !important;
+    margin-top: 0;
 }
 img.avatar {
     width: 30px;
@@ -293,7 +346,7 @@ img.avatar {
             float: right;
             color: #666;
             overflow: hidden;
-            width: 18%;
+            width: 21%;
             height: 13.3px;
             line-height: 13.3px;
             margin-top: (30px-13.3px)/2;
@@ -343,7 +396,7 @@ img.avatar {
     }
     .idol_comment {
         background: #FFF0F6;
-        .userinfo {
+        .comment_info {
             >span {
                 color: #FC4083;
             }
@@ -351,22 +404,29 @@ img.avatar {
     }
     .comment_info {
         overflow: hidden;
-        height: 30px;
-        line-height: 30px;
+        height: 40px;
         color: #666;
         i {
-            float: right;
-            width: 30%;
-            text-align: right;
+            display: inline-block;
+            width: calc(100vw - 70px);
+            text-align: left;
+            margin-left: calc(100vw * -0.028);
+            float: left;
             color: #999;
+            font-size: 10px;
+            margin-top: 2.5px;
+            -webkit-transform: scale(0.92);
+        }
+        span {
+            line-height: 22px;
         }
     }
     div.userinfo {
         overflow: hidden;
         box-sizing: border-box;
         img.avatar {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             margin-right: 9px;
             float: left;
@@ -386,6 +446,7 @@ img.avatar {
             overflow: hidden;
             max-height: 132px;
             border-radius: 4px;
+            margin-right: 10px;
             // border: 1px #ddd solid;
             &:last-child {
                 margin-right: 0;
@@ -397,7 +458,7 @@ img.avatar {
             }
             .autoHeight {
                 width: 100%;
-                height: auto;
+                height: calc((100vw - 93px)/3);
                 position:relative;
             }
         }
@@ -419,7 +480,9 @@ img.avatar {
         }
     }
     div.comment_content {
-        padding: 0 0 0 39px;
+        padding: 0;
+        padding-top: 5px;
+        padding-left: 3px;
         font-size: 16px;
         color: #2F2F2F;
         // margin-top: 5px;
@@ -559,11 +622,15 @@ img.avatar {
     .all_ranking {
         border: 1px solid #999999;
         border-radius: 50px;
-        width: 74px;
+        width: 80px;
         margin: 0 auto;
+        height: 23px;
+        line-height: 23px;
         text-align: center;
+        font-size: 10px;
+        -webkit-transform: scale(0.8);
         display: block;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
     .integral {
         padding: 12px;
@@ -758,7 +825,7 @@ img.avatar {
     visibility: hidden;
   }
 .my-scroller .pull-to-refresh-layer,.my-scroller .loading-layer .spinner-holder{
-    background-image: url(/static/images/pic_loading_1.png);
+    background-image: url(/img/pic_loading_1.png);
     display: block;
     background-repeat: no-repeat;
     background-position: center;
@@ -773,13 +840,13 @@ img.avatar {
     /* height:  80px !important; */
   }
   .my-scroller .pull-to-refresh-layer.active,.my-scroller .loading-layer .spinner-holder.active {
-    background-image: url(/static/images/pic_loading_2.png);
+    background-image: url(/img/pic_loading_2.png);
     opacity: 1;
     animation: changebg 1s linear infinite;
   }
   @keyframes changebg{
-    from {background-image: url(/static/images/pic_loading_1.png);}
-    to {background-image: url(/static/images/pic_loading_2.png);}
+    from {background-image: url(/img/pic_loading_1.png);}
+    to {background-image: url(/img/pic_loading_2.png);}
   }
     .my-scroller .pull-to-refresh-layer {
         margin-top:  -47.5px !important;
