@@ -5,10 +5,11 @@
             <span>{{video_text.pubMsg}}({{commentList.length}})</span>
         </div>
         <div class="content" ref="viewBox" :style="autoContent">
-            <scroller ref="my_scroller" class="my-scroller"
+            <!-- <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
               :on-infinite="infinite" 
-              :noDataText="'全て表示されました'">
+              :noDataText="''"> -->
+            <v-scroll :on-refresh="refresh" :on-infinite="infinite">
                 <ul class="comment_list dynamic">
                     <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
                         <p>{{msg_text.load}}</p>
@@ -77,7 +78,8 @@
                         <p v-html="video_text.noneComment"></p>
                     </div>
                 </ul>
-            </scroller>
+            <!-- </scroller> -->
+            </v-scroll>
         </div>
         <!-- <div class="publich_comment" @click="publishComment()"><img src="/img/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
         <div class="publich_comment" @click="autoFocus()"><img src="/img/msg/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
@@ -91,8 +93,9 @@
 
 <!-- <script src="../../utils/common.js"></script> -->
 <script>
-    import VueLazyload from 'vue-lazyload'
-    import VueScroller from 'vue-scroller';
+    // import VueLazyload from 'vue-lazyload'
+    // import VueScroller from 'vue-scroller';
+    import Scroll from '../../../components/scroll.vue';
     import http from '@api/js/http.js';
     require('@api/js/common.js')
     // require('@api/js/vconsole.min.js')
@@ -124,6 +127,9 @@
                 win_show: false,
                 can_publish: true
             }
+        },
+        components: {
+            'v-scroll': Scroll
         },
         methods: {
             changeCount() {
@@ -456,15 +462,15 @@
         }
     }
     .page_defalt {
-        height: auto;
         opacity: 0.8;
         transition: all 0.3s;
         overflow:hidden;
+        height: 240px;
+        width: 100%;
     }
     .page_defalt_none {
+        opacity:0;
         height: 0;
-        padding:0;
-        opacity: 0;
         border: none;
     }
     .publich_comment {

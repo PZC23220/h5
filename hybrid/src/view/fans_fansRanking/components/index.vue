@@ -11,10 +11,11 @@
             <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                 <!-- slides -->
                 <swiper-slide id="swiper1">
-                    <scroller ref="my_scroller" class="my-scroller"
+                    <!-- <scroller ref="my_scroller" class="my-scroller"
                           :on-refresh="refresh"
                           :on-infinite="infinite"
-                          :noDataText="rakingList.length == 0 ? '':'全て表示されました'">
+                          :noDataText="rakingList.length == 0 ? '':'全て表示されました'"> -->
+                    <v-scroll :on-refresh="refresh" :on-infinite="infinite">
                          <ul class="comment_list" v-if="default1==false">
                             <h3 class="ranking_type"  :class="{'left_hide':!meObj.position}">{{fans_text.me}}</h3>
                             <li class="con_left" :class="{'left_show':meObj.position}" v-if="meObj.position">
@@ -147,13 +148,15 @@
                             <img src="/img/default_no coin.png" alt="">
                             <p v-html="fans_text.noneGcoin"></p>
                         </div>
-                    </scroller>
+                    <!-- </scroller> -->
+                    </v-scroll>
                 </swiper-slide>
                 <swiper-slide id="swiper2">
-                    <scroller ref="my_scroller" class="my-scroller"
+                    <!-- <scroller ref="my_scroller" class="my-scroller"
                           :on-refresh="refresh2"
                           :on-infinite="infinite2"
-                          :noDataText="rankingHeat.length == 0 ? '':'全て表示されました'">
+                          :noDataText="rankingHeat.length == 0 ? '':'全て表示されました'"> -->
+                    <v-scroll :on-refresh="refresh2" :on-infinite="infinite2">
                         <ul class="comment_list" v-if="default2==false">
                             <h3 class="ranking_type" v-if="meHeatObj.position">{{fans_text.me}}</h3>
                             <li class="con_left" :class="{'left_show':meHeatObj.position}" v-if="meHeatObj.position">
@@ -257,7 +260,8 @@
                             <img src="/img/default_no like.png" alt="">
                             <p v-html="fans_text.noneLike"></p>
                         </div>
-                    </scroller>
+                    <!-- </scroller> -->
+                    </v-scroll>
                 </swiper-slide>
             </swiper>
             <div class="Forbidden"></div>
@@ -268,10 +272,10 @@
     </div>
 </template>
 
-<script src="../../utils/common.js"></script>
 <script>
-    import VueScroller from 'vue-scroller';
+    // import VueScroller from 'vue-scroller';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import Scroll from '../../../components/scroll.vue';
     import $ from 'n-zepto';
     import http from '@api/js/http.js';
     require('@api/js/common.js')
@@ -313,6 +317,9 @@
                 },
             }
         },
+        components: {
+            'v-scroll': Scroll
+        },
         methods: {
           changePages(val) {
             let tabs = $('.tabs');
@@ -333,7 +340,7 @@
             }else if(token_!='(null)' && token_!='') {
                 http.defaults.headers.common['Authorization'] = 'Token ' + token_;
             }
-            http.get('http://api.groupy.vip:8080/statistic/gb',{
+            http.get('/statistic/gb',{
                 params: {
                     idolId: getParams('idolId')
                 }
@@ -345,7 +352,7 @@
                         self.rakingList = res.data.fansList;
                         for(var i=0;i<self.rakingList.length;i++) {
                             // console.log(self.rakingList[i].fansId == 160)
-                            if(self.rakingList[i].fansId == 160) {
+                            if(self.rakingList[i].fansId == getParams('fansId')) {
                                 self.meObj = self.rakingList[i];
                                 self.meObj.position = (i+1);
                                 console.log(self.rakingList)
@@ -378,7 +385,7 @@
             }else if(token_!='(null)' && token_!='') {
                 http.defaults.headers.common['Authorization'] = 'Token ' + token_;
             }
-            http.get('http://api.groupy.vip:8080/statistic/heat',{
+            http.get('/statistic/heat',{
                 params: {
                     idolId: getParams('idolId')
                 }
@@ -388,7 +395,7 @@
                         self.default2 = false;
                         self.rankingHeat = res.data.fansList;
                         for(var i=0;i<self.rankingHeat.length;i++) {
-                            if(self.rankingHeat[i].fansId == 6) {
+                            if(self.rankingHeat[i].fansId == getParams('fansId')) {
                                 self.meHeatObj = self.rankingHeat[i];
                                 self.meHeatObj.position = (i+1);
                                 console.log(self.rankingHeat)
@@ -510,7 +517,8 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
     .ranking_type {
         padding: 0 12px;
-        color: #999;       
+        color: #999;
+        background: #eee;       
     }
     .medal_level {
         margin-top: 3px;

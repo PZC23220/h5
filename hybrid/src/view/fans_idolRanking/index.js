@@ -3,21 +3,21 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import VueResource from 'vue-resource'// 注册两个插件
 import routes  from './router.js'
-import VideoPlayer from 'vue-video-player';
-import VueScroller from 'vue-scroller'
-import VueLazyload from 'vue-lazyload'
+// import VideoPlayer from 'vue-video-player';
+// import VueScroller from 'vue-scroller'
+// import VueLazyload from 'vue-lazyload'
 import main from './main.vue'
 
 // Vue.use(VueResource);
 Vue.use(VueRouter);
-Vue.use(VideoPlayer);
-Vue.use(VueScroller)
-Vue.use(VueLazyload, {
-        preLoad: 1,
-	    error: '/img/pic_default_2.png',
-	    loading: '/img/pic_default_2.png',
-	    attempt: 1
-})
+// Vue.use(VideoPlayer);
+// Vue.use(VueScroller)
+// Vue.use(VueLazyload, {
+//         preLoad: 1,
+// 	    error: '/img/pic_default_2.png',
+// 	    loading: '/img/pic_default_2.png',
+// 	    attempt: 1
+// })
 
 // 1. 开启debug模式
 Vue.config.debug = true

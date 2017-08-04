@@ -1,10 +1,11 @@
 <template>
     <div class="main">
-        <div class="content" ref="viewBox" style="top: 0">
-            <scroller ref="my_scroller" class="my-scroller"
+        <div class="content" style="top: 0">
+           <!--  <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
               :on-infinite="infinite" 
-              :noDataText="noDataText">
+              :noDataText="noDataText"> -->
+              <v-scroll :on-refresh="refresh" :on-infinite="infinite">
                 <ul class="comment_list dynamic">
                     <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                         <li class="defalt_msg" :class="{'firstLi':loadingBig}">
@@ -72,7 +73,8 @@
                         <p v-html="msg_text.noneComment"></p>
                     </div>
                 </ul>
-            </scroller>
+            <!-- </scroller> -->
+            </v-scroll>
         </div>
         <div class="publich_comment" @click="publishComment()"><img src="/img/msg/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div>
         <div class="publich_tips" @click="publishComment()" :class="{'Lheight':msg_text.pubMsg == '发表评论'}" v-show="commentList.length == 0 && idx!=0"><img src="/img/msg/tips_edit.png" alt=""><em v-html="msg_text.pubMsg"></em></div>
@@ -82,9 +84,11 @@
 <!-- <script src="../../utils/common.js"></script> -->
 <script>
     import http from '@api/js/http.js';
-    import VueScroller from 'vue-scroller';
+    // import VueScroller from 'vue-scroller';
     import VueLazyload from 'vue-lazyload'
     require('@api/js/common.js')
+    // require('@api/js/vconsole.min.js')
+    import Scroll from '../../../components/scroll.vue';
     export default {
         data() {
             return {
@@ -110,6 +114,9 @@
                 noDataText: '全て表示されました'
             }
         },
+        components : {
+        'v-scroll': Scroll
+        },
         methods: {
             getComments() {
                 let self = this;
@@ -125,7 +132,7 @@
                     self.idx++;
                     self.loadingBig = false;
                     self.showLoading = false;
-                    console.log(res.data);
+                    // console.log(res.data);
                     if(res.data.length > 0 ) {
                         for(var i=0;i<res.data.length;i++){
                             self.commentList.push(res.data[i]);
@@ -133,7 +140,7 @@
                     }else {
                         self.havedlast = true;
                     }
-                    console.log(self.commentList);
+                    // console.log(self.commentList);
                 }).catch(function(){
                     self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
@@ -175,14 +182,14 @@
                     self.havedlast = false;
                     self.showLoading2 = false;
                      self.commentList = res.data;                  
-                    console.log(self.commentList);
+                    // console.log(self.commentList);
                 }).catch(function(){
                     self.showLoading2 = false;
                 });
                 setTimeout(() => {
                     done(true);
-                    console.log(document.querySelector('._v-content'));
-                    document.querySelector('._v-content').style.transform = 'translate3d(0px, 0px, 0px) scale(1) !important';
+                    // console.log(document.querySelector('._v-content'));
+                    // document.querySelector('._v-content').style.transform = 'translate3d(0px, 0px, 0px) scale(1) !important';
                 }, 500)
           },
           infinite (done) {
@@ -210,40 +217,6 @@
         },
         mounted() {
             var self = this;
-          // self.box = self.$refs.viewBox
-          // self.box.addEventListener('scroll', () => {
-          //   if(document.querySelector('.firstLi')) {
-          //         if(parseInt(document.querySelector('.firstLi').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
-          //           self.showLoading2 = true;
-          //           setTimeout(() => {
-          //               self.refresh();
-          //           },500)
-          //         }
-          //   }else {
-          //     if(parseInt(document.querySelector('.default_page').getBoundingClientRect().top)  == parseInt(document.querySelector('.content').getBoundingClientRect().top)) {
-          //       self.showLoading2 = true;
-          //       setTimeout(() => {
-          //           self.refresh()
-          //       },500)
-          //     }
-          //   }
-          //   if(document.querySelector('.lastLi')) {
-          //       if(parseInt(document.querySelector('.lastLi').getBoundingClientRect().bottom)  == parseInt(document.querySelector('.content').getBoundingClientRect().bottom)) {
-          //           if(self.havedlast == true) {
-          //               self.showLoading = true;
-          //               setTimeout(() => {
-          //                   self.showLoading = false;
-          //               },1500)
-          //           }else {
-          //               self.showLoading = true;
-          //               setTimeout(() => {
-          //                   self.start = self.start + self.num;
-          //                   self.getComments();
-          //               },500)
-          //           }                    
-          //         }
-          //   }
-          //  }, false)
           window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.registerHandler('comment_refresh', function() {
                     self.refresh();
@@ -281,6 +254,10 @@
     .content {
         height: 100vh;
     }
+    .comment_list {
+        min-height: 100vh;
+        background: #fff;
+    }
     .name {
         max-width: calc(100vw - 140px);
         text-overflow: ellipsis;
@@ -295,7 +272,7 @@
     .publich_comment {
         position: fixed;
         right: 12px;
-        bottom: 18px;
+        bottom: 62px;
         opacity: 0.9;
         background: #00B4BC;
         border-radius: 29px;
@@ -315,7 +292,7 @@
     .publich_tips {
         position: fixed;
         right: 126px;
-        bottom: 11px;
+        bottom: 54px;
         color: #fff;
         font-size: 16px;
         width: 153.5px;

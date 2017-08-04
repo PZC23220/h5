@@ -1,10 +1,11 @@
 <template>
     <div class="main">
         <div class="content">
-            <scroller ref="my_scroller" class="my-scroller"
+           <!--  <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
               :on-infinite="infinite"
-              :noDataText="rakingList.length>0? '全て表示されました':''">
+              :noDataText="rakingList.length>0? '全て表示されました':''"> -->
+            <v-scroll :on-refresh="refresh" :on-infinite="infinite">
                 <div class="not_concerned" v-if="me.length==0"><img src="/img/fans_idolRanking/banner.jpg" alt=""></div>
                 <div class="concerned" v-if="me.length > 0">
                     <h3 class="title">{{idol_text.me}}</h3>
@@ -114,12 +115,14 @@
                     <img src="/img/default_no message.png" alt="">
                     <p v-html="idol_text.noneIdol"></p>
                 </div>
-            </scroller>
+            <!-- </scroller> -->
+            </v-scroll>
         </div>
     </div>
 </template>
 <script>
-    import VueScroller from 'vue-scroller';
+    // import VueScroller from 'vue-scroller';
+    import Scroll from '../../../components/scroll.vue';
     import http from '@api/js/http.js';
     require('@api/js/common.js');
     // var vConsole = require('@api/js/vconsole.min.js');
@@ -145,6 +148,9 @@
                 allFans: [],
                 meFans: []
             }
+        },
+        components: {
+            'v-scroll': Scroll
         },
         methods: {
           changePages(val) {
@@ -295,9 +301,13 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+    .concerned, .idol_all {
+        background: #fff;
+    }
     .content {
         top: 0;
         height: 100vh;
+
     }
     h3.title {
         height: 25px;

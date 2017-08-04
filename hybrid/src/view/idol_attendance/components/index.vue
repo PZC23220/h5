@@ -49,7 +49,7 @@
 <script>
     import http from '@api/js/http.js';
     require('@api/js/common.js');
-    import VueLazyload from 'vue-lazyload'
+    // import VueLazyload from 'vue-lazyload'
     export default {
         data() {
             return {

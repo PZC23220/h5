@@ -115,10 +115,11 @@
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper3">
-                <scroller ref="my_scroller" class="my-scroller"
+                <!-- <scroller ref="my_scroller" class="my-scroller"
                   :on-refresh="refresh"
                   :on-infinite="infinite"
-                  :noDataText="commentList.length == 0 ? '':'全て表示されました'">
+                  :noDataText="commentList.length == 0 ? '':'全て表示されました'"> -->
+                  <v-scroll :on-refresh="refresh" :on-infinite="infinite">
                     <ul class="comment_list" style="background: #fff;">
                         <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                             <div class="comment_info">
@@ -137,7 +138,8 @@
                         </div>
                         <!-- <div class="loading" :class="{'loading_show': showLoading}"><p><img src="/img/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div> -->
                     </ul>
-                </scroller>
+                <!-- </scroller> -->
+                </v-scroll>
             </swiper-slide>
           </swiper>
           <div class="Forbidden"></div>
@@ -149,8 +151,9 @@
 </template>
 <script>
     import LeftSlider from '../../../components/leftSlider.vue';
+    import Scroll from '../../../components/scroll.vue';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
-    import VueScroller from 'vue-scroller';
+    // import VueScroller from 'vue-scroller';
     import $ from 'n-zepto';
     import http from '@api/js/http.js';
     require('@api/js/common.js')
@@ -193,7 +196,7 @@
                 gcoinList: {},
                 popularityList: [],
                 start: 0,
-                num: 10,
+                num: 20,
                 showLoading: false,
                 showLoading2: false,
                 loadingBig: true,
@@ -214,7 +217,8 @@
             }
         },
         components: {
-            LeftSlider
+            LeftSlider,
+            'v-scroll': Scroll
         },
         methods: {
           changePages(val) {
@@ -253,7 +257,7 @@
                     params: {
                         targetType: 1,
                         targetId: getParams('videoId'),
-                        form: self.start,
+                        from: self.start,
                         rows: self.num
                     }
                 }).then(function(res){
@@ -265,7 +269,6 @@
                     }else {
                         self.havedlast = true;
                     }
-                    console.log(self.commentList);
                 }).catch(function(){
 
                 });
@@ -291,14 +294,14 @@
                         console.log(self.gcoinList)
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','videoId':self.$route.query.videoId}, function responseCallback(responseData) {
+                            bridge.callHandler('getToken', {'targetType':'1','videoId':getParams('videoId')}, function responseCallback(responseData) {
                                 self.getGoin(responseData.token);
                             })
                         })
                     }
                 }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','videoId':self.$route.query.videoId}, function responseCallback(responseData) {
+                        bridge.callHandler('getToken', {'targetType':'1','videoId':getParams('videoId')}, function responseCallback(responseData) {
                             self.getGcoin(responseData.token);
                         })
                     })
@@ -334,14 +337,14 @@
                         console.log(self.popularityList)
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','videoId':self.$route.query.videoId}, function responseCallback(responseData) {
+                            bridge.callHandler('getToken', {'targetType':'1','videoId':getParams('videoId')}, function responseCallback(responseData) {
                                 self.getPopularity(responseData.token);
                             })
                         })
                     }
                 }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','targetId':self.$route.query.videoId}, function responseCallback(responseData) {
+                        bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
                             self.getPopularity(responseData.token);
                         })
                     })
@@ -353,7 +356,7 @@
                 http.get('/post/list',{
                     params: {
                         targetType: 1,
-                        targetId: self.$route.query.videoId,
+                        targetId: getParams('videoId'),
                         from: 0,
                         rows: self.num
                     }
@@ -454,6 +457,10 @@
 <style scoped>
     .defalt_no {
         color: #999;
+    }
+    .comment_list {
+        min-height: calc(100vh - 41px);
+        background: #fff;
     }
     .name {
         max-width: calc(100vw - 200px);
