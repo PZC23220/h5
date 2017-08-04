@@ -254,10 +254,6 @@
     .content {
         height: 100vh;
     }
-    .comment_list {
-        min-height: 100vh;
-        background: #fff;
-    }
     .name {
         max-width: calc(100vw - 140px);
         text-overflow: ellipsis;
