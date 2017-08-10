@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <div class="banner"><img src="../images/banner-chinese.png" alt=""></div>
+    <div class="banner"><img src="../images/banner_2.png" alt=""></div>
     <div class="product_description" id="product_description">
       <h2 class="titles" style="border:none;margin-bottom: 22px;"><i></i><span style="width: 398px;">一个与爱豆亲密互动的平台</span></h2>
       <h4 class="desc">会员独有的<b>私密状态</b>查看，<b>一键应援</b>，共同守护爱豆的成长</h4>
@@ -22,11 +22,12 @@
       </div>
       <div class="join_way">
         <span></span>
-        <div class="left">
-          <h2><span>想让你喜欢的爱豆获得全日本的喜爱？</span></h2>
+        <div class="left" style="padding-top:0;">
+          <!-- <h2><span>想让你喜欢的爱豆获得全日本的喜爱？</span></h2>
           <h4 style="margin-bottom: 55px;">把她推荐到Groupy，为她创造迈向事业巅峰的契机吧！</h4>
           <h2 style="width: 312px;border-color: #FF8500;"><span>正在寻找一个新的出发点吗？</span></h2>
-          <h4>来入驻Groupy，和粉丝更紧密地相连在爱豆界展翅高飞！</h4>
+          <h4>来入驻Groupy，和粉丝更紧密地相连在爱豆界展翅高飞！</h4> -->
+          <img src="../images/pic_idol.png" width="85%">
         </div>
         <div class="right">
           <h3>报名方式</h3>

@@ -29,5 +29,6 @@ module.exports = {
         // 其在webpack中的对应格式为：[name](生成的js名) => [main.js所在路径]
         video: './src/view/video', // 示例项目，新建页面可以直接复制该项目的代码
         idol: './src/view/idol', // 示例项目，利用个人blog提供公共api进行测试
+        shows: './src/view/shows', // 示例项目，利用个人blog提供公共api进行测试
     },
 };

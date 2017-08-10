@@ -164,6 +164,7 @@
             },
             getComments() {
                 let self = this;
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 http.get('/post/list',{
                     params: {
                         targetType: 1,
@@ -195,16 +196,15 @@
                     })
                 });
             },
-            publish(token) {
+            publish() {
                 let self = this;
                 let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 if(self.can_publish) {
                     if(self.comment_text !=""){
                         self.can_publish = false;
-                        if(token) {
-                            http.defaults.headers.common['Authorization'] = 'Token '+token;
-                        }else {
-                            http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                        let token_ = getParams('token');
+                        if(token_!='(null)' && token_!='') {
+                            http.defaults.headers.common['Authorization'] = 'Token '+token_;
                         }
                         let _data = {
                             content:self.comment_text,
@@ -232,8 +232,8 @@
                                      }
                                 });
                                 window.setupWebViewJavascriptBridge(function(bridge) {
-                                    bridge.callHandler('getToken', {'targetType':'1','targetId':self.$route.query.videoId}, function responseCallback(responseData) {
-                                        self.$route.query.token = responseData.token;
+                                    bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
+                                        token_ = responseData.token;
                                     })
                                 })
                             }
@@ -249,8 +249,8 @@
                                  }
                             })
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('getToken', {'targetType':'1','targetId':self.$route.query.videoId}, function responseCallback(responseData) {
-                                    self.$route.query.token = responseData.token;
+                                bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
+                                    token_ = responseData.token;
                                 })
                             })
                         });

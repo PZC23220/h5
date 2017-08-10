@@ -184,10 +184,11 @@
             getJoin(token) {
                 let self = this;
                 if(self.idx1 < 2) {
+                    let token_ = getParams('token');
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
-                    }else {
-                        http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                    }else if(token_!='(null)' && token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
                     http.get('/statistic/time').then(function(res){
                         if(res.status == 200) {
@@ -214,10 +215,11 @@
             getGcoin(token) {
                 let self = this;
                 if(self.idx < 2) {
+                    let token_ = getParams('token');
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
-                    }else {
-                        http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                    }else if(token_!='(null)' && token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
                     http.get('/statistic/gb').then(function(res){
                         // self.loadingBig = false;
@@ -254,10 +256,11 @@
             getPopularity(token) {
                 let self = this;
                 if(self.idx2 < 2) {
+                    let token_ = getParams('token');
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
-                    }else {
-                        http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                    }else if(token_!='(null)' && token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
                     console.log(http.defaults.headers.common)
                     http.get('/statistic/heat').then(function(res){

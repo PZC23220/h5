@@ -277,10 +277,11 @@
             let self = this;
             if(self.idx < 2) {
                 self.idx++;
+                let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                }else if(token_!='(null)' && token_!='') {
+                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                 }
                 console.log(http.defaults.headers.common)
                 http.get('/video/gcoin',{
@@ -322,10 +323,11 @@
             let self = this;
             if(self.idx1 < 2) {
                 self.idx1++;
+                let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                }else if(token_!='(null)' && token_!='') {
+                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                 }
                 http.get('/video/popularity',{
                     params: {

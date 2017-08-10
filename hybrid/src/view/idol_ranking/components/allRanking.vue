@@ -274,10 +274,11 @@
           getRanking(val,token) {
             let self = this;
             if(self.idx < 4) {
+                let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                }else if(token_!='(null)' && token_!='') {
+                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                 }
                 http.get('/ranking/idols',{
                     params: {

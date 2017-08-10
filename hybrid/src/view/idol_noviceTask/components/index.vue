@@ -95,10 +95,11 @@
             let self = this;
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if(self.idx < 2) {
+                let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                }else if(token_!='(null)' && token_!='') {
+                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                 }
                 http.get('/mission/list',{
                     params: {
@@ -130,10 +131,11 @@
             self.Gcoins = gprice;
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if(self.idx2 < 2) {
+                let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                }else if(token_!='(null)' && token_!='') {
+                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                 }
                 http.get('/mission/accept',{
                     params: {

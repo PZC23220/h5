@@ -54,10 +54,11 @@
             },
             getLevel(token) {
                 let self = this;
+                let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else {
-                    http.defaults.headers.common['Authorization'] = 'Token '+getParams('token');
+                }else if(token_!='(null)' && token_!='') {
+                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                 }
                 http.get('/groupyuser/fansLevel').then(function(res){
                     console.log(res);

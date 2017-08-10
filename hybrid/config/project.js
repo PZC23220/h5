@@ -40,6 +40,7 @@ module.exports = {
         idol_messageBoard: './src/view/idol_messageBoard', 
         idol_noviceTask: './src/view/idol_noviceTask', 
         idol_ranking: './src/view/idol_ranking',
-        idol_videoDetail: './src/view/idol_videoDetail'
+        idol_videoDetail: './src/view/idol_videoDetail',
+        shows_detail: './src/view/shows_detail'
     },
 };

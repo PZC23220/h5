@@ -47,10 +47,10 @@
     }
 }
 @media screen and (min-width: 500px) {
-	.header {
-		left: 50%;
-		width: 500px;
-		margin-left: -250px;
+	.header, .footer, .reservation {
+		left: 50% !important;
+		width: 500px !important;
+		margin-left: -250px !important;
 	}
 }
 .userinfo {

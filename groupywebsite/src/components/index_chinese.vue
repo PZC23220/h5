@@ -18,13 +18,14 @@
       <div class="content">
         <router-view></router-view>
       </div>
-      
       <footer class="footer">
         <div class="links">
           <a href="/" class="logo">Groupy</a>
           <!-- <a href="" class="facebook"></a> -->
           <a href="https://twitter.com/GGroupyyy" target="_blank" class="twitter"></a>
         </div>
+        <div class="desc2">公司名：广州市云动网络有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮   箱：support@groupy.cn</div>
+        <div class="desc2" style="margin-bottom: 20px;">地   址：广东省广州市天河区中山大道西89号华景软件园A栋16楼9-12</div>
         <ul>
           <!-- <li><a :href="commentWords.to_idol">{{commentWords.idol}}</a></li>
           <li><a :href="commentWords.to_videos">{{commentWords.videos}}</a></li> -->
@@ -32,9 +33,8 @@
           <li><router-link to="/index_chinese/chinese_privacy_policy">{{commentWords.privacy_policy}}</router-link></li>
         </ul>
         <div class="desc">Copyright  2017 广州市云动网络有限公司 All rights reserved.<br></div>
-        <div class="desc"><a target="_blank" href="http://www.miitbeian.gov.cn" style="padding: 0 10px;">粤ICP备17068981号</a><a href="Mailto:support@groupy.cn" target="_blank">邮箱：support@groupy.cn</a></div>
-        <div class="desc" style="margin-top: 0;width: 310px;
-        margin: 0 auto;overflow: hidden;" v-if="commentWords.company === '公司介绍'"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602002595"><img src="../images/gov_cn.png" alt="" style="float: left;margin-top: 4px;margin-right: 5px;"><span style="float: left;">粤公网安备 44010602002595号</span></a></div>
+        <div class="desc" style="margin-top: 0;width: 330px;
+        margin: 0 auto;overflow: hidden;" v-if="commentWords.company === '公司介绍'"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602002595"><img src="../images/gov_cn.png" alt="" style="float: left;margin-top: 4px;margin-right: 5px;"><span style="float: left;">粤公网安备 44010602002595号</span></a><a target="_blank" href="http://www.miitbeian.gov.cn" style="padding: 0 10px;">粤ICP备17068981号</a></div>
       </footer>
     </div>
   </div>
@@ -285,12 +285,21 @@
       line-height: 30px;
       text-align: center;
       font-size: 12px;
+      overflow: hidden;
       a {
         display: inline-block;
+        float: left;
       }
       &:last-child {
         padding-bottom: 30px;
       }
+    }
+    .desc2 {
+      color: #fff;
+      text-align: left;
+      line-height: 40px;
+      font-weight: 400;
+      font-size: 13px;
     }
   }
   .main {
