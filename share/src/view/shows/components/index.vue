@@ -5,112 +5,406 @@
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
             <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
         </div>
-        <div class="content">
-            <div class="idolInfo eBorder">
-                <img src="/img/default_img.png" class="avatar">
+        <div class="content" :class="{'bottom':applyInfo.id}">
+            <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
+                <div class="idolInfo eBorder">
+                    <img src="http://h5.groupy.vip/img/default_img.png" class="avatar">
+                    <p>
+                        <span><i class="idol_name">...</i>  发布活动</span>
+                        <span>@Groupy</span>
+                    </p>
+                </div>
+                <ul class="shows_detail">
+                    <li>
+                        <p class="shows_name">@Groupy</p>
+                        <p class="shows_time"><span>--.-- --</span><span><img src="/img/shows/icon_time.png">開場--:--/開演--:--</span></p>
+                    </li>
+                    <li>
+                        <h5 class="li_title">演出团体</h5>
+                        <p class="show_groups">@Groupy</p>
+                    </li>
+                    <li>
+                        <h5 class="li_title">门票价格</h5>
+                        <p>Groupy预约 <i>0</i>円/当日 0円(+1D)</p>
+                    </li>
+                    <li>
+                        <h5 class="li_title">活动场地</h5>
+                        <p>@Groupy</p>
+                    </li>
+                    <li>
+                        <h5 class="li_title">活动信息</h5>
+                        <div class="shows_info">
+                            <span>@Groupy</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="idolInfo eBorder" v-if="loadingBig == false">
+                <img :src="idolInfo.avatar?idolInfo.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
                 <p>
-                    <span><i class="idol_name">idolNameidolNameidolNameidolNameidolNameidolNameidolNameidolNameidolName</i>发布活动</span>
-                    <span>团体</span>
+                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  发布活动</span>
+                    <span v-show="organization.name">{{organization.name}}</span>
                 </p>
             </div>
-            <ul class="shows_detail">
-                <li>
-                    <p class="shows_name">shows_name</p>
-                    <p class="shows_time"><span>08.12 金</span><span><img src="/img/shows/icon_time.png">開場10:30/開演11:00</span></p>
+            <div class="mine_info" v-if="applyInfo.id">
+                <div class="info_content">
+                    <h5 class="li_title">Groupy预约</h5>
+                    <p>{{applyInfo.firstName}}  {{applyInfo.lastName}}</p>
+                    <span>预约数量<i>{{applyInfo.nums}}</i>张 | Groupy@vip.com</span>
+                    <div class="win_info"><a :href="hrefs" target="_blank" @click="p_log('share_h5_download_groupy')">下载Groupy接受活动通知</a></div>
+                </div>
+                <img src="/img/shows/bg_booked.png">
+            </div>
+            <ul class="shows_detail" v-if="loadingBig == false">
+                <li style="border-bottom: 1px solid #eee;">
+                    <p class="shows_name">{{showsInfo.title}}</p>
+                    <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="/img/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.endTime?formatTime(showsInfo.endTime,'hh:mm'):'--:--'}}</span></p>
+                    <div class="win_info" v-if="!applyInfo.id" @click="reservationShow = true">立即预约</div>
                 </li>
                 <li>
                     <h5 class="li_title">演出团体</h5>
-                    <p class="show_groups">POPCANDY/~永遠少女症候群~ゆゆ/GINGANEKO/PopPopping Emo/FRAGRANCE/渡良瀬橋43/花言葉はイノセンス/seeDream</p>
+                    <p class="show_groups">{{showsInfo.groups}}</p>
                 </li>
                 <li>
                     <h5 class="li_title">门票价格</h5>
-                    <p>Groupy预约 <i>1,800</i>円/当日 2,500円(+1D)</p>
+                    <p>Groupy预约 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円(+1D)</p>
                 </li>
                 <li>
                     <h5 class="li_title">活动场地</h5>
-                    <p>SHIBUYA DESEO</p>
+                    <p>{{showsInfo.location}}</p>
                 </li>
                 <li>
                     <h5 class="li_title">活动信息</h5>
                     <div class="shows_info">
-                        <span>リストバンド交換時ドリンク代別途必要、オールスタンディング</span>
-                        <p>
-                            <span class="once"><img src=""></span>
+                        <span>{{showsInfo.introduce}}</span>
+                        <p v-if="showsInfo.imgs">
+                            <span v-for="img in changeURL(showsInfo.imgs)" :class="{'once':showsInfo.imgs.length == 1}"><img :src="img"></span>
                             <!-- <span><img src=""></span>
                             <span><img src=""></span> -->
                         </p>
                     </div>
                 </li>
                 <li>
-                    <h5 class="li_title">19人预约</h5>
+                    <h5 class="li_title">{{fansList.length}}人预约</h5>
                     <div class="fans_list">
-                        <p>
-                            <img src="/img/default_img.png" class="avatar">
-                            <span class="idol_name">idol_name</span>
-                        </p>
-                        <p>
-                            <img src="/img/default_img.png" class="avatar">
-                            <span class="idol_name">idol_name</span>
-                        </p>
-                        <p>
-                            <img src="/img/default_img.png" class="avatar">
-                            <span class="idol_name">idol_name</span>
+                        <p v-for="fans in fansList">
+                            <img :src="fans.avatar?fans.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
+                            <span class="idol_name">{{fans.nickname?fans.nickname:'...'}}</span>
                         </p>
                     </div>
                 </li>
             </ul>
         </div>
-        <div class="footer" @click="reservationShow = true">立即预约</div>
-        <div class="footer" v-if="false">下载Groupy接受活动通知</div>
+        <!-- <div class="footer" @click="reservationShow = true">立即预约</div>
+        <div class="footer" v-if="false">下载Groupy接受活动通知</div> -->
         <!-- 预约弹窗 -->
         <div class="reservation" v-if="reservationShow">
             <div class="r_header">
                 <img src="/img/shows/icon_cancel_2.png" @click="reservationShow = false">
-                预约活动
-                <span>提交</span>
+                立即提交
+                <span :class="{'active': canPush}" @click="pushOrder()">提交</span>
             </div>
-            <p><span>姓</span><input type="text" name="" :modal="last_name" placeholder="请输入"></p>
-            <p><span>名</span><input type="text" name="" :modal="first_name" placeholder="请输入"></p>
-            <p><span>邮箱</span><input type="email" name="" :modal="email" placeholder="请输入"></p>
-            <p><span>数量</span><i>张</i><input style="width: calc(100vw - 100px);max-width: calc(500px - 100px);" :modal="nums" type="tel" name="" placeholder="1"></p>
+            <div class="lin_k">联系方式</div>
+            <div style="overflow: hidden;">
+                <p class="names"><img src="/img/shows/icon_name.png"><i>姓名</i></p>
+                <p class="input_content" style="display: inline-block;width: 38%;float: left"><span>姓</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.lastName" placeholder="请输入"></p>
+                <p class="input_content" style="display: inline-block;width: 38%;float: right;margin-left: 0;"><span>名</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.firstName" placeholder="请输入"></p>
+            </div>
+            <div>
+                <p class="names"><img src="/img/shows/icon_email.png"><i>邮箱</i></p>
+                <p class="input_content"><input v-on:input="updateStyle()" type="email" name="" v-model="forms.email" placeholder="请输入"></p>
+            </div>
+            <div class="lin_k" style="background: #00B4BB;">预定数量</div>
+            <div>
+                <p class="input_content" style="margin-top: 12px;border: 1px solid #00B4BB;"><input v-on:input="updateStyle()" v-model="forms.nums" type="tel" name="" placeholder="1"></p>
+            </div>
         </div>
         <!-- toast -->
-        <div class="toast" :class="{'active':toastShow}">预约成功</div>
+        <div class="toast" :class="{'active':toastShow}">{{toastText}}</div>
     </div>
 </template>
+<script type="text/javascript" src="http://adodson.com/hello.js/dist/hello.all.js"></script>
 <script>
     import http from '@api/js/http.js';
     require('@api/js/common.js')
-    import $ from 'n-zepto';
+    // require('@api/js/vconsole.min.js')
     export default {
         data() {
           return {
-            hrefs: 'itms-apps://itunes.apple.com/app/id1251249933',
             reservationShow: false,
             toastShow: false,
-            first_name: '',
-            last_name: '',
-            email: '',
-            nums: ''
+            loadingBig: true,
+            forms: {
+               firstName: '',
+               lastName: '',
+               email: '',
+               nums: '',
+               showsId:''
+            },
+            fansList: [],
+            applyInfo: {},
+            showsInfo: {},
+            organization: {},
+            idolInfo: {},
+            canPush: false,
+            idx: 0,
+            hrefs: 'itms-apps://itunes.apple.com/app/id1251249933',
+            tokens: '',
+            toastText: '预约成功'
           }
         },
         methods: {
             p_log(val) {
-                // var _data = {
-                //     topic: "groupy",
-                //     app: "groupyIdol",
-                //     platform: "h5",
-                //     system: navigator.userAgent,
-                //     version: "1.0.0",
-                //     action: val,
-                //     result: "success",
-                //     idolId: location.href.split('?idolId=')[1].split('#/')[0]
-                // }
-                // http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
-                //     console.log('success');
-                // }).catch(function(){
+                var _data = {
 
-                // })
+                    topic: "groupy",
+                    app: "groupyIdol",
+                    platform: "h5",
+                    system: navigator.userAgent,
+                    version: "1.0.0",
+                    action: val,
+                    result: "success",
+                    idolId: location.href.split('?idolId=')[1].split('#/')[0]
+                }
+                http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
+                    console.log('success');
+                }).catch(function(){
+
+                })
+            },
+            formatTime(key,type) {
+                let timer = new Date(key);
+                return timer.Format(type);
+            },
+            formatDay(key) {
+                let timer = new Date(key).getDay();
+                var str;
+                switch (timer) {  
+                    case 0 :  
+                            str = "日";  
+                            break;  
+                    case 1 :  
+                            str = "月";  
+                            break;  
+                    case 2 :  
+                            str = "火";  
+                            break;  
+                    case 3 :  
+                            str = "水";  
+                            break;  
+                    case 4 :  
+                            str = "木";  
+                            break;  
+                    case 5 :  
+                            str = "金";  
+                            break;  
+                    case 6 :  
+                            str = "土";  
+                            break;  
+                }
+                return  str;
+            },
+            changeURL(val) {
+                if(val) {
+                    var str = JSON.stringify(val);
+                    var len = str.length;
+                    var str2 = str.slice(1,len-1);
+                    let arr = [];
+                    arr = str2.split(',');
+                    return arr;
+                }
+            },
+            getShows(token) {
+                var self = this;
+                if(token) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+token;
+                }
+                http.get('/shows/detail',{
+                    params: {
+                        showsId: getParams('showsId')
+                    }
+                }).then(function(res){
+                    console.log(res.data);
+                    self.loadingBig = false;
+                    self.showsInfo = res.data;
+                    if(res.data.fansList){
+                        self.fansList = res.data.fansList;
+                    }
+                    if(res.data.applyInfo) {
+                        self.applyInfo = res.data.applyInfo;
+                    }
+                    if(res.data.idolInfo) {
+                        self.idolInfo = res.data.idolInfo;
+                        if(res.data.idolInfo.organization) {
+                            self.organization = res.data.idolInfo.organization;
+                        }
+                    }
+                }).catch(function(err){
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                         if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                         }
+                    })
+                });
+            },
+            updateStyle() {
+                if(this.forms.firstName && this.forms.lastName && this.forms.email && this.forms.nums) {
+                    return this.canPush = true;
+                }else {
+                    return this.canPush = false;
+                }
+            },
+            pushOrder() {
+                var self = this;
+                console.log(self.canPush)
+                if(self.tokens) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+ self.tokens;
+                }
+                self.forms.showsId = self.showsInfo.id;
+                if(self.canPush) {
+                    if(self.idx < 2) {
+                        http.post('/shows/apply',JSON.stringify(self.forms)).then(function(res){
+                            console.log(res);
+                            if(res.status == 200) {
+                                self.getShows(self.tokens);
+                                self.reservationShow = false;
+                                self.toastText = '预约成功';
+                                self.toastShow = true;
+                                setTimeout(function(){
+                                    self.toastShow = false;
+                                },1000);
+                            }else {
+                                self.idx++;
+                                self.platform();
+                            }
+                        }).catch(function(err){
+                            self.idx++;
+                        });
+                    }else {
+                        self.reservationShow = false;
+                        self.toastText = '服务器错误';
+                        self.toastShow = true;
+                        setTimeout(function(){
+                            self.toastShow = false;
+                        },1000);
+                    }
+                }
+            },
+            platform() {
+                if(getParams('platform') == 'fb') {
+                    this.facebookLogin();
+                }else if(getParams('platform') == 'tw') {
+                    this.twitterLogin();
+                }
+                
+            },
+            facebookLogin() {
+                var self= this;
+                window.fbAsyncInit = function() {
+                    FB.init({
+                      appId            : '247907419038265',
+                      autoLogAppEvents : true,
+                      xfbml            : true,
+                      version          : 'v2.10'
+                    });
+                    // FB.AppEvents.logPageView();
+                    FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected' || response.status === 'not_authorized') {
+                      // console.log(response);
+                      FB.api('/me', {fields: 'name'}, function(response) {
+                        // console.log(response);
+                        var obj = {
+                            snsUid:response.id,
+                            snsPlatform:'fb',
+                            nickname:response.name,
+                            avatar:'https://graph.facebook.com/'+ response.id +'/picture?type=large', 
+                            sign:'',
+                            introduce:''
+                        };
+                        self.login(obj);
+                      });
+                    } else {
+                      FB.login(function(response) {
+                        console.log(response);
+                        var obj = {
+                            snsUid:response.id,
+                            snsPlatform:'fb',
+                            nickname:response.name,
+                            avatar:'https://graph.facebook.com/'+ response.id +'/picture?type=large', 
+                            sign:'',
+                            introduce:''
+                        };
+                        self.login(obj);
+                      }, {scope: 'public_profile'});
+                    }
+                  });
+                };
+                (function(d, s, id){
+                     var js, fjs = d.getElementsByTagName(s)[0];
+                     if (d.getElementById(id)) {return;}
+                     js = d.createElement(s); js.id = id;
+                     js.src = "http://connect.facebook.net/en_US/sdk.js";
+                     fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            },
+            twitterLogin() {
+                var self = this;
+                window.twttr = (function(d, s, id) {
+                     var js, fjs = d.getElementsByTagName(s)[0],
+                      t = window.twttr || {};
+                      if (d.getElementById(id)) return t;
+                      js = d.createElement(s);
+                      js.id = id;
+                      js.src = "https://platform.twitter.com/widgets.js";
+                      fjs.parentNode.insertBefore(js, fjs);
+
+                      t._e = [];
+                      t.ready = function(f) {
+                          t._e.push(f);
+                      };
+                      return t;
+                }(document, "script", "twitter-wjs"));
+                var log = console.log;
+                hello.init({'twitter': '6YNVtKZPe9RhAI32wKCvfp8RN'},{
+                  oauth_proxy: 'https://auth-server.herokuapp.com/proxy' 
+                });
+                function login_twitter(network){  //登录方法，并将twitter 作为参数传入
+                      // Twitter instance
+                      var twitter = hello(network);
+                      // Login
+                      twitter.login().then(function(r){
+                          // Get Profile
+                          return twitter.api('/me');
+                      },log).then(function(p){
+                          //已获取用户信息，在此处理                   
+                          // var response = {'id':p.id,'name':p.name,'picture':p.thumbnail,'link':'https://twitter.com/'+p.screen_name,'login_type':'twitter'};
+                          // console.dir(response);
+                          var obj = {
+                            snsUid:p.id,
+                            snsPlatform:'tw',
+                            nickname:p.name,
+                            avatar:p.thumbnail, 
+                            sign:'',
+                            introduce:''
+                        };
+                        self.login(obj);
+                      }, log );
+                }
+                login_twitter('twitter');
+            },
+            login(obj) {
+                var self = this;
+                http.post('/groupyuser/loginFans?tokenize=true',JSON.stringify(obj)).then(function(res){
+                    if(res.status == 200) {
+                        self.tokens = res.data.accessToken;
+                        self.getShows(res.data.accessToken);
+                    }
+                }).catch(function(err){
+                    self.getShows();
+                });
             }
         },
         mounted() {
@@ -118,12 +412,32 @@
         computed: {
         },
         created() {
+            var ua = navigator.userAgent.toLowerCase();
+            console.log(ua)
+            if (!(/iphone|ipad|ipod/.test(ua))) {
+                this.hrefs = 'https://itunes.apple.com/app/id1251249933';
+            }else {
+                this.hrefs = 'itms-apps://itunes.apple.com/app/id1251249933';
+            }
+            this.platform();
         }
       }
 </script>
 
 <style scoped lang="scss">
-    .footer {
+    .page_defalt {
+        opacity: 0.4;
+        transition: all 0.3s;
+        overflow:hidden;
+        width: 100%;
+        height: calc(100vh - 64px);
+    }
+    .page_defalt_none {
+        opacity:0;
+        height: 0;
+        border: none;
+    }
+    .win_info {
         background: #00B4BB;
         font-size: 18px;
         color: #FFFFFF;
@@ -131,10 +445,12 @@
         height: 48px;
         font-weight: 600;
         line-height: 48px;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+         width: 80%;
+         margin: 0 auto 12px;
+         border-radius: 4px;
+          a {
+            color: #FFFFFF;
+          }
     }
     .reservation {
         position: fixed;
@@ -159,37 +475,53 @@
             }
             >span {
                 float: right;
-                padding-right: 12px;
-                padding-left: 20px;
+                margin-right: 12px;
+                padding: 0 20px;
                 color: #FC4083;
                 opacity: 0.5;
+                height: 32px;
+                line-height: 32px;
+                margin-top: 9px;
+                border: 1px solid #FC4083;
+                border-radius: 50px;
             }
             span.active {
                 opacity: 1;
             }
         }
-        >p {
-            height: 60px;
-            line-height: 60px;
+        .lin_k {
+            background: #FC4083;color: #FFFFFF;font-size: 14px;height: 35px;line-height: 35px;font-weight:400;padding-left: 12px;
+        }
+        .input_content {
+            height: 44px;
+            line-height: 44px;
             border-bottom: 1px #eee solid;
+            margin: 0 12px 8px;
             padding: 0 12px;
             font-size: 16px;
+            border: 1px solid #FC4083;
+            border-radius: 3px;
             >span {
-                font-weight: 600;
+                font-weight: 400;
+                color: #666;
+                font-size: 14px;
             }
             input {
-                float: right;
-                height: 60px;
-                line-height: 60px;
-                width: calc(100vw - 70px);
-                max-width: calc(500px - 70px);
-                text-align: right;
+                
+                height: 44px;
+                line-height: 44px;
+                width: 100%;
                 font-size: 16px;
             }
-            >i {
-                float: right;
-                color: #999;
-                margin-left: 20px;
+        }
+        .names {
+            padding: 12px 12px 8px;
+            font-size: 14px;
+            color: #666;
+            font-size: 400;
+            img {
+                width: 20px;
+                margin-right: 5.5px;
             }
         }
     }
@@ -212,7 +544,7 @@
         transform: scale(1);
     }
     .content {
-        height: calc(100vh - 112px);
+        height: calc(100vh - 64px);
     }
     .li_title {
         background: #FC4083;
@@ -317,8 +649,8 @@
         }
         @media screen and (min-width: 500px) {
             .idol_name {
-                width: calc(500px - 60px);
-                max-width: calc(500px - 60px);
+                width: calc(500px - 75px);
+                max-width: calc(500px - 75px);
             }
         }
     }
@@ -350,6 +682,44 @@
             span:not(:last-child) {
                 margin-right: 3%;
             }
+        }
+    }
+    .mine_info {
+        position: relative;
+        overflow: hidden;
+        .info_content {
+            // position: absolute;
+            // left: 0;
+            // top: 0;
+            background: #fff;
+            width: 100%;
+            >p {
+                padding: 0 12px;
+                padding-bottom: calc(100vw * 0.026);
+                font-size: 16px;
+                font-weight: 600;
+                width: 100%;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+            }
+            >span {
+                padding: 0 12px;
+                color: #666;
+                display: block;
+                font-size: 14px;
+                i {
+                    color: #fc3878;
+                    vertical-align: inherit;
+                }
+            }
+            .win_info {
+                margin: 8px auto;
+            }
+        }
+        >img {
+            width: 100%;
+            background: #eee;
         }
     }
 </style>

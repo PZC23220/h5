@@ -34,7 +34,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="idolInfo eBorder">
+            <div class="idolInfo eBorder" v-if="loadingBig == false">
                 <img :src="idolInfo.avatar?idolInfo.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
                 <p>
                     <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  发布活动</span>
@@ -49,7 +49,7 @@
                 </div>
                 <img src="/img/shows/bg_booked_750.png">
             </div>
-            <ul class="shows_detail">
+            <ul class="shows_detail" v-if="loadingBig == false">
                 <li>
                     <p class="shows_name">{{showsInfo.title}}</p>
                     <p class="shows_time"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="/img/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.endTime?formatTime(showsInfo.endTime,'hh:mm'):'--:--'}}</span></p>
