@@ -27,12 +27,16 @@
 		setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
 	}
 	window.getParams = function(name) {
-		var _query = location.href.split('?')[1].split('#/')[0].split('&');
-		var _arr = {};
-		for(var i=0;i<_query.length;i++) {
-			var _obj = _query[i].split('=');
-			_arr[(_obj[0])] = _obj[1];
+		if(location.href.indexOf("?") > 0 ){
+			var _query = location.href.split('?')[1].split('#/')[0].split('&');
+			var _arr = {};
+			for(var i=0;i<_query.length;i++) {
+				var _obj = _query[i].split('=');
+				_arr[(_obj[0])] = _obj[1];
+			}
+			return _arr[name];
+		}else {
+			return '';
 		}
-		return _arr[name];
 	}
 })();

@@ -1,10 +1,10 @@
 <template>
     <div class="main">
-        <div class="header">
+        <div class="header" :class="{'ios': android == false}">
             <img src="/img/close.png" alt="" @click="close()">
             <span>{{video_text.pubMsg}}({{commentList.length}})</span>
         </div>
-        <div class="content" ref="viewBox" :style="autoContent">
+        <div class="content" :class="{'ios': android == false}" ref="viewBox">
             <!-- <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
               :on-infinite="infinite" 
@@ -125,7 +125,8 @@
                     pla: 'アイドルにあなたの大切な想いを届けよう...'
                 },
                 win_show: false,
-                can_publish: true
+                can_publish: true,
+                android: false
             }
         },
         components: {
@@ -354,6 +355,9 @@
             if(getParams('addComment') ==1) {
                 self.win_show = true;
             }
+            if(getParams('platform') == 'android') {
+                self.android = true;
+            }
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(_lan === 'zh-cn') {
                  self.video_text= {
@@ -379,34 +383,15 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-    .header {
-        padding: 22px 12px 0;
-        box-sizing: border-box;
-        font-size: 18px;
-        line-height: 43px;
-        background: #fafafa;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-        img {
-            float: left;
-            width: 22px;
-            padding: 10.5px 5px;
-        }
-        p {
-            float: right;
-            border: 1px solid #FC4083;
-            border-radius: 50px;
-            font-size: 16px;
-            color: #FC4083;
-            width: 72px;
-            height: 32px;
-            line-height: 32px;
-            margin-top: 3px;
-        }
+    .header.ios {
+        padding-top: 22px;
     }
     .content {
+        background: #eee;
+    }
+    .content.ios {
         height: calc(100vh - 66px);
         top: 66px;
-        background: #eee;
     }
     i {
         text-align: right;

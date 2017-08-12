@@ -28,6 +28,7 @@ module.exports = {
         // 组织格式 ： 项目名 => 以项目根目录为基准的index.vue路径
         // 其在webpack中的对应格式为：[name](生成的js名) => [main.js所在路径]
         fans_idolRanking: './src/view/fans_idolRanking', 
+        fans_idolRanking_android: './src/view/fans_idolRanking_android', 
         fans_videoComment: './src/view/fans_videoComment', 
         fans_fansRanking: './src/view/fans_fansRanking', 
         fans_medal: './src/view/fans_medal', 

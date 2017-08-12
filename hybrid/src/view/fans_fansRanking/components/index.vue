@@ -1,13 +1,17 @@
 <template>
     <div class="main">
         <div class="header" style="border-bottom: 1px solid #eee;">
+        <div class="go_back" v-if="android">
+            <img src="/img/nav_icon_arrow_black.png" alt="" @click="close()">
+            <span>{{fans_text.pubMsg}}</span>
+        </div>
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">{{fans_text.Gcoin}}</a>
                 <a class="tabs" @click="changePages(1)">{{fans_text.like}}</a>
                 <span class="bgActive" style="width: 144px;margin-left: calc((100vw - 24px)* 1/4 - 72px);"></span>
             </div>
         </div>
-         <div class="content">
+         <div class="content" :class="{'ios': android == false}">
             <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                 <!-- slides -->
                 <swiper-slide id="swiper1">
@@ -307,6 +311,7 @@
                 len2: 20,
                 default1: false,
                 default2: false,
+                android: false,
                 fans_text: {
                     Gcoin: 'コイン',
                     like: 'Like',
@@ -314,6 +319,7 @@
                     all: '総合ランキング',
                     noneGcoin: 'まだコインはないようです',
                     noneLike: 'まだLikeはないようです',
+                    pubMsg: 'ファンランキング'
                 },
             }
         },
@@ -321,6 +327,11 @@
             'v-scroll': Scroll
         },
         methods: {
+            close() {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('close');
+                });
+            },
           changePages(val) {
             let tabs = $('.tabs');
             tabs.removeClass('active');
@@ -487,6 +498,9 @@
         },
         created() {
             var self = this;
+            if(getParams('platform') == 'android') {
+                self.android = true;
+            }
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(_lan === 'zh-cn') {
                  self.fans_text= {
@@ -496,7 +510,7 @@
                     all: '总排名',
                     noneGcoin: '还没有收到粉丝的G币',
                     noneLike: '还没有收到粉丝的点赞人气',
-                    
+                    pubMsg: '粉丝排行榜'                   
                 }
               } else {
                 self.fans_text= {
@@ -506,6 +520,7 @@
                     all: '総合ランキング',
                     noneGcoin: 'まだコインはないようです',
                     noneLike: 'まだLikeはないようです',
+                    pubMsg: 'ファンランキング'
                 }
               }
             self.getRanking();
@@ -515,6 +530,44 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+    .header {
+        padding: 0;
+        box-sizing: border-box;
+        line-height: 43px;
+        background: #fafafa;
+        color: #666;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        .go_back {
+            font-size: 18px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+            img {
+                position: absolute;
+                left: 12px;
+                width: 22px;
+                padding: 10.5px 5px;
+            }
+            p {
+                float: right;
+                border: 1px solid #FC4083;
+                border-radius: 50px;
+                font-size: 16px;
+                color: #FC4083;
+                width: 72px;
+                height: 32px;
+                line-height: 32px;
+                margin-top: 3px;
+            }
+        }
+    }
+    .content.ios {
+        top: 41px;
+        height: calc(100vh - 41px);
+    }
+    .content {
+        top: 84px;
+        height: calc(100vh - 84px);
+    }
     .ranking_type {
         padding: 0 12px;
         color: #999;
