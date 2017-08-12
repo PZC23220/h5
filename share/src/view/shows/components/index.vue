@@ -59,7 +59,7 @@
                 <li style="border-bottom: 1px solid #eee;">
                     <p class="shows_name">{{showsInfo.title}}</p>
                     <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="/img/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.endTime?formatTime(showsInfo.endTime,'hh:mm'):'--:--'}}</span></p>
-                    <div class="win_info" v-if="!applyInfo.id" @click="reservationShow = true">立即预约</div>
+                    <div class="win_info" v-if="!applyInfo.id" @click="platform()">立即预约</div>
                 </li>
                 <li>
                     <h5 class="li_title">演出团体</h5>
@@ -225,13 +225,16 @@
                     }
                 }).then(function(res){
                     console.log(res.data);
-                    self.loadingBig = false;
                     self.showsInfo = res.data;
                     if(res.data.fansList){
                         self.fansList = res.data.fansList;
                     }
                     if(res.data.applyInfo) {
                         self.applyInfo = res.data.applyInfo;
+                    }else {
+                        if(self.loadingBig == false) {
+                            self.reservationShow = true;
+                        }
                     }
                     if(res.data.idolInfo) {
                         self.idolInfo = res.data.idolInfo;
@@ -239,6 +242,7 @@
                             self.organization = res.data.idolInfo.organization;
                         }
                     }
+                    self.loadingBig = false;
                 }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
@@ -328,16 +332,18 @@
                       });
                     } else {
                       FB.login(function(response) {
-                        console.log(response);
-                        var obj = {
-                            snsUid:response.id,
-                            snsPlatform:'fb',
-                            nickname:response.name,
-                            avatar:'https://graph.facebook.com/'+ response.id +'/picture?type=large', 
-                            sign:'',
-                            introduce:''
-                        };
-                        self.login(obj);
+                        FB.api('/me', {fields: 'name'}, function(response) {
+                            // console.log(response);
+                            var obj = {
+                                snsUid:response.id,
+                                snsPlatform:'fb',
+                                nickname:response.name,
+                                avatar:'https://graph.facebook.com/'+ response.id +'/picture?type=large', 
+                                sign:'',
+                                introduce:''
+                            };
+                            self.login(obj);
+                        });
                       }, {scope: 'public_profile'});
                     }
                   });
@@ -403,7 +409,13 @@
                         self.getShows(res.data.accessToken);
                     }
                 }).catch(function(err){
-                    self.getShows();
+                    // self.getShows();
+                    // self.reservationShow = true;
+                    self.toastText = '服务器错误';
+                    self.toastShow = true;
+                    setTimeout(function(){
+                        self.toastShow = false;
+                    },1000);
                 });
             }
         },
@@ -419,7 +431,8 @@
             }else {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1251249933';
             }
-            this.platform();
+            // this.platform();
+            this.getShows();
         }
       }
 </script>
@@ -544,7 +557,7 @@
         transform: scale(1);
     }
     .content {
-        height: calc(100vh - 64px);
+        height: calc(100vh - 120px);
     }
     .li_title {
         background: #FC4083;
