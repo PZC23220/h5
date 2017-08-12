@@ -306,7 +306,7 @@
             let tabs = $('.tabs');
             tabs.removeClass('active');
             tabs.eq(val).addClass('active');
-            $('.bgActive').css('left','calc(124px * '+ (swiper.activeIndex) +' + 2px)');
+            $('.bgActive').css('left','calc(122px * '+ val +' + 2px)');
             this.swiper.slideTo(val, 500, false)
           },
           showIdolPage(val) {
