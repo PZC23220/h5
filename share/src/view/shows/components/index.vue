@@ -10,7 +10,7 @@
                 <div class="idolInfo eBorder">
                     <img src="http://h5.groupy.vip/img/default_img.png" class="avatar">
                     <p>
-                        <span><i class="idol_name">...</i>  发布活动</span>
+                        <span><i class="idol_name">...</i>  イベント登録</span>
                         <span>@Groupy</span>
                     </p>
                 </div>
@@ -20,19 +20,19 @@
                         <p class="shows_time"><span>--.-- --</span><span><img src="/img/shows/icon_time.png">開場--:--/開演--:--</span></p>
                     </li>
                     <li>
-                        <h5 class="li_title">演出团体</h5>
+                        <h5 class="li_title">出演者</h5>
                         <p class="show_groups">@Groupy</p>
                     </li>
                     <li>
-                        <h5 class="li_title">门票价格</h5>
+                        <h5 class="li_title">料金</h5>
                         <p>Groupy预约 <i>0</i>円/当日 0円(+1D)</p>
                     </li>
                     <li>
-                        <h5 class="li_title">活动场地</h5>
+                        <h5 class="li_title">会場</h5>
                         <p>@Groupy</p>
                     </li>
                     <li>
-                        <h5 class="li_title">活动信息</h5>
+                        <h5 class="li_title">説明</h5>
                         <div class="shows_info">
                             <span>@Groupy</span>
                         </div>
@@ -42,7 +42,7 @@
             <div class="idolInfo eBorder" v-if="loadingBig == false">
                 <img :src="idolInfo.avatar?idolInfo.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
                 <p>
-                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  发布活动</span>
+                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  イベント登録</span>
                     <span v-show="organization.name">{{organization.name}}</span>
                 </p>
             </div>
@@ -50,7 +50,7 @@
                 <div class="info_content">
                     <h5 class="li_title">Groupy预约</h5>
                     <p>{{applyInfo.firstName}}  {{applyInfo.lastName}}</p>
-                    <span>预约数量<i>{{applyInfo.nums}}</i>张 | Groupy@vip.com</span>
+                    <span><i>{{applyInfo.nums}}</i>枚予約した | Groupy@vip.com</span>
                     <div class="win_info"><a :href="hrefs" target="_blank" @click="p_log('share_h5_download_groupy')">下载Groupy接受活动通知</a></div>
                 </div>
                 <img src="/img/shows/bg_booked.png">
@@ -59,22 +59,22 @@
                 <li style="border-bottom: 1px solid #eee;">
                     <p class="shows_name">{{showsInfo.title}}</p>
                     <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="/img/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.endTime?formatTime(showsInfo.endTime,'hh:mm'):'--:--'}}</span></p>
-                    <div class="win_info" v-if="!applyInfo.id" @click="platform()">立即预约</div>
+                    <div class="win_info" v-if="!applyInfo.id" @click="platform()">予約する</div>
                 </li>
                 <li>
-                    <h5 class="li_title">演出团体</h5>
+                    <h5 class="li_title">出演者</h5>
                     <p class="show_groups">{{showsInfo.groups}}</p>
                 </li>
                 <li>
-                    <h5 class="li_title">门票价格</h5>
+                    <h5 class="li_title">料金</h5>
                     <p>Groupy预约 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円(+1D)</p>
                 </li>
                 <li>
-                    <h5 class="li_title">活动场地</h5>
+                    <h5 class="li_title">会場</h5>
                     <p>{{showsInfo.location}}</p>
                 </li>
                 <li>
-                    <h5 class="li_title">活动信息</h5>
+                    <h5 class="li_title">説明</h5>
                     <div class="shows_info">
                         <span>{{showsInfo.introduce}}</span>
                         <p v-if="showsInfo.imgs">
@@ -85,7 +85,7 @@
                     </div>
                 </li>
                 <li>
-                    <h5 class="li_title">{{fansList.length}}人预约</h5>
+                    <h5 class="li_title">{{fansList.length}}人予約した</h5>
                     <div class="fans_list">
                         <p v-for="fans in fansList">
                             <img :src="fans.avatar?fans.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
@@ -95,28 +95,28 @@
                 </li>
             </ul>
         </div>
-        <!-- <div class="footer" @click="reservationShow = true">立即预约</div>
+        <!-- <div class="footer" @click="reservationShow = true">予約する</div>
         <div class="footer" v-if="false">下载Groupy接受活动通知</div> -->
         <!-- 预约弹窗 -->
         <div class="reservation" v-if="reservationShow">
             <div class="r_header">
                 <img src="/img/shows/icon_cancel_2.png" @click="reservationShow = false">
-                立即提交
-                <span :class="{'active': canPush}" @click="pushOrder()">提交</span>
+                予約する
+                <span :class="{'active': canPush}" @click="pushOrder()">予約する</span>
             </div>
-            <div class="lin_k">联系方式</div>
+            <div class="lin_k">個人情報</div>
             <div style="overflow: hidden;">
-                <p class="names"><img src="/img/shows/icon_name.png"><i>姓名</i></p>
-                <p class="input_content" style="display: inline-block;width: 38%;float: left"><span>姓</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.lastName" placeholder="请输入"></p>
-                <p class="input_content" style="display: inline-block;width: 38%;float: right;margin-left: 0;"><span>名</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.firstName" placeholder="请输入"></p>
+                <p class="names"><img src="/img/shows/icon_name.png"><i>お名前</i></p>
+                <p class="input_content" style="display: inline-block;width: 38%;float: left"><span>姓</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.lastName" placeholder="入力してください"></p>
+                <p class="input_content" style="display: inline-block;width: 38%;float: right;margin-left: 0;"><span>名</span><input v-on:input="updateStyle()" style="width: calc((100vw - 70px)*0.4);max-width: calc((500px - 70px)*0.4);text-align: right;" type="text" name="" v-model="forms.firstName" placeholder="入力してください"></p>
             </div>
             <div>
-                <p class="names"><img src="/img/shows/icon_email.png"><i>邮箱</i></p>
-                <p class="input_content"><input v-on:input="updateStyle()" type="email" name="" v-model="forms.email" placeholder="请输入"></p>
+                <p class="names"><img src="/img/shows/icon_email.png"><i>メールアドレス</i></p>
+                <p class="input_content"><input v-on:input="updateStyle()" type="email" name="" v-model="forms.email" placeholder="入力してください"></p>
             </div>
-            <div class="lin_k" style="background: #00B4BB;">预定数量</div>
+            <div class="lin_k" style="background: #00B4BB;">枚数</div>
             <div>
-                <p class="input_content" style="margin-top: 12px;border: 1px solid #00B4BB;"><input v-on:input="updateStyle()" v-model="forms.nums" type="tel" name="" placeholder="1"></p>
+                <p class="input_content" style="margin-top: 12px;border: 1px solid #00B4BB;"><input v-on:input="updateStyle()" v-model="forms.nums" type="tel" name="" placeholder="入力してください"></p>
             </div>
         </div>
         <!-- toast -->
@@ -684,7 +684,13 @@
                 border-radius: 3px;
                 >img {
                     width: 100%;
+                    min-height: calc((100vw - 60px) * 1/3);
                     display: block;
+                }
+                @media screen and (min-width: 500px) {
+                    >img {
+                        min-height: calc((500px - 60px) * 1/3);
+                    }
                 }
             }
             span.once {
