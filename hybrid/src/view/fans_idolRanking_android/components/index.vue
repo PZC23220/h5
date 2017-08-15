@@ -501,8 +501,8 @@
                     no1: '赶紧来抢占第一位吧！',
                     none: '我在groupy等你哦!',
                     noneIdol: '还没有爱豆的排名',
-                    today: '今日のランキング',
-                    all: '総合ランキング'
+                    today: '今日榜单',
+                    all: '总榜单'
                 }
               } else {
                 this.idol_text= {
