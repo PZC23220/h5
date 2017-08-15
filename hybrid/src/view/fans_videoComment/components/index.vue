@@ -383,6 +383,18 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+    .header {
+        padding: 0 12px;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 43px;
+        img {
+            position: absolute;
+            left: 12px;
+            width: 22px;
+            padding: 10.5px 5px;
+        }
+    }
     .header.ios {
         padding-top: 22px;
     }
