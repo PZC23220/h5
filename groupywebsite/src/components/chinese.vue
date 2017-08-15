@@ -50,29 +50,44 @@
       <span></span>
       <span></span>
       <span></span>
-      <h2 class="titles" style="width: 110px;border:none;"><i style="margin-left: -50px;width: 100%;background: #FFD300;"></i><span>入驻视频</span></h2>
+      <h2 class="titles" style="width: 110px;border:none;"><i style="margin-left: -50px;width: 100%;background: #FFD300;"></i><span>爱豆视频</span></h2>
       <h4 class="desc">来自爱豆的邀请函！陪着爱豆在Groupy重新出发</h4>
       <ul class="videos_list">
-         <li style="width: 45%;">
-        <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=12901806&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
-          <p class="video_title">夏芽优李</p>
-          <p class="video_desc">Groupy入驻偶像 夏芽优李 用飘蠢的中文给大家问好～ </p>
-        </li>
-        <li style="width: 45%;">
-          <!-- <video id="video1" playsinline preload="load" controls src="/static/video/cast.mp4" width="100%">
+         <li style="width: 30%;">
+          <video id="video1" playsinline preload="load" controls src="/static/video/video1.mp4" width="100%">
             您的浏览器不支持HTML5
-        </video> -->
-        <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=11752211&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
-          <p class="video_title">CAST</p>
-          <p class="video_desc">日本偶像团体CAST正式入驻Groupy!  能歌善舞，还会舞台剧。。。一切尽在Groupy</p>
+        </video>
+        <!-- <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=12901806&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed> -->
+          <!-- <p class="video_title">夏芽优李</p>
+          <p class="video_desc">Groupy入驻偶像 夏芽优李 用飘蠢的中文给大家问好～ </p> -->
         </li>
-        <li style="width: 45%;">
-          <!-- <video id="video2" playsinline preload="load" controls src="/static/video/kuno1.mp4" width="100%">
+        <li style="width: 30%;">
+          <video id="video2" playsinline preload="load" controls src="/static/video/video2.mp4" width="100%">
             您的浏览器不支持HTML5
-        </video> -->
-        <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=11752188&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
-          <p class="video_title">KUNO1</p>
-          <p class="video_desc">日本偶像团体KUNO1入驻Groupy，带来一波日风摇滚。。。你准备好了吗！ </p>
+        </video>
+        <!-- <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=11752211&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed> -->
+          <!-- <p class="video_title">CAST</p>
+          <p class="video_desc">日本偶像团体CAST正式入驻Groupy!  能歌善舞，还会舞台剧。。。一切尽在Groupy</p> -->
+        </li>
+        <li style="width: 30%;">
+          <video id="video3" playsinline preload="load" controls src="/static/video/video3.mp4" width="100%">
+            您的浏览器不支持HTML5
+        </video>
+        </li>
+        <li style="width: 30%;">
+          <video id="video2" playsinline preload="load" controls src="/static/video/video4.mp4" width="100%">
+            您的浏览器不支持HTML5
+        </video>
+        </li>
+        <li style="width: 30%;">
+          <video id="video2" playsinline preload="load" controls src="/static/video/video5.mp4" width="100%">
+            您的浏览器不支持HTML5
+        </video>
+        </li>
+        <li style="width: 30%;">
+          <video id="video2" playsinline preload="load" controls src="/static/video/video6.mp4" width="100%">
+            您的浏览器不支持HTML5
+        </video>
         </li>
          <!-- <li style="width: 45%;">
         <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=12901806&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
@@ -85,7 +100,7 @@
     <div class="company_profile"  id="company_profile">
       <span></span>
       <h2 class="titles"><span>公司&团队介绍</span></h2>
-      <p>Groupy团队秉着对日本市场一如既往的热情与坚持的态度<br>抓住日本粉丝对偶像高消费的市场，从强烈的爱豆应援文化切入，带着共同的目标<br>致力打造一个可以让爱豆在线上曝光，展示才艺，获得<b>粉丝打赏和会费分成的社群平台</b></p>
+      <p>Groupy团队秉着对爱豆市场一如既往的热情与坚持的态度<br>抓住粉丝对偶像高消费的市场，从强烈的爱豆应援文化切入，带着共同的目标<br>致力打造一个可以让爱豆在线上曝光，展示才艺，获得<b>粉丝打赏和会费分成的社群平台</b></p>
       <div class="company_desc">
         <span></span><span></span>
       </div>
