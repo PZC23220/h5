@@ -11,7 +11,7 @@
         <!-- <li  :class="{'activeIdol':$route.path==='/chinese_idol' || $route.path==='/japanese_idol'}" ><a :href="commentWords.to_idol" style="color: #3CA6D4;">{{commentWords.idol}}</a></li> -->
         <!-- <li  :class="{'activeVideos':$route.path==='/index_chinese/chinese_videos' || $route.path==='/japanese_videos'}"><a :href="commentWords.to_videos" style="color: #666666;">{{commentWords.videos}}</a></li> -->
       </ul>
-      <div class="language"><router-link to="/index_chinese" class="active">中文</router-link><router-link to="/index_japanese">日本語</router-link></div>
+      <!-- <div class="language"><router-link to="/index_chinese" class="active">中文</router-link><router-link to="/index_japanese">日本語</router-link></div> -->
     </div>
     </header>
     <div class="main">
