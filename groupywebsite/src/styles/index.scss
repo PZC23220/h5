@@ -304,17 +304,16 @@
       float: left;
       padding-bottom: 42px;
       text-align: left;
-      &:not(:nth-child(3n - 2)) {
-        margin-left: 54px;
+      width: 25%;
+      img {
+        width: 100%;
+        margin-bottom: 17px;
+        display: block;
+        padding: 12px;
+        box-sizing: border-box;
       }
       a {
         display: block;
-        img {
-          width: 360px;
-          height: 202.5px;
-          margin-bottom: 17px;
-          display: block;
-        }
         .video_title {
           font-size: 20px;
           color: #00B4BC;
@@ -396,9 +395,6 @@
   .videos .videos_list {
     max-width: 1200px;
     li {
-      &:not(:nth-child(3n - 2)) {
-        margin-left: 30px;
-      }
       a {
         width: 300px;
         img {

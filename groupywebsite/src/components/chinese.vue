@@ -53,21 +53,15 @@
       <h2 class="titles" style="width: 110px;border:none;"><i style="margin-left: -50px;width: 100%;background: #FFD300;"></i><span>爱豆视频</span></h2>
       <h4 class="desc">来自爱豆的邀请函！陪着爱豆在Groupy重新出发</h4>
       <ul class="videos_list">
-         <li style="width: 30%;">
+         <!-- <li style="width: 30%;">
           <video id="video1" playsinline preload="load" controls src="/static/video/video1.mp4" width="100%">
             您的浏览器不支持HTML5
         </video>
-        <!-- <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=12901806&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed> -->
-          <!-- <p class="video_title">夏芽优李</p>
-          <p class="video_desc">Groupy入驻偶像 夏芽优李 用飘蠢的中文给大家问好～ </p> -->
         </li>
         <li style="width: 30%;">
           <video id="video2" playsinline preload="load" controls src="/static/video/video2.mp4" width="100%">
             您的浏览器不支持HTML5
         </video>
-        <!-- <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=11752211&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed> -->
-          <!-- <p class="video_title">CAST</p>
-          <p class="video_desc">日本偶像团体CAST正式入驻Groupy!  能歌善舞，还会舞台剧。。。一切尽在Groupy</p> -->
         </li>
         <li style="width: 30%;">
           <video id="video3" playsinline preload="load" controls src="/static/video/video3.mp4" width="100%">
@@ -88,12 +82,11 @@
           <video id="video2" playsinline preload="load" controls src="/static/video/video6.mp4" width="100%">
             您的浏览器不支持HTML5
         </video>
-        </li>
-         <!-- <li style="width: 45%;">
-        <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=12901806&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
-          <p class="video_title">夏芽优李</p>
-          <p class="video_desc">Groupy入驻偶像 夏芽优李 用飘蠢的中文给大家问好～ </p>
         </li> -->
+        <li><img src="../images/1.2.png"></li>
+        <li><img src="../images/1.4.png"></li>
+        <li><img src="../images/1.3.png"></li>
+        <li><img src="../images/1.5.png"></li>
       </ul>
       <!-- <div class="more_video">查看更多</div> -->
     </div>
