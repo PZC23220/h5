@@ -33,7 +33,7 @@
                     medal4: '金剛級守護',
                     medal5: '王者級守護',
                     value: 'Like数',
-                    desc: 'アイドルかユニットごとにLikeと同等価値の応援',
+                    desc: 'アイドルごとにLikeと同等価値の応援',
                     pubMsg: ' 貢献バッジ'
                 },
                 android: false
@@ -74,7 +74,7 @@
                     medal4: '金剛級守護',
                     medal5: '王者級守護',
                     value: 'Like数',
-                    desc: 'アイドルかユニットごとにLikeと同等価値の応援',
+                    desc: 'アイドルごとにLikeと同等価値の応援',
                     pubMsg: ' 貢献バッジ'
                 }
             }
