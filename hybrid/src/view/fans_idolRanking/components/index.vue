@@ -146,7 +146,8 @@
                 },
                 top3None: false,
                 allFans: [],
-                meFans: []
+                meFans: [],
+                idx: 0
             }
         },
         components: {
@@ -182,26 +183,41 @@
             }).then(function(res){
                 self.loadingBig = false;
                 let allFansList = [],meFansList = [];
-                if(res.data) {
-                    if(!res.data.rankingList) {
-                        self.top3None = true;
-                    }else {
-                        self.rakingList = res.data.rankingList;
-                        for(var i=0;i<self.rakingList.length;i++) {
-                            allFansList.push(self.rakingList[i].idolId);
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                if(self.idx < 2) {
+                    if(res.data) {
+                        if(!res.data.rankingList) {
+                            self.top3None = true;
+                        }else {
+                            self.rakingList = res.data.rankingList;
+                            for(var i=0;i<self.rakingList.length;i++) {
+                                allFansList.push(self.rakingList[i].idolId);
+                            }
+                            self.getFansList(allFansList,'all')
                         }
-                        self.getFansList(allFansList,'all')
-                    }
-                    if(res.data.me) {
-                        self.me = res.data.me;
-                        for(var j=0;j<self.me.length;j++) {
-                            meFansList.push(self.me[j].idolId);
+                        if(res.data.me) {
+                            self.me = res.data.me;
+                            for(var j=0;j<self.me.length;j++) {
+                                meFansList.push(self.me[j].idolId);
+                            }
+                            self.getFansList(meFansList,'me')
                         }
-                        self.getFansList(meFansList,'me')
+                        console.log(self.rakingList);
+                        console.log(self.me);
+                    } else {
+                        self.idx++;
                     }
-                    console.log(self.rakingList);
-                    console.log(self.me);
+                }else {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                         }
+                    })
                 }
+            }).catch(function(err){
+                self.idx++;
             })
           },
           getFansList(_val,arr) {
@@ -223,6 +239,7 @@
           refresh (done) {
             var self = this;
             setTimeout(() => {
+              self.idx = 0;
               self.getRanking();
               done()
             }, 500)
@@ -253,6 +270,7 @@
             console.log('support')
             window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
+                    self.idx = 0;
                     self.getRanking();
                 })
             })
@@ -263,6 +281,7 @@
             var self = this;
             window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.registerHandler('ranking_refresh', function() {
+                    self.idx = 0;
                     self.getRanking();
                 })
             });
