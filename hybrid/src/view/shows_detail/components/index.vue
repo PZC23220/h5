@@ -71,7 +71,7 @@
                     <div class="shows_info">
                         <span>{{showsInfo.introduce}}</span>
                         <p v-if="showsInfo.imgs">
-                            <span v-for="img in changeURL(showsInfo.imgs)" :class="{'once':showsInfo.imgs.length == 1}"><img :src="img"></span>
+                            <span v-for="(img,idx) in changeURL(showsInfo.imgs)" :class="{'once':showsInfo.imgs.length == 1}"><img :src="img" @click="showBigImg(showsInfo.imgs,idx)"></span>
                             <!-- <span><img src=""></span>
                             <span><img src=""></span> -->
                         </p>
@@ -161,6 +161,13 @@
                             break;  
                 }
                 return  str;
+            },
+            showBigImg(val,idx) {
+                var url = changeURL(val);
+                console.log(url,idx)
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('showImage', {'urls': url,selectedIndex :idx})
+                })
             },
             changeURL(val) {
                 if(val) {
