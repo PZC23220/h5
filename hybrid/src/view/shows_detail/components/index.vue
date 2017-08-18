@@ -88,7 +88,8 @@
                 </li>
             </ul>
         </div>
-        <div class="footer" @click="reservationShow()" v-if="!applyInfo.id && loadingBig ==false">予約する</div>
+        <div class="footer" @click="reservationShow()" v-if="!applyInfo.id && loadingBig ==false" v-if="appIdol == false">予約する</div>
+        <div class="footer" @click="editShow()" v-if="!applyInfo.id && loadingBig ==false" v-if="appIdol">編集</div>
         <!-- 预约弹窗 -->
        <!--  <div class="reservation" v-if="reservationShow">
             <div class="r_header">
@@ -112,6 +113,7 @@
           return {
             reservationShow: false,
             toastShow: false,
+            appIdol: false,
             loadingBig: true,
             forms: {
                firstName: '',
@@ -279,6 +281,12 @@
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('book', {'showsId':self.showsInfo.id})
                 })
+            },
+            editShow() {
+                var self = this;
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('editShow', {'showsInfo':self.showsInfo})
+                })
             }
         },
         mounted() {
@@ -287,6 +295,9 @@
         },
         created() {
             this.getShows();
+            if(getParams('app') == 'idol') {
+                this.appIdol = true;
+            }
         }
       }
 </script>
