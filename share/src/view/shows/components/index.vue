@@ -58,7 +58,7 @@
             <ul class="shows_detail" v-if="loadingBig == false">
                 <li style="border-bottom: 1px solid #eee;">
                     <p class="shows_name">{{showsInfo.title}}</p>
-                    <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="/img/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.endTime?formatTime(showsInfo.endTime,'hh:mm'):'--:--'}}</span></p>
+                    <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="/img/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
                     <div class="win_info" v-if="!applyInfo.id" @click="platform()">予約する</div>
                 </li>
                 <li>
@@ -67,7 +67,7 @@
                 </li>
                 <li>
                     <h5 class="li_title">料金</h5>
-                    <p>Groupy预约 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円(+1D)</p>
+                    <p>Groupy预约 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円<em v-if="showsInfo.drinkNums">(+{{showsInfo.drinkNums}}D)</em></p>
                 </li>
                 <li>
                     <h5 class="li_title">会場</h5>
