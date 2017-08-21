@@ -88,8 +88,8 @@
                 </li>
             </ul>
         </div>
-        <div class="footer" @click="reservationShow()" v-if="!applyInfo.id && loadingBig ==false" v-if="appIdol == false">予約する</div>
-        <div class="footer" @click="editShow()" v-if="!applyInfo.id && loadingBig ==false" v-if="appIdol">編集</div>
+        <div class="footer" @click="reservationShow()" v-if="!applyInfo.id && loadingBig ==false && appIdol == false">予約する</div>
+        <div class="footer" @click="editShow()" v-if="!applyInfo.id && loadingBig ==false && appIdol">編集</div>
         <!-- 预约弹窗 -->
        <!--  <div class="reservation" v-if="reservationShow">
             <div class="r_header">
@@ -165,7 +165,7 @@
                 return  str;
             },
             showBigImg(val,idx) {
-                var url = changeURL(val);
+                var url = this.changeURL(val);
                 console.log(url,idx)
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('showImage', {'urls': url,selectedIndex :idx})
