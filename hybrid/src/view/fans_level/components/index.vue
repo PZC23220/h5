@@ -43,7 +43,8 @@
                 lvNext: '',
                 score:'',
                 style: 'width: calc(320px * 0)',
-                android: false
+                android: false,
+                idx: 0
             }
         },
         methods: {
@@ -54,26 +55,38 @@
             },
             getLevel(token) {
                 let self = this;
-                let token_ = getParams('token');
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else if(token_!='(null)' && token_!='') {
-                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
-                }
-                http.get('/groupyuser/fansLevel').then(function(res){
-                    console.log(res);
-                    self.lvNow = res.data.levelLowerLimit.level;
-                    self.lvNext = res.data.levelUpperLimit.level;
-                    self.score = (res.data.fansLevelValue - res.data.levelLowerLimit.popularity)+ '/' +(res.data.levelUpperLimit.popularity - res.data.levelLowerLimit.popularity);
-                    self.style = 'width: calc(320px * '+ self.score +')'
-                }).catch(function(){
-                    self.loadingBig = false;
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getLevel(responseData.token);
+                if(self.idx < 2) {
+                    self.idx++;
+                    let token_ = getParams('token');
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
+                    }else if(token_!='(null)' && token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token ' + token_;
+                    }
+                    http.get('/groupyuser/fansLevel').then(function(res){
+                        console.log(res);
+                        self.lvNow = res.data.levelLowerLimit.level;
+                        self.lvNext = res.data.levelUpperLimit.level;
+                        self.score = (res.data.fansLevelValue - res.data.levelLowerLimit.popularity)+ '/' +(res.data.levelUpperLimit.popularity - res.data.levelLowerLimit.popularity);
+                        self.style = 'width: calc(320px * '+ self.score +')'
+                    }).catch(function(){
+                        self.loadingBig = false;
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                self.getLevel(responseData.token);
+                            })
                         })
+                    });
+                }else {
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                         }
                     })
-                });
+                }
             }
         },
         created() {

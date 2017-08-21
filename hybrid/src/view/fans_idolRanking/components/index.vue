@@ -14,7 +14,7 @@
                             <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="idol.avatar?idol.avatar:'/img/default_img.png'" class="avatar" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
+                                    <img v-lazy="idol.avatar" class="avatar" alt="">
                                     <img v-if="idol.position < 4" :src="'/img/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                 </div>
                                 <div class="introduction">
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="fans_list fans_show" :class="{'fans_none': meFans.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                        <div class="fans_list"  v-for="fans in meFans" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                        <div class="fans_list"  v-for="fans in meFans" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                         <div class="border_bottom" v-if="key < me.length-1"></div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                             <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                             <div class="idol_border">
                                 <div class="avatar_content">
-                                    <img :src="idol.avatar?idol.avatar:'/img/default_img.png'" class="avatar" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
+                                    <img v-lazy="idol.avatar" class="avatar" alt="">
                                     <img src="/img/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
                                     <img src="/img/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
                                     <img src="/img/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <div class="fans_list fans_show" :class="{'fans_none': allFans.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                        <div class="fans_list"  v-for="fans in allFans" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img :src="img.avatar?img.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                        <div class="fans_list"  v-for="fans in allFans" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                         <div class="border_bottom"></div>
                     </div>
                 </div>
@@ -124,6 +124,7 @@
     // import VueScroller from 'vue-scroller';
     import Scroll from '../../../components/scroll.vue';
     import http from '@api/js/http.js';
+    import VueLazyload from 'vue-lazyload'
     require('@api/js/common.js');
     // var vConsole = require('@api/js/vconsole.min.js');
     export default {
@@ -170,55 +171,66 @@
               let timer = new Date(key);
               return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
           },
-          getRanking() {
+          getRanking(token) {
             let self = this;
-            let token = getParams('token');
-            if(token!='(null)' && token!='') {
-                http.defaults.headers.common['Authorization'] = 'Token ' + token;
-            }
-            http.get('/ranking/idolsFromFans',{
-                params: {
-                    filter: getParams('filter')
-                }
-            }).then(function(res){
-                self.loadingBig = false;
-                let allFansList = [],meFansList = [];
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                if(self.idx < 2) {
-                    if(res.data) {
-                        if(!res.data.rankingList) {
-                            self.top3None = true;
-                        }else {
-                            self.rakingList = res.data.rankingList;
-                            for(var i=0;i<self.rakingList.length;i++) {
-                                allFansList.push(self.rakingList[i].idolId);
-                            }
-                            self.getFansList(allFansList,'all')
-                        }
-                        if(res.data.me) {
-                            self.me = res.data.me;
-                            for(var j=0;j<self.me.length;j++) {
-                                meFansList.push(self.me[j].idolId);
-                            }
-                            self.getFansList(meFansList,'me')
-                        }
-                        console.log(self.rakingList);
-                        console.log(self.me);
-                    } else {
-                        self.idx++;
-                    }
-                }else {
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        if(_lan === 'zh-cn') {
-                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                         }else {
-                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                         }
-                    })
-                }
-            }).catch(function(err){
+            if(self.idx < 2) {
                 self.idx++;
-            })
+                let token_ = getParams('token');
+                if(token) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+token;
+                }else if(token_!='(null)' && token_!='') {
+                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
+                }
+                http.get('/ranking/idolsFromFans',{
+                    params: {
+                        filter: getParams('filter')
+                    }
+                }).then(function(res){
+                    self.loadingBig = false;
+                    let allFansList = [],meFansList = [];
+                        if(res.data) {
+                            if(!res.data.rankingList) {
+                                self.top3None = true;
+                            }else {
+                                self.rakingList = res.data.rankingList;
+                                for(var i=0;i<self.rakingList.length;i++) {
+                                    allFansList.push(self.rakingList[i].idolId);
+                                }
+                                self.getFansList(allFansList,'all')
+                            }
+                            if(res.data.me) {
+                                self.me = res.data.me;
+                                for(var j=0;j<self.me.length;j++) {
+                                    meFansList.push(self.me[j].idolId);
+                                }
+                                self.getFansList(meFansList,'me')
+                            }
+                            console.log(self.rakingList);
+                            console.log(self.me);
+                        } else {
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
+                                    self.getRanking(responseData.token);
+                                })
+                            })
+                        }
+                }).catch(function(err){
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
+                            self.getRanking(responseData.token);
+                        })
+                    })
+                })
+            }else {
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                     }else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                     }
+                })
+            }
           },
           getFansList(_val,arr) {
             let self = this;
@@ -267,7 +279,8 @@
             }
           },
           support(val) {
-            console.log('support')
+            console.log('support');
+            var self = this;
             window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
                     self.idx = 0;

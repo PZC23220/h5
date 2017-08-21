@@ -3,7 +3,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import VueResource from 'vue-resource'// 注册两个插件
 import routes  from './router.js'
-// import VideoPlayer from 'vue-video-player';
+import VueLazyload from 'vue-lazyload'
 // import VueScroller from 'vue-scroller'
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import main from './main.vue'
@@ -12,12 +12,12 @@ Vue.use(VueAwesomeSwiper);
 Vue.use(VueRouter);
 // Vue.use(VideoPlayer);
 // Vue.use(VueScroller)
-// Vue.use(VueLazyload, {
-//         preLoad: 1,
-// 	    error: '/img/pic_default_2.png',
-// 	    loading: '/img/pic_default_2.png',
-// 	    attempt: 1
-// })
+Vue.use(VueLazyload, {
+        preLoad: 1,
+	    error: 'http://h5.groupy.vip/img/default_img.png',
+	    loading: 'http://h5.groupy.vip/img/default_img.png',
+	    attempt: 1
+})
 
 // 1. 开启debug模式
 Vue.config.debug = true

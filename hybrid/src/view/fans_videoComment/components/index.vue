@@ -116,6 +116,7 @@
                 comment_text: '',
                 autoHeight: 'bottom:0',
                 autoHarder: 'top:0',
+                token_:'',
                 autoContent: 'top:66px;height: calc(100vh -114px);',
                 video_text: {
                     publish: 'コメントする',
@@ -165,29 +166,33 @@
             },
             getComments() {
                 let self = this;
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                http.get('/post/list',{
-                    params: {
-                        targetType: 1,
-                        targetId: getParams('videoId'),
-                        from: self.start,
-                        rows: self.num
-                    }
-                }).then(function(res){
+                if(self.idx < 2) {
                     self.idx++;
-                    self.loadingBig = false;
-                    self.showLoading = false;
-                    console.log(res.data);
-                    if(res.data.length > 0 ) {
-                        for(var i=0;i<res.data.length;i++){
-                            self.commentList.push(res.data[i]);
-                        }                    
-                    }else {
-                        self.havedlast = true;
-                    }
-                    console.log(self.commentList);
-                }).catch(function(){
-                    self.loadingBig = false;
+                    http.get('/post/list',{
+                        params: {
+                            targetType: 1,
+                            targetId: getParams('videoId'),
+                            from: self.start,
+                            rows: self.num
+                        }
+                    }).then(function(res){
+                        self.loadingBig = false;
+                        self.showLoading = false;
+                        console.log(res.data);
+                        if(res.data.length > 0 ) {
+                            for(var i=0;i<res.data.length;i++){
+                                self.commentList.push(res.data[i]);
+                            }                    
+                        }else {
+                            self.havedlast = true;
+                        }
+                        console.log(self.commentList);
+                    }).catch(function(){
+                        self.loadingBig = false;
+                        self.getComments();
+                    });
+                }else {  
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         if(_lan === 'zh-cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
@@ -195,7 +200,7 @@
                             bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
                          }
                     })
-                });
+                }
             },
             publish() {
                 let self = this;
@@ -203,9 +208,9 @@
                 if(self.can_publish) {
                     if(self.comment_text !=""){
                         self.can_publish = false;
-                        let token_ = getParams('token');
-                        if(token_!='(null)' && token_!='') {
-                            http.defaults.headers.common['Authorization'] = 'Token '+token_;
+                        self.token_ = getParams('token');
+                        if(self.token_!='(null)' && self.token_!='') {
+                            http.defaults.headers.common['Authorization'] = 'Token '+self.token_;
                         }
                         let _data = {
                             content:self.comment_text,
@@ -234,7 +239,7 @@
                                 });
                                 window.setupWebViewJavascriptBridge(function(bridge) {
                                     bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
-                                        token_ = responseData.token;
+                                        self.token_ = responseData.token;
                                     })
                                 })
                             }
@@ -251,7 +256,7 @@
                             })
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
-                                    token_ = responseData.token;
+                                    self.token_ = responseData.token;
                                 })
                             })
                         });
@@ -309,6 +314,7 @@
           },
           infinite (done) {
             var self = this;
+            self.idx = 0;
             if(self.commentList.length>0) {
                if (self.havedlast) {
                   setTimeout(() => {

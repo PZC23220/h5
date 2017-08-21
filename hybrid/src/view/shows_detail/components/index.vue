@@ -60,7 +60,7 @@
                 </li>
                 <li>
                     <h5 class="li_title">料金</h5>
-                    <p>Groupyで予約 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円(+1D)</p>
+                    <p>Groupyで予約 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円<em v-if="showsInfo.drinkNums">(+{{showsInfo.drinkNums}}D)</em></p>
                 </li>
                 <li>
                     <h5 class="li_title">会場</h5>

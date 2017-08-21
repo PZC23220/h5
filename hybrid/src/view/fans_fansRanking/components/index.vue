@@ -28,7 +28,7 @@
                                 <span v-if="meObj.position==2"><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
                                 <span v-if="meObj.position==3"><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
                                 <span v-if="meObj.position>3">{{meObj.position?meObj.position:'0'}}</span>
-                                <img :src="meObj.fans?meObj.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="meObj.fans?meObj.fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{meObj.fans?(meObj.fans.nickname?meObj.fans.nickname:'...'):'...'}}</em>
@@ -93,7 +93,7 @@
                             </div>
                             <li v-if="rakingList.length>0">
                                 <span><img src="/img/fans_fansRanking/icon_metal_1.png" alt=""></span>
-                                <img :src="rakingList.length>0?rakingList[0].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="rakingList[0].fans?rakingList[0].fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList[0].fans?rakingList[0].fans.nickname:'...'}}</em>
@@ -107,7 +107,7 @@
                             </li>
                             <li v-if="rakingList.length>1">
                                 <span><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
-                                <img :src="rakingList[1].fans?rakingList[1].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="rakingList[1].fans?rakingList[1].fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList[1].fans?rakingList[1].fans.nickname:'...'}}</em>
@@ -121,7 +121,7 @@
                             </li>
                             <li v-if="rakingList.length>2">
                                 <span><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
-                                <img :src="rakingList[2].fans?rakingList[2].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="rakingList[2].fans?rakingList[2].fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList[2].fans?rakingList[2].fans.nickname:'...'}}</em>
@@ -135,7 +135,7 @@
                             </li>
                             <li v-for="(idol,key) in rakingList" v-if="key > 2 && key < len">
                                 <span>{{key+1}}</span>
-                                <img :src="idol.fans?idol.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="idol.fans?idol.fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
@@ -169,7 +169,7 @@
                                 <span v-if="meHeatObj.position==2"><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
                                 <span v-if="meHeatObj.position==3"><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
                                 <span v-if="meHeatObj.position>3">{{meHeatObj.position}}</span>
-                                <img :src="meHeatObj.fans?meHeatObj.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="meHeatObj.fans?meHeatObj.fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span><em>{{meHeatObj.fans?meHeatObj.fans.nickname:'...'}}</em><img :src="meHeatObj.fans?('/img/icon_level_'+ (meHeatObj.fans.levelPlatform) +'.png'): ''" class="level" alt=""></span>
                                     <span><img src="/img/timeline_icon_likes.png" alt="">{{meHeatObj.totalNums?Number(meHeatObj.totalNums).toLocaleString(): 0}}</span>
@@ -205,7 +205,7 @@
                             </div>
                             <li v-if="rankingHeat.length>0">
                                 <span><img src="/img/fans_fansRanking/icon_metal_1.png" alt=""></span>
-                                <img :src="rankingHeat[0].fans?(rankingHeat[0].fans.avatar?rankingHeat[0].fans.avatar:'/img/default_img.png'):'/static/images/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="rankingHeat[0].fans?rankingHeat[0].fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rankingHeat[0].fans?(rankingHeat[0].fans.nickname?rankingHeat[0].fans.nickname:'...'):'...'}}</em>
@@ -217,7 +217,7 @@
                             </li>
                             <li v-if="rankingHeat.length>1">
                                 <span><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
-                                <img :src="rankingHeat[1].fans?rankingHeat[1].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="rankingHeat[1].fans?rankingHeat[1].fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rankingHeat[1].fans?rankingHeat[1].fans.nickname:'...'}}</em>
@@ -231,7 +231,7 @@
                             </li>
                             <li v-if="rankingHeat.length>2">
                                 <span><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
-                                <img :src="rankingHeat.length>2?rankingHeat[2].fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="rankingHeat[2].fans?rankingHeat[2].fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rankingHeat[2].fans?rankingHeat[2].fans.nickname:'...'}}</em>
@@ -245,7 +245,7 @@
                             </li>
                             <li v-for="(idol,key) in rankingHeat" v-if="key > 2 && key < len2">
                                 <span>{{key+1}}</span>
-                                <img :src="idol.fans?idol.fans.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="idol.fans?idol.fans.avatar:false" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
@@ -310,6 +310,8 @@
                 default1: false,
                 default2: false,
                 android: false,
+                idx: 0,
+                idx2: 0,
                 fans_text: {
                     Gcoin: 'コイン',
                     like: 'Like',
@@ -343,96 +345,122 @@
           },
           getRanking(token) {
             let self = this;
-            let token_ = getParams('token');
-            if(token) {
-                http.defaults.headers.common['Authorization'] = 'Token '+token;
-            }else if(token_!='(null)' && token_!='') {
-                http.defaults.headers.common['Authorization'] = 'Token ' + token_;
-            }
-            http.get('/statistic/gb',{
-                params: {
-                    idolId: getParams('idolId')
+            if(self.idx < 2) {
+                self.idx++;
+                let token_ = getParams('token');
+                if(token) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+token;
+                }else if(token_!='(null)' && token_!='') {
+                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                 }
-            }).then(function(res){
-                if(res.status == 200) {
-                    self.loadingBig = true;
-                    if(res.data.fansList.length > 0) {
-                        self.default1 = false;
-                        self.rakingList = res.data.fansList;
-                        for(var i=0;i<self.rakingList.length;i++) {
-                            // console.log(self.rakingList[i].fansId == 160)
-                            if(self.rakingList[i].fansId == getParams('fansId')) {
-                                self.meObj = self.rakingList[i];
-                                self.meObj.position = (i+1);
-                                console.log(self.rakingList)
-                                return;
+                http.get('/statistic/gb',{
+                    params: {
+                        idolId: getParams('idolId')
+                    }
+                }).then(function(res){
+                    if(res.status == 200) {
+                        self.loadingBig = true;
+                        if(res.data.fansList.length > 0) {
+                            self.default1 = false;
+                            self.rakingList = res.data.fansList;
+                            for(var i=0;i<self.rakingList.length;i++) {
+                                // console.log(self.rakingList[i].fansId == 160)
+                                if(self.rakingList[i].fansId == getParams('fansId')) {
+                                    self.meObj = self.rakingList[i];
+                                    self.meObj.position = (i+1);
+                                    console.log(self.rakingList)
+                                    return;
+                                }
                             }
+                        }else {
+                            self.default1 = true;
                         }
                     }else {
-                        self.default1 = true;
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                self.getRanking(responseData.token);
+                            })
+                        })
                     }
-                }else {
+                }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
                             self.getRanking(responseData.token);
                         })
                     })
-                }
-            }).catch(function(err){
+                });
+                
+            }else {
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                        self.getRanking(responseData.token);
-                    })
+                    if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                     }else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                     }
                 })
-            });
+            }
           },
           getRankingHeat(token) {
             let self = this;
-            let token_ = getParams('token');
-            if(token) {
-                http.defaults.headers.common['Authorization'] = 'Token '+token;
-            }else if(token_!='(null)' && token_!='') {
-                http.defaults.headers.common['Authorization'] = 'Token ' + token_;
-            }
-            http.get('/statistic/heat',{
-                params: {
-                    idolId: getParams('idolId')
+            if(self.idx2 < 2) {
+                self.idx2++;
+                let token_ = getParams('token');
+                if(token) {
+                    http.defaults.headers.common['Authorization'] = 'Token '+token;
+                }else if(token_!='(null)' && token_!='') {
+                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                 }
-            }).then(function(res){
-                if(res.status == 200) {
-                    if(res.data.fansList.length > 0) {
-                        self.default2 = false;
-                        self.rankingHeat = res.data.fansList;
-                        for(var i=0;i<self.rankingHeat.length;i++) {
-                            if(self.rankingHeat[i].fansId == getParams('fansId')) {
-                                self.meHeatObj = self.rankingHeat[i];
-                                self.meHeatObj.position = (i+1);
-                                console.log(self.rankingHeat)
-                                console.log(self.meHeatObj)
-                                return;
+                http.get('/statistic/heat',{
+                    params: {
+                        idolId: getParams('idolId')
+                    }
+                }).then(function(res){
+                    if(res.status == 200) {
+                        if(res.data.fansList.length > 0) {
+                            self.default2 = false;
+                            self.rankingHeat = res.data.fansList;
+                            for(var i=0;i<self.rankingHeat.length;i++) {
+                                if(self.rankingHeat[i].fansId == getParams('fansId')) {
+                                    self.meHeatObj = self.rankingHeat[i];
+                                    self.meHeatObj.position = (i+1);
+                                    console.log(self.rankingHeat)
+                                    console.log(self.meHeatObj)
+                                    return;
+                                }
                             }
+                        }else {
+                            self.default2 = true;
                         }
                     }else {
-                        self.default2 = true;
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
+                                self.getRankingHeat(responseData.token);
+                            })
+                        })
                     }
-                }else {
-                    WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
+                }).catch(function(err){
+                    window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getRanking(responseData.token);
+                            self.getRankingHeat(responseData.token);
                         })
                     })
-                }
-            }).catch(function(err){
-                WebViewJavascriptBridge.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                        self.getRanking(responseData.token);
-                    })
+                });
+            }else {
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                     }else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                     }
                 })
-            });
+            }
           },
           refresh (done) {
             var self = this;
             setTimeout(() => {
+              self.idx = 0;
               self.getRanking();
               done()
             }, 1500)
@@ -462,6 +490,7 @@
           refresh2 (done) {
             var self = this;
             setTimeout(() => {
+              self.idx2 = 0;
               self.getRankingHeat();
               done()
             }, 1500)
