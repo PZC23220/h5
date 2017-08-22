@@ -143,17 +143,13 @@
                     }
                 }).then(function(res){
                     console.log(res)
-                    if(res) {
-                        if(_lan === 'zh-cn') {
-                            e.target.innerHTML = '已领取';
-                        }else {
-                            e.target.innerHTML = '受取済';
-                        }
+                    self.idx = 0;
+                    self.getList();
+                    if(res.status == 200) {
                         self.receiveShow = true;
                         setTimeout( function() {
                             self.receiveShow = false;
                         },1500);
-                        e.target.classList.remove('finish');
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             if(_lan === 'zh-cn') {
