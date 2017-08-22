@@ -22,7 +22,7 @@
                 <div class="video_bg"></div>
                 <div class="vip_download">
                     <p>会員のみ視聴可能です<br>会員登録して、アイドルのプライベート動画を見よう</p>
-                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="href_" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
+                    <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="href_" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
                 </div>
             </div>
             <div class="public_show"v-show="publicShow">
@@ -33,7 +33,7 @@
             <div class="default_page" v-show="pageNone">
                 <img src="/img/default_no like.png" alt="">
                 <p v-show="pageNone2">まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう</p>
-                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="href_" title="下载Groupy查看完整视频" alt="下载Groupy查看完整视频">Groupyをダウンロードしてもっと見よう</a>
+                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="href_" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
             </div>
             <div class="more_video">
                 <h3>おすすめ</h3>

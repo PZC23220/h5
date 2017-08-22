@@ -39,7 +39,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="idolInfo eBorder" v-if="loadingBig == false">
+            <div class="idolInfo eBorder" v-if="loadingBig == false && pageNone == false">
                 <img :src="idolInfo.avatar?idolInfo.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
                 <p>
                     <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  イベント登録</span>
@@ -51,17 +51,22 @@
                     <h5 class="li_title">Groupy预约</h5>
                     <p>{{applyInfo.firstName}}  {{applyInfo.lastName}}</p>
                     <span><i>{{applyInfo.nums}}</i>枚予約した | Groupy@vip.com</span>
-                    <div class="win_info"><a :href="hrefs" target="_blank" @click="p_log('share_h5_download_groupy')">下载Groupy接受活动通知</a></div>
+                    <div class="win_info"><a :href="hrefs" target="_blank" @click="p_log('share_h5_download_groupy')">Groupyをダウンロードしてもっと見よう</a></div>
                 </div>
                 <img src="/img/shows/bg_booked.png">
             </div>
-            <ul class="shows_detail" v-if="loadingBig == false">
+            <div class="default_page" v-show="pageNone && loadingBig == false">
+                <img src="/img/shows/default_noactivity.png" alt="">
+                <p>該当イベント情報はありません</p>
+                <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" title="Groupyをダウンロードしてもっと見よう" alt="Groupyをダウンロードしてもっと見よう">Groupyをダウンロードしてもっと見よう</a>
+            </div>
+            <ul class="shows_detail" v-if="loadingBig == false && pageNone == false">
                 <li style="border-bottom: 1px solid #eee;">
                     <p class="shows_name">{{showsInfo.title}}</p>
                     <p class="shows_time" style="border: none;"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="/img/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
                     <div class="win_info" v-if="!applyInfo.id" @click="platform()">予約する</div>
                 </li>
-                <li>
+                <li v-if="showsInfo.groups">
                     <h5 class="li_title">出演者</h5>
                     <p class="show_groups">{{showsInfo.groups}}</p>
                 </li>
@@ -69,11 +74,11 @@
                     <h5 class="li_title">料金</h5>
                     <p>Groupy预约 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円<em v-if="showsInfo.drinkNums">(+{{showsInfo.drinkNums}}D)</em></p>
                 </li>
-                <li>
+                <li v-if="showsInfo.location">
                     <h5 class="li_title">会場</h5>
                     <p>{{showsInfo.location}}</p>
                 </li>
-                <li>
+                <li v-if="showsInfo.introduce">
                     <h5 class="li_title">説明</h5>
                     <div class="shows_info">
                         <span>{{showsInfo.introduce}}</span>
@@ -96,7 +101,7 @@
             </ul>
         </div>
         <!-- <div class="footer" @click="reservationShow = true">予約する</div>
-        <div class="footer" v-if="false">下载Groupy接受活动通知</div> -->
+        <div class="footer" v-if="false">Groupyをダウンロードしてもっと見よう</div> -->
         <!-- 预约弹窗 -->
         <div class="reservation" v-if="reservationShow">
             <div class="r_header">
@@ -134,6 +139,7 @@
             reservationShow: false,
             toastShow: false,
             loadingBig: true,
+            pageNone: true,
             forms: {
                firstName: '',
                lastName: '',
@@ -214,44 +220,38 @@
                     return arr;
                 }
             },
-            getShows(token) {
+            getShows() {
                 var self = this;
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }
                 http.get('/shows/detail',{
                     params: {
                         showsId: getParams('showsId')
                     }
                 }).then(function(res){
                     console.log(res.data);
-                    self.showsInfo = res.data;
-                    if(res.data.fansList){
-                        self.fansList = res.data.fansList;
-                    }
-                    if(res.data.applyInfo) {
-                        self.applyInfo = res.data.applyInfo;
-                    }else {
-                        if(self.loadingBig == false) {
-                            self.reservationShow = true;
+                    if(res.data) {
+                        self.showsInfo = res.data;
+                        if(res.data.fansList){
+                            self.fansList = res.data.fansList;
                         }
-                    }
-                    if(res.data.idolInfo) {
-                        self.idolInfo = res.data.idolInfo;
-                        if(res.data.idolInfo.organization) {
-                            self.organization = res.data.idolInfo.organization;
+                        if(res.data.applyInfo) {
+                            self.applyInfo = res.data.applyInfo;
+                        }else {
+                            if(self.loadingBig == false) {
+                                self.reservationShow = true;
+                            }
                         }
+                        if(res.data.idolInfo) {
+                            self.idolInfo = res.data.idolInfo;
+                            if(res.data.idolInfo.organization) {
+                                self.organization = res.data.idolInfo.organization;
+                            }
+                        }
+                        self.pageNone = false;
                     }
                     self.loadingBig = false;
+                    console.log(self.pageNone)
                 }).catch(function(err){
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                         if(_lan === 'zh-cn') {
-                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                         }else {
-                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                         }
-                    })
+                    self.loadingBig = false;
                 });
             },
             updateStyle() {
@@ -739,6 +739,21 @@
         >img {
             width: 100%;
             background: #eee;
+        }
+    }
+    .default_page {
+        a {
+            display: block;
+            color: #fff;
+            width: 300px;
+            height: 44px;
+            line-height: 44px;
+            opacity: 0.9;
+            background: #FC4083;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 7.5px;
+            margin: 20px auto;
         }
     }
 </style>
