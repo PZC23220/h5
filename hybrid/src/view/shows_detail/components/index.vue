@@ -35,7 +35,7 @@
                 </ul>
             </div>
             <div class="idolInfo eBorder" v-if="loadingBig == false">
-                <img :src="idolInfo.avatar?idolInfo.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
+                <img v-lazy="idolInfo.avatar" class="avatar">
                 <p>
                     <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  イベント登録</span>
                     <span v-show="organization.name">{{organization.name}}</span>
@@ -54,7 +54,7 @@
                     <p class="shows_name">{{showsInfo.title}}</p>
                     <p class="shows_time"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="/img/shows/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
                 </li>
-                <li>
+                <li v-if="showsInfo.groups">
                     <h5 class="li_title">出演者</h5>
                     <p class="show_groups">{{showsInfo.groups}}</p>
                 </li>
@@ -62,11 +62,11 @@
                     <h5 class="li_title">料金</h5>
                     <p>Groupyで予約 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円<em v-if="showsInfo.drinkNums">(+{{showsInfo.drinkNums}}D)</em></p>
                 </li>
-                <li>
+                <li v-if="showsInfo.location">
                     <h5 class="li_title">会場</h5>
                     <p>{{showsInfo.location}}</p>
                 </li>
-                <li>
+                <li v-if="showsInfo.introduce">
                     <h5 class="li_title">説明</h5>
                     <div class="shows_info">
                         <span>{{showsInfo.introduce}}</span>
@@ -81,7 +81,7 @@
                     <h5 class="li_title">{{fansList.length}}人予約した</h5>
                     <div class="fans_list">
                         <p v-for="fans in fansList">
-                            <img :src="fans.avatar?fans.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
+                            <img v-lazy="fans.avatar" class="avatar">
                             <span class="idol_name">{{fans.nickname?fans.nickname:'...'}}</span>
                         </p>
                     </div>
@@ -90,18 +90,6 @@
         </div>
         <div class="footer" @click="reservationShow()" v-if="!applyInfo.id && loadingBig ==false && appIdol == false">予約する</div>
         <div class="footer" @click="editShow()" v-if="!applyInfo.id && loadingBig ==false && appIdol">編集</div>
-        <!-- 预约弹窗 -->
-       <!--  <div class="reservation" v-if="reservationShow">
-            <div class="r_header">
-                <img src="/img/close.png" @click="reservationShow = false">
-                预约活动
-                <span :class="{'active':canPush}" @click="pushOrder()">提交</span>
-            </div>
-            <p><span>姓</span><input type="text" v-model="forms.lastName" v-on:input="updateStyle" placeholder="请输入"></p>
-            <p><span>名</span><input type="text" v-model="forms.firstName" v-on:input="updateStyle" placeholder="请输入"></p>
-            <p><span>邮箱</span><input type="email" v-model="forms.email" v-on:input="updateStyle" placeholder="请输入"></p>
-            <p><span>数量</span><i>张</i><input style="width: calc(100vw - 100px);max-width: calc(500px - 100px);" v-on:input="updateStyle" v-model="forms.nums" type="tel" name="" placeholder="1"></p>
-        </div> -->
     </div>
 </template>
 <script>

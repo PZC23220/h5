@@ -55,11 +55,11 @@
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
                         <div class="comment_info">
-                            <img :src="comment.avatar?comment.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                            <img v-lazy="comment.avatar" alt="" class="avatar">
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
-                            <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
-                            <img class="medal_level" :src="'/img/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
-                            <i v-html="formatTime(comment.createTime)"></i>
+                            <span class="level" style="margin-top: 1px;" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
+                            <img class="medal_level" :src="'/img/icon_medal_'+(comment.medal)+'.png'" style="margin-top: 0px;" v-if="comment.medal&&comment.medal>0" alt="">
+                            <i v-html="formatTime(comment.createTime)" style="width: calc(100% - 40px);margin-left: calc(100vw * -0.083333);"></i>
                         </div>
                         <div class="comment_content">
                             <p>{{comment.content}}</p>

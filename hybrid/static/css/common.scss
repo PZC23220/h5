@@ -314,14 +314,14 @@ img.icon {
     color: #fff;
     -webkit-transform: scale(0.65);
     padding: 1px 3px;
-    margin-top: 1px;
+    margin-top: 5px;
     font-weight: bold;
     text-align: center;
 }
 .medal_level {
     float: left;
     width: 15px !important;
-    margin-top: 0;
+    margin-top: 4px;
 }
 img.avatar {
     width: 30px;
@@ -332,7 +332,7 @@ img.avatar {
 }
 .likes {
     width: 12.55px;
-    height: 11.2px;
+    // height: 11.2px;
 }
 .comment_list {
     background: #eee;
@@ -407,10 +407,10 @@ img.avatar {
         height: 40px;
         color: #666;
         i {
-            display: inline-block;
-            width: calc(100vw - 60px);
+            display: block;
+            width: calc(100% - 5px);
             text-align: left;
-            margin-left: calc(100vw * -0.082);
+            margin-left: calc(100vw * -0.093333);
             float: left;
             color: #999;
             font-size: 10px;

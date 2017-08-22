@@ -90,10 +90,6 @@
         </div> -->
     </div>
 </template>
-
-<script>
-
-</script>
 <script>
     import VideoPlayer from 'vue-video-player';
     import http from '@api/js/http.js';

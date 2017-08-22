@@ -178,6 +178,7 @@
 			box-shadow: 0 2px 7px 0 rgba(201,201,201,0.75);
 			border-radius: 2px;
 			margin-bottom: 11.5px;
+			overflow: hidden;
 			&:nth-child(2n) {
 				margin-left: 12px;
 			}
@@ -188,8 +189,12 @@
 		.video_poster {
 			display: block;
 			width: 100%;
-			height: calc((100vw - 36px)/2 * 11/9);
-			// max-height: calc((500px - 36px)/2 * 11/9);
+			max-height: calc((100vw - 36px)/2 * 11/9);
+		}
+		@media screen and (min-width: 500px) {
+		    .video_poster {
+		    	max-height: calc((500px - 36px)/2 * 11/9);
+		    }
 		}
 		.btn_play {
 			position: absolute;

@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 import routes  from './router.js'
 // import VideoPlayer from 'vue-video-player';
 // import VueScroller from 'vue-scroller'
-// import VueLazyload from 'vue-lazyload'
+import VueLazyload from 'vue-lazyload'
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import main from './main.vue'
 
@@ -14,12 +14,12 @@ Vue.use(VueRouter);
 // Vue.use(VideoPlayer);
 Vue.use(VueAwesomeSwiper);
 // Vue.use(VueScroller)
-// Vue.use(VueLazyload, {
-//         preLoad: 1,
-// 	    error: '/img/pic_default_2.png',
-// 	    loading: '/img/pic_default_2.png',
-// 	    attempt: 1
-// })
+Vue.use(VueLazyload, {
+        preLoad: 1,
+	    error: 'http://h5.groupy.vip/img/default_img.png',
+	    loading: 'http://h5.groupy.vip/img/default_img.png',
+	    attempt: 1
+})
 
 // 1. 开启debug模式
 Vue.config.debug = true

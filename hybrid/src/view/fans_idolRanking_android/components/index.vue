@@ -470,7 +470,7 @@
           refresh (done) {
             var self = this;
             setTimeout(() => {
-              self.idx++;
+              self.idx = 0;
               self.getRanking();
               done()
             }, 500)
@@ -478,7 +478,7 @@
           refresh2 (done) {
             var self = this;
             setTimeout(() => {
-                self.idx2++;
+                self.idx2 = 0;
               self.getRanking2();
               done()
             }, 500)
@@ -529,9 +529,10 @@
             console.log('support');
             var self = this;
             window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.callHandler('makeToast', 'send_gift_before');
                 bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
-                    self.idx2++;
-                    self.idx++;
+                    self.idx2 = 0;
+                    self.idx = 0;
                     self.getRanking();
                     self.getRanking2();
                 })
@@ -541,10 +542,16 @@
         },
         mounted() {
             var self = this;
+            window.ranking_refresh = function() {
+                self.idx2 = 0;
+                self.idx = 0;
+                self.getRanking();
+                self.getRanking2();
+            }
             window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.registerHandler('ranking_refresh', function() {
-                    self.idx2++;
-                    self.idx++;
+                    self.idx2 = 0;
+                    self.idx = 0;
                     self.getRanking();
                     self.getRanking2();
                 })

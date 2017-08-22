@@ -28,7 +28,7 @@
                                 <span v-if="meObj.position==2"><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
                                 <span v-if="meObj.position==3"><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
                                 <span v-if="meObj.position>3">{{meObj.position?meObj.position:'0'}}</span>
-                                <img v-lazy="meObj.fans?meObj.fans.avatar:false" alt="" class="avatar">
+                                <img v-lazy="meObj.fans?meObj.fans.avatar:'http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{meObj.fans?(meObj.fans.nickname?meObj.fans.nickname:'...'):'...'}}</em>
@@ -93,7 +93,7 @@
                             </div>
                             <li v-if="rakingList.length>0">
                                 <span><img src="/img/fans_fansRanking/icon_metal_1.png" alt=""></span>
-                                <img v-lazy="rakingList[0].fans?rakingList[0].fans.avatar:false" alt="" class="avatar">
+                                <img v-lazy="rakingList[0].fans?rakingList[0].fans.avatar:'http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList[0].fans?rakingList[0].fans.nickname:'...'}}</em>
@@ -107,7 +107,7 @@
                             </li>
                             <li v-if="rakingList.length>1">
                                 <span><img src="/img/fans_fansRanking/icon_metal_2.png" alt=""></span>
-                                <img v-lazy="rakingList[1].fans?rakingList[1].fans.avatar:false" alt="" class="avatar">
+                                <img v-lazy="rakingList[1].fans?rakingList[1].fans.avatar:'http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList[1].fans?rakingList[1].fans.nickname:'...'}}</em>
@@ -121,7 +121,7 @@
                             </li>
                             <li v-if="rakingList.length>2">
                                 <span><img src="/img/fans_fansRanking/icon_metal_3.png" alt=""></span>
-                                <img v-lazy="rakingList[2].fans?rakingList[2].fans.avatar:false" alt="" class="avatar">
+                                <img v-lazy="rakingList[2].fans?rakingList[2].fans.avatar:'http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList[2].fans?rakingList[2].fans.nickname:'...'}}</em>
@@ -135,7 +135,7 @@
                             </li>
                             <li v-for="(idol,key) in rakingList" v-if="key > 2 && key < len">
                                 <span>{{key+1}}</span>
-                                <img v-lazy="idol.fans?idol.fans.avatar:false" alt="" class="avatar">
+                                <img v-lazy="idol.fans?idol.fans.avatar:'http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>

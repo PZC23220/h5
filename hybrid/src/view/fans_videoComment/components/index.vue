@@ -63,13 +63,13 @@
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                         <div class="comment_info">
-                            <img class="avatar" :src="comment.avatar?comment.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
+                            <img class="avatar" v-lazy="comment.avatar" alt="">
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
-                            <span class="level">Lv.{{comment.levelPlatform?comment.levelPlatform:0}}</span>
-                            <img class="fans_medal" :src="'/static/images/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                            <span class="level" style="margin-top: 1px;">Lv.{{comment.levelPlatform?comment.levelPlatform:0}}</span>
+                            <img class="medal_level" style="margin-top: 2px;" :src="'/img/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                             <!-- <img class="level" :src="comment.levelPlatform?'/img/icon_level_'+(comment.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'"  onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" alt=""> -->
                             <!-- <img class="level" :src="'/static/images/icon_level_'+(comment.medal+1)+'.png'" alt=""> -->
-                            <i v-html="formatTime(comment.createTime)"></i>
+                            <i v-html="formatTime(comment.createTime)" style="width: calc(100% - 40px);margin-left: calc(100vw * -0.083333);"></i>
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>
                     </li>

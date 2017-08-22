@@ -31,7 +31,7 @@
                                 <img src="/img/fans_fansRanking/icon_metal_3.png" alt="" v-if="key==2">
                                 <i class="rank_num" v-if="key>2" style="height: auto;line-height: 18px;margin-top:6px;">{{key+1}}</i>
                             </span>
-                            <img class="avatar" :src="gFans.fans?(gFans.fans.avatar?gFans.fans.avatar:'http://h5.groupy.vip/img/default_img.png'):'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
+                            <img class="avatar" v-lazy="gFans.fans?gFans.fans.avatar:false" alt="">
                             <span class="name">{{gFans.fans?(gFans.fans.nickname?gFans.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                             <span class="level">Lv.{{gFans.fans?(gFans.fans.levelPlatform?gFans.fans.levelPlatform:0):0}}</span>
@@ -58,7 +58,7 @@
                                 <img src="/img/fans_fansRanking/icon_metal_3.png" alt="" v-if="key==2">
                                 <i v-if="key>2" style="height: auto;line-height: 18px;margin-top:6px;">{{key+1}}</i>
                             </span>
-                            <img class="avatar" :src="popularity.fans?(popularity.fans.avatar?popularity.fans.avatar:'http://h5.groupy.vip/img/default_img.png'):'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
+                            <img class="avatar" v-lazy="popularity.fans?popularity.fans.avatar:false" alt="">
                             <span class="name">{{popularity.fans?(popularity.fans.nickname?popularity.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform)+'.png':'/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                             <span class="level">Lv.{{popularity.fans?(popularity.fans.levelPlatform?popularity.fans.levelPlatform:0):0}}</span>
@@ -79,7 +79,7 @@
                 <ul class="comment_list">
                     <li v-for="(fans,key) in joinList.fansList" style="padding: 0;">
                         <left-slider :index="key" @deleteItem.stop="deleteItem(fans.fansId)">
-                            <img class="avatar" :src="fans.fans?(fans.fans.avatar?fans.fans.avatar:'http://h5.groupy.vip/img/default_img.png'):'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
+                            <img class="avatar" v-lazy="fans.fans?fans.fans.avatar:false" alt="">
                             <span class="name">{{fans.fans?(fans.fans.nickname?fans.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                             <span class="level">Lv.{{fans.fans?(fans.fans.levelPlatform?fans.fans.levelPlatform:0):0}}</span>

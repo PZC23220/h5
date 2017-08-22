@@ -89,7 +89,7 @@
             if(self.idx < 2) {
                 http.get('/video/activityIdols',{
                     params: {
-                        activityId:1000,
+                        activityId:getParams('activityId'),
                         rows: 10
                     }
                 }).then(function(res){
@@ -100,6 +100,7 @@
                     console.log(self.me);
                 }).catch(function(){
                     self.idx++;
+                    getList();
                 });
             }else {
                  window.setupWebViewJavascriptBridge(function(bridge) {

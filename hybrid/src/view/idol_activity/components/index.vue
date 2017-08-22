@@ -196,7 +196,7 @@
                 }
                 http.get('/video/activityIdols',{
                     params: {
-                        activityId:1000,
+                        activityId:getParams('activityId'),
                         rows: 10
                     }
                 }).then(function(res){
