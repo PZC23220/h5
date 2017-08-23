@@ -83,11 +83,11 @@
                                 </i>
                             <!-- </left-slider> -->
                         </li>
+                        <div class="default_page" v-show="gcoinList.rank?gcoinList.rank.length == 0:false" style="padding-top: 32px;">
+                            <img src="/img/default_no coin.png" alt="">
+                            <p v-html="video_text.noneGcoin"></p>
+                        </div>
                     </ul>
-                    <div class="default_page" v-show="gcoinList.rank?gcoinList.rank.length == 0:false" style="padding-top: 32px;">
-                        <img src="/img/default_no coin.png" alt="">
-                        <p v-html="video_text.noneGcoin"></p>
-                    </div>
                 </div>
             </swiper-slide>
             <swiper-slide id="swiper2">
@@ -450,8 +450,10 @@
                 }
               }
             self.getGcoin();
-            self.getPopularity();
-            self.getComments(); 
+            setTimeout(function(){
+                self.getPopularity();
+                self.getComments(); 
+            },0);
         }
     }
 </script>

@@ -11,7 +11,7 @@ instance.interceptors.response.use(function(response){
     }
 }, function(error){
     console.error('http请求失败', error);
-    return Promise.reject(error);
+    return error;
     // return Promise.reject(error);
 });
 // instance.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
