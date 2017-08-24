@@ -42,6 +42,7 @@ module.exports = {
         idol_noviceTask: './src/view/idol_noviceTask', 
         idol_ranking: './src/view/idol_ranking',
         idol_videoDetail: './src/view/idol_videoDetail',
-        shows_detail: './src/view/shows_detail'
+        shows_detail: './src/view/shows_detail',
+        private_letter: './src/view/private_letter',
     },
 };

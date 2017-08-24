@@ -1,7 +1,7 @@
 <template>
     <div class="main">
        <div class="header" v-if="android">
-            <img src="/img/nav_icon_arrow_white.png" alt="" @click="close()">
+            <img src="http://h1.groupy.vip/groupy_h5/arrow/nav_icon_arrow_white.png" alt="" @click="close()">
             <span>{{medal_text.pubMsg}}</span>
         </div>
         <div class="content" :class="{'ios': android == false}">

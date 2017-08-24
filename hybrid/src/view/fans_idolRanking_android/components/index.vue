@@ -20,7 +20,7 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <img v-lazy="idol.avatar" class="avatar" alt="">
-                                            <img v-if="idol.position < 4" :src="'http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
+                                            <img v-if="idol.position < 4" :src="'http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
@@ -44,7 +44,7 @@
                                         <div class="idol_border">
                                             <div class="avatar_content">
                                                 <img src="/img/default_img.png" class="avatar" alt="">
-                                                <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" alt="">
+                                                <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
@@ -62,7 +62,7 @@
                                         <div class="idol_border">
                                             <div class="avatar_content">
                                                 <img src="/img/default_img.png" class="avatar" alt="">
-                                                <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" alt="">
+                                                <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
@@ -80,7 +80,7 @@
                                         <div class="idol_border">
                                             <div class="avatar_content">
                                                 <img src="/img/default_img.png" class="avatar" alt="">
-                                                <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" alt="">
+                                                <img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
@@ -99,9 +99,9 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <img class="avatar" v-lazy="idol.avatar" alt="">
-                                            <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
+                                            <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
@@ -134,7 +134,7 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <img v-lazy="idol.avatar" class="avatar" alt="">
-                                            <img v-if="idol.position < 4" :src="'http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
+                                            <img v-if="idol.position < 4" :src="'http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
@@ -158,7 +158,7 @@
                                         <div class="idol_border">
                                             <div class="avatar_content">
                                                 <img src="/img/default_img.png" class="avatar" alt="">
-                                                <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" alt="">
+                                                <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
@@ -176,7 +176,7 @@
                                         <div class="idol_border">
                                             <div class="avatar_content">
                                                 <img src="/img/default_img.png" class="avatar" alt="">
-                                                <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" alt="">
+                                                <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
@@ -194,7 +194,7 @@
                                         <div class="idol_border">
                                             <div class="avatar_content">
                                                 <img src="/img/default_img.png" class="avatar" alt="">
-                                                <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" alt="">
+                                                <img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
@@ -213,9 +213,9 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <img v-lazy="idol.avatar" class="avatar" alt="">
-                                            <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://h4.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
+                                            <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
@@ -268,7 +268,7 @@
                 idol_text: {
                     me: 'お気に入り',
                     all: '全体ランキング',
-                    fans: 'ファンランキング',
+                    fans: '貢献ランキング',
                     support: '応援',
                     no1: 'No.1になって目立とう！',
                     none: 'Groupyで待ってまーす。',
@@ -568,7 +568,7 @@
                  this.idol_text= {
                     me: '我关注的爱豆',
                     all: ' 全部爱豆',
-                    fans: ' 粉丝排行',
+                    fans: ' 贡献排行',
                     support: '应援',
                     no1: '赶紧来抢占第一位吧！',
                     none: '我在groupy等你哦!',
@@ -580,7 +580,7 @@
                 this.idol_text= {
                     me: 'お気に入り',
                     all: '全体ランキング',
-                    fans: 'ファンランキング',
+                    fans: '貢献ランキング',
                     support: '応援',
                     no1: 'No.1になって目立とう！',
                     none: 'Groupyで待ってまーす。',

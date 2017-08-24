@@ -45,7 +45,7 @@
                 <div class="info_content">
                     <h5 class="li_title">Groupyで予約</h5>
                     <p>{{applyInfo.firstName}}  {{applyInfo.lastName}}</p>
-                    <span><i>{{applyInfo.nums}}</i>枚予約した | Groupy@vip.com</span>
+                    <span><i>{{applyInfo.nums}}</i>枚予約した | {{applyInfo.email}}</span>
                 </div>
                 <img src="/img/shows/bg_booked_750.png">
             </div>
