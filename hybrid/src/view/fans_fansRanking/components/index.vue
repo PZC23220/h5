@@ -149,7 +149,7 @@
                             </li>
                         </ul>
                         <div class="default_page default_page3"  v-if="default1">
-                            <img src="http://h1.groupy.vip/groupy_h5/default_img/default_no coin.png" alt="">
+                            <img src="http://h3.groupy.vip/groupy_h5/default_img/default_no coin.png" alt="">
                             <p v-html="fans_text.noneGcoin"></p>
                         </div>
                     <!-- </scroller> -->

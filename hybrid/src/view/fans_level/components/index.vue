@@ -9,7 +9,7 @@
                 <div class="header_banner">
                     <div class="level_bg">
                         <span class="con_left" :class="{'left_show':lvNow||lvNow==0}">Lv {{lvNow?lvNow:'0'}}</span>
-                        <img src="/img/level/bg_level.png" alt="">
+                        <img src="http://h3.groupy.vip/groupy_h5/level/bg_level.png" alt="">
                     </div>
                     <p class="score con_left" :class="{'left_show':lvNow||lvNow==0}">{{score?score:'0/0'}}</p>
                     <div class="progress">
@@ -20,7 +20,7 @@
             </div>
             <div class="howToUpgrade">
                 <p>{{medal_text.how}}</p>
-                <img src="/img/level/pic_upgrade.png" alt="">
+                <img src="http://h3.groupy.vip/groupy_h5/level/pic_upgrade.png" alt="">
                 <p v-html="medal_text.desc"></p>
             </div>
         </div>

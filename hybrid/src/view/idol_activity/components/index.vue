@@ -1,7 +1,7 @@
 <template>
     <div class="main">
          <div class="content">
-            <img src="/img/activity/banner.jpg" class="banner">
+            <img src="http://h3.groupy.vip/groupy_h5/activity/banner.jpg" class="banner">
             <h2>{{activity.theme}}</h2>
             <div class="activity_time">
                 <h4>{{activity.time}}</h4>
@@ -24,37 +24,37 @@
                     <div class="none_loading" :class="{'none_loading_show': loadingShow}">
                         <li>
                             <span class="first">1</span>
-                            <div class="img_content"><img src="/img/default_img.png" class="avatar"><img src="/img/icon_crown_1.png" class="crown"></div>
+                            <div class="img_content"><img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="avatar"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown"></div>
                             <div class="idol_content">
                                 <span>idolName</span>
                                 <div class="idol_desc">
                                     <p><span style="text-align: left;margin-left: 10px;"><em>0</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                    <p><span><img src="/img/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p>
-                                    <p><span><img src="/img/timeline_icon_likes.png"><em>0</em></span><i>{{activity.like}}</i></p>
+                                    <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p>
+                                    <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png"><em>0</em></span><i>{{activity.like}}</i></p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <span class="second">2</span>
-                            <div class="img_content"><img src="/img/default_img.png" class="avatar"><img src="/img/icon_crown_2.png" class="crown"></div>
+                            <div class="img_content"><img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="avatar"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown"></div>
                             <div class="idol_content">
                                 <span>idolName</span>
                                 <div class="idol_desc">
                                     <p><span style="text-align: left;margin-left: 10px;"><em>0</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                    <p><span><img src="/img/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p>
-                                    <p><span><img src="/img/timeline_icon_likes.png"><em>0</em></span><i>{{activity.like}}</i></p>
+                                    <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p>
+                                    <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png"><em>0</em></span><i>{{activity.like}}</i></p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <span class="second">3</span>
-                            <div class="img_content"><img src="/img/default_img.png" class="avatar"><img src="/img/icon_crown_3.png" class="crown"></div>
+                            <div class="img_content"><img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="avatar"><img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown"></div>
                             <div class="idol_content">
                                 <span>idolName</span>
                                 <div class="idol_desc">
                                     <p><span style="text-align: left;margin-left: 10px;"><em>0</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                    <p><span><img src="/img/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p>
-                                    <p><span><img src="/img/timeline_icon_likes.png"><em>0</em></span><i>{{activity.like}}</i></p>
+                                    <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p>
+                                    <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png"><em>0</em></span><i>{{activity.like}}</i></p>
                                 </div>
                             </div>
                         </li>
@@ -62,26 +62,26 @@
                     <h5 v-if="me.ranking">{{activity.me}}</h5>
                     <li v-if="me.ranking">
                         <span :class="[{'first':me.ranking == 0},{'second':me.ranking == 1},{'three':me.ranking > 1},{'ten':me.ranking > 9}]">{{me.ranking?me.ranking:'-'}}</span>
-                        <div class="img_content"><img :src="me.avatar?me.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar"><img src="/img/icon_crown_1.png" class="crown" v-if="me.ranking?me.ranking==1:false"><img src="/img/icon_crown_2.png" class="crown" v-if="me.ranking?me.ranking==2:false"><img src="/img/icon_crown_3.png" class="crown" v-if="me.ranking?me.ranking>2:false"></div>
+                        <div class="img_content"><img v-lazy="me.avatar" class="avatar"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" v-if="me.ranking?me.ranking==1:false"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" v-if="me.ranking?me.ranking==2:false"><img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" v-if="me.ranking?me.ranking>2:false"></div>
                         <div class="idol_content">
                             <span>{{me.nickname?me.nickname:'...'}}</span>
                             <div class="idol_desc">
                                 <p><span style="text-align: left;margin-left: 10px;"><em>{{Number(me.videoCount?me.videoCount:0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                <p><span><img src="/img/timeline_icon_coins.png"><em>{{Number(me.gcoin?me.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                                <p><span><img src="/img/timeline_icon_likes.png"><em>{{Number(me.popularity?me.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
+                                <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png"><em>{{Number(me.gcoin?me.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
+                                <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png"><em>{{Number(me.popularity?me.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
                             </div>
                         </div>
                     </li>
                     <h5>{{activity.all}}</h5>
                     <li v-for="(idol,key) in ranking" v-if="key < 3">
                         <span :class="[{'first':key == 0},{'second':key == 1},{'three':key > 1}]">{{key+1}}</span>
-                        <div class="img_content"><img :src="idol.avatar?idol.avatar:'/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar"><img src="/img/icon_crown_1.png" class="crown" v-if="idol.ranking?idol.ranking==1:false"><img src="/img/icon_crown_2.png" class="crown" v-if="idol.ranking?idol.ranking==2:false"><img src="/img/icon_crown_3.png" class="crown" v-if="idol.ranking?idol.ranking>2:false"></div>
+                        <div class="img_content"><img v-lazy="idol.avatar" class="avatar"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" v-if="idol.ranking?idol.ranking==1:false"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" v-if="idol.ranking?idol.ranking==2:false"><img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" v-if="idol.ranking?idol.ranking>2:false"></div>
                         <div class="idol_content">
                             <span>{{idol.nickname?idol.nickname:'...'}}</span>
                             <div class="idol_desc">
                                 <p><span style="text-align: left;margin-left: 10px;"><em>{{Number(idol.videoCount?idol.videoCount:0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                <p><span><img src="/img/timeline_icon_coins.png"><em>{{Number(idol.gcoin?idol.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                                <p><span><img src="/img/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
+                                <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png"><em>{{Number(idol.gcoin?idol.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
+                                <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
                             </div>
                         </div>
                     </li>
@@ -91,7 +91,7 @@
             <ul class="activity_reward">
                 <h4>{{activity.award}}</h4>
                 <li>
-                    <img src="/img/activity/icon_1.png">
+                    <img src="http://h4.groupy.vip/groupy_h5/activity/icon_1.png">
                     <div class="reward_desc">
                         <p><span></span><i>{{activity.rewards[0].p1}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p2}}</i></p>
@@ -103,7 +103,7 @@
                     </div>
                 </li>
                 <li>
-                    <img src="/img/activity/icon_2.png">
+                    <img src="http://h4.groupy.vip/groupy_h5/activity/icon_2.png">
                     <div class="reward_desc">
                         <p><span></span><i>{{activity.rewards[1].p1}}</i></p>
                         <p><span></span><i>{{activity.rewards[1].p2}}</i></p>
@@ -113,7 +113,7 @@
                     </div>
                 </li>
                 <li>
-                    <img src="/img/activity/icon_3.png">
+                    <img src="http://h4.groupy.vip/groupy_h5/activity/icon_3.png">
                     <div class="reward_desc">
                         <p><span></span><i>{{activity.rewards[2].p1}}</i></p>
                         <p><span></span><i>{{activity.rewards[2].p2}}</i></p>

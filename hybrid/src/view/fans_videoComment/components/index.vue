@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="header" :class="{'ios': android == false}">
-            <img src="/img/close.png" alt="" @click="close()">
+            <img src="http://h3.groupy.vip/groupy_h5/close/close.png" alt="" @click="close()">
             <span>{{video_text.pubMsg}}({{commentList.length}})</span>
         </div>
         <div class="content" :class="{'ios': android == false}" ref="viewBox">
@@ -18,7 +18,7 @@
                     <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                         <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                             <div class="userinfo">
-                                <img :src="'/img/default_img.png'" alt="" class="avatar">
+                                <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -29,7 +29,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img :src="'/img/default_img.png'" alt="" class="avatar">
+                                <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -40,7 +40,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img :src="'/img/default_img.png'" alt="" class="avatar">
+                                <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -51,7 +51,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img :src="'/img/default_img.png'" alt="" class="avatar">
+                                <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -66,15 +66,13 @@
                             <img class="avatar" v-lazy="comment.avatar" alt="">
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                             <span class="level" style="margin-top: 1px;">Lv.{{comment.levelPlatform?comment.levelPlatform:0}}</span>
-                            <img class="medal_level" style="margin-top: 2px;" :src="'/img/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
-                            <!-- <img class="level" :src="comment.levelPlatform?'/img/icon_level_'+(comment.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'"  onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" alt=""> -->
-                            <!-- <img class="level" :src="'/static/images/icon_level_'+(comment.medal+1)+'.png'" alt=""> -->
+                            <img class="medal_level" style="margin-top: 2px;" :src="'http://h2.groupy.vip/groupy_h5/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                             <i v-html="formatTime(comment.createTime)" style="width: calc(100% - 40px);margin-left: calc(100vw * -0.083333);"></i>
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>
                     </li>
                     <div class="default_page default_page3" v-show="commentList.length == 0 && loadingBig == false">
-                        <img src="/img/default_no comment.png" alt="">
+                        <img src="http://h1.groupy.vip/groupy_h5/default_img/default_no comment.png" alt="">
                         <p v-html="video_text.noneComment"></p>
                     </div>
                 </ul>
@@ -82,9 +80,9 @@
             </v-scroll>
         </div>
         <!-- <div class="publich_comment" @click="publishComment()"><img src="/img/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
-        <div class="publich_comment" @click="autoFocus()"><img src="/img/msg/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
+        <div class="publich_comment" @click="autoFocus()"><img src="http://h3.groupy.vip/groupy_h5/edit/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
         <div class="comment_view" v-show="win_show" @touchmove.prevent>
-            <div class="comment_desc"><img src="/img/close.png" alt="" @click="win_show=false"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
+            <div class="comment_desc"><img src="http://h3.groupy.vip/groupy_h5/close/close.png" alt="" @click="win_show=false"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
             <textarea :placeholder="video_text.pla" autofocus v-model="comment_text"></textarea>
             <!-- <div class="publish" @click="publish()">发表</div> -->
         </div>

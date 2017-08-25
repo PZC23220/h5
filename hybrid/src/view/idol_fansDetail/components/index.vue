@@ -4,11 +4,11 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">{{fans_text.mine}} </span>
-                    <span class="detail_gcoin"><img src="/img/icon_fans .png" alt="" class="icon"><i class="video_money left" :class="{'left_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{gcoinList.fansCount?Number(gcoinList.fansCount).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin"><img src="http://h4.groupy.vip/groupy_h5/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{gcoinList.fansCount?Number(gcoinList.fansCount).toLocaleString():0}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">{{fans_text.add}}</span>
-                    <span class="detail_gcoin"><img src="/img/icon_fans .png" alt="" class="icon"><i class="video_money left" :class="{'left_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{gcoinList.fansIncreased?Number(gcoinList.fansIncreased).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin"><img src="http://h4.groupy.vip/groupy_h5/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{gcoinList.fansIncreased?Number(gcoinList.fansIncreased).toLocaleString():0}}</i></span>
                 </p>
             </div>
             <div class="detailPages">
@@ -26,25 +26,25 @@
                     <li v-for="(gFans,key) in gcoinList.fansList">
                         <!-- <left-slider :index="key" @deleteItem="deleteItem(gFans.fansId)"> -->
                             <span>
-                                <img src="/img/fans_fansRanking/icon_metal_1.png" alt="" v-if="key==0">
-                                <img src="/img/fans_fansRanking/icon_metal_2.png" alt="" v-if="key==1">
-                                <img src="/img/fans_fansRanking/icon_metal_3.png" alt="" v-if="key==2">
+                                <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_1.png" alt="" v-if="key==0">
+                                <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_2.png" alt="" v-if="key==1">
+                                <img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_metal_3.png" alt="" v-if="key==2">
                                 <i class="rank_num" v-if="key>2" style="height: auto;line-height: 18px;margin-top:6px;">{{key+1}}</i>
                             </span>
-                            <img class="avatar" v-lazy="gFans.fans?gFans.fans.avatar:false" alt="">
+                            <img class="avatar" v-lazy="gFans.fans?gFans.fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="">
                             <span class="name">{{gFans.fans?(gFans.fans.nickname?gFans.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                             <span class="level">Lv.{{gFans.fans?(gFans.fans.levelPlatform?gFans.fans.levelPlatform:0):0}}</span>
-                            <img class="medal_level" :src="'/img/icon_medal_'+(gFans.fans.medal)+'.png'" v-if="gFans.fans.medal&&gFans.fans.medal>0" alt="">
+                            <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(gFans.fans.medal)+'.png'" v-if="gFans.fans?(gFans.fans.medal&&gFans.fans.medal>0):false" alt="">
                             <!-- <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i>
-                                <img src="/img/timeline_icon_coins.png" alt=""><em class="coin">{{Number(gFans.expendGprice?gFans.expendGprice:'0').toLocaleString()}}</em>
+                                <img src="http://h2.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt=""><em class="coin">{{Number(gFans.expendGprice?gFans.expendGprice:'0').toLocaleString()}}</em>
                             </i>
                         <!-- </left-slider> -->
                     </li>
                 </ul>
                 <div class="default_page" v-show="gcoinList.fansList?gcoinList.fansList.length == 0:false">
-                    <img src="/img/default_no coin.png" alt="">
+                    <img src="http://h2.groupy.vip/groupy_h5/default_img/default_no%20coin.png" alt="">
                     <p>{{fans_text.noneGcoin}}</p>
                 </div>
             </swiper-slide>
@@ -53,25 +53,25 @@
                     <li v-for="(popularity,key) in popularityList.fansList">
                         <!-- <left-slider :index="key" @deleteItem="deleteItem(popularity.fansId)"> -->
                             <span>
-                                <img src="/img/fans_fansRanking/icon_metal_1.png" alt="" v-if="key==0">
-                                <img src="/img/fans_fansRanking/icon_metal_2.png" alt="" v-if="key==1">
-                                <img src="/img/fans_fansRanking/icon_metal_3.png" alt="" v-if="key==2">
+                                <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_1.png" alt="" v-if="key==0">
+                                <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_2.png" alt="" v-if="key==1">
+                                <img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_metal_3.png" alt="" v-if="key==2">
                                 <i v-if="key>2" style="height: auto;line-height: 18px;margin-top:6px;">{{key+1}}</i>
                             </span>
-                            <img class="avatar" v-lazy="popularity.fans?popularity.fans.avatar:false" alt="">
+                            <img class="avatar" v-lazy="popularity.fans?popularity.fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="">
                             <span class="name">{{popularity.fans?(popularity.fans.nickname?popularity.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform)+'.png':'/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                             <span class="level">Lv.{{popularity.fans?(popularity.fans.levelPlatform?popularity.fans.levelPlatform:0):0}}</span>
-                            <img class="medal_level" :src="'/img/icon_medal_'+(popularity.fans.medal)+'.png'" v-if="popularity.fans.medal&&popularity.fans.medal>0" alt="">
+                            <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(popularity.fans.medal)+'.png'" v-if="popularity.fans?(popularity.fans.medal&&popularity.fans.medal>0):false" alt="">
                             <!-- <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i>
-                                <img src="/img/timeline_icon_likes.png" alt=""><em class="coin">{{Number(popularity.totalNums?popularity.totalNums:'0').toLocaleString()}}</em>
+                                <img src="http://h2.groupy.vip/groupy_h5/icon/timeline_icon_likes.png" alt=""><em class="coin">{{Number(popularity.totalNums?popularity.totalNums:'0').toLocaleString()}}</em>
                             </i>
                         <!-- </left-slider> -->
                     </li>
                 </ul>
                 <div class="default_page" v-show="popularityList.fansList.length == 0">
-                    <img src="/img/default_no like.png" alt="">
+                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_no%20like.png" alt="">
                     <p>{{fans_text.noneLike}}</p>
                 </div>
             </swiper-slide>
@@ -79,18 +79,18 @@
                 <ul class="comment_list">
                     <li v-for="(fans,key) in joinList.fansList" style="padding: 0;">
                         <left-slider :index="key" @deleteItem.stop="deleteItem(fans.fansId)">
-                            <img class="avatar" v-lazy="fans.fans?fans.fans.avatar:false" alt="">
+                            <img class="avatar" v-lazy="fans.fans?fans.fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="">
                             <span class="name">{{fans.fans?(fans.fans.nickname?fans.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                             <span class="level">Lv.{{fans.fans?(fans.fans.levelPlatform?fans.fans.levelPlatform:0):0}}</span>
-                            <img class="medal_level" :src="'/img/icon_medal_'+(fans.fans.medal)+'.png'" v-if="fans.fans.medal&&fans.fans.medal>0" alt="">
+                            <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(fans.fans.medal)+'.png'" v-if="fans.fans?(fans.fans.medal&&fans.fans.medal>0):false" alt="">
                             <!-- <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i v-html="formatTime(fans.startdate)"></i>
                         </left-slider>
                     </li>
                 </ul>
                 <div class="default_page" v-show="joinList.fansList.length == 0">
-                    <img src="/img/default_no history.png" alt="">
+                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_no%20history.png" alt="">
                     <p>{{fans_text.noneComment}}</p>
                 </div>
             </swiper-slide>

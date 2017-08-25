@@ -15,8 +15,8 @@ Vue.use(VueRouter);
 Vue.use(VueAwesomeSwiper);
 Vue.use(VueLazyload, {
         preLoad: 1,
-	    error: 'http://h5.groupy.vip/img/default_img.png',
-	    loading: 'http://h5.groupy.vip/img/default_img.png',
+	    error: 'http://h1.groupy.vip/groupy_h5/default_img/default_img.png',
+	    loading: 'http://h1.groupy.vip/groupy_h5/default_img/default_img.png',
 	    attempt: 1
 })
 

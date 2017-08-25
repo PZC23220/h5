@@ -10,9 +10,9 @@
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
                             <span>{{task_test.current}}<i>0</i></span>
                         </div>
-                        <img src="/img/task/icon_finish.png" v-show="false">
+                        <img src="http://h3.groupy.vip/groupy_h5/icon/icon_finish.png" v-show="false">
                     </div>
-                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="/img/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
+                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
                 <div class="task">
                     <div class="task_content">
@@ -22,9 +22,9 @@
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
                             <span>{{task_test.current}}<i>0</i></span>
                         </div>
-                        <img src="/img/task/icon_finish.png" v-show="false">
+                        <img src="http://h3.groupy.vip/groupy_h5/icon/icon_finish.png" v-show="false">
                     </div>
-                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="/img/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
+                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
                 <div class="task">
                     <div class="task_content">
@@ -34,9 +34,9 @@
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
                             <span>{{task_test.current}}<i>0</i></span>
                         </div>
-                        <img src="/img/task/icon_finish.png" v-show="false">
+                        <img src="http://h3.groupy.vip/groupy_h5/icon/icon_finish.png" v-show="false">
                     </div>
-                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="/img/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
+                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
                 <div class="task">
                     <div class="task_content">
@@ -46,9 +46,9 @@
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
                             <span>{{task_test.current}}<i>0</i></span>
                         </div>
-                        <img src="/img/task/icon_finish.png" v-show="false">
+                        <img src="http://h3.groupy.vip/groupy_h5/icon/icon_finish.png" v-show="false">
                     </div>
-                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="/img/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
+                    <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
             </div>
             <div class="task" v-for="task in tasks">
@@ -59,14 +59,14 @@
                         <div class="progress"><span :style="'width:calc(100% * '+task.currentCount/task.targetCount+')'"></span></div>
                         <span>{{task_test.current}}<i>{{task.currentCount>task.targetCount?task.targetCount:task.currentCount}}</i></span>
                     </div>
-                    <img src="/img/task/icon_finish.png" v-show="task.complete>0">
+                    <img src="http://h3.groupy.vip/groupy_h5/icon/icon_finish.png" v-show="task.complete>0">
                 </div>
-                <div class="reward"><i>{{task_test.reward}}</i><span><img src="/img/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="(task.complete>0 && task.accepted<1)?accept(task.id,task.gprice,$event):false">{{status(task.accepted)}}</span></div>
+                <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="(task.complete>0 && task.accepted<1)?accept(task.id,task.gprice,$event):false">{{status(task.accepted)}}</span></div>
             </div>
          </div>
          <div class="receive_coin" :class="{'receive_coin_show':receiveShow}">
              <div class="coin_num"><p>{{task_test.receive1}}</p><p>+ {{Gcoins}} {{task_test.receive2}}</p></div>
-             <img src="/img/timeline_icon_coins.png">
+             <img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png">
          </div>
     </div>
 </template>

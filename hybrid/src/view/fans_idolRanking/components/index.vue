@@ -20,7 +20,7 @@
                                 <div class="introduction">
                                     <p class="name">{{idol.name?idol.name:'...'}}</p>
                                     <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                    <p class="detail"><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
+                                    <p class="detail"><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
                                 </div>
                                 <div class="support" @click.stop="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
                             </div>
@@ -38,13 +38,13 @@
                                 <i class="_fir">1</i>
                                 <div class="idol_border">
                                     <div class="avatar_content">
-                                        <img src="/img/default_img.png" class="avatar" alt="">
+                                        <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="avatar" alt="">
                                         <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_1.png" class="crown" alt="">
                                     </div>
                                     <div class="introduction">
                                         <p class="name">...</p>
                                         <p class="signature">{{idol_text.none}}</p>
-                                        <p class="detail"><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_likes.png" alt="">0</span><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_fans.png" alt="">0</span></p>
+                                        <p class="detail"><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_likes.png" alt="">0</span><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_fans.png" alt="">0</span></p>
                                     </div>
                                     <div class="support">{{idol_text.support}}</div>
                                 </div>
@@ -56,13 +56,13 @@
                                 <i class="_sec">2</i>
                                 <div class="idol_border">
                                     <div class="avatar_content">
-                                        <img src="/img/default_img.png" class="avatar" alt="">
+                                        <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="avatar" alt="">
                                         <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown" alt="">
                                     </div>
                                     <div class="introduction">
                                         <p class="name">...</p>
                                         <p class="signature">{{idol_text.none}}</p>
-                                        <p class="detail"><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_likes.png" alt="">0</span><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_fans.png" alt="">0</span></p>
+                                        <p class="detail"><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_likes.png" alt="">0</span><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_fans.png" alt="">0</span></p>
                                     </div>
                                     <div class="support">{{idol_text.support}}</div>
                                 </div>
@@ -74,13 +74,13 @@
                                 <i class="_thr">3</i>
                                 <div class="idol_border">
                                     <div class="avatar_content">
-                                        <img src="/img/default_img.png" class="avatar" alt="">
+                                        <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="avatar" alt="">
                                         <img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown" alt="">
                                     </div>
                                     <div class="introduction">
                                         <p class="name">...</p>
                                         <p class="signature">{{idol_text.none}}</p>
-                                        <p class="detail"><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_likes.png" alt="">0</span><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_fans.png" alt="">0</span></p>
+                                        <p class="detail"><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_likes.png" alt="">0</span><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_fans.png" alt="">0</span></p>
                                     </div>
                                     <div class="support">{{idol_text.support}}</div>
                                 </div>
@@ -101,7 +101,7 @@
                                 <div class="introduction">
                                     <p class="name">{{idol.name?idol.name:'...'}}</p>
                                     <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                    <p class="detail"><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://h1.groupy.vip/groupy_h5/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
+                                    <p class="detail"><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://h3.groupy.vip/groupy_h5/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
                                 </div>
                                 <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                             </div>
