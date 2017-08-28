@@ -327,16 +327,22 @@
   }
   .more_video {
     width: 229px;
-    height: 69px;
-    line-height: 61px;
-    padding-left: 61px;
-    box-sizing: border-box;
     margin: 0 auto;
     border: 4px solid #FB0730;
     font-size: 26px;
-    color: #FB0730;
-    background-image: url(../images/index.png);
-    background-position: 43px -1570px;
+    a {
+      width: 229px;
+      height: 61px;
+      display: block;
+      box-sizing: border-box;
+      padding-left: 61px;
+      width: 100%;
+      color: #FB0730;
+      line-height: 61px;
+      background-image: url(../images/index.png);
+      background-position: 43px -1570px;
+
+    }
   }
 }
 .company_profile {

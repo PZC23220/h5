@@ -144,7 +144,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/scss" lang="scss" scoped>
   @import '../styles/index.scss';
   @media screen and (max-width: 980px) {
       .videos_list li {

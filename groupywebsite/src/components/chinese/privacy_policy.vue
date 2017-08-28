@@ -23,7 +23,7 @@
         setTimeout(function() {
             let ele = document.querySelector('.privacy_policy');
             ele.scrollIntoView();
-        },500);
+        },0);
     }
   }
 </script>

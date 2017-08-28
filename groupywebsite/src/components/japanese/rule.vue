@@ -65,7 +65,7 @@
         setTimeout(function() {
             let ele = document.querySelector('.rule');
             ele.scrollIntoView();
-        },500);
+        },0);
     }
   }
 </script>
