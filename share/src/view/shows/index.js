@@ -3,6 +3,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import VueResource from 'vue-resource'// 注册两个插件
 import routes  from './router.js'
+import VueLazyload from 'vue-lazyload'
 import VideoPlayer from 'vue-video-player';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 
@@ -10,6 +11,12 @@ import main from './main.vue'
 
 // Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.use(VueLazyload, {
+        preLoad: 1,
+	    error: 'http://h1.groupy.vip/groupy_h5/default_img/default_img.png',
+	    loading: 'http://h1.groupy.vip/groupy_h5/default_img/default_img.png',
+	    attempt: 1
+})
 Vue.use(VideoPlayer);
 Vue.use(VueAwesomeSwiper);
 

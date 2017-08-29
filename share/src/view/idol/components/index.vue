@@ -10,7 +10,7 @@
                 <div class="idol_desc_bg" :style="idol.avatar?'background-image: url('+ idol.avatar +');':'background-image: url(http://h5.groupy.vip/img/default_img.png);'"></div>
                 <div class="idol_desc_content">
                     <div>
-                        <img :src="idol.avatar?idol.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
+                        <img v-lazy="idol.avatar" class="avatar">
                         <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>ファン</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>Likes</em></span><span class="cursor" @click="boxShow = true;"><img src="/img/icon_join.png"><i>入会</i></span></div>
                         <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
                         <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす。'}}</p>
@@ -72,7 +72,7 @@
                         <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                             <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                                 <div class="userinfo">
-                                    <img :src="'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                    <img src="http://h5.groupy.vip/img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -83,7 +83,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img :src="'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                    <img src="http://h5.groupy.vip/img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -94,7 +94,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img :src="'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                    <img src="http://h5.groupy.vip/img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -105,7 +105,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img :src="'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                    <img src="http://h5.groupy.vip/img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -117,7 +117,7 @@
                         </div>
                         <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
                             <div class="comment_info">
-                                <img :src="comment.avatar" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="comment.avatar" class="avatar">
                                 <span>{{comment.nickname?comment.nickname:'...'}}</span>
                                 <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
                                 <img class="medal_level" :src="'http://h5.groupy.vip/img/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
@@ -224,7 +224,7 @@
             hotList:[],
             idol: {},
             fansList: [],
-            hrefs: 'itms-apps://itunes.apple.com/app/id1251249933',
+            hrefs: 'itms-apps://itunes.apple.com/app/id1270083927',
             Imgsrc: 'http://upload.groupy.vip/post/D4AC388D-F977-4A9A-A973-E3CB18A76978.jpg',
             bigImgShow: false
           }
@@ -350,9 +350,9 @@
             // this.p_log('idol_share_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (!(/iphone|ipad|ipod/.test(ua))) {
-                this.hrefs = 'https://itunes.apple.com/app/id1251249933';
+                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
             }else {
-                this.hrefs = 'itms-apps://itunes.apple.com/app/id1251249933';
+                this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
             }
         }
       }
@@ -363,7 +363,7 @@
     .idol_desc {
         .idol_desc_bg {
             width: 100%;
-            height: 258px;
+            height: 240px;
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
@@ -377,7 +377,7 @@
             left: 0;
             top: 0;
             width: 100%;
-            height: 258px;
+            height: 240px;
             padding-top: 95px; 
             background-color: rgba(0,0,0,0.4);
             overflow: hidden;
@@ -386,14 +386,14 @@
             padding-top: 94px;
             >div {
                 background: #fff;
+                height: 146px;
+                box-sizing: border-box;
                 padding: 0 12px 12px;
                 >p {
                     text-align: left;
-                    overflow : hidden;
                     text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
+                    white-space: nowrap;
+                    overflow: hidden;
                 }
             }
             .avatar {

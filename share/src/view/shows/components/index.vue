@@ -154,7 +154,7 @@
             idolInfo: {},
             canPush: false,
             idx: 0,
-            hrefs: 'itms-apps://itunes.apple.com/app/id1251249933',
+            hrefs: 'itms-apps://itunes.apple.com/app/id1270083927',
             tokens: '',
             toastText: '预约成功'
           }
@@ -427,9 +427,9 @@
             var ua = navigator.userAgent.toLowerCase();
             console.log(ua)
             if (!(/iphone|ipad|ipod/.test(ua))) {
-                this.hrefs = 'https://itunes.apple.com/app/id1251249933';
+                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
             }else {
-                this.hrefs = 'itms-apps://itunes.apple.com/app/id1251249933';
+                this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
             }
             // this.platform();
             this.getShows();

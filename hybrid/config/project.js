@@ -43,6 +43,6 @@ module.exports = {
         idol_ranking: './src/view/idol_ranking',
         idol_videoDetail: './src/view/idol_videoDetail',
         shows_detail: './src/view/shows_detail',
-        private_letter: './src/view/private_letter',
+        login: './src/view/login',
     },
 };

@@ -122,7 +122,7 @@
             pageNone2: false,
             // loadingBig: true,
             idolShow: false,
-            href_: 'itms-apps://itunes.apple.com/app/id1251249933'
+            href_: 'itms-apps://itunes.apple.com/app/id1270083927'
           }
         },
         methods: {
@@ -218,9 +218,9 @@
             this.p_log('idol_share_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (!(/iphone|ipad|ipod/.test(ua))) {
-                this.href_ = 'https://itunes.apple.com/app/id1251249933';
+                this.href_ = 'https://itunes.apple.com/app/id1270083927';
             }else {
-                this.href_ = 'itms-apps://itunes.apple.com/app/id1251249933';
+                this.href_ = 'itms-apps://itunes.apple.com/app/id1270083927';
             }
         }
       }

@@ -362,24 +362,24 @@
             if(getParams('platform') == 'android') {
                 self.android = true;
             }
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
-                 self.video_text= {
-                    publish: '添加评论',
-                    pubMsg: '评论',
-                    noneComment: '还没有留言',
-                    load: '发布',
-                    pla: '添加评论...'
-                }
-              } else {
-                self.video_text= {
-                    publish: 'コメントする',
-                    pubMsg: 'コメント',
-                    noneComment: 'まだ書き込みはないようです',
-                    load: '送信',
-                    pla: 'アイドルにあなたの大切な想いを届けよう...'
-                }
-              }
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            //  if(_lan === 'zh-cn') {
+            //      self.video_text= {
+            //         publish: '添加评论',
+            //         pubMsg: '评论',
+            //         noneComment: '还没有留言',
+            //         load: '发布',
+            //         pla: '添加评论...'
+            //     }
+            //   } else {
+            //     self.video_text= {
+            //         publish: 'コメントする',
+            //         pubMsg: 'コメント',
+            //         noneComment: 'まだ書き込みはないようです',
+            //         load: '送信',
+            //         pla: 'アイドルにあなたの大切な想いを届けよう...'
+            //     }
+            //   }
             self.getComments();
 
         }
