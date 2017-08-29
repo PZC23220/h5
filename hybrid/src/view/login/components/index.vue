@@ -1,204 +1,84 @@
 <template>
     <div class="main">
         <img src="/img/login/login_bg_750.jpg" class="bg_750">
-        <div class="main_content">
-            <img src="/img/login/icon_groupy.png">
+        <div class="main_content" v-if="review">
+            <img src="/img/login/icon_groupy.png" class="groupy">
+            <div class="inputs inputs_first"><img src="/img/login/login_icon_account.png"><input type="text" v-model="user" name="" placeholder="アカウント"></div>
+            <div class="inputs"><img src="/img/login/login_icon_password.png"><input type="text" v-model="pw" name="" placeholder="パスワード"></div>
+            <div class="protocol"><img :src="protocol_img"  @click="change_protocol()"><a href="http://h5.groupy.vip/rules/index.html#/rule">参加アイドル向け利用規約</a></div>
+
+            <div class="login">ログイン</div>
+        </div>
+        <div class="main_content" v-if="review == false">
+            <img src="/img/login/icon_groupy.png" class="groupy">
+            <div class="api_login"><img src="/img/login/icon_twitter.png"><span>Twitterでログイン</span></div>
+            <div class="api_login facebook"><img src="/img/login/icon_facebook.png"><span>Facebookでログイン</span></div>
+            <div class="protocol protocol_bottom"><img :src="protocol_img"  @click="change_protocol()"><a href="http://h5.groupy.vip/rules/index.html#/rule">参加アイドル向け利用規約</a></div>
         </div>
     </div>
 </template>
 <script>
-    import http from '@api/js/http.js';
-    require('@api/js/common.js')
-    import $ from 'n-zepto';
+    require('@api/js/common.js');
     export default {
         data() {
           return {
-            reservationShow: false,
-            toastShow: false,
-            appIdol: false,
-            loadingBig: true,
-            forms: {
-               firstName: '',
-               lastName: '',
-               email: '',
-               nums: '',
-               showsId:''
-            },
-            fansList: [],
-            applyInfo: {},
-            showsInfo: {},
-            organization: {},
-            idolInfo: {},
-            canPush: false,
-            idx: 0,
+            review: false,
+            user: '',
+            pw: '',
+            protocol: true,
+            protocol_img: '/img/login/login_icon_agreement.png'
           }
         },
         methods: {
-            formatTime(key,type) {
-                let timer = new Date(key);
-                return timer.Format(type);
-            },
-            formatDay(key) {
-                let timer = new Date(key).getDay();
-                var str;
-                switch (timer) {  
-                    case 0 :  
-                            str = "日";  
-                            break;  
-                    case 1 :  
-                            str = "月";  
-                            break;  
-                    case 2 :  
-                            str = "火";  
-                            break;  
-                    case 3 :  
-                            str = "水";  
-                            break;  
-                    case 4 :  
-                            str = "木";  
-                            break;  
-                    case 5 :  
-                            str = "金";  
-                            break;  
-                    case 6 :  
-                            str = "土";  
-                            break;  
-                }
-                return  str;
-            },
-            showBigImg(val,idx) {
-                var url = this.changeURL(val);
-                console.log(url,idx)
-                window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('showImage', {'urls': url,selectedIndex :idx})
-                })
-            },
-            changeURL(val) {
-                if(val) {
-                    var str = JSON.stringify(val);
-                    var len = str.length;
-                    var str2 = str.slice(1,len-1);
-                    let arr = [];
-                    arr = str2.split(',');
-                    return arr;
-                }
-            },
-            getShows() {
-                var self = this;
-                let token_ = getParams('token');
-                if(token_!='(null)' && token_!='') {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token_;
-                }
-                http.get('/shows/detail',{
-                    params: {
-                        showsId: getParams('showsId')
-                    }
-                }).then(function(res){
-                    console.log(res.data);
-                    self.loadingBig = false;
-                    self.showsInfo = res.data;
-                    if(res.data.fansList){
-                        self.fansList = res.data.fansList;
-                    }
-                    if(res.data.applyInfo) {
-                        self.applyInfo = res.data.applyInfo;
-                    }
-                    if(res.data.idolInfo) {
-                        self.idolInfo = res.data.idolInfo;
-                        if(res.data.idolInfo.organization) {
-                            self.organization = res.data.idolInfo.organization;
-                        }
-                    }
-                }).catch(function(err){
+            login_pw() {
+                if(this.user && this.pw && this.protocol) {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                         if(_lan === 'zh-cn') {
-                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                         }else {
-                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                         }
-                    })
-                });
-            },
-            updateStyle() {
-                if(this.forms.firstName && this.forms.lastName && this.forms.email && this.forms.nums) {
-                    return this.canPush = true;
+                        bridge.callHandler('login_pw',{user: this.user,pw: this.pw});
+                    });
                 }else {
-                    return this.canPush = false;
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        if(!this.protocol) {
+                            bridge.callHandler('makeToast', '「参加アイドル向け利用規約」への\\n同意が必要です。');
+                        }else {
+                            bridge.callHandler('makeToast', 'アカウント・パスワードが間違っています\\n再入力してください');
+                        }
+                    });
                 }
             },
-            pushOrder(token) {
-                var self = this;
-                console.log(self.canPush)
-                let token_ = getParams('token');
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                    self.tokens = token;
-                }else if(token_!='(null)' && token_!='') {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token_;
-                }
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                self.forms.showsId = self.showsInfo.id;
-                if(self.canPush) {
-                    if(self.idx < 2) {
-                        http.post('/shows/apply',JSON.stringify(self.forms)).then(function(res){
-                            console.log(res);
-                            if(res.status == 200) {
-                                window.setupWebViewJavascriptBridge(function(bridge) {
-                                    if(_lan === 'zh-cn') {
-                                        bridge.callHandler('makeToast', '预约成功');
-                                     }else {
-                                        bridge.callHandler('makeToast', '预约成功');
-                                     }
-                                })
-                            }else {
-                                self.idx++;
-                                window.setupWebViewJavascriptBridge(function(bridge) {
-                                    bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
-                                        self.pushOrder(responseData.token);
-                                    })
-                                })
-                            }
-                        }).catch(function(err){
-                            self.idx++;
-                            window.setupWebViewJavascriptBridge(function(bridge) {
-                                    bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
-                                        self.pushOrder(responseData.token);
-                                    })
-                                })
-                        });
-                    }else {
-                        window.setupWebViewJavascriptBridge(function(bridge) {
-                            if(_lan === 'zh-cn') {
-                                bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                             }else {
-                                bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                             }
-                        })
-                    }
+            login_fb() {
+                if(this.protocol) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('login_fb');
+                    });
+                }else {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('makeToast', '「参加アイドル向け利用規約」への\\n同意が必要です。');
+                    });
                 }
             },
-            reservationShow() {
-                var self = this;
-                window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('book', {'showsId':self.showsInfo.id})
-                })
+            login_tw() {
+                if(this.protocol) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('login_tw');
+                    });
+                }else {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('makeToast', '「参加アイドル向け利用規約」への\\n同意が必要です。');
+                    });
+                }
             },
-            editShow() {
-                var self = this;
-                window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('editShow', {'showsInfo':self.showsInfo})
-                })
+            change_protocol() {
+                this.protocol = !this.protocol;
+                if(this.protocol == true) {
+                    this.protocol_img= '/img/login/login_icon_agreement.png'
+                }else {
+                    this.protocol_img= '/img/login/login_icon_agreement_1.png'
+                }
             }
         },
-        mounted() {
-        },
-        computed: {
-        },
         created() {
-            this.getShows();
-            if(getParams('app') == 'idol') {
-                this.appIdol = true;
+            if(getParams('version') == '1.0.8') {
+                this.review = true;
             }
         }
       }
@@ -213,5 +93,91 @@
    }
    .main_content {
         position: absolute;left: 0;top: 0;width: 100vw;height: 100vh;
+   }
+   .groupy {
+        width: 34vw;
+        display: block;margin: 12vh auto;
+   }
+   .inputs_first {
+        margin-top: 7vh;
+
+   }
+   .inputs {
+        width:73vw;
+        margin: 12px auto;
+        padding: 10.5px 23px;
+        opacity: 0.9;
+        background: #FFFFFF;
+        border: 2px solid #FFFFFF;
+        border-radius: 50px;
+        box-sizing: border-box;
+        font-size: 16px;
+        line-height: 22px;
+        color: #666;
+        font-weight: 400;
+        overflow: hidden;
+        >* {
+            float: left;
+            display: block;
+        }
+        img {
+            width: 25px;
+            margin-right: 3px;
+        }
+        input {
+            width: calc(73vw - 83px);
+            height: 22px;
+            font-size: 16px;
+            margin-top: 1.5px;
+        }
+   }
+   .protocol {
+        width:73vw;
+        margin: 0 auto;
+        overflow: hidden;
+        font-size: 10px;
+        -webkit-transform:scale(0.8);
+        padding-left: 10px;
+        img {
+            width: 12px;
+            float: left;
+            margin-top: 3px;
+        }
+        a {
+            display: block;
+            float: left;
+            color: #FFFFFF;
+            padding-left: 5px;
+            text-decoration: underline;
+        }
+   }
+   .login {
+        background-image: linear-gradient(150deg, #FF8550 0%, #FF2E79 100%);
+        border-radius: 39px;
+        height: 50px;line-height: 50px;color: #fff;font-size: 18px;font-weight: 300;text-align: center;
+        width:73vw;
+        margin: 30px auto;
+   }
+   .api_login {
+        width:73vw;
+        margin: 30px auto;
+        height: 25px;line-height: 25px;color: #fff;background: #009EF4;font-size: 18px;font-weight: 300;text-align: center;padding: 12px 0 13px;
+        border-radius: 39px;
+        img {
+            width: 25px;
+        }
+        span {
+            display: inline-block;vertical-align: middle;
+        }
+   }
+   .facebook {
+    background: #33589D;
+   }
+   .protocol_bottom {
+        position: absolute;
+        bottom: 30px;
+        width: 180px;
+        left: 50%;
+        margin-left: -90px;
    }
 </style>

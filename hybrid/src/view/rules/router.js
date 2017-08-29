@@ -14,6 +14,7 @@ import idolApply_chinese from './components/idolApply_chinese.vue'
 import idolApply from './components/idolApply.vue'
 import rule_chinese from './components/rule_chinese.vue'
 import rule from './components/rule.vue'
+import fans_rule from './components/fans_rule.vue'
 
 let Terminal = {
     // 辨别移动终端的语言：zh-cn、en-us、ko-kr、ja-jp...
@@ -92,6 +93,9 @@ const routes =
         },{
             path: '/rule_chinese',
             component: rule_chinese
+        },{
+            path: '/fans_rule',
+            component: fans_rule
         }
     ];
 export default routes;

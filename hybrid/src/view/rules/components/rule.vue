@@ -1,5 +1,9 @@
 <template>
     <div class="main">
+       <!-- <div class="header">
+            <img src="http://h1.groupy.vip/groupy_h5/close/close.png" alt="" @click="close()">
+            <span>参加アイドル向け利用規約</span>
+      </div> -->
         <div class="content" style=" top: 0;height: 100vh;">
             <h3 class="rule_tile">第１条（目的）</h3>
             <p class="rule_content">      本規約は、ニュースジェット株式会社（以下「当社」といいます。）が提供するサービス「Groupy for idol」をユーザー（第２条に定義します。）が利用するにあたっての利用条件を定めるものとします。</p>
@@ -47,3 +51,35 @@
         </div>
     </div>
 </template>
+<style type="text/css" lang="scss" scoped>
+      .header {
+        padding: 22px 12px 0;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 43px;
+        color: #666;
+        img {
+            position: absolute;
+            left: 12px;
+            width: 22px;
+            padding: 10.5px 5px;
+        }
+    }
+    .content {
+        height: calc(100vh - 66px);
+        top: 66px;
+    }
+</style>
+<!-- <script src="../../utils/common.js"></script> -->
+<script>
+    require('@api/js/common.js')
+      export default {
+        methods: {
+            close() {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('close');
+                })
+            }
+        }
+      }
+</script>

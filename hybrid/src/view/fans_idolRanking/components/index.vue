@@ -305,28 +305,28 @@
             }
         },
         created() {
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
-                 this.idol_text= {
-                    me: '我关注的爱豆',
-                    all: ' 全部爱豆',
-                    fans: ' 贡献排行',
-                    support: '应援',
-                    no1: '赶紧来抢占第一位吧！',
-                    none: '我在groupy等你哦!',
-                    noneIdol: '还没有爱豆的排名'
-                }
-              } else {
-                this.idol_text= {
-                    me: 'お気に入り',
-                    all: '全体ランキング',
-                    fans: '貢献ランキング',
-                    support: '応援',
-                    no1: 'No.1になって目立とう！',
-                    none: 'Groupyで待ってまーす。',
-                    noneIdol: 'ただ今集計中です'
-                }
-              }
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            //  if(_lan === 'zh-cn') {
+            //      this.idol_text= {
+            //         me: '我关注的爱豆',
+            //         all: ' 全部爱豆',
+            //         fans: ' 贡献排行',
+            //         support: '应援',
+            //         no1: '赶紧来抢占第一位吧！',
+            //         none: '我在groupy等你哦!',
+            //         noneIdol: '还没有爱豆的排名'
+            //     }
+            //   } else {
+            //     this.idol_text= {
+            //         me: 'お気に入り',
+            //         all: '全体ランキング',
+            //         fans: '貢献ランキング',
+            //         support: '応援',
+            //         no1: 'No.1になって目立とう！',
+            //         none: 'Groupyで待ってまーす。',
+            //         noneIdol: 'ただ今集計中です'
+            //     }
+            //   }
             this.getRanking();
         }
     }

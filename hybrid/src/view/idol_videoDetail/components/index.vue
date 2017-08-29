@@ -20,7 +20,7 @@
             <swiper-slide id="swiper1">
                 <div class="income eBorder">
                     <span class="detail_title" @click="getGcoin()">{{video_text.income}}</span>
-                    <span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':(gcoinList.total || gcoinList.total == 0)}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
+                    <span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':(gcoinList.total || gcoinList.total == 0)}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
                 </div>
                 <div class="income_details eBorder">
                     <p class="detail_title">{{video_text.gift}}</p>
@@ -79,7 +79,7 @@
                                 <span class="level">Lv.{{fans.userFans?(fans.userFans.levelPlatform?fans.userFans.levelPlatform:0):0}}</span>
                                 <img class="medal_level" :src="'http://h1.groupy.vip/groupy_h5/medal/icon_medal_'+(fans.userFans.medal)+'.png'" v-if="fans.userFans.medal&&fans.userFans.medal>0" alt="">
                                 <i>
-                                    <img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png" class="likes" alt="">{{fans.expendGprice?Number(fans.expendGprice).toLocaleString(): 0}}
+                                    <img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" class="likes" alt="">{{fans.expendGprice?Number(fans.expendGprice).toLocaleString(): 0}}
                                 </i>
                             <!-- </left-slider> -->
                         </li>
