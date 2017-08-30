@@ -50,7 +50,7 @@
                 <div class="info_content">
                     <h5 class="li_title">Groupy预约</h5>
                     <p>{{applyInfo.firstName}}  {{applyInfo.lastName}}</p>
-                    <span><i>{{applyInfo.nums}}</i>枚予約した | Groupy@vip.com</span>
+                    <span><i>{{applyInfo.nums}}</i>枚予約した | {{applyInfo.email}}</span>
                     <div class="win_info"><a :href="hrefs" target="_blank" @click="p_log('share_h5_download_groupy')">Groupyをダウンロードしてもっと見よう</a></div>
                 </div>
                 <img src="/img/shows/bg_booked.png">
@@ -164,13 +164,13 @@
                 var _data = {
 
                     topic: "groupy",
-                    app: "groupyIdol",
+                    app: "groupy",
                     platform: "h5",
                     system: navigator.userAgent,
                     version: "1.0.0",
                     action: val,
                     result: "success",
-                    idolId: location.href.split('?idolId=')[1].split('#/')[0]
+                    showsId: location.href.split('?showsId=')[1].split('#/')[0]
                 }
                 http.post('http://log.groupy.cn:31311',JSON.stringify(_data)).then(function(res){
                     console.log('success');
@@ -425,11 +425,13 @@
         },
         created() {
             var ua = navigator.userAgent.toLowerCase();
-            console.log(ua)
-            if (!(/iphone|ipad|ipod/.test(ua))) {
-                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
-            }else {
+            this.p_log('idol_shareShows_h5_open');
+            if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
+            }else if(/android/.test(ua)) {
+                this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+            }else {
+                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
             }
             // this.platform();
             this.getShows();

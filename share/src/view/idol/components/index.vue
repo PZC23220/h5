@@ -11,18 +11,18 @@
                 <div class="idol_desc_content">
                     <div>
                         <img v-lazy="idol.avatar" class="avatar">
-                        <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>ファン</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>Likes</em></span><span class="cursor" @click="boxShow = true;"><img src="/img/icon_join.png"><i>入会</i></span></div>
+                        <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>ファン</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>Likes</em></span><a class="cursor" :href="hrefs" target="_blank"><img src="/img/icon_join.png"><i>入会</i></a></div>
                         <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
                         <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす。'}}</p>
-                        <div class="idol_fans_ranking cursor" @click="boxShow = true;"><i>ファンランキング</i><div><img v-for="img in fansList" :src="img.avatar?img.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="/img/icon_arrow_gray.png"></div>
+                        <a class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>ファンランキング</i><div><img v-for="img in fansList" :src="img.avatar?img.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="/img/icon_arrow_gray.png"></a>
                     </div>
                 </div>
             </div>
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">動画</a>
                 <a class="tabs" @click="changePages(1)">掲示板</a>
-                <a class="tabs" @click="boxShow = true;">個チャ</a>
-                <a class="tabs" @click="boxShow = true;">ストア</a>
+                <a class="tabs" :href="hrefs" target="_blank">個チャ</a>
+                <a class="tabs" :href="hrefs" target="_blank">ストア</a>
             </div>
             <div class="share_content">
                 <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
@@ -40,18 +40,18 @@
                                 <video-player  ref="videoPlayer" :options="hot.data.videoItemList[2]?getSrc(hot.data.videoItemList[2],hot.data.thumbnail):false"></video-player>
                                 <div class="Masked" v-if="hot.data.publicType == 1"></div>
                                 <div class="gift_content">
-                                    <img src="/img/idol/Like.png" class="cursor" @click="boxShow = true;">10
-                                    <img src="/img/idol/gift.png" class="cursor" @click="boxShow = true;">
+                                    <a :href="hrefs" target="_blank"><img src="/img/idol/Like.png" class="cursor">10</a>
+                                    <a :href="hrefs" target="_blank"><img src="/img/idol/gift.png" class="cursor"></a>
                                 </div>
                                 <span class="play_times"><img src="/img/video_icon_play times.png">{{hot.data.readCount}}</span>
                                 <div class="Masked2" v-if="hot.data.publicType == 1">
                                     <img src="/img/idol/icon_vip.png">
                                     <p>この動画は会員のみ視聴可能です</p>
-                                    <div @click="boxShow = true;">会員登録へ</div>
+                                    <a :href="hrefs" target="_blank">会員登録へ</a>
                                 </div>
                             </div>
                             <div class="video_desc_content">
-                                <a :href="hrefs" class="video_option"><span><img src="/img/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="/img/timeline_icon_likes.png">{{hot.data.popularity}}</span><div @click="boxShow = true;" class="cursor"><img src="/img/idol/icon_comment.png">コメントする</div></a>
+                                <a :href="hrefs" target="_blank" class="video_option"><span><img src="/img/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="/img/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="/img/idol/icon_comment.png">コメントする</div></a>
                                 <p class="video_text">{{hot.data.title}}</p>
                                 <ul class="comment_list" style="background: #fff;">
                                     <div class="comment_total"><span><i>コメント{{hot.data.postList.length}}件すべてを表示</i></span></div>
@@ -140,7 +140,7 @@
                 </swiper>
             </div>
         </div>
-        <div class="bullet_box" v-show="boxShow">
+        <!-- <div class="bullet_box" v-show="boxShow">
             <div class="bullet_box_content" :class="{'bullet_box_show':boxShow}">
                 <img src="/img/idol/box.png" class="box_bg">
                 <div class="box_content">
@@ -151,7 +151,7 @@
                     <a :href="hrefs" class="appstore"><img src="/img/btn_appstore.png"></a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="bigImg" @click="bigImgShow = false" :class="{'bullet_box_show':bigImgShow}"><img :src="Imgsrc"><span></span></div>
     </div>
 </template>
@@ -319,7 +319,7 @@
                 var _data = {
 
                     topic: "groupy",
-                    app: "groupyIdol",
+                    app: "groupy",
                     platform: "h5",
                     system: navigator.userAgent,
                     version: "1.0.0",
@@ -347,12 +347,14 @@
         created() {
             this.getIdolInfo();
             this.getComments();
-            // this.p_log('idol_share_h5_open');
+            this.p_log('idol_shareIdolHome_h5_open');
             var ua = navigator.userAgent.toLowerCase();
-            if (!(/iphone|ipad|ipod/.test(ua))) {
-                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
-            }else {
+            if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
+            }else if(/android/.test(ua)) {
+                this.hrefs = 'https://play.google.com/store/apps/details?id=com.groupy.app.fans';
+            }else {
+                this.hrefs = 'https://itunes.apple.com/app/id1270083927';
             }
         }
       }
@@ -434,7 +436,7 @@
                     margin-left: 10%;
                     margin-right: 10%;
                 }
-                span:last-child {
+                a {
                     float: right;
                     width: 34%;
                     height: 36px;
@@ -453,6 +455,7 @@
                 text-align: left;
                 font-weight: 100;
                 overflow: hidden;
+                display: block;
                 line-height: 25px;
                 i:first-child {
                     float: left;
@@ -551,35 +554,41 @@
         img {
             width: 34px;
             display: block;
-            margin: 150px auto 12px;
+            margin: 100px auto 12px;
         }
         p {
             font-size: 14px;
             margin-bottom: 16px;
         }
-        div {
+        a {
             width: 140px;
             height: 45px;
+            display: block;
             line-height: 45px;
             border-radius: 26px;
             background: #00B4BC;
             font-size: 18px;
             margin: 0 auto;
+            color: #fff;
         }
     }
     .gift_content {
         position: absolute;
         right: 20px;
         bottom: 50px;
-        color: #fff;
         text-align: center;
-        img {
+        a {
             display: block;
             width: 45px;
             margin: 0 auto;
+            color: #fff;
         }
-        img:last-child {
+        a:last-child {
             width: 64px;
+        }
+        img {
+            display: block;
+            width: 100%;
         }
     }
     .play_times {
@@ -753,6 +762,7 @@
         left: 0;
         top: 0;
         width: 100%;
+        max-width: 500px;
         height: 100vh;
         z-index: 5;
         background: #000;
@@ -767,6 +777,12 @@
             vertical-align: middle;
         }
 
+    }
+    @media screen and (min-width: 500px) {
+        .bigImg {
+            left: 50% !important;
+            margin-left: -250px !important;
+        }
     }
     .bullet_box_show {
         opacity: 1 !important;
@@ -800,11 +816,11 @@
     .video-js.vjs-custom-skin .vjs-control-bar .vjs-fullscreen-control  {
         display: none;
     }
-    .video-player,.vjs-poster {
-        height: calc(100vw * 502/375) !important;
-        max-height: calc(500px * 502/375) !important;
-        // background-color: rgba(0,0,0,0.2);
-    }
+    // .video-player,.vjs-poster {
+    //     height: calc(100vw * 502/375) !important;
+    //     max-height: calc(500px * 502/375) !important;
+    //     // background-color: rgba(0,0,0,0.2);
+    // }
     .video-player .video-js.vjs-custom-skin .vjs-big-play-button {
         width: 41px !important;
         height: 41px !important;

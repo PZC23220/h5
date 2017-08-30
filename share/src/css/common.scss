@@ -318,8 +318,13 @@ img.avatar {
             }
             .autoHeight {
                 width: 100%;
-                height: calc((100vw - 93px)/3);
+                // height: calc((100vw - 93px)/3);
                 position:relative;
+            }
+        }
+        @media screen and (min-width: 500px) {
+            span {
+                max-height: 142.8px !important;
             }
         }
         .oneImg {

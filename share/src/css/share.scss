@@ -81,14 +81,14 @@
 		}
 	}
 }
-.comment_list li {
+.comment_list li:not(.idol_comment) {
 	.comment_content {
 		padding: 0;
 		color: #333;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		display: -webkit-box;
-	    -webkit-line-clamp: 2;
+	    -webkit-line-clamp: 5;
 	    -webkit-box-orient: vertical;
 	    line-height: 24px;
 		span {
@@ -164,24 +164,25 @@
 }
 .more_video {
 	padding: 0 12px;
+	overflow: hidden;
 	h3 {
 		font-size: 16px;
 	}
 	ul {
-		overflow: hidden;
 		padding-bottom: 10px;
+		float: left;
+		width: calc((100vw - 36px)/2);
+		max-width: calc((500px - 60px)/2);
+		&:last-child {
+			margin-left: 12px;
+		}
 		li {
-			float: left;
-			width: calc((100vw - 36px)/2);
-			max-width: calc((500px - 60px)/2);
 			background: #FAFAFA;
+			width: 100%;
 			box-shadow: 0 2px 7px 0 rgba(201,201,201,0.75);
 			border-radius: 2px;
 			margin-bottom: 11.5px;
 			overflow: hidden;
-			&:nth-child(2n) {
-				margin-left: 12px;
-			}
 		}
 	}
 	.video_bigImg {
