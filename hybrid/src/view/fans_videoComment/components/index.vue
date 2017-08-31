@@ -190,13 +190,13 @@
                         self.getComments();
                     });
                 }else {  
-                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                    // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        if(_lan === 'zh-cn') {
-                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                         }else {
-                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                         }
+                        // if(_lan === 'zh-cn') {
+                        //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                        //  }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                         // }
                     })
                 }
             },
@@ -222,18 +222,18 @@
                                 self.comment_text = '';
                                 console.log(res)
                                 window.setupWebViewJavascriptBridge(function(bridge) {
-                                    bridge.callHandler('makeToast', '发表评论成功');
+                                    bridge.callHandler('makeToast', 'コメント投稿が完了しました。');
                                 });
                                 window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('did_post',{'post':res});
                                 })
                             }else {
                                 window.setupWebViewJavascriptBridge(function(bridge) {
-                                    if(_lan === 'zh-cn') {
-                                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                                     }else {
-                                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                                     }
+                                    // if(_lan === 'zh-cn') {
+                                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                                    //  }else {
+                                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                                     // }
                                 });
                                 window.setupWebViewJavascriptBridge(function(bridge) {
                                     bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
@@ -246,11 +246,11 @@
                         }).catch(function(err){
                             self.can_publish = true;
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                if(_lan === 'zh-cn') {
-                                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                                 }else {
-                                    bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                                 }
+                                // if(_lan === 'zh-cn') {
+                                //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                                //  }else {
+                                    bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                                 // }
                             })
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
@@ -260,11 +260,11 @@
                         });
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            if(_lan === 'zh-cn') {
-                                    bridge.callHandler('makeToast', '请添加内容');
-                                 }else {
+                            // if(_lan === 'zh-cn') {
+                            //         bridge.callHandler('makeToast', '请添加内容');
+                            //      }else {
                                     bridge.callHandler('makeToast', 'コメントを入力してください');
-                                 }
+                                 // }
                         })
                     }
                 }

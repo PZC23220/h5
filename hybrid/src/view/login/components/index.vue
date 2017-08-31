@@ -4,15 +4,15 @@
         <div class="main_content" v-if="review">
             <img src="/img/login/icon_groupy.png" class="groupy">
             <div class="inputs inputs_first"><img src="/img/login/login_icon_account.png"><input type="text" v-model="user" name="" placeholder="アカウント"></div>
-            <div class="inputs"><img src="/img/login/login_icon_password.png"><input type="text" v-model="pw" name="" placeholder="パスワード"></div>
+            <div class="inputs"><img src="/img/login/login_icon_password.png"><input type="password" v-model="pw" name="" placeholder="パスワード"></div>
             <div class="protocol"><img :src="protocol_img"  @click="change_protocol()"><a href="http://h5.groupy.vip/rules/index.html#/rule">参加アイドル向け利用規約</a></div>
 
-            <div class="login">ログイン</div>
+            <div class="login" @click="login_pw()">ログイン</div>
         </div>
         <div class="main_content" v-if="review == false">
             <img src="/img/login/icon_groupy.png" class="groupy">
-            <div class="api_login"><img src="/img/login/icon_twitter.png"><span>Twitterでログイン</span></div>
-            <div class="api_login facebook"><img src="/img/login/icon_facebook.png"><span>Facebookでログイン</span></div>
+            <div class="api_login" @click="login_tw()"><img src="/img/login/icon_twitter.png"><span>Twitterでログイン</span></div>
+            <div class="api_login facebook" @click="login_fb()"><img src="/img/login/icon_facebook.png"><span>Facebookでログイン</span></div>
             <div class="protocol protocol_bottom"><img :src="protocol_img"  @click="change_protocol()"><a href="http://h5.groupy.vip/rules/index.html#/rule">参加アイドル向け利用規約</a></div>
         </div>
     </div>
@@ -31,16 +31,17 @@
         },
         methods: {
             login_pw() {
+                var self = this;
                 if(this.user && this.pw && this.protocol) {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('login_pw',{user: this.user,pw: this.pw});
+                        bridge.callHandler('login_pw',{user: self.user,pw: self.pw});
                     });
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        if(!this.protocol) {
-                            bridge.callHandler('makeToast', '「参加アイドル向け利用規約」への\\n同意が必要です。');
+                        if(!self.protocol) {
+                            bridge.callHandler('makeToast', '「参加アイドル向け利用規約」への\n同意が必要です。');
                         }else {
-                            bridge.callHandler('makeToast', 'アカウント・パスワードが間違っています\\n再入力してください');
+                            bridge.callHandler('makeToast', 'アカウント・パスワードが間違っています\n再入力してください');
                         }
                     });
                 }
@@ -52,7 +53,7 @@
                     });
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', '「参加アイドル向け利用規約」への\\n同意が必要です。');
+                        bridge.callHandler('makeToast', '「参加アイドル向け利用規約」への\n同意が必要です。');
                     });
                 }
             },
@@ -63,7 +64,7 @@
                     });
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', '「参加アイドル向け利用規約」への\\n同意が必要です。');
+                        bridge.callHandler('makeToast', '「参加アイドル向け利用規約」への\n同意が必要です。');
                     });
                 }
             },

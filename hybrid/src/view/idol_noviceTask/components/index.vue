@@ -121,7 +121,7 @@
                     if(_lan === 'zh-cn') {
                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                      }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
                      }
                 })
             }
@@ -155,7 +155,7 @@
                             if(_lan === 'zh-cn') {
                                 bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                              }else {
-                                bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                                bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
                              }
                         })
                     }
@@ -172,7 +172,7 @@
                     if(_lan === 'zh-cn') {
                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                      }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
                      }
                 })
             }

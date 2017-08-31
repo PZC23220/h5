@@ -391,20 +391,20 @@
                 });
                 
             }else {
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                     }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                     }
+                    // if(_lan === 'zh-cn') {
+                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    //  }else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                     // }
                 })
             }
           },
           getRankingHeat(token) {
             let self = this;
             if(self.idx2 < 2) {
-                self.idx2++;
+                self.idx2++
                 let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
@@ -447,13 +447,13 @@
                     })
                 });
             }else {
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                     }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                     }
+                    // if(_lan === 'zh-cn') {
+                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    //  }else {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                     // }
                 })
             }
           },

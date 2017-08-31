@@ -3,7 +3,7 @@
         <div class="header">
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">{{idol_text.today}}</a>
-                <a class="tabs" @click="changePages(1)">{{idol_text.all}}</a>
+                <a class="tabs" @click="changePages(1)">{{idol_text.alltop}}</a>
                 <span class="bgActive"></span>
             </div>
         </div>
@@ -274,7 +274,7 @@
                     none: 'Groupyで待ってまーす。',
                     noneIdol: 'ただ今集計中です',
                     today: '今日のランキング',
-                    all: '総合ランキング'
+                    alltop: '総合ランキング'
                 },
                 swiperOption: {
                   notNextTick: true,
@@ -375,11 +375,11 @@
             }else {
                 let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                     }else {
+                    // if(_lan === 'zh-cn') {
+                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    //  }else {
                         bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                     }
+                     // }
                 })
             }
           },
@@ -436,11 +436,11 @@
             }else {
                 let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                     }else {
+                    // if(_lan === 'zh-cn') {
+                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                    //  }else {
                         bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                     }
+                     // }
                 })
             }
 
