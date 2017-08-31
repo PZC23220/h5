@@ -1,7 +1,7 @@
 <template>
     <div class="main">
        <div class="header">
-            <img src="http://h1.groupy.vip/groupy_h5/close/close.png" alt="" @click="close()">
+            <img src="http://h1.groupy.vip/groupy_h5/close/close.png" alt=""  onclick=history.go(-1)>
             <span>参加アイドル向け利用規約</span>
       </div>
         <div class="content">
@@ -58,6 +58,8 @@
         font-size: 18px;
         line-height: 43px;
         color: #666;
+        border-bottom: 1px solid #eee;
+        background: #FAFAFA;
         img {
             position: absolute;
             left: 12px;
