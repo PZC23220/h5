@@ -4,7 +4,7 @@
             <img src="http://h1.groupy.vip/groupy_h5/close/close.png" alt="" @click="close()">
             <span>参加アイドル向け利用規約</span>
       </div>
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content">
             <h3 class="rule_tile">第１条（目的）</h3>
             <p class="rule_content">      本規約は、ニュースジェット株式会社（以下「当社」といいます。）が提供するサービス「Groupy for idol」をユーザー（第２条に定義します。）が利用するにあたっての利用条件を定めるものとします。</p>
             <h3 class="rule_tile">第２条（定義）</h3>
