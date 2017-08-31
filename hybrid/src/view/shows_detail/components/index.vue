@@ -88,7 +88,7 @@
                 </li>
             </ul>
         </div>
-        <div class="footer" @click="reservationShow()" v-if="!applyInfo.id && loadingBig ==false && appIdol == false">予約する</div>
+        <div class="footer" @click="reservationShow_fun()" v-if="!applyInfo.id && loadingBig ==false && appIdol == false">予約する</div>
         <div class="footer" @click="editShow()" v-if="!applyInfo.id && loadingBig ==false && appIdol">編集</div>
     </div>
 </template>
@@ -264,10 +264,9 @@
                     }
                 }
             },
-            reservationShow() {
+            reservationShow_fun() {
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    console.log('book')
                     bridge.callHandler('book', {'showsId':self.showsInfo.id})
                 })
             },
