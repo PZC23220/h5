@@ -267,6 +267,7 @@
             reservationShow() {
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
+                    console.log('book')
                     bridge.callHandler('book', {'showsId':self.showsInfo.id})
                 })
             },
