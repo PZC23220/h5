@@ -78,7 +78,7 @@
             }
         },
         created() {
-            if(getParams('version') == '1.0.8') {
+            if(getParams('version') == '1.0.9') {
                 this.review = true;
             }
         }
