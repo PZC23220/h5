@@ -316,7 +316,7 @@
                     Gcoin: 'コイン',
                     like: 'Like',
                     me: '自分の順位',
-                    all: '総合ランキング',
+                    all: '全体ランキング',
                     noneGcoin: 'まだコインはないようです',
                     noneLike: 'まだLikeはないようです',
                     pubMsg: '貢献ランキング'
@@ -544,7 +544,7 @@
             //         Gcoin: 'コイン',
             //         like: 'Like',
             //         me: '自分の順位',
-            //         all: '総合ランキング',
+            //         all: '全体ランキング',
             //         noneGcoin: 'まだコインはないようです',
             //         noneLike: 'まだLikeはないようです',
             //         pubMsg: '貢献ランキング'

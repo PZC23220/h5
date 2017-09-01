@@ -5,7 +5,7 @@
                 <div class="idolInfo eBorder">
                     <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="avatar">
                     <p>
-                        <span><i class="idol_name">...</i>  イベント登録</span>
+                        <span><i class="idol_name">...</i>  がイベントを登録した</span>
                         <span>@Groupy</span>
                     </p>
                 </div>
@@ -37,7 +37,7 @@
             <div class="idolInfo eBorder" v-if="loadingBig == false">
                 <img v-lazy="idolInfo.avatar" class="avatar">
                 <p>
-                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  イベント登録</span>
+                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  がイベントを登録した</span>
                     <span v-show="organization.name">{{organization.name}}</span>
                 </p>
             </div>

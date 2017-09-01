@@ -364,6 +364,10 @@
     }
     .idol_detail {
         color: #666;
+        .name {
+            color: #333;
+            font-weight: 600;
+        }
     }
     .avatar_content {
         overflow: hidden;

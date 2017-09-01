@@ -10,7 +10,7 @@
                 <div class="idolInfo eBorder">
                     <img src="http://h5.groupy.vip/img/default_img.png" class="avatar">
                     <p>
-                        <span><i class="idol_name">...</i>  イベント登録</span>
+                        <span><i class="idol_name">...</i>  がイベントを登録した</span>
                         <span>@Groupy</span>
                     </p>
                 </div>
@@ -42,7 +42,7 @@
             <div class="idolInfo eBorder" v-if="loadingBig == false && pageNone == false">
                 <img :src="idolInfo.avatar?idolInfo.avatar:'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" class="avatar">
                 <p>
-                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  イベント登録</span>
+                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  がイベントを登録した</span>
                     <span v-show="organization.name">{{organization.name}}</span>
                 </p>
             </div>
