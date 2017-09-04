@@ -645,6 +645,9 @@
                     max-width: calc((100vw - 154px) * 0.83);
                     display: block;
                     float: left;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #333;
                 }
                 .level {
                     margin-top: 2px;

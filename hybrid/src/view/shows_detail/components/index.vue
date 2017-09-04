@@ -445,9 +445,9 @@
     }
     .shows_name {
         border: none !important;
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 16px !important;
         padding-bottom: 7.5px !important;
+        padding-top: 7.5px !important;
         color: #00B4BB;
     }
     .shows_time {
