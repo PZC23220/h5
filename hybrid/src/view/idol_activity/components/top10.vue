@@ -6,33 +6,33 @@
             <ul class="ranking_list">
                 <li>
                     <div class="img_content">
-                        <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown">
-                        <img v-lazy="ranking.length>0?ranking[0].avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" class="avatar">
-                        <img src="http://h3.groupy.vip/groupy_h5/activity/pic_ranking_1.png" class="ranking_pic">
+                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown">
+                        <img v-lazy="ranking.length>0?ranking[0].avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" class="avatar">
+                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/pic_ranking_1.png" class="ranking_pic">
                         <span class="idol_level">NO.1</span>
                     </div>
                     <div class="name">{{ranking.length>0?(ranking[0].nickname?ranking[0].nickname:'...'):'...'}}</div>
                     <div class="idol_desc">
                         <p><span><em>{{Number(ranking.length>0?(ranking[0].videoCount?ranking[0].videoCount:0):0).toLocaleString()}}</em></span><i>{{activity.works}}</i></p>
-                        <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>0?(ranking[0].gcoin?ranking[0].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                        <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png"><em>{{Number(ranking.length>0?(ranking[0].popularity?ranking[0].popularity:0):0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
+                        <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>0?(ranking[0].gcoin?ranking[0].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
+                        <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(ranking.length>0?(ranking[0].popularity?ranking[0].popularity:0):0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
                     </div>
                     <div class="reard_moer" v-if="isFans" @click="ranking.length>0?(ranking[0].idol_id?showIdolPage(ranking[0].idol_id):false):false">{{activity.idolPage}}</div>
                 </li>
                 <li>
                     <div class="idolranking_content">
                         <div class="img_content">
-                            <img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_crown_2.png" class="crown">
-                            <img v-lazy="ranking.length>1?ranking[1].avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" class="avatar">
-                            <img src="http://h3.groupy.vip/groupy_h5/activity/pic_ranking_2.png" class="ranking_pic">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown">
+                            <img v-lazy="ranking.length>1?ranking[1].avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" class="avatar">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/pic_ranking_2.png" class="ranking_pic">
                             <span class="idol_level">NO.2</span>
                         </div>
                         <div class="idol_content">
                             <div class="name">{{ranking.length>1?(ranking[1].nickname?ranking[1].nickname:'...'):'...'}}</div>
                             <div class="idol_desc">
                                 <p style="flex: 1;"><span style="text-align: left;margin-left: 10px;"><em>{{Number(ranking.length>1?(ranking[1].videoCount?ranking[1].videoCount:0):0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>1?(ranking[1].gcoin?ranking[1].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                                <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png"><em>{{Number(ranking.length>1?(ranking[1].popularity?ranking[1].popularity:0):0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
+                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>1?(ranking[1].gcoin?ranking[1].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
+                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(ranking.length>1?(ranking[1].popularity?ranking[1].popularity:0):0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
                             </div>
                         </div>
                     </div>
@@ -41,17 +41,17 @@
                 <li v-for="(idol,key) in ranking" v-if="key>1">
                     <div class="idolranking_content">
                         <div class="img_content">
-                            <img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_crown_3.png" class="crown">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown">
                             <img v-lazy="idol.avatar" class="avatar">
-                            <img src="http://h3.groupy.vip/groupy_h5/activity/pic_ranking_2.png" class="ranking_pic">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/pic_ranking_2.png" class="ranking_pic">
                             <span class="idol_level">NO.{{key+1}}</span>
                         </div>
                         <div class="idol_content">
                             <div class="name">{{idol.nickname?idol.nickname:'...'}}</div>
                             <div class="idol_desc">
                                 <p style="flex: 1;"><span style="text-align: left;margin-left: 10px;"><em>{{Number(idol.videoCount?idol.videoCount:0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_coins.png"><em>{{Number(idol.gcoin?idol.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                                <p><span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
+                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(idol.gcoin?idol.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
+                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
                             </div>
                         </div>
                     </div>

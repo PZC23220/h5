@@ -2,7 +2,7 @@
     <div class="main">
         <div class="header" style="border-bottom: 1px solid #eee;">
         <div class="go_back" v-if="android">
-            <img src="http://h1.groupy.vip/groupy_h5/arrow/nav_icon_arrow_black.png" alt="" @click="close()">
+            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/arrow/nav_icon_arrow_black.png" alt="" @click="close()">
             <span>{{fans_text.pubMsg}}</span>
         </div>
             <div class="detailPages">
@@ -24,132 +24,132 @@
                             <h3 class="ranking_type"  :class="{'left_hide':!meObj.position}">{{fans_text.me}}</h3>
                             <li class="con_left" :class="{'left_show':meObj.position}" v-if="meObj.position">
                                 <span v-if="!meObj.position">0</span>
-                                <span v-if="meObj.position==1"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_1.png" alt=""></span>
-                                <span v-if="meObj.position==2"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_2.png" alt=""></span>
-                                <span v-if="meObj.position==3"><img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_metal_3.png" alt=""></span>
+                                <span v-if="meObj.position==1"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
+                                <span v-if="meObj.position==2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
+                                <span v-if="meObj.position==3"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="meObj.position>3">{{meObj.position?meObj.position:'0'}}</span>
-                                <img v-lazy="meObj.fans?meObj.fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="meObj.fans?meObj.fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{meObj.fans?(meObj.fans.nickname?meObj.fans.nickname:'...'):'...'}}</em>
                                         <!-- <img :src="meObj.fans?('/static/images/icon_level_'+ (meObj.fans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{meObj.fans?(meObj.fans.levelPlatform?meObj.fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(meObj.fans.medal)+'.png'" v-if="meObj.fans?(meObj.fans.medal&&meObj.fans.medal>0):false" alt="">
+                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(meObj.fans.medal)+'.png'" v-if="meObj.fans?(meObj.fans.medal&&meObj.fans.medal>0):false" alt="">
                                     </span>
-                                    <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">{{meObj.expendGprice?Number(meObj.expendGprice).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">{{meObj.expendGprice?Number(meObj.expendGprice).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <h3 class="ranking_type">{{fans_text.all}}</h3>
                             <div class="con_left" :class="{'left_hide':rakingList.length>0}">
                                 <li>
-                                    <span><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_1.png" alt=""></span>
-                                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png"alt="" class="avatar">
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png"alt="" class="avatar">
                                     <div class="fans_content">
                                         <span><em>...</em></span>
-                                        <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">0</span>
+                                        <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">0</span>
                                     </div>
                                 </li>
                                 <li>
-                                   <span><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_2.png" alt=""></span>
-                                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png"alt="" class="avatar">
+                                   <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png"alt="" class="avatar">
                                     <div class="fans_content">
                                         <span><em>...</em></span>
-                                        <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">0</span>
+                                        <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">0</span>
                                     </div>
                                 </li>
                                 <li>
-                                   <span><img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_metal_3.png" alt=""></span>
-                                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png"alt="" class="avatar">
+                                   <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png"alt="" class="avatar">
                                     <div class="fans_content">
                                         <span><em>...</em></span>
-                                        <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">0</span>
+                                        <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">0</span>
                                     </div>
                                 </li>
                                 <li>
                                    <span>4</span>
-                                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png"alt="" class="avatar">
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png"alt="" class="avatar">
                                     <div class="fans_content">
                                         <span><em>...</em></span>
-                                        <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">0</span>
+                                        <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">0</span>
                                     </div>
                                 </li>
                                 <li>
                                    <span>5</span>
-                                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png"alt="" class="avatar">
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png"alt="" class="avatar">
                                     <div class="fans_content">
                                         <span><em>...</em></span>
-                                        <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">0</span>
+                                        <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">0</span>
                                     </div>
                                 </li>
                                 <li>
                                    <span>5</span>
-                                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png"alt="" class="avatar">
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png"alt="" class="avatar">
                                     <div class="fans_content">
                                         <span><em>...</em></span>
-                                        <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">0</span>
+                                        <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">0</span>
                                     </div>
                                 </li>
                             </div>
                             <li v-if="rakingList.length>0">
-                                <span><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_1.png" alt=""></span>
-                                <img v-lazy="rakingList[0].fans?rakingList[0].fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
+                                <img v-lazy="rakingList[0].fans?rakingList[0].fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList[0].fans?rakingList[0].fans.nickname:'...'}}</em>
                                         <!-- <img :src="rakingList.length>0?('/static/images/icon_level_'+ (rakingList[0].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{rakingList[0].fans?(rakingList[0].fans.levelPlatform?rakingList[0].fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(rakingList[0].fans.medal)+'.png'" v-if="rakingList[0].fans?(rakingList[0].fans.medal&&rakingList[0].fans.medal>0):false" alt="">
+                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(rakingList[0].fans.medal)+'.png'" v-if="rakingList[0].fans?(rakingList[0].fans.medal&&rakingList[0].fans.medal>0):false" alt="">
                                     </span>
-                                    <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">{{rakingList[0].expendGprice?Number(rakingList[0].expendGprice).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">{{rakingList[0].expendGprice?Number(rakingList[0].expendGprice).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <li v-if="rakingList.length>1">
-                                <span><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_2.png" alt=""></span>
-                                <img v-lazy="rakingList[1].fans?rakingList[1].fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
+                                <img v-lazy="rakingList[1].fans?rakingList[1].fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList[1].fans?rakingList[1].fans.nickname:'...'}}</em>
                                         <!-- <img :src="rakingList[1].fans?('/static/images/icon_level_'+ (rakingList[1].fans.levelPlatform+1) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{rakingList[1].fans?(rakingList[1].fans.levelPlatform?rakingList[1].fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(rakingList[1].fans.medal)+'.png'" v-if="rakingList[1].fans?(rakingList[1].fans.medal&&rakingList[1].fans.medal>0):false" alt="">
+                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(rakingList[1].fans.medal)+'.png'" v-if="rakingList[1].fans?(rakingList[1].fans.medal&&rakingList[1].fans.medal>0):false" alt="">
                                     </span>
-                                    <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">{{rakingList[1].expendGprice?Number(rakingList[1].expendGprice).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">{{rakingList[1].expendGprice?Number(rakingList[1].expendGprice).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <li v-if="rakingList.length>2">
-                                <span><img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_metal_3.png" alt=""></span>
-                                <img v-lazy="rakingList[2].fans?rakingList[2].fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
+                                <img v-lazy="rakingList[2].fans?rakingList[2].fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rakingList[2].fans?rakingList[2].fans.nickname:'...'}}</em>
                                         <!-- <img :src="rakingList[2].fans?('/static/images/icon_level_'+ (rakingList[2].fans.levelPlatform+2) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{rakingList[2].fans?(rakingList[2].fans.levelPlatform?rakingList[2].fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(rakingList[2].fans.medal)+'.png'" v-if="rakingList[2].fans?(rakingList[2].fans.medal&&rakingList[2].fans.medal>0):false" alt="">
+                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(rakingList[2].fans.medal)+'.png'" v-if="rakingList[2].fans?(rakingList[2].fans.medal&&rakingList[2].fans.medal>0):false" alt="">
                                     </span>
-                                    <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">{{rakingList[2].expendGprice?Number(rakingList[2].expendGprice).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">{{rakingList[2].expendGprice?Number(rakingList[2].expendGprice).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <li v-for="(idol,key) in rakingList" v-if="key > 2 && key < len">
                                 <span>{{key+1}}</span>
-                                <img v-lazy="idol.fans?idol.fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="idol.fans?idol.fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
                                         <!-- <img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform+1) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{idol.fans?(idol.fans.levelPlatform?idol.fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(idol.fans.medal)+'.png'" v-if="idol.fans?(idol.fans.medal&&idol.fans.medal>0):false" alt="">
+                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(idol.fans.medal)+'.png'" v-if="idol.fans?(idol.fans.medal&&idol.fans.medal>0):false" alt="">
                                     </span>
-                                    <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">{{idol.expendGprice?Number(idol.expendGprice).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">{{idol.expendGprice?Number(idol.expendGprice).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                         </ul>
                         <div class="default_page default_page3"  v-if="default1">
-                            <img src="http://h3.groupy.vip/groupy_h5/default_img/default_no coin.png" alt="">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no coin.png" alt="">
                             <p v-html="fans_text.noneGcoin"></p>
                         </div>
                     <!-- </scroller> -->
@@ -165,95 +165,95 @@
                             <h3 class="ranking_type" v-if="meHeatObj.position">{{fans_text.me}}</h3>
                             <li class="con_left" :class="{'left_show':meHeatObj.position}" v-if="meHeatObj.position">
                                 <span v-if="!meHeatObj.position">0</span>
-                                <span v-if="meHeatObj.position==1"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_1.png" alt=""></span>
-                                <span v-if="meHeatObj.position==2"><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_2.png" alt=""></span>
-                                <span v-if="meHeatObj.position==3"><img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_metal_3.png" alt=""></span>
+                                <span v-if="meHeatObj.position==1"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
+                                <span v-if="meHeatObj.position==2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
+                                <span v-if="meHeatObj.position==3"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="meHeatObj.position>3">{{meHeatObj.position}}</span>
-                                <img v-lazy="meHeatObj.fans?meHeatObj.fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="meHeatObj.fans?meHeatObj.fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span><em>{{meHeatObj.fans?meHeatObj.fans.nickname:'...'}}</em><img :src="meHeatObj.fans?('/img/icon_level_'+ (meHeatObj.fans.levelPlatform) +'.png'): ''" class="level" alt=""></span>
-                                    <span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png" alt="">{{meHeatObj.totalNums?Number(meHeatObj.totalNums).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{meHeatObj.totalNums?Number(meHeatObj.totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <h3 class="ranking_type">{{fans_text.all}}</h3>
                             <div class="con_left" :class="{'left_hide':rankingHeat.length>0}">
                                 <li>
-                                    <span><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_1.png" alt=""></span>
-                                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png"alt="" class="avatar">
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png"alt="" class="avatar">
                                     <div class="fans_content">
                                         <span><em>...</em></span>
-                                        <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">0</span>
+                                        <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">0</span>
                                     </div>
                                 </li>
                                 <li>
-                                   <span><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_2.png" alt=""></span>
-                                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png"alt="" class="avatar">
+                                   <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png"alt="" class="avatar">
                                     <div class="fans_content">
                                         <span><em>...</em></span>
-                                        <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">0</span>
+                                        <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">0</span>
                                     </div>
                                 </li>
                                 <li>
-                                   <span><img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_metal_3.png" alt=""></span>
-                                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png"alt="" class="avatar">
+                                   <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png"alt="" class="avatar">
                                     <div class="fans_content">
                                         <span><em>...</em></span>
-                                        <span><img src="http://h3.groupy.vip/groupy_h5/icon/timeline_icon_coins.png" alt="">0</span>
+                                        <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">0</span>
                                     </div>
                                 </li>
                             </div>
                             <li v-if="rankingHeat.length>0">
-                                <span><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_1.png" alt=""></span>
-                                <img v-lazy="rankingHeat[0].fans?rankingHeat[0].fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
+                                <img v-lazy="rankingHeat[0].fans?rankingHeat[0].fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rankingHeat[0].fans?(rankingHeat[0].fans.nickname?rankingHeat[0].fans.nickname:'...'):'...'}}</em>
                                         <span class="level">Lv.{{rankingHeat[0].fans?(rankingHeat[0].fans.levelPlatform?rankingHeat[0].fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(rankingHeat[0].fans.medal)+'.png'" v-if="rankingHeat[0].fans?(rankingHeat[0].fans.medal&&rankingHeat[0].fans.medal>0):false" alt="">
+                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(rankingHeat[0].fans.medal)+'.png'" v-if="rankingHeat[0].fans?(rankingHeat[0].fans.medal&&rankingHeat[0].fans.medal>0):false" alt="">
                                     </span>
-                                    <span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png" alt="">{{rankingHeat[0].totalNums?Number(rankingHeat[0].totalNums).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{rankingHeat[0].totalNums?Number(rankingHeat[0].totalNums).toLocaleString(): 0}}</span>
                                 </div>
                             </li>
                             <li v-if="rankingHeat.length>1">
-                                <span><img src="http://h2.groupy.vip/groupy_h5/crown_metal/icon_metal_2.png" alt=""></span>
-                                <img v-lazy="rankingHeat[1].fans?rankingHeat[1].fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
+                                <img v-lazy="rankingHeat[1].fans?rankingHeat[1].fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rankingHeat[1].fans?rankingHeat[1].fans.nickname:'...'}}</em>
                                         <!-- <img :src="rankingHeat[1].fans?('/static/images/icon_level_'+ (rankingHeat[1].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{rankingHeat[1].fans?(rankingHeat[1].fans.levelPlatform?rankingHeat[1].fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(rankingHeat[1].fans.medal)+'.png'" v-if="rankingHeat[1].fans?(rankingHeat[1].fans.medal&&rankingHeat[1].fans.medal>0):false" alt="">
+                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(rankingHeat[1].fans.medal)+'.png'" v-if="rankingHeat[1].fans?(rankingHeat[1].fans.medal&&rankingHeat[1].fans.medal>0):false" alt="">
                                     </span>
-                                    <span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png" alt="">{{rankingHeat[1].totalNums?Number(rankingHeat[1].totalNums).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{rankingHeat[1].totalNums?Number(rankingHeat[1].totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <li v-if="rankingHeat.length>2">
-                                <span><img src="http://h3.groupy.vip/groupy_h5/crown_metal/icon_metal_3.png" alt=""></span>
-                                <img v-lazy="rankingHeat[2].fans?rankingHeat[2].fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
+                                <img v-lazy="rankingHeat[2].fans?rankingHeat[2].fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{rankingHeat[2].fans?rankingHeat[2].fans.nickname:'...'}}</em>
                                         <!-- <img :src="rankingHeat[2].fans?('/static/images/icon_level_'+ (rankingHeat[2].fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{rankingHeat[2].fans?(rankingHeat[2].fans.levelPlatform?rankingHeat[2].fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(rankingHeat[2].fans.medal)+'.png'" v-if="rankingHeat[2].fans?(rankingHeat[2].fans.medal&&rankingHeat[2].fans.medal>0):false" alt="">
+                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(rankingHeat[2].fans.medal)+'.png'" v-if="rankingHeat[2].fans?(rankingHeat[2].fans.medal&&rankingHeat[2].fans.medal>0):false" alt="">
                                     </span>
-                                    <span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png" alt="">{{rankingHeat[2].totalNums?Number(rankingHeat[2].totalNums).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{rankingHeat[2].totalNums?Number(rankingHeat[2].totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                             <li v-for="(idol,key) in rankingHeat" v-if="key > 2 && key < len2">
                                 <span>{{key+1}}</span>
-                                <img v-lazy="idol.fans?idol.fans.avatar:'http://h1.groupy.vip/groupy_h5/default_img/default_img.png'" alt="" class="avatar">
+                                <img v-lazy="idol.fans?idol.fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
                                         <!-- <img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{idol.fans?(idol.fans.levelPlatform?idol.fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://h4.groupy.vip/groupy_h5/medal/icon_medal_'+(idol.fans.medal)+'.png'" v-if="idol.fans?(idol.fans.medal&&idol.fans.medal>0):false" alt="">
+                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(idol.fans.medal)+'.png'" v-if="idol.fans?(idol.fans.medal&&idol.fans.medal>0):false" alt="">
                                     </span>
-                                    <span><img src="http://h4.groupy.vip/groupy_h5/icon/timeline_icon_likes.png" alt="">{{idol.totalNums?Number(idol.totalNums).toLocaleString(): 0}}</span>
+                                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{idol.totalNums?Number(idol.totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>

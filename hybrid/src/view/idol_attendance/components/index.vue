@@ -1,42 +1,42 @@
 <template>
     <div class="main">
          <div class="content">
-            <img src="http://h2.groupy.vip/groupy_h5/attendance/bg.jpg" class="content_bg">
+            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/attendance/bg.jpg" class="content_bg">
             <div class="main_content">
                 <div class="banner_content">
-                    <img src="http://h3.groupy.vip/groupy_h5/attendance/pic_reward.png" class="banner">
+                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/attendance/pic_reward.png" class="banner">
                     <span>{{idols.length>0?idols[1].episode:'-'}}月皆勤</span>
                 </div>
                 <ul class="idolList">
                     <div class="none_loading" :class="{'none_loading_show':idols.length>0}">
                         <li>
-                            <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="idol_avatar">
-                            <img src="http://h3.groupy.vip/groupy_h5/attendance/attendance.png" class="attendance fans">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="idol_avatar">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/attendance/attendance.png" class="attendance fans">
                             <h3>idolName</h3>
                             <p>idol Introduction</p>
                         </li>
                         <li>
-                            <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="idol_avatar">
-                            <img src="http://h3.groupy.vip/groupy_h5/attendance/attendance.png" class="attendance">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="idol_avatar">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/attendance/attendance.png" class="attendance">
                             <h3>idolName</h3>
                             <p>idol Introduction</p>
                         </li>
                         <li>
-                            <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="idol_avatar">
-                            <img src="http://h3.groupy.vip/groupy_h5/attendance/attendance.png" class="attendance">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="idol_avatar">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/attendance/attendance.png" class="attendance">
                             <h3>idolName</h3>
                             <p>idol Introduction</p>
                         </li>
                         <li>
-                            <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="idol_avatar">
-                            <img src="http://h3.groupy.vip/groupy_h5/attendance/attendance.png" class="attendance">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="idol_avatar">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/attendance/attendance.png" class="attendance">
                             <h3>idolName</h3>
                             <p>idol Introduction</p>
                         </li>
                     </div>
                     <li v-for="idol in idols">
                         <img v-lazy="idol.avatar" class="idol_avatar">
-                        <img src="http://h3.groupy.vip/groupy_h5/attendance/attendance.png" class="attendance">
+                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/attendance/attendance.png" class="attendance">
                         <h3>{{idol.nickname?idol.nickname:'...'}}</h3>
                         <p>{{idol.introduce?idol.introduce:'...'}}</p>
                         <span class="idolPage" v-if="isFans">プロフィールへ</span>

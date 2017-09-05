@@ -1,20 +1,20 @@
 <template>
     <div class="main">
         <div class="header">
-            <img src="/img/icon_groupy_128.png" alt="">
+            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon_groupy_128.png" alt="">
             <p>アイドルの成長をより身近に守れるアプリ。更にプライベート情報もGET!</p>
             <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
         </div>
         <div class="content">
             <div class="idol_desc">
-                <div class="idol_desc_bg" :style="idol.avatar?'background-image: url('+ idol.avatar +');':'background-image: url(http://h5.groupy.vip/img/default_img.png);'"></div>
+                <div class="idol_desc_bg" :style="idol.avatar?'background-image: url('+ idol.avatar +');':'background-image: url(http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png);'"></div>
                 <div class="idol_desc_content">
                     <div>
                         <img v-lazy="idol.avatar" class="avatar">
-                        <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>ファン</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>Likes</em></span><a class="cursor" :href="hrefs" target="_blank"><img src="/img/icon_join.png"><i>入会</i></a></div>
+                        <div class="idol_support"><span>{{idol.fansNums?Number(idol.fansNums).toLocaleString():0}}<em>ファン</em></span><span>{{idol.popularityScore?Number(idol.popularityScore).toLocaleString():0}}<em>Likes</em></span><a class="cursor" :href="hrefs" target="_blank"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/icon_join.png"><i>入会</i></a></div>
                         <span class="idol_name">{{idol.nickname?idol.nickname:'...'}}</span>
                         <p>{{idol.introduce?idol.introduce:'Groupyで待ってまーす。'}}</p>
-                        <a class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>ファンランキング</i><div><img v-for="img in fansList" :src="img.avatar?img.avatar:'http://h5.groupy.vip/img/default_img.png'"  onerror="this.src='http://h5.groupy.vip/img/default_img.png'"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="/img/icon_arrow_gray.png"></a>
+                        <a class="idol_fans_ranking cursor" :href="hrefs" target="_blank"><i>ファンランキング</i><div><img v-for="img in fansList" v-lazy="img.avatar"></div><div class="no_fans" v-if="fansList.length<=0">No.1になって目立とう！</div><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray.png"></a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <swiper-slide id="swiper1">
                         <div class="video_content" v-for="(hot,key) in hotList" v-if="key < 5">
                             <div class="userinfo con_left" :class="{'left_show':idolShow}">
-                                <img :src="idol.avatar?idol.avatar: 'http://h5.groupy.vip/img/default_img.png'" onerror="this.src='http://h5.groupy.vip/img/default_img.png'" alt="">
+                                <img :src="idol.avatar?idol.avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" onerror="this.src='http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="">
                                 <div class="video_desc">
                                     <h3>{{idol.nickname?idol.nickname:'...'}}</h3>
                                     <p>{{formatTime(hot.data.publishTime)}}</p>
@@ -40,18 +40,18 @@
                                 <video-player  ref="videoPlayer" :options="hot.data.videoItemList[2]?getSrc(hot.data.videoItemList[2],hot.data.thumbnail):false"></video-player>
                                 <div class="Masked" v-if="hot.data.publicType == 1"></div>
                                 <div class="gift_content">
-                                    <a :href="hrefs" target="_blank"><img src="/img/idol/Like.png" class="cursor">10</a>
-                                    <a :href="hrefs" target="_blank"><img src="/img/idol/gift.png" class="cursor"></a>
+                                    <a :href="hrefs" target="_blank"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/Like.png" class="cursor">10</a>
+                                    <a :href="hrefs" target="_blank"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/gift.png" class="cursor"></a>
                                 </div>
-                                <span class="play_times"><img src="/img/video_icon_play times.png">{{hot.data.readCount}}</span>
+                                <span class="play_times"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png">{{hot.data.readCount}}</span>
                                 <div class="Masked2" v-if="hot.data.publicType == 1">
-                                    <img src="/img/idol/icon_vip.png">
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/icon_vip.png">
                                     <p>この動画は会員のみ視聴可能です</p>
                                     <a :href="hrefs" target="_blank">会員登録へ</a>
                                 </div>
                             </div>
                             <div class="video_desc_content">
-                                <a :href="hrefs" target="_blank" class="video_option"><span><img src="/img/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="/img/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="/img/idol/icon_comment.png">コメントする</div></a>
+                                <a :href="hrefs" target="_blank" class="video_option"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{hot.data.giftCount}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png">{{hot.data.popularity}}</span><div><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/icon_comment.png">コメントする</div></a>
                                 <p class="video_text">{{hot.data.title}}</p>
                                 <ul class="comment_list" style="background: #fff;">
                                     <div class="comment_total"><span><i>コメント{{hot.data.postList.length}}件すべてを表示</i></span></div>
@@ -72,7 +72,7 @@
                         <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                             <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                                 <div class="userinfo">
-                                    <img src="http://h5.groupy.vip/img/default_img.png" alt="" class="avatar">
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -83,7 +83,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img src="http://h5.groupy.vip/img/default_img.png" alt="" class="avatar">
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -94,7 +94,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img src="http://h5.groupy.vip/img/default_img.png" alt="" class="avatar">
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -105,7 +105,7 @@
                             </li>
                             <li class="defalt_msg">
                                 <div class="userinfo">
-                                    <img src="http://h5.groupy.vip/img/default_img.png" alt="" class="avatar">
+                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                     <span></span>
                                     <i></i>
                                 </div>
@@ -120,7 +120,7 @@
                                 <img v-lazy="comment.avatar" class="avatar">
                                 <span>{{comment.nickname?comment.nickname:'...'}}</span>
                                 <span class="level" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
-                                <img class="medal_level" :src="'http://h5.groupy.vip/img/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                                <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                                 <i v-html="formatTime(comment.createTime)"></i>
                             </div>
                             <div class="comment_content">
@@ -131,7 +131,7 @@
                             </div>
                         </li>
                         <div class="default_page" v-show="commentList.length == 0 && idx!=0">
-                            <img src="/img/default_no message.png" alt="">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
                             <p v-html="msg_text.noneComment"></p>
                         </div>
                     </ul>
@@ -142,7 +142,7 @@
         </div>
         <!-- <div class="bullet_box" v-show="boxShow">
             <div class="bullet_box_content" :class="{'bullet_box_show':boxShow}">
-                <img src="/img/idol/box.png" class="box_bg">
+                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/idol/box.png" class="box_bg">
                 <div class="box_content">
                     <img src="/img/icon_cancel_2.png" class="close" @click="boxShow = false">
                     <img src="/img/icon_groupy_120.png" class="groupy">

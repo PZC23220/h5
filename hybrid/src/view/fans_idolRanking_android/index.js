@@ -14,8 +14,8 @@ Vue.use(VueRouter);
 // Vue.use(VueScroller)
 Vue.use(VueLazyload, {
         preLoad: 1,
-	    error: 'http://h1.groupy.vip/groupy_h5/default_img/default_img.png',
-	    loading: 'http://h1.groupy.vip/groupy_h5/default_img/default_img.png',
+	    error: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png',
+	    loading: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png',
 	    attempt: 1
 })
 

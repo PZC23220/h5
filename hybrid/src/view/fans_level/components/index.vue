@@ -1,7 +1,7 @@
 <template>
     <div class="main">
        <div class="header" v-if="android">
-            <img src="http://h1.groupy.vip/groupy_h5/arrow/nav_icon_arrow_white.png" alt="" @click="close()">
+            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/arrow/nav_icon_arrow_white.png" alt="" @click="close()">
             <span>{{medal_text.pubMsg}}</span>
         </div>
         <div class="content" :class="{'ios': android == false}">
@@ -9,7 +9,7 @@
                 <div class="header_banner">
                     <div class="level_bg">
                         <span class="con_left" :class="{'left_show':lvNow||lvNow==0}">Lv {{lvNow?lvNow:'0'}}</span>
-                        <img src="http://h3.groupy.vip/groupy_h5/level/bg_level.png" alt="">
+                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/level/bg_level.png" alt="">
                     </div>
                     <p class="score con_left" :class="{'left_show':lvNow||lvNow==0}">{{score?score:'0/0'}}</p>
                     <div class="progress">
@@ -20,7 +20,7 @@
             </div>
             <div class="howToUpgrade">
                 <p>{{medal_text.how}}</p>
-                <img src="http://h3.groupy.vip/groupy_h5/level/pic_upgrade.png" alt="">
+                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/level/pic_upgrade.png" alt="">
                 <p v-html="medal_text.desc"></p>
             </div>
         </div>

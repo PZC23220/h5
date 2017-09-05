@@ -3,7 +3,7 @@
         <div class="content" :class="{'bottom':applyInfo.id}">
             <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                 <div class="idolInfo eBorder">
-                    <img src="http://h1.groupy.vip/groupy_h5/default_img/default_img.png" class="avatar">
+                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar">
                     <p>
                         <span><i class="idol_name">...</i>  がイベントを登録した</span>
                         <span>@Groupy</span>
@@ -12,7 +12,7 @@
                 <ul class="shows_detail">
                     <li>
                         <p class="shows_name">@Groupy</p>
-                        <p class="shows_time"><span>--.-- --</span><span><img src="http://h2.groupy.vip/groupy_h5/icon/icon_time.png">開場--:--/開演--:--</span></p>
+                        <p class="shows_time"><span>--.-- --</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_time.png">開場--:--/開演--:--</span></p>
                     </li>
                     <li>
                         <h5 class="li_title">出演者</h5>
@@ -47,12 +47,12 @@
                     <p>{{applyInfo.firstName}}  {{applyInfo.lastName}}</p>
                     <span><i>{{applyInfo.nums}}</i>枚予約した | {{applyInfo.email}}</span>
                 </div>
-                <img src="http://h3.groupy.vip/groupy_h5/banner_bg/bg_booked_750.png">
+                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/bg_booked_750.png">
             </div>
             <ul class="shows_detail" v-if="loadingBig == false">
                 <li>
                     <p class="shows_name">{{showsInfo.title}}</p>
-                    <p class="shows_time"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://h2.groupy.vip/groupy_h5/icon/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
+                    <p class="shows_time"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
                 </li>
                 <li v-if="showsInfo.groups">
                     <h5 class="li_title">出演者</h5>
