@@ -12,6 +12,7 @@ import chinese_rule from '@/components/chinese/rule'
 import chinese_privacy_policy from '@/components/chinese/privacy_policy'
 
 import japanese_videos from '@/components/japanese/videos'
+import japanese_registered from '@/components/japanese/registered'
 import japanese_idol from '@/components/japanese/idol'
 import japanese_rule from '@/components/japanese/rule'
 import japanese_privacy_policy from '@/components/japanese/privacy_policy'
@@ -81,6 +82,7 @@ export default new Router({
         {path: '', redirect: 'japanese'},
         {path: '/index_japanese/japanese',component: japanese}, 
         {path: '/index_japanese/japanese_videos',component: japanese_videos}, 
+        {path: '/index_japanese/japanese_registered',component: japanese_registered}, 
         {path: '/index_japanese/japanese_idol',component: japanese_idol}, 
         {path: '/index_japanese/japanese_rule',component: japanese_rule}, 
         {path: '/index_japanese/japanese_privacy_policy',component: japanese_privacy_policy}

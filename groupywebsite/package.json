@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "css-loader": "^0.28.7",
+    "element-ui": "^1.4.4",
     "node-sass": "^4.5.3",
     "scss": "^0.2.4",
     "scss-loader": "0.0.1",
