@@ -82,11 +82,14 @@ export default new Router({
         {path: '', redirect: 'japanese'},
         {path: '/index_japanese/japanese',component: japanese}, 
         {path: '/index_japanese/japanese_videos',component: japanese_videos}, 
-        {path: '/index_japanese/japanese_registered',component: japanese_registered}, 
+        // {path: '/index_japanese/japanese_registered',component: japanese_registered}, 
         {path: '/index_japanese/japanese_idol',component: japanese_idol}, 
         {path: '/index_japanese/japanese_rule',component: japanese_rule}, 
         {path: '/index_japanese/japanese_privacy_policy',component: japanese_privacy_policy}
       ]
+    }, {
+      path: '/japanese_registered',
+      component: japanese_registered
     }
   ],
   mode: 'history',
