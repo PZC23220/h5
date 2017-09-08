@@ -78,9 +78,9 @@
             }
         },
         created() {
-            if(getParams('version') == '1.2') {
-                this.review = true;
-            }
+            // if(getParams('version') == '1.2') {
+            //     this.review = true;
+            // }
         }
       }
 </script>

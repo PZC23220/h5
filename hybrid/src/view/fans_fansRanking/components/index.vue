@@ -319,7 +319,7 @@
                     all: '全体ランキング',
                     noneGcoin: 'まだコインはないようです',
                     noneLike: 'まだLikeはないようです',
-                    pubMsg: '貢献ランキング'
+                    pubMsg: '応援ランキング'
                 },
             }
         },
@@ -547,7 +547,7 @@
             //         all: '全体ランキング',
             //         noneGcoin: 'まだコインはないようです',
             //         noneLike: 'まだLikeはないようです',
-            //         pubMsg: '貢献ランキング'
+            //         pubMsg: '応援ランキング'
             //     }
             //   }
             self.getRanking();

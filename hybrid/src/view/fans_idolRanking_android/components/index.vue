@@ -268,7 +268,7 @@
                 idol_text: {
                     me: 'お気に入り',
                     all: '全体ランキング',
-                    fans: '貢献ランキング',
+                    fans: '応援ランキング',
                     support: '応援',
                     no1: 'No.1になって目立とう！',
                     none: 'Groupyで待ってまーす。',
@@ -439,7 +439,7 @@
                     // if(_lan === 'zh-cn') {
                     //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                     //  }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
                      // }
                 })
             }
@@ -580,7 +580,7 @@
             //     this.idol_text= {
             //         me: 'お気に入り',
             //         all: '全体ランキング',
-            //         fans: '貢献ランキング',
+            //         fans: '応援ランキング',
             //         support: '応援',
             //         no1: 'No.1になって目立とう！',
             //         none: 'Groupyで待ってまーす。',
