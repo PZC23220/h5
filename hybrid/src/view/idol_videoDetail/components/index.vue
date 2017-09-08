@@ -108,11 +108,11 @@
                             </i>
                         <!-- </left-slider> -->
                     </li>
+                    <div class="default_page" v-show="popularityList.length == 0">
+                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
+                        <p v-html="video_text.noneLike"></p>
+                    </div>
                 </ul>
-                <div class="default_page" v-show="popularityList.length == 0">
-                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
-                    <p v-html="video_text.noneLike"></p>
-                </div>
             </swiper-slide>
             <swiper-slide id="swiper3">
                 <!-- <scroller ref="my_scroller" class="my-scroller"
