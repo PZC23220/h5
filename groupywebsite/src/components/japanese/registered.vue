@@ -37,7 +37,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="口座番号" prop="accountNumber">
-          <el-input placeholder="1234567" type="number" min="0" v-model="forms.accountNumber"></el-input>
+          <el-input placeholder="1234567" type="number" v-model="forms.accountNumber"></el-input>
         </el-form-item>
         <el-form-item label="口座名義" prop="accountName">
           <el-input placeholder="一郎フリガナ：イチロウ" v-model="forms.accountName"></el-input>
@@ -52,7 +52,7 @@
           <el-input placeholder="ありましたら入力お願いします" v-model="forms.organization"></el-input>
         </el-form-item>
         <el-form-item label="電話番号" prop="telephone">
-          <el-input placeholder="" type="number" v-model="forms.telephone"></el-input>
+          <el-input placeholder="" v-model="forms.telephone"></el-input>
         </el-form-item>
         <el-form-item label="メールアドレス" prop="email">
           <el-input placeholder="" v-model="forms.email"></el-input>
@@ -146,7 +146,7 @@
           <el-input placeholder="ありましたら入力お願いします" :disabled="true" v-model="forms.organization"></el-input>
         </el-form-item>
         <el-form-item label="電話番号">
-          <el-input placeholder="" type="number" :disabled="true" v-model="forms.telephone"></el-input>
+          <el-input placeholder="" :disabled="true" v-model="forms.telephone"></el-input>
         </el-form-item>
         <el-form-item label="メールアドレス">
           <el-input placeholder="" :disabled="true" v-model="forms.email"></el-input>
@@ -155,21 +155,24 @@
           <el-input placeholder="" :disabled="true" v-model="forms.city"></el-input>
         </el-form-item>
         <div class="button_content">
-          <el-button type="primary" size="large" class="submit" @click="submitForm('forms')">編&nbsp;&nbsp;&nbsp;&nbsp;集</el-button>
+          <el-button type="primary" size="large" class="submit" @click="canEdit = true">編&nbsp;&nbsp;&nbsp;&nbsp;集</el-button>
         </div>
       </el-form>
     </div>
     <div class="login_sns" v-if="Havedlogin">
       <div class="login_content">
-        <div class="login_tips">请先登录</div>
+        <div class="login_tips">ログイン</div>
         <div class="api_login" @click="twitterLogin()"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/login/icon_twitter.png"><span>Twitterでログイン</span></div>
         <div class="api_login facebook" @click="facebookLogin()"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/login/icon_facebook.png"><span>Facebookでログイン</span></div>
+      </div>
+      <div class="loading" v-if="loading">
+        <i class="el-icon-loading"></i>
       </div>
     </div>
     <el-dialog
       :visible.sync="dialogVisible"
       size="tiny">
-      <span>successTips</span>
+      <span>{{successTips}}</span>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
       </span>
@@ -198,7 +201,7 @@
         rules: {
           bank: [{ required: true, message: '金融機関名を入力してください', trigger: 'blur' }],
           branch: [{ required: true, message: '支店名を入力してください', trigger: 'blur' }],
-          accountNumber: [{ required: true, message: '口座番号を入力してください', trigger: 'blur' }],
+          accountNumber: [{ required: true, message: '口座番号を入力してください' }],
           accountName: [{ required: true, message: '口座名義を入力してください', trigger: 'blur' }],
           accountNameHurigana: [{ required: true, message: 'フリガナを入力してください', trigger: 'blur' }],
           telephone: [{ required: true, message: '電話番号が正しく入力されていません', trigger: 'blur' }],
@@ -215,8 +218,9 @@
         Havedlogin: true,
         dialogVisible: false,
         tokens: '',
-        successTips: '录入信息成功！',
-        canEdit: true
+        successTips: 'アイドル登録していないアカウントです',
+        canEdit: true,
+        loading: false
       }
     },
     methods: {
@@ -230,6 +234,7 @@
       },
       facebookLogin() {
         var self= this;
+        self.loading = true;
         window.fbAsyncInit = function() {
             FB.init({
               appId            : '310622289379360',
@@ -273,6 +278,8 @@
       },
       twitterLogin() {
         var self = this;
+        self.loading = true;
+        console.log(self.loading);
         window.twttr = (function(d, s, id) {
              var js, fjs = d.getElementsByTagName(s)[0],
               t = window.twttr || {};
@@ -311,10 +318,11 @@
         http.post('/groupyuser/loginThirdpart?tokenize=true&snsid='+ snsid + '&snspf=' + pf).then(function(res){
             if(res.status == 200) {
                 self.tokens = res.data.accessToken;
-                self.Havedlogin = false;
+                self.getInfo();
                 console.log(self.tokens);
             }
         }).catch(function(err){
+            self.loading = false;
             self.$message.error(err.data.errorMsg);
         });
       },
@@ -325,17 +333,18 @@
             http.defaults.headers.common['Authorization'] = 'Token '+ self.tokens;
             http.post('/groupyuser/applyIdolBanking',JSON.stringify(self.forms)).then(function(res){
               if(res.status == 200) {
+                self.successTips = 'アイドル登録していないアカウントです';
                 self.dialogVisible = true;
                 self.canEdit = false;
               }else {
                 // self.dialogVisible = true;
                 // self.successTips = "录入信息失败！"
-                self.$message.error(res.errorMsg);
+                self.$message.error('エラーが発生しましたしばらくしてからもう一度お試しください');
               }
               console.log(res);
             }).catch(function(err){
               console.log(err);
-              self.$message.error(err.data.errorMsg);
+              self.$message.error('エラーが発生しましたしばらくしてからもう一度お試しください');
               // self.dialogVisible = true;
               // self.successTips = err.data.errorMsg;
             });
@@ -344,20 +353,45 @@
           }
         });
       },
-    },
-    created: function() {
-      let self = this;
+      getInfo() {
+        var self = this;
+        http.defaults.headers.common['Authorization'] = 'Token '+ self.tokens;
+          http.get('/groupyuser/idolBanking').then(function(res){
+            console.log(res);
+            self.loading = false;
+            self.Havedlogin = false;
+            if(res.status == 200) {
+              if(res.data.id) {
+                self.forms = res.data;
+                self.canEdit = false;
+              }
+            }else {
+              self.$message.error(res.errorMsg);
+            }
+          }).catch(function(err){
+            self.loading = false;
+            console.log(err);
+            self.$message.error(err.data.errorMsg);
+            // self.dialogVisible = true;
+            // self.successTips = err.data.errorMsg;
+          });
+      }
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style type="text/css">
+  .el-input.is-disabled .el-input__inner {
+    color: #666 !important;
+  }
+</style>
 <style  rel="stylesheet/scss" lang="scss" scoped>
   .registered_page {
     background: #f7f7f7;
     text-align: left;
     color: #666666;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
   }
   .protocol_error {
@@ -490,6 +524,21 @@
       .facebook {
           background: #33589d;
           margin-top: 20px;
+      }
+    }
+    .loading {
+      position: absolute;
+      left: 50%;top: 50%;
+      margin-top: -120px;
+      margin-left: -201px;
+      background: #fafafa;
+      width: 402px;height: 239px;
+      box-sizing: border-box;
+      padding-top: 80px;
+      padding-left: 176px;
+      border-radius: 6px;
+      i {
+        font-size: 50px;
       }
     }
   }
