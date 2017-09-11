@@ -1,8 +1,8 @@
 <template>
   <div class="registered_page">
-    <!-- <div class="pages_tips">ホーム&nbsp;&gt;&nbsp;<b>参加アイドルの情報登録</b></div> -->
+    <!-- <div class="pages_tips">ホーム&nbsp;&gt;&nbsp;<b>換金に関する情報登録</b></div> -->
     <div class="rules_desc" v-if="canEdit">
-      <h3>参加アイドルの情報登録</h3>
+      <h3>換金に関する情報登録</h3>
       <p class="rules_tips">Groupyで稼いだコインは換金できますので、『Groupyにおける換金に関する同意書』をご確認の上、金融機関情報をご登録ください。</p>
       <el-form label-width="130px" :rules="rules" :model="forms" ref="forms">
         <!-- <p class="forms_tips">弊社から報酬を振り込むことができるように、ご本人名義の口座情報を正しく入力してください。</p> -->
@@ -323,7 +323,7 @@
             }
         }).catch(function(err){
             self.loading = false;
-            self.$message.error(err.data.errorMsg);
+            self.$message.error('アイドル登録していないアカウントです。');
             setTimeout(function(){
               location.href = location.href;
             },1000)
