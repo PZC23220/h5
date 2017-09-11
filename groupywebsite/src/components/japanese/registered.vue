@@ -215,7 +215,7 @@
         },
         protocol_img: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/agree/agree.png',
         protocol: true,
-        Havedlogin: false,
+        Havedlogin: true,
         dialogVisible: false,
         tokens: '',
         successTips: 'アイドル登録していないアカウントです',
@@ -395,8 +395,8 @@
     background: #f7f7f7;
     text-align: left;
     color: #666666;
-    min-height: 100vh;
-    overflow: hidden;
+    height: 100vh;
+    overflow: auto;
   }
   .protocol_error {
     left: 70%;
