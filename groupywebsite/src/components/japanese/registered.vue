@@ -215,7 +215,7 @@
         },
         protocol_img: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/agree/agree.png',
         protocol: true,
-        Havedlogin: true,
+        Havedlogin: false,
         dialogVisible: false,
         tokens: '',
         successTips: 'アイドル登録していないアカウントです',
@@ -324,6 +324,10 @@
         }).catch(function(err){
             self.loading = false;
             self.$message.error(err.data.errorMsg);
+            setTimeout(function(){
+              location.href = location.href;
+            },1000)
+            
         });
       },
       submitForm(formName) {

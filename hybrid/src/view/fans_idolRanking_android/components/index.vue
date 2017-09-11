@@ -722,9 +722,9 @@
                 text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
             }
             .signature {
-                font-size: 10.5px;
-                -webkit-transform: scale(0.8);
-                margin-left: -18px;
+                // font-size: 10.5px;
+                // -webkit-transform: scale(0.8);
+                // margin-left: -18px;
                 text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
             }
             .detail {
