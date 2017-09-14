@@ -66,7 +66,7 @@
                     <h5 class="li_title">会場</h5>
                     <p>{{showsInfo.location}}</p>
                 </li>
-                <li v-if="showsInfo.introduce">
+                <li v-if="showsInfo.introduce || showsInfo.imgs">
                     <h5 class="li_title">説明</h5>
                     <div class="shows_info">
                         <span>{{showsInfo.introduce}}</span>
@@ -160,6 +160,7 @@
                 })
             },
             changeURL(val) {
+                console.log(val)
                 if(val) {
                     var str = JSON.stringify(val);
                     var len = str.length;
@@ -180,7 +181,7 @@
                         showsId: getParams('showsId')
                     }
                 }).then(function(res){
-                    console.log(res.data);
+                    // console.log(res.data);
                     self.loadingBig = false;
                     self.showsInfo = res.data;
                     if(res.data.fansList){
@@ -510,6 +511,7 @@
                 height: calc((100vw - 60px) * 1/3);
                 max-height: calc((500px - 60px) * 1/3);
                 border-radius: 3px;
+                overflow: hidden;
                 >img {
                     width: 100%;
                     min-height: calc((100vw - 60px) * 1/3);
