@@ -67,7 +67,7 @@
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                             <span class="level" style="margin-top: 1px;">Lv.{{comment.levelPlatform?comment.levelPlatform:0}}</span>
                             <img class="medal_level" style="margin-top: 2px;" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
-                            <i v-html="formatTime(comment.createTime)" style="width: calc(100% - 40px);margin-left: calc(100vw * -0.083333);"></i>
+                            <i v-html="formatTime(comment.createTime)"></i>
                         </div>
                         <div class="comment_content" v-html="TransferString(comment.content)"></div>
                     </li>
