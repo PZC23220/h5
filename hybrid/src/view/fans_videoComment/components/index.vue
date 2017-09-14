@@ -82,7 +82,7 @@
         <!-- <div class="publich_comment" @click="publishComment()"><img src="/img/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
         <div class="publich_comment" @click="autoFocus()"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/edit/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
         <div class="comment_view" v-show="win_show" @touchmove.prevent>
-            <div class="comment_desc"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="win_show=false"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
+            <div class="comment_desc"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="isClose()"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
             <textarea :placeholder="video_text.pla" autofocus v-model="comment_text"></textarea>
             <!-- <div class="publish" @click="publish()">发表</div> -->
         </div>
@@ -287,6 +287,15 @@
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('close');
                 })
+            },
+            isClose() {
+                if(getParams('addComment') ==1) {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('close');
+                    })
+                }else {
+                    this.win_show=false;
+                }
             },
             refresh (done) {
                 var self = this;
