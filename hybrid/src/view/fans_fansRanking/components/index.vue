@@ -468,23 +468,16 @@
 
           infinite (done) {
             var self = this;
-            if(self.rakingList.rankingList) {
-               if (self.rakingList.rankingList.length < self.len) {
-                  setTimeout(() => {
-                    done(true)
-                  }, 1500)
-                  return;
-                } else {
-                    setTimeout(() => {
-                      self.len += 20;
-                      done()
-                    }, 1500)
-                }
-            }else {
+           if (self.rakingList.length < self.len) {
               setTimeout(() => {
                 done(true)
               }, 1500)
               return;
+            } else {
+                setTimeout(() => {
+                  self.len += 20;
+                  done()
+                }, 1500)
             }
           },
           refresh2 (done) {
@@ -498,23 +491,16 @@
 
           infinite2 (done) {
             var self = this;
-            if(self.rakingList.rankingList) {
-               if (self.rakingList.rankingList.length < self.len) {
-                  setTimeout(() => {
-                    done(true)
-                  }, 1500)
-                  return;
-                } else {
-                    setTimeout(() => {
-                      self.len2 += 20;
-                      done()
-                    }, 1500)
-                }
-            }else {
+           if (self.rankingHeat.length < self.len2) {
               setTimeout(() => {
                 done(true)
               }, 1500)
               return;
+            } else {
+                setTimeout(() => {
+                  self.len2 += 20;
+                  done()
+                }, 1500)
             }
           }
         },
