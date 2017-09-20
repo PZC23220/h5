@@ -656,7 +656,7 @@
                     noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
                 }
               }
-            self.idolName = getParams('idolName');
+            self.idolName = decodeURIComponent(getParams('idolName'));
             self.getVideo();
             self.getComments(); 
             setTimeout(function(){
