@@ -27,7 +27,7 @@
             </div>
             <div class="video_details">
                 <span class="video_gcoins"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="" class="icon"> <i class="video_money" :class="{'video_money_show':(gcoinList.total || gcoinList.total == 0)}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
-                <span class="video_gcoins"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="" class="icon"> <i class="video_money" :class="{'video_money_show':(gcoinList.total || gcoinList.total == 0)}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
+                <span class="video_gcoins"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="" class="icon"> <i class="video_money" :class="{'video_money_show':(gcoinList.totalPopularity || gcoinList.totalPopularity == 0)}">{{gcoinList.totalPopularity?Number(gcoinList.totalPopularity).toLocaleString():0}}</i></span>
                 <span class="video_comments"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment.png"><i>添加评论</i></span>
             </div>
             <div class="video_title eBorder video_money" :class="{'video_money_show':videoTitle}"><span class="video_idol_name">{{idolName?idolName:'...'}}</span>{{videoTitle?videoTitle:'...'}}</div>
