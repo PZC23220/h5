@@ -60,39 +60,39 @@ a {color: #333;}
             }
         }
     }
-    .detailPages {
-        // border-bottom: 1px solid #FC4083;
-        overflow: hidden;
-        display: flex;
-        height: 40px;
-        line-height:28px;
-        padding: 6px 0;
-        margin: 0 12px;
-        position: relative;
-        box-sizing: border-box;
-        a {
-            color: #666;
-            display: block;
-            flex: 1;
-            margin: 0 7.5%;
-            z-index: 2;
-        }
-        span.bgActive {
-            position: absolute;
-            left: 0;
-            bottom: 0px;
-            width: 80px;
-            margin-left: calc((100vw - 24px)* 1/6 - 40px);
-            display: block;
-            z-index: 0;
-            height: 2.5px;
-            background: #FC4083;
-            transition: all 0.3s;
-        }
-        .active {
-            color: #FC4083;
-            border-radius: 50px;
-        }
+}
+.detailPages {
+    // border-bottom: 1px solid #FC4083;
+    overflow: hidden;
+    display: flex;
+    height: 40px;
+    line-height:28px;
+    padding: 6px 0;
+    margin: 0 12px;
+    position: relative;
+    box-sizing: border-box;
+    a {
+        color: #666;
+        display: block;
+        flex: 1;
+        margin: 0 7.5%;
+        z-index: 2;
+    }
+    span.bgActive {
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        width: 80px;
+        margin-left: calc((100vw - 24px)* 1/6 - 40px);
+        display: block;
+        z-index: 0;
+        height: 2.5px;
+        background: #FC4083;
+        transition: all 0.3s;
+    }
+    .active {
+        color: #FC4083;
+        border-radius: 50px;
     }
 }
 .content {
@@ -229,21 +229,16 @@ img.icon {
         margin-bottom: 12px;
         position: relative;
         &:not(:nth-child(4n-3)) {
-            margin-left: 10px;
+            margin-left: 3.2vw;
         }
         >img {
             // background: #f9f9f9;
             width: 100%;
             display: block;
             margin: 0 auto;
-            width: 78px;
+            width: 100%;
             // padding: 11.5px 8.5px;
             border-radius: 5px;
-        }
-        @media screen and (max-width: 400px) {
-            >img {
-                margin: 11.5px 5px;
-            }
         }
         p {
             overflow: hidden;

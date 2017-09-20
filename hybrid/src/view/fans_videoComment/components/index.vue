@@ -206,7 +206,9 @@
                 if(self.can_publish) {
                     if(self.comment_text !=""){
                         self.can_publish = false;
-                        self.token_ = getParams('token');
+                        if(!self.token_) {
+                            self.token_ = getParams('token');
+                        }
                         if(self.token_!='(null)' && self.token_!='') {
                             http.defaults.headers.common['Authorization'] = 'Token '+self.token_;
                         }

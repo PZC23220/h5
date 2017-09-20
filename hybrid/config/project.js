@@ -45,5 +45,6 @@ module.exports = {
         shows_detail: './src/view/shows_detail',
         login: './src/view/login',
         feedback: './src/view/feedback',
+        idol_videoDetail_2: './src/view/idol_videoDetail_2',
     },
 };
