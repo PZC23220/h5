@@ -133,7 +133,7 @@
                                         </i>
                                     <!-- </left-slider> -->
                                 </li>
-                                <div class="default_page" v-show="gcoinList.rank?gcoinList.rank.length == 0:false" style="padding-top: 32px;">
+                                <div class="default_page" v-show="gcoinList.rank?gcoinList.rank.length == 0:true" style="padding-top: 32px;">
                                     <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no coin.png" alt="">
                                     <p v-html="video_text.noneGcoin"></p>
                                 </div>

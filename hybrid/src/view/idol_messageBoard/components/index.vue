@@ -57,15 +57,21 @@
                         <div class="comment_info">
                             <img v-lazy="comment.avatar" alt="" class="avatar">
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
-                            <span class="level" style="margin-top: 1px;" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
-                            <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_'+(comment.medal)+'.png'" style="margin-top: 0px;" v-if="comment.medal&&comment.medal>0" alt="">
-                            <i v-html="formatTime(comment.createTime)"></i>
+                            <span class="level" style="margin-top: 11px;" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
+                            <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_'+(comment.medal)+'.png'" style="margin-top: 11px;" v-if="comment.medal&&comment.medal>0" alt="">
                         </div>
                         <div class="comment_content">
                             <p>{{comment.content}}</p>
                             <div class="comment_img" v-if="comment.imgs?comment.imgs.length > 0:false">
                                 <span :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="(img,idx) in JSON.parse(comment.imgs)"><img v-lazy="img" alt="" class="autoHeight" @click="showBigImg(JSON.parse(comment.imgs),idx)"></span>
                             </div>
+                            <div class="comment_reply" v-if="comment.referencePostView">
+                                <p class="comment_reply_content"><em>{{comment.referencePostView.nickname}}</em>   {{comment.referencePostView.content}}</p>
+                                <div class="comment_img" v-if="comment.referencePostView.imgs?comment.referencePostView.imgs.length > 0:false">
+                                    <span :class="{'oneImg' : JSON.parse(comment.referencePostView.imgs).length == 1}" v-for="(img2,idx2) in JSON.parse(comment.referencePostView.imgs)"><img v-lazy="img2" alt="" class="autoHeight" @click="showBigImg(JSON.parse(comment.referencePostView.imgs),idx2)"></span>
+                                </div>
+                            </div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="publishComment(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>回复</em></span></div>
                         </div>
                     </li>
                     <div class="default_page" v-show="commentList.length == 0 && idx!=0">
@@ -129,6 +135,7 @@
                         rows: self.num
                     }
                 }).then(function(res){
+                    console.log(res)
                     self.idx++;
                     self.loadingBig = false;
                     self.showLoading = false;
@@ -249,118 +256,3 @@
         }
     }
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-    .content {
-        height: 100vh;
-    }
-    .name {
-        max-width: calc(100vw - 140px);
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        display: inline-block;
-    }
-    img.avatar {
-        width: 40px;
-        height: 40px;
-    }
-    .publich_comment {
-        position: fixed;
-        right: 12px;
-        bottom: 62px;
-        opacity: 0.9;
-        background: #00B4BC;
-        border-radius: 29px;
-        // width: 93.5px;
-        height: 40px;
-        line-height: 40px;
-        padding: 0 15px;
-        color: #fff;
-        font-size: 16px;
-        img {
-            vertical-align: middle;
-            margin-right: 6px;
-            margin-bottom: 3px;
-            width: 25px;
-        }
-    }
-    .publich_tips {
-        position: fixed;
-        right: 126px;
-        bottom: 54px;
-        color: #fff;
-        font-size: 16px;
-        width: 153.5px;
-        height: 54px;
-        line-height: 27px;
-        text-align: center;
-        img {
-            position: absolute;
-            left:0;
-            top: 0;
-            z-index: -1;
-            width: 100%;
-            height: 54px;
-        }
-    }
-    .Lheight {
-        line-height: 54px;
-    }
-    .default_page {
-        height: 100vh;
-        background: #eee;
-    }
-    .loading_top span {
-        background: url(/img/pic_loading_1.png);
-        background-size: 100% auto;
-    }
-    .loading_top_show span {
-        animation: changebg 1s linear infinite;
-    }
-    .loading_top_show {
-        height: 80px;
-    }
-    .comment_content p {
-        overflow : hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 10;
-        -webkit-box-orient: vertical;
-        width: 100%;
-    }
-    @keyframes changebg{
-        from {background: url(/img/pic_loading_1.png);background-size: 100% auto;}
-        to {background: url(/img/pic_loading_2.png);background-size: 100% auto;}
-    }
-    .defalt_msg {
-        .userinfo {
-            span {
-                width: 50px;
-                height: 14px;
-                background: #eee;
-                margin-top:8px;
-            }
-        }
-        .comment_content {
-            >* {
-
-                margin-top:10px;
-                background: #eee;
-                height: 14px;
-            }
-        }
-    }
-    .page_defalt {
-        height: auto;
-        opacity: 0.8;
-        transition: all 0.3s;
-        overflow:hidden;
-    }
-    .page_defalt_none {
-        height: 0;
-        padding:0;
-        opacity: 0;
-        border: none;
-    }
-</style>

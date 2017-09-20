@@ -11,5 +11,6 @@
 /*  加上scoped可以将css的作用效果限定在该组件之内 */
  @import "../../../static/css/reset.css";
  @import "../../../static/css/common.scss";
+ @import "../../css/idol_messageBoard.scss";
 </style>
 

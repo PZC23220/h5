@@ -439,14 +439,15 @@ img.avatar {
             display: block;
             box-sizing: border-box;
             float: left;
-            width: 30%;
+            width: calc((100% - 16px) / 3);
             max-height: 25vw !important;
             overflow: hidden;
             max-height: 132px;
             border-radius: 4px;
+             margin-right: 8px !important;
             // border: 1px #ddd solid;
             &:last-child {
-                margin-right: 0;
+                margin-right: 0px !important;
             }
             .autoWidth {
                 height: calc((100vw - 93px)/3);
