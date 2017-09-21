@@ -163,9 +163,10 @@
                 let timer = new Date(key);
                 return timer.Format('MM.dd') + '&nbsp;' + timer.Format('hh:mm');
             },
-            publishComment() {
+            publishComment(obj) {
+                console.log(obj)
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('toPublish')
+                    bridge.callHandler('toPublish',obj)
                 })
             },
             showBigImg(url,idx) {
