@@ -190,7 +190,7 @@
                     }else if(token_!='(null)' && token_!='') {
                         http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
-                    http.get('http://h5.groupy.vip/japi/statistic/time').then(function(res){
+                    http.get('/statistic/time').then(function(res){
                         if(res.status == 200) {
                             self.joinList = res.data;
                         }else {
@@ -220,7 +220,7 @@
                     }else if(token_!='(null)' && token_!='') {
                         http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
-                    http.get('http://h5.groupy.vip/japi/statistic/gb').then(function(res){
+                    http.get('/statistic/gb').then(function(res){
                         // self.loadingBig = false;
                         if(res.status == 200) {
                             self.gcoinList = res.data;
@@ -261,7 +261,7 @@
                     }else if(token_!='(null)' && token_!='') {
                         http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
-                    http.get('http://h5.groupy.vip/japi/statistic/heat').then(function(res){
+                    http.get('/statistic/heat').then(function(res){
                         if(res.status == 200) {
                             self.popularityList = res.data;
                         }else {
