@@ -61,16 +61,17 @@
                             </div>
                         </li>
                     </div>
-                    <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
-                        <div class="comment_info">
-                            <img class="avatar" v-lazy="comment.avatar" alt="">
-                            <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
-                            <span class="level" style="margin-top: 1px;">Lv.{{comment.levelPlatform?comment.levelPlatform:0}}</span>
-                            <img class="medal_level" style="margin-top: 2px;" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
-                            <i v-html="formatTime(comment.createTime)"></i>
-                        </div>
-                        <div class="comment_content" v-html="TransferString(comment.content)"></div>
-                    </li>
+                     <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
+                            <div class="comment_info">
+                                <img class="avatar"  v-lazy="comment.avatar" alt="">
+                                <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
+                                <span class="level" style="margin-top: 11px;">Lv.{{comment.levelPlatform}}</span>
+                                <img class="medal_level" style="margin-top: 11px;" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                            </div>
+                            <div class="comment_content" v-html="TransferString(comment.content)"></div>
+                            <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> {{comment.referencePostView.content}}</div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span></div>
+                        </li>
                     <div class="default_page default_page3" v-show="commentList.length == 0 && loadingBig == false">
                         <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
                         <p v-html="video_text.noneComment"></p>
@@ -217,7 +218,7 @@
                             targetType: 1,
                             targetId: getParams('videoId')
                         }
-                        http.post('/post/add',JSON.stringify(_data)).then(function(res){
+                        http.post('/post/add?type=fans',JSON.stringify(_data)).then(function(res){
                             if(res.status) {
 
                                 self.refresh();
@@ -551,5 +552,45 @@
             font-size: 16px;
             line-height: 24px;
         }
+    }
+    .comment_reply {
+        background: #eee;
+        color: #333;
+        padding-left: 12px;
+        border-radius: 5px;
+        font-size: 16px;
+        padding: 8px;
+        line-height: 24px;
+        span {
+            font-weight: 600;
+            color: #151515;
+            margin-right: 8px;
+        }
+    }
+    .comment_list li .reply {
+        overflow: hidden;
+        color: #999;
+        font-size: 14px;
+        line-height: 20px;
+        padding-top: 8px;
+        font-weight:300;
+        span:first-child {
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+        span:last-child {
+            vertical-align: middle;
+            em {
+                color: #00B4BB;
+                width: auto;
+            }
+        }
+        img {
+            width: 17px;
+            margin-right: 6px;
+        }
+    }
+    .comment_list .comment_info span {
+        line-height: 40px;
     }
 </style>

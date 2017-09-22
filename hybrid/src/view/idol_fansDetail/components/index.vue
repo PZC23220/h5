@@ -4,11 +4,11 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">{{fans_text.mine}} </span>
-                    <span class="detail_gcoin"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{gcoinList.fansCount?Number(gcoinList.fansCount).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':joinList.fansCount || joinList.fansCount == 0}">{{joinList.fansCount?Number(joinList.fansCount).toLocaleString():0}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">{{fans_text.add}}</span>
-                    <span class="detail_gcoin"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':gcoinList.fansCount || gcoinList.fansCount == 0}">{{gcoinList.fansIncreased?Number(gcoinList.fansIncreased).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':joinList.fansIncreased || joinList.fansIncreased == 0}">{{joinList.fansIncreased?Number(joinList.fansIncreased).toLocaleString():0}}</i></span>
                 </p>
             </div>
             <div class="detailPages">
@@ -190,10 +190,9 @@
                     }else if(token_!='(null)' && token_!='') {
                         http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
-                    http.get('/statistic/time').then(function(res){
+                    http.get('http://h5.groupy.vip/japi/statistic/time').then(function(res){
                         if(res.status == 200) {
                             self.joinList = res.data;
-                            console.log(self.joinList);
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
@@ -221,11 +220,11 @@
                     }else if(token_!='(null)' && token_!='') {
                         http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
-                    http.get('/statistic/gb').then(function(res){
+                    http.get('http://h5.groupy.vip/japi/statistic/gb').then(function(res){
                         // self.loadingBig = false;
                         if(res.status == 200) {
                             self.gcoinList = res.data;
-                            console.log(self.gcoinList)
+                            // console.log(self.gcoinList)
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
@@ -262,11 +261,9 @@
                     }else if(token_!='(null)' && token_!='') {
                         http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
-                    console.log(http.defaults.headers.common)
-                    http.get('/statistic/heat').then(function(res){
+                    http.get('http://h5.groupy.vip/japi/statistic/heat').then(function(res){
                         if(res.status == 200) {
                             self.popularityList = res.data;
-                            console.log(self.popularityList)
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {

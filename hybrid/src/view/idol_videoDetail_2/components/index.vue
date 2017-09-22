@@ -22,13 +22,14 @@
                 preload>
                 您的浏览器不支持 video 标签。
                 </video>
+                <!-- <div  class="poster" v-if="posterSee"><img :src="videoPoster"><span></span></div> -->
                 <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play" v-if="videoPlay" @click="videoPlayed()">
                 <img :src="isMuted" class="video_muted" @click="videoMuted()">
             </div>
             <div class="video_details">
                 <span class="video_gcoins"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="" class="icon"> <i class="video_money" :class="{'video_money_show':(gcoinList.total || gcoinList.total == 0)}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
                 <span class="video_gcoins"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="" class="icon"> <i class="video_money" :class="{'video_money_show':(gcoinList.totalPopularity || gcoinList.totalPopularity == 0)}">{{gcoinList.totalPopularity?Number(gcoinList.totalPopularity).toLocaleString():0}}</i></span>
-                <span class="video_comments"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment.png"><i>添加评论</i></span>
+                <span class="video_comments" v-show='false' @click="add_reply(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment.png"><i>添加评论</i></span>
             </div>
             <div class="video_title eBorder video_money" :class="{'video_money_show':videoTitle}"><span class="video_idol_name">{{idolName?idolName:'...'}}</span>{{videoTitle?videoTitle:'...'}}</div>
             <div class="detailPages" id="scrollIntoPages">
@@ -236,6 +237,7 @@
                   },
                 },
                 isMuted: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/video_icon_voice_on.png',
+                posterSee: true,
                 videoSrc: '',
                 videoPoster: '',
                 dMuted: false,
@@ -292,15 +294,18 @@
             },
             videoPlayed() {
                 $('#idolVideo')[0].play();
+                this.posterSee = false;
                 this.videoPlay = false;
             },
             onPlayerEnded() {
                 this.videoPlay = true;
             },
             add_reply(obj) {
-                this.reply_comment_content = obj.content;
-                this.reply_comment_content_fans = obj.nickname;
-                this.commentId = obj.id;
+                if(obj) {
+                    this.reply_comment_content = obj.content;
+                    this.reply_comment_content_fans = obj.nickname;
+                    this.commentId = obj.id;
+                }
                 this.reply = true;
                 setTimeout(function(){
                     document.querySelector('textarea').focus();
@@ -322,7 +327,7 @@
                         reference: self.commentId
                     }
                     console.log(_data);
-                    http.post('/post/add',JSON.stringify(_data)).then(function(res){
+                    http.post('/post/add?type=idol',JSON.stringify(_data)).then(function(res){
                         if(res.status) {
                             self.refresh();
                             self.reply_content = '';
@@ -416,9 +421,7 @@
                         }
                     }).then(function(res){
                         if(res.status == 200) {
-                            if(res.data.thumbnail) {
-                                self.videoPoster = res.data.thumbnail;
-                            }else if(res.data.firstFrame) {
+                            if(res.data.firstFrame) {
                                 self.videoPoster = res.data.firstFrame;
                             }
                             if(res.data.title) {
@@ -429,6 +432,8 @@
                                 self.videoSrc = res.data.videoItemList[len].url;
                                 let ele = document.querySelector('#scrollIntoPages');
                                 ele.scrollIntoView(false);
+                                    console.log(`calc(100vw * ${res.data.videoItemList[len].height}/${res.data.videoItemList[len].width})`)
+                                    $('.poster').css('height',`calc(100vw * ${res.data.videoItemList[len].height}/${res.data.videoItemList[len].width})`)
                             }
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
