@@ -52,7 +52,7 @@
                             </div>
                             <div class="comment_content" v-html="TransferString(comment.content)"></div>
                             <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> {{comment.referencePostView.content}}</div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="add_reply(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>回复</em></span></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="add_reply(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
                         </li>
                         <div class="default_page default_page3" v-show="commentList.length == 0">
                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
@@ -171,7 +171,7 @@
           <div class="Forbidden"></div>
         </div>
         <div class="reply_container" v-if="reply">
-            <div class="reply_header"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" @click="reply = false">回复评论<span @click="reply_submit()">发布</span></div>
+            <div class="reply_header"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" @click="reply = false">リプライ<span @click="reply_submit()">送信</span></div>
             <div class="reply_comment_content"><span>{{reply_comment_content_fans}}</span>{{reply_comment_content}}</div>
             <textarea class="reply_content" v-model="reply_content" placeholder="回复みおな"></textarea>
         </div>

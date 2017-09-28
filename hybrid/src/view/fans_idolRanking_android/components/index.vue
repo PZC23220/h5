@@ -337,7 +337,6 @@
                         filter: 'today'
                     }
                 }).then(function(res){
-                    self.loadingBig = false;
                     let allFansList = [],meFansList = [];
                         if(res.data) {
                             if(!res.data.rankingList) {
@@ -356,18 +355,16 @@
                                 }
                                 self.getFansList(meFansList,'me')
                             }
-                            console.log(self.rakingList);
-                            console.log(self.me);
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
+                                bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
                                     self.getRanking(responseData.token);
                                 })
                             })
                         }
                 }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
+                        bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
                             self.getRanking(responseData.token);
                         })
                     })
@@ -417,8 +414,6 @@
                                 }
                                 self.getFansList(meFansList2,'me2')
                             }
-                            console.log(self.rakingList2);
-                            console.log(self.me2);
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
@@ -436,11 +431,7 @@
             }else {
                 let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    // if(_lan === 'zh-cn') {
-                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                    //  }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                     // }
+                    bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
                 })
             }
 
@@ -453,16 +444,12 @@
                 if(res.data.length > 0) {
                     if(arr == 'all') {
                         self.allFans = res.data;
-                        console.log(self.allFans);
                     }else if(arr == 'me') {
                         self.meFans = res.data;
-                        console.log(self.allFans);
                     }else if(arr == 'all2') {
                         self.allFans2 = res.data;
-                        console.log(self.allFans);
                     }else if(arr == 'me2') {
                         self.meFans2 = res.data;
-                        console.log(self.allFans);
                     }
                 }
             })
@@ -478,7 +465,7 @@
           refresh2 (done) {
             var self = this;
             setTimeout(() => {
-                self.idx2 = 0;
+              self.idx2 = 0;
               self.getRanking2();
               done()
             }, 500)

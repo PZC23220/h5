@@ -71,7 +71,7 @@
                                     <span :class="{'oneImg' : JSON.parse(comment.referencePostView.imgs).length == 1}" v-for="(img2,idx2) in JSON.parse(comment.referencePostView.imgs)"><img v-lazy="img2" alt="" class="autoHeight" @click="showBigImg(JSON.parse(comment.referencePostView.imgs),idx2)"></span>
                                 </div>
                             </div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="publishComment(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>回复</em></span></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="publishComment(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
                         </div>
                     </li>
                     <div class="default_page" v-show="commentList.length == 0 && idx!=0">
