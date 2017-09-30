@@ -61,12 +61,12 @@
                             <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_'+(comment.medal)+'.png'" style="margin-top: 11px;" v-if="comment.medal&&comment.medal>0" alt="">
                         </div>
                         <div class="comment_content">
-                            <p>{{comment.content}}</p>
+                            <p v-html="TransferString(comment.content)"></p>
                             <div class="comment_img" v-if="comment.imgs?comment.imgs.length > 0:false">
                                 <span :class="{'oneImg' : JSON.parse(comment.imgs).length == 1}" v-for="(img,idx) in JSON.parse(comment.imgs)"><img v-lazy="img" alt="" class="autoHeight" @click="showBigImg(JSON.parse(comment.imgs),idx)"></span>
                             </div>
                             <div class="comment_reply" v-if="comment.referencePostView">
-                                <p class="comment_reply_content"><em>{{comment.referencePostView.nickname}}</em>   {{comment.referencePostView.content}}</p>
+                                <p class="comment_reply_content"><em>{{comment.referencePostView.nickname}}</em> <p v-html="TransferString(comment.referencePostView.content)"></p></p>
                                 <div class="comment_img" v-if="comment.referencePostView.imgs?comment.referencePostView.imgs.length > 0:false">
                                     <span :class="{'oneImg' : JSON.parse(comment.referencePostView.imgs).length == 1}" v-for="(img2,idx2) in JSON.parse(comment.referencePostView.imgs)"><img v-lazy="img2" alt="" class="autoHeight" @click="showBigImg(JSON.parse(comment.referencePostView.imgs),idx2)"></span>
                                 </div>
@@ -124,10 +124,20 @@
         'v-scroll': Scroll
         },
         methods: {
+            TransferString(content) {
+                 let string = content;    
+                 try{    
+                    string=string.replace(/\r\n/g,"<br>")    
+                    string=string.replace(/\n/g,"<br>");    
+                 }catch(e) {    
+                    console.log(e.message);    
+                 }
+                 return string;    
+            },
             getComments() {
                 let self = this;
                 let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                http.get('/post/list',{
+                http.get('http://h5.groupy.vip/japi/post/list',{
                     params: {
                         targetType: 3,
                         targetId: getParams('targetId'),
