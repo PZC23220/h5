@@ -51,7 +51,7 @@
                                 <img class="medal_level" style="margin-top: 11px;" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                             </div>
                             <div class="comment_content" v-html="TransferString(comment.content)"></div>
-                            <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> {{comment.referencePostView.content}}</div>
+                            <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> <p v-html="TransferString(comment.referencePostView.content)"></p></div>
                             <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="add_reply(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
                         </li>
                         <div class="default_page default_page3" v-show="commentList.length == 0">
