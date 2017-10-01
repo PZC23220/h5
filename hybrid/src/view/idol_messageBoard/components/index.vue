@@ -137,7 +137,7 @@
             getComments() {
                 let self = this;
                 let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                http.get('http://h5.groupy.vip/japi/post/list',{
+                http.get('/post/list',{
                     params: {
                         targetType: 3,
                         targetId: getParams('targetId'),
