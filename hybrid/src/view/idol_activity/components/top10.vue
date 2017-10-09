@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="content">
-            <img src="/img/activity/banner.jpg" class="banner">
+            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg" class="banner">
             <h2><span style="left: 0;"></span>{{activity.theme}}<span style="right: 0;"></span></h2>
             <ul class="ranking_list">
                 <li>
@@ -126,25 +126,25 @@
                 this.isFans = true;
             }
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
-                 this.activity= {
-                    theme: '当前排名',
-                    works: '参赛视频',
-                    Gcoin: '获得G币',
-                    like: '获得Like',
-                    videos: '查看参赛视频',
-                    idolPage: '查看主页'
-                }
-              } else {
-                this.activity= {
-                    theme: 'ランキング',
-                    works: '作品',
-                    Gcoin: 'コイン',
-                    like: 'Like',
-                    videos: '参加作品一覧',
-                    idolPage: 'プロフィールへ'
-                }
-              }
+             // if(_lan === 'zh-cn') {
+             //     this.activity= {
+             //        theme: '当前排名',
+             //        works: '参赛视频',
+             //        Gcoin: '获得G币',
+             //        like: '获得Like',
+             //        videos: '查看参赛视频',
+             //        idolPage: '查看主页'
+             //    }
+             //  } else {
+             //    this.activity= {
+             //        theme: 'ランキング',
+             //        works: '作品',
+             //        Gcoin: 'コイン',
+             //        like: 'Like',
+             //        videos: '参加作品一覧',
+             //        idolPage: 'プロフィールへ'
+             //    }
+             //  }
             this.getList();
         }
     }
@@ -152,34 +152,24 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
     .content {
-        background-image: url(/img/activity/bg.jpg);
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat; 
-        top: 0;
-        height: 100vh;
-        box-sizing: border-box;
-        padding-bottom: 20px;       
-    }
-    .banner {
-        display: block;
-        width: 100%;
+        background-image: linear-gradient(140deg, #FFCC54 6%, #FF927C 100%);   
     }
     h2 {
         font-size: 16px;
         color: #fff;
+        background: none;
         text-align: center;
         font-weight: 300;
         width: 143px;
         margin: 0 auto;
         position: relative;
-        margin-top: 14.5px;
+        margin-top: 5px;
         span {
             position: absolute;
             width: 30px;
             height: 1px;
             background-color: #fff;
-            top: 13.5px;
+            top: 50%;
         }
     }
     .ranking_list {

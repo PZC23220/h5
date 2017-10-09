@@ -1,14 +1,24 @@
 <template>
     <div class="main">
          <div class="content">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/banner.jpg" class="banner">
+            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg" class="banner">
             <h2>{{activity.theme}}</h2>
             <div class="activity_time">
                 <h4>{{activity.time}}</h4>
                 <div class="duration_time">
-                    <p><span>{{activity.start}}</span><i>2017年10月10日（火）00:00</i></p>
-                    <p><span>{{activity.end}}</span><i>2017年10月20日（金）23:59</i></p>
+                    <p><span>{{activity.start}}</span><i>2017年10月20日（金） 00:00:00</i></p>
+                    <p><span>{{activity.end}}</span><i>2017年10月26日（木） 23:59:59</i></p>
                 </div>
+            </div>
+            <div class="activity_rule">
+                <h4>{{activity.desc.title}}</h4>
+                <p v-html="activity.desc.p1"></p>
+                <p v-html="activity.desc.p2"></p>
+                <p v-html="activity.desc.p3"></p>
+            </div>
+            <div class="activity_rule">
+                <h4>{{activity.obj.title}}</h4>
+                <p v-html="activity.obj.p1"></p>
             </div>
             <div class="activity_rule">
                 <h4>{{activity.rule.title}}</h4>
@@ -63,8 +73,8 @@
                             </div>
                         </li>
                     </div>
-                    <h5 v-if="me.ranking">{{activity.me}}</h5>
-                    <li v-if="me.ranking">
+                    <h5 v-if="havedMe">{{activity.me}}</h5>
+                    <li v-if="havedMe">
                         <span :class="[{'first':me.ranking == 0},{'second':me.ranking == 1},{'three':me.ranking > 1},{'ten':me.ranking > 9}]">{{me.ranking?me.ranking:'-'}}</span>
                         <div class="img_content"><img v-lazy="me.avatar" class="avatar"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="me.ranking?me.ranking==1:false"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="me.ranking?me.ranking==2:false"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="me.ranking?me.ranking>2:false"></div>
                         <div class="idol_content">
@@ -76,8 +86,8 @@
                             </div>
                         </div>
                     </li>
-                    <h5>{{activity.all}}</h5>
-                    <li v-for="(idol,key) in ranking" v-if="key < 3">
+                    <h5 v-if="ranking.length > 0">{{activity.all}}</h5>
+                    <li v-for="(idol,key) in ranking" v-if="ranking.length > 0 && key < 3">
                         <span :class="[{'first':key == 0},{'second':key == 1},{'three':key > 1}]">{{key+1}}</span>
                         <div class="img_content"><img v-lazy="idol.avatar" class="avatar"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="idol.ranking?idol.ranking==1:false"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="idol.ranking?idol.ranking==2:false"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="idol.ranking?idol.ranking>2:false"></div>
                         <div class="idol_content">
@@ -89,7 +99,8 @@
                             </div>
                         </div>
                     </li>
-                    <router-link to="/top10" class="reard_more">{{activity.more}}</router-link>
+                    <li v-if="ranking.length <= 0" style="text-align: center;">没有排名</li>
+                    <router-link to="/top10" class="reard_more" v-if="ranking.length > 0">{{activity.more}}</router-link>
                 </ul>
             </div>
             <ul class="activity_reward">
@@ -97,16 +108,16 @@
                 <li>
                     <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/icon_1.png">
                     <div class="reward_desc">
-                        <p><span></span><i>{{activity.rewards[0].p1}}</i></p>
-                        <p><span></span><i>{{activity.rewards[0].p2}}</i></p>
+                        <p><i>{{activity.rewards[0].p1}}</i></p>
+                        <!-- <p><span></span><i>{{activity.rewards[0].p2}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p3}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p4}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p5}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p6}}</i></p>
-                        <p><span></span><i>{{activity.rewards[0].p7}}</i></p>
+                        <p><span></span><i>{{activity.rewards[0].p7}}</i></p> -->
                     </div>
                 </li>
-                <li>
+                <!-- <li>
                     <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/icon_2.png">
                     <div class="reward_desc">
                         <p><span></span><i>{{activity.rewards[1].p1}}</i></p>
@@ -125,7 +136,7 @@
                         <p><span></span><i>{{activity.rewards[2].p4}}</i></p>
                         <p><span></span><i>{{activity.rewards[2].p5}}</i></p>
                     </div>
-                </li>
+                </li> -->
             </ul>
          </div>
     </div>
@@ -141,8 +152,9 @@
                 idx: 0,
                 idx2: 0,
                 loadingShow: false,
+                havedMe: false,
                 activity: {
-                    theme:' ＃Groupy盛り上がれる動画コンテスト＃',
+                    theme:' 可楽生活',
                     time: 'イベント期間',
                     start: '開始日時',
                     end: '終了日時',
@@ -158,17 +170,27 @@
                     more: 'もっと見る',
                     rule: {
                         title: '応募方法',
-                        p1: '1.イベント期間中、「#Groupy動画コンテスト」タグをつけて投稿します。テーマはご自由にお考えください。',
-                        p2: '2.イベント期間外は、「＃Groupy動画コンテスト」をつけて投稿しても集計されません。',
+                        p1: '1.イベント期間中、<i>「#可楽生活」</i>タグをつけて投稿します。テーマはご自由にお考えください。',
+                        p2: '2.イベント期間外は、<i>「＃可楽生活」</i>をつけて投稿しても集計されません。',
                         p3: '3.イベント期間中は、動画を何本投稿してもOKです。'
+                    },
+                    obj: {
+                        title: '対象',
+                        p1: 'ランキング1位の所属ユニット全員（ソロの方も参加可能）'
+                    },
+                    desc: {
+                        title: '「可楽生活」とは？',
+                        p1: '<i>「可楽生活」</i>とは、中国の大手新聞社「羊城晩報」傘下の15〜35歳の若者向けのファッション＆ライフスタイル誌です。',
+                        p2: '2003年に創刊し、発行部数が中国の華南地方一位として、高く評価されています。更に2013年に読者がより便利に情報を入手できるように、公式アプリがリリースされました。',
+                        p3: '中国のファッション誌<i>「可楽生活」</i>に、上位1名の所属ユニット全員が中面ページに登場する！是非奮ってご参加ください！'
                     },
                     fansrule: {
                         title: '集計方法',
-                        p1: '1. 全ての参加動画のLike数とギフト数の合計によってランキングが決まります。',
-                        p2: '2. ランキングはイベント詳細ページにリアルタイムで集計されます。'
+                        p1: '1.全ての参加動画のLike数とギフト数の合計によってランキングが決まります。',
+                        p2: '2.ランキングはイベント詳細ページにリアルタイムで集計されます。'
                     },
                     rewards: [{
-                        p1: '賞金20000円',
+                        p1: 'ランキング1位の所属ユニット全員（ソロの方も参加可能）は雑誌の取材を受け、中面ページに登場して頂きます。',
                         p2: '次回のイベントのイメージキャラクターとして起用します（トップバナー・宣伝動画に出演して頂きます）。',
                         p3: 'アプリの起動画面に掲載されます（掲載期間は2日間となります）。',
                         p4: 'Twitter公式アカウントで1位として発表されます。',
@@ -204,10 +226,12 @@
                     }
                 }).then(function(res){
                     self.ranking = res.data.ranking;
-                    self.me = res.data.self;
+                    if(res.data.self) {
+                        self.me = res.data.self;
+                        self.havedMe = true;
+                    }
                     self.loadingShow = true;
-                    console.log(self.ranking);
-                    console.log(self.me);
+                    console.log(res)
                 }).catch(function(){
                     self.idx++;
                     window.setupWebViewJavascriptBridge(function(bridge) {
@@ -231,347 +255,7 @@
         },
         created() {
              let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             // if(_lan === 'zh-cn') {
-             //     this.activity= {
-             //        theme:' #我爱装扮#',
-             //        time: '活动时间',
-             //        start: '开始',
-             //        end: '结束',
-             //        rewardList: ' 活动排名',
-             //        works: '参赛视频',
-             //        Gcoin: '获得G币',
-             //        like: '获得Like',
-             //        videos: '参加作品一覧',
-             //        noRanking: '暂无排名',
-             //        award: '活动奖励',
-             //        me: ' 我的排名',
-             //        all: '全部排名',
-             //        more: '查看更多',
-             //        rule: {
-             //            title: '参赛规则',
-             //            p1: '1.爱豆发布视频的时候，给视频手动填写标签#我爱装扮 即可参赛',
-             //            p2: '2.一个主题结束以后，即使爱豆添加该主题标签，也无法参赛，分数统计只在活动期间计算',
-             //            p3: '3.活动期间，爱豆可发布多个参赛视频',
-             //            p4: '4.活动根据爱豆参与活动的所有参赛视频的收获的人气汇总排名'
-             //        },
-             //        rewards: [{
-             //            p1: '获得奖励20000日元；',
-             //            p2: '代言下一个主题活动；',
-             //            p3: '在闪屏曝光2天；',
-             //            p4: '顶部Banner公布冠军曝光；',
-             //            p5: 'Twitter，weibo公布冠军曝光；',
-             //            p6: '微博置顶最高人气视频，微博，bilibili发布活动期间人气参赛视频；',
-             //            p7: '最高人气视频在Groupy置顶'
-             //        }, {
-             //            p1: '获得奖励10000日元；',
-             //            p2: '闪屏曝光1天',
-             //            p3: '顶部banner亚军公布曝光；',
-             //            p4: '微博，Twitter公布亚军曝光；',
-             //            p5: '微博，bilibili发布人气参赛视频'
-             //        }, {
-             //            p1: '获得奖励5000日元；',
-             //            p2: '闪屏曝光1天；',
-             //            p3: '顶部banner季军公布；',
-             //            p4: '微博，Twitter季军公布；',
-             //            p5: '微博，bilibili高人气参赛视频；'
-             //        }]
-             //    }
-             //  } else {
-             //    this.activity= {
-             //        theme:' ＃cosplayが大好き＃',
-             //        time: 'イベント期間',
-             //        start: '開始日時',
-             //        end: '終了日時',
-             //        rewardList: 'ランキング',
-             //        works: '作品',
-             //        Gcoin: 'コイン',
-             //        like: 'Like',
-             //        videos: '参加作品一覧',
-             //        noRanking: '集計中',
-             //        award: '特典',
-             //        me: '自分の順位',
-             //        all: '全体ランキング',
-             //        more: 'もっと見る',
-             //        rule: {
-             //            title: 'ルール',
-             //            p1: '1.イベント期間自分の動画タイトルに、<i style="color: #fc4c86;">「＃cosplayが大好き」</i>をつけて、投稿しましょう。',
-             //            p2: '2.イベント期間に過ぎると、投稿に「＃cosplayが大好き」をつけても無効となります。',
-             //            p3: '3.イベント期間にアイドル1人は何回動画を投稿してもOK。',
-             //            p4: '4.参加アイドルが期間内、企画に動画を投稿し、全部の参加作品から獲得したLike、ギフティング等によって順位が決まります。'
-             //        },
-             //        rewards: [{
-             //            p1: '賞金20000円の贈呈。',
-             //            p2: '次の限定カテゴリキャンペーンのイメージキャラクターに起用されます。',
-             //            p3: 'アプリの起動画面に掲載されます（掲載期間は2日間となります）。',
-             //            p4: 'アプリのトップバナーに掲載されます。',
-             //            p5: 'Twitter、weibo公式アカウントに1位が発表されます。',
-             //            p6: '中国の人気サイトweiboで一番好評の参加投稿をトップに固定表示されます。さらにweiboやbilibiliに人気参加作品は発表されます。',
-             //            p7: '一番好評の参加投稿をGroupyのホームページのトップに掲載されます。'
-             //        }, {
-             //            p1: '賞金10000円の贈呈。',
-             //            p2: 'アプリの起動画面に掲載されます（掲載期間は1日となります）。',
-             //            p3: 'アプリのトップバナーに掲載されます。',
-             //            p4: 'Twitter、weibo公式アカウントに2位が発表されます。',
-             //            p5: '中国の人気サイトweibo、bilibiliに人気参加作品は発表されます。'
-             //        }, {
-             //            p1: '賞金5000円の贈呈。',
-             //            p2: 'アプリの起動画面に掲載されます（掲載期間は1日となります）。',
-             //            p3: 'アプリのトップバナーに掲載されます。',
-             //            p4: 'Twitter、weibo公式アカウントに3位が発表されます。',
-             //            p5: '中国の人気サイトweibo、bilibiliに人気参加作品は発表されます。'
-             //        }]
-             //    }
-              // }
             this.getList();
         }
     }
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-    .content {
-        background: #fff3f6;
-        top: 0;
-        height: 100vh;
-        box-sizing: border-box;
-        padding-bottom: 20px;       
-    }
-    .banner {
-        width: 100%;
-        display: block;
-    }
-    h2 {
-        background: #E493A5;
-        color: #fff;
-        font-size: 16px;
-        text-align: center;
-        height: 40px;
-        line-height: 40px;
-        font-weight: 100;
-    }
-    h4 {
-        display: inline-block;
-        background-image: linear-gradient(150deg, #FF92AA 0%, #EE538A 100%);
-        border-radius: 1px 35px 35px 1px;
-        line-height: 27px;
-        color: #fff;
-        padding-left: 12px;
-        padding-right: 19px;
-        margin-top: 13.5px;
-    }
-    .duration_time {
-        overflow: hidden;
-        display: flex;
-        box-sizing: border-box;
-        margin: 0 12px;
-        padding: 13px 0;
-        opacity: 0.8;
-        border-bottom: #FC4083 solid 1px;
-        p {
-            flex: 1;
-            span {
-                font-size: 10px;
-                display: inline-block;
-                padding: 0 3px;
-                font-weight: 100;
-                -webkit-transform: scale(0.8);
-                color: #fff;
-                background: #42C8E4;
-                border-radius: 2px;
-                margin-right: 28px;
-                vertical-align: middle;
-            }
-            i {
-                font-size: 16px;
-                display: inline-block;
-                vertical-align: middle;
-            }
-        }
-    }
-    .activity_rule {
-        padding-bottom: 8px;
-        p {
-            padding: 12px 12px 0;
-            box-sizing: border-box;
-            font-size: 14px;
-            line-height: 20px;
-            i {
-                color: #fc4c86;
-            }
-        }
-    }
-    .activity_ranking {
-        font-size: 14px;
-        >p {
-            padding-left: 12px;
-            padding-top: 12px;
-            color: #999;
-        }
-        .ranking_list {
-            padding: 12px 12px 0;
-            text-align: center;
-            h5 {
-                color: #999;
-                text-align: left;
-            }
-            li {
-                text-align: left;
-                overflow: hidden;
-                border-bottom: 1px solid #eee;
-                padding: 10px 0;
-                >* {
-                    float: left;
-                }
-                >span {
-                    font-family: 'Helvetica Condensed Bold Italic';
-                    font-size: 24px;
-                    margin-top: 15px;
-                    display: inline-block;
-                    width: 28px;
-                    // text-align: center;
-                }
-                >span.first {
-                    color: #F3B714;
-                }
-                >span.second {
-                    color: #888;
-                }
-                >span.three {
-                    color: #FF8500;
-                }
-                >.img_content {
-                    width: 50px;
-                    position: relative;
-                    padding-top: 9px;
-                    padding-left: 4px;
-                    margin-right: calc(100vw * 0.04);
-                    img.avatar {
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 50%;
-                        border: 1px solid #888;
-                    }
-                    img.crown {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        width: 25px;
-                    }
-
-                }
-                .idol_content {
-                    overflow: hidden;
-                    width: 63vw;
-                    >span {
-                        display: block;
-                        overflow: hidden;
-                        text-overflow:ellipsis;
-                        white-space: nowrap;
-                        font-size: 16px;
-                        font-weight: 600;
-                        color: #666;
-                    }
-                    .idol_desc {
-                        display: flex;
-                        p {
-                            flex: 1;
-                            text-align: left;
-                            >span {
-                                display: block;
-                                text-align: center;
-                                img {
-                                    width: 12px;
-                                    vertical-align: middle;
-                                    margin-right: 5.5px;
-                                }
-                                em {
-                                    display: inline-block;
-                                    vertical-align: middle;
-                                    font-size: 14px;
-                                    font-weight: 600;
-                                    color: #333;
-                                    max-width: calc(100% - 18px);
-                                    overflow: hidden;
-                                    text-overflow:ellipsis;
-                                    white-space: nowrap;
-                                }
-                            }
-                            i {
-                                color: #999;
-                                display: block;
-                                font-size: 10px;
-                                text-align: center;
-                                -webkit-transform: scale(0.8);
-                            }
-                        }
-                    }
-                }
-            }
-            .reard_more {
-                text-align: center;
-                text-decoration: underline;
-                color: #666;
-                font-size: 14px;
-                display: inline-block;
-                padding: 12px 0 0;
-            }
-        }
-    }
-    .activity_reward {
-        li {
-            overflow: hidden;
-            background: #F9EDEF;
-            border: 1px solid #F5D9DE;
-            border-radius: 2px;
-            margin: 12px 12px 0;
-            padding: 12px;
-            >img {
-                vertical-align: middle;
-                width: 54px;
-            }
-            .reward_desc {
-                display: inline-block;
-                vertical-align: middle;
-                margin-left: 3px;
-                width: calc(100% - 62px);
-                p {
-                    overflow: hidden;
-                    line-height: 20px;
-                    span {
-                        display: inline-block;
-                        width: 4px;
-                        height: 4px;
-                        border-radius: 50%;
-                        background: #FABC01;
-                        float: left;
-                        margin-right: 8px;
-                        margin-top: 8px;
-                    }
-                    i {
-                        float: left;
-                        display: inline-block;
-                        width: calc(100% - 12px);
-                    }
-                }
-            }
-        }
-        li:nth-child(3) {
-            .reward_desc p span {
-                background: #BBBBBB;
-            }
-        }
-        li:nth-child(4) {
-            .reward_desc p span {
-                background: #F5966D;
-            }
-        }
-    }
-    .none_loading {
-        transition: all 0.3s;
-        opacity: 0.7;
-        overflow: hidden;
-    }
-    .none_loading_show {
-        opacity: 0;
-        height: 0;
-    }
-</style>
