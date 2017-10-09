@@ -27,7 +27,7 @@
       <div class="right">
         <div class="logo"></div>
         <p>ファンが共にアイドルを<i style="color:#FC6B9F;">応援</i>できる<br><i style="color: #00B4BC;">メンバシップ制</i>アプリ</p>
-        <a href="http://groupy.vip" target="_blank" class="btn">公式サイト<span></span></a>
+        <a href="http://groupy.vip/index_japanese/japanese" target="_blank" class="btn">公式サイト<span></span></a>
         <img src="../img/Groupy.png" alt="">
       </div>
     </div>

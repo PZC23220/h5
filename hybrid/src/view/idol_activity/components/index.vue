@@ -7,7 +7,7 @@
                 <h4>{{activity.time}}</h4>
                 <div class="duration_time">
                     <p><span>{{activity.start}}</span><i>2017年10月10日（火）00:00</i></p>
-                    <p><span>{{activity.end}}</span><i>2017年10月20日（水）23:59</i></p>
+                    <p><span>{{activity.end}}</span><i>2017年10月20日（金）23:59</i></p>
                 </div>
             </div>
             <div class="activity_rule">
@@ -176,7 +176,7 @@
                     }, {
                         p1: '賞金10000円',
                         p2: 'アプリの起動画面に掲載されます（掲載期間は1日となります）。',
-                        p3: 'Twitter公式アカウントで2位発表されます。',
+                        p3: 'Twitter公式アカウントで2位として発表されます。',
                         p4: '中国の人気サイトbilibiliに好評の参加動画が発表されます。'
                     }, {
                         p1: '賞金5000円',
