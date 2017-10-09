@@ -42,9 +42,9 @@
                             <div class="idol_content">
                                 <span>idolName</span>
                                 <div class="idol_desc">
-                                    <p><span style="text-align: left;margin-left: 10px;"><em>0</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                    <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p>
-                                    <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>0</em></span><i>{{activity.like}}</i></p>
+                                    <!-- <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p> -->
+                                    <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>0</em></span><!-- <i>{{activity.like}}</i> --></p>
+                                    <p><span><em>0</em></span><i>{{activity.works}}</i></p>
                                 </div>
                             </div>
                         </li>
@@ -54,9 +54,9 @@
                             <div class="idol_content">
                                 <span>idolName</span>
                                 <div class="idol_desc">
-                                    <p><span style="text-align: left;margin-left: 10px;"><em>0</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                    <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p>
-                                    <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>0</em></span><i>{{activity.like}}</i></p>
+                                    <!-- <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p> -->
+                                    <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>0</em></span><!-- <i>{{activity.like}}</i> --></p>
+                                    <p><span><em>0</em></span><i>{{activity.works}}</i></p>
                                 </div>
                             </div>
                         </li>
@@ -66,9 +66,9 @@
                             <div class="idol_content">
                                 <span>idolName</span>
                                 <div class="idol_desc">
-                                    <p><span style="text-align: left;margin-left: 10px;"><em>0</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                    <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p>
-                                    <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>0</em></span><i>{{activity.like}}</i></p>
+                                    <!-- <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>0</em></span><i>{{activity.Gcoin}}</i></p> -->
+                                    <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>0</em></span><!-- <i>{{activity.like}}</i> --></p>
+                                    <p><span><em>0</em></span><i>{{activity.works}}</i></p>
                                 </div>
                             </div>
                         </li>
@@ -80,22 +80,22 @@
                         <div class="idol_content">
                             <span>{{me.nickname?me.nickname:'...'}}</span>
                             <div class="idol_desc">
-                                <p><span style="text-align: left;margin-left: 10px;"><em>{{Number(me.videoCount?me.videoCount:0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(me.gcoin?me.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(me.popularity?me.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
+                                <!-- <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(me.gcoin?me.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p> -->
+                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(me.popularity?me.popularity:0).toLocaleString()}}</em></span><!-- <i>{{activity.like}}</i> --></p>
+                                <p><span><em>{{Number(me.videoCount?me.videoCount:0).toLocaleString()}}</em></span><i>{{activity.works}}</i></p>
                             </div>
                         </div>
                     </li>
                     <h5 v-if="ranking.length > 0">{{activity.all}}</h5>
                     <li v-for="(idol,key) in ranking" v-if="ranking.length > 0 && key < 3">
                         <span :class="[{'first':key == 0},{'second':key == 1},{'three':key > 1}]">{{key+1}}</span>
-                        <div class="img_content"><img v-lazy="idol.avatar" class="avatar"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="idol.ranking?idol.ranking==1:false"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="idol.ranking?idol.ranking==2:false"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="idol.ranking?idol.ranking>2:false"></div>
+                        <div class="img_content"><img v-lazy="idol.avatar" class="avatar"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key > 1"></div>
                         <div class="idol_content">
                             <span>{{idol.nickname?idol.nickname:'...'}}</span>
                             <div class="idol_desc">
-                                <p><span style="text-align: left;margin-left: 10px;"><em>{{Number(idol.videoCount?idol.videoCount:0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(idol.gcoin?idol.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
+                                <!-- <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(idol.gcoin?idol.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p> -->
+                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span><!-- <i>{{activity.like}}</i> --></p>
+                                <p><span><em>{{Number(idol.videoCount?idol.videoCount:0).toLocaleString()}}</em></span><i>{{activity.works}}</i></p>
                             </div>
                         </div>
                     </li>
@@ -154,7 +154,7 @@
                 loadingShow: false,
                 havedMe: false,
                 activity: {
-                    theme:' 可楽生活',
+                    theme:'#可楽生活#',
                     time: 'イベント期間',
                     start: '開始日時',
                     end: '終了日時',

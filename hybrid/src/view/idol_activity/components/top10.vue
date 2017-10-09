@@ -6,16 +6,16 @@
             <ul class="ranking_list">
                 <li>
                     <div class="img_content">
-                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown">
+                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown">
                         <img v-lazy="ranking.length>0?ranking[0].avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" class="avatar">
                         <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/pic_ranking_1.png" class="ranking_pic">
                         <span class="idol_level">NO.1</span>
                     </div>
                     <div class="name">{{ranking.length>0?(ranking[0].nickname?ranking[0].nickname:'...'):'...'}}</div>
                     <div class="idol_desc">
+                        <!-- <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>0?(ranking[0].gcoin?ranking[0].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p> -->
+                        <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(ranking.length>0?(ranking[0].popularity?ranking[0].popularity:0):0).toLocaleString()}}</em></span></p>
                         <p><span><em>{{Number(ranking.length>0?(ranking[0].videoCount?ranking[0].videoCount:0):0).toLocaleString()}}</em></span><i>{{activity.works}}</i></p>
-                        <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>0?(ranking[0].gcoin?ranking[0].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                        <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(ranking.length>0?(ranking[0].popularity?ranking[0].popularity:0):0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
                     </div>
                     <div class="reard_moer" v-if="isFans" @click="ranking.length>0?(ranking[0].idol_id?showIdolPage(ranking[0].idol_id):false):false">{{activity.idolPage}}</div>
                 </li>
@@ -30,9 +30,9 @@
                         <div class="idol_content">
                             <div class="name">{{ranking.length>1?(ranking[1].nickname?ranking[1].nickname:'...'):'...'}}</div>
                             <div class="idol_desc">
-                                <p style="flex: 1;"><span style="text-align: left;margin-left: 10px;"><em>{{Number(ranking.length>1?(ranking[1].videoCount?ranking[1].videoCount:0):0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>1?(ranking[1].gcoin?ranking[1].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(ranking.length>1?(ranking[1].popularity?ranking[1].popularity:0):0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
+                                <!-- <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>1?(ranking[1].gcoin?ranking[1].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p> -->
+                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(ranking.length>1?(ranking[1].popularity?ranking[1].popularity:0):0).toLocaleString()}}</em></span></p>
+                                <p><span><em>{{Number(ranking.length>1?(ranking[1].videoCount?ranking[1].videoCount:0):0).toLocaleString()}}</em></span><i>{{activity.works}}</i></p>
                             </div>
                         </div>
                     </div>
@@ -49,9 +49,9 @@
                         <div class="idol_content">
                             <div class="name">{{idol.nickname?idol.nickname:'...'}}</div>
                             <div class="idol_desc">
-                                <p style="flex: 1;"><span style="text-align: left;margin-left: 10px;"><em>{{Number(idol.videoCount?idol.videoCount:0).toLocaleString()}}</em></span><i style="text-align: left;margin-left: -5px;">{{activity.works}}</i></p>
-                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(idol.gcoin?idol.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p>
-                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span><i>{{activity.like}}</i></p>
+                                <!-- <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(idol.gcoin?idol.gcoin:0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p> -->
+                                <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</em></span></p>
+                                <p><span><em>{{Number(idol.videoCount?idol.videoCount:0).toLocaleString()}}</em></span><i>{{activity.works}}</i></p>
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,8 @@
         mounted() {
         },
         created() {
-            if(this.$route.query.isFans == 1) {
+            let isFans = getParams('isFans');
+            if(isFans) {
                 this.isFans = true;
             }
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
@@ -248,36 +249,51 @@
                 display: flex;
                 overflow: hidden;
                 margin-top: 8px;
+                width: 100%;
                 p {
                     flex: 1.5;
                     text-align: left;
+                    overflow: hidden;
+                    line-height: 24px;
                     >span {
-                        display: block;
+                        display: inline-block;
                         text-align: center;
+                        overflow: hidden;
+                        float: left;
+                        vertical-align: middle;
                         img {
                             width: 12px;
-                            vertical-align: middle;
+                            float: left;
+                            margin-top: 6px;
                             margin-right: 5.5px;
                         }
                         em {
                             display: inline-block;
-                            vertical-align: middle;
-                            font-size: 14px;
+                            font-size: 16px;
+                            float: left;
                             font-weight: 600;
                             color: #333;
-                            max-width: calc(100% - 18px);
+                            max-width: calc(22vw - 31px);
                             overflow: hidden;
                             text-overflow:ellipsis;
                             white-space: nowrap;
                         }
                     }
                     i {
-                        color: #999;
-                        display: block;
-                        text-align: center;
-                        font-size: 10px;
-                        margin-left: 10px;
-                        -webkit-transform: scale(0.8);
+                        display: inline-block;
+                        float: left;
+                        color: #333;
+                        font-size: 12px;
+                        margin-left: 8px
+                    }
+                }
+                p:first-child {
+                    flex: 2.5;
+                    >span {
+                        em {
+                            max-width: calc(34vw - 16px);
+                            color: #FB0730;
+                        }
                     }
                 }
             }
@@ -321,8 +337,9 @@
                 float: none;
                  p {
                     text-align: center;
-                    i {
-                        margin-left: 0px;
+                   flex: 1;
+                    span,em,i {
+                        float: none;
                     }
                  }
             }
