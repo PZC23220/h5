@@ -244,6 +244,7 @@
             .idol_content {
                 overflow: hidden;
                 width: calc(100% - 90px);
+                max-width: 305px;
             }
             .idol_desc {
                 display: flex;
