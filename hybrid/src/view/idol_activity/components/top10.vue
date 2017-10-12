@@ -58,7 +58,7 @@
                     <div class="reard_moer" v-if="isFans" @click="idol.idol_id?showIdolPage(idol.idol_id):false">{{activity.idolPage}}</div>
                 </li>
             </ul>
-            <div class="read_videos">{{activity.videos}}</div>
+            <div class="read_videos" v-if="isFans">{{activity.videos}}</div>
         </div>
     </div>
 </template>

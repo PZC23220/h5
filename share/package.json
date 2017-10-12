@@ -2,7 +2,7 @@
   "name": "muilt-page-vue",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "姚泽源 <yaozeyuan93@gmail.com>",
+  "author": "Tracy <tracy@groupy.vip>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

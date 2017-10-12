@@ -76,13 +76,13 @@
                 <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><i class="totalNum">{{incomeList.incomeMission?Number(incomeList.incomeMission).toLocaleString():0}}</i></div>
             </div>
             <p v-html="income_text.desc" class="income_desc"></p>
-           <!--  <div class="mention_details">
+            <!-- <div class="mention_details">
                 <p class="detail_title">{{income_text.record}}</p>
                 <ul class="mention_list">
                     <li>
                         <p>{{income_text.records.time}}</p>
                         <p>{{income_text.records.num}}</p>
-                        <p>{{income_text.records.status}}</p>
+                        <!-- <p>{{income_text.records.status}}</p> -->
                     </li>
                     <li v-for="(record,key) in incomeList.monthRecordList">
                         <p>{{formatTime(record.month)}}</p>
@@ -94,8 +94,8 @@
                     <img src="/img/default_no income.png" alt="">
                     <p>{{income_text.records.none}}</p>
                 </div>
-            </div>
-            <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">{{income_text.records.exchange}}</router-link> -->
+            </div> -->
+            <!-- <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">{{income_text.records.exchange}}</router-link> -->
         </div>
         <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="/img/loading_2.png" alt="">
@@ -298,9 +298,9 @@
                 height: 20px;
                 line-height: 20px;
                 text-align: center;
-                &:nth-child(2) {
-                    flex: 2;
-                }
+                // &:nth-child(2) {
+                //     flex: 2;
+                // }
             }
             img {
                 width: 14px;
