@@ -171,7 +171,7 @@
                                 <span v-if="meHeatObj.position>3">{{meHeatObj.position}}</span>
                                 <img v-lazy="meHeatObj.fans?meHeatObj.fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
                                 <div class="fans_content">
-                                    <span><em>{{meHeatObj.fans?meHeatObj.fans.nickname:'...'}}</em><img :src="meHeatObj.fans?('/img/icon_level_'+ (meHeatObj.fans.levelPlatform) +'.png'): ''" class="level" alt=""></span>
+                                    <span><em>{{meHeatObj.fans?meHeatObj.fans.nickname:'...'}}</em><span class="level">Lv.{{meObj.fans?(meObj.fans.levelPlatform?meObj.fans.levelPlatform:0):0}}</span></span>
                                     <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{meHeatObj.totalNums?Number(meHeatObj.totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
