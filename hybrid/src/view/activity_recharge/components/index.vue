@@ -7,16 +7,16 @@
                 <p class="share-sns"><span @click="shareSns('share_facebook')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_facebook_1.png"><i>シェア</i></span><span @click="shareSns('share_twitter')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_twitter_1.png"><i>ツィート</i></span></p>
                 <h4>{{activity.time}}</h4>
                 <div class="duration_time">
-                    <p><span>{{activity.start}}</span><i>2017年10月20日（金） 00:00:00</i></p>
-                    <p><span>{{activity.end}}</span><i>2017年10月26日（木） 23:59:59</i></p>
+                    <p><span>{{activity.start}}</span><i>2017年10月20日（金）00:00:00</i></p>
+                    <p><span>{{activity.end}}</span><i>2017年11月19日（日）23:59:59</i></p>
                 </div>
             </div>
-            <div class="activity_rule">
+            <!-- <div class="activity_rule">
                 <h4>{{activity.desc.title}}</h4>
                 <p v-html="activity.desc.p1"></p>
                 <p v-html="activity.desc.p2"></p>
                 <p v-html="activity.desc.p3"></p>
-            </div>
+            </div> -->
             <div class="activity_rule">
                 <h4>{{activity.obj.title}}</h4>
                 <p v-html="activity.obj.p1"></p>
@@ -30,9 +30,9 @@
             <div class="activity_rule">
                 <h4>{{activity.fansrule.title}}</h4>
                 <p v-html="activity.fansrule.p1"></p>
-                <p v-html="activity.fansrule.p2"></p>
+                <!-- <p v-html="activity.fansrule.p2"></p> -->
             </div>
-            <div class="activity_ranking" v-if="isFans">
+            <div class="activity_ranking" v-if="false">
                 <h4>{{activity.rewardList}}</h4>
                 <p class="no_ranking" v-if="ranking.length<0 && loadingShow">{{activity.noRanking}}</p>
                 <ul class="ranking_list">
@@ -104,21 +104,21 @@
                     <router-link to="/top10" class="reard_more" v-if="ranking.length > 0">{{activity.more}}</router-link>
                 </ul>
             </div>
-            <ul class="activity_reward">
+            <!-- <ul class="activity_reward">
                 <h4>{{activity.award}}</h4>
                 <li>
                     <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/icon_1.png">
                     <div class="reward_desc">
                         <p><i>{{activity.rewards[0].p1}}</i></p>
-                        <!-- <p><span></span><i>{{activity.rewards[0].p2}}</i></p>
+                        <p><span></span><i>{{activity.rewards[0].p2}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p3}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p4}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p5}}</i></p>
                         <p><span></span><i>{{activity.rewards[0].p6}}</i></p>
-                        <p><span></span><i>{{activity.rewards[0].p7}}</i></p> -->
+                        <p><span></span><i>{{activity.rewards[0].p7}}</i></p>
                     </div>
                 </li>
-                <!-- <li>
+                <li>
                     <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/icon_2.png">
                     <div class="reward_desc">
                         <p><span></span><i>{{activity.rewards[1].p1}}</i></p>
@@ -137,8 +137,8 @@
                         <p><span></span><i>{{activity.rewards[2].p4}}</i></p>
                         <p><span></span><i>{{activity.rewards[2].p5}}</i></p>
                     </div>
-                </li> -->
-            </ul>
+                </li>
+            </ul> -->
          </div>
     </div>
 </template>
@@ -155,7 +155,7 @@
                 loadingShow: false,
                 havedMe: false,
                 activity: {
-                    theme:'#可楽生活#',
+                    theme:'大チャンス！購入したコイン数に応じて、100%プレゼント',
                     time: 'イベント期間',
                     start: '開始日時',
                     end: '終了日時',
@@ -170,42 +170,41 @@
                     all: '全体ランキング',
                     more: 'もっと見る',
                     rule: {
-                        title: '応募方法',
-                        p1: '1.イベント期間中、<i>「#可楽生活」</i>タグをつけて投稿します。テーマはご自由にお考えください。',
-                        p2: '2.イベント期間外は、<i>「＃可楽生活」</i>をつけて投稿しても集計されません。',
-                        p3: '3.イベント期間中は、動画を何本投稿してもOKです。'
+                        title: '詳細',
+                        p1: '1.実施期間中に購入したコインの数に応じて、もれなく100%分プレゼントします。（実施期間中1000コインを購入した場合、さらに1000コインをプレゼント)。',
+                        p2: '2.実施期間中何度でもご利用いただけます。',
+                        p3: '3.キャペーン終了時点で決済が完了していない場合、キャンペーン対象外となります。'
                     },
                     obj: {
                         title: '対象',
-                        p1: 'ランキング1位の所属ユニット全員（ソロの方も参加可能）'
+                        p1: 'Groupyを登録したファンの方'
                     },
-                    desc: {
-                        title: '「可楽生活」とは？',
-                        p1: '<i>「可楽生活」</i>とは、中国の大手新聞社「羊城晩報」傘下の15〜35歳の若者向けのファッション＆ライフスタイル誌です。',
-                        p2: '2003年に創刊し、発行部数が中国の華南地方一位として、高く評価されています。更に2013年に読者がより便利に情報を入手できるように、公式アプリがリリースされました。',
-                        p3: '中国のファッション誌<i>「可楽生活」</i>に、上位1名の所属ユニット全員が中面ページに登場する！是非奮ってご参加ください！'
-                    },
+                    // desc: {
+                    //     title: '「可楽生活」とは？',
+                    //     p1: '<i>「可楽生活」</i>とは、中国の大手新聞社「羊城晩報」傘下の15〜35歳の若者向けのファッション＆ライフスタイル誌です。',
+                    //     p2: '2003年に創刊し、発行部数が中国の華南地方一位として、高く評価されています。更に2013年に読者がより便利に情報を入手できるように、公式アプリがリリースされました。',
+                    //     p3: '中国のファッション誌<i>「可楽生活」</i>に、上位1名の所属ユニット全員が中面ページに登場する！是非奮ってご参加ください！'
+                    // },
                     fansrule: {
-                        title: '集計方法',
-                        p1: '1.全ての参加動画のLike数とギフト数の合計によってランキングが決まります。',
-                        p2: '2.ランキングはイベント詳細ページにリアルタイムで集計されます。'
+                        title: '参加方法',
+                        p1: '1.コイン購入ページでイベントを参加しましょう。プレゼントは、イベント期間中にコインを購入すると自動で付与されます。',
                     },
-                    rewards: [{
-                        p1: 'ランキング1位の所属ユニット全員（ソロの方も参加可能）は雑誌の取材を受け、中面ページに登場して頂きます。',
-                        p2: '次回のイベントのイメージキャラクターとして起用します（トップバナー・宣伝動画に出演して頂きます）。',
-                        p3: 'アプリの起動画面に掲載されます（掲載期間は2日間となります）。',
-                        p4: 'Twitter公式アカウントで1位として発表されます。',
-                        p5: '中国の人気サイトweiboやbilibiliにて好評の参加動画が発表されます。'
-                    }, {
-                        p1: '賞金10000円',
-                        p2: 'アプリの起動画面に掲載されます（掲載期間は1日となります）。',
-                        p3: 'Twitter公式アカウントで2位として発表されます。',
-                        p4: '中国の人気サイトbilibiliに好評の参加動画が発表されます。'
-                    }, {
-                        p1: '賞金5000円',
-                        p2: 'Twitter公式アカウントで3位として発表されます。',
-                        p3: '中国の人気サイトweiboやbilibiliに好評の参加作品は発表されます。'
-                    }]
+                    // rewards: [{
+                    //     p1: 'ランキング1位の所属ユニット全員（ソロの方も参加可能）は雑誌の取材を受け、中面ページに登場して頂きます。',
+                    //     p2: '次回のイベントのイメージキャラクターとして起用します（トップバナー・宣伝動画に出演して頂きます）。',
+                    //     p3: 'アプリの起動画面に掲載されます（掲載期間は2日間となります）。',
+                    //     p4: 'Twitter公式アカウントで1位として発表されます。',
+                    //     p5: '中国の人気サイトweiboやbilibiliにて好評の参加動画が発表されます。'
+                    // }, {
+                    //     p1: '賞金10000円',
+                    //     p2: 'アプリの起動画面に掲載されます（掲載期間は1日となります）。',
+                    //     p3: 'Twitter公式アカウントで2位として発表されます。',
+                    //     p4: '中国の人気サイトbilibiliに好評の参加動画が発表されます。'
+                    // }, {
+                    //     p1: '賞金5000円',
+                    //     p2: 'Twitter公式アカウントで3位として発表されます。',
+                    //     p3: '中国の人気サイトweiboやbilibiliに好評の参加作品は発表されます。'
+                    // }]
                 },
                 isFans: true,
                 activityInfo: {}
@@ -214,13 +213,13 @@
         methods: {
           shareSns(val) {
             var self = this;
-            if(getParams('isFans') == 1) {
-                var shareURL = `http://${location.hostname}/html/activity/index.html?activityId=${getParams('activityId')}&idolId=${self.me.idol_id}`;
+            if(self.me.idol_id) {
+                var shareURL = `http://share.groupy.vip/html/activity/index.html?activityId=${getParams('activityId')}&idolId=${self.me.idol_id}`;
                 var title = `Groupyと【可楽生活】のコラボ企画`;
                 var description = `上位1のアイドルユニットが中国の大人気雑誌に登場？！動画がいっぱい投稿されているので、みんな応援しましょう♪`;
                 var shareImg = `http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg`;
             }else {
-                var shareURL = `http://${location.hostname}/html/activity/index.html?activityId=${getParams('activityId')}&isFans=1`;
+                var shareURL = `http://share.groupy.vip/html/activity/index.html?activityId=${getParams('activityId')}&isFans=1}`;
                 var title = `Groupyと【可楽生活】のコラボ企画`;
                 var description = `中国の大人気雑誌に登場する大チャンス！いまイベント参加中、動画をいっぱい投稿したので、みんなお願い、応援してください～（^人^）`;
                 var shareImg = `http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg`;
