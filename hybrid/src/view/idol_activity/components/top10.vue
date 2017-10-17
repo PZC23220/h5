@@ -86,7 +86,7 @@
         methods: {
           toVideoList() {
             window.setupWebViewJavascriptBridge(function(bridge) {
-                bridge.callHandler(val, {'title':'中国での大人気雑誌「可楽生活」とのコラボ企画！','description':'特集ページに登場できるアイドルを大募集♪','shareImg':'http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg','shareURL':`http://share.groupy.vip/html/activity/index.html?activityId${self.activityInfo.id}${getParams('isFans')?'isFans=1':''}`})
+                bridge.callHandler('activity_videos', {'activityId':self.activityInfo.id,'activityName':self.activityInfo.title})
             })
           },
           getList() {
@@ -312,7 +312,7 @@
             }
         }
         li:first-child {
-            background-image: url(/img/activity/pic_1.png);
+            background-image: url(http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/pic_1.png);
             background-size: 100% auto;
             background-position: center center;
             background-repeat: no-repeat;

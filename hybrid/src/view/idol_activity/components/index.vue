@@ -213,8 +213,21 @@
         },
         methods: {
           shareSns(val) {
+            var self = this;
+            if(self.me.idol_id) {
+                var shareURL = `http://share.groupy.vip/html/activity/index.html?activityId=${getParams('activityId')}&idolId=${self.me.idol_id}`;
+                var title = `Groupyと【可楽生活】のコラボ企画`;
+                var description = `上位1のアイドルユニットが中国の大人気雑誌に登場？！動画がいっぱい投稿されているので、みんな応援しましょう♪`;
+                var shareImg = `http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg`;
+            }else {
+                var shareURL = `http://share.groupy.vip/html/activity/index.html?activityId=${getParams('activityId')}&isFans=1}`;
+                var title = `Groupyと【可楽生活】のコラボ企画`;
+                var description = `中国の大人気雑誌に登場する大チャンス！いまイベント参加中、動画をいっぱい投稿したので、みんなお願い、応援してください～（^人^）`;
+                var shareImg = `http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg`;
+            }
+            console.log(shareURL)
             window.setupWebViewJavascriptBridge(function(bridge) {
-                bridge.callHandler(val, {'title':'中国での大人気雑誌「可楽生活」とのコラボ企画！','description':'特集ページに登場できるアイドルを大募集♪','shareImg':'http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg','shareURL':'http://share.groupy.vip/html/activity/index.html?activityId='+self.activityInfo.id})
+                bridge.callHandler(val, {'title':title,'description':description,'shareImg':shareImg,'shareURL':shareURL})
             })
           },
           getList(token) {

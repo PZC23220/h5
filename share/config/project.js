@@ -30,5 +30,6 @@ module.exports = {
         video: './src/view/video', // 示例项目，新建页面可以直接复制该项目的代码
         idol: './src/view/idol', // 示例项目，利用个人blog提供公共api进行测试
         shows: './src/view/shows', // 示例项目，利用个人blog提供公共api进行测试
+        activity: './src/view/activity', // 示例项目，利用个人blog提供公共api进行测试
     },
 };
