@@ -19,7 +19,7 @@
                     </div>
                     <div class="reard_moer" v-if="isFans" @click="ranking.length>0?(ranking[0].idol_id?showIdolPage(ranking[0].idol_id):false):false">{{activity.idolPage}}</div>
                 </li>
-                <li>
+                <!-- <li>
                     <div class="idolranking_content">
                         <div class="img_content">
                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown">
@@ -30,15 +30,14 @@
                         <div class="idol_content">
                             <div class="name">{{ranking.length>1?(ranking[1].nickname?ranking[1].nickname:'...'):'...'}}</div>
                             <div class="idol_desc">
-                                <!-- <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{Number(ranking.length>1?(ranking[1].gcoin?ranking[1].gcoin:0):0).toLocaleString()}}</em></span><i>{{activity.Gcoin}}</i></p> -->
                                 <p><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><em>{{Number(ranking.length>1?(ranking[1].popularity?ranking[1].popularity:0):0).toLocaleString()}}</em></span></p>
                                 <p><span><em>{{Number(ranking.length>1?(ranking[1].videoCount?ranking[1].videoCount:0):0).toLocaleString()}}</em></span><i>{{activity.works}}</i></p>
                             </div>
                         </div>
                     </div>
                     <div class="reard_moer" v-if="isFans" @click="ranking.length>1?(ranking[1].idol_id?showIdolPage(ranking[1].idol_id):false):false">{{activity.idolPage}}</div>
-                </li>
-                <li v-for="(idol,key) in ranking" v-if="key>1">
+                </li> -->
+                <li v-for="(idol,key) in ranking" v-if="isOver?(key>0&key<3):key>0">
                     <div class="idolranking_content">
                         <div class="img_content">
                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown">
@@ -58,7 +57,7 @@
                     <div class="reard_moer" v-if="isFans" @click="idol.idol_id?showIdolPage(idol.idol_id):false">{{activity.idolPage}}</div>
                 </li>
             </ul>
-            <div class="read_videos" v-if="isFans">{{activity.videos}}</div>
+            <div class="read_videos" v-if="isFans && isOver" @click="toVideoList()">{{activity.videos}}</div>
         </div>
     </div>
 </template>
@@ -72,6 +71,7 @@
                 idx: 0,
                 idx2: 0,
                 isFans: false,
+                isOver: false,
                 activity: {
                     theme: 'ランキング',
                     works: '作品',
@@ -79,10 +79,16 @@
                     like: 'Like',
                     videos: '参加作品一覧',
                     idolPage: 'プロフィールへ'
-                }
+                },
+                activityInfo:{}
             }
         },
         methods: {
+          toVideoList() {
+            window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.callHandler(val, {'title':'中国での大人気雑誌「可楽生活」とのコラボ企画！','description':'特集ページに登場できるアイドルを大募集♪','shareImg':'http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg','shareURL':`http://share.groupy.vip/html/activity/index.html?activityId${self.activityInfo.id}${getParams('isFans')?'isFans=1':''}`})
+            })
+          },
           getList() {
             let self = this;
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
@@ -93,14 +99,20 @@
                         rows: 10
                     }
                 }).then(function(res){
+                    console.log(res)
                     self.ranking = res.data.ranking;
                     self.me = res.data.self;
                     self.loadingShow = true;
-                    console.log(self.ranking);
-                    console.log(self.me);
+                    var timeString = Date.parse(new Date());
+                    self.activityInfo = res.data.activityInfo;
+                    if(res.data.activityInfo.startTime > timeString || res.data.activityInfo.endTime < timeString) {
+                        self.isOver = true;
+                    }else {
+                        self.isOver = false;
+                    }
                 }).catch(function(){
                     self.idx++;
-                    getList();
+                    self.getList();
                 });
             }else {
                  window.setupWebViewJavascriptBridge(function(bridge) {

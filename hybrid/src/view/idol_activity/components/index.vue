@@ -4,6 +4,7 @@
             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg" class="banner">
             <h2>{{activity.theme}}</h2>
             <div class="activity_time">
+                <p class="share-sns"><span @click="shareSns('share_facebook')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_facebook_1.png"><i>シェア</i></span><span @click="shareSns('share_twitter')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_twitter_1.png"><i>ツィート</i></span></p>
                 <h4>{{activity.time}}</h4>
                 <div class="duration_time">
                     <p><span>{{activity.start}}</span><i>2017年10月20日（金） 00:00:00</i></p>
@@ -31,7 +32,7 @@
                 <p v-html="activity.fansrule.p1"></p>
                 <p v-html="activity.fansrule.p2"></p>
             </div>
-            <div class="activity_ranking">
+            <div class="activity_ranking" v-if="isFans">
                 <h4>{{activity.rewardList}}</h4>
                 <p class="no_ranking" v-if="ranking.length<0 && loadingShow">{{activity.noRanking}}</p>
                 <ul class="ranking_list">
@@ -205,10 +206,17 @@
                         p2: 'Twitter公式アカウントで3位として発表されます。',
                         p3: '中国の人気サイトweiboやbilibiliに好評の参加作品は発表されます。'
                     }]
-                }
+                },
+                isFans: true,
+                activityInfo: {}
             }
         },
         methods: {
+          shareSns(val) {
+            window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.callHandler(val, {'title':'中国での大人気雑誌「可楽生活」とのコラボ企画！','description':'特集ページに登場できるアイドルを大募集♪','shareImg':'http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg','shareURL':'http://share.groupy.vip/html/activity/index.html?activityId='+self.activityInfo.id})
+            })
+          },
           getList(token) {
             let self = this;
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
@@ -226,6 +234,7 @@
                     }
                 }).then(function(res){
                     self.ranking = res.data.ranking;
+                    self.activityInfo = res.data.activityInfo;
                     if(res.data.self) {
                         self.me = res.data.self;
                         self.havedMe = true;
@@ -254,7 +263,12 @@
         mounted() {
         },
         created() {
-             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(getParams('isFans') == 1) {
+                this.isFans = false;
+            }else {
+                this.isFans = true;
+            }
             this.getList();
         }
     }
