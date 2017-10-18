@@ -3,7 +3,9 @@
          <div class="content">
             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg" class="banner">
             <h2>{{activity.theme}}</h2>
-            <p style="font-size:16px;color: #333;font-weight:600;margin-top:13px;">中国のファッション誌「可楽生活」に、上位1名の所属ユニットメンバー全員が特集ページに登場する！是非奮ってご参加ください！</p>
+            <div class="activity_rule">
+                <p>中国のファッション誌「可楽生活」に、上位1名の所属ユニットメンバー全員が特集ページに登場する！是非奮ってご参加ください！</p>
+            </div>
             <div class="activity_time">
                 <p class="share-sns" v-if="isFans"><span @click="shareSns('share_facebook')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_facebook_1.png"><i>シェア</i></span><span @click="shareSns('share_twitter')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_twitter_1.png"><i>ツィート</i></span></p>
                 <h4>{{activity.time}}</h4>

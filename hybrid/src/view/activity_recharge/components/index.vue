@@ -7,7 +7,7 @@
                 <p class="share-sns" v-if="isFans"><span @click="shareSns('share_facebook')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_facebook_1.png"><i>シェア</i></span><span @click="shareSns('share_twitter')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_twitter_1.png"><i>ツィート</i></span></p>
                 <h4>{{activity.time}}</h4>
                 <div class="duration_time">
-                    <p><span>{{activity.start}}</span><i>2017年10月20日（金）00:00:00</i></p>
+                    <p><span>{{activity.start}}</span><i>2017年10月20日（金）11:00:00</i></p>
                     <p><span>{{activity.end}}</span><i>2017年11月19日（日）23:59:59</i></p>
                 </div>
             </div>
