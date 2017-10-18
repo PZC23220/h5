@@ -76,7 +76,7 @@
                 <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><i class="totalNum">{{incomeList.incomeMission?Number(incomeList.incomeMission).toLocaleString():0}}</i></div>
             </div>
             <p v-html="income_text.desc" class="income_desc"></p>
-            <!-- <div class="mention_details">
+             <div class="mention_details">
                 <p class="detail_title">{{income_text.record}}</p>
                 <ul class="mention_list">
                     <li>
@@ -87,14 +87,14 @@
                     <li v-for="(record,key) in incomeList.monthRecordList">
                         <p>{{formatTime(record.month)}}</p>
                         <p><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" class="icon" alt=""><b>{{Number(record.gCoins).toLocaleString()}}</b></p>
-                        <p>{{changeStatus(record.status)}}</p>
+                        <!-- <p>{{changeStatus(record.status)}}</p> -->
                     </li>
                 </ul>
                 <div class="default_page" v-show="!incomeList.monthRecordList" style="padding-top:32px;">
                     <img src="/img/default_no income.png" alt="">
                     <p>{{income_text.records.none}}</p>
                 </div>
-            </div> -->
+            </div>
             <!-- <router-link to="/idol/ExchangeAndWithdrawals" class="reflect_desc">{{income_text.records.exchange}}</router-link> -->
         </div>
         <!-- <div class="bigLoading" v-show="loadingBig">
@@ -119,14 +119,14 @@
                     vip: '会員人数',
                     detail: 'ギフトリスト',
                     task: '新規応援ミッション',
-                    record: '換金履歴',
+                    record: 'コイン履歴',
                     desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
                     coins: '獲得コイン数',
                     records: {
                         time: '時間',
                         num :'コイン数',
                         status: '状態',
-                        none: 'まだ換金履歴はありません',
+                        none: 'コインがありません',
                         exchange: '換金・振込みについて'
                     }
 
@@ -220,14 +220,14 @@
                     vip: '会员数量',
                     detail: '礼物数量',
                     task: '新手任务',
-                    record: '提现记录',
+                    record: 'G币记录',
                     coins: '金币总数',
                     desc: 'G币是Groupy平台上使用的虚拟货币，并不代表真实货币',
                     records: {
                         time: '时间',
                         num :'G币值',
                         status: '状态',
-                        none: '还没有提现记录',
+                        none: '还没有G币收入',
                         exchange: '汇率和提现说明'
                     }
 
@@ -239,14 +239,14 @@
                     vip: '会員人数',
                     detail: 'ギフトリスト',
                     task: '新規応援ミッション',
-                    record: '換金履歴',
+                    record: 'コイン履歴',
                     coins: '獲得コイン数',
                     desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
                     records: {
                         time: '時間',
                         num :'コイン数',
                         status: '状態',
-                        none: 'まだ換金履歴はありません',
+                        none: 'コインがありません',
                         exchange: '換金・振込みについて'
                     }
 
