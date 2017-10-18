@@ -86,7 +86,7 @@
         methods: {
           toVideoList() {
             window.setupWebViewJavascriptBridge(function(bridge) {
-                alert('activity_videos')
+                alert(bridge)
                 bridge.callHandler('activity_videos', {'activityId':self.activityInfo.id,'activityName':self.activityInfo.title})
             })
           },
