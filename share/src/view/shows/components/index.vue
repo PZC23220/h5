@@ -686,14 +686,15 @@
                 border-radius: 3px;
                 >img {
                     width: 100%;
-                    min-height: calc((100vw - 60px) * 1/3);
+                    // min-height: calc((100vw - 60px) * 1/3);
+                    border-radius: 3px;
                     display: block;
                 }
-                @media screen and (min-width: 500px) {
-                    >img {
-                        min-height: calc((500px - 60px) * 1/3);
-                    }
-                }
+                // @media screen and (min-width: 500px) {
+                //     >img {
+                //         min-height: calc((500px - 60px) * 1/3);
+                //     }
+                // }
             }
             span.once {
                 width: 100%;

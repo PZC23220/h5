@@ -43,7 +43,7 @@
                             <img :src="videos.length>0?videos[0].thumbnail:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                             <div>
                                 <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png" class="time_play" alt="">
+                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                                 <span v-html="videos.length>0?formatTime(videos[0].duration):'00:00'"></span>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                             <img :src="videos.length>2?videos[2].thumbnail:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                             <div>
                                 <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png" class="time_play" alt="">
+                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                                 <span v-html="videos.length>2?formatTime(videos[2].duration):'00:00'"></span>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                             <img :src="videos.length>1?videos[1].thumbnail:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                             <div>
                                 <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png" class="time_play" alt="">
+                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                                 <span v-html="videos.length>1?formatTime(videos[1].duration):'00:00'"></span>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                             <img :src="videos.length>3?videos[3].thumbnail:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_video.png'" class="video_poster" alt=""><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/timeline_icon_play.png" class="btn_play" alt="">
                             <div>
                                 <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_bg_play%20times.png" class="time_bg" alt="">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_play%20times.png" class="time_play" alt="">
+                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/video_icon_time.png" class="time_play" alt="">
                                 <span v-html="videos.length>3?formatTime(videos[3].duration):'00:00'"></span>
                             </div>
                         </div>
