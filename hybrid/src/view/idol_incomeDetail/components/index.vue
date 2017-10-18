@@ -86,7 +86,7 @@
                     </li>
                     <li v-for="(record,key) in incomeList.monthRecordList">
                         <p>{{formatTime(record.month)}}</p>
-                        <p><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" class="icon" alt=""><b>{{Number(record.gCoins).toLocaleString()}}</b></p>
+                        <p><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" class="icon" alt=""><b>{{Number(record.gcoins).toLocaleString()}}</b></p>
                         <!-- <p>{{changeStatus(record.status)}}</p> -->
                     </li>
                 </ul>
