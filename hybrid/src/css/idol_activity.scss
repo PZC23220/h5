@@ -31,14 +31,14 @@ h4 {
 }
 .duration_time {
     overflow: hidden;
-    display: flex;
+    // display: flex;
     box-sizing: border-box;
     margin: 0 12px;
     padding: 13px 0;
     opacity: 0.8;
     // border-bottom: #FC4083 solid 1px;
     p {
-        flex: 1;
+        // flex: 1;
         span {
             display: inline-block;
             padding: 0 3px;
@@ -264,9 +264,11 @@ h4 {
    position: relative;
 }
 .share-sns {
-    position: absolute;
-    right: 12px;
-    top: 13.5px;
+    // position: absolute;
+    // right: 12px;
+    // top: 13.5px;
+    text-align: center;
+    margin-top: 12px;
     span {
         height: 25px;
         line-height: 25px;
