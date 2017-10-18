@@ -85,8 +85,8 @@
         },
         methods: {
           toVideoList() {
+            var self = this;
             window.setupWebViewJavascriptBridge(function(bridge) {
-                alert(bridge)
                 bridge.callHandler('activity_videos', {'activityId':self.activityInfo.id,'activityName':self.activityInfo.title})
             })
           },
