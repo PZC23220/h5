@@ -177,7 +177,7 @@
             },
             formatTime(key) {
                 let timer = new Date(key);
-                return timer.Format('MM.dd');
+                return timer.Format('yyyy.MM');
             },
             changeStatus(val) {
                 let _html;
