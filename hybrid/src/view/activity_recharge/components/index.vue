@@ -91,6 +91,7 @@
                 var description = `Groupyで購入したコインはもれなく100%増量！チャンスをつかんでコインを沢山手に入れよう...`;
                 var shareImg = `http://photodebug.oss-cn-hongkong.aliyuncs.com/optupload/%E5%85%85%E5%80%BC.jpg`;
                 window.setupWebViewJavascriptBridge(function(bridge) {
+                    alert('shareURL')
                     bridge.callHandler(val, {'title':title,'description':description,'shareImg':shareImg,'shareURL':shareURL})
                 })
           },
