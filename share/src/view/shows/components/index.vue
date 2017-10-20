@@ -132,6 +132,7 @@
 <script>
     import http from '@api/js/http.js';
     require('@api/js/common.js')
+    import $ from 'n-zepto';
     // require('@api/js/vconsole.min.js')
     export default {
         data() {
@@ -230,6 +231,10 @@
                     console.log(res.data);
                     if(res.data) {
                         self.showsInfo = res.data;
+                        $('.htmlTilte').html(res.data.title);
+                        $('.metaTitle').attr('content',res.data.title);
+                        $('.metaDesc').attr('content',res.data.introduce);
+                        $('.metaImg').attr('content',self.changeURL(res.data.imgs)[0]);
                         if(res.data.fansList){
                             self.fansList = res.data.fansList;
                         }
@@ -249,7 +254,6 @@
                         self.pageNone = false;
                     }
                     self.loadingBig = false;
-                    console.log(self.pageNone)
                 }).catch(function(err){
                     self.loadingBig = false;
                 });
@@ -425,7 +429,7 @@
         },
         created() {
             var ua = navigator.userAgent.toLowerCase();
-            this.p_log('idol_shareShows_h5_open');
+            // this.p_log('idol_shareShows_h5_open');
             if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
             }else if(/android/.test(ua)) {

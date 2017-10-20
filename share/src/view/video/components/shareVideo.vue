@@ -146,8 +146,8 @@
                             if(res.data.video.active == 1) {
                                 self.pageNone = false;
                                 self.pageNone2 = false;
-                                $('<meta property="og:image" content="'+ res.data.video.thumbnail +'" />').appendTo('head')     
-                                $('<meta property="og:description" content="'+ res.data.video.title +'"/>').appendTo('head')
+                                $('.metaDesc').attr('content',res.data.video.title);
+                                $('.metaImg').attr('content',res.data.video.thumbnail);
                                 if(res.data.video.publicType == 1) {
                                     self.vipShow = true;
                                     self.publicShow = false;
@@ -176,6 +176,8 @@
                         if(res.data.idol) {
                             self.idolShow = true;
                             self.idol = res.data.idol;
+                            $('.htmlTilte').html(res.data.idol.nickname);
+                            $('.metaTitle').attr('content',res.data.idol.nickname);
                         }
                     }else {
                         self.pageNone = true;

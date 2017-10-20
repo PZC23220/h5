@@ -177,11 +177,6 @@
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
-                    if(swiper.activeIndex == 0) {
-                       
-                    }else if(swiper.activeIndex == 1) {
-                        
-                    }
                   }
             },
             playerOptions: {
@@ -280,6 +275,10 @@
                     console.log(res);
                     if(res.data.idol) {
                         self.idol = res.data.idol;
+                        $('.htmlTilte').html(res.data.idol.nickname);
+                        $('.metaTitle').attr('content',res.data.idol.nickname);
+                        $('.metaDesc').attr('content',res.data.idol.introduce);
+                        $('.metaImg').attr('content',res.data.idol.avatar);
                     }
                     if(res.data.hotList) {
                         self.hotList = res.data.hotList;
@@ -347,7 +346,7 @@
         created() {
             this.getIdolInfo();
             this.getComments();
-            this.p_log('idol_shareIdolHome_h5_open');
+            // this.p_log('idol_shareIdolHome_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
