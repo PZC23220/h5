@@ -6,6 +6,7 @@
             <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs">インストール</a>
         </div>
         <div class="content">
+            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg" style="width: 100%;" v-if="video.activityId == 3">
             <div class="userinfo con_left" :class="{'left_show':idolShow}">
                 <img :src="idol.avatar?idol.avatar: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" onerror="this.src='http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="">
                 <div class="video_desc">
@@ -14,7 +15,7 @@
                 </div>
             </div>
             <div class="vip_show" v-show="vipShow">
-                <p>{{video.title}}</p>
+                <p><span style="color: #00B4BB" v-if="video.activityTag">#{{video.activityTag}}#</span>{{video.title}}</p>
                 <div class="video_banner">
                     <img :src="video.thumbnail" alt="">
                     <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/Video/icon_menbership.png" alt="">
@@ -26,7 +27,7 @@
                 </div>
             </div>
             <div class="public_show"v-show="publicShow">
-                <p>{{video.title}}</p>
+                <p><span style="color: #00B4BB;margin-right: 5px;" v-if="video.activityTag">#{{video.activityTag}}#</span>{{video.title}}</p>
                 <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
                 <a @click="p_log('share_h5_download_groupy')" target="_blank" :href="hrefs" class="download">Groupyをダウンロードしてもっと見よう</a>
             </div>
