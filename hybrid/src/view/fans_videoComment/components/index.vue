@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="header" :class="{'ios': android == false}">
+        <div class="header">
             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="close()">
             <span>{{video_text.pubMsg}}({{commentList.length}})</span>
         </div>
