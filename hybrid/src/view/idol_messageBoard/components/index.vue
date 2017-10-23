@@ -58,7 +58,7 @@
                             <img v-lazy="comment.avatar" alt="" class="avatar">
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                             <span class="level" style="margin-top: 11px;" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
-                            <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_'+(comment.medal)+'.png'" style="margin-top: 11px;" v-if="comment.medal&&comment.medal>0" alt="">
+                            <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" style="margin-top: 11px;" v-if="comment.medal&&comment.medal>0" alt="">
                         </div>
                         <div class="comment_content">
                             <p v-html="TransferString(comment.content)"></p>

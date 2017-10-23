@@ -76,12 +76,12 @@
                             <p><span class="left">&times;{{gif.giftCount}}</span></p>
                         </li> -->
                         <li>
-                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_star.png" alt="" style="background: #fffddd;">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[0].giftCount?gcoinList.gift[0].giftCount:0).toLocaleString()}}</span></p>
-                        </li>
-                        <li>
                             <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_heart.png" alt="" style="background: #ffe7ea;">
                             <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[1].giftCount?gcoinList.gift[1].giftCount:0).toLocaleString()}}</span></p>
+                        </li>
+                        <li>
+                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_star.png" alt="" style="background: #fffddd;">
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[0].giftCount?gcoinList.gift[0].giftCount:0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_rose.png" alt="" style="background: #ffe9ec;">

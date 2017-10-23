@@ -37,12 +37,12 @@
                 <p class="detail_title">{{income_text.detail}}</p>
                 <ul class="income_img">
                     <li>
-                        <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_star.png" style="background-color: #fffddd;" alt="">
-                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[0].numbers?incomeList.giftList[0].numbers:0):0).toLocaleString()}}</span></p>
-                    </li>
-                    <li>
                         <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_heart.png" style="background-color: #ffe7ea;" alt="">
                         <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[1].numbers?incomeList.giftList[1].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_star.png" style="background-color: #fffddd;" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[0].numbers?incomeList.giftList[0].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_rose.png" style="background-color: #ffe9ec;" alt="">
