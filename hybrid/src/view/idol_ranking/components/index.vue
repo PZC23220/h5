@@ -236,7 +236,7 @@
             this.swiper.slideTo(val, 500, false)
           },
           formatTime(key) {
-              let timer = new Date(key*1000);
+              let timer = new Date(key*1000 - 1*60*60*1000);
               return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
           },
           getRanking(val,token) {

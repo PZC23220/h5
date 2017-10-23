@@ -1,101 +1,3 @@
-<template>
-    <div class="main">
-        <div class="header" :class="{'ios': android == false}">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="close()">
-            <span>{{video_text.pubMsg}}({{commentList.length}})</span>
-        </div>
-        <div class="content" :class="{'ios': android == false}" ref="viewBox">
-            <!-- <scroller ref="my_scroller" class="my-scroller"
-              :on-refresh="refresh"
-              :on-infinite="infinite" 
-              :noDataText="''"> -->
-            <v-scroll :on-refresh="refresh" :on-infinite="infinite">
-                <ul class="comment_list dynamic">
-                    <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
-                        <p>{{msg_text.load}}</p>
-                        <span></span>
-                    </div> -->
-                    <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
-                        <li class="defalt_msg" :class="{'firstLi':loadingBig}">
-                            <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
-                                <span></span>
-                                <i></i>
-                            </div>
-                            <div class="comment_content">
-                                <p></p>
-                                <div class="comment_img"></div>
-                            </div>
-                        </li>
-                        <li class="defalt_msg">
-                            <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
-                                <span></span>
-                                <i></i>
-                            </div>
-                            <div class="comment_content">
-                                <p></p>
-                                <div class="comment_img"></div>
-                            </div>
-                        </li>
-                        <li class="defalt_msg">
-                            <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
-                                <span></span>
-                                <i></i>
-                            </div>
-                            <div class="comment_content">
-                                <p></p>
-                                <div class="comment_img"></div>
-                            </div>
-                        </li>
-                        <li class="defalt_msg">
-                            <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
-                                <span></span>
-                                <i></i>
-                            </div>
-                            <div class="comment_content">
-                                <p></p>
-                                <div class="comment_img"></div>
-                            </div>
-                        </li>
-                    </div>
-                     <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
-                            <div class="comment_info">
-                                <img class="avatar"  v-lazy="comment.avatar" alt="">
-                                <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
-                                <span class="level" style="margin-top: 11px;">Lv.{{comment.levelPlatform}}</span>
-                                <img class="medal_level" style="margin-top: 11px;" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
-                            </div>
-                            <div class="comment_content" v-html="TransferString(comment.content)"></div>
-                            <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> <p v-html="TransferString(comment.referencePostView.content)"></p></div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="autoFocus(comment)" v-if="isIdol"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
-                        </li>
-                    <div class="default_page default_page3" v-show="commentList.length == 0 && loadingBig == false">
-                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
-                        <p v-html="video_text.noneComment"></p>
-                    </div>
-                </ul>
-            <!-- </scroller> -->
-            </v-scroll>
-        </div>
-        <!-- <div class="publich_comment" @click="publishComment()"><img src="/img/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
-        <div class="publich_comment" @click="autoFocus()"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/edit/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
-        <div class="comment_view" v-show="win_show" @touchmove.prevent>
-            <div class="comment_desc"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="isClose()"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
-            <div class="reply_comment_content" v-if="reply_comment_content"><span>{{reply_comment_content_fans}}</span>{{reply_comment_content}}</div>
-            <textarea :placeholder="video_text.pla" autofocus v-model="comment_text"></textarea>
-            <!-- <div class="publish" @click="publish()">发表</div> -->
-        </div>
-    </div>
-</template>
-
-<!-- <script src="../../utils/common.js"></script> -->
-<script>
-    // import VueLazyload from 'vue-lazyload'
-    // import VueScroller from 'vue-scroller';
-    import Scroll from '../../../components/scroll.vue';
     import http from '@api/js/http.js';
     require('@api/js/common.js')
     // require('@api/js/vconsole.min.js')
@@ -125,14 +27,14 @@
                     load: '送信',
                     pla: 'アイドルにあなたの大切な想いを届けよう...'
                 },
-                win_show: false,
+                win_show: true,
                 can_publish: true,
                 android: false,
                 isIdol: false,
+                reply: false,
                 reply_content: '',
                 reply_comment_content: '',
                 reply_comment_content_fans: '',
-                commentId: ''
             }
         },
         components: {
@@ -146,29 +48,18 @@
                     // document.querySelector('html').style.height = window.innerHeight + 'px';
                 },0)
             },
-            autoFocus(obj) {
+            autoFocus() {
                 let self = this;
-                if(obj) {
-                    this.reply_comment_content = obj.content;
-                    this.reply_comment_content_fans = obj.nickname;
-                    this.commentId = obj.id;
-                }else {
-                    this.reply_comment_content = '';
-                    this.reply_comment_content_fans = '';
-                    this.commentId = '';
-                }
-                self.win_show = true;
-                 document.querySelector('textarea').focus();
-                // window.setupWebViewJavascriptBridge(function(bridge) {
-                //     bridge.callHandler('can_post', function(res){
-                //         if(res) {
-                //             self.win_show = true;
-                //             setTimeout(function(){
-                //                 document.querySelector('textarea').focus();
-                //             },0);
-                //         }
-                //     });
-                // })
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('can_post', function(res){
+                        if(res) {
+                            self.win_show = true;
+                            setTimeout(function(){
+                                document.querySelector('textarea').focus();
+                            },10);
+                        }
+                    });
+                })
             },
             TransferString(content) {
                  let string = content;    
@@ -184,7 +75,7 @@
                 let self = this;
                 if(self.idx < 2) {
                     self.idx++;
-                    http.get('/post/list',{
+                    http.get('http://h5.groupy.vip/japi/post/list',{
                         params: {
                             targetType: 1,
                             targetId: getParams('videoId'),
@@ -218,6 +109,67 @@
                     })
                 }
             },
+            add_reply(obj) {
+                if(obj) {
+                    this.reply_comment_content = obj.content;
+                    this.reply_comment_content_fans = obj.nickname;
+                    this.commentId = obj.id;
+                }
+                this.reply = true;
+                setTimeout(function(){
+                    document.querySelector('textarea').focus();
+                },0);
+            },
+            reply_submit() {
+                let self = this;
+                if(self.reply_content !=""){
+                    if(!self.token_) {
+                        self.token_ = getParams('token');
+                    }
+                    if(self.token_!='(null)' && self.token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token '+self.token_;
+                    }
+                    let _data = {
+                        content:self.reply_content,
+                        targetType: 1,
+                        targetId: getParams('videoId'),
+                        reference: self.commentId
+                    }
+                    console.log(_data);
+                    http.post('/post/add?type=idol',JSON.stringify(_data)).then(function(res){
+                        if(res.status) {
+                            self.refresh();
+                            self.reply_content = '';
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('makeToast', 'リプライしました！');
+                            });
+                        }else {
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                            });
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
+                                    self.token_ = responseData.token;
+                                })
+                            })
+                        }
+                        self.reply = false;
+                    }).catch(function(err){
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                        })
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
+                                self.token_ = responseData.token;
+                            })
+                        })
+                    });
+                }else {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('makeToast', 'コメントを入力してください');
+                    })
+                }
+            },
             publish() {
                 let self = this;
                 let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
@@ -233,24 +185,19 @@
                         let _data = {
                             content:self.comment_text,
                             targetType: 1,
-                            targetId: getParams('videoId'),
-                            reference: self.commentId?self.commentId:'-1'
+                            targetId: getParams('videoId')
                         }
-
-                        http.post(`/post/add?type=${self.isIdol?'idol':'fans'}`,JSON.stringify(_data)).then(function(res){
+                        http.post('/post/add?type=fans',JSON.stringify(_data)).then(function(res){
                             if(res.status) {
 
                                 self.refresh();
                                 self.comment_text = '';
-                                self.reply_comment_content = '';
-                                self.reply_comment_content_fans = '';
-                                self.commentId = '';
                                 console.log(res)
                                 window.setupWebViewJavascriptBridge(function(bridge) {
                                     bridge.callHandler('makeToast', 'コメント投稿が完了しました。');
                                 });
                                 window.setupWebViewJavascriptBridge(function(bridge) {
-                                    bridge.callHandler('did_post',{'post':res});
+                                bridge.callHandler('did_post',{'post':res});
                                 })
                             }else {
                                 window.setupWebViewJavascriptBridge(function(bridge) {
@@ -335,10 +282,7 @@
                     self.start = 0;
                     self.havedlast = false;
                     self.showLoading2 = false;
-                    self.commentList = res.data;
-                    self.reply_comment_content = '';
-                    self.reply_comment_content_fans = '';
-                    self.commentId = '';                  
+                     self.commentList = res.data;                  
                     console.log(self.commentList);
                 }).catch(function(){
                     self.showLoading2 = false;
@@ -426,5 +370,3 @@
 
         }
     }
-</script>
-

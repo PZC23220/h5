@@ -61,9 +61,10 @@
                 <!-- <p v-html="activity.desc.p2"></p> -->
                 <!-- <p v-html="activity.desc.p3"></p> -->
             </div>
-            <div class="activity_rule">
+            <div class="activity_rule" v-if="isFans">
                 <h4>{{activity.rule.title}}</h4>
                 <p v-html="activity.rule.p1"></p>
+                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/activity_coke_tip.jpg" style="width: 66vw;box-sizing: border-box;padding:12px;">
                 <p v-html="activity.rule.p2"></p>
                 <!-- <p v-html="activity.rule.p3"></p> -->
             </div>

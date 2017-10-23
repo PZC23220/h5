@@ -170,7 +170,7 @@
                 });
             },
             formatTime(key) {
-                let timer = new Date(key);
+                let timer = new Date(key - 1*60*60*1000);
                 return timer.Format('MM.dd') + '&nbsp;' + timer.Format('hh:mm');
             },
             publishComment(obj) {
