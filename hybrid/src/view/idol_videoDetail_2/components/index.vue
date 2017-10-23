@@ -427,12 +427,55 @@
                                 self.videoTitle = res.data.title;
                             }
                             if(res.data.videoItemList) {
-                                let len = res.data.videoItemList.length - 1;
-                                self.videoSrc = res.data.videoItemList[len].url;
+                                let videoItem = res.data.videoItemList;
+                                let videoitem = {
+                                    hd: '',
+                                    ld: '',
+                                    sd: ''
+                                };
+                                videoItem.forEach(function(item){
+                                    if(item.resolution == 'sd') {
+                                        $.ajax({
+                                            url: item.url,
+                                            type: 'head',
+                                            async: false,
+                                            success: function(res) {
+                                                videoitem.sd = item.url;
+                                            }
+                                        })
+                                    }
+                                    else if(item.resolution == 'ld') {
+                                        $.ajax({
+                                            url: item.url,
+                                            type: 'head',
+                                            async: false,
+                                            success: function(res) {
+                                                videoitem.ld = item.url;
+                                            }
+                                        })
+                                    }else {
+                                        $.ajax({
+                                            url: item.url,
+                                            type: 'head',
+                                            async: false,
+                                            success: function(res) {
+                                                videoitem.hd = item.url;
+                                            }
+                                        })
+                                    }
+                                })
+                                if(videoitem.hd) {
+                                    self.playerOptions.sources[0].src = videoitem.hd
+                                }else if(videoitem.ld) {
+                                    self.playerOptions.sources[0].src = videoitem.ld
+                                }else {
+                                    self.playerOptions.sources[0].src = videoitem.sd
+                                }
+                                // let len = res.data.videoItemList.length - 1;
+                                // self.videoSrc = res.data.videoItemList[len].url;
                                 let ele = document.querySelector('#scrollIntoPages');
                                 ele.scrollIntoView(false);
-                                    console.log(`calc(100vw * ${res.data.videoItemList[len].height}/${res.data.videoItemList[len].width})`)
-                                    $('.poster').css('height',`calc(100vw * ${res.data.videoItemList[len].height}/${res.data.videoItemList[len].width})`)
+                                $('.poster').css('height',`calc(100vw * ${res.data.videoItemList[len].height}/${res.data.videoItemList[len].width})`)
                             }
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
