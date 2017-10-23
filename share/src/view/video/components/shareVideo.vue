@@ -154,6 +154,16 @@
                 }).then(function(res){
                     console.log(res);
                     if(res) {
+                        if(res.data.related) {
+                            self.videos = res.data.related;
+                        }
+
+                        if(res.data.idol) {
+                            self.idolShow = true;
+                            self.idol = res.data.idol;
+                            $('.htmlTilte').html(res.data.idol.nickname);
+                            $('.metaTitle').attr('content',res.data.idol.nickname);
+                        }
                         if(res.data.video) {
                             if(res.data.video.active == 1) {
                                 self.pageNone = false;
@@ -167,6 +177,7 @@
                                     self.vipShow = false;
                                     self.publicShow = true;
                                     self.playerOptions.poster = res.data.video.thumbnail;
+                                    self.video = res.data.video;
                                     let videoItem = res.data.video.videoItemList;
                                     let videoLink = '';
                                     let videoitem = {
@@ -176,34 +187,33 @@
                                     };
                                     videoItem.forEach(function(item){
                                         if(item.resolution == 'sd') {
-                                            // $.ajax({
-                                            //     url: item.url,
-                                            //     complete: function(res) {
-                                            //         console.log(res)
-                                            //     }
-                                            // })
-                                            // self.getURL(item.url)
-                                            // http.get(item.url).then(function(res){
-                                            videoitem.sd = item.url;
+                                            $.ajax({
+                                                url: item.url,
+                                                type: 'head',
+                                                async: false,
+                                                success: function(res) {
+                                                    videoitem.sd = item.url;
+                                                }
+                                            })
                                         }
                                         else if(item.resolution == 'ld') {
-                                            // http.get(item.url).then(function(res){
-                                                videoitem.ld = item.url;
-                                            // })
-                                            // self.getURL(item.url)
+                                            $.ajax({
+                                                url: item.url,
+                                                type: 'head',
+                                                async: false,
+                                                success: function(res) {
+                                                    videoitem.ld = item.url;
+                                                }
+                                            })
                                         }else {
-                                            // $.ajax({
-                                            //     url: item.url,
-                                            //     complete: function(res) {
-                                            //         console.log(res)
-                                            //     }
-                                            // })
-                                            
-                                            // http.get(item.url).then(function(res){
-                                                videoitem.hd = item.url;
-                                            // }).catch(function(err){
-                                            //     console.log(err)
-                                            // })
+                                            $.ajax({
+                                                url: item.url,
+                                                type: 'head',
+                                                async: false,
+                                                success: function(res) {
+                                                    videoitem.hd = item.url;
+                                                }
+                                            })
                                         }
                                     })
                                     if(videoitem.hd) {
@@ -215,7 +225,6 @@
                                     }
                                     
                                 }
-                                self.video = res.data.video;
                             } else {
                                 self.pageNone = true;
                                 self.pageNone2 = true;
@@ -224,17 +233,6 @@
                         }else {
                             self.pageNone = true;
                             self.pageNone2 = true;
-                        }
-
-                        if(res.data.related) {
-                            self.videos = res.data.related;
-                        }
-
-                        if(res.data.idol) {
-                            self.idolShow = true;
-                            self.idol = res.data.idol;
-                            $('.htmlTilte').html(res.data.idol.nickname);
-                            $('.metaTitle').attr('content',res.data.idol.nickname);
                         }
                     }else {
                         self.pageNone = true;
