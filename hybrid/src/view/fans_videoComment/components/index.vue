@@ -157,18 +157,16 @@
                     this.reply_comment_content_fans = '';
                     this.commentId = '';
                 }
-                self.win_show = true;
-                 document.querySelector('textarea').focus();
-                // window.setupWebViewJavascriptBridge(function(bridge) {
-                //     bridge.callHandler('can_post', function(res){
-                //         if(res) {
-                //             self.win_show = true;
-                //             setTimeout(function(){
-                //                 document.querySelector('textarea').focus();
-                //             },0);
-                //         }
-                //     });
-                // })
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('can_post', function(res){
+                        if(res) {
+                            self.win_show = true;
+                            setTimeout(function(){
+                                document.querySelector('textarea').focus();
+                            },0);
+                        }
+                    });
+                })
             },
             TransferString(content) {
                  let string = content;    
