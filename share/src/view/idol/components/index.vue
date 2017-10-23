@@ -262,7 +262,7 @@
                 }
             },
             formatTime(key) {
-                let timer = new Date(key);
+                let timer = new Date(key - 1*60*60*1000);
                 return timer.Format('MM.dd') + '  '+ timer.Format('hh:mm');
             },
             getIdolInfo() {
@@ -346,7 +346,7 @@
         created() {
             this.getIdolInfo();
             this.getComments();
-            // this.p_log('idol_shareIdolHome_h5_open');
+            this.p_log('idol_shareIdolHome_h5_open');
             var ua = navigator.userAgent.toLowerCase();
             if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';

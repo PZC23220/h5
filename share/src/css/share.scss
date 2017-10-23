@@ -185,17 +185,19 @@
 			overflow: hidden;
 		}
 	}
+	@media screen and (min-width: 500px) {
+	    .video_bigImg {
+	    	max-height: calc((500px - 36px)/2 * 11/9);
+	    }
+	}
 	.video_bigImg {
 		position: relative;
+		overflow: hidden;
+		max-height: calc((100vw - 36px)/2 * 11/9);
 		.video_poster {
 			display: block;
 			width: 100%;
-			max-height: calc((100vw - 36px)/2 * 11/9);
-		}
-		@media screen and (min-width: 500px) {
-		    .video_poster {
-		    	max-height: calc((500px - 36px)/2 * 11/9);
-		    }
+			// max-height: calc((100vw - 36px)/2 * 11/9);
 		}
 		.btn_play {
 			position: absolute;

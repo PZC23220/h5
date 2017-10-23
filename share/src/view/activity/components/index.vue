@@ -159,7 +159,7 @@
                 return playerOptions;
             },
             formatTime(key) {
-                let timer = new Date(key);
+                let timer = new Date(key - 1*60*60*1000);
                 return timer.Format('MM.dd') + '  '+ timer.Format('hh:mm');
             },
             getActivityInfo() {
@@ -239,7 +239,7 @@
             }
         },
         created() {
-            if(getParams('isFans') == 1) {
+            if(getParams('isFans') == 1 || !getParams('isFans')) {
                 this.getRanking();
                 this.getVideoList();
             }else {

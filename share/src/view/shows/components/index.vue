@@ -429,7 +429,7 @@
         },
         created() {
             var ua = navigator.userAgent.toLowerCase();
-            // this.p_log('idol_shareShows_h5_open');
+            this.p_log('idol_shareShows_h5_open');
             if (/iphone|ipad|ipod/.test(ua)) {
                 this.hrefs = 'itms-apps://itunes.apple.com/app/id1270083927';
             }else if(/android/.test(ua)) {

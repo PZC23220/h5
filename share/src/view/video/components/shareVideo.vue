@@ -134,6 +134,17 @@
                 let _s = (key-Math.floor(key/60)*60) >= 10 ? (key-Math.floor(key/60)*60) : '0'+ (key-Math.floor(key/60)*60);
                 return _m+":"+_s;
               },
+            getURL(url) {
+                    var xmlhttp = new ActiveXObject( "Microsoft.XMLHTTP");
+                    xmlhttp.open("GET", url, false);
+                    xmlhttp.send();
+                    console.log(xmlhttp)
+                    if(xmlhttp.readyState==4) {
+                        if(xmlhttp.Status != 200) alert("不存在");
+                        return xmlhttp.Status==200;
+                    }
+                    return false;
+            },
             getVideo() {
                 var self = this;
                 http.get('/video/get',{
@@ -156,8 +167,53 @@
                                     self.vipShow = false;
                                     self.publicShow = true;
                                     self.playerOptions.poster = res.data.video.thumbnail;
-                                    let _len = res.data.video.videoItemList.length - 1;
-                                    self.playerOptions.sources[0].src = res.data.video.videoItemList[_len].url;
+                                    let videoItem = res.data.video.videoItemList;
+                                    let videoLink = '';
+                                    let videoitem = {
+                                        hd: '',
+                                        ld: '',
+                                        sd: ''
+                                    };
+                                    videoItem.forEach(function(item){
+                                        if(item.resolution == 'sd') {
+                                            // $.ajax({
+                                            //     url: item.url,
+                                            //     complete: function(res) {
+                                            //         console.log(res)
+                                            //     }
+                                            // })
+                                            // self.getURL(item.url)
+                                            // http.get(item.url).then(function(res){
+                                            videoitem.sd = item.url;
+                                        }
+                                        else if(item.resolution == 'ld') {
+                                            // http.get(item.url).then(function(res){
+                                                videoitem.ld = item.url;
+                                            // })
+                                            // self.getURL(item.url)
+                                        }else {
+                                            // $.ajax({
+                                            //     url: item.url,
+                                            //     complete: function(res) {
+                                            //         console.log(res)
+                                            //     }
+                                            // })
+                                            
+                                            // http.get(item.url).then(function(res){
+                                                videoitem.hd = item.url;
+                                            // }).catch(function(err){
+                                            //     console.log(err)
+                                            // })
+                                        }
+                                    })
+                                    if(videoitem.hd) {
+                                        self.playerOptions.sources[0].src = videoitem.hd
+                                    }else if(videoitem.ld) {
+                                        self.playerOptions.sources[0].src = videoitem.ld
+                                    }else {
+                                        self.playerOptions.sources[0].src = videoitem.sd
+                                    }
+                                    
                                 }
                                 self.video = res.data.video;
                             } else {
@@ -211,7 +267,7 @@
             }
         },
         mounted() {
-          console.log('this is current player instance object', this.player)
+          // console.log('this is current player instance object', this.player)
         },
         computed: {
           player() {
