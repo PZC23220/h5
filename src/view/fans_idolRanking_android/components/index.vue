@@ -3,7 +3,9 @@
         <div class="header">
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">{{idol_text.today}}</a>
-                <a class="tabs" @click="changePages(1)">{{idol_text.alltop}}</a>
+                <a class="tabs" @click="changePages(1)">{{idol_text.week}}</a>
+                <a class="tabs" @click="changePages(2)">{{idol_text.month}}</a>
+                <a class="tabs" @click="changePages(3)">{{idol_text.alltop}}</a>
                 <span class="bgActive"></span>
             </div>
         </div>
@@ -121,6 +123,234 @@
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
                     <!-- </scroller> -->
+                    </v-scroll>
+                </swiper-slide>
+                <swiper-slide id="swiper3">
+                    <v-scroll :on-refresh="refresh3" :on-infinite="infinite3">
+                        <div class="not_concerned" v-if="me3.length==0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="concerned" v-if="me3.length > 0">
+                            <h3 class="title">{{idol_text.me3}}</h3>
+                            <div class="idol_detail" v-for="(idol,key) in me3" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
+                                <div class="idol_content">
+                                    <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
+                                    <div class="idol_border">
+                                        <div class="avatar_content">
+                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
+                                        </div>
+                                        <div class="introduction">
+                                            <p class="name">{{idol.name?idol.name:'...'}}</p>
+                                            <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
+                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
+                                        </div>
+                                        <div class="support" @click.stop="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
+                                    </div>
+                                </div>
+                                <div class="fans_list fans_show" :class="{'fans_none': meFans3.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in meFans3" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="border_bottom" v-if="key < me.length-1"></div>
+                            </div>
+                        </div>
+                        <div class="idol_all" v-if="top3None3 ==false">
+                            <h3 class="title" v-if="me3.length>0">{{idol_text.all}}</h3>
+                            <div class="page_none con_left" :class="{'fans_none': rakingList3.length>0}">
+                                <div class="idol_detail">
+                                    <div class="idol_content">
+                                        <i class="_fir">1</i>
+                                        <div class="idol_border">
+                                            <div class="avatar_content">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
+                                            </div>
+                                            <div class="introduction">
+                                                <p class="name">...</p>
+                                                <p class="signature">{{idol_text.none}}</p>
+                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                            </div>
+                                            <div class="support">{{idol_text.support}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                </div>
+                                <div class="idol_detail">
+                                    <div class="idol_content">
+                                        <i class="_sec">3</i>
+                                        <div class="idol_border">
+                                            <div class="avatar_content">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
+                                            </div>
+                                            <div class="introduction">
+                                                <p class="name">...</p>
+                                                <p class="signature">{{idol_text.none}}</p>
+                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                            </div>
+                                            <div class="support">{{idol_text.support}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                </div>
+                                <div class="idol_detail">
+                                    <div class="idol_content">
+                                        <i class="_thr">3</i>
+                                        <div class="idol_border">
+                                            <div class="avatar_content">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
+                                            </div>
+                                            <div class="introduction">
+                                                <p class="name">...</p>
+                                                <p class="signature">{{idol_text.none}}</p>
+                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                            </div>
+                                            <div class="support">{{idol_text.support}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                </div>
+                            </div>
+                            <div class="idol_detail" v-for="(idol,key) in rakingList3" v-if="rakingList3.length>0?key < len: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
+                                <div class="idol_content">
+                                    <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
+                                    <div class="idol_border">
+                                        <div class="avatar_content">
+                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
+                                        </div>
+                                        <div class="introduction">
+                                            <p class="name">{{idol.name?idol.name:'...'}}</p>
+                                            <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
+                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
+                                        </div>
+                                        <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
+                                    </div>
+                                </div>
+                                <div class="fans_list fans_show" :class="{'fans_none': allFans3.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in allFans3" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="border_bottom"></div>
+                            </div>
+                        </div>
+                        <div class="default_page" v-if="top3None3">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
+                            <p v-html="idol_text.noneIdol"></p>
+                        </div>
+                            <!-- </scroller> -->
+                    </v-scroll>
+                </swiper-slide>
+                <swiper-slide id="swiper4">
+                    <v-scroll :on-refresh="refresh4" :on-infinite="infinite4">
+                        <div class="not_concerned" v-if="me4.length==0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="concerned" v-if="me4.length > 0">
+                            <h3 class="title">{{idol_text.me4}}</h3>
+                            <div class="idol_detail" v-for="(idol,key) in me4" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
+                                <div class="idol_content">
+                                    <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
+                                    <div class="idol_border">
+                                        <div class="avatar_content">
+                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
+                                        </div>
+                                        <div class="introduction">
+                                            <p class="name">{{idol.name?idol.name:'...'}}</p>
+                                            <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
+                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
+                                        </div>
+                                        <div class="support" @click.stop="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
+                                    </div>
+                                </div>
+                                <div class="fans_list fans_show" :class="{'fans_none': meFans4.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in meFans4" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="border_bottom" v-if="key < me.length-1"></div>
+                            </div>
+                        </div>
+                        <div class="idol_all" v-if="top3None4 ==false">
+                            <h3 class="title" v-if="me4.length>0">{{idol_text.all}}</h3>
+                            <div class="page_none con_left" :class="{'fans_none': rakingList4.length>0}">
+                                <div class="idol_detail">
+                                    <div class="idol_content">
+                                        <i class="_fir">1</i>
+                                        <div class="idol_border">
+                                            <div class="avatar_content">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
+                                            </div>
+                                            <div class="introduction">
+                                                <p class="name">...</p>
+                                                <p class="signature">{{idol_text.none}}</p>
+                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                            </div>
+                                            <div class="support">{{idol_text.support}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                </div>
+                                <div class="idol_detail">
+                                    <div class="idol_content">
+                                        <i class="_sec">2</i>
+                                        <div class="idol_border">
+                                            <div class="avatar_content">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
+                                            </div>
+                                            <div class="introduction">
+                                                <p class="name">...</p>
+                                                <p class="signature">{{idol_text.none}}</p>
+                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                            </div>
+                                            <div class="support">{{idol_text.support}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                </div>
+                                <div class="idol_detail">
+                                    <div class="idol_content">
+                                        <i class="_thr">3</i>
+                                        <div class="idol_border">
+                                            <div class="avatar_content">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
+                                            </div>
+                                            <div class="introduction">
+                                                <p class="name">...</p>
+                                                <p class="signature">{{idol_text.none}}</p>
+                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                            </div>
+                                            <div class="support">{{idol_text.support}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                </div>
+                            </div>
+                            <div class="idol_detail" v-for="(idol,key) in rakingList4" v-if="rakingList4.length>0?key < len: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
+                                <div class="idol_content">
+                                    <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
+                                    <div class="idol_border">
+                                        <div class="avatar_content">
+                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
+                                        </div>
+                                        <div class="introduction">
+                                            <p class="name">{{idol.name?idol.name:'...'}}</p>
+                                            <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
+                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
+                                        </div>
+                                        <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
+                                    </div>
+                                </div>
+                                <div class="fans_list fans_show" :class="{'fans_none': allFans4.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in allFans4" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="border_bottom"></div>
+                            </div>
+                        </div>
+                        <div class="default_page" v-if="top3None4">
+                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
+                            <p v-html="idol_text.noneIdol"></p>
+                        </div>
+                            <!-- </scroller> -->
                     </v-scroll>
                 </swiper-slide>
                 <swiper-slide id="swiper2">
@@ -255,16 +485,22 @@
             return {
                 rakingList: [],
                 rakingList2: [],
+                rakingList3: [],
+                rakingList4: [],
                 me: [],
                 me2: [],
-                loadingBig: true,
-                loadingBig2: true,
+                me3: [],
+                me4: [],
                 len:20,
                 len2:20,
+                len3:20,
+                len4:20,
                 start: 0,
                 num: 20,
                 idx: 0,
                 idx2: 0,
+                idx3: 0,
+                idx4: 0,
                 idol_text: {
                     me: 'お気に入り',
                     all: '全体ランキング',
@@ -273,8 +509,10 @@
                     no1: 'No.1になって目立とう！',
                     none: 'Groupyで待ってまーす。',
                     noneIdol: 'ただ今集計中です',
-                    today: '今日のランキング',
-                    alltop: '総合ランキング'
+                    today: '本日',
+                    week: '今週',
+                    month: '今月',
+                    alltop: '総合'
                 },
                 swiperOption: {
                   notNextTick: true,
@@ -289,15 +527,21 @@
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
-                    $('.bgActive').css('left','calc(122px * '+ (swiper.activeIndex) +' + 2px)');
+                    $('.bgActive').css('left',`calc((100vw - 24px)*1/4*${swiper.activeIndex})`);
                   },
                 },
                 top3None: false,
                 top3None2: false,
+                top3None3: false,
+                top3None4: false,
                 allFans: [],
                 allFans2: [],
+                allFans3: [],
+                allFans4: [],
                 meFans: [],
                 meFans2: [],
+                meFans3: [],
+                meFans4: [],
                 android: false
             }
         },
@@ -305,227 +549,399 @@
             'v-scroll': Scroll
         },
         methods: {
-          changePages(val) {
-            let tabs = $('.tabs');
-            tabs.removeClass('active');
-            tabs.eq(val).addClass('active');
-            $('.bgActive').css('left','calc(122px * '+ val +' + 2px)');
-            this.swiper.slideTo(val, 500, false)
-          },
-          showIdolPage(val) {
-            console.log(val)
-            window.setupWebViewJavascriptBridge(function(bridge) {
-                bridge.callHandler('showIdolPage', {'idolId': val})
-            })
-          },
-          formatTime(key) {
-              let timer = new Date(key - 1*60*60*1000);
-              return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
-          },
-          getRanking(token) {
-            let self = this;
-            if(self.idx < 2) {
-                self.idx++;
-                let token_ = getParams('token');
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else if(token_!='(null)' && token_!='') {
-                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
-                }
-                http.get('/ranking/idolsFromFans',{
-                    params: {
-                        filter: 'today'
+            changePages(val) {
+                let tabs = $('.tabs');
+                tabs.removeClass('active');
+                tabs.eq(val).addClass('active');
+                $('.bgActive').css('left',`calc((100vw - 24px)*1/4*${val})`);
+                this.swiper.slideTo(val, 500, false)
+            },
+            showIdolPage(val) {
+                console.log(val)
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('showIdolPage', {'idolId': val})
+                })
+            },
+            formatTime(key) {
+                let timer = new Date(key - 1*60*60*1000);
+                return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
+            },
+            getRanking(token) {
+                let self = this;
+                if(self.idx < 2) {
+                    self.idx++;
+                    let token_ = getParams('token');
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
+                    }else if(token_!='(null)' && token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
-                }).then(function(res){
-                    let allFansList = [],meFansList = [];
-                        if(res.data) {
-                            if(!res.data.rankingList) {
-                                self.top3None = true;
+                    http.get('/ranking/idolsFromFans',{
+                        params: {
+                            filter: 'today'
+                        }
+                    }).then(function(res){
+                        let allFansList = [],meFansList = [];
+                            if(res.data) {
+                                if(!res.data.rankingList) {
+                                    self.top3None = true;
+                                }else {
+                                    self.rakingList = res.data.rankingList;
+                                    for(var i=0;i<self.rakingList.length;i++) {
+                                        allFansList.push(self.rakingList[i].idolId);
+                                    }
+                                    self.getFansList(allFansList,'all')
+                                }
+                                if(res.data.me) {
+                                    self.me = res.data.me;
+                                    for(var j=0;j<self.me.length;j++) {
+                                        meFansList.push(self.me[j].idolId);
+                                    }
+                                    self.getFansList(meFansList,'me')
+                                }
                             }else {
-                                self.rakingList = res.data.rankingList;
-                                for(var i=0;i<self.rakingList.length;i++) {
-                                    allFansList.push(self.rakingList[i].idolId);
-                                }
-                                self.getFansList(allFansList,'all')
+                                window.setupWebViewJavascriptBridge(function(bridge) {
+                                    bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
+                                        self.getRanking(responseData.token);
+                                    })
+                                })
                             }
-                            if(res.data.me) {
-                                self.me = res.data.me;
-                                for(var j=0;j<self.me.length;j++) {
-                                    meFansList.push(self.me[j].idolId);
+                    }).catch(function(err){
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
+                                self.getRanking(responseData.token);
+                            })
+                        })
+                    })
+                }else {
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        // if(_lan === 'zh-cn') {
+                        //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                        //  }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
+                         // }
+                    })
+                }
+            },
+            getRanking2(token) {
+                let self = this;
+                if(self.idx2 < 2) {
+                    self.idx2++;
+                    let token_ = getParams('token');
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
+                    }else if(token_!='(null)' && token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token ' + token_;
+                    }
+                    http.get('/ranking/idolsFromFans',{
+                        params: {
+                            filter: 'all'
+                        }
+                    }).then(function(res){
+                        let allFansList2 = [],meFansList2 = [];
+                            if(res.data) {
+                                if(!res.data.rankingList) {
+                                    self.top3None2 = true;
+                                }else {
+                                    self.rakingList2 = res.data.rankingList;
+                                    for(var i=0;i<self.rakingList2.length;i++) {
+                                        allFansList2.push(self.rakingList2[i].idolId);
+                                    }
+                                    self.getFansList(allFansList2,'all2')
                                 }
-                                self.getFansList(meFansList,'me')
-                            }
+                                if(res.data.me) {
+                                    self.me2 = res.data.me;
+                                    for(var j=0;j<self.me2.length;j++) {
+                                        meFansList2.push(self.me2[j].idolId);
+                                    }
+                                    self.getFansList(meFansList2,'me2')
+                                }
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
-                                    self.getRanking(responseData.token);
+                                    self.getRanking2(responseData.token);
                                 })
                             })
                         }
-                }).catch(function(err){
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
-                            self.getRanking(responseData.token);
-                        })
-                    })
-                })
-            }else {
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                window.setupWebViewJavascriptBridge(function(bridge) {
-                    // if(_lan === 'zh-cn') {
-                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                    //  }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\\nしばらくしてからもう一度お試しください');
-                     // }
-                })
-            }
-          },
-          getRanking2(token) {
-            let self = this;
-            if(self.idx2 < 2) {
-                self.idx2++;
-                let token_ = getParams('token');
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else if(token_!='(null)' && token_!='') {
-                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
-                }
-                http.get('/ranking/idolsFromFans',{
-                    params: {
-                        filter: 'all'
-                    }
-                }).then(function(res){
-                    self.loadingBig2 = false;
-                    let allFansList2 = [],meFansList2 = [];
-                        if(res.data) {
-                            if(!res.data.rankingList) {
-                                self.top3None2 = true;
-                            }else {
-                                self.rakingList2 = res.data.rankingList;
-                                for(var i=0;i<self.rakingList2.length;i++) {
-                                    allFansList2.push(self.rakingList2[i].idolId);
-                                }
-                                self.getFansList(allFansList2,'all2')
-                            }
-                            if(res.data.me) {
-                                self.me2 = res.data.me;
-                                for(var j=0;j<self.me2.length;j++) {
-                                    meFansList2.push(self.me2[j].idolId);
-                                }
-                                self.getFansList(meFansList2,'me2')
-                            }
-                    }else {
+                    }).catch(function(err) {
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
                                 self.getRanking2(responseData.token);
                             })
                         })
-                    }
-                }).catch(function(err) {
+                    })
+                }else {
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
-                            self.getRanking2(responseData.token);
+                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                    })
+                }
+            },
+            getRanking3(token) {
+                let self = this;
+                if(self.idx3 < 2) {
+                    self.idx3++;
+                    let token_ = getParams('token');
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
+                    }else if(token_!='(null)' && token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token ' + token_;
+                    }
+                    http.get('/ranking/idolsFromFans',{
+                        params: {
+                            filter: 'week'
+                        }
+                    }).then(function(res){
+                        let allFansList3 = [],meFansList3 = [];
+                            if(res.data) {
+                                if(!res.data.rankingList) {
+                                    self.top3None3 = true;
+                                }else {
+                                    self.rakingList3 = res.data.rankingList;
+                                    for(var i=0;i<self.rakingList3.length;i++) {
+                                        allFansList3.push(self.rakingList3[i].idolId);
+                                    }
+                                    self.getFansList(allFansList3,'all3')
+                                }
+                                if(res.data.me) {
+                                    self.me3 = res.data.me;
+                                    for(var j=0;j<self.me3.length;j++) {
+                                        meFansList3.push(self.me3[j].idolId);
+                                    }
+                                    self.getFansList(meFansList3,'me3')
+                                }
+                        }else {
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
+                                    self.getRanking3(responseData.token);
+                                })
+                            })
+                        }
+                    }).catch(function(err) {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
+                                self.getRanking3(responseData.token);
+                            })
                         })
                     })
-                })
-            }else {
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                })
-            }
-
-          },
-          getFansList(_val,arr) {
-            let self = this;
-            http.post('/groupyuser/idolTopFans',{
-                idolIds: _val
-            }).then(function(res){
-                if(res.data.length > 0) {
-                    if(arr == 'all') {
-                        self.allFans = res.data;
-                    }else if(arr == 'me') {
-                        self.meFans = res.data;
-                    }else if(arr == 'all2') {
-                        self.allFans2 = res.data;
-                    }else if(arr == 'me2') {
-                        self.meFans2 = res.data;
+                }else {
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                    })
+                }
+            },
+            getRanking4(token) {
+                let self = this;
+                if(self.idx4 < 2) {
+                    self.idx4++;
+                    let token_ = getParams('token');
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
+                    }else if(token_!='(null)' && token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token ' + token_;
                     }
+                    http.get('/ranking/idolsFromFans',{
+                        params: {
+                            filter: 'month'
+                        }
+                    }).then(function(res){
+                        let allFansList4 = [],meFansList4 = [];
+                            if(res.data) {
+                                if(!res.data.rankingList) {
+                                    self.top3None4 = true;
+                                }else {
+                                    self.rakingList4 = res.data.rankingList;
+                                    for(var i=0;i<self.rakingList4.length;i++) {
+                                        allFansList4.push(self.rakingList4[i].idolId);
+                                    }
+                                    self.getFansList(allFansList4,'all4')
+                                }
+                                if(res.data.me) {
+                                    self.me4 = res.data.me;
+                                    for(var j=0;j<self.me4.length;j++) {
+                                        meFansList4.push(self.me4[j].idolId);
+                                    }
+                                    self.getFansList(meFansList4,'me4')
+                                }
+                        }else {
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
+                                    self.getRanking4(responseData.token);
+                                })
+                            })
+                        }
+                    }).catch(function(err) {
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
+                                self.getRanking4(responseData.token);
+                            })
+                        })
+                    })
+                }else {
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                    })
                 }
-            })
-          },
-          refresh (done) {
-            var self = this;
-            setTimeout(() => {
-              self.idx = 0;
-              self.getRanking();
-              done()
-            }, 500)
-          },
-          refresh2 (done) {
-            var self = this;
-            setTimeout(() => {
-              self.idx2 = 0;
-              self.getRanking2();
-              done()
-            }, 500)
-          },
-          infinite (done) {
-            var self = this;
-            if(self.rakingList) {
-               if (self.rakingList.length < self.len) {
-                  setTimeout(() => {
-                    done(true)
-                  }, 500)
-                  return;
-                } else {
-                    setTimeout(() => {
-                      self.len += 20;
-                      done()
-                    }, 500)
-                }
-            }else {
-              setTimeout(() => {
-                done(true)
-              }, 500)
-              return;
-            }
-          },
-          infinite2 (done) {
-            var self = this;
-            if(self.rakingList2) {
-               if (self.rakingList2.length < self.len2) {
-                  setTimeout(() => {
-                    done(true)
-                  }, 500)
-                  return;
-                } else {
-                    setTimeout(() => {
-                      self.len2 += 20;
-                      done()
-                    }, 500)
-                }
-            }else {
-              setTimeout(() => {
-                done(true)
-              }, 500)
-              return;
-            }
-          },
-          support(val) {
-            console.log('support');
-            var self = this;
-            window.setupWebViewJavascriptBridge(function(bridge) {
-                bridge.callHandler('makeToast', 'send_gift_before');
-                bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
-                    self.idx2 = 0;
-                    self.idx = 0;
-                    self.getRanking();
-                    self.getRanking2();
+            },
+            getFansList(_val,arr) {
+                let self = this;
+                http.post('/groupyuser/idolTopFans',{
+                    idolIds: _val
+                }).then(function(res){
+                    if(res.data.length > 0) {
+                        if(arr == 'all') {
+                            self.allFans = res.data;
+                        }else if(arr == 'me') {
+                            self.meFans = res.data;
+                        }else if(arr == 'all2') {
+                            self.allFans2 = res.data;
+                        }else if(arr == 'me2') {
+                            self.meFans2 = res.data;
+                        }else if(arr == 'all3') {
+                            self.allFans3 = res.data;
+                        }else if(arr == 'me3') {
+                            self.meFans2 = res.data;
+                        }else if(arr == 'all4') {
+                            self.allFans4 = res.data;
+                        }else if(arr == 'me4') {
+                            self.meFans4 = res.data;
+                        }
+                    }
                 })
-            })
-            return;
-          }
+            },
+            refresh (done) {
+                var self = this;
+                setTimeout(() => {
+                  self.idx = 0;
+                  self.getRanking();
+                  done()
+                }, 500)
+            },
+            refresh2 (done) {
+                var self = this;
+                setTimeout(() => {
+                  self.idx2 = 0;
+                  self.getRanking2();
+                  done()
+                }, 500)
+            },
+            refresh3 (done) {
+                var self = this;
+                setTimeout(() => {
+                  self.idx3 = 0;
+                  self.getRanking3();
+                  done()
+                }, 500)
+            },
+            refresh4 (done) {
+                var self = this;
+                setTimeout(() => {
+                  self.idx4 = 0;
+                  self.getRanking4();
+                  done()
+                }, 500)
+            },
+            infinite (done) {
+                var self = this;
+                if(self.rakingList) {
+                   if (self.rakingList.length < self.len) {
+                      setTimeout(() => {
+                        done(true)
+                      }, 500)
+                      return;
+                    } else {
+                        setTimeout(() => {
+                          self.len += 20;
+                          done()
+                        }, 500)
+                    }
+                }else {
+                  setTimeout(() => {
+                    done(true)
+                  }, 500)
+                  return;
+                }
+            },
+            infinite2 (done) {
+                var self = this;
+                if(self.rakingList2) {
+                   if (self.rakingList2.length < self.len2) {
+                      setTimeout(() => {
+                        done(true)
+                      }, 500)
+                      return;
+                    } else {
+                        setTimeout(() => {
+                          self.len2 += 20;
+                          done()
+                        }, 500)
+                    }
+                }else {
+                  setTimeout(() => {
+                    done(true)
+                  }, 500)
+                  return;
+                }
+            },
+            infinite3 (done) {
+                var self = this;
+                if(self.rakingList3) {
+                   if (self.rakingList3.length < self.len3) {
+                      setTimeout(() => {
+                        done(true)
+                      }, 500)
+                      return;
+                    } else {
+                        setTimeout(() => {
+                          self.len3 += 20;
+                          done()
+                        }, 500)
+                    }
+                }else {
+                  setTimeout(() => {
+                    done(true)
+                  }, 500)
+                  return;
+                }
+            },
+            infinite4 (done) {
+                var self = this;
+                if(self.rakingList4) {
+                   if (self.rakingList4.length < self.len4) {
+                      setTimeout(() => {
+                        done(true)
+                      }, 500)
+                      return;
+                    } else {
+                        setTimeout(() => {
+                          self.len4 += 20;
+                          done()
+                        }, 500)
+                    }
+                }else {
+                  setTimeout(() => {
+                    done(true)
+                  }, 500)
+                  return;
+                }
+            },
+            support(val) {
+                console.log('support');
+                var self = this;
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('makeToast', 'send_gift_before');
+                    bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
+                        self.idx2 = 0;
+                        self.idx = 0;
+                        self.getRanking();
+                        self.getRanking2();
+                    })
+                })
+                return;
+            }
         },
         mounted() {
             var self = this;
@@ -534,6 +950,8 @@
                 self.idx = 0;
                 self.getRanking();
                 self.getRanking2();
+                self.getRanking3();
+                self.getRanking4();
             }
             window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.registerHandler('ranking_refresh', function() {
@@ -541,6 +959,8 @@
                     self.idx = 0;
                     self.getRanking();
                     self.getRanking2();
+                    self.getRanking3();
+                    self.getRanking4();
                 })
             });
         },
@@ -578,214 +998,8 @@
             //   }
             this.getRanking();
             this.getRanking2();
+            this.getRanking3();
+            this.getRanking4();
         }
     }
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-    .header {
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-        .detailPages {
-            width: 260px;
-            margin: 4px auto;
-            height: 34px;
-            line-height: 28px;
-            box-sizing: border-box;
-            padding: 2px;
-            border-radius: 28px;
-            border: 1px solid #FF2E79;
-            a {
-                color: #FF2E79;
-                margin: 0;
-            }
-            .active {
-                color: #fff;
-            }
-            .bgActive {
-                background-image: linear-gradient(150deg, #FF8550 0%, #FF2E79 100%);
-                border-radius: 22px;
-                top: 2px;
-                height: 28px;
-                width: 130px;
-                margin-left: 2px;
-            }
-        }
-    }
-    .concerned, .idol_all {
-        background: #fff;
-    }
-    h3.title {
-        height: 25px;
-        line-height: 25px;
-        font-size: 12px;
-        color: #999999;
-        background: #eee;
-        padding-left: 12px;
-        box-sizing: border-box;
-    }
-    .not_concerned {
-        width: 100%;
-        border-bottom: 4px #eee solid;
-        box-sizing: border-box;
-        img {
-            width: 100%;
-            display: block;
-        }
-    }
-    .border_bottom {
-        border-bottom: 4px #eee solid;
-    }
-    .idol_detail {
-        color: #666;
-        .name {
-            color: #333;
-            font-weight: 600;
-        }
-    }
-    .avatar_content {
-        overflow: hidden;
-        float: left;
-        position: relative;
-        padding: 8px 0 0 4px;
-        .crown {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 25px;
-        }
-    }
-    .idol_content {
-        margin: 12px 0 0 12px;
-        box-sizing: border-box;
-        overflow: hidden;
-        >* {
-            float: left;
-        }
-        i {
-            font-family: 'Helvetica Condensed Bold Italic';
-            font-size: 24px;
-            color: #BBBBBB;
-            margin-top: 14px;
-            width: 20px;
-            text-align: left;
-        }
-        ._fir {
-            color: #F3B714;
-        }
-        ._sec {
-            color: #888;
-        }
-        ._thr {
-            color: #FF8500;
-        }
-        .sizeTwo {
-            font-size: 18px;
-        }
-        .sizeThree {
-            font-size: 10px;
-            -webkit-transform: scalc(0.8);
-            margin-top: 24px;
-        }
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 6px;
-            float: left;
-            display: block;
-        }
-        .idol_border {
-            border-bottom: 1px #eee solid;
-            overflow: hidden;
-            // padding-right: 12px;
-            width: calc(100vw - 44px);
-            padding-bottom: 5px;
-        }
-        .introduction {
-            width: calc(100vw - 204px);
-            float: left;
-            .name {
-                font-size: 14px;
-                text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
-            }
-            .signature {
-                // font-size: 10.5px;
-                // -webkit-transform: scale(0.8);
-                // margin-left: -18px;
-                text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
-            }
-            .detail {
-                font-size: 12px;
-                display: flex;
-                span {
-                    flex: 1;
-                    img {
-                        width: 20px;
-                        vertical-align: middle;
-                        margin-right: 5px;
-                    }
-                    em {
-                        display: inline-block;
-                        max-width: calc((100vw - 200px)/2 - 30px);
-                        text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
-                    }
-                }
-            }
-        }
-        .support {
-            float: left;
-            width: 80px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            color: #00B4BC;
-            float: right;
-            border: 1.5px solid #00B4BC;
-            border-radius: 27px;
-            margin-top: 8px;
-        }
-    }
-    .fans_list {
-        padding: 8px 0 8px 34px;
-        img {
-            margin-left: 4px;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            vertical-align: middle;
-        }
-        img:nth-child(1) {
-            margin-left: 9px;
-        }
-        .no_fans {
-            font-size: 10px;
-            -webkit-transform: scale(0.8);
-            display: inline-block;
-        }
-        .fans_imgList {
-            display: inline-block;
-        }
-    }
-    .con_left {
-        opacity: 0.2;
-        transition: opacity 0.3s;
-     }
-    .left_show {
-        opacity: 1;
-    }
-    .fans_show {
-        padding: 0;
-        padding-left: 34px;
-        height: 41px;
-        transition: opacity 0.3s;
-        opacity: 0.2;
-        line-height: 41px;
-    }
-    .fans_none {
-        opacity: 0;
-        height: 0;
-    }
-    .page_none {
-        overflow: hidden;
-    }
-</style>

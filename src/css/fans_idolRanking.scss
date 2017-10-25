@@ -1,0 +1,183 @@
+    .header {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .detailPages span.bgActive {
+        margin-left: calc((100vw - 24px)* 1/8 - 40px);
+    }
+    .concerned, .idol_all {
+        background: #fff;
+    }
+    h3.title {
+        height: 25px;
+        line-height: 25px;
+        font-size: 12px;
+        color: #999999;
+        background: #eee;
+        padding-left: 12px;
+        box-sizing: border-box;
+    }
+    .not_concerned {
+        width: 100%;
+        border-bottom: 4px #eee solid;
+        box-sizing: border-box;
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+    .border_bottom {
+        border-bottom: 4px #eee solid;
+    }
+    .idol_detail {
+        color: #666;
+        .name {
+            color: #333;
+            font-weight: 600;
+        }
+    }
+    .avatar_content {
+        overflow: hidden;
+        float: left;
+        position: relative;
+        padding: 8px 0 0 4px;
+        .crown {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 25px;
+        }
+    }
+    .idol_content {
+        margin: 12px 0 0 12px;
+        box-sizing: border-box;
+        overflow: hidden;
+        >* {
+            float: left;
+        }
+        i {
+            font-family: 'Helvetica Condensed Bold Italic';
+            font-size: 24px;
+            color: #BBBBBB;
+            margin-top: 14px;
+            width: 20px;
+            text-align: left;
+        }
+        ._fir {
+            color: #F3B714;
+        }
+        ._sec {
+            color: #888;
+        }
+        ._thr {
+            color: #FF8500;
+        }
+        .sizeTwo {
+            font-size: 18px;
+        }
+        .sizeThree {
+            font-size: 10px;
+            -webkit-transform: scalc(0.8);
+            margin-top: 24px;
+        }
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 6px;
+            float: left;
+            display: block;
+        }
+        .idol_border {
+            border-bottom: 1px #eee solid;
+            overflow: hidden;
+            // padding-right: 12px;
+            width: calc(100vw - 44px);
+            padding-bottom: 5px;
+        }
+        .introduction {
+            width: calc(100vw - 204px);
+            float: left;
+            .name {
+                font-size: 14px;
+                text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+            }
+            .signature {
+                // font-size: 10.5px;
+                // -webkit-transform: scale(0.8);
+                // margin-left: -18px;
+                text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+            }
+            .detail {
+                font-size: 12px;
+                display: flex;
+                span {
+                    flex: 1;
+                    img {
+                        width: 20px;
+                        vertical-align: middle;
+                        margin-right: 5px;
+                    }
+                    em {
+                        display: inline-block;
+                        max-width: calc((100vw - 200px)/2 - 30px);
+                        text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+                    }
+                }
+            }
+        }
+        .support {
+            float: left;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: #00B4BC;
+            float: right;
+            border: 1.5px solid #00B4BC;
+            border-radius: 27px;
+            margin-top: 8px;
+        }
+    }
+    .fans_list {
+        padding: 8px 0 8px 34px;
+        img {
+            margin-left: 4px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+        img:nth-child(1) {
+            margin-left: 9px;
+        }
+        .no_fans {
+            font-size: 10px;
+            -webkit-transform: scale(0.8);
+            display: inline-block;
+        }
+        .fans_imgList {
+            display: inline-block;
+        }
+    }
+    .con_left {
+        opacity: 0.2;
+        transition: opacity 0.3s;
+     }
+    .left_show {
+        opacity: 1;
+    }
+    .fans_show {
+        padding: 0;
+        padding-left: 34px;
+        height: 41px;
+        transition: opacity 0.3s;
+        opacity: 0.2;
+        line-height: 41px;
+    }
+    .fans_none {
+        opacity: 0;
+        height: 0;
+    }
+    .page_none {
+        overflow: hidden;
+    }

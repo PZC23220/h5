@@ -1,0 +1,136 @@
+    .header {
+        padding: 0;
+        box-sizing: border-box;
+        line-height: 43px;
+        background: #fafafa;
+        color: #666;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        .go_back {
+            font-size: 18px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+            img {
+                position: absolute;
+                left: 12px;
+                width: 22px;
+                padding: 10.5px 5px;
+            }
+            p {
+                float: right;
+                border: 1px solid #FC4083;
+                border-radius: 50px;
+                font-size: 16px;
+                color: #FC4083;
+                width: 72px;
+                height: 32px;
+                line-height: 32px;
+                margin-top: 3px;
+            }
+        }
+    }
+    .content.ios {
+        top: 41px;
+        height: calc(100vh - 41px);
+    }
+    .content {
+        top: 84px;
+        height: calc(100vh - 84px);
+    }
+    .ranking_type {
+        padding: 0 12px;
+        color: #999;
+        background: #eee;       
+    }
+    .medal_level {
+        margin-top: 3px;
+    }
+    .comment_list {
+        padding: 0;
+        color: #666;
+        background: #fff;
+        li {
+            padding-left: 12px;
+            padding-right: 12px;
+            >span:first-child {
+                font-size: 24px;
+                color: #CCCCCC;
+                margin-top: 3px;
+                line-height: 33px;
+            }
+            >span:nth-child(3) {
+                font-size: 14px;
+                color: #666;
+            }
+        }
+        li:first-child {
+            border-top: 1px solid #EBEBEB;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+        }
+        div:not(.con_left) {
+            float: left;
+            width: calc(100vw - 110px);
+            span {
+                display: block;
+                float: none;
+                line-height: 20px;
+                overflow: hidden;
+                margin-right: 0;
+                em {
+                    text-overflow: ellipsis;
+                    overflow:hidden;
+                    white-space: nowrap;
+                    text-align: left;
+                    max-width: calc(100vw - 176px);
+                    display: block;
+                    float: left;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #333;
+                }
+                .level {
+                    margin-top: 2px;
+                    margin-left: 5px;
+                    float: left;
+                }                    
+            }
+            span:nth-child(2) {
+                img {
+                    width: 14px;
+                    vertical-align: middle;
+                    margin-right: 6px;
+                    float: left;
+                    margin-top: 3px;
+                }
+            }
+        }
+        .fans_medal {
+            margin: 0;
+            height: auto;
+            // width: 40px;
+            position: relative;
+            .medal {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 43px;
+                height: 10px;
+            }
+        }
+        .con_left {
+            opacity: 0.2;
+            height: auto;
+            transition: all 0.3s;
+         }
+        .left_show {
+            opacity: 1;
+        }
+        .left_hide {
+            opacity: 0;
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    }
