@@ -129,7 +129,7 @@
                     <v-scroll :on-refresh="refresh3" :on-infinite="infinite3">
                         <div class="not_concerned" v-if="me3.length==0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
                         <div class="concerned" v-if="me3.length > 0">
-                            <h3 class="title">{{idol_text.me3}}</h3>
+                            <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me3" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                                 <div class="idol_content">
                                     <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': meFans3.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
                                 <div class="fans_list"  v-for="fans in meFans3" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
-                                <div class="border_bottom" v-if="key < me.length-1"></div>
+                                <div class="border_bottom" v-if="key < me3.length-1"></div>
                             </div>
                         </div>
                         <div class="idol_all" v-if="top3None3 ==false">
@@ -243,7 +243,7 @@
                     <v-scroll :on-refresh="refresh4" :on-infinite="infinite4">
                         <div class="not_concerned" v-if="me4.length==0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
                         <div class="concerned" v-if="me4.length > 0">
-                            <h3 class="title">{{idol_text.me4}}</h3>
+                            <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me4" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                                 <div class="idol_content">
                                     <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
@@ -262,7 +262,7 @@
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': meFans4.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
                                 <div class="fans_list"  v-for="fans in meFans4" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
-                                <div class="border_bottom" v-if="key < me.length-1"></div>
+                                <div class="border_bottom" v-if="key < me4.length-1"></div>
                             </div>
                         </div>
                         <div class="idol_all" v-if="top3None4 ==false">
@@ -376,7 +376,7 @@
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': meFans2.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
                                 <div class="fans_list"  v-for="fans in meFans2" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
-                                <div class="border_bottom" v-if="key < me.length-1"></div>
+                                <div class="border_bottom" v-if="key < me2.length-1"></div>
                             </div>
                         </div>
                         <div class="idol_all" v-if="top3None2 ==false">
