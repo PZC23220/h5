@@ -357,7 +357,7 @@
                     <v-scroll :on-refresh="refresh2" :on-infinite="infinite2">
                         <div class="not_concerned" v-if="me2.length==0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
                         <div class="concerned" v-if="me2.length > 0">
-                            <h3 class="title">{{idol_text.me2}}</h3>
+                            <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me2" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                                 <div class="idol_content">
                                     <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
