@@ -39,7 +39,7 @@
     .ranking_type {
         padding: 0 12px;
         color: #999;
-        background: #eee;       
+        background: #eee;
     }
     .medal_level {
         margin-top: 3px;
@@ -60,6 +60,12 @@
             >span:nth-child(3) {
                 font-size: 14px;
                 color: #666;
+            }
+            >span.second {
+                font-size: 20px;
+            }
+            >span.three {
+                font-size: 14px;
             }
         }
         li:first-child {
@@ -94,7 +100,7 @@
                     margin-top: 2px;
                     margin-left: 5px;
                     float: left;
-                }                    
+                }
             }
             span:nth-child(2) {
                 img {

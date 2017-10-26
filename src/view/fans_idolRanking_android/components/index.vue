@@ -803,7 +803,7 @@
                         }else if(arr == 'all3') {
                             self.allFans3 = res.data;
                         }else if(arr == 'me3') {
-                            self.meFans2 = res.data;
+                            self.meFans3 = res.data;
                         }else if(arr == 'all4') {
                             self.allFans4 = res.data;
                         }else if(arr == 'me4') {
