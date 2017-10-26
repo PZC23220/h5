@@ -109,7 +109,7 @@
                     self.loadingShow = true;
                     var timeString = Date.parse(new Date());
                     self.activityInfo = res.data.activityInfo;
-                    if(res.isActivityEnded) {
+                    if(res.data.isActivityEnded) {
                         self.isOver = true;
                     }else {
                         self.isOver = false;

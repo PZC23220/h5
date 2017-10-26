@@ -268,7 +268,7 @@
                         self.havedMe = true;
                     }
                     self.loadingShow = true;
-                    if(res.isActivityEnded) {
+                    if(res.data.isActivityEnded) {
                         self.isOver = true;
                     }else {
                         self.isOver = false;
