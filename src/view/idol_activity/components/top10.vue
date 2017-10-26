@@ -37,7 +37,7 @@
                     </div>
                     <div class="reard_moer" v-if="isFans" @click="ranking.length>1?(ranking[1].idol_id?showIdolPage(ranking[1].idol_id):false):false">{{activity.idolPage}}</div>
                 </li> -->
-                <li v-for="(idol,key) in ranking" v-if="isOver?(key>0&key<3):key>0">
+                <li v-for="(idol,key) in ranking" v-if="key>0 && key < 10">
                     <div class="idolranking_content">
                         <div class="img_content">
                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown">
