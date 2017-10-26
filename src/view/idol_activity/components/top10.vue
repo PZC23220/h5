@@ -1,8 +1,10 @@
 <template>
     <div class="main">
         <div class="content">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg" class="banner">
-            <h2><span style="left: 0;"></span>{{activity.theme}}<span style="right: 0;"></span></h2>
+            <img v-if="isOver" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke-over.jpg" class="banner">
+            <img v-else src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/activity_cokelife.jpg" class="banner">
+            <h2 style="width: 155px;" v-if="isOver"><span style="left: 0;"></span>入賞アイドル<span style="right: 0;"></span></h2>
+            <h2 v-else><span style="left: 0;"></span>{{activity.theme}}<span style="right: 0;"></span></h2>
             <ul class="ranking_list">
                 <li>
                     <div class="img_content">
@@ -37,6 +39,7 @@
                     </div>
                     <div class="reard_moer" v-if="isFans" @click="ranking.length>1?(ranking[1].idol_id?showIdolPage(ranking[1].idol_id):false):false">{{activity.idolPage}}</div>
                 </li> -->
+                <h2 style="width: 210px;" v-if="isOver"><span style="left: 0;"></span>アイドルランキング<span style="right: 0;"></span></h2>
                 <li v-for="(idol,key) in ranking" v-if="key>0 && key < 10">
                     <div class="idolranking_content">
                         <div class="img_content">
@@ -106,7 +109,7 @@
                     self.loadingShow = true;
                     var timeString = Date.parse(new Date());
                     self.activityInfo = res.data.activityInfo;
-                    if(res.data.activityInfo.startTime > timeString || res.data.activityInfo.endTime < timeString) {
+                    if(res.isActivityEnded) {
                         self.isOver = true;
                     }else {
                         self.isOver = false;

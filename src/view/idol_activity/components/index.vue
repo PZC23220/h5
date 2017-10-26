@@ -1,7 +1,8 @@
 <template>
     <div class="main">
          <div class="content">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke.jpg" class="banner">
+            <img v-if="isOver" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-coke-over.jpg" class="banner">
+            <img v-else src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/activity_cokelife.jpg" class="banner">
             <h2>{{activity.theme}}</h2>
             <p class="share-sns" v-if="isFans"><span @click="shareSns('share_facebook')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_facebook_1.png"><i>シェア</i></span><span @click="shareSns('share_twitter')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_twitter_1.png"><i>ツイート</i></span></p>
             <div class="activity_rule">
@@ -161,6 +162,7 @@
                 idx2: 0,
                 loadingShow: false,
                 havedMe: false,
+                isOver: false,
                 activity: {
                     theme:'#可楽生活#',
                     time: 'イベント期間',
@@ -266,6 +268,11 @@
                         self.havedMe = true;
                     }
                     self.loadingShow = true;
+                    if(res.isActivityEnded) {
+                        self.isOver = true;
+                    }else {
+                        self.isOver = false;
+                    }
                     console.log(res)
                 }).catch(function(){
                     self.idx++;
