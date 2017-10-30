@@ -464,12 +464,13 @@
                                         })
                                     }
                                 })
+                                console.log(videoitem)
                                 if(videoitem.hd) {
-                                    self.playerOptions.sources[0].src = videoitem.hd
+                                    self.videoSrc = videoitem.hd
                                 }else if(videoitem.ld) {
-                                    self.playerOptions.sources[0].src = videoitem.ld
+                                    self.videoSrc = videoitem.ld
                                 }else {
-                                    self.playerOptions.sources[0].src = videoitem.sd
+                                    self.videoSrc = videoitem.sd
                                 }
                                 // let len = res.data.videoItemList.length - 1;
                                 // self.videoSrc = res.data.videoItemList[len].url;
