@@ -209,7 +209,7 @@
                                     <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
                                 </div>
                             </div>
-                            <div class="idol_detail" v-for="(idol,key) in rakingList3" v-if="rakingList3.length>0?key < len: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
+                            <div class="idol_detail" v-for="(idol,key) in rakingList3" v-if="rakingList3.length>0?key < len3: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                                 <div class="idol_content">
                                     <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
@@ -323,7 +323,7 @@
                                     <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
                                 </div>
                             </div>
-                            <div class="idol_detail" v-for="(idol,key) in rakingList4" v-if="rakingList4.length>0?key < len: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
+                            <div class="idol_detail" v-for="(idol,key) in rakingList4" v-if="rakingList4.length>0?key < len4: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                                 <div class="idol_content">
                                     <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
@@ -437,7 +437,7 @@
                                     <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
                                 </div>
                             </div>
-                            <div class="idol_detail" v-for="(idol,key) in rakingList2" v-if="rakingList2.length>0?key < len: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
+                            <div class="idol_detail" v-for="(idol,key) in rakingList2" v-if="rakingList2.length>0?key < len2: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                                 <div class="idol_content">
                                     <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
