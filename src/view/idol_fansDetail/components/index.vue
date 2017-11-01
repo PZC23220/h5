@@ -168,7 +168,7 @@
                 this.swiper.slideTo(val, 500, false);
               },
             formatTime(key) {
-                  let timer = new Date(key - 1*60*60*1000);
+                  let timer = new Date(key);
                   return timer.Format('yyyy.MM.dd');
             },
             TransferString(content) {

@@ -168,7 +168,7 @@
             })
           },
           formatTime(key) {
-              let timer = new Date(key - 1*60*60*1000);
+              let timer = new Date(key);
               return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
           },
           getRanking(token) {
