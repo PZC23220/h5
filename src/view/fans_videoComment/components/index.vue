@@ -1,10 +1,10 @@
 <template>
     <div class="main">
-        <div class="header">
+        <div class="header" style="border-bottom: 1px solid #eee;">
             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="close()">
             <span>{{video_text.pubMsg}}({{commentList.length}})</span>
         </div>
-        <div class="content" :class="{'ios': android == false}" ref="viewBox">
+        <div class="content" ref="viewBox">
             <!-- <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
               :on-infinite="infinite" 
@@ -63,7 +63,7 @@
                     </div>
                      <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                             <div class="comment_info">
-                                <img class="avatar"  v-lazy="comment.avatar" alt="">
+                                <span class="avatar"><img  v-lazy="comment.avatar" alt=""></span>
                                 <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                                 <span class="level" style="margin-top: 11px;">Lv.{{comment.levelPlatform}}</span>
                                 <img class="medal_level" style="margin-top: 11px;" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">

@@ -55,7 +55,7 @@
                     </div>
                     <li v-for="(comment,key) in commentList" :class="[{'idol_comment' : comment.userType == 'idol'},{'lastLi' : key == commentList.length-1},{'firstLi' : key == 0}]">
                         <div class="comment_info">
-                            <img v-lazy="comment.avatar" alt="" class="avatar">
+                            <span class="avatar"><img v-lazy="comment.avatar" alt=""></span>
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                             <span class="level" style="margin-top: 11px;" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
                             <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" style="margin-top: 11px;" v-if="comment.medal&&comment.medal>0" alt="">

@@ -318,12 +318,18 @@ img.icon {
     width: 15px !important;
     margin-top: 4px;
 }
-img.avatar {
+.avatar {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     margin-right: 8px;
     float: left;
+    overflow: hidden;
+    img {
+        width: 30px;
+        min-height: 30px;
+        vertical-align: top;
+    }
 }
 .likes {
     width: 12.55px;
@@ -353,7 +359,7 @@ img.avatar {
         }
         span {
             float: left;
-            margin-right: 3px;
+            margin-right: 10px;
             min-width: 25px;
             &:first-child {
                 text-align: center;
@@ -422,12 +428,18 @@ img.avatar {
     div.userinfo {
         overflow: hidden;
         box-sizing: border-box;
-        img.avatar {
+        .avatar {
             width: 30px;
             height: 30px;
             border-radius: 50%;
             margin-right: 9px;
             float: left;
+            overflow: hidden;
+            img {
+                width: 30px;
+                min-height: 30px;
+                vertical-align: top;
+            }
         }
         i {
             color: #999;
@@ -572,7 +584,12 @@ img.avatar {
                  position: absolute;
                  left: 50%;
                  top: 50%;
-                 margin: -33px 0 0 -30px; 
+                 margin: -33px 0 0 -30px;
+                 overflow: hidden;
+                 img {
+                    width: 60px;
+                    min-height: 60px;
+                 }
             } 
             &:not(:nth-child(2)) {
                 .idol_num {
@@ -584,7 +601,12 @@ img.avatar {
                 .idol_img {
                      width: 45px;
                      height: 45px;
-                     margin: -24.5px 0 0 -22.5px;  
+                     margin: -24.5px 0 0 -22.5px;
+                     overflow: hidden;
+                     img {
+                        width: 45px;
+                        min-height: 45px;
+                     }
                 }
                 .crown {
                      width: 59.5px;

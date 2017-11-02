@@ -28,7 +28,7 @@
                                 <span v-if="meObj.position==2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="meObj.position==3"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="meObj.position>3" :class="[{'second':meObj.position>9},{'three':meObj.position>99}]">{{meObj.position?meObj.position:'-'}}</span>
-                                <img v-lazy="meObj.fans?meObj.fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
+                                <span class="avatar" v-if="meObj.fans"><img v-lazy="meObj.fans.avatar" alt=""></span>
                                 <div class="fans_content">
                                     <span>
                                         <em>{{meObj.fans?(meObj.fans.nickname?meObj.fans.nickname:'...'):'...'}}</em>
@@ -96,7 +96,7 @@
                                 <span v-if="key==1"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="key==2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="key>2" :class="[{'second':key>8},{'three':key>98}]">{{key+1}}</span>
-                                <img v-lazy="idol.fans?idol.fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
+                                <span class="avatar" v-if="idol.fans"><img v-lazy="idol.fans.avatar" alt=""></span>
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
@@ -130,7 +130,7 @@
                                 <span v-if="meHeatObj.position==2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="meHeatObj.position==3"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="meObj.position>3" :class="[{'second':meHeatObj.position>9},{'three':meHeatObj.position>99}]">{{meObj.position?meObj.position:'-'}}</span>
-                                <img v-lazy="meHeatObj.fans?meHeatObj.fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
+                                <span class="avatar" v-if="meHeatObj.fans"><img v-lazy="meHeatObj.fans.avatar" alt=""></span>
                                 <div class="fans_content">
                                     <span><em>{{meHeatObj.fans?meHeatObj.fans.nickname:'...'}}</em><span class="level">Lv.{{meObj.fans?(meObj.fans.levelPlatform?meObj.fans.levelPlatform:0):0}}</span></span>
                                     <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{meHeatObj.totalNums?Number(meHeatObj.totalNums).toLocaleString(): 0}}</span>
@@ -169,7 +169,7 @@
                                 <span v-if="key==1"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="key==2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="key>2" :class="[{'second':key>8},{'three':key>98}]">{{key+1}}</span>
-                                <img v-lazy="idol.fans?idol.fans.avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt="" class="avatar">
+                                <span class="avatar" v-if="idol.fans"><img v-lazy="idol.fans.avatar" alt=""></span>
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.fans?idol.fans.nickname:'...'}}</em>

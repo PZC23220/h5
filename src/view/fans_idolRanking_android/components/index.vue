@@ -21,7 +21,7 @@
                                     <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
-                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                             <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': meFans.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in meFans" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in meFans" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                 <div class="border_bottom" v-if="key < me.length-1"></div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                     <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
-                                            <img class="avatar" v-lazy="idol.avatar" alt="">
+                                            <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': allFans.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in allFans" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in allFans" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                 <div class="border_bottom"></div>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                                     <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
-                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                             <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
@@ -147,7 +147,7 @@
                                     </div>
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': meFans3.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in meFans3" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in meFans3" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                 <div class="border_bottom" v-if="key < me3.length-1"></div>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                                     <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
-                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
@@ -228,7 +228,7 @@
                                     </div>
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': allFans3.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in allFans3" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in allFans3" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                 <div class="border_bottom"></div>
                             </div>
                         </div>
@@ -249,7 +249,7 @@
                                     <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
-                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                             <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
@@ -261,7 +261,7 @@
                                     </div>
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': meFans4.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in meFans4" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in meFans4" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                 <div class="border_bottom" v-if="key < me4.length-1"></div>
                             </div>
                         </div>
@@ -328,7 +328,7 @@
                                     <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
-                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
@@ -342,7 +342,7 @@
                                     </div>
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': allFans4.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in allFans4" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in allFans4" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                 <div class="border_bottom"></div>
                             </div>
                         </div>
@@ -363,7 +363,7 @@
                                     <i :class="[{'sizeTwo': idol.position > 8},{'sizeThree': idol.position > 98}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
-                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                             <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
@@ -375,7 +375,7 @@
                                     </div>
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': meFans2.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in meFans2" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in meFans2" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                 <div class="border_bottom" v-if="key < me2.length-1"></div>
                             </div>
                         </div>
@@ -442,7 +442,7 @@
                                     <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
-                                            <img v-lazy="idol.avatar" class="avatar" alt="">
+                                            <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
                                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
@@ -456,7 +456,7 @@
                                     </div>
                                 </div>
                                 <div class="fans_list fans_show" :class="{'fans_none': allFans2.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in allFans2" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><img v-lazy="img.avatar" alt="" v-for="img in fans.topFans"></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in allFans2" v-if="fans.id == idol.idolId">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                 <div class="border_bottom"></div>
                             </div>
                         </div>

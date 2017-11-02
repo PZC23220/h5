@@ -44,7 +44,7 @@
                     <ul class="comment_list" style="background: #eee;">
                         <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                             <div class="comment_info">
-                                <img class="avatar"  v-lazy="comment.avatar" alt="">
+                                <span class="avatar"><img  v-lazy="comment.avatar" alt=""></span>
                                 <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                                 <!-- <img class="level" :src="'/static/images/icon_level_'+(comment.levelPlatform)+'.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" alt=""> -->
                                 <span class="level" style="margin-top: 11px;">Lv.{{comment.levelPlatform}}</span>
@@ -123,7 +123,7 @@
                                         <span class="level_color" v-if="key == 1"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                         <span class="level_color" v-if="key == 2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                         <span class="level_color" v-if="key > 2">{{key+1}}</span>
-                                        <img class="avatar" v-lazy="fans.userFans?fans.userFans.avatar:'http://h5.groupy.vip/img/default_img.png'" alt="">
+                                        <span class="avatar" v-if="fans.userFans"><img v-lazy="fans.userFans.avatar" alt=""></span>
                                         <span class="shortName">{{fans.userFans?fans.userFans.nickname: '...'}}</span>
                                         <!-- <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <!-- <img :src="fans.userFans?('/img/icon_medal_'+ (fans.userFans.medal) +'.png'): ''" class="level" alt=""> -->
@@ -148,7 +148,7 @@
                                         <span class="level_color" v-if="key == 1"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                         <span class="level_color" v-if="key == 2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                         <span class="level_color" v-if="key > 2">{{key+1}}</span>
-                                        <img class="avatar" v-lazy="popularity.userFans?popularity.userFans.avatar:'http://h5.groupy.vip/img/default_img.png'" alt="">
+                                        <span class="avatar" v-if="popularity.userFans"><img v-lazy="popularity.userFans.avatar" alt=""></span>
                                         <span class="shortName">{{popularity.userFans?(popularity.userFans.nickname?popularity.userFans.nickname:'...'):'...'}}</span>
                                         <!-- <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.levelPlatform)+'.png'):''" class="level" alt=""> -->
                                         <span class="level">Lv.{{popularity.userFans?(popularity.userFans.levelPlatform?popularity.userFans.levelPlatform:0):0}}</span>

@@ -235,12 +235,18 @@ img.icon {
     margin-top: 9.5px;
     margin-right: 3px;
 }
-img.avatar {
+.avatar {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     margin-right: 8px;
     float: left;
+    overflow: hidden;
+    img {
+        width: 30px;
+        min-height: 30px;
+        vertical-align: top;
+    }
 }
 .likes {
     width: 12.55px;
@@ -328,12 +334,18 @@ img.avatar {
     div.userinfo {
         overflow: hidden;
         box-sizing: border-box;
-        img.avatar {
+        .avatar {
             width: 30px;
             height: 30px;
             border-radius: 50%;
             margin-right: 9px;
             float: left;
+            overflow: hidden;
+            img {
+                width: 30px;
+                min-height: 30px;
+                vertical-align: top;
+            }
         }
         i {
             color: #999;

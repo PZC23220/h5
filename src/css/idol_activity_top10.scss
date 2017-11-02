@@ -42,7 +42,7 @@
                 position: relative;
                 padding-top: 8.5px;
                 margin-right: calc(100vw * 0.04);
-                img.avatar {
+                .avatar {
                     width: 50px;
                     height: 50px;
                     border-radius: 50%;
@@ -50,6 +50,11 @@
                     margin: 0 auto;
                     float: none;
                     border: 1px solid #888;
+                    overflow: hidden;
+                    img {
+                        width: 50px;
+                        min-height: 50px;
+                    }
                 }
                 img.crown {
                     position: absolute;
@@ -157,10 +162,15 @@
                 padding-top: 12px;
                 float: none;
                 margin: 0 auto;
-                img.avatar {
+                .avatar {
                     width: 90px;
                     height: 90px;
                     border: 2px solid #f8a50d;
+                    overflow: hidden;
+                    img {
+                        width: 90px;
+                        min-height: 90px;
+                    }
                 }
                 img.ranking_pic {
                     width: 103.5px;

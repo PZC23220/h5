@@ -35,7 +35,7 @@
                 </ul>
             </div>
             <div class="idolInfo eBorder" v-if="loadingBig == false">
-                <img v-lazy="idolInfo.avatar" class="avatar">
+                <span class="avatar"><img v-lazy="idolInfo.avatar"></span>
                 <p>
                     <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  がイベントを登録した</span>
                     <span v-show="organization.name">{{organization.name}}</span>
@@ -81,7 +81,7 @@
                     <h5 class="li_title">{{fansList.length}}人予約した</h5>
                     <div class="fans_list">
                         <p v-for="fans in fansList">
-                            <img v-lazy="fans.avatar" class="avatar">
+                            <span class="avatar"><img v-lazy="fans.avatar"></span>
                             <span class="idol_name">{{fans.nickname?fans.nickname:'...'}}</span>
                         </p>
                     </div>
@@ -404,6 +404,9 @@
     .avatar {
         width: 40px;
         height: 40px;
+        img {
+            width: 40px;min-height: 40px;
+        }
     }
     @media screen and (min-width: 500px) {
         .idol_name {

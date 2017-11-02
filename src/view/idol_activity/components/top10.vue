@@ -9,7 +9,7 @@
                 <li>
                     <div class="img_content">
                         <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown">
-                        <img v-lazy="ranking.length>0?ranking[0].avatar:'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png'" class="avatar">
+                        <span class="avatar" v-if="ranking.length>0"><img v-lazy="ranking[0].avatar"></span>
                         <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/pic_ranking_1.png" class="ranking_pic">
                         <span class="idol_level">NO.1</span>
                     </div>
@@ -44,7 +44,7 @@
                     <div class="idolranking_content">
                         <div class="img_content">
                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown">
-                            <img v-lazy="idol.avatar" class="avatar">
+                            <span class="avatar"><img v-lazy="idol.avatar"></span>
                             <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/activity/pic_ranking_2.png" class="ranking_pic">
                             <span class="idol_level">NO.{{key+1}}</span>
                         </div>
@@ -212,7 +212,7 @@
                 position: relative;
                 padding-top: 8.5px;
                 margin-right: calc(100vw * 0.04);
-                img.avatar {
+                .avatar {
                     width: 50px;
                     height: 50px;
                     border-radius: 50%;
@@ -220,6 +220,11 @@
                     margin: 0 auto;
                     float: none;
                     border: 1px solid #888;
+                    overflow: hidden;
+                    img {
+                        width: 50px;
+                        min-height: 50px;
+                    }
                 }
                 img.crown {
                     position: absolute;
@@ -327,10 +332,15 @@
                 padding-top: 12px;
                 float: none;
                 margin: 0 auto;
-                img.avatar {
+                .avatar {
                     width: 90px;
                     height: 90px;
                     border: 2px solid #f8a50d;
+                    overflow: hidden;
+                    img {
+                        width: 90px;
+                        min-height: 90px;
+                    }
                 }
                 img.ranking_pic {
                     width: 103.5px;
