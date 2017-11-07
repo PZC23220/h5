@@ -23,13 +23,13 @@
                 您的浏览器不支持 video 标签。
                 </video>
                 <!-- <div  class="poster" v-if="posterSee"><img :src="videoPoster"><span></span></div> -->
-                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play" v-if="videoPlay" @click="videoPlayed()">
+                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_play.png" class="video_play" v-if="videoPlay" @click="videoPlayed()">
                 <img :src="isMuted" class="video_muted" @click="videoMuted()">
             </div>
             <div class="video_details">
-                <span class="video_gcoins"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="" class="icon"> <i class="video_money" :class="{'video_money_show':(gcoinList.total || gcoinList.total == 0)}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
-                <span class="video_gcoins"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="" class="icon"> <i class="video_money" :class="{'video_money_show':(gcoinList.totalPopularity || gcoinList.totalPopularity == 0)}">{{gcoinList.totalPopularity?Number(gcoinList.totalPopularity).toLocaleString():0}}</i></span>
-                <span class="video_comments" v-show='false' @click="add_reply(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment.png"><i>コメントする</i></span>
+                <span class="video_gcoins"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="" class="icon"> <i class="video_money" :class="{'video_money_show':(gcoinList.total || gcoinList.total == 0)}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
+                <span class="video_gcoins"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="" class="icon"> <i class="video_money" :class="{'video_money_show':(gcoinList.totalPopularity || gcoinList.totalPopularity == 0)}">{{gcoinList.totalPopularity?Number(gcoinList.totalPopularity).toLocaleString():0}}</i></span>
+                <span class="video_comments" v-show='false' @click="add_reply(comment)"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment.png"><i>コメントする</i></span>
             </div>
             <div class="video_title eBorder video_money" :class="{'video_money_show':videoTitle}"><span class="video_idol_name">{{idolName?idolName:'...'}}</span>{{videoTitle?videoTitle:'...'}}</div>
             <div class="detailPages" id="scrollIntoPages">
@@ -48,14 +48,14 @@
                                 <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                                 <!-- <img class="level" :src="'/static/images/icon_level_'+(comment.levelPlatform)+'.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" alt=""> -->
                                 <span class="level" style="margin-top: 11px;">Lv.{{comment.levelPlatform}}</span>
-                                <img class="medal_level" style="margin-top: 11px;" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                                <img class="medal_level" style="margin-top: 11px;" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                             </div>
                             <div class="comment_content" v-html="TransferString(comment.content)"></div>
                             <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> <p v-html="TransferString(comment.referencePostView.content)"></p></div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="add_reply(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="add_reply(comment)"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
                         </li>
                         <div class="default_page default_page3" v-show="commentList.length == 0">
-                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
+                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
                             <p v-html="video_text.noneComment"></p>
                         </div>
                         <!-- <div class="loading" :class="{'loading_show': showLoading}"><p><img src="/img/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div> -->
@@ -66,7 +66,7 @@
             <swiper-slide id="swiper2">
                 <!-- <div class="income eBorder">
                     <span class="detail_title" @click="getGcoin()">{{video_text.income}}</span>
-                    <span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':(gcoinList.total || gcoinList.total == 0)}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
+                    <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="" class="icon"><i class="video_money" :class="{'video_money_show':(gcoinList.total || gcoinList.total == 0)}">{{gcoinList.total?Number(gcoinList.total).toLocaleString():0}}</i></span>
                 </div> -->
                 <div class="income_details eBorder">
                     <p class="detail_title">{{video_text.gift}}</p>
@@ -76,35 +76,35 @@
                             <p><span class="left">&times;{{gif.giftCount}}</span></p>
                         </li> -->
                         <li>
-                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_heart.png" alt="" style="background: #ffe7ea;">
+                            <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_heart.png" alt="" style="background: #ffe7ea;">
                             <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[1].giftCount?gcoinList.gift[1].giftCount:0).toLocaleString()}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_star.png" alt="" style="background: #fffddd;">
+                            <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_star.png" alt="" style="background: #fffddd;">
                             <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[0].giftCount?gcoinList.gift[0].giftCount:0).toLocaleString()}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_rose.png" alt="" style="background: #ffe9ec;">
+                            <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_rose.png" alt="" style="background: #ffe9ec;">
                             <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[2].giftCount?gcoinList.gift[2].giftCount:0).toLocaleString()}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_diamond.png" alt="" style="background: #e1eff2;">
+                            <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_diamond.png" alt="" style="background: #e1eff2;">
                             <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[3].giftCount?gcoinList.gift[3].giftCount:0).toLocaleString()}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_bear.png" alt="" style="background: #fff1e2;">
+                            <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_bear.png" alt="" style="background: #fff1e2;">
                             <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[4].giftCount?gcoinList.gift[4].giftCount:0).toLocaleString()}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_tree.png" alt="" style="background: #ffedf1;">
+                            <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_tree.png" alt="" style="background: #ffedf1;">
                             <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[5].giftCount?gcoinList.gift[5].giftCount:0).toLocaleString()}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_tower.png" alt="" style="background: #ffe9ea;">
+                            <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_tower.png" alt="" style="background: #ffe9ea;">
                             <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[6].giftCount?gcoinList.gift[6].giftCount:0).toLocaleString()}}</span></p>
                         </li>
                         <li>
-                            <img class="gift" src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/gift/pic_castle.png" alt="" style="background: #dbe6f6;">
+                            <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_castle.png" alt="" style="background: #dbe6f6;">
                             <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}" v-if="gcoinList.gift">&times;{{Number(gcoinList.gift[7].giftCount?gcoinList.gift[7].giftCount:0).toLocaleString()}}</span></p>
                         </li>
                     </ul>
@@ -119,23 +119,23 @@
                             <ul class="comment_list">
                                 <li v-for="(fans,key) in gcoinList.rank" >
                                     <!-- <left-slider :index="key" @deleteItem="deleteItem(fans.fansId)"> -->
-                                        <span class="level_color" v-if="key == 0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
-                                        <span class="level_color" v-if="key == 1"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
-                                        <span class="level_color" v-if="key == 2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
+                                        <span class="level_color" v-if="key == 0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
+                                        <span class="level_color" v-if="key == 1"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
+                                        <span class="level_color" v-if="key == 2"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                         <span class="level_color" v-if="key > 2">{{key+1}}</span>
                                         <span class="avatar" v-if="fans.userFans"><img v-lazy="fans.userFans.avatar" alt=""></span>
                                         <span class="shortName">{{fans.userFans?fans.userFans.nickname: '...'}}</span>
                                         <!-- <img :src="fans.userFans?('/static/images/icon_level_'+ (fans.userFans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <!-- <img :src="fans.userFans?('/img/icon_medal_'+ (fans.userFans.medal) +'.png'): ''" class="level" alt=""> -->
                                         <span class="level">Lv.{{fans.userFans?(fans.userFans.levelPlatform?fans.userFans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(fans.userFans.medal)+'.png'" v-if="fans.userFans.medal&&fans.userFans.medal>0" alt="">
+                                        <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(fans.userFans.medal)+'.png'" v-if="fans.userFans.medal&&fans.userFans.medal>0" alt="">
                                         <i>
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" class="likes" alt="">{{fans.expendGprice?Number(fans.expendGprice).toLocaleString(): 0}}
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" class="likes" alt="">{{fans.expendGprice?Number(fans.expendGprice).toLocaleString(): 0}}
                                         </i>
                                     <!-- </left-slider> -->
                                 </li>
                                 <div class="default_page" v-show="gcoinList.rank?gcoinList.rank.length == 0:true" style="padding-top: 32px;">
-                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no coin.png" alt="">
+                                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no coin.png" alt="">
                                     <p v-html="video_text.noneGcoin"></p>
                                 </div>
                             </ul>
@@ -144,22 +144,22 @@
                             <ul class="comment_list" style="padding: 0;">
                                 <li v-for="(popularity,key) in popularityList" >
                                     <!-- <left-slider :index="key" @deleteItem="deleteItem(popularity.fansId)"> -->
-                                        <span class="level_color" v-if="key == 0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
-                                        <span class="level_color" v-if="key == 1"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
-                                        <span class="level_color" v-if="key == 2"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
+                                        <span class="level_color" v-if="key == 0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
+                                        <span class="level_color" v-if="key == 1"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
+                                        <span class="level_color" v-if="key == 2"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                         <span class="level_color" v-if="key > 2">{{key+1}}</span>
                                         <span class="avatar" v-if="popularity.userFans"><img v-lazy="popularity.userFans.avatar" alt=""></span>
                                         <span class="shortName">{{popularity.userFans?(popularity.userFans.nickname?popularity.userFans.nickname:'...'):'...'}}</span>
                                         <!-- <img :src="popularity.userFans?('/static/images/icon_level_'+(popularity.userFans.levelPlatform)+'.png'):''" class="level" alt=""> -->
                                         <span class="level">Lv.{{popularity.userFans?(popularity.userFans.levelPlatform?popularity.userFans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(popularity.userFans.medal)+'.png'" v-if="popularity.userFans.medal&&popularity.userFans.medal>0" alt="">
+                                        <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(popularity.userFans.medal)+'.png'" v-if="popularity.userFans.medal&&popularity.userFans.medal>0" alt="">
                                         <i>
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" class="likes" alt="">{{popularity.totalNums?Number(popularity.totalNums).toLocaleString():'0'}}
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" class="likes" alt="">{{popularity.totalNums?Number(popularity.totalNums).toLocaleString():'0'}}
                                         </i>
                                     <!-- </left-slider> -->
                                 </li>
                                 <div class="default_page" v-show="popularityList.length == 0">
-                                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
+                                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
                                     <p v-html="video_text.noneLike"></p>
                                 </div>
                             </ul>
@@ -171,7 +171,7 @@
           <div class="Forbidden"></div>
         </div>
         <div class="reply_container" v-if="reply">
-            <div class="reply_header"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" @click="reply = false">リプライ<span @click="reply_submit()">送信</span></div>
+            <div class="reply_header"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" @click="reply = false">リプライ<span @click="reply_submit()">送信</span></div>
             <div class="reply_comment_content"><span>{{reply_comment_content_fans}}</span>{{reply_comment_content}}</div>
             <textarea class="reply_content" v-model="reply_content" placeholder="回复みおな"></textarea>
         </div>
@@ -236,7 +236,7 @@
                     }
                   },
                 },
-                isMuted: 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/video_icon_voice_on.png',
+                isMuted: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/video_icon_voice_on.png',
                 posterSee: true,
                 videoSrc: '',
                 videoPoster: '',
@@ -281,10 +281,10 @@
         },
         methods: {
             videoMuted() {
-                if(this.isMuted == 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/video_icon_voice_on.png') {
-                    this.isMuted = 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/video_icon_voice_off.png'
+                if(this.isMuted == 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/video_icon_voice_on.png') {
+                    this.isMuted = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/video_icon_voice_off.png'
                 }else {
-                    this.isMuted = 'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/video_icon_voice_on.png'
+                    this.isMuted = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/video_icon_voice_on.png'
                 }
                 this.dMuted = !this.dMuted;
             },

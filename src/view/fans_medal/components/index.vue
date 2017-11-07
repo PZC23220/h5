@@ -1,18 +1,18 @@
 <template>
     <div class="main">
         <div class="header" v-if="android">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/arrow/nav_icon_arrow_black.png" alt="" @click="close()">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/nav_icon_arrow_black.png" alt="" @click="close()">
             <span>{{medal_text.pubMsg}}</span>
         </div>
         <div class="content" :class="{'ios': android == false}">
            <div class="desc">
                <h5 style="color: #333;">{{medal_text.desc}}</h5>
                <ul>
-                   <li><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_1.png" alt=""><span>{{medal_text.medal1}}</span><i v-if="medal_text.value=='Like数'">ブロンズキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>2000</i></div></li>
-                   <li><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_2.png" alt=""><span>{{medal_text.medal2}}</span><i v-if="medal_text.value=='Like数'">シルバーキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>5000</i></div></li>
-                   <li><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_3.png" alt=""><span>{{medal_text.medal3}}</span><i v-if="medal_text.value=='Like数'">ゴールドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>15000</i></div></li>
-                   <li><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_4.png" alt=""><span>{{medal_text.medal4}}</span><i v-if="medal_text.value=='Like数'">ダイヤモンドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>30000</i></div></li>
-                   <li><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_5.png" alt=""><span>{{medal_text.medal5}}</span><i v-if="medal_text.value=='Like数'">キングキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>50000</i></div></li>
+                   <li><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_1.png" alt=""><span>{{medal_text.medal1}}</span><i v-if="medal_text.value=='Like数'">ブロンズキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>2000</i></div></li>
+                   <li><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_2.png" alt=""><span>{{medal_text.medal2}}</span><i v-if="medal_text.value=='Like数'">シルバーキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>5000</i></div></li>
+                   <li><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_3.png" alt=""><span>{{medal_text.medal3}}</span><i v-if="medal_text.value=='Like数'">ゴールドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>15000</i></div></li>
+                   <li><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_4.png" alt=""><span>{{medal_text.medal4}}</span><i v-if="medal_text.value=='Like数'">ダイヤモンドキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>30000</i></div></li>
+                   <li><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/big_medal/icon_medal_5.png" alt=""><span>{{medal_text.medal5}}</span><i v-if="medal_text.value=='Like数'">キングキュウシュゴ</i><div><span>{{medal_text.value}}</span><i>50000</i></div></li>
                </ul>
                <h5 style="padding-bottom: 10px;">{{medal_text.title}}</h5>
            </div>

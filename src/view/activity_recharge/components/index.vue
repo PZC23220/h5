@@ -1,10 +1,10 @@
 <template>
     <div class="main">
          <div class="content">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/acticity_banner/banner-recharge.jpg" class="banner">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/acticity_banner/banner-recharge.jpg" class="banner">
             <!-- <h2>{{activity.theme}}</h2> -->
             <div class="activity_time">
-                <p class="share-sns" v-if="false"><span @click="shareSns('share_facebook')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_facebook_1.png"><i>シェア</i></span><span @click="shareSns('share_twitter')"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/sns/icon_twitter_1.png"><i>ツイート</i></span></p>
+                <p class="share-sns" v-if="false"><span @click="shareSns('share_facebook')"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/sns/icon_facebook_1.png"><i>シェア</i></span><span @click="shareSns('share_twitter')"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/sns/icon_twitter_1.png"><i>ツイート</i></span></p>
                 <h4>{{activity.time}}</h4>
                 <div class="duration_time">
                     <p><span>{{activity.start}}</span><i>2017年10月20日（金）11:00:00</i></p>
@@ -89,7 +89,7 @@
                 }
                 var title = `コイン倍増キャンペーン`;
                 var description = `Groupyで購入したコインはもれなく100%増量！チャンスをつかんでコインを沢山手に入れよう...`;
-                var shareImg = `http://photodebug.oss-cn-hongkong.aliyuncs.com/optupload/%E5%85%85%E5%80%BC.jpg`;
+                var shareImg = `http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/optupload/%E5%85%85%E5%80%BC.jpg`;
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler(val, {'title':title,'description':description,'shareImg':shareImg,'shareURL':shareURL})
                 })

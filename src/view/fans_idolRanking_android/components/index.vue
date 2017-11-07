@@ -13,7 +13,7 @@
             <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                 <swiper-slide id="swiper1">
                     <v-scroll :on-refresh="refresh" :on-infinite="infinite">
-                        <div class="not_concerned" v-if="me.length==0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="not_concerned" v-if="me.length==0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
                         <div class="concerned" v-if="me.length > 0">
                             <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -22,12 +22,12 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
+                                            <img v-if="idol.position < 4" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
+                                            <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
                                         </div>
                                         <div class="support" @click.stop="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
                                     </div>
@@ -45,13 +45,13 @@
                                         <i class="_fir">1</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -63,13 +63,13 @@
                                         <i class="_sec">2</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -81,13 +81,13 @@
                                         <i class="_thr">3</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -101,14 +101,14 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
+                                            <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                                     </div>
@@ -119,7 +119,7 @@
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None">
-                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
+                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
                     <!-- </scroller> -->
@@ -127,7 +127,7 @@
                 </swiper-slide>
                 <swiper-slide id="swiper3">
                     <v-scroll :on-refresh="refresh3" :on-infinite="infinite3">
-                        <div class="not_concerned" v-if="me3.length==0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="not_concerned" v-if="me3.length==0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
                         <div class="concerned" v-if="me3.length > 0">
                             <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me3" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -136,12 +136,12 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
+                                            <img v-if="idol.position < 4" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
+                                            <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
                                         </div>
                                         <div class="support" @click.stop="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
                                     </div>
@@ -159,13 +159,13 @@
                                         <i class="_fir">1</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -177,13 +177,13 @@
                                         <i class="_sec">3</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -195,13 +195,13 @@
                                         <i class="_thr">3</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -215,14 +215,14 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
+                                            <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                                     </div>
@@ -233,7 +233,7 @@
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None3">
-                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
+                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
                             <!-- </scroller> -->
@@ -241,7 +241,7 @@
                 </swiper-slide>
                 <swiper-slide id="swiper4">
                     <v-scroll :on-refresh="refresh4" :on-infinite="infinite4">
-                        <div class="not_concerned" v-if="me4.length==0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="not_concerned" v-if="me4.length==0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
                         <div class="concerned" v-if="me4.length > 0">
                             <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me4" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -250,12 +250,12 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
+                                            <img v-if="idol.position < 4" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
+                                            <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
                                         </div>
                                         <div class="support" @click.stop="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
                                     </div>
@@ -273,13 +273,13 @@
                                         <i class="_fir">1</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -291,13 +291,13 @@
                                         <i class="_sec">2</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -309,13 +309,13 @@
                                         <i class="_thr">3</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -329,14 +329,14 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
+                                            <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                                     </div>
@@ -347,7 +347,7 @@
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None4">
-                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
+                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
                             <!-- </scroller> -->
@@ -355,7 +355,7 @@
                 </swiper-slide>
                 <swiper-slide id="swiper2">
                     <v-scroll :on-refresh="refresh2" :on-infinite="infinite2">
-                        <div class="not_concerned" v-if="me2.length==0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="not_concerned" v-if="me2.length==0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
                         <div class="concerned" v-if="me2.length > 0">
                             <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me2" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -364,12 +364,12 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img v-if="idol.position < 4" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
+                                            <img v-if="idol.position < 4" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_'+idol.position+'.png'" class="crown" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
+                                            <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{Number(idol.popularity).toLocaleString()}}</em></span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{Number(idol.fansNums).toLocaleString()}}</em></span></p>
                                         </div>
                                         <div class="support" @click.stop="idol.idolId?support(idol.idolId):false">{{idol_text.support}}</div>
                                     </div>
@@ -387,13 +387,13 @@
                                         <i class="_fir">1</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -405,13 +405,13 @@
                                         <i class="_sec">2</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -423,13 +423,13 @@
                                         <i class="_thr">3</i>
                                         <div class="idol_border">
                                             <div class="avatar_content">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
+                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" alt="">
                                             </div>
                                             <div class="introduction">
                                                 <p class="name">...</p>
                                                 <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
+                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
                                             </div>
                                             <div class="support">{{idol_text.support}}</div>
                                         </div>
@@ -443,14 +443,14 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_crown_3.png" class="crown" v-if="key == 2" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.introduce?idol.introduce:idol_text.none}}</p>
-                                            <p class="detail"><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
+                                            <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt=""><em>{{idol.fansNums?Number(idol.fansNums).toLocaleString():'0'}}</em></span></p>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                                     </div>
@@ -461,7 +461,7 @@
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None2">
-                            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
+                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
                             <!-- </scroller> -->

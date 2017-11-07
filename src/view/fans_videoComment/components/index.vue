@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="header" style="border-bottom: 1px solid #eee;">
-            <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="close()">
+            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="close()">
             <span>{{video_text.pubMsg}}({{commentList.length}})</span>
         </div>
         <div class="content" ref="viewBox">
@@ -18,7 +18,7 @@
                     <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                         <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                             <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -29,7 +29,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -40,7 +40,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -51,7 +51,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -66,14 +66,14 @@
                                 <span class="avatar"><img  v-lazy="comment.avatar" alt=""></span>
                                 <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                                 <span class="level" style="margin-top: 11px;">Lv.{{comment.levelPlatform}}</span>
-                                <img class="medal_level" style="margin-top: 11px;" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                                <img class="medal_level" style="margin-top: 11px;" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                             </div>
                             <div class="comment_content" v-html="TransferString(comment.content)"></div>
                             <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> <p v-html="TransferString(comment.referencePostView.content)"></p></div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="autoFocus(comment)" v-if="isIdol"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="autoFocus(comment)" v-if="isIdol"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
                         </li>
                     <div class="default_page default_page3" v-show="commentList.length == 0 && loadingBig == false">
-                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
                         <p v-html="video_text.noneComment"></p>
                     </div>
                 </ul>
@@ -81,9 +81,9 @@
             </v-scroll>
         </div>
         <!-- <div class="publich_comment" @click="publishComment()"><img src="/img/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
-        <div class="publich_comment" @click="autoFocus()"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/edit/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
+        <div class="publich_comment" @click="autoFocus()"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/edit/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
         <div class="comment_view" v-show="win_show" @touchmove.prevent>
-            <div class="comment_desc"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="isClose()"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
+            <div class="comment_desc"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="isClose()"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
             <div class="reply_comment_content" v-if="reply_comment_content"><span>{{reply_comment_content_fans}}</span>{{reply_comment_content}}</div>
             <textarea :placeholder="video_text.pla" autofocus v-model="comment_text"></textarea>
             <!-- <div class="publish" @click="publish()">发表</div> -->

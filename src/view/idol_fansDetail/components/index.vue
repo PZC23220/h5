@@ -4,11 +4,11 @@
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">{{fans_text.mine}} </span>
-                    <span class="detail_gcoin"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':joinList.fansCount || joinList.fansCount == 0}">{{joinList.fansCount?Number(joinList.fansCount).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':joinList.fansCount || joinList.fansCount == 0}">{{joinList.fansCount?Number(joinList.fansCount).toLocaleString():0}}</i></span>
                 </p>
                 <p>
                     <span class="detail_title">{{fans_text.add}}</span>
-                    <span class="detail_gcoin"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':joinList.fansIncreased || joinList.fansIncreased == 0}">{{joinList.fansIncreased?Number(joinList.fansIncreased).toLocaleString():0}}</i></span>
+                    <span class="detail_gcoin"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans%20.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':joinList.fansIncreased || joinList.fansIncreased == 0}">{{joinList.fansIncreased?Number(joinList.fansIncreased).toLocaleString():0}}</i></span>
                 </p>
             </div>
             <div class="detailPages">
@@ -26,25 +26,25 @@
                     <li v-for="(gFans,key) in gcoinList.fansList">
                         <!-- <left-slider :index="key" @deleteItem="deleteItem(gFans.fansId)"> -->
                             <span>
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt="" v-if="key==0">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt="" v-if="key==1">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt="" v-if="key==2">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt="" v-if="key==0">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt="" v-if="key==1">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt="" v-if="key==2">
                                 <i class="rank_num" v-if="key>2" style="height: auto;line-height: 18px;margin-top:6px;">{{key+1}}</i>
                             </span>
                             <span class="avatar" v-if="gFans.fans"><img v-lazy="gFans.fans.avatar" alt=""></span>
                             <span class="name">{{gFans.fans?(gFans.fans.nickname?gFans.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                             <span class="level">Lv.{{gFans.fans?(gFans.fans.levelPlatform?gFans.fans.levelPlatform:0):0}}</span>
-                            <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(gFans.fans.medal)+'.png'" v-if="gFans.fans?(gFans.fans.medal&&gFans.fans.medal>0):false" alt="">
+                            <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(gFans.fans.medal)+'.png'" v-if="gFans.fans?(gFans.fans.medal&&gFans.fans.medal>0):false" alt="">
                             <!-- <img :src="gFans.fans?'/static/images/icon_level_'+(gFans.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i>
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt=""><em class="coin">{{Number(gFans.expendGprice?gFans.expendGprice:'0').toLocaleString()}}</em>
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt=""><em class="coin">{{Number(gFans.expendGprice?gFans.expendGprice:'0').toLocaleString()}}</em>
                             </i>
                         <!-- </left-slider> -->
                     </li>
                 </ul>
                 <div class="default_page" v-show="gcoinList.fansList?gcoinList.fansList.length == 0:false">
-                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20coin.png" alt="">
+                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20coin.png" alt="">
                     <p>{{fans_text.noneGcoin}}</p>
                 </div>
             </swiper-slide>
@@ -53,25 +53,25 @@
                     <li v-for="(popularity,key) in popularityList.fansList">
                         <!-- <left-slider :index="key" @deleteItem="deleteItem(popularity.fansId)"> -->
                             <span>
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt="" v-if="key==0">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt="" v-if="key==1">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt="" v-if="key==2">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt="" v-if="key==0">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt="" v-if="key==1">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt="" v-if="key==2">
                                 <i v-if="key>2" style="height: auto;line-height: 18px;margin-top:6px;">{{key+1}}</i>
                             </span>
                             <span class="avatar" v-if="popularity.fans"><img v-lazy="popularity.fans.avatar" alt=""></span>
                             <span class="name">{{popularity.fans?(popularity.fans.nickname?popularity.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.levelPlatform)+'.png':'/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                             <span class="level">Lv.{{popularity.fans?(popularity.fans.levelPlatform?popularity.fans.levelPlatform:0):0}}</span>
-                            <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(popularity.fans.medal)+'.png'" v-if="popularity.fans?(popularity.fans.medal&&popularity.fans.medal>0):false" alt="">
+                            <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(popularity.fans.medal)+'.png'" v-if="popularity.fans?(popularity.fans.medal&&popularity.fans.medal>0):false" alt="">
                             <!-- <img :src="popularity.fans?'/static/images/icon_level_'+(popularity.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i>
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><em class="coin">{{Number(popularity.totalNums?popularity.totalNums:'0').toLocaleString()}}</em>
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><em class="coin">{{Number(popularity.totalNums?popularity.totalNums:'0').toLocaleString()}}</em>
                             </i>
                         <!-- </left-slider> -->
                     </li>
                 </ul>
                 <div class="default_page" v-show="popularityList.fansList.length == 0">
-                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
+                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
                     <p>{{fans_text.noneLike}}</p>
                 </div>
             </swiper-slide>
@@ -83,14 +83,14 @@
                             <span class="name">{{fans.fans?(fans.fans.nickname?fans.fans.nickname:'...'):'...'}}</span>
                             <!-- <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.levelPlatform)+'.png':'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                             <span class="level">Lv.{{fans.fans?(fans.fans.levelPlatform?fans.fans.levelPlatform:0):0}}</span>
-                            <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(fans.fans.medal)+'.png'" v-if="fans.fans?(fans.fans.medal&&fans.fans.medal>0):false" alt="">
+                            <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(fans.fans.medal)+'.png'" v-if="fans.fans?(fans.fans.medal&&fans.fans.medal>0):false" alt="">
                             <!-- <img :src="fans.fans?'/static/images/icon_level_'+(fans.fans.medal)+'.png':''" class="level" alt=""> -->
                             <i v-html="formatTime(fans.startdate)"></i>
                         </left-slider>
                     </li>
                 </ul>
                 <div class="default_page" v-show="joinList.fansList.length == 0">
-                    <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no%20history.png" alt="">
+                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20history.png" alt="">
                     <p>{{fans_text.noneComment}}</p>
                 </div>
             </swiper-slide>

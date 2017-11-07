@@ -10,7 +10,7 @@
                     <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                         <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                             <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -21,7 +21,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -32,7 +32,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -43,7 +43,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -58,7 +58,7 @@
                             <span class="avatar"><img v-lazy="comment.avatar" alt=""></span>
                             <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                             <span class="level" style="margin-top: 11px;" v-if="comment.userType == 'fans'">Lv.{{comment.levelPlatform}}</span>
-                            <img class="medal_level" :src="'http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" style="margin-top: 11px;" v-if="comment.medal&&comment.medal>0" alt="">
+                            <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" style="margin-top: 11px;" v-if="comment.medal&&comment.medal>0" alt="">
                         </div>
                         <div class="comment_content">
                             <p v-html="TransferString(comment.content)"></p>
@@ -71,19 +71,19 @@
                                     <span :class="{'oneImg' : JSON.parse(comment.referencePostView.imgs).length == 1}" v-for="(img2,idx2) in JSON.parse(comment.referencePostView.imgs)"><img v-lazy="img2" alt="" class="autoHeight" @click="showBigImg(JSON.parse(comment.referencePostView.imgs),idx2)"></span>
                                 </div>
                             </div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="publishComment(comment)"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="publishComment(comment)"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
                         </div>
                     </li>
                     <div class="default_page" v-show="commentList.length == 0 && idx!=0">
-                        <img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
                         <p v-html="msg_text.noneComment"></p>
                     </div>
                 </ul>
             <!-- </scroller> -->
             </v-scroll>
         </div>
-        <div class="publich_comment" @click="publishComment()"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/edit/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div>
-        <div class="publich_tips" @click="publishComment()" :class="{'Lheight':msg_text.pubMsg == '发表评论'}" v-show="commentList.length == 0 && idx!=0"><img src="http://photodebug.oss-cn-hongkong.aliyuncs.com/h5_groupy/edit/tips_edit.png" alt=""><em v-html="msg_text.pubMsg"></em></div>
+        <div class="publich_comment" @click="publishComment()"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/edit/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div>
+        <div class="publich_tips" @click="publishComment()" :class="{'Lheight':msg_text.pubMsg == '发表评论'}" v-show="commentList.length == 0 && idx!=0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/edit/tips_edit.png" alt=""><em v-html="msg_text.pubMsg"></em></div>
     </div>
 </template>
 
