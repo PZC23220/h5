@@ -78,13 +78,13 @@
                         })
                     });
                 }else {
-                    // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        // if(_lan === 'zh-cn') {
-                        //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                        //  }else {
+                        if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                         // }
+                         }
                     })
                 }
             }
@@ -95,22 +95,22 @@
                 self.android = true;
             }
             self.getLevel();
-            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            // if(_lan === 'zh-cn') {
-            //      self.medal_text= {
-            //         title: 'Groupy等级',
-            //         desc: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高。<br><br>在Groupy里面也会更有机会与爱豆直接互动，邀请进入VIP社群等福利!',
-            //         how: '如何可以快速升级？',
-            //         pubMsg: ' Groupy等级'
-            //     }
-            // } else {
-            //     self.medal_text= {
-            //         title: '成長レベル',
-            //         desc: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。<br><br>高レベルのファンに特典（無料会員体験など）もご用意していますので、ぜひレベルアップを！',
-            //         how: 'レベルアップのヒントは？',
-            //         pubMsg: ' 成長レベル'
-            //     }
-            // }
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(_lan === 'zh-cn') {
+                 self.medal_text= {
+                    title: 'Groupy等级',
+                    desc: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高。<br><br>在Groupy里面也会更有机会与爱豆直接互动，邀请进入VIP社群等福利!',
+                    how: '如何可以快速升级？',
+                    pubMsg: ' Groupy等级'
+                }
+            } else {
+                self.medal_text= {
+                    title: '成長レベル',
+                    desc: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。<br><br>高レベルのファンに特典（無料会員体験など）もご用意していますので、ぜひレベルアップを！',
+                    how: 'レベルアップのヒントは？',
+                    pubMsg: ' 成長レベル'
+                }
+            }
         }
     }
 </script>

@@ -287,7 +287,7 @@
                      if(_lan === 'zh-cn') {
                         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
                      }else {
-                        bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
+                        bridge.callHandler('makeToast', '報告頂きありがとうございます');
                      }
                      http.get('/groupyuser/report',{
                         params: {

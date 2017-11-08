@@ -206,13 +206,13 @@
                         self.getComments();
                     });
                 }else {  
-                    // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        // if(_lan === 'zh-cn') {
-                        //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                        //  }else {
+                        if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                         // }
+                         }
                     })
                 }
             },
@@ -245,18 +245,22 @@
                                 self.commentId = '';
                                 console.log(res)
                                 window.setupWebViewJavascriptBridge(function(bridge) {
-                                    bridge.callHandler('makeToast', 'コメント投稿が完了しました。');
+                                    if(_lan === 'zh-cn') {
+                                        bridge.callHandler('makeToast', '评论发表成功！');
+                                     }else {
+                                        bridge.callHandler('makeToast', 'コメント投稿が完了しました。');
+                                     }
                                 });
                                 window.setupWebViewJavascriptBridge(function(bridge) {
                                     bridge.callHandler('did_post',{'post':res});
                                 })
                             }else {
                                 window.setupWebViewJavascriptBridge(function(bridge) {
-                                    // if(_lan === 'zh-cn') {
-                                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                                    //  }else {
+                                    if(_lan === 'zh-cn') {
+                                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                                     }else {
                                         bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                                     // }
+                                     }
                                 });
                                 window.setupWebViewJavascriptBridge(function(bridge) {
                                     bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
@@ -269,11 +273,11 @@
                         }).catch(function(err){
                             self.can_publish = true;
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                // if(_lan === 'zh-cn') {
-                                //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                                //  }else {
+                                if(_lan === 'zh-cn') {
+                                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                                 }else {
                                     bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                                 // }
+                                 }
                             })
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
@@ -283,11 +287,11 @@
                         });
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            // if(_lan === 'zh-cn') {
-                            //         bridge.callHandler('makeToast', '请添加内容');
-                            //      }else {
-                                    bridge.callHandler('makeToast', 'コメントを入力してください');
-                                 // }
+                            if(_lan === 'zh-cn') {
+                                bridge.callHandler('makeToast', '请添加内容');
+                             }else {
+                                bridge.callHandler('makeToast', 'コメントを入力してください');
+                             }
                         })
                     }
                 }
@@ -402,24 +406,24 @@
             }else {
                 self.isIdol = false;
             }
-            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            //  if(_lan === 'zh-cn') {
-            //      self.video_text= {
-            //         publish: '添加评论',
-            //         pubMsg: '评论',
-            //         noneComment: '还没有留言',
-            //         load: '发布',
-            //         pla: '添加评论...'
-            //     }
-            //   } else {
-            //     self.video_text= {
-            //         publish: 'コメントする',
-            //         pubMsg: 'コメント',
-            //         noneComment: 'まだ書き込みはないようです',
-            //         load: '送信',
-            //         pla: 'アイドルにあなたの大切な想いを届けよう...'
-            //     }
-            //   }
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 self.video_text= {
+                    publish: '添加评论',
+                    pubMsg: '评论',
+                    noneComment: '还没有留言',
+                    load: '发布',
+                    pla: '添加评论...'
+                }
+              } else {
+                self.video_text= {
+                    publish: 'コメントする',
+                    pubMsg: 'コメント',
+                    noneComment: 'まだ書き込みはないようです',
+                    load: '送信',
+                    pla: 'アイドルにあなたの大切な想いを届けよう...'
+                }
+              }
             self.getComments();
 
         }

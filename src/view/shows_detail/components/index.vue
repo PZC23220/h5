@@ -5,29 +5,29 @@
                 <div class="idolInfo eBorder">
                     <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar">
                     <p>
-                        <span><i class="idol_name">...</i>  がイベントを登録した</span>
+                        <span><i class="idol_name">...</i>  {{showstext.pub}}</span>
                         <span>@Groupy</span>
                     </p>
                 </div>
                 <ul class="shows_detail">
                     <li>
                         <p class="shows_name">@Groupy</p>
-                        <p class="shows_time"><span>--.-- --</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_time.png">開場--:--/開演--:--</span></p>
+                        <p class="shows_time"><span>--.-- --</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_time.png">{{showstext.start}}--:--/{{showstext.shows}}--:--</span></p>
                     </li>
                     <li>
-                        <h5 class="li_title">出演者</h5>
+                        <h5 class="li_title">{{showstext.performer}}</h5>
                         <p class="show_groups">@Groupy</p>
                     </li>
                     <li>
-                        <h5 class="li_title">料金</h5>
-                        <p>Groupyで予約 <i>0</i>円/当日 0円(+1D)</p>
+                        <h5 class="li_title">{{showstext.tickets}}</h5>
+                        <p>{{showstext.reservation}} <i>0</i>{{showstext.yen}}/当日 0{{showstext.yen}}(+1D)</p>
                     </li>
                     <li>
-                        <h5 class="li_title">会場</h5>
+                        <h5 class="li_title">{{showstext.meeting}}</h5>
                         <p>@Groupy</p>
                     </li>
                     <li>
-                        <h5 class="li_title">説明</h5>
+                        <h5 class="li_title">{{showstext.desc}}</h5>
                         <div class="shows_info">
                             <span>@Groupy</span>
                         </div>
@@ -37,37 +37,37 @@
             <div class="idolInfo eBorder" v-if="loadingBig == false">
                 <span class="avatar"><img v-lazy="idolInfo.avatar"></span>
                 <p>
-                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  がイベントを登録した</span>
+                    <span :class="{'once': !organization.name}"><i class="idol_name">{{idolInfo.nickname?idolInfo.nickname:'...'}}</i>  {{showstext.pub}}</span>
                     <span v-show="organization.name">{{organization.name}}</span>
                 </p>
             </div>
             <div class="mine_info" v-if="applyInfo.id">
                 <div class="info_content">
-                    <h5 class="li_title">Groupyで予約</h5>
+                    <h5 class="li_title">{{showstext.reservation}}</h5>
                     <p>{{applyInfo.firstName}}  {{applyInfo.lastName}}</p>
-                    <span><i>{{applyInfo.nums}}</i>枚予約した | {{applyInfo.email}}</span>
+                    <span><i>{{applyInfo.nums}}</i>{{showstext.nums}} | {{applyInfo.email}}</span>
                 </div>
                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/bg_booked_750.png">
             </div>
             <ul class="shows_detail" v-if="loadingBig == false">
                 <li>
                     <p class="shows_name">{{showsInfo.title}}</p>
-                    <p class="shows_time"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_time.png">開場{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/開演{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
+                    <p class="shows_time"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_time.png">{{showstext.start}}{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/{{showstext.shows}}{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
                 </li>
                 <li v-if="showsInfo.groups">
-                    <h5 class="li_title">出演者</h5>
+                    <h5 class="li_title">{{showstext.performer}}</h5>
                     <p class="show_groups">{{showsInfo.groups}}</p>
                 </li>
                 <li>
-                    <h5 class="li_title">料金</h5>
-                    <p>Groupyで予約 <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>円/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}円<em v-if="showsInfo.drinkNums">(+{{showsInfo.drinkNums}}D)</em></p>
+                    <h5 class="li_title">{{showstext.tickets}}</h5>
+                    <p>{{showstext.reservation}} <i>{{Number(showsInfo.presellPrice?showsInfo.presellPrice:0).toLocaleString()}}</i>{{showstext.yen}}/当日 {{Number(showsInfo.officialPrice?showsInfo.officialPrice:0).toLocaleString()}}{{showstext.yen}}<em v-if="showsInfo.drinkNums">(+{{showsInfo.drinkNums}}D)</em></p>
                 </li>
                 <li v-if="showsInfo.location">
-                    <h5 class="li_title">会場</h5>
+                    <h5 class="li_title">{{showstext.meeting}}</h5>
                     <p>{{showsInfo.location}}</p>
                 </li>
                 <li v-if="showsInfo.introduce || showsInfo.imgs">
-                    <h5 class="li_title">説明</h5>
+                    <h5 class="li_title">{{showstext.desc}}</h5>
                     <div class="shows_info">
                         <span>{{showsInfo.introduce}}</span>
                         <p v-if="showsInfo.imgs">
@@ -78,7 +78,7 @@
                     </div>
                 </li>
                 <li>
-                    <h5 class="li_title">{{fansList.length}}人予約した</h5>
+                    <h5 class="li_title">{{fansList.length}}{{showstext.people}}</h5>
                     <div class="fans_list">
                         <p v-for="fans in fansList">
                             <span class="avatar"><img v-lazy="fans.avatar"></span>
@@ -88,8 +88,8 @@
                 </li>
             </ul>
         </div>
-        <div class="footer" @click="reservationShow_fun()" v-if="!applyInfo.id && loadingBig ==false && appIdol == false">予約する</div>
-        <div class="footer" @click="editShow()" v-if="!applyInfo.id && loadingBig ==false && appIdol">編集</div>
+        <div class="footer" @click="reservationShow_fun()" v-if="!applyInfo.id && loadingBig ==false && appIdol == false">{{showstext.nows}}</div>
+        <div class="footer" @click="editShow()" v-if="!applyInfo.id && loadingBig ==false && appIdol">{{showstext.edit}}</div>
     </div>
 </template>
 <script>
@@ -117,6 +117,21 @@
             idolInfo: {},
             canPush: false,
             idx: 0,
+            showstext: {
+                pub: 'がイベントを登録した',
+                start: '開場',
+                shows: '開演',
+                performer: '出演者',
+                tickets: '料金',
+                meeting: '会場',
+                desc: '説明',
+                reservation: 'Groupyで予約',
+                yen: '円',
+                nums: '枚予約した',
+                people: '人予約した',
+                nows: '予約する',
+                edit: '編集'
+            }
           }
         },
         methods: {
@@ -283,6 +298,42 @@
         computed: {
         },
         created() {
+            var self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 self.showstext= {
+                    pub: '发布活动',
+                    start: '开场',
+                    shows: '开演',
+                    performer: '演出团体',
+                    tickets: '门票价格',
+                    meeting: '活动场地',
+                    desc: '活动信息',
+                    reservation: 'Groupy预约',
+                    yen: '日元',
+                    nums: '张预约',
+                    people: '人预约',
+                    nows: '立即预约',
+                    edit: '编辑'
+
+                }
+              } else {
+                self.showstext= {
+                    pub: 'がイベントを登録した',
+                    start: '開場',
+                    shows: '開演',
+                    performer: '出演者',
+                    tickets: '料金',
+                    meeting: '会場',
+                    desc: '説明',
+                    reservation: 'Groupyで予約',
+                    yen: '円',
+                    nums: '枚予約した',
+                    people: '人予約した',
+                    nows: '予約する',
+                    edit: '編集'
+                }
+              }
             this.getShows();
             if(getParams('app') == 'idol') {
                 this.appIdol = true;

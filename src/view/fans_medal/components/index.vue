@@ -51,33 +51,33 @@
             if(getParams('platform') == 'android') {
                 self.android = true;
             }
-            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            // if(_lan === 'zh-cn') {
-            //      self.medal_text= {
-            //         title: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高',
-            //         medal1: '青铜守护',
-            //         medal2: '白金守护',
-            //         medal3: '黄金守护',
-            //         medal4: '钻石守护',
-            //         medal5: '王者守护',
-            //         value: '价值满',
-            //         desc: '为单个爱豆或组合送出',
-            //         pubMsg: '  爱豆勋章'
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(_lan === 'zh-cn') {
+                 self.medal_text= {
+                    title: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高',
+                    medal1: '青铜守护',
+                    medal2: '白金守护',
+                    medal3: '黄金守护',
+                    medal4: '钻石守护',
+                    medal5: '王者守护',
+                    value: '价值满',
+                    desc: '为单个爱豆或组合送出',
+                    pubMsg: '  爱豆勋章'
 
-            //     }
-            // } else {
-            //     self.medal_text= {
-            //         title: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。',
-            //         medal1: '青銅級守護',
-            //         medal2: '白銀級守護',
-            //         medal3: '黄金級守護',
-            //         medal4: '金剛級守護',
-            //         medal5: '王者級守護',
-            //         value: 'Like数',
-            //         desc: 'アイドルごとに一定の応援をすると獲得できます。',
-            //         pubMsg: ' 貢献バッジ'
-            //     }
-            // }
+                }
+            } else {
+                self.medal_text= {
+                    title: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。',
+                    medal1: '青銅級守護',
+                    medal2: '白銀級守護',
+                    medal3: '黄金級守護',
+                    medal4: '金剛級守護',
+                    medal5: '王者級守護',
+                    value: 'Like数',
+                    desc: 'アイドルごとに一定の応援をすると獲得できます。',
+                    pubMsg: ' 貢献バッジ'
+                }
+            }
         }
     } 
 </script>

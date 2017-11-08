@@ -315,13 +315,13 @@
                 });
                 
             }else {
-                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    // if(_lan === 'zh-cn') {
-                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                    //  }else {
+                    if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                     }else {
                         bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                     // }
+                     }
                 })
             }
           },
@@ -371,13 +371,13 @@
                     })
                 });
             }else {
-                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    // if(_lan === 'zh-cn') {
-                    //     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                    //  }else {
+                    if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                     }else {
                         bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                     // }
+                     }
                 })
             }
           },
@@ -438,28 +438,28 @@
             if(getParams('platform') == 'android') {
                 self.android = true;
             }
-            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            //  if(_lan === 'zh-cn') {
-            //      self.fans_text= {
-            //         Gcoin: 'G币贡献',
-            //         like: '人气贡献',
-            //         me: '我的排名',
-            //         all: '总排名',
-            //         noneGcoin: '还没有收到粉丝的G币',
-            //         noneLike: '还没有收到粉丝的点赞人气',
-            //         pubMsg: '贡献排行榜'                   
-            //     }
-            //   } else {
-            //     self.fans_text= {
-            //         Gcoin: 'コイン',
-            //         like: 'Like',
-            //         me: '自分の順位',
-            //         all: '全体ランキング',
-            //         noneGcoin: 'まだコインはないようです',
-            //         noneLike: 'まだLikeはないようです',
-            //         pubMsg: '応援ランキング'
-            //     }
-            //   }
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 self.fans_text= {
+                    Gcoin: 'G币贡献',
+                    like: '人气贡献',
+                    me: '我的排名',
+                    all: '总排名',
+                    noneGcoin: '还没有收到粉丝的G币',
+                    noneLike: '还没有收到粉丝的点赞人气',
+                    pubMsg: '贡献排行榜'                   
+                }
+              } else {
+                self.fans_text= {
+                    Gcoin: 'コイン',
+                    like: 'Like',
+                    me: '自分の順位',
+                    all: '全体ランキング',
+                    noneGcoin: 'まだコインはないようです',
+                    noneLike: 'まだLikeはないようです',
+                    pubMsg: '応援ランキング'
+                }
+              }
             self.getRanking();
             self.getRankingHeat();
         }

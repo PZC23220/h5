@@ -674,7 +674,11 @@
                 }else {
                     let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                        if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                         }
                     })
                 }
             },
@@ -728,7 +732,11 @@
                 }else {
                     let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                        if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                         }
                     })
                 }
             },
@@ -782,12 +790,17 @@
                 }else {
                     let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                        if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                         }
                     })
                 }
             },
             getFansList(_val,arr) {
                 let self = this;
+                console.log(_val)
                 http.post('/groupyuser/idolTopFans',{
                     idolIds: _val
                 }).then(function(res){
@@ -938,6 +951,8 @@
                         self.idx = 0;
                         self.getRanking();
                         self.getRanking2();
+                        self.getRanking3();
+                        self.getRanking4();
                     })
                 })
                 return;
@@ -970,32 +985,36 @@
             }
         },
         created() {
-            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            //  if(_lan === 'zh-cn') {
-            //      this.idol_text= {
-            //         me: '我关注的爱豆',
-            //         all: ' 全部爱豆',
-            //         fans: ' 贡献排行',
-            //         support: '应援',
-            //         no1: '赶紧来抢占第一位吧！',
-            //         none: '我在groupy等你哦!',
-            //         noneIdol: '还没有爱豆的排名',
-            //         today: '今日榜单',
-            //         all: '总榜单'
-            //     }
-            //   } else {
-            //     this.idol_text= {
-            //         me: 'お気に入り',
-            //         all: '全体ランキング',
-            //         fans: '応援ランキング',
-            //         support: '応援',
-            //         no1: 'No.1になって目立とう！',
-            //         none: 'Groupyで待ってまーす。',
-            //         noneIdol: 'ただ今集計中です',
-            //         today: '今日のランキング',
-            //         all: '総合ランキング'
-            //     }
-            //   }
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 this.idol_text= {
+                    me: '我关注的爱豆',
+                    all: ' 全部爱豆',
+                    fans: ' 贡献排行',
+                    support: '应援',
+                    no1: '赶紧来抢占第一位吧！',
+                    none: '我在groupy等你哦!',
+                    noneIdol: '还没有爱豆的排名',
+                    today: '今日',
+                    week: '本周',
+                    month: '本月',
+                    alltop: '总榜'
+                }
+              } else {
+                this.idol_text= {
+                    me: '推しメン',
+                    all: '全体ランキング',
+                    fans: '応援ランキング',
+                    support: '応援',
+                    no1: 'No.1になって目立とう！',
+                    none: 'Groupyで待ってまーす。',
+                    noneIdol: 'ただ今集計中です',
+                    today: '本日',
+                    week: '今週',
+                    month: '今月',
+                    alltop: '総合'
+                }
+              }
             this.getRanking();
             this.getRanking2();
             this.getRanking3();

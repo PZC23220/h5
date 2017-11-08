@@ -7,13 +7,15 @@
         <div class="move" @click.stop="_click">
             <slot></slot>
         </div>
-        <div class="deleteIcon"  @click.prevent="deleteItem(index)"><img src="/img/video_icon_report.png" width="18px" style="float: left;margin-top: 17.5px;margin-right: 5px;" alt="">举报</div>
+        <div class="deleteIcon"  @click.prevent="deleteItem(index)"><img src="/img/video_icon_report.png" width="18px" style="float: left;margin-top: 17.5px;margin-right: 5px;" alt="">{{texts}}</div>
     </div>
 </template>
 
 <script>
     // require('@api/js/vconsole.min.js');
     import $ from 'n-zepto';
+    import http from '@api/js/http.js';
+    require('@api/js/common.js')
     export default {
         props: {
             index: Number
@@ -27,6 +29,7 @@
                 delWidth: 583,
                 top: '',
                 zIndex: 'right:-70px;',
+                texts: '通報'
             }
         },
         methods: {
@@ -56,19 +59,19 @@
                         if(this.disX <= 0) {
                             $('.left-delete').css('transform','translateX(0rem)');
                             ev.preventDefault();
-                            ev.stopPropagation();
+                            // ev.stopPropagation();
                         }else if (this.disX > 0) {
                         //如果是向左滑动，则实时给这个根元素一个向左的偏移-left，当偏移量到达固定值delWidth时，固定元素的偏移量为 delWidth
                             // this.txtStyle = "transform:translateX(-" + this.disX/100 + "rem)";
                             if (this.disX >= this.delWidth/100) {
-                                console.log(ev.target.offsetParent.style.transform)
+                                // console.log(ev.target.offsetParent.style.transform)
                                 $('.left-delete').css('transform','translateX(0rem)');
                                 ev.target.offsetParent.style.transform = "translateX(-" + this.delWidth/100 + "rem)";
                                 // this.txtStyle = "transform:translateX(-" + this.delWidth/100 + "rem)";
                                 // this.zIndex = "right:0;";
                             }
                             ev.preventDefault();
-                            ev.stopPropagation();
+                            // ev.stopPropagation();
                         }
                     }
                 }
@@ -94,18 +97,32 @@
                 $('.left-delete').css('transform','translateX(0rem)');
                 this.zIndex = "right:-70px;";
                 this.$emit('deleteItem', index);
-                // window.setupWebViewJavascriptBridge(function(bridge) {
-                //     let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                //      if(_lan === 'zh-cn') {
-                //         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
-                //      }else {
-                //         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
-                //      }
-                // })
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                    if(_lan === 'zh-cn') {
+                        bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
+                    }else {
+                        bridge.callHandler('makeToast', '報告頂きありがとうございます');
+                    }
+                    http.get('/groupyuser/report',{
+                        params: {
+                            reportedUserId:index
+                        }
+                    })
+                })
             },
             _click: function() {
                 $('.left-delete').css('transform','translateX(0rem)');
             }
+        },
+        created() {
+            var self = this;
+            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(_lan === 'zh-cn') {
+                 self.texts= '举报';
+              } else {
+                self.fans_text= '通報';
+              }
         }
     }
 </script>
