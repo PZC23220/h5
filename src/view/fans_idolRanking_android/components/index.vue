@@ -13,7 +13,7 @@
             <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                 <swiper-slide id="swiper1">
                     <v-scroll :on-refresh="refresh" :on-infinite="infinite">
-                        <div class="not_concerned" v-if="me.length==0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="not_concerned" v-if="me.length==0"><img :src="ranking_img" alt=""></div>
                         <div class="concerned" v-if="me.length > 0">
                             <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -514,6 +514,7 @@
                     month: '今月',
                     alltop: '総合'
                 },
+                ranking_img: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg',
                 swiperOption: {
                   notNextTick: true,
                   // grabCursor : true,
@@ -1000,6 +1001,7 @@
                     month: '本月',
                     alltop: '总榜'
                 }
+                this.ranking_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-chn.jpg';
               } else {
                 this.idol_text= {
                     me: '推しメン',
@@ -1014,6 +1016,7 @@
                     month: '今月',
                     alltop: '総合'
                 }
+                this.ranking_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg';
               }
             this.getRanking();
             this.getRanking2();

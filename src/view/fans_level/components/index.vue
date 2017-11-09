@@ -20,7 +20,7 @@
             </div>
             <div class="howToUpgrade">
                 <p>{{medal_text.how}}</p>
-                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.png" alt="">
+                <img :src="level_img" alt="">
                 <p v-html="medal_text.desc"></p>
             </div>
         </div>
@@ -44,7 +44,8 @@
                 score:'',
                 style: 'width: calc(320px * 0)',
                 android: false,
-                idx: 0
+                idx: 0,
+                level_img: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.png'
             }
         },
         methods: {
@@ -103,6 +104,7 @@
                     how: '如何可以快速升级？',
                     pubMsg: ' Groupy等级'
                 }
+                self.level_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.jpg';
             } else {
                 self.medal_text= {
                     title: '成長レベル',
@@ -110,6 +112,7 @@
                     how: 'レベルアップのヒントは？',
                     pubMsg: ' 成長レベル'
                 }
+                self.level_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.png';
             }
         }
     }
