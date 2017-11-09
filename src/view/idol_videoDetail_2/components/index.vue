@@ -52,7 +52,7 @@
                             </div>
                             <div class="comment_content" v-html="TransferString(comment.content)"></div>
                             <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> <p v-html="TransferString(comment.referencePostView.content)"></p></div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="add_reply(comment)"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="add_reply(comment)"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>{{video_text.reply}}</em></span></div>
                         </li>
                         <div class="default_page default_page3" v-show="commentList.length == 0">
                             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
@@ -171,9 +171,9 @@
           <div class="Forbidden"></div>
         </div>
         <div class="reply_container" v-if="reply">
-            <div class="reply_header"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" @click="reply = false">リプライ<span @click="reply_submit()">送信</span></div>
+            <div class="reply_header"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" @click="reply = false">{{video_text.reply}}<span @click="reply_submit()">{{video_text.submit}}</span></div>
             <div class="reply_comment_content"><span>{{reply_comment_content_fans}}</span>{{reply_comment_content}}</div>
-            <textarea class="reply_content" v-model="reply_content" placeholder="回复みおな"></textarea>
+            <textarea class="reply_content" v-model="reply_content" :placeholder="video_text.replyTips"></textarea>
         </div>
         <!-- <div class="bigLoading" v-show="loadingBig">
             <img src="/img/loading_2.png" alt="">
@@ -269,9 +269,12 @@
                     income: '獲得コイン数',
                     gift: 'ギフトリスト',
                     fans: '貢献ランキング',
+                    reply: 'リプライ',
                     noneGcoin: 'まだコインはないようです<br>動画を投稿・シェアしてギフトを貰っちゃおう',
                     noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
-                    noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
+                    noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう',
+                    submit: '送信',
+                    replyTips: '回复みおな'
                 },
             }
         },
@@ -313,6 +316,7 @@
             },
             reply_submit() {
                 let self = this;
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 if(self.reply_content !=""){
                     if(!self.token_) {
                         self.token_ = getParams('token');
@@ -332,11 +336,19 @@
                             self.refresh();
                             self.reply_content = '';
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('makeToast', 'リプライしました！');
+                                 if(_lan === 'zh-cn') {
+                                    bridge.callHandler('makeToast', '回复成功！');
+                                 }else {
+                                    bridge.callHandler('makeToast', 'リプライしました！');
+                                 }
                             });
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                                if(_lan === 'zh-cn') {
+                                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                                 }else {
+                                    bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                                 }
                             });
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
@@ -347,7 +359,11 @@
                         self.reply = false;
                     }).catch(function(err){
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                                if(_lan === 'zh-cn') {
+                                    bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                                 }else {
+                                    bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                                 }
                         })
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'1','targetId':getParams('videoId')}, function responseCallback(responseData) {
@@ -357,7 +373,11 @@
                     });
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', 'コメントを入力してください');
+                         if(_lan === 'zh-cn') {
+                            bridge.callHandler('makeToast', '请输入评论！');
+                         }else {
+                            bridge.callHandler('makeToast', 'コメントを入力してください');
+                         }
                     })
                 }
             },
@@ -686,9 +706,12 @@
                     income: '本视频G币',
                     gift: '礼物数量',
                     fans: '粉丝排行',
+                    reply: '回复',
                     noneGcoin: '还没有收到粉丝的G币<br>分享视频能让更多粉丝关注',
                     noneLike: '还没有收到粉丝的点赞人气<br>分享视频能让更多粉丝关注',
-                    noneComment: '还没有收到粉丝的评论<br>分享视频能让更多粉丝关注'
+                    noneComment: '还没有收到粉丝的评论<br>分享视频能让更多粉丝关注',
+                    submit: '提交',
+                    replyTips: '请输入回复信息'
 
                 }
               } else {
@@ -699,9 +722,12 @@
                     income: '獲得コイン数',
                     gift: 'ギフトリスト',
                     fans: '貢献ランキング',
+                    reply: 'リプライ',
                     noneGcoin: 'まだコインはないようです<br>動画を投稿・シェアしてギフトを貰っちゃおう',
                     noneLike: 'まだLikeはないようです<br>動画を投稿・シェアしてLikeを貰っちゃおう',
-                    noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう'
+                    noneComment: 'まだコメントはないようです<br>動画を投稿・シェアしてファンを増やしちゃおう',
+                    submit: '送信',
+                    replyTips: '回复みおな'
                 }
               }
             self.idolName = decodeURIComponent(getParams('idolName'));

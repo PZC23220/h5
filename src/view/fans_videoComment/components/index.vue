@@ -70,7 +70,7 @@
                             </div>
                             <div class="comment_content" v-html="TransferString(comment.content)"></div>
                             <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> <p v-html="TransferString(comment.referencePostView.content)"></p></div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="autoFocus(comment)" v-if="isIdol"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="autoFocus(comment)" v-if="isIdol"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>{{video_text.reply}}</em></span></div>
                         </li>
                     <div class="default_page default_page3" v-show="commentList.length == 0 && loadingBig == false">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
@@ -123,7 +123,8 @@
                     pubMsg: 'コメント',
                     noneComment: 'まだ書き込みはないようです',
                     load: '送信',
-                    pla: 'アイドルにあなたの大切な想いを届けよう...'
+                    pla: 'アイドルにあなたの大切な想いを届けよう...',
+                    reply: 'リプライ'
                 },
                 win_show: false,
                 can_publish: true,
@@ -413,7 +414,8 @@
                     pubMsg: '评论',
                     noneComment: '还没有留言',
                     load: '发布',
-                    pla: '添加评论...'
+                    pla: '添加评论...',
+                    reply: '回复'
                 }
               } else {
                 self.video_text= {
@@ -421,7 +423,8 @@
                     pubMsg: 'コメント',
                     noneComment: 'まだ書き込みはないようです',
                     load: '送信',
-                    pla: 'アイドルにあなたの大切な想いを届けよう...'
+                    pla: 'アイドルにあなたの大切な想いを届けよう...',
+                    reply: 'リプライ'
                 }
               }
             self.getComments();

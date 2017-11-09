@@ -142,28 +142,55 @@
             formatDay(key) {
                 let timer = new Date(key).getDay();
                 var str;
-                switch (timer) {  
-                    case 0 :  
-                            str = "日";  
-                            break;  
-                    case 1 :  
-                            str = "月";  
-                            break;  
-                    case 2 :  
-                            str = "火";  
-                            break;  
-                    case 3 :  
-                            str = "水";  
-                            break;  
-                    case 4 :  
-                            str = "木";  
-                            break;  
-                    case 5 :  
-                            str = "金";  
-                            break;  
-                    case 6 :  
-                            str = "土";  
-                            break;  
+                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                if(_lan === 'zh-cn') {
+                    switch (timer) {
+                        case 0 :  
+                                str = "周日";  
+                                break;  
+                        case 1 :  
+                                str = "周一";  
+                                break;  
+                        case 2 :  
+                                str = "周二";  
+                                break;  
+                        case 3 :  
+                                str = "周三";  
+                                break;  
+                        case 4 :  
+                                str = "周四";  
+                                break;  
+                        case 5 :  
+                                str = "周五";  
+                                break;  
+                        case 6 :  
+                                str = "周六";  
+                                break;  
+                    }
+                }else {
+                    switch (timer) {
+                        case 0 :  
+                                str = "日";  
+                                break;  
+                        case 1 :  
+                                str = "月";  
+                                break;  
+                        case 2 :  
+                                str = "火";  
+                                break;  
+                        case 3 :  
+                                str = "水";  
+                                break;  
+                        case 4 :  
+                                str = "木";  
+                                break;  
+                        case 5 :  
+                                str = "金";  
+                                break;  
+                        case 6 :  
+                                str = "土";  
+                                break;  
+                    }
                 }
                 return  str;
             },

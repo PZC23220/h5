@@ -71,7 +71,7 @@
                                     <span :class="{'oneImg' : JSON.parse(comment.referencePostView.imgs).length == 1}" v-for="(img2,idx2) in JSON.parse(comment.referencePostView.imgs)"><img v-lazy="img2" alt="" class="autoHeight" @click="showBigImg(JSON.parse(comment.referencePostView.imgs),idx2)"></span>
                                 </div>
                             </div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="publishComment(comment)"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>リプライ</em></span></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="publishComment(comment)"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>{{msg_text.reply}}</em></span></div>
                         </div>
                     </li>
                     <div class="default_page" v-show="commentList.length == 0 && idx!=0">
@@ -114,7 +114,8 @@
                     pubMsg: '投稿して<br>盛り上がろう',
                     noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
                     load: '読み込み中',
-                    loadAll: '全て表示されました'
+                    loadAll: '全て表示されました',
+                    reply: 'リプライ'
 
                 },
                 noDataText: '全て表示されました'
@@ -250,8 +251,8 @@
                     pubMsg: '发表评论',
                     noneComment: '还没有留言<br>去发布留言，让粉丝来互动吧！',
                     load: '加载中',
-                    loadAll: '已加载全部内容'
-
+                    loadAll: '已加载全部内容',
+                    reply: '回复'
                 }
               } else {
                 self.msg_text= {
@@ -259,7 +260,8 @@
                     pubMsg: '投稿して<br>盛り上がろう',
                     noneComment: 'まだ書き込みはないようです<br>さっそくファンにメッセージを書き込もう',
                     load: '読み込み中',
-                    loadAll: '全て表示されました'
+                    loadAll: '全て表示されました',
+                    reply: 'リプライ'
                 }
               }
             self.getComments();

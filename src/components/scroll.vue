@@ -8,16 +8,16 @@
     <section class="inner" :style="{ transform: 'translate3d(0, ' + top + 'px, 0)' }">
       <header class="pull-refresh">
         <slot name="pull-refresh">
-           <span class="down-tip loadingImg"><i></i>引き上げて更新</span>
-           <span class="up-tip loadingImg"><i></i>はなして更新</span>
-           <span class="refresh-tip loadingImg"><i></i>更新中...</span>
+           <span class="down-tip loadingImg"><i></i>{{scroll_text.down}}</span>
+           <span class="up-tip loadingImg"><i></i>{{scroll_text.up}}</span>
+           <span class="refresh-tip loadingImg"><i></i>{{scroll_text.refresh}}</span>
         </slot>
       </header>
       <slot></slot>
       <footer class="load-more" v-show="more_true">
         <slot name="load-more">
-          <span class="loadMore loadingImg" v-if="loading">読み込み中...</span>
-          <span class="loadEnd loadingImg" v-if="loading == false">全て表示されました</span>
+          <span class="loadMore loadingImg" v-if="loading">{{scroll_text.loadMore}}</span>
+          <span class="loadEnd loadingImg" v-if="loading == false">{{scroll_text.loadEnd}}</span>
         </slot>
       </footer>
     </section>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-// require('@api/js/vconsole.min.js')
+require('@api/js/common.js')
 export default {
   props: {
     offset: {
@@ -144,6 +144,27 @@ export default {
       let bottom = innerHeight - outerHeight - scrollTop - ptrHeight
       if (bottom < infiniteHeight) this.infinite()
     }
+  },
+  created() {
+    var self = this;
+    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+     if(_lan === 'zh-cn') {
+         self.scroll_text=  {
+            down: '下拉可以刷新',
+            up: '松开立即刷新',
+            refresh: '更新中...',
+            loadMore: '加载中...',
+            loadEnd: ' 已加载全部内容'
+         }
+      } else {
+        self.scroll_text = {
+          down: '引き上げて更新',
+          up: 'はなして更新',
+          refresh: '更新中...',
+          loadMore: '読み込み中...',
+          loadEnd: '全て表示されました'
+        }
+      }
   }
 }
 </script>
