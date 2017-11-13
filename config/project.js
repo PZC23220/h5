@@ -46,6 +46,10 @@ module.exports = {
         login: './src/view/login',
         feedback: './src/view/feedback',
         idol_videoDetail_2: './src/view/idol_videoDetail_2',
-        activity_recharge: './src/view/activity_recharge'
+        activity_recharge: './src/view/activity_recharge',
+        fans_activity: './src/view/fans_activity',
+        fans_attention: './src/view/fans_attention',
+        fans_protector: './src/view/fans_protector',
+        idol_attention_fansDetail: './src/view/idol_attention_fansDetail',
     },
 };

@@ -1,0 +1,72 @@
+.content {
+    top: 0;
+    height: 100vh;
+    background: #ebebeb;
+}
+.idol_activity {
+    overflow: hidden;
+    padding: 7.5px 12px;
+}
+.idol_activity li {
+    background: #FCFCFC;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.20);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.idol_activity li a {
+    display: block;
+}
+
+.idol_activity li .activity_name {
+    color: #00B4BB;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: calc(100% - 60px);
+}
+
+.idol_activity li .activity_info {
+    overflow: hidden;
+    line-height: 20px;
+    height: 20px;
+    font-size: 14px;
+    >* {
+        float: left;
+    }
+    >:first-child {
+        margin-right: 15px;
+    }
+    img {
+        width: 15px;
+        margin-right: 2px;
+        margin-top: 2.5px;
+    }
+}
+.idol_activity li .activity_end {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 52px;
+}
+.page_defalt {
+    transition: all 0.3s;
+    padding-top: 0;
+    height: 320px;
+    overflow: hidden;
+    .activity_name,.activity_info {
+        background: #eee;
+        height: 18px;
+        line-height: 18px;
+    }
+}
+.page_defalt.active {
+    height: 0;
+}

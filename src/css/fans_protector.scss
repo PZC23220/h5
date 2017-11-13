@@ -1,0 +1,134 @@
+.content {
+    top: 0;
+    height: 100vh;
+    background: #ebebeb;
+}
+.protector {
+    overflow: hidden;
+    padding: 12px;
+}
+.protector li {
+    float: left;
+    background: #FCFCFC;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.20);
+    border-radius: 4px;
+    width: calc(50vw - 18px);
+    box-sizing: border-box;
+    text-align: center;
+    padding: 8px;
+    margin-bottom: 12px;
+    &:nth-child(2n-1) {
+        margin-left: 12px;
+    }
+}
+
+.protector li .avatar {
+    width: 60px;
+    height: 60px;
+    float: none;
+    display: block;
+    margin: 0 auto;
+    img {
+        width: 60px;
+        min-height: 60px;
+    }
+}
+
+.protector li .idol_name {
+    font-size: 14px;
+    color: #333333;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.protector li .idol_info {
+    color: #999999;
+    height: 42px;
+    line-height: 21px;
+    overflow: hidden;
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    em {
+        vertical-align: top;
+    }
+    .fans_medal {
+        margin-right: 9px;
+        img {
+            width: 19px;
+        }
+    }
+    .fans_medal.none {
+         display: inline;
+    }
+    i {
+        color: #fc4083;
+        line-height: 21.53px;
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+.protector li .idol_time {
+    color: #999999;
+    margin-bottom: 3px;
+}
+.protector li .idol_money {
+    background-image: linear-gradient(-124deg, #FF8550 0%, #FF2E79 100%);
+    border-radius: 41.5px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #FFFFFF;
+    display: inline-block;
+    width: 65%;
+    text-align: center;
+}
+.protector li .idol_likes {
+    display: flex;
+    margin: 9px 0 12px;
+    span {
+        flex: 1;
+        text-align: center;
+        line-height: 1;
+        overflow: hidden;
+        &:first-child {
+            border-right: 1px solid #E5E5E5;
+        }
+        i:first-child {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+        i:last-child {
+            color: #999999;
+        }
+    }
+} 
+.page_defalt {
+    transition: all 0.3s;
+    padding-top: 0;
+    overflow: hidden;
+    span,p {
+        background: #eee;
+        height: 18px;
+        line-height: 18px;
+    }
+    .activity_li:nth-child(2n-1) {
+        margin-right: 12px;
+        margin-left: 0;
+    }
+}
+.page_defalt.active {
+    height: 0;
+}
