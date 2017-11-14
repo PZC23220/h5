@@ -15,15 +15,3 @@ instance.interceptors.response.use(function(response){
 // instance.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 export default instance;
-
-
-
-
-
-
-
-
-
-
-
-
