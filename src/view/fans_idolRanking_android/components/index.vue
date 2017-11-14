@@ -986,8 +986,8 @@
             }
         },
         created() {
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  this.idol_text= {
                     me: '我关注的爱豆',
                     all: ' 全部爱豆',

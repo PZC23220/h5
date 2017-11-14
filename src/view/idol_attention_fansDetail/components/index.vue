@@ -205,7 +205,7 @@
                         self.idx1++;
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                                self.getGoin(responseData.token);
+                                self.getJoin(responseData.token);
                             })
                         })
                     });
@@ -229,7 +229,7 @@
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                                    self.getGoin(responseData.token);
+                                    self.getGcoin(responseData.token);
                                 })
                             })
                         }
@@ -237,7 +237,7 @@
                         self.idx++;
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                                self.getGoin(responseData.token);
+                                self.getGcoin(responseData.token);
                             })
                         })
                     });
@@ -307,14 +307,14 @@
         },
         created() {
             var self = this;
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  self.fans_text= {
                     mine: '全部关注',
                     add: '昨日新增',
                     Gcoin: 'G币贡献',
                     like: '人气',
-                    time: 'フォロー日',
+                    time: '关注时间',
                     noneGcoin: '还没有收到粉丝的G币',
                     noneLike: '还没有收到粉丝的点赞人气',
                     noneComment: '还没有会员入会记录'

@@ -438,8 +438,8 @@
             if(getParams('platform') == 'android') {
                 self.android = true;
             }
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  self.fans_text= {
                     Gcoin: 'G币贡献',
                     like: '人气贡献',

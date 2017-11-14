@@ -96,8 +96,8 @@
                 self.android = true;
             }
             self.getLevel();
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  self.medal_text= {
                     title: 'Groupy等级',
                     desc: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高。<br><br>在Groupy里面也会更有机会与爱豆直接互动，邀请进入VIP社群等福利!',

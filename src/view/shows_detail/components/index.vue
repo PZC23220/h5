@@ -326,8 +326,8 @@
         },
         created() {
             var self = this;
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  self.showstext= {
                     pub: '发布活动',
                     start: '开场',

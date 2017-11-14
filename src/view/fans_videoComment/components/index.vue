@@ -407,8 +407,8 @@
             }else {
                 self.isIdol = false;
             }
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  self.video_text= {
                     publish: '添加评论',
                     pubMsg: '评论',

@@ -244,8 +244,8 @@
         },
         created() {
             var self = this;
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  self.msg_text= {
                     publish: '发表',
                     pubMsg: '发表评论',

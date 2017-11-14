@@ -51,8 +51,8 @@
             if(getParams('platform') == 'android') {
                 self.android = true;
             }
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  self.medal_text= {
                     title: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高',
                     medal1: '青铜守护',

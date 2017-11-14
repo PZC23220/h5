@@ -162,8 +162,8 @@
             let self = this;
             self.getInfo();
             self.host_ = location.origin + '/shows_detail/index.html?token=' + getParams('token') + '&showsId=';
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                 self.showstext = {
                     start: '开场',
                     shows: '开演',

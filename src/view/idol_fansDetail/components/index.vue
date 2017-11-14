@@ -204,7 +204,7 @@
                         self.idx1++;
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                                self.getGoin(responseData.token);
+                                self.getJoin(responseData.token);
                             })
                         })
                     });
@@ -228,7 +228,7 @@
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                                    self.getGoin(responseData.token);
+                                    self.getGcoin(responseData.token);
                                 })
                             })
                         }
@@ -236,7 +236,7 @@
                         self.idx++;
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                                self.getGoin(responseData.token);
+                                self.getGcoin(responseData.token);
                             })
                         })
                     });
@@ -306,8 +306,8 @@
         },
         created() {
             var self = this;
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  self.fans_text= {
                     mine: '我的粉丝',
                     add: '昨日新增',

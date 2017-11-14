@@ -199,7 +199,8 @@
         created() {
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             let _val;
-            if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  this.task_test= {
                     reward: '奖励',
                     receive: '领取',

@@ -422,8 +422,8 @@
         },
         created() {
             var self = this;
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  self.video_text= {
                     Gcoin: 'G币',
                     like: '人气',

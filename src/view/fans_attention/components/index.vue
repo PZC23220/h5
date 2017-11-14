@@ -118,8 +118,8 @@
         created() {
            let self = this;
             self.getInfo();
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(_lan === 'zh-cn') {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                 self.showstext = {
                     attention: '关注',
                     support: '应援',
