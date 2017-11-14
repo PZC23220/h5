@@ -103,8 +103,11 @@
             }else {
                 this.isFans = true;
             }
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-             if(_lan === 'zh-cn') {
+            window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.callHandler('setTitle', {'title':'コイン100%増量キャンペーン'})
+            })
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+             if(getParams('language') == 'cn') {
                  this.activity= {
                     theme:' 充值翻倍',
                     time: '活动时间',
