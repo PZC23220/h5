@@ -127,7 +127,7 @@
                 </swiper-slide>
                 <swiper-slide id="swiper3">
                     <v-scroll :on-refresh="refresh3" :on-infinite="infinite3">
-                        <div class="not_concerned" v-if="me3.length==0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="not_concerned" v-if="me3.length==0"><img :src="ranking_img" alt=""></div>
                         <div class="concerned" v-if="me3.length > 0">
                             <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me3" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -241,7 +241,7 @@
                 </swiper-slide>
                 <swiper-slide id="swiper4">
                     <v-scroll :on-refresh="refresh4" :on-infinite="infinite4">
-                        <div class="not_concerned" v-if="me4.length==0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="not_concerned" v-if="me4.length==0"><img :src="ranking_img" alt=""></div>
                         <div class="concerned" v-if="me4.length > 0">
                             <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me4" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -355,7 +355,7 @@
                 </swiper-slide>
                 <swiper-slide id="swiper2">
                     <v-scroll :on-refresh="refresh2" :on-infinite="infinite2">
-                        <div class="not_concerned" v-if="me2.length==0"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/idolRanking_banner.jpg" alt=""></div>
+                        <div class="not_concerned" v-if="me2.length==0"><img :src="ranking_img" alt=""></div>
                         <div class="concerned" v-if="me2.length > 0">
                             <h3 class="title">{{idol_text.me}}</h3>
                             <div class="idol_detail" v-for="(idol,key) in me2" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
