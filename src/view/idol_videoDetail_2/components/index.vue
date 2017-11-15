@@ -426,7 +426,7 @@
             },
             getVideo(token) {
                 let self = this;
-                if(self.idx2 < 2) {
+                if(self.idx2 < 1) {
                     self.idx2++;
                     let token_ = getParams('token');
                     if(token) {
@@ -542,9 +542,7 @@
                     }else {
                         self.havedlast = true;
                     }
-                }).catch(function(){
-
-                });
+                })
             },
             getGcoin(token) {
                 let self = this;
@@ -579,16 +577,6 @@
                             })
                         })
                     });
-                }else {
-                    self.loadingBig = false;
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                         if(getParams('language') == 'cn') {
-                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                         }else {
-                            bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                         }
-                    })
                 }
             },
             getPopularity(token) {

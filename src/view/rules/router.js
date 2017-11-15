@@ -4,6 +4,7 @@
 
 // 组件只有import之后才能使用
 import PrivacyPolicy from './components/PrivacyPolicy.vue'
+import PrivacyPolicy_chinese from './components/PrivacyPolicy_chinese.vue'
 import purchaseInstructions_chinese from './components/purchaseInstructions_chinese.vue'
 import purchaseInstructions from './components/purchaseInstructions.vue'
 import copyright_chinese from './components/copyright_chinese.vue'
@@ -15,6 +16,7 @@ import idolApply from './components/idolApply.vue'
 import rule_chinese from './components/rule_chinese.vue'
 import rule from './components/rule.vue'
 import fans_rule from './components/fans_rule.vue'
+import fans_rule_chinese from './components/fans_rule_chinese.vue'
 
 let Terminal = {
     // 辨别移动终端的语言：zh-cn、en-us、ko-kr、ja-jp...
@@ -30,24 +32,32 @@ if(Terminal.language == 'zh-cn') {
     indexLanguage.idolApply = '/idolApply_chinese';
     indexLanguage.rule = '/rule_chinese';
     indexLanguage.purchaseInstructions = '/purchaseInstructions_chinese';
+    indexLanguage.fans_rule = '/fans_rule_chinese';
+    indexLanguage.PrivacyPolicy = '/PrivacyPolicy_chinese';
 } else {
     indexLanguage.copyright = '/copyright_japanese';
     indexLanguage.ExchangeAndWithdrawals = '/ExchangeAndWithdrawals_japanese';
     indexLanguage.idolApply = '/idolApply_japanese';
     indexLanguage.rule = '/rule_japanese';
     indexLanguage.purchaseInstructions = '/purchaseInstructions_japanese';
+    indexLanguage.fans_rule = '/fans_rule';
+    indexLanguage.PrivacyPolicy = '/PrivacyPolicy';
 }
 
 const routes =
     [
         {
             path: '/',
-            component: PrivacyPolicy,
+            redirect: indexLanguage.PrivacyPolicy,
         },{
             path: '/PrivacyPolicy',
-            // 只有设置了name才可以向组件中传递参数
-            name: 'PrivacyPolicy',
+            redirect: indexLanguage.PrivacyPolicy,
+        },{
+            path: '/PrivacyPolicy',
             component: PrivacyPolicy,
+        },{
+            path: '/PrivacyPolicy_chinese',
+            component: PrivacyPolicy_chinese,
         },{
             path: '/purchaseInstructions',
             redirect: indexLanguage.purchaseInstructions   
@@ -95,7 +105,13 @@ const routes =
             component: rule_chinese
         },{
             path: '/fans_rule',
+            redirect: indexLanguage.fans_rule
+        },{
+            path: '/fans_rule',
             component: fans_rule
+        },{
+            path: '/fans_rule_chinese',
+            component: fans_rule_chinese
         }
     ];
 export default routes;
