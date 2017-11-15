@@ -183,7 +183,7 @@
             },
             getJoin(token) {
                 let self = this;
-                if(self.idx1 < 2) {
+                if(self.idx1 < 1) {
                     let token_ = getParams('token');
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
@@ -214,7 +214,7 @@
             },
             getGcoin(token) {
                 let self = this;
-                if(self.idx < 2) {
+                if(self.idx < 1) {
                     let token_ = getParams('token');
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
@@ -244,8 +244,8 @@
                 } else {
                     // self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                         if(_lan === 'zh-cn') {
+                        // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                         if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                          }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -255,7 +255,7 @@
             },
             getPopularity(token) {
                 let self = this;
-                if(self.idx2 < 2) {
+                if(self.idx2 < 1) {
                     let token_ = getParams('token');
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
@@ -284,8 +284,8 @@
             },
             deleteItem: function(index) {
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                     if(_lan === 'zh-cn') {
+                    // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                     if(getParams('language') == 'cn') {
                         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
                      }else {
                         bridge.callHandler('makeToast', '報告頂きありがとうございます');

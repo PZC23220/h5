@@ -275,7 +275,7 @@
           },
           getGcoin(token) {
             let self = this;
-            if(self.idx < 2) {
+            if(self.idx < 1) {
                 self.idx++;
                 let token_ = getParams('token');
                 if(token) {
@@ -310,8 +310,7 @@
             }else {
                 self.loadingBig = false;
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                     if(_lan === 'zh-cn') {
+                    if(getParams('language') == 'cn') {
                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                      }else {
                         bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -321,7 +320,7 @@
           },
           getPopularity(token) {
             let self = this;
-            if(self.idx1 < 2) {
+            if(self.idx1 < 1) {
                 self.idx1++;
                 let token_ = getParams('token');
                 if(token) {
@@ -399,8 +398,7 @@
             },
             deleteItem: function(index) {
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                     if(_lan === 'zh-cn') {
+                    if(getParams('language') == 'cn') {
                         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
                      }else {
                         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');

@@ -136,7 +136,7 @@
         methods: {
             getIncome(token) {
                 let self = this;
-                if(self.idx < 2) {
+                if(self.idx < 1) {
                     self.idx++;
                     let token_ = getParams('token');
                     if(token) {
@@ -166,8 +166,7 @@
                 }else {
                     // self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                         if(_lan === 'zh-cn') {
+                        if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                          }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -181,8 +180,7 @@
             },
             changeStatus(val) {
                 let _html;
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                 if(_lan === 'zh-cn') {
+                if(getParams('language') == 'cn') {
                      switch(val) {
                         case 0:
                             _html = '未提现'

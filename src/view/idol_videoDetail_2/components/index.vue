@@ -316,7 +316,7 @@
             },
             reply_submit() {
                 let self = this;
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 if(self.reply_content !=""){
                     if(!self.token_) {
                         self.token_ = getParams('token');
@@ -336,7 +336,7 @@
                             self.refresh();
                             self.reply_content = '';
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                 if(_lan === 'zh-cn') {
+                                 if(getParams('language') == 'cn') {
                                     bridge.callHandler('makeToast', '回复成功！');
                                  }else {
                                     bridge.callHandler('makeToast', 'リプライしました！');
@@ -344,7 +344,7 @@
                             });
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                if(_lan === 'zh-cn') {
+                                if(getParams('language') == 'cn') {
                                     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                                  }else {
                                     bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -359,7 +359,7 @@
                         self.reply = false;
                     }).catch(function(err){
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                                if(_lan === 'zh-cn') {
+                                if(getParams('language') == 'cn') {
                                     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                                  }else {
                                     bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -373,7 +373,7 @@
                     });
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                         if(_lan === 'zh-cn') {
+                         if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '请输入评论！');
                          }else {
                             bridge.callHandler('makeToast', 'コメントを入力してください');
@@ -514,8 +514,8 @@
                     });
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                         if(_lan === 'zh-cn') {
+                        // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                         if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                          }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -548,7 +548,7 @@
             },
             getGcoin(token) {
                 let self = this;
-                if(self.idx < 2) {
+                if(self.idx < 1) {
                     self.idx++;
                     let token_ = getParams('token');
                     if(token) {
@@ -582,8 +582,8 @@
                 }else {
                     self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                         if(_lan === 'zh-cn') {
+                        // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                         if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                          }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -593,7 +593,7 @@
             },
             getPopularity(token) {
                 let self = this;
-                if(self.idx1 < 2) {
+                if(self.idx1 < 1) {
                     self.idx1++;
                     let token_ = getParams('token');
                     if(token) {
@@ -671,8 +671,8 @@
             },
             deleteItem: function(index) {
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                     if(_lan === 'zh-cn') {
+                    // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                     if(getParams('language') == 'cn') {
                         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
                      }else {
                         bridge.callHandler('makeToast', '举报成功，我们将尽快审核');

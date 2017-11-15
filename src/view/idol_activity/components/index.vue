@@ -248,7 +248,7 @@
           getList(token) {
             let self = this;
             let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(self.idx < 2) {
+            if(self.idx < 1) {
                 let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;

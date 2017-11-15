@@ -269,7 +269,7 @@
           },
           getRanking(token) {
             let self = this;
-            if(self.idx < 2) {
+            if(self.idx < 1) {
                 self.idx++;
                 let token_ = getParams('token');
                 if(token) {
@@ -314,20 +314,11 @@
                     })
                 });
                 
-            }else {
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
-                        bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                     }else {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                     }
-                })
             }
           },
           getRankingHeat(token) {
             let self = this;
-            if(self.idx2 < 2) {
+            if(self.idx2 < 1) {
                 self.idx2++
                 let token_ = getParams('token');
                 if(token) {
@@ -371,9 +362,9 @@
                     })
                 });
             }else {
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
+                    if(getParams('language') == 'cn') {
                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                      }else {
                         bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');

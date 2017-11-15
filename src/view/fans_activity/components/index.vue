@@ -126,9 +126,9 @@
             },
             getInfo(token) {
                 let self = this;
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 let token_ = getParams('token');
-                if(self.idx < 2) {
+                if(self.idx < 1) {
                    if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
                         self.tokens = token;
@@ -149,7 +149,7 @@
                     })
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                         if(_lan === 'zh-cn') {
+                         if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                          }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');

@@ -342,7 +342,11 @@
                     self.top3None = true;
                     // self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                        if(getParams('language') == 'cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                         }
                     })
                 }
             },

@@ -142,8 +142,8 @@
             formatDay(key) {
                 let timer = new Date(key).getDay();
                 var str;
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                if(_lan === 'zh-cn') {
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                if(getParams('language') == 'cn') {
                     switch (timer) {
                         case 0 :  
                                 str = "周日";  
@@ -240,8 +240,7 @@
                     }
                 }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                         if(_lan === 'zh-cn') {
+                        if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                          }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -266,18 +265,18 @@
                 }else if(token_!='(null)' && token_!='') {
                     http.defaults.headers.common['Authorization'] = 'Token '+token_;
                 }
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 self.forms.showsId = self.showsInfo.id;
                 if(self.canPush) {
-                    if(self.idx < 2) {
+                    if(self.idx < 1) {
                         http.post('/shows/apply',JSON.stringify(self.forms)).then(function(res){
                             console.log(res);
                             if(res.status == 200) {
                                 window.setupWebViewJavascriptBridge(function(bridge) {
-                                    if(_lan === 'zh-cn') {
+                                    if(getParams('language') == 'cn') {
                                         bridge.callHandler('makeToast', '预约成功');
                                      }else {
-                                        bridge.callHandler('makeToast', '预约成功');
+                                        bridge.callHandler('makeToast', '予約しました');
                                      }
                                 })
                             }else {
@@ -298,7 +297,7 @@
                         });
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            if(_lan === 'zh-cn') {
+                            if(getParams('language') == 'cn') {
                                 bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                              }else {
                                 bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');

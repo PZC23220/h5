@@ -137,7 +137,7 @@
             },
             getComments() {
                 let self = this;
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 http.get('/post/list',{
                     params: {
                         targetType: 3,
@@ -162,7 +162,7 @@
                 }).catch(function(){
                     self.loadingBig = false;
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        if(_lan === 'zh-cn') {
+                        if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                          }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');

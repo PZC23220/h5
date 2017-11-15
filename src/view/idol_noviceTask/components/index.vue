@@ -93,8 +93,8 @@
         methods: {
           getList(_val,token) {
             let self = this;
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(self.idx < 2) {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(self.idx < 1) {
                 let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
@@ -118,7 +118,7 @@
                 });
             }else {
                  window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
+                    if(getParams('language') == 'cn') {
                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                      }else {
                         bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -129,8 +129,8 @@
           accept(val,gprice,e,token) {
             let self = this;
             self.Gcoins = gprice;
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(self.idx2 < 2) {
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(self.idx2 < 1) {
                 let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
@@ -152,7 +152,7 @@
                         },1500);
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            if(_lan === 'zh-cn') {
+                            if(getParams('language') == 'cn') {
                                 bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                              }else {
                                 bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -169,7 +169,7 @@
                 });
             }else {
                  window.setupWebViewJavascriptBridge(function(bridge) {
-                    if(_lan === 'zh-cn') {
+                    if(getParams('language') == 'cn') {
                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                      }else {
                         bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -178,15 +178,15 @@
             }
           },
           status(val) {
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             if(val == '1') {
-                if(_lan === 'zh-cn') {
+                if(getParams('language') == 'cn') {
                     return '已领取';
                 }else {
                     return '受取済';
                 }
             }else {
-                if(_lan === 'zh-cn') {
+                if(getParams('language') == 'cn') {
                     return '领取';
                 }else {
                     return '受け取る';
@@ -197,7 +197,7 @@
         mounted() {
         },
         created() {
-            let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
             let _val;
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(getParams('language') == 'cn') {

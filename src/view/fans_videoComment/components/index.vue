@@ -181,7 +181,7 @@
             },
             getComments() {
                 let self = this;
-                if(self.idx < 2) {
+                if(self.idx < 1) {
                     self.idx++;
                     http.get('/post/list',{
                         params: {
@@ -207,9 +207,9 @@
                         self.getComments();
                     });
                 }else {  
-                    let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                    // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        if(_lan === 'zh-cn') {
+                        if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                          }else {
                             bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -219,7 +219,7 @@
             },
             publish() {
                 let self = this;
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 if(self.can_publish) {
                     if(self.comment_text !=""){
                         self.can_publish = false;
@@ -246,7 +246,7 @@
                                 self.commentId = '';
                                 console.log(res)
                                 window.setupWebViewJavascriptBridge(function(bridge) {
-                                    if(_lan === 'zh-cn') {
+                                    if(getParams('language') == 'cn') {
                                         bridge.callHandler('makeToast', '评论发表成功！');
                                      }else {
                                         bridge.callHandler('makeToast', 'コメント投稿が完了しました。');
@@ -257,7 +257,7 @@
                                 })
                             }else {
                                 window.setupWebViewJavascriptBridge(function(bridge) {
-                                    if(_lan === 'zh-cn') {
+                                    if(getParams('language') == 'cn') {
                                         bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                                      }else {
                                         bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -274,7 +274,7 @@
                         }).catch(function(err){
                             self.can_publish = true;
                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                if(_lan === 'zh-cn') {
+                                if(getParams('language') == 'cn') {
                                     bridge.callHandler('makeToast', '服务器出错，请稍后重试');
                                  }else {
                                     bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
@@ -288,7 +288,7 @@
                         });
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            if(_lan === 'zh-cn') {
+                            if(getParams('language') == 'cn') {
                                 bridge.callHandler('makeToast', '请添加内容');
                              }else {
                                 bridge.callHandler('makeToast', 'コメントを入力してください');
