@@ -24,17 +24,15 @@
                         <p class="idol_time"></p>
                     </li>
                 </div>
-                <li class="protextor_li" v-for="idol in idolList" @click.stop="idol.idol_id?showIdolPage(idol.idol_id):false">
-                    <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                    <p class="idol_name">idol.nickname</p>
-                    <p class="idol_likes">
-                        <span><i>{{Number(idol.followed?idol.followed:0).toLocaleString()}}</i><br><i>{{showstext.attention}}</i></span>
-                        <span><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i><br><i>Likes</i></span>
-                    </p>
-                    <p class="idol_money" @click.stop="idol.idol_id?support(idol.idol_id):false">{{showstext.support}}</p>
+                <li class="protextor_li" v-for="idol in idolList" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
+                    <span class="avatar"><img v-lazy="idol.avatarIdol" alt=""></span>
+                    <p class="idol_name">{{idol.nickname}}</p>
+                    <p class="idol_info"><span class="fans_medal" :class="{'none':!idol.medalLevel}"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+ idol.medalLevel +'.png'" alt="" v-if="idol.medalLevel"><em v-else>{{showstext.medal}}</em></span><span>(<i>{{idol.medalValue}}</i>/{{medalList[idol.medalLevel].medal}})</span></p>
+                    <p class="idol_time">{{formatTime(idol.enddate,'yyyy.MM.dd')}}{{showstext.enddate}}</p>
+                    <p class="idol_money" @click.stop="idol.idolId?support(idol.idolId):false">{{showstext.money}}</p>
                 </li>
                 <div class="default_page" v-show="idolList.length == 0 && isLoading">
-                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_join.png" alt="">
+                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_follow.png" alt="">
                     <p v-html="showstext.none"></p>
                 </div>
             </ul>
@@ -47,13 +45,15 @@
     export default {
         data() {
           return {
-            idolList: '',
+            idolList: [],
             isLoading: false,
             idx: 0,
+            medalList:[],
             showstext: {
-                attention: 'フォロワー',
-                support: '応援する',
-                none: 'まだ推しメンがいません',
+                enddate: 'まで有効',
+                money: '期限を更新',
+                medal: 'まだ貢献バッジはありません',
+                none: 'まだフォロー中のアイドルがいません',
             },
           }
         },
@@ -63,7 +63,7 @@
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('makeToast', 'send_gift_before');
-                    bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
+                    bridge.callHandler('renew_fee', {'context':'0','idol_id':val}, function responseCallback(responseData) {
                         self.idx = 0;
                         self.getInfo();
                     })
@@ -82,7 +82,7 @@
             },
             getInfo(token) {
                 let self = this;
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 let token_ = getParams('token');
                 if(self.idx < 1) {
                    if(token) {
@@ -91,11 +91,12 @@
                     }else if(token_!='(null)' && token_!='') {
                         http.defaults.headers.common['Authorization'] = 'Token '+token_;
                     }
-                    http.get('/groupyuser/idolFollowedListByFans')
+                    http.get('/groupyuser/fansIdolList?version=2')
                     .then(function(res){
                         console.log(res)
                         self.isLoading = true;
-                        self.idolList = res.data;
+                        self.idolList = res.data.idolList;
+                        self.medalList = res.data.medalList;
                     }).catch(function(err){
                         self.idx++;
                          window.setupWebViewJavascriptBridge(function(bridge) {
@@ -116,20 +117,22 @@
             }
         },
         created() {
-           let self = this;
+            let self = this;
             self.getInfo();
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(getParams('language') == 'cn') {
                 self.showstext = {
-                    attention: '关注',
-                    support: '应援',
-                    none: '还没有守护的爱豆',
+                    enddate: '到期',
+                    money: '续费',
+                    medal: '暂无勋章',
+                    none: '还没有关注的爱豆',
                 }
             }else {
                 self.showstext = {
-                    attention: 'フォロワー',
-                    support: '応援する',
-                    none: 'まだ推しメンがいません',
+                    enddate: 'まで有効',
+                    money: '期限を更新',
+                    medal: 'まだ貢献バッジはありません',
+                    none: 'まだフォロー中のアイドルがいません',
                 }
             }
         }
