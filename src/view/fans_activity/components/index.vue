@@ -64,8 +64,7 @@
             formatDay(key) {
                 let timer = new Date(key).getDay();
                 var str;
-                let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                if(_lan === 'zh-cn') {
+                if(getParams('language') == 'cn') {
                     switch (timer) {
                         case 0 :  
                                 str = "周日";  
@@ -161,7 +160,7 @@
         created() {
             let self = this;
             self.getInfo();
-            self.host_ = location.origin + '/shows_detail/index.html?token=' + getParams('token') + '&showsId=';
+            self.host_ = location.origin + '/shows_detail/index.html?token=' + getParams('token') + '&language=' + getParams('language') + '&showsId=';
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(getParams('language') == 'cn') {
                 self.showstext = {
