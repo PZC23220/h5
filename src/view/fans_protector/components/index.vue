@@ -58,7 +58,7 @@
           }
         },
         methods: {
-            support(idol.idol_id,'freeFirstMonth':idol.freeFirstMonth,'gpriceHalfyear':idol.gpriceHalfyear,'gpriceMonth': idol.gpriceMonth,'gpriceSeason': idol.gpriceSeason) {
+            support(idol) {
                 console.log('support');
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
