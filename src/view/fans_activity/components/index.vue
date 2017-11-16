@@ -21,7 +21,7 @@
                     </li>
                 </div>
                 <li class="activity_li" v-for="shows in showsList">
-                    <a :href="host_+ shows.id">
+                    <a :href="host_+ shows.showsId">
                         <div class="activity_content"> 
                             <p class="activity_name">{{shows.title}}</p>
                             <p class="activity_info"><span>{{formatTime(shows.startTime,'MM.dd')}} {{formatDay(shows.startTime)}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_time.png" alt=""><span>{{showstext.start}}{{formatTime(shows.startTime,'hh:mm')}}/{{showstext.shows}}{{formatTime(shows.showTime,'hh:mm')}}</span></p>
@@ -136,6 +136,7 @@
                     }
                     http.get('/groupyuser/joinShowsListByFans')
                     .then(function(res){
+                        console.log(res)
                         self.isLoading = true;
                         self.showsList = res.data;
                     }).catch(function(err){
