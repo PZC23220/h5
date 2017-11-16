@@ -92,20 +92,27 @@
                     }
                     http.get('/groupyuser/fansIdolList?version=2')
                     .then(function(res){
-                        console.log(res)
                         self.isLoading = true;
-                        self.idolList = res.data.idolList;
-                        self.medalList = res.data.medalList;
-                    }).catch(function(err){
-                        let patt=/501/g;
-                        if(!patt.test(err)) {
-                            self.idx++;
-                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
-                                    self.getInfo(responseData.token);
+                        if(res.data) {
+                            self.idolList = res.data.idolList;
+                            self.medalList = res.data.medalList;
+                        }else {
+                            if(res.status != 10013) {
+                                self.idx++;
+                                 window.setupWebViewJavascriptBridge(function(bridge) {
+                                    bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
+                                        self.getInfo(responseData.token);
+                                    })
                                 })
-                            })
+                            }
                         }
+                    }).catch(function(err){
+                        self.idx++;
+                         window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
+                                self.getInfo(responseData.token);
+                            })
+                        })
                     })
                 }else {
                     console.log(11111)

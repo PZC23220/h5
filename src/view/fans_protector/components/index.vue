@@ -96,15 +96,12 @@
                         self.isLoading = true;
                         self.idolList = res.data;
                     }).catch(function(err){
-                        let patt=/501/g;
-                        if(!patt.test(err)) {
-                            self.idx++;
-                             window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
-                                    self.getInfo(responseData.token);
-                                })
+                        self.idx++;
+                         window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
+                                self.getInfo(responseData.token);
                             })
-                        }
+                        })
                     })
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {

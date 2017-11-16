@@ -491,8 +491,6 @@
                                 }else {
                                     self.videoSrc = videoitem.sd
                                 }
-                                // let len = res.data.videoItemList.length - 1;
-                                // self.videoSrc = res.data.videoItemList[len].url;
                                 let ele = document.querySelector('#scrollIntoPages');
                                 ele.scrollIntoView(false);
                                 $('.poster').css('height',`calc(100vw * ${res.data.videoItemList[len].height}/${res.data.videoItemList[len].width})`)
@@ -505,14 +503,11 @@
                             })
                         }
                     }).catch(function(err){
-                        let patt=/501/g;
-                        if(!patt.test(err)) {
-                            window.setupWebViewJavascriptBridge(function(bridge) {
-                                bridge.callHandler('getToken', {'targetType':'1','videoId':getParams('videoId')}, function responseCallback(responseData) {
-                                    self.getVideo(responseData.token);
-                                })
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','videoId':getParams('videoId')}, function responseCallback(responseData) {
+                                self.getVideo(responseData.token);
                             })
-                        }
+                        })
                     });
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {

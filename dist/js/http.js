@@ -9,7 +9,7 @@ instance.interceptors.response.use(function(response){
         return response.data;
 }, function(error){
     console.error('http请求失败', error);
-    return error;
+    return error.response.data;
     // return Promise.reject(error);
 });
 // instance.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
