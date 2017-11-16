@@ -181,7 +181,6 @@
     </div>
 </template>
 <script>
-    import LeftSlider from '../../../components/leftSlider.vue';
     import VideoPlayer from 'vue-video-player';
     import Scroll from '../../../components/scroll.vue';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
@@ -279,7 +278,6 @@
             }
         },
         components: {
-            LeftSlider,
             'v-scroll': Scroll
         },
         methods: {
@@ -510,6 +508,7 @@
                         })
                     });
                 }else {
+                    console.log('111111')
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                          if(getParams('language') == 'cn') {
@@ -653,23 +652,6 @@
                   }, 1500)
                   return;
                 }
-            },
-            deleteItem: function(index) {
-                window.setupWebViewJavascriptBridge(function(bridge) {
-                    // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                     if(getParams('language') == 'cn') {
-                        bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
-                     }else {
-                        bridge.callHandler('makeToast', '举报成功，我们将尽快审核');
-                     }
-                     http.get('/groupyuser/report',{
-                        params: {
-                            reportedUserId:index
-                        }
-                     }).then(function(res){
-                        console.log('举报成功');
-                     })
-                })
             }
         },
         computed: {
