@@ -28,13 +28,13 @@
                                 <span v-if="meObj.position==2"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="meObj.position==3"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="meObj.position>3" :class="[{'second':meObj.position>9},{'three':meObj.position>99}]">{{meObj.position?meObj.position:'-'}}</span>
-                                <span class="avatar" v-if="meObj.fans"><img v-lazy="meObj.fans.avatar" alt=""></span>
+                                <span class="avatar" v-if="meObj.userFans"><img v-lazy="meObj.userFans.avatar" alt=""></span>
                                 <div class="fans_content">
                                     <span>
-                                        <em>{{meObj.fans?(meObj.fans.nickname?meObj.fans.nickname:'...'):'...'}}</em>
-                                        <!-- <img :src="meObj.fans?('/static/images/icon_level_'+ (meObj.fans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
-                                        <span class="level">Lv.{{meObj.fans?(meObj.fans.levelPlatform?meObj.fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(meObj.fans.medal)+'.png'" v-if="meObj.fans?(meObj.fans.medal&&meObj.fans.medal>0):false" alt="">
+                                        <em>{{meObj.userFans?(meObj.userFans.nickname?meObj.userFans.nickname:'...'):'...'}}</em>
+                                        <!-- <img :src="meObj.userFans?('/static/images/icon_level_'+ (meObj.userFans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{meObj.userFans?(meObj.userFans.levelPlatform?meObj.userFans.levelPlatform:0):0}}</span>
+                                        <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(meObj.userFans.medal)+'.png'" v-if="meObj.userFans?(meObj.userFans.medal&&meObj.userFans.medal>0):false" alt="">
                                     </span>
                                     <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">{{meObj.expendGprice?Number(meObj.expendGprice).toLocaleString(): 0}}</span>
                                 </div>
@@ -96,13 +96,13 @@
                                 <span v-if="key==1"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="key==2"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="key>2" :class="[{'second':key>8},{'three':key>98}]">{{key+1}}</span>
-                                <span class="avatar" v-if="idol.fans"><img v-lazy="idol.fans.avatar" alt=""></span>
+                                <span class="avatar" v-if="idol.userFans"><img v-lazy="idol.userFans.avatar" alt=""></span>
                                 <div class="fans_content">
                                     <span>
-                                        <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
-                                        <!-- <img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform+1) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
-                                        <span class="level">Lv.{{idol.fans?(idol.fans.levelPlatform?idol.fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(idol.fans.medal)+'.png'" v-if="idol.fans?(idol.fans.medal&&idol.fans.medal>0):false" alt="">
+                                        <em>{{idol.userFans?idol.userFans.nickname:'...'}}</em>
+                                        <!-- <img :src="idol.userFans?('/static/images/icon_level_'+ (idol.userFans.levelPlatform+1) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{idol.userFans?(idol.userFans.levelPlatform?idol.userFans.levelPlatform:0):0}}</span>
+                                        <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(idol.userFans.medal)+'.png'" v-if="idol.userFans?(idol.userFans.medal&&idol.userFans.medal>0):false" alt="">
                                     </span>
                                     <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">{{idol.expendGprice?Number(idol.expendGprice).toLocaleString(): 0}}</span>
                                 </div>
@@ -130,9 +130,9 @@
                                 <span v-if="meHeatObj.position==2"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="meHeatObj.position==3"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="meObj.position>3" :class="[{'second':meHeatObj.position>9},{'three':meHeatObj.position>99}]">{{meObj.position?meObj.position:'-'}}</span>
-                                <span class="avatar" v-if="meHeatObj.fans"><img v-lazy="meHeatObj.fans.avatar" alt=""></span>
+                                <span class="avatar" v-if="meHeatObj.userFans"><img v-lazy="meHeatObj.userFans.avatar" alt=""></span>
                                 <div class="fans_content">
-                                    <span><em>{{meHeatObj.fans?meHeatObj.fans.nickname:'...'}}</em><span class="level">Lv.{{meObj.fans?(meObj.fans.levelPlatform?meObj.fans.levelPlatform:0):0}}</span></span>
+                                    <span><em>{{meHeatObj.userFans?meHeatObj.userFans.nickname:'...'}}</em><span class="level">Lv.{{meObj.userFans?(meObj.userFans.levelPlatform?meObj.userFans.levelPlatform:0):0}}</span></span>
                                     <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{meHeatObj.totalNums?Number(meHeatObj.totalNums).toLocaleString(): 0}}</span>
                                 </div>
                                 <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
@@ -169,13 +169,13 @@
                                 <span v-if="key==1"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="key==2"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
                                 <span v-if="key>2" :class="[{'second':key>8},{'three':key>98}]">{{key+1}}</span>
-                                <span class="avatar" v-if="idol.fans"><img v-lazy="idol.fans.avatar" alt=""></span>
+                                <span class="avatar" v-if="idol.userFans"><img v-lazy="idol.userFans.avatar" alt=""></span>
                                 <div class="fans_content">
                                     <span>
-                                        <em>{{idol.fans?idol.fans.nickname:'...'}}</em>
-                                        <!-- <img :src="idol.fans?('/static/images/icon_level_'+ (idol.fans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
-                                        <span class="level">Lv.{{idol.fans?(idol.fans.levelPlatform?idol.fans.levelPlatform:0):0}}</span>
-                                        <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(idol.fans.medal)+'.png'" v-if="idol.fans?(idol.fans.medal&&idol.fans.medal>0):false" alt="">
+                                        <em>{{idol.userFans?idol.userFans.nickname:'...'}}</em>
+                                        <!-- <img :src="idol.userFans?('/static/images/icon_level_'+ (idol.userFans.levelPlatform) +'.png'): 'http://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='http://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
+                                        <span class="level">Lv.{{idol.userFans?(idol.userFans.levelPlatform?idol.userFans.levelPlatform:0):0}}</span>
+                                        <img class="medal_level" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(idol.userFans.medal)+'.png'" v-if="idol.userFans?(idol.userFans.medal&&idol.userFans.medal>0):false" alt="">
                                     </span>
                                     <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{idol.totalNums?Number(idol.totalNums).toLocaleString(): 0}}</span>
                                 </div>
