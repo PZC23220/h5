@@ -307,7 +307,7 @@
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(getParams('language') == 'cn') {
                  self.fans_text= {
-                    mine: '我的粉丝',
+                    mine: '我的守护者',
                     add: '昨日新增',
                     Gcoin: 'G币贡献',
                     like: '人气',

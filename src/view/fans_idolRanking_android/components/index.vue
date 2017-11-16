@@ -961,7 +961,7 @@
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(getParams('language') == 'cn') {
                  this.idol_text= {
-                    me: '我关注的爱豆',
+                    me: ' 我的守护',
                     all: ' 全部爱豆',
                     fans: ' 贡献排行',
                     support: '应援',

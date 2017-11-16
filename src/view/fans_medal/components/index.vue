@@ -54,14 +54,14 @@
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(getParams('language') == 'cn') {
                  self.medal_text= {
-                    title: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高',
+                    title: '守护勋章是每个守护者都有的独立等级，按照为守护中的爱豆应援的总Like计算。勋章共有五个等级：青铜守护，白银守护，黄金守护，钻石守护以及王者守护。勋章等级越高的，在爱豆的贡献排行中出现的机会越大，被爱豆和其他粉丝看见的几率就越大。',
                     medal1: '青铜守护',
                     medal2: '白金守护',
                     medal3: '黄金守护',
                     medal4: '钻石守护',
                     medal5: '王者守护',
                     value: '价值满',
-                    desc: '为单个爱豆或组合送出',
+                    desc: '为单个爱豆或组合送出Like',
                     pubMsg: '  爱豆勋章'
 
                 }
