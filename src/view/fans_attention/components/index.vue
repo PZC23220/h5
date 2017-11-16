@@ -27,7 +27,7 @@
                 <li class="protextor_li" v-for="idol in idolList" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                     <span class="avatar"><img v-lazy="idol.avatarIdol" alt=""></span>
                     <p class="idol_name">{{idol.nickname}}</p>
-                    <p class="idol_info"><span class="fans_medal" :class="{'none':!idol.medalLevel}"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+ idol.medalLevel +'.png'" alt="" v-if="idol.medalLevel"><em v-else>{{showstext.medal}}</em></span><span>(<i>{{idol.medalValue}}</i>/{{medalList[idol.medalLevel].medal}})</span></p>
+                    <p class="idol_info"><span class="fans_medal" :class="{'none':!idol.medalLevel}"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+ idol.medalLevel +'.png'" alt="" v-if="idol.medalLevel"><em v-else>{{showstext.medal}}</em></span><span>(<i>{{idol.medalValue}}</i>/{{idol.medalLevel>=5?'-':medalList[(idol.medalLevel+1)].medal}})</span></p>
                     <p class="idol_time">{{formatTime(idol.enddate,'yyyy.MM.dd')}}{{showstext.enddate}}</p>
                     <p class="idol_money" @click.stop="idol.idolId?support(idol.idolId):false">{{showstext.money}}</p>
                 </li>
@@ -92,6 +92,7 @@
                     }
                     http.get('/groupyuser/fansIdolList?version=2')
                     .then(function(res){
+                        console.log(res)
                         self.isLoading = true;
                         if(res.data) {
                             self.idolList = res.data.idolList;
