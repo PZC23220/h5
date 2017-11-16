@@ -29,7 +29,7 @@
                     <p class="idol_name">{{idol.nickname}}</p>
                     <p class="idol_info"><span class="fans_medal" :class="{'none':!idol.medalLevel}"><img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+ idol.medalLevel +'.png'" alt="" v-if="idol.medalLevel"><em v-else>{{showstext.medal}}</em></span><span>(<i>{{idol.medalValue}}</i>/{{idol.medalLevel>=5?'-':medalList[(idol.medalLevel+1)].medal}})</span></p>
                     <p class="idol_time">{{formatTime(idol.enddate,'yyyy.MM.dd')}}{{showstext.enddate}}</p>
-                    <p class="idol_money" @click.stop="idol.idolId?support(idol.idolId):false">{{showstext.money}}</p>
+                    <p class="idol_money" @click.stop="idol.idolId?support(idol):false">{{showstext.money}}</p>
                 </li>
                 <div class="default_page" v-show="idolList.length == 0 && isLoading">
                     <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_follow.png" alt="">
@@ -58,11 +58,11 @@
           }
         },
         methods: {
-            support(val) {
+            support(idol) {
                 console.log('support');
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('renew_fee', {'context':'0','idol_id':val}, function responseCallback(responseData) {
+                    bridge.callHandler('renew_fee', {'context':'0','idol_id':idol.idol_id,'freeFirstMonth':idol.freeFirstMonth,'gpriceHalfyear':idol.gpriceHalfyear,'gpriceMonth': idol.gpriceMonth,'gpriceSeason': idol.gpriceSeason}, function responseCallback(responseData) {
                         self.idx = 0;
                         self.getInfo();
                     })
