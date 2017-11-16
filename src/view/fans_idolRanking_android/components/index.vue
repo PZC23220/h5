@@ -935,6 +935,8 @@
             var self = this;
             window.ranking_refresh = function() {
                 self.idx2 = 0;
+                self.idx3 = 0;
+                self.idx4 = 0;
                 self.idx = 0;
                 self.getRanking();
                 self.getRanking2();
@@ -945,6 +947,8 @@
                 bridge.registerHandler('ranking_refresh', function() {
                     self.idx2 = 0;
                     self.idx = 0;
+                    self.idx3 = 0;
+                    self.idx4 = 0;
                     self.getRanking();
                     self.getRanking2();
                     self.getRanking3();
