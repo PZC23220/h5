@@ -62,7 +62,6 @@
                 console.log('support');
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('makeToast', 'send_gift_before');
                     bridge.callHandler('renew_fee', {'context':'0','idol_id':val}, function responseCallback(responseData) {
                         self.idx = 0;
                         self.getInfo();
@@ -98,14 +97,18 @@
                         self.idolList = res.data.idolList;
                         self.medalList = res.data.medalList;
                     }).catch(function(err){
-                        self.idx++;
-                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
-                                self.getInfo(responseData.token);
+                        let patt=/501/g;
+                        if(!patt.test(err)) {
+                            self.idx++;
+                             window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
+                                    self.getInfo(responseData.token);
+                                })
                             })
-                        })
+                        }
                     })
                 }else {
+                    console.log(11111)
                     window.setupWebViewJavascriptBridge(function(bridge) {
                          if(getParams('language') == 'cn') {
                             bridge.callHandler('makeToast', '服务器出错，请稍后重试');
@@ -125,14 +128,14 @@
                     enddate: '到期',
                     money: '续费',
                     medal: '暂无勋章',
-                    none: '还没有关注的爱豆',
+                    none: '还没有守护的爱豆',
                 }
             }else {
                 self.showstext = {
                     enddate: 'まで有効',
                     money: '期限を更新',
                     medal: 'まだ貢献バッジはありません',
-                    none: 'まだフォロー中のアイドルがいません',
+                    none: 'まだ推しメンがいません',
                 }
             }
         }

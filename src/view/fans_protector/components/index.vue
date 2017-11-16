@@ -26,7 +26,7 @@
                 </div>
                 <li class="protextor_li" v-for="idol in idolList" @click.stop="idol.idol_id?showIdolPage(idol.idol_id):false">
                     <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                    <p class="idol_name">idol.nickname</p>
+                    <p class="idol_name">{{idol.nickname}}</p>
                     <p class="idol_likes">
                         <span><i>{{Number(idol.followed?idol.followed:0).toLocaleString()}}</i><br><i>{{showstext.attention}}</i></span>
                         <span><i>{{Number(idol.popularity?idol.popularity:0).toLocaleString()}}</i><br><i>Likes</i></span>
@@ -53,7 +53,7 @@
             showstext: {
                 attention: 'フォロワー',
                 support: '応援する',
-                none: 'まだ推しメンがいません',
+                none: 'まだフォロー中のアイドルがいません',
             },
           }
         },
@@ -62,7 +62,6 @@
                 console.log('support');
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('makeToast', 'send_gift_before');
                     bridge.callHandler('send_gift', {'context':'0','idol_id':idol.idol_id,'freeFirstMonth':idol.freeFirstMonth,'gpriceHalfyear':idol.gpriceHalfyear,'gpriceMonth': idol.gpriceMonth,'gpriceSeason': idol.gpriceSeason}, function responseCallback(responseData) {
                         self.idx = 0;
                         self.getInfo();
@@ -97,12 +96,15 @@
                         self.isLoading = true;
                         self.idolList = res.data;
                     }).catch(function(err){
-                        self.idx++;
-                         window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
-                                self.getInfo(responseData.token);
+                        let patt=/501/g;
+                        if(!patt.test(err)) {
+                            self.idx++;
+                             window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'1','targetId':'1'}, function responseCallback(responseData) {
+                                    self.getInfo(responseData.token);
+                                })
                             })
-                        })
+                        }
                     })
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
@@ -123,13 +125,13 @@
                 self.showstext = {
                     attention: '关注',
                     support: '应援',
-                    none: '还没有守护的爱豆',
+                    none: '还没有关注的爱豆',
                 }
             }else {
                 self.showstext = {
                     attention: 'フォロワー',
                     support: '応援する',
-                    none: 'まだ推しメンがいません',
+                    none: 'まだフォロー中のアイドルがいません',
                 }
             }
         }

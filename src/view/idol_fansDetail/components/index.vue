@@ -143,7 +143,7 @@
                 // loadingBig: true,
                 idx: 0,
                 idx2: 0,
-                idx1: 1,
+                idx1: 0,
                 fans_text: {
                     mine: 'ファン',
                     add: '昨日の新規',

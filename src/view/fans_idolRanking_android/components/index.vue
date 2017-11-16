@@ -919,7 +919,6 @@
                 console.log('support');
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('makeToast', 'send_gift_before');
                     bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
                         self.idx2 = 0;
                         self.idx = 0;

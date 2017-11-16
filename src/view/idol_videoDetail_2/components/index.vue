@@ -426,7 +426,7 @@
             },
             getVideo(token) {
                 let self = this;
-                if(self.idx2 < 1) {
+                if(self.idx2 < 2) {
                     self.idx2++;
                     let token_ = getParams('token');
                     if(token) {
@@ -484,7 +484,6 @@
                                         })
                                     }
                                 })
-                                console.log(videoitem)
                                 if(videoitem.hd) {
                                     self.videoSrc = videoitem.hd
                                 }else if(videoitem.ld) {
@@ -506,11 +505,14 @@
                             })
                         }
                     }).catch(function(err){
-                        window.setupWebViewJavascriptBridge(function(bridge) {
-                            bridge.callHandler('getToken', {'targetType':'1','videoId':getParams('videoId')}, function responseCallback(responseData) {
-                                self.getVideo(responseData.token);
+                        let patt=/501/g;
+                        if(!patt.test(err)) {
+                            window.setupWebViewJavascriptBridge(function(bridge) {
+                                bridge.callHandler('getToken', {'targetType':'1','videoId':getParams('videoId')}, function responseCallback(responseData) {
+                                    self.getVideo(responseData.token);
+                                })
                             })
-                        })
+                        }
                     });
                 }else {
                     window.setupWebViewJavascriptBridge(function(bridge) {
