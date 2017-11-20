@@ -215,7 +215,7 @@
                 self.income_text= {
                     today:' 本月G币',
                     yesterday: '昨日G币',
-                    vip: '会员数量',
+                    vip: '守护者数',
                     detail: '礼物数量',
                     task: '新手任务',
                     record: 'G币记录',
