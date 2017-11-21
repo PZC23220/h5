@@ -62,7 +62,7 @@
                 console.log(idol);
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('renew_fee', {'context':'0','idol_id':idol.idol_id,'freeFirstMonth':idol.freeFirstMonth,'gpriceHalfyear':idol.gpriceHalfyear,'gpriceMonth': idol.gpriceMonth,'gpriceSeason': idol.gpriceSeason}, function responseCallback(responseData) {
+                    bridge.callHandler('renew_fee', {'context':'0','idol_id':idol.idolId,'freeFirstMonth':idol.freeFirstMonth,'gpriceHalfyear':idol.gpriceHalfyear,'gpriceMonth': idol.gpriceMonth,'gpriceSeason': idol.gpriceSeason}, function responseCallback(responseData) {
                         self.idx = 0;
                         self.getInfo();
                     })

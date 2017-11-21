@@ -145,7 +145,7 @@
                 idx2: 0,
                 idx1: 0,
                 fans_text: {
-                    mine: 'ファン',
+                    mine: '守護者',
                     add: '昨日の新規',
                     Gcoin: 'コイン',
                     like: 'Like',
@@ -319,7 +319,7 @@
                 }
               } else {
                 self.fans_text= {
-                    mine: 'ファン',
+                    mine: '守護者',
                     add: '昨日の新規',
                     Gcoin: 'コイン',
                     like: 'Like',
