@@ -73,67 +73,67 @@
                     <ul class="income_img">
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_heart.png" style="background-color: #ffe7ea;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[1].numbers?gcoinList.gift[1].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[1].giftCount?gcoinList.gift[1].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_star.png" style="background-color: #fffddd;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[0].numbers?gcoinList.gift[0].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[0].giftCount?gcoinList.gift[0].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_rose.png" style="background-color: #ffe9ec;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[2].numbers?gcoinList.gift[2].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[2].giftCount?gcoinList.gift[2].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_diamond.png" style="background-color: #e1eff2;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[3].numbers?gcoinList.gift[3].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[3].giftCount?gcoinList.gift[3].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ lollipop.png" style="background-color: #ffedef;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[4].numbers?gcoinList.gift[4].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[4].giftCount?gcoinList.gift[4].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ sushi.png" style="background-color: #fff5e5;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[5].numbers?gcoinList.gift[5].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[5].giftCount?gcoinList.gift[5].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_bear.png" style="background-color: #fff1e2;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[6].numbers?gcoinList.gift[6].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[6].giftCount?gcoinList.gift[6].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ noodles.png" style="background-color: #ffefe9;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[7].numbers?gcoinList.gift[7].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[7].giftCount?gcoinList.gift[7].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_tree.png" style="background-color: #ffedfe;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[8].numbers?gcoinList.gift[8].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[8].giftCount?gcoinList.gift[8].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_tower.png" style="background-color: #ffe9ea;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[9].numbers?gcoinList.gift[9].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[9].giftCount?gcoinList.gift[9].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_castle.png" style="background-color: #dbe6f6;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[10].numbers?gcoinList.gift[10].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[10].giftCount?gcoinList.gift[10].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_firework.png" style="background-color: #e8fdff;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[11].numbers?gcoinList.gift[11].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[11].giftCount?gcoinList.gift[11].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ maple.png" style="background-color: #fef4e8;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[12].numbers?gcoinList.gift[12].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[12].giftCount?gcoinList.gift[12].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ island.png" style="background-color: #ffeced;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[13].numbers?gcoinList.gift[13].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[13].giftCount?gcoinList.gift[13].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ meteor.png" style="background-color: #f3f1ff;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[14].numbers?gcoinList.gift[14].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[14].giftCount?gcoinList.gift[14].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                         <li>
                             <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_fuji.png" style="background-color: #e5f2ff;" alt="">
-                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[15].numbers?gcoinList.gift[15].numbers:0):0).toLocaleString()}}</span></p>
+                            <p><span class="left maxWidth" :class="{'left_show':gcoinList.gift}">&times;{{Number(gcoinList.gift?(gcoinList.gift[15].giftCount?gcoinList.gift[15].giftCount:0):0).toLocaleString()}}</span></p>
                         </li>
                     </ul>
                 </div>
@@ -533,16 +533,6 @@
                             })
                         })
                     });
-                }else {
-                    console.log('111111')
-                    window.setupWebViewJavascriptBridge(function(bridge) {
-                        // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-                         if(getParams('language') == 'cn') {
-                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
-                         }else {
-                            bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
-                         }
-                    })
                 }
             },
             getComments() {
