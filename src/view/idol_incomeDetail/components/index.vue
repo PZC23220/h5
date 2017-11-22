@@ -13,22 +13,14 @@
             </div>
             <div class="income_details eBorder">
                 <p class="detail_title">{{income_text.vip}}</p>
-                <ul class="income_img">
+                <ul class="income_img income_img_vip">
                     <li>
-                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_free.png" alt="">
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_free_jp.png" alt="">
                         <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[0].numbers?incomeList.groupFeeList[0].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_1%20month.png" alt="">
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_month_jp.png" alt="">
                         <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[1].numbers?incomeList.groupFeeList[1].numbers:0):0).toLocaleString()}}</span></p>
-                    </li>
-                    <li>
-                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_3%20month.png" alt="">
-                        <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[2].numbers?incomeList.groupFeeList[2].numbers:0):0).toLocaleString()}}</span></p>
-                    </li>
-                    <li>
-                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_6%20month.png" alt="">
-                        <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[3].numbers?incomeList.groupFeeList[3].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
                 <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><i class="totalNum">{{incomeList.groupIncome?Number(incomeList.groupIncome).toLocaleString():0}}</i></div>
@@ -53,20 +45,52 @@
                         <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[3].numbers?incomeList.giftList[3].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ lollipop.png" style="background-color: #ffedef;" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[4].numbers?incomeList.giftList[3].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ sushi.png" style="background-color: #fff5e5;" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[5].numbers?incomeList.giftList[3].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
                         <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_bear.png" style="background-color: #fff1e2;" alt="">
-                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[4].numbers?incomeList.giftList[4].numbers:0):0).toLocaleString()}}</span></p>
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[6].numbers?incomeList.giftList[4].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ noodles.png" style="background-color: #ffefe9;" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[7].numbers?incomeList.giftList[4].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_tree.png" style="background-color: #ffedfe;" alt="">
-                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[5].numbers?incomeList.giftList[5].numbers:0):0).toLocaleString()}}</span></p>
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[8].numbers?incomeList.giftList[5].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_tower.png" style="background-color: #ffe9ea;" alt="">
-                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[6].numbers?incomeList.giftList[6].numbers:0):0).toLocaleString()}}</span></p>
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[9].numbers?incomeList.giftList[6].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
                         <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/pic_castle.png" style="background-color: #dbe6f6;" alt="">
-                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[7].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[10].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_firework.png" style="background-color: #e8fdff;" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[11].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ maple.png" style="background-color: #fef4e8;" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[12].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ island.png" style="background-color: #ffeced;" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[13].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_ meteor.png" style="background-color: #f3f1ff;" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[14].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/gift/gift_fuji.png" style="background-color: #e5f2ff;" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show':incomeList.giftList}">&times;{{Number(incomeList.giftList?(incomeList.giftList[15].numbers?incomeList.giftList[7].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
                 <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><i class="totalNum">{{incomeList.giftsIncome?Number(incomeList.giftsIncome).toLocaleString():0}}</i></div>
@@ -255,87 +279,3 @@
         }
     }
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-    .content {
-        height: 100vh;
-    }
-    .maxWidth {
-        max-width: 100%;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        display: block;
-    }
- .mention_details {
-    .detail_title {
-        margin-left:12px;
-    }
-    .mention_list {
-        overflow: hidden;
-        line-height: 36px;
-        li {
-            margin: 0 12px;
-            padding: 16px 0 14px;
-            overflow: hidden;
-            display: flex;
-            box-sizing: border-box;
-            font-size: 14px;
-            color: #666;
-            
-            &:first-child {
-                color: #FC4083;
-                font-size: 12px;
-                border-bottom: 1px solid #FC4083;
-            }
-            &:not(:first-child) {
-                border-bottom: 1px solid #e2e2e2;
-            }
-            p {
-                flex: 1;
-                height: 20px;
-                line-height: 20px;
-                text-align: center;
-                // &:nth-child(2) {
-                //     flex: 2;
-                // }
-            }
-            img {
-                width: 14px;
-                margin-right: 6px;
-                vertical-align: middle;
-            }
-        }
-    }
- }
- .income_desc {
-    background: #eee;
-    color: #999;
-    padding: 3px 12px;
-    line-height: 20px;
- }
- .reflect_desc {
-    display: block;
-    margin: 14px auto 29px;
-    width: 150px;
-    height: 32px;
-    line-height: 32px;
-    border: 1px solid #999999;
-    border-radius: 50px;
-    color: #666;
-    text-align: center;
- }
- .income_img {
-    img {
-        width: 78px;
-        height: 78px;
-    }
- }
- .left {
-    opacity: 0.2;
-    transition: opacity 0.3s;
- }
-.left_show {
-    opacity: 1 !important;
-}
-</style>

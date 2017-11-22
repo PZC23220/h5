@@ -1,0 +1,81 @@
+.content {
+        height: 100vh;
+    }
+    .maxWidth {
+        max-width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        display: block;
+    }
+ .mention_details {
+    .detail_title {
+        margin-left:12px;
+    }
+    .mention_list {
+        overflow: hidden;
+        line-height: 36px;
+        li {
+            margin: 0 12px;
+            padding: 16px 0 14px;
+            overflow: hidden;
+            display: flex;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #666;
+            
+            &:first-child {
+                color: #FC4083;
+                font-size: 12px;
+                border-bottom: 1px solid #FC4083;
+            }
+            &:not(:first-child) {
+                border-bottom: 1px solid #e2e2e2;
+            }
+            p {
+                flex: 1;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                // &:nth-child(2) {
+                //     flex: 2;
+                // }
+            }
+            img {
+                width: 14px;
+                margin-right: 6px;
+                vertical-align: middle;
+            }
+        }
+    }
+ }
+ .income_desc {
+    background: #eee;
+    color: #999;
+    padding: 3px 12px;
+    line-height: 20px;
+ }
+ .reflect_desc {
+    display: block;
+    margin: 14px auto 29px;
+    width: 150px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #999999;
+    border-radius: 50px;
+    color: #666;
+    text-align: center;
+ }
+ .income_img_vip {
+    li {
+        width: calc((96.8vw - 24px)/2);
+        max-width: 232px;
+    }
+ }
+ .left {
+    opacity: 0.2;
+    transition: opacity 0.3s;
+ }
+.left_show {
+    opacity: 1 !important;
+}
