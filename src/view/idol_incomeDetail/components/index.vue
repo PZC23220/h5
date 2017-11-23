@@ -15,11 +15,11 @@
                 <p class="detail_title">{{income_text.vip}}</p>
                 <ul class="income_img income_img_vip">
                     <li>
-                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_free_jp.png" alt="">
+                        <img class="gift" :src="income_text.free" alt="">
                         <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[0].numbers?incomeList.groupFeeList[0].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                     <li>
-                        <img class="gift" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_month_jp.png" alt="">
+                        <img class="gift" :src="income_text.month" alt="">
                         <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[1].numbers?incomeList.groupFeeList[1].numbers:0):0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
@@ -146,6 +146,8 @@
                     record: 'コイン履歴',
                     desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
                     coins: '獲得コイン数',
+                    free: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_free_jp.png',
+                    month: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_month_jp.png',
                     records: {
                         time: '時間',
                         num :'コイン数',
@@ -245,6 +247,8 @@
                     record: 'G币记录',
                     coins: '金币总数',
                     desc: 'G币是Groupy平台上使用的虚拟货币，并不代表真实货币',
+                    free: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_free_cn.png',
+                    month: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_month_cn.png',
                     records: {
                         time: '时间',
                         num :'G币值',
@@ -264,6 +268,8 @@
                     record: 'コイン履歴',
                     coins: '獲得コイン数',
                     desc: 'コインとは、ギフティング・メンバーシップ登録等に使うGroupyの仮想通貨です。',
+                    free: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_free_jp.png',
+                    month: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/member/pic_vip_month_jp.png',
                     records: {
                         time: '時間',
                         num :'コイン数',
