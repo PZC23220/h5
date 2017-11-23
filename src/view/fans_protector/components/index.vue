@@ -83,7 +83,7 @@
                 let self = this;
                 let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 let token_ = getParams('token');
-                if(self.idx < 1) {
+                if(self.idx < 2) {
                    if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;
                         self.tokens = token;

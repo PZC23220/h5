@@ -94,7 +94,7 @@
           getList(_val,token) {
             let self = this;
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(self.idx < 1) {
+            if(self.idx < 2) {
                 let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;
@@ -130,7 +130,7 @@
             let self = this;
             self.Gcoins = gprice;
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
-            if(self.idx2 < 1) {
+            if(self.idx2 < 2) {
                 let token_ = getParams('token');
                 if(token) {
                     http.defaults.headers.common['Authorization'] = 'Token '+token;

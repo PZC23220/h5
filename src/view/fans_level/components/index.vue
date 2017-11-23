@@ -56,7 +56,7 @@
             },
             getLevel(token) {
                 let self = this;
-                if(self.idx < 1) {
+                if(self.idx < 2) {
                     self.idx++;
                     let token_ = getParams('token');
                     if(token) {

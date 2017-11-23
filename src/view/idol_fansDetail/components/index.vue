@@ -213,7 +213,7 @@
             },
             getGcoin(token) {
                 let self = this;
-                if(self.idx < 1) {
+                if(self.idx < 2) {
                     let token_ = getParams('token');
                     if(token) {
                         http.defaults.headers.common['Authorization'] = 'Token '+token;

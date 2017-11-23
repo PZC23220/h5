@@ -716,7 +716,7 @@
             },
             getRanking4(token) {
                 let self = this;
-                if(self.idx4 < 1) {
+                if(self.idx4 < 2) {
                     self.idx4++;
                     let token_ = getParams('token');
                     if(token) {

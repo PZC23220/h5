@@ -269,7 +269,7 @@
           },
           getRanking(token) {
             let self = this;
-            if(self.idx < 1) {
+            if(self.idx < 2) {
                 self.idx++;
                 let token_ = getParams('token');
                 if(token) {
@@ -318,7 +318,7 @@
           },
           getRankingHeat(token) {
             let self = this;
-            if(self.idx2 < 1) {
+            if(self.idx2 < 2) {
                 self.idx2++
                 let token_ = getParams('token');
                 if(token) {
