@@ -399,7 +399,7 @@
           },
             getRanking(val,token) {
                 let self = this;
-                if(self.idx < 4) {
+                if(self.idx < 8) {
                     self.idx++;
                     let token_ = getParams('token');
                     if(token) {
