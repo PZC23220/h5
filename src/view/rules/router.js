@@ -15,7 +15,7 @@ import idolApply_chinese from './components/idolApply_chinese.vue'
 import idolApply from './components/idolApply.vue'
 import rule_chinese from './components/rule_chinese.vue'
 import rule from './components/rule.vue'
-import fans_rule from './components/fans_rule.vue'
+import fans_rule_japanese from './components/fans_rule.vue'
 import fans_rule_chinese from './components/fans_rule_chinese.vue'
 
 let Terminal = {
@@ -40,7 +40,7 @@ if(Terminal.language == 'zh-cn') {
     indexLanguage.idolApply = '/idolApply_japanese';
     indexLanguage.rule = '/rule_japanese';
     indexLanguage.purchaseInstructions = '/purchaseInstructions_japanese';
-    indexLanguage.fans_rule = '/fans_rule';
+    indexLanguage.fans_rule = '/fans_rule_japanese';
     indexLanguage.PrivacyPolicy = '/PrivacyPolicy';
 }
 
@@ -107,8 +107,8 @@ const routes =
             path: '/fans_rule',
             redirect: indexLanguage.fans_rule
         },{
-            path: '/fans_rule',
-            component: fans_rule
+            path: '/fans_rule_japanese',
+            component: fans_rule_japanese
         },{
             path: '/fans_rule_chinese',
             component: fans_rule_chinese
