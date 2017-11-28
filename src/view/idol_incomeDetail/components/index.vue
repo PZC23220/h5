@@ -140,7 +140,7 @@
                 income_text: {
                     today:'今月獲得コイン数',
                     yesterday: '昨日獲得コイン数',
-                    vip: '会員人数',
+                    vip: '守護者人数',
                     detail: 'ギフトリスト',
                     task: '新規応援ミッション',
                     record: 'コイン履歴',
@@ -262,7 +262,7 @@
                 self.income_text= {
                     today:'今月獲得コイン数',
                     yesterday: '昨日獲得コイン数',
-                    vip: '会員人数',
+                    vip: '守護者人数',
                     detail: 'ギフトリスト',
                     task: '新規応援ミッション',
                     record: 'コイン履歴',

@@ -149,7 +149,7 @@
                     add: '昨日の新規',
                     Gcoin: 'コイン',
                     like: 'Like',
-                    time: '入会日',
+                    time: '登録日',
                     noneGcoin: 'まだコインを獲得したことないです',
                     noneLike: 'まだLikeしたファンはいないです',
                     noneComment: 'まだメンバーはないようです'
@@ -323,7 +323,7 @@
                     add: '昨日の新規',
                     Gcoin: 'コイン',
                     like: 'Like',
-                    time: '入会日',
+                    time: '登録日',
                     noneGcoin: 'まだコインを獲得したことないです',
                     noneLike: 'まだLikeしたファンはいないです',
                     noneComment: 'まだメンバーはないようです'
