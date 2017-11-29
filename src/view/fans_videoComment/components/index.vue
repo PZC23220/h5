@@ -140,7 +140,7 @@
             'v-scroll': Scroll
         },
         methods: {
-            report(obj) {
+            report(comment) {
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('comment_report', comment)
                 });
