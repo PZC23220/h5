@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-       <div class="content" style="top:0;height: 100vh;">
+       <div class="content">
             <!-- <div class="video_content">
                 <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
             </div> -->

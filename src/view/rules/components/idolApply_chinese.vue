@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content" style=" padding-top: 0;min-height: 100vh;">
             <h3 class="rule_tile">爱豆报名，审核与入驻</h3>
             <div class="rule_content">
                 <h4><span></span>App里直接报名方式</h4>

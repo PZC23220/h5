@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content" style=" padding-top: 0;min-height: 100vh;">
             <h3 class="rule_tile">1.使用可能範囲</h3>
             <p class="rule_content">・Groupyコインは、「Groupy」という名称のウェブサイト・アプリケーション内でのデジタルコンテンツ・会員登録の購入の代金決済にご利用いただけます。デジタルコンテンツ・会員登録等の表示価格は、消費税込みのものとなっております。</p>
             <p class="rule_content">・iOS端末で購入したコインをiOS以外の端末で利用することはできません。</p>

@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style="top: 0">
+        <div class="content">
            <!--  <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
               :on-infinite="infinite" 

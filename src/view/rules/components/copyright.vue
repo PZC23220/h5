@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content" style=" padding-top: 0;min-height: 100vh;">
             <h3 class="rule_tile">第１条（投稿データに関する知的財産権の帰属）</h3>
             <p class="rule_content">投稿データ（動画、画像、音楽、BGM等）に関する著作権その他一切の知的財産権は、登録ユーザー又は登録ユーザーに著作権、編集権、特許権、意匠権、実用新案権、複製権、展覧権、肖像権、転載権、翻訳権、その他法令上または契約上の権利を許諾した第三者に帰属するものとします。</p>
             <h3 class="rule_tile">第2条（投稿データの取扱い）</h3>

@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content" style=" padding-top: 0;min-height: 100vh;">
             <p class="rule_content">     Groupy软件（网站）许可及服务协议是您（下称“用户”）与广州市云动网络有限公司（简称“云动公司”）之间签订的协议。在本协议中云动公司也被称为“Groupy软件”、“Groupy网站”或“Groupy”。</p>
             <h3 class="rule_tile">1、重要须知</h3>
             <p class="rule_content">1.1 您欲下载安装Groupy软件或者访问Groupy网站，必须事先认真阅读（未成年人应当在监护人陪同下阅读）、充分理解本《Groupy软件（网站）许可及服务协议》（下称“本协议”）中各条款，包括免除或者限制Groupy责任的免责条款及对用户的权利限制条款。如您不同意本服务条款您应不使用或主动取消Groupy提供的服务。您的使用行为将被视为您对本服务条款全部的完全接受。</p>

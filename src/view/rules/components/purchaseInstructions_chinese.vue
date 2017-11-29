@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content" style=" padding-top: 0;min-height: 100vh;">
             <h3 class="rule_tile">1.使用范围说明</h3>
             <p class="rule_content">・“G币”是Groupy团队向用户提供的用于在Groupy App上进行购买虚拟礼物、加入会员等相关消费的虚拟货币。在Groupy上显示的虚拟礼物、加入会员等价格，均为税后价格。</p>
             <p class="rule_content">・在iOS端购买的G币不支持在iOS端以外的平台进行使用。</p>

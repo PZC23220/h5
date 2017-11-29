@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;">
+        <div class="content">
             <div class="income eBorder">
                 <p>
                     <span class="detail_title">{{income_text.today}}</span>

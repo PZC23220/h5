@@ -68,8 +68,8 @@
         }
     }
     .content {
-        height: calc(100vh - 66px);
-        top: 66px;
+        min-height: calc(100vh - 66px);
+        padding-top: 66px;
     }
 </style>
 <!-- <script src="../../utils/common.js"></script> -->

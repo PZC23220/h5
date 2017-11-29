@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content" style=" padding-top: 0;min-height: 100vh;">
             <h3 class="rule_tile">关于G币与日元的汇率说明</h3>
             <div class="rule_content">
                 <p>      G币是粉丝购买用于应援，打赏，送礼以及加入会员用，每个G币都有实际的价值，1G币相当于可兑换1日元现金。</p>

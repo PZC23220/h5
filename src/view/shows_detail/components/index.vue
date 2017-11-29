@@ -453,8 +453,10 @@
         }
     }
     .content {
-        top: 0;
-        height: calc(100vh - 48px);
+        padding-top: 0;
+        min-height: 100vh;
+        box-sizing: border-box;
+        padding-bottom: 48px;
     }
     .content.bottom {
         height: 100vh;

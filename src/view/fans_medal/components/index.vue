@@ -110,8 +110,8 @@
         }
     }
     .content.ios {
-        top: 0;
-        height: 100vh;
+        padding-top: 0;
+        min-height: 100vh;
     }
     .content {
         

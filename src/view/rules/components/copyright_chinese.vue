@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content" style=" padding-top: 0;min-height: 100vh;">
             <h3 class="rule_tile">一、权利声明</h3>
             <p class="rule_content">      用户使用Groupy上传或者发布作品，用户应保证其对该作品享有完整、额发的著作权（包括但不限于对视频，背景音乐，音乐MV等的完整的权利），或已获得所有相关著作权人的完整、合法、有效的授权及转授权的权利。（包括但不限于复制权、发行权、出租权、展览权、表演权、放映权、广播权、改编权、翻译权以及相关著作权法固定的由著作权作权人享有的其他著作财产权利）。</p>
             <h3 class="rule_tile">二、授权许可</h3>

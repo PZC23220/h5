@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content" style=" padding-top: 0;min-height: 100vh;">
             <h3 class="rule_tile">１．個人情報の利用目的について</h3>
             <p class="rule_content">当社は、お客様からご提供いただいた個人情報を以下の目的のために利用いたします。</p>
             <p class="rule_content rule_2">（1）本サービス実施、提供のため<br>&nbsp;&nbsp;&nbsp;&nbsp;a.本サービスの拡充、改善、新規開発のための調査・分析のため<br>&nbsp;&nbsp;&nbsp;&nbsp;b.お問い合わせ、コイン対応のため<br>&nbsp;&nbsp;&nbsp;&nbsp;c.その他、お客様の同意を得た利用目的のため<br>（2）本サービスの利用状況等に係る統計情報の作成、本サービスまたは当社の運営するウェブサイト等における公表のため。</p>

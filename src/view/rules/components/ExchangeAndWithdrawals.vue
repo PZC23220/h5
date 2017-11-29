@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="content" style=" top: 0;height: 100vh;">
+        <div class="content" style=" padding-top: 0;min-height: 100vh;">
             <h3 class="rule_tile">コインと換算レートについて</h3>
             <div class="rule_content">
                 <p>コインとは、アイドルの応援・メンバーシップ登録等に使うGroupyの仮想通貨です。ボーナスとして、もしくはチャージでコインが貰えますが、同じ価値を持ちます。1コインを1円相当として、現金の変換にご利用いただけます。</p>

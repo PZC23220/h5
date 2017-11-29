@@ -348,13 +348,10 @@
     width: 30px;
   }
   .content {
-    position: absolute;
-    top: 143.5px;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 143.5px);
+    padding-top: 143.5px;
+    min-height: calc(100vh - 143.5px);
     .swiper-slide {
-        height: calc(100vh - 143.5px);
+        min-height: calc(100vh - 143.5px);
     }
   }
   .name {
