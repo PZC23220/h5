@@ -193,7 +193,8 @@
                             targetType: 1,
                             targetId: getParams('videoId'),
                             from: self.start,
-                            rows: self.num
+                            rows: self.num,
+                            deviceId: getParams('did')
                         }
                     }).then(function(res){
                         self.loadingBig = false;
