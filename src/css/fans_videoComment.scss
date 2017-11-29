@@ -174,6 +174,9 @@
             margin-right: 8px;
         }
     }
+    .comment_list li {
+        padding: 12px 12px 8px;
+    }
     .comment_list li .reply {
         overflow: hidden;
         color: #999;
@@ -213,4 +216,10 @@
             color: #151515;
             margin-right: 8px;
         }
+    }
+    .icon_more {
+        float: right;
+        width: 25px !important;
+        margin-right: 0 !important;
+
     }

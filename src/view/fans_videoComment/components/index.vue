@@ -70,7 +70,7 @@
                             </div>
                             <div class="comment_content" v-html="TransferString(comment.content)"></div>
                             <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> <p v-html="TransferString(comment.referencePostView.content)"></p></div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="autoFocus(comment)" v-if="isIdol"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>{{video_text.reply}}</em></span></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="autoFocus(comment)" v-if="isIdol"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>{{video_text.reply}}</em></span><img @click="report(comment)" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_more.png" class="icon_more" alt=""></div>
                         </li>
                     <div class="default_page default_page3" v-show="commentList.length == 0 && loadingBig == false">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
@@ -140,6 +140,11 @@
             'v-scroll': Scroll
         },
         methods: {
+            report(obj) {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('comment_report', comment)
+                });
+            },
             changeCount() {
                 setTimeout(function(){
                     document.querySelector('.header').scrollIntoView(false);
