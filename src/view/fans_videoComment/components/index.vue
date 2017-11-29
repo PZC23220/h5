@@ -338,7 +338,8 @@
                         targetType: 1,
                         targetId: getParams('videoId'),
                         from: 0,
-                        rows: self.num
+                        rows: self.num,
+                        deviceId: getParams('did')
                     }
                 }).then(function(res){
                     self.start = 0;
