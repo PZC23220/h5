@@ -50,3 +50,12 @@
         </div>
     </div>
 </template>
+<script>
+    require('@api/js/common.js')
+        created() {
+            window.setupWebViewJavascriptBridge(function(bridge) {
+                bridge.callHandler('setTitle', {'title':'利用规约'})
+            })
+        }
+    }
+</script>
