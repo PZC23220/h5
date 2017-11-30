@@ -95,7 +95,7 @@
         border: none;
     }
     .publich_comment {
-        position: absolute;
+        position: fixed;
         right: 12px;
         bottom: 18px;
         opacity: 0.9;
@@ -115,7 +115,7 @@
         }
     }
     .comment_view {
-        position: absolute;
+        position: fixed;
         left: 0;
         top: 0;
         width: 100%;

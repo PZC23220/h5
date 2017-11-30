@@ -355,7 +355,7 @@
     width: 100%;
     min-height: calc(100vh - 143.5px);
     .swiper-slide {
-        min-height: calc(100vh - 143.5px);
+        height: calc(100vh - 143.5px);
     }
   }
   .name {

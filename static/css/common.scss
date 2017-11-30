@@ -29,6 +29,11 @@ body >* {
     margin: 0 auto;
     position: relative;
 }
+.swiper-slide {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    height: calc(100vh - 41px);
+}
 .header {
     text-align: center;
     position: fixed;

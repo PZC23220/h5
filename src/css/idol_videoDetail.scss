@@ -2,6 +2,9 @@
     padding-top: 0;
     min-height: 100vh;
 }
+.swiper-slide {
+    height: calc(100vh - 325px);
+}
 .detail_title {
         background: #FC4083;
         border: 1px solid #FC4083;
@@ -94,9 +97,6 @@
             left: 12px;bottom: 12px;width: 20px;
             z-index: 101;
         }
-    }
-    .swiper-slide {
-        height: auto !important;
     }
     .comment_list {
         background: #fff;
