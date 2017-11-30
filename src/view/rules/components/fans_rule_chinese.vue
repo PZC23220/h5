@@ -51,11 +51,11 @@
     </div>
 </template>
 <script>
-    import http from '@api/js/http.js';
     require('@api/js/common.js')
     export default {
         created() {
             window.setupWebViewJavascriptBridge(function(bridge) {
+                console.log(bridge)
                 bridge.callHandler('setTitle', {'title':'利用规约'})
             })
         }
