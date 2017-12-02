@@ -29,12 +29,12 @@
         }
     }
     .content.ios {
-        top: 41px;
-        height: calc(100vh - 41px);
+        padding-top: 41px;
+        padding-height: calc(100vh - 41px);
     }
     .content {
-        top: 84px;
-        height: calc(100vh - 84px);
+        padding-top: 84px;
+        min-height: calc(100vh - 84px);
     }
     .ranking_type {
         padding: 0 12px;
