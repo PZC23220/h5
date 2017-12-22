@@ -10,7 +10,7 @@
         </div>
         <div class="content">
             <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
-                <swiper-slide id="swiper1">
+                <swiper-slide class="swiper-no-swiping" id="swiper1">
                     <v-scroll :on-refresh="refresh" :on-infinite="infinite">
                         <div class="idol_all" v-if="top3None ==false">
                             <div class="page_none con_left" :class="{'fans_none': rakingList.length>0}">
@@ -100,7 +100,7 @@
                         </div>
                     </v-scroll>
                 </swiper-slide>
-                <swiper-slide id="swiper3">
+                <swiper-slide class="swiper-no-swiping" id="swiper3">
                     <v-scroll :on-refresh="refresh3" :on-infinite="infinite3">
                         <div class="idol_all" v-if="top3None3 ==false">
                             <div class="page_none con_left" :class="{'fans_none': rakingList3.length>0}">
@@ -191,7 +191,7 @@
                             <!-- </scroller> -->
                     </v-scroll>
                 </swiper-slide>
-                <swiper-slide id="swiper4">
+                <swiper-slide class="swiper-no-swiping" id="swiper4">
                     <v-scroll :on-refresh="refresh4" :on-infinite="infinite4">
                         <div class="idol_all" v-if="top3None4 ==false">
                             <div class="page_none con_left" :class="{'fans_none': rakingList4.length>0}">
@@ -282,7 +282,7 @@
                             <!-- </scroller> -->
                     </v-scroll>
                 </swiper-slide>
-                <!-- <swiper-slide id="swiper2">
+                <!-- <swiper-slide class="swiper-no-swiping" id="swiper2">
                     <v-scroll :on-refresh="refresh2" :on-infinite="infinite2">
                         <div class="idol_all" v-if="top3None2 ==false">
                             <div class="page_none con_left" :class="{'fans_none': rakingList2.length>0}">
@@ -423,9 +423,7 @@
                   notNextTick: false,
                   // grabCursor : false,
                   setWrapperSize :false,
-                  simulateTouch: true,
-                  allowSwipeToPrev : false,
-                  allowSwipeToNext : false,
+                  noSwiping : true,
                   pagination : '.swiper-pagination',
                   paginationClickable :false,
                   //loop : false,
