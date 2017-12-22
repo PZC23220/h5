@@ -97,8 +97,6 @@
     // import VueScroller from 'vue-scroller';
     import Scroll from '../../../components/scroll.vue';
     import http from '@api/js/http.js';
-    require('@api/js/common.js')
-    // require('@api/js/vconsole.min.js')
     export default {
         data() {
             return {
@@ -163,6 +161,7 @@
                     this.reply_comment_content_fans = '';
                     this.commentId = '';
                 }
+                // self.win_show = true;
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('can_post', function(res){
                         if(res) {
@@ -333,6 +332,7 @@
             },
             refresh (done) {
                 var self = this;
+                // http.defaults.headers.common['cache-control'] = 'no-cache';
                 http.get('/post/list',{
                     params: {
                         targetType: 1,

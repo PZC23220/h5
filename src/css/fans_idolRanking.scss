@@ -1,8 +1,30 @@
     .header {
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-color: #fff;
+    }
+    .detailPages {
+        border: 1.5px solid #FC4083;
+        border-radius: 4px;
+        margin: 8px 12px;
+        height: 35px;
+        line-heigth: 32px;
+        padding: 0;
+        a {
+            margin: 0;
+            color: #FC4083;
+            &:not(:first-child) {
+                border-left: 1.5px solid #FC4083;
+            }
+        }
+        .active {
+            border-radius: 0;
+            color: #fff;
+        }
     }
     .detailPages span.bgActive {
-        margin-left: calc((100vw - 24px)* 1/8 - 40px);
+        margin-left: 0;
+        height: 32px;
+        line-height: 32px;
+        width: 33.33333%;
     }
     .concerned, .idol_all {
         background: #fff;
@@ -35,16 +57,59 @@
             font-weight: 600;
         }
     }
+    .idol_detail.no1 .idol_content {
+        .idol_border {
+            width: calc(100vw - 24px);
+        }
+        .support {
+            margin-top: 45px;
+        }
+        .avatar_content {
+            padding: 18px 2px 16px;
+            .avatar {
+                width: 100px;
+                height: 100px;
+                border: #FC4083 1.5px solid;
+                img {
+                    width: 100px;
+                    min-height: 100px;
+                }
+            }
+            .crown {
+                width: 33px;
+            }
+        }
+        .introduction {
+            margin-top: 18px;
+            width: calc(100vw - 204px);
+            .fans_imgList {
+                margin-top: 3.3px;
+            }
+            .fans_list {
+                border-top: none;
+                padding: 0;
+                span:nth-child(1) {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    .ranking1 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 104px;
+    }
     .avatar_content {
         overflow: hidden;
         float: left;
         position: relative;
-        padding: 8px 0 0 4px;
+        padding: 14.5px 0 0 0;
         .crown {
             position: absolute;
             left: 0;
             top: 0;
-            width: 25px;
+            width: 24px;
         }
     }
     .idol_content {
@@ -56,10 +121,11 @@
         }
         i {
             font-family: 'Helvetica Condensed Bold Italic';
-            font-size: 24px;
-            color: #BBBBBB;
-            margin-top: 14px;
+            font-size: 21px;
+            color: #00B4BB;
             width: 20px;
+            height: 90px;
+            line-height: 90px;
             text-align: left;
         }
         ._fir {
@@ -72,39 +138,41 @@
             color: #FF8500;
         }
         .sizeTwo {
-            font-size: 18px;
+            font-size: 16px;
         }
         .sizeThree {
             font-size: 10px;
             -webkit-transform: scalc(0.8);
-            margin-top: 24px;
         }
         .avatar {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             margin-right: 6px;
             float: left;
             display: block;
             overflow: hidden;
             img {
-                width: 50px;
-                min-height: 50px;
+                width: 70px;
+                min-height: 70px;
             }
         }
         .idol_border {
-            border-bottom: 1px #eee solid;
             overflow: hidden;
             // padding-right: 12px;
             width: calc(100vw - 44px);
             padding-bottom: 5px;
         }
         .introduction {
-            width: calc(100vw - 204px);
+            width: calc(100vw - 184px);
             float: left;
+            margin-top: 14.5px;
             .name {
-                font-size: 14px;
+                font-size: 18px;
                 text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+            }
+            .name.none {
+                line-height: 30px;
             }
             .signature {
                 // font-size: 10.5px;
@@ -124,15 +192,18 @@
                     }
                     em {
                         display: inline-block;
-                        max-width: calc((100vw - 200px)/2 - 30px);
+                        max-width: calc((100vw - 215px);
                         text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
                     }
                 }
             }
+            .detail.none {
+                line-height: 30px;
+            }
         }
         .support {
             float: left;
-            width: 80px;
+            width: 57.7px;
             height: 30px;
             line-height: 30px;
             text-align: center;
@@ -140,10 +211,11 @@
             float: right;
             border: 1.5px solid #00B4BC;
             border-radius: 27px;
-            margin-top: 8px;
+            margin-top: 27px;
         }
     }
     .fans_list {
+        border-top: 1px #eee solid;
         padding: 8px 0 8px 34px;
         span {
             margin-left: 4px;
