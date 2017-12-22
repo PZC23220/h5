@@ -161,7 +161,7 @@
                             </div>
                             <div class="idol_detail" :class="{'no1':key == 0}" v-for="(idol,key) in rakingList3" v-if="rakingList3.length>0?key < len3: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                                 <div class="idol_content">
-                                    <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
+                                    <i v-if="key != 0" :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
@@ -252,7 +252,7 @@
                             </div>
                             <div class="idol_detail" :class="{'no1':key == 0}" v-for="(idol,key) in rakingList4" v-if="rakingList4.length>0?key < len4: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                                 <div class="idol_content">
-                                    <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
+                                    <i v-if="key != 0" :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
@@ -343,7 +343,7 @@
                             </div>
                             <div class="idol_detail" :class="{'no1':key == 0}" v-for="(idol,key) in rakingList2" v-if="rakingList2.length>0?key < len2: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
                                 <div class="idol_content">
-                                    <i :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_fir': key == 0},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
+                                    <i v-if="key != 0" :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
@@ -420,15 +420,16 @@
                 },
                 ranking_img: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg',
                 swiperOption: {
-                  notNextTick: true,
-                  // grabCursor : true,
-                  setWrapperSize :true,
-                  // autoHeight: true,
+                  notNextTick: false,
+                  // grabCursor : false,
+                  setWrapperSize :false,
+                  simulateTouch: true,
+                  allowSwipeToPrev : false,
+                  allowSwipeToNext : false,
                   pagination : '.swiper-pagination',
-                  paginationClickable :true,
-                  //loop : true,
-                  observeParents:true,
-                  debugger: true,
+                  paginationClickable :false,
+                  //loop : false,
+                  observeParents:false,
                   onTransitionStart(swiper){
                     $('.tabs').removeClass('active')
                     $('.tabs').eq(swiper.activeIndex).addClass('active');
