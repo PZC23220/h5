@@ -154,7 +154,8 @@
                     if(res.data.length > 0 ) {
                         for(var i=0;i<res.data.length;i++){
                             self.commentList.push(res.data[i]);
-                        }                    
+                        }
+                        self.havedlast = false;                      
                     }else {
                         self.havedlast = true;
                     }

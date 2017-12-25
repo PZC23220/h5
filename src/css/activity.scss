@@ -1,0 +1,140 @@
+.content {
+    padding-top: 0;
+    min-height: 100vh;
+    background: #ebebeb;
+    text-align:center;
+}
+.idol_activity {
+    overflow: hidden;
+    padding: 7.5px 0;
+}
+.idol_activity li {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 8px;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.idol_activity li .activity_content {
+    display: block;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.20);
+     border-radius: 4px;
+}
+
+.activity_banner {
+    width: 100%;
+    display: block;
+    border-radius: 4px 4px 0 0;
+}
+.activity_status,.activity_status_tips {
+    position: absolute;
+    left: 3px;top: 8px;
+    width: 53.55px;
+    color: #fff;
+    letter-spacing: 0.79px;
+    line-height: 20px;
+}
+.activity_purpose {
+    padding-top: 6.35px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fc4083;
+    background: #fff;
+}
+.activity_begin {
+    padding-top: 6.35px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fc4083;
+    background: #fff;
+}
+.activity_beigin_purpose {
+    color: #666;
+}
+.idol_list {
+    display: flex;
+    background: #fff;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 0 0 4px 4px;
+}
+.idols_desc {
+    flex: 1;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 5px;
+}
+.idol_name {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.avatar_content {
+    position: relative;
+    overflow: hidden;
+    >img {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 15px;
+        margin-left: 13px;
+    }
+}
+.avatar {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #fc4083;
+    float: none;
+    display: block;
+    margin: 0 auto;
+    img {
+        width: 70px;
+        min-height: 70px;
+    }
+}
+.likes_content {
+    line-height: 18px;
+    color: #FB0730;
+    img {
+        height: 12px;
+        margin-right: 5px;
+    }
+    >* {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    i {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: 600;
+        max-width: calc(100% - 20px);
+    }
+}
+.page_defalt {
+    transition: all 0.3s;
+    padding-top: 0;
+    height: 320px;
+    overflow: hidden;
+    padding: 0 8px;
+    li {
+        background: #FFF;
+        padding: 12px 8px;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.20);
+    }
+    p {
+        background: #eee;
+        height: 18px;
+        line-height: 18px;
+        &:first-child {
+            margin-bottom: 8px;
+            width: 85%;
+        }
+    }
+}
+.page_defalt.active {
+    height: 0;
+}
