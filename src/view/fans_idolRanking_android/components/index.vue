@@ -174,7 +174,7 @@
                                             <p class="name" :class="{'none':!idol.organization}">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.organization?idol.organization:''}}</p>
                                             <p class="detail" :class="{'none':!idol.organization}"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
-                                            <div class="fans_list"  v-for="fans in allFans" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                            <div class="fans_list"  v-for="fans in allFans3" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                                     </div>
@@ -265,7 +265,7 @@
                                             <p class="name" :class="{'none':!idol.organization}">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.organization?idol.organization:''}}</p>
                                             <p class="detail" :class="{'none':!idol.organization}"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
-                                            <div class="fans_list"  v-for="fans in allFans" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                            <div class="fans_list"  v-for="fans in allFans4" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                                     </div>
