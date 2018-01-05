@@ -1,8 +1,8 @@
 <template>
     <div class="main">
         <div class="content">
-            <ul class="idol_activity">
-                <v-scroll :on-refresh="refresh" :on-infinite="infinite">
+            <v-scroll :on-refresh="refresh" :on-infinite="infinite">
+                <ul class="idol_activity">
                     <div class="page_defalt" :class="{'active': isLoading}">
                         <li class="activity_li">
                             <p class="activity_name"></p>
@@ -22,11 +22,11 @@
                         </li>
                     </div>
                     <li class="activity_li" v-for="shows in showsList">
-                        <div class="activity_content" @click.stop="toVideoList(shows.id,shows.tag)">
+                        <div class="activity_content" @click.stop="toVideoList(shows.id,shows.tag,show.state,show.actionInfo)">
                             <img :src="shows.img" class="activity_banner" alt="">
-                            <p v-if="(shows.goal && (shows.state == 'inProgress'))" class="activity_purpose">目标：{{shows.goal}}</p>
-                            <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_begin">{{formatTime(shows.startTime)}} 开始</p>
-                            <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_purpose activity_beigin_purpose">目标：{{shows.goal}}</p>
+                            <p v-if="(shows.goal && (shows.state == 'inProgress'))" class="activity_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
+                            <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_begin">{{formatTime(shows.startTime)}} {{showstext.begin}}</p>
+                            <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_purpose activity_beigin_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
                             <div class="idol_list">
                                 <div class="idols_desc" v-for="(idol,key) in shows.rankingList">
                                     <div class="avatar_content">
@@ -34,7 +34,7 @@
                                         <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                     </div>
                                     <div class="idol_name">{{idol.nickname}}</div>
-                                    <div class="likes_content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{idol.popularity?Number(idol.popularity).toLocaleString():0}}</i></div> 
+                                    <div class="likes_content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{idol.popularity?Number(idol.popularity).toLocaleString():0}}</i></div>
                                 </div>
                             </div>
                         </div>
@@ -47,8 +47,8 @@
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_noactivity.png" alt="">
                         <p v-html="showstext.none"></p>
                     </div>
-                </v-scroll>
-            </ul>
+                </ul>
+            </v-scroll>
         </div>
     </div>
 </template>
@@ -65,23 +65,24 @@
             idx: 0,
             offset: 0,
             showstext: {
-                start: '開場',
-                shows: '開演',
-                none: '还没有参加爱豆的活动哦',
-                over: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_concert_end.png'
+                begin: '開催',
+                purpose: '対象'
             },
-            host_: 'http://h5.groupy.vip/shows_detail/index.html'
           }
         },
         components: {
             'v-scroll': Scroll
         },
         methods: {
-            toVideoList(id,tag) {
-                console.log(id)
-                window.setupWebViewJavascriptBridge(function(bridge) {
-                    bridge.callHandler('activity_videos', {'activityId':id,'activityName':tag})
-                })
+            toVideoList(id,tag,state,actionInfo) {
+                if(state == 'comingSoon') {
+                    window.open(actionInfo)
+                }else {
+                    console.log(id)
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('activity_videos', {'activityId':id,'activityName':tag})
+                    })
+                }
               },
             showIdolPage(val) {
                 console.log(val)
@@ -96,27 +97,27 @@
             formatStatus(key) {
                 if(getParams('language') == 'cn') {
                     switch (key) {
-                        case 'inProgress' :  
-                                return "进行中";  
-                                break;  
-                        case 'comingSoon' :  
-                                return "预告";  
-                                break;  
-                        case 'ended' :  
-                                return "已结束";  
-                                break;  
+                        case 'inProgress' :
+                                return "进行中";
+                                break;
+                        case 'comingSoon' :
+                                return "预告";
+                                break;
+                        case 'ended' :
+                                return "已结束";
+                                break;
                     }
                 }else {
                     switch (key) {
-                        case 'inProgress' :  
-                                return "进行中";  
-                                break;  
-                        case 'comingSoon' :  
-                                return "预告";  
-                                break;  
-                        case 'ended' :  
-                                return "已结束";  
-                                break;  
+                        case 'inProgress' :
+                                return "開催中";
+                                break;
+                        case 'comingSoon' :
+                                return "予告";
+                                break;
+                        case 'ended' :
+                                return "終了";
+                                break;
                     }
                 }
                 return  str;
@@ -136,7 +137,7 @@
                             for(var i=0;i<res.data.length;i++){
                                 self.showsList.push(res.data[i]);
                             }
-                            self.havedlast = false;                    
+                            self.havedlast = false;
                         }else {
                             self.havedlast = true;
                         }
@@ -163,7 +164,7 @@
                 }).then(function(res){
                     self.offset = 0;
                     self.havedlast = false;
-                    self.showsList = res.data;                  
+                    self.showsList = res.data;
                 }).catch(function(){
                     self.showsList = [];
                 });
@@ -197,20 +198,15 @@
         created() {
             let self = this;
             self.getInfo();
-            self.host_ = location.origin + '/shows_detail/index.html?token=' + getParams('token') + '&language=' + getParams('language') + '&showsId=';
              if(getParams('language') == 'cn') {
                 self.showstext = {
-                    start: '开场',
-                    shows: '开演',
-                    none: '还没有参加爱豆的活动哦',
-                    over: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_concert_end_chn.png'
+                    begin: '开始',
+                    purpose: '目标'
                 }
             }else {
                 self.showstext = {
-                    start: '開場',
-                    shows: '開演',
-                    none: 'まだイベントを参加していません',
-                    over: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_concert_end.png'
+                    begin: '開催',
+                    purpose: '対象'
                 }
             }
 

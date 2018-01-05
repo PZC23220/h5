@@ -13,60 +13,21 @@
                 <swiper-slide class="swiper-no-swiping" id="swiper1">
                     <v-scroll :on-refresh="refresh" :on-infinite="infinite">
                         <div class="idol_all" v-if="top3None ==false">
-                            <div class="page_none con_left" :class="{'fans_none': rakingList.length>0}">
+                            <div class="page_none" :class="{'fans_none': rakingList.length>0}">
                                 <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_fir">1</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                                 <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_sec">2</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                                 <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_thr">3</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="idol_detail" :class="{'no1':key == 0}" v-for="(idol,key) in rakingList" v-if="rakingList.length>0?key < len: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -82,16 +43,15 @@
                                         </div>
                                         <div class="introduction">
                                             <p class="name" :class="{'none':!idol.organization}">{{idol.name?idol.name:'...'}}</p>
-                                            <p class="signature">{{idol.organization?idol.organization:''}}</p>
+                                            <p class="signature">{{idol.organization?'@'+idol.organization:''}}</p>
                                             <p class="detail" :class="{'none':!idol.organization}"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
-                                            <div class="fans_list"  v-for="fans in allFans" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                            <div class="fans_list"  v-for="fans in allFans" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<br><div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                                     </div>
                                 </div>
-                                <div class="fans_list fans_show" :class="{'fans_none': allFans.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in allFans" v-if="(fans.id == idol.idolId) && (key > 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
-                                <div class="border_bottom"></div>
+                                <div class="fans_list fans_show" :class="{'fans_none': allFans.length>0}"><em class="fansRanking_tips">{{idol_text.fans}}</em><div class="no_fans">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in allFans" v-if="(fans.id == idol.idolId) && (key > 0)"><em class="fansRanking_tips">{{idol_text.fans}}</em><div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None">
@@ -103,60 +63,21 @@
                 <swiper-slide class="swiper-no-swiping" id="swiper3">
                     <v-scroll :on-refresh="refresh3" :on-infinite="infinite3">
                         <div class="idol_all" v-if="top3None3 ==false">
-                            <div class="page_none con_left" :class="{'fans_none': rakingList3.length>0}">
+                            <div class="page_none" :class="{'fans_none': rakingList.length>0}">
                                 <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_fir">1</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                                 <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_sec">3</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                                 <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_thr">3</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="idol_detail" :class="{'no1':key == 0}" v-for="(idol,key) in rakingList3" v-if="rakingList3.length>0?key < len3: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -172,16 +93,15 @@
                                         </div>
                                         <div class="introduction">
                                             <p class="name" :class="{'none':!idol.organization}">{{idol.name?idol.name:'...'}}</p>
-                                            <p class="signature">{{idol.organization?idol.organization:''}}</p>
+                                            <p class="signature">{{idol.organization?'@'+idol.organization:''}}</p>
                                             <p class="detail" :class="{'none':!idol.organization}"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
-                                            <div class="fans_list"  v-for="fans in allFans3" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                            <div class="fans_list"  v-for="fans in allFans3" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<br><div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                                     </div>
                                 </div>
-                                <div class="fans_list fans_show" :class="{'fans_none': allFans3.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in allFans3" v-if="(fans.id == idol.idolId) && (key > 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
-                                <div class="border_bottom"></div>
+                                <div class="fans_list fans_show" :class="{'fans_none': allFans3.length>0}"><em class="fansRanking_tips">{{idol_text.fans}}</em><div class="no_fans">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in allFans3" v-if="(fans.id == idol.idolId) && (key > 0)"><em class="fansRanking_tips">{{idol_text.fans}}</em><div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None3">
@@ -194,60 +114,21 @@
                 <swiper-slide class="swiper-no-swiping" id="swiper4">
                     <v-scroll :on-refresh="refresh4" :on-infinite="infinite4">
                         <div class="idol_all" v-if="top3None4 ==false">
-                            <div class="page_none con_left" :class="{'fans_none': rakingList4.length>0}">
+                            <div class="page_none" :class="{'fans_none': rakingList.length>0}">
                                 <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_fir">1</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                                 <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_sec">2</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                                 <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_thr">3</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="idol_detail" :class="{'no1':key == 0}" v-for="(idol,key) in rakingList4" v-if="rakingList4.length>0?key < len4: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
@@ -263,114 +144,23 @@
                                         </div>
                                         <div class="introduction">
                                             <p class="name" :class="{'none':!idol.organization}">{{idol.name?idol.name:'...'}}</p>
-                                            <p class="signature">{{idol.organization?idol.organization:''}}</p>
+                                            <p class="signature">{{idol.organization?'@'+idol.organization:''}}</p>
                                             <p class="detail" :class="{'none':!idol.organization}"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
-                                            <div class="fans_list"  v-for="fans in allFans4" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
+                                            <div class="fans_list"  v-for="fans in allFans4" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<br><div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
                                     </div>
                                 </div>
-                                <div class="fans_list fans_show" :class="{'fans_none': allFans4.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in allFans4" v-if="(fans.id == idol.idolId) && (key > 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
-                                <div class="border_bottom"></div>
+                                <div class="fans_list fans_show" :class="{'fans_none': allFans4.length>0}"><em class="fansRanking_tips">{{idol_text.fans}}</em><div class="no_fans">{{idol_text.no1}}</div></div>
+                                <div class="fans_list"  v-for="fans in allFans4" v-if="(fans.id == idol.idolId) && (key > 0)"><em class="fansRanking_tips">{{idol_text.fans}}</em><div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None4">
                             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
-                            <!-- </scroller> -->
                     </v-scroll>
                 </swiper-slide>
-                <!-- <swiper-slide class="swiper-no-swiping" id="swiper2">
-                    <v-scroll :on-refresh="refresh2" :on-infinite="infinite2">
-                        <div class="idol_all" v-if="top3None2 ==false">
-                            <div class="page_none con_left" :class="{'fans_none': rakingList2.length>0}">
-                                <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_fir">1</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                </div>
-                                <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_sec">2</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                </div>
-                                <div class="idol_detail">
-                                    <div class="idol_content">
-                                        <i class="_thr">3</i>
-                                        <div class="idol_border">
-                                            <div class="avatar_content">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar" alt="">
-                                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" alt="">
-                                            </div>
-                                            <div class="introduction">
-                                                <p class="name">...</p>
-                                                <p class="signature">{{idol_text.none}}</p>
-                                                <p class="detail"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt="">0</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_fans.png" alt="">0</span></p>
-                                            </div>
-                                            <div class="support">{{idol_text.support}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="fans_list">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                </div>
-                            </div>
-                            <div class="idol_detail" :class="{'no1':key == 0}" v-for="(idol,key) in rakingList2" v-if="rakingList2.length>0?key < len2: false" @click.stop="idol.idolId?showIdolPage(idol.idolId):false">
-                                <div class="idol_content">
-                                    <i v-if="key != 0" :class="[{'sizeTwo': key > 8},{'sizeThree': key > 98},{'_sec': key == 1},{'_thr': key == 2}]">{{idol.position}}</i>
-                                    <div class="idol_border">
-                                        <div class="avatar_content">
-                                            <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" v-if="key == 2" alt="">
-                                        </div>
-                                        <div class="introduction">
-                                            <p class="name" :class="{'none':!idol.organization}">{{idol.name?idol.name:'...'}}</p>
-                                            <p class="signature">{{idol.organization?idol.organization:''}}</p>
-                                            <p class="detail" :class="{'none':!idol.organization}"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
-                                            <div class="fans_list"  v-for="fans in allFans" v-if="(fans.id == idol.idolId) && (key > ==)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
-                                        </div>
-                                        <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
-                                    </div>
-                                </div>
-                                <div class="fans_list fans_show" :class="{'fans_none': allFans2.length>0}">{{idol_text.fans}}<div class="no_fans">{{idol_text.no1}}</div></div>
-                                <div class="fans_list"  v-for="fans in allFans2" v-if="(fans.id == idol.idolId) && (key > 0)">{{idol_text.fans}}<div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
-                                <div class="border_bottom"></div>
-                            </div>
-                        </div>
-                        <div class="default_page" v-if="top3None2">
-                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
-                            <p v-html="idol_text.noneIdol"></p>
-                        </div>
-                    </v-scroll>
-                </swiper-slide> -->
             </swiper>
         </div>
     </div>
@@ -391,10 +181,6 @@
                 // rakingList2: [],
                 rakingList3: [],
                 rakingList4: [],
-                me: [],
-                me2: [],
-                me3: [],
-                me4: [],
                 len:20,
                 // len2:20,
                 len3:20,
@@ -428,11 +214,11 @@
                   paginationClickable :false,
                   //loop : false,
                   observeParents:false,
-                  onTransitionStart(swiper){
-                    $('.tabs').removeClass('active')
-                    $('.tabs').eq(swiper.activeIndex).addClass('active');
-                    $('.bgActive').css('margin-left',`calc(33.33333% * ${swiper.activeIndex})`);
-                  },
+                  // onTransitionStart(swiper){
+                  //   $('.tabs').removeClass('active')
+                  //   $('.tabs').eq(swiper.activeIndex).addClass('active');
+                  //   $('.bgActive').css('margin-left',`calc(33.33333% * ${swiper.activeIndex})`);
+                  // },
                 },
                 top3None: false,
                 // top3None2: false,
@@ -442,10 +228,6 @@
                 // allFans2: [],
                 allFans3: [],
                 allFans4: [],
-                // meFans: [],
-                // meFans2: [],
-                // meFans3: [],
-                // meFans4: [],
                 android: false
             }
         },
@@ -636,20 +418,10 @@
                     if(res.data.length > 0) {
                         if(arr == 'all') {
                             self.allFans = res.data;
-                        }else if(arr == 'me') {
-                            self.meFans = res.data;
-                        }else if(arr == 'all2') {
-                            self.allFans2 = res.data;
-                        }else if(arr == 'me2') {
-                            self.meFans2 = res.data;
                         }else if(arr == 'all3') {
                             self.allFans3 = res.data;
-                        }else if(arr == 'me3') {
-                            self.meFans3 = res.data;
                         }else if(arr == 'all4') {
                             self.allFans4 = res.data;
-                        }else if(arr == 'me4') {
-                            self.meFans4 = res.data;
                         }
                     }
                 })
@@ -746,7 +518,8 @@
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
                     bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
-                        self.idx2 = 0;
+                        self.idx3 = 0;
+                        self.idx4 = 0;
                         self.idx = 0;
                         self.getRanking();
                         self.getRanking3();
