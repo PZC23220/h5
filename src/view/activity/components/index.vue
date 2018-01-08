@@ -22,7 +22,7 @@
                         </li>
                     </div>
                     <li class="activity_li" v-for="shows in showsList">
-                        <div class="activity_content" @click.stop="toVideoList(shows.id,shows.tag,show.state,show.actionInfo)">
+                        <div class="activity_content" @click.stop="toVideoList(shows.id,shows.tag,shows.state,shows.actionInfo)">
                             <img :src="shows.img" class="activity_banner" alt="">
                             <p v-if="(shows.goal && (shows.state == 'inProgress'))" class="activity_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
                             <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_begin">{{formatTime(shows.startTime)}} {{showstext.begin}}</p>
