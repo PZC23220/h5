@@ -63,7 +63,7 @@
                 <swiper-slide class="swiper-no-swiping" id="swiper3">
                     <v-scroll :on-refresh="refresh3" :on-infinite="infinite3">
                         <div class="idol_all" v-if="top3None3 ==false">
-                            <div class="page_none" :class="{'fans_none': rakingList.length>0}">
+                            <div class="page_none" :class="{'fans_none': rakingList3.length>0}">
                                 <div class="idol_detail">
                                     <p></p>
                                     <p></p>
@@ -114,7 +114,7 @@
                 <swiper-slide class="swiper-no-swiping" id="swiper4">
                     <v-scroll :on-refresh="refresh4" :on-infinite="infinite4">
                         <div class="idol_all" v-if="top3None4 ==false">
-                            <div class="page_none" :class="{'fans_none': rakingList.length>0}">
+                            <div class="page_none" :class="{'fans_none': rakingList4.length>0}">
                                 <div class="idol_detail">
                                     <p></p>
                                     <p></p>
