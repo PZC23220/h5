@@ -27,11 +27,21 @@
                             <p v-if="(shows.goal && (shows.state == 'inProgress'))" class="activity_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
                             <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_begin">{{formatTime(shows.startTime)}} {{showstext.begin}}</p>
                             <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_purpose activity_beigin_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
-                            <div class="idol_list">
+                            <div class="idol_list" v-if="shows.rankingType == 2">
                                 <div class="idols_desc" v-for="(idol,key) in shows.rankingList">
                                     <div class="avatar_content">
-                                        <img @click.stop="idol.idol_id?showIdolPage(idol.idol_id):false" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'">
-                                        <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
+                                        <img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'">
+                                        <span @click.stop="!idol.orgId?(idol.idolId?showIdolPage(idol.idolId):false):false" class="avatar"><img v-lazy="idol.orgLogo?idol.orgLogo:idol.avatar" alt=""></span>
+                                    </div>
+                                    <div class="idol_name">{{idol.orgName?'@' + idol.orgName:idol.nickname}}</div>
+                                    <div class="likes_content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{idol.popularity?Number(idol.popularity).toLocaleString():0}}</i></div>
+                                </div>
+                            </div>
+                            <div class="idol_list" v-else>
+                                <div class="idols_desc" v-for="(idol,key) in shows.rankingList">
+                                    <div class="avatar_content">
+                                        <img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'">
+                                        <span @click.stop="idol.idol_id?showIdolPage(idol.idol_id):false" class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                                     </div>
                                     <div class="idol_name">{{idol.nickname}}</div>
                                     <div class="likes_content"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png"><i>{{idol.popularity?Number(idol.popularity).toLocaleString():0}}</i></div>
