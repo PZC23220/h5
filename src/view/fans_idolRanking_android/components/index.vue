@@ -242,11 +242,25 @@
                 tabs.removeClass('active');
                 tabs.eq(val).addClass('active');
                 $('.bgActive').css('margin-left',`calc(33.33333% * ${val})`);
-                this.swiper.slideTo(val, 500, false)
+                this.swiper.slideTo(val, 500, false);
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    switch (val) {
+                        case 0:
+                            bridge.callHandler('umeng',{'event_key':'rankpage_check_day'});
+                            break;
+                        case 1:
+                            bridge.callHandler('umeng',{'event_key':'rankpage_check_week'});
+                            break;
+                        case 2:
+                            bridge.callHandler('umeng',{'event_key':'rankpage_check_month'});
+                            break;
+                    }
+                })
             },
             showIdolPage(val) {
                 console.log(val)
                 window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('umeng',{'event_key':'rankpage_enter_idol'});
                     bridge.callHandler('showIdolPage', {'idolId': val})
                 })
             },
@@ -498,6 +512,7 @@
                 console.log('support');
                 var self = this;
                 window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('umeng',{'event_key':'rankpage_idol_gift'});
                     bridge.callHandler('send_gift', {'context':'0','idol_id':val}, function responseCallback(responseData) {
                         self.idx3 = 0;
                         self.idx4 = 0;

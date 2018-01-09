@@ -87,11 +87,13 @@
             toVideoList(id,title,state,actionInfo) {
                 if(state == 'comingSoon') {
                     window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('umeng',{'event_key':'eventlist_enter_event'});
                         bridge.callHandler('open_h5', {'url':actionInfo,'title':title})
                     })
                 }else {
                     console.log(id)
                     window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('umeng',{'event_key':'eventlist_enter_event'});
                         bridge.callHandler('activity_videos', {'activityId':id,'activityName':title})
                     })
                 }
@@ -99,6 +101,7 @@
             showIdolPage(val) {
                 console.log(val)
                 window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('umeng',{'event_key':'eventlist_enter_idol'});
                     bridge.callHandler('showIdolPage', {'idolId': val})
                 })
             },
