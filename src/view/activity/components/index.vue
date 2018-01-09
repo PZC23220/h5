@@ -22,7 +22,7 @@
                         </li>
                     </div>
                     <li class="activity_li" v-for="shows in showsList">
-                        <div class="activity_content" @click.stop="toVideoList(shows.id,shows.tag,shows.state,shows.actionInfo)">
+                        <div class="activity_content" @click.stop="toVideoList(shows.id,shows.title,shows.state,shows.actionInfo)">
                             <img :src="shows.img" class="activity_banner" alt="">
                             <p v-if="(shows.goal && (shows.state == 'inProgress'))" class="activity_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
                             <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_begin">{{formatTime(shows.startTime)}} {{showstext.begin}}</p>
@@ -74,13 +74,15 @@
             'v-scroll': Scroll
         },
         methods: {
-            toVideoList(id,tag,state,actionInfo) {
+            toVideoList(id,title,state,actionInfo) {
                 if(state == 'comingSoon') {
-                    window.open(actionInfo)
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler('open_h5', {'url':actionInfo,'title':title})
+                    })
                 }else {
                     console.log(id)
                     window.setupWebViewJavascriptBridge(function(bridge) {
-                        bridge.callHandler('activity_videos', {'activityId':id,'activityName':tag})
+                        bridge.callHandler('activity_videos', {'activityId':id,'activityName':title})
                     })
                 }
               },

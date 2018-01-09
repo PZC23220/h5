@@ -112,7 +112,7 @@
                     </v-scroll>
                 </swiper-slide>
                 <swiper-slide class="swiper-no-swiping" id="swiper4">
-                    <v-scroll :on-refresh="refresh4" :on-infinite="infinite4">
+                    <v-scroll :on-refresh="refresh4">
                         <div class="idol_all" v-if="top3None4 ==false">
                             <div class="page_none" :class="{'fans_none': rakingList4.length>0}">
                                 <div class="idol_detail">
@@ -159,6 +159,7 @@
                             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
+                        <div class="top_20"><span class="left"></span>{{idol_text.top20}}<span class="right"></span></div>
                     </v-scroll>
                 </swiper-slide>
             </swiper>
@@ -202,7 +203,8 @@
                     today: '本日',
                     week: '今週',
                     month: '今月',
-                    alltop: '総合'
+                    alltop: '総合',
+                    top20: '上位20名まで表示'
                 },
                 ranking_img: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg',
                 swiperOption: {
@@ -278,13 +280,6 @@
                                     }
                                     self.getFansList(allFansList,'all')
                                 }
-                                if(res.data.me) {
-                                    self.me = res.data.me;
-                                    for(var j=0;j<self.me.length;j++) {
-                                        meFansList.push(self.me[j].idolId);
-                                    }
-                                    self.getFansList(meFansList,'me')
-                                }
                             }else {
                                 window.setupWebViewJavascriptBridge(function(bridge) {
                                     bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
@@ -327,13 +322,6 @@
                                     }
                                     self.getFansList(allFansList3,'all3')
                                 }
-                                if(res.data.me) {
-                                    self.me3 = res.data.me;
-                                    for(var j=0;j<self.me3.length;j++) {
-                                        meFansList3.push(self.me3[j].idolId);
-                                    }
-                                    self.getFansList(meFansList3,'me3')
-                                }
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
                                 bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
@@ -372,17 +360,10 @@
                                     self.top3None4 = true;
                                 }else {
                                     self.rakingList4 = res.data.rankingList;
-                                    for(var i=0;i<self.rakingList4.length;i++) {
+                                    for(var i=0;i<self.rakingList4.length&&i<20;i++) {
                                         allFansList4.push(self.rakingList4[i].idolId);
                                     }
                                     self.getFansList(allFansList4,'all4')
-                                }
-                                if(res.data.me) {
-                                    self.me4 = res.data.me;
-                                    for(var j=0;j<self.me4.length;j++) {
-                                        meFansList4.push(self.me4[j].idolId);
-                                    }
-                                    self.getFansList(meFansList4,'me4')
                                 }
                         }else {
                             window.setupWebViewJavascriptBridge(function(bridge) {
@@ -569,7 +550,8 @@
                     today: '今日',
                     week: '本周',
                     month: '本月',
-                    alltop: '总榜'
+                    alltop: '总榜',
+                    top20: '月榜只显示前20名'
                 }
                 this.ranking_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-chn.jpg';
               } else {
@@ -584,7 +566,8 @@
                     today: '本日',
                     week: '今週',
                     month: '今月',
-                    alltop: '総合'
+                    alltop: '総合',
+                    top20: '上位20名まで表示'
                 }
                 this.ranking_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg';
               }

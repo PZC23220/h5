@@ -437,7 +437,7 @@
                             // self.loadingBig = false;
                             if(val == 'all') {
                                 if(!res.data.rankingList) {
-                                  self.top3None = true;   
+                                  self.top3None = true;
                                 }else {
 
                                     self.rakingList = res.data.rankingList;
@@ -511,7 +511,7 @@
                     this.isShow = val;
                      $('.tottleimg').attr('src','http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray_down.png');
                     $(class_).attr('src','http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray_up.png');
-                } 
+                }
            },
         },
         computed: {
@@ -534,7 +534,7 @@
     .help p {
         background: #FAFAFA;
         border-bottom: 1px solid #e2e2e2;
-        
+
     }
     .help {
         padding: 15px 0;

@@ -16,6 +16,7 @@
         a {
             margin: 0;
             color: #FC4083;
+            line-height: 32px;
             &:not(:first-child) {
                 border-left: 1.5px solid #FC4083;
             }
@@ -296,3 +297,24 @@
             width: 60%;
         }
     }
+.top_20 {
+    position: relative;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    margin: 5px 0;
+    span {
+        position: absolute;
+        width: 40px;
+        height: 1px;
+        background: #ccc;
+        top: 8.5px;
+        left: 50%;
+    }
+    .left {
+        margin-left: -100px;
+    }
+    .right {
+        margin-left: 60px;
+    }
+}
