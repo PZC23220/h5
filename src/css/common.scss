@@ -20,7 +20,7 @@
         padding: 0 12px;
         height: 54px;
         line-height: 54px;
-        .back {        
+        .back {
             position: absolute;
             display: block;
             left: 12px;
@@ -28,7 +28,7 @@
             top: (54px-22px)/2;
             img {
               width: 22px;
-              display: block;  
+              display: block;
             }
         }
     }
@@ -191,7 +191,7 @@ img.icon {
                 width: 13.3px;
                 margin-right: 4.35px;
             }
-        } 
+        }
     }
 }
 .fans_detail {
@@ -428,7 +428,7 @@ img.icon {
     }
 }
 .publish {
-    padding: 8px 12px; 
+    padding: 8px 12px;
     overflow: hidden;
     span:first-child {
         color: #A5A5A5;
@@ -482,8 +482,8 @@ img.icon {
                  position: absolute;
                  left: 50%;
                  top: 50%;
-                 margin: -33px 0 0 -30px; 
-            } 
+                 margin: -33px 0 0 -30px;
+            }
             &:not(:nth-child(2)) {
                 .idol_num {
                     padding-top: 14px;
@@ -494,12 +494,12 @@ img.icon {
                 .idol_img {
                      width: 45px;
                      height: 45px;
-                     margin: -24.5px 0 0 -22.5px;  
+                     margin: -24.5px 0 0 -22.5px;
                 }
                 .crown {
                      width: 59.5px;
                      height: 54.5px;
-                }  
+                }
             }
             .idol_name {
                 margin-bottom: 9.5px;
@@ -552,7 +552,7 @@ img.icon {
                     color: #333;
                     font-size: 16px;
                     font-weight: 600;
-                }            
+                }
             }
         }
         >p:last-child {
@@ -669,7 +669,7 @@ img.icon {
         from {transform: rotate(0deg);}
         to {transform: rotate(360deg);}
     }
-    
+
     @keyframes rotationTop{
         from {top: 0;}
         to {top: -20px;}

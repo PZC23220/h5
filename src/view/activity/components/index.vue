@@ -28,7 +28,7 @@
                             <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_begin">{{formatTime(shows.startTime)}} {{showstext.begin}}</p>
                             <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_purpose activity_beigin_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
                             <div class="idol_list" v-if="shows.rankingType == 2">
-                                <div class="idols_desc" v-for="(idol,key) in shows.rankingList">
+                                <div class="idols_desc" v-for="(idol,key) in shows.rankingList" v-if="key < 3">
                                     <div class="avatar_content">
                                         <img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'">
                                         <span @click.stop="!idol.orgId?(idol.idolId?showIdolPage(idol.idolId):false):false" class="avatar"><img v-lazy="idol.orgLogo?idol.orgLogo:idol.avatar" alt=""></span>
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="idol_list" v-else>
-                                <div class="idols_desc" v-for="(idol,key) in shows.rankingList">
+                                <div class="idols_desc" v-for="(idol,key) in shows.rankingList" v-if="key < 3">
                                     <div class="avatar_content">
                                         <img :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/ranking_'+ (key+1) +'.png'">
                                         <span @click.stop="idol.idol_id?showIdolPage(idol.idol_id):false" class="avatar"><img v-lazy="idol.avatar" alt=""></span>
