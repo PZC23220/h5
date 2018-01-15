@@ -1,24 +1,24 @@
 <template>
     <div class="main">
-       <div class="content">
+       <div class="content" v-if="!reply">
             <!-- <div class="video_content">
                 <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
             </div> -->
             <div class="video_content">
-                <video :src="videoSrc" 
-                :poster="videoPoster" 
-                loop 
+                <video :src="videoSrc"
+                :poster="videoPoster"
+                loop
                 @click="videoPaused()"
-                :muted="dMuted" 
-                @ended='onPlayerEnded()' 
-                webkit-playsinline="true" 
-                playsinline="true" 
-                x-webkit-airplay="allow" 
-                x5-video-player-fullscreen="false" 
-                x5-video-orientation="portraint" 
-                controls="false" 
-                style="object-fit:fill" 
-                id="idolVideo" 
+                :muted="dMuted"
+                @ended='onPlayerEnded()'
+                webkit-playsinline="true"
+                playsinline="true"
+                x-webkit-airplay="allow"
+                x5-video-player-fullscreen="false"
+                x5-video-orientation="portraint"
+                controls="false"
+                style="object-fit:fill"
+                id="idolVideo"
                 preload>
                 您的浏览器不支持 video 标签。
                 </video>
@@ -233,7 +233,7 @@
                     if(swiper.activeIndex == 0) {
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('view_comment');
-                        }) 
+                        })
                     }else{
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('view_g_coin');
@@ -255,7 +255,7 @@
                     if(swiper.activeIndex == 0) {
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('view_g_coin');
-                        }) 
+                        })
                     }else{
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('view_like');
@@ -416,7 +416,7 @@
                 if(val == 0) {
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('view_comment');
-                    }) 
+                    })
                 }else {
                     bridge.callHandler('view_like');
                 }
@@ -432,21 +432,21 @@
                     }else{
                         bridge.callHandler('view_like');
                     }
-                }) 
+                })
             },
             formatTime(key) {
                   let timer = new Date(key);
                   return timer.Format('MM.dd')+ '&nbsp;' + timer.Format('hh:mm')
            },
             TransferString(content) {
-                 let string = content;    
-                 try{    
-                    string=string.replace(/\r\n/g,"<br>")    
-                    string=string.replace(/\n/g,"<br>");    
-                 }catch(e) {    
-                    console.log(e.message);    
+                 let string = content;
+                 try{
+                    string=string.replace(/\r\n/g,"<br>")
+                    string=string.replace(/\n/g,"<br>");
+                 }catch(e) {
+                    console.log(e.message);
                  }
-                 return string;    
+                 return string;
             },
             getVideo(token) {
                 let self = this;
@@ -550,7 +550,7 @@
                     if(res.data.length>0) {
                         for(var i=0;i<res.data.length;i++){
                             self.commentList.push(res.data[i]);
-                        }                    
+                        }
                     }else {
                         self.havedlast = true;
                     }
@@ -638,7 +638,7 @@
                     self.start = 0;
                     self.havedlast = false;
                     self.showLoading2 = false;
-                     self.commentList = res.data;                  
+                     self.commentList = res.data;
                     console.log(self.commentList);
                 }).catch(function(){
                     self.showLoading2 = false;
@@ -715,7 +715,7 @@
               }
             self.idolName = decodeURIComponent(getParams('idolName'));
             self.getVideo();
-            self.getComments(); 
+            self.getComments();
             setTimeout(function(){
                 self.getPopularity();
                 self.getGcoin();

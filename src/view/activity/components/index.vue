@@ -24,7 +24,7 @@
                     <li class="activity_li" v-for="shows in showsList">
                         <div class="activity_content" @click.stop="toVideoList(shows.id,shows.title,shows.state,shows.actionInfo)">
                             <img :src="shows.img" class="activity_banner" alt="">
-                            <p v-if="(shows.goal && (shows.state == 'inProgress'))" class="activity_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
+                            <p v-if="(shows.goal && (shows.state == 'inProgress' || shows.state == 'ended'))" class="activity_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
                             <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_begin">{{formatTime(shows.startTime)}} {{showstext.begin}}</p>
                             <p v-if="(shows.goal && (shows.state == 'comingSoon'))" class="activity_purpose activity_beigin_purpose">{{showstext.purpose}}：{{shows.goal}}</p>
                             <div class="idol_list" v-if="shows.rankingType == 2">

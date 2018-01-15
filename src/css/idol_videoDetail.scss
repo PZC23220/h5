@@ -1,3 +1,6 @@
+body > * {
+    min-height: 100vh;
+}
 .content{
     padding-top: 0;
     min-height: 100vh;
@@ -245,7 +248,7 @@
         font-size: 18px;
         color: #666;
         background: #fff;
-        line-height: 44px;
+        line-height: 32px;
         padding: 5px 12px 7px;box-sizing: border-box;
         height: 44px;
         img {
@@ -279,7 +282,7 @@
     }
     .reply_comment_content {
         padding: 8px;
-        margin: 16px 12px;
+        margin: 12px;
         line-height: 24px;
         color: #333;
         font-size: 16px;
