@@ -40,7 +40,7 @@
           <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
             <!-- slides -->
             <swiper-slide id="swiper1">
-                <v-scroll :on-refresh="refresh" :on-infinite="infinite">
+                <!-- <v-scroll :on-refresh="refresh" :on-infinite="infinite"> -->
                     <ul class="comment_list" style="background: #eee;">
                         <li v-for="(comment,key) in commentList" :class="[{'lastLi' : commentList.length > 5 && key == commentList.length-1},{'firstLi' : key == 0}]">
                             <div class="comment_info">
@@ -61,7 +61,7 @@
                         <!-- <div class="loading" :class="{'loading_show': showLoading}"><p><img src="/img/loading_1.png" alt="">読み込み中</p><p v-show="havedlast">全て表示されました</p></div> -->
                     </ul>
                 <!-- </scroller> -->
-                </v-scroll>
+                <!-- </v-scroll> -->
             </swiper-slide>
             <swiper-slide id="swiper2">
                 <!-- <div class="income eBorder">
