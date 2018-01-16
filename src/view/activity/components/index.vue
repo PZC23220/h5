@@ -76,7 +76,8 @@
             offset: 0,
             showstext: {
                 begin: '開催',
-                purpose: '対象'
+                purpose: '対象',
+                none: 'まだイベントがありません'
             },
           }
         },
@@ -216,12 +217,14 @@
              if(getParams('language') == 'cn') {
                 self.showstext = {
                     begin: '开始',
-                    purpose: '目标'
+                    purpose: '目标',
+                    none: '还没有活动'
                 }
             }else {
                 self.showstext = {
                     begin: '開催',
-                    purpose: '対象'
+                    purpose: '対象',
+                    none: 'まだイベントがありません'
                 }
             }
 

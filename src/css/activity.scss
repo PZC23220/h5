@@ -12,9 +12,9 @@
 .idol_activity li {
     width: 100%;
     box-sizing: border-box;
-    padding: 0 8px;
+    padding: 0 4px;
     position: relative;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
 }
 
 .idol_activity li .activity_content {
@@ -31,7 +31,7 @@
 .activity_status,.activity_status_tips {
     position: absolute;
     left: 3px;top: 8px;
-    width: 53.55px;
+    width: 51.05px;
     color: #fff;
     letter-spacing: 0.79px;
     line-height: 20px;
@@ -120,7 +120,7 @@
     padding-top: 0;
     height: 320px;
     overflow: hidden;
-    padding: 0 8px;
+    padding: 0 4px;
     li {
         background: #FFF;
         padding: 12px 8px;
