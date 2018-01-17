@@ -223,19 +223,19 @@ export default {
   color: #666;
 }
 .yo-scroll .loadingImg i {
-    background-image: url(/img/pic_loading_1.png);
+    background-image: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/loading.gif);
     display: inline-block;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% auto;
     width:  90.5px !important;
     height: 47.5px !important;
-    transition: all .15s linear;
-    animation: changebg 1s linear infinite;
+    /*transition: all .15s linear;*/
+    /*animation: changebg 1s linear infinite;*/
     margin-bottom: 5px;
 }
-@keyframes changebg{
+/*@keyframes changebg{
   from {background-image: url(/img/pic_loading_1.png);}
   to {background-image: url(/img/pic_loading_2.png);}
-}  
+}  */
 </style>
