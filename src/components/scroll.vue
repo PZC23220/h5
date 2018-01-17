@@ -30,7 +30,7 @@ export default {
   props: {
     offset: {
       type: Number,
-      default: 90
+      default: 50
     },
     enableInfinite: {
       type: Boolean,
@@ -181,7 +181,7 @@ export default {
 }
 .yo-scroll .inner {
   position: absolute;
-  top: -71.5px;
+  top: -47.5px;
   width: 100%;
   transition-duration: 300ms;
 }
@@ -190,7 +190,7 @@ export default {
   left: 0;
   top: 0;
   width: 100%;
-  height: 71.5px;
+  height: 47.5px;
   display: flex;
   align-items: left;
   justify-content: left;
@@ -219,7 +219,7 @@ export default {
   justify-content: center;
 }
 .yo-scroll .loadingImg {
-  padding: 12px;
+  padding: 0 12px;
   color: #666;
 }
 .yo-scroll .loadingImg i {
@@ -232,7 +232,6 @@ export default {
     height: 47.5px !important;
     /*transition: all .15s linear;*/
     /*animation: changebg 1s linear infinite;*/
-    margin-bottom: 5px;
 }
 /*@keyframes changebg{
   from {background-image: url(/img/pic_loading_1.png);}
