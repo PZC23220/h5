@@ -10,7 +10,7 @@
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
                             <span>{{task_test.current}}<i>0</i></span>
                         </div>
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish.png" v-show="false">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish2.png" v-show="false">
                     </div>
                     <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
@@ -22,7 +22,7 @@
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
                             <span>{{task_test.current}}<i>0</i></span>
                         </div>
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish.png" v-show="false">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish2.png" v-show="false">
                     </div>
                     <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
@@ -34,7 +34,7 @@
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
                             <span>{{task_test.current}}<i>0</i></span>
                         </div>
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish.png" v-show="false">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish2.png" v-show="false">
                     </div>
                     <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
@@ -46,7 +46,7 @@
                             <div class="progress"><span :style="'width:calc(100% * 0)'"></span></div>
                             <span>{{task_test.current}}<i>0</i></span>
                         </div>
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish.png" v-show="false">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish2.png" v-show="false">
                     </div>
                     <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">0</span><span>{{task_test.receive}}</span></div>
                 </div>
@@ -59,7 +59,7 @@
                         <div class="progress"><span :style="'width:calc(100% * '+task.currentCount/task.targetCount+')'"></span></div>
                         <span>{{task_test.current}}<i>{{task.currentCount>task.targetCount?task.targetCount:task.currentCount}}</i></span>
                     </div>
-                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish.png" v-show="task.complete>0">
+                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_finish2.png" v-show="task.complete>0">
                 </div>
                 <div class="reward"><i>{{task_test.reward}}</i><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png">{{task.gprice}}</span><span :class="{'finish':(task.complete>0 && task.accepted<1)}" @click="(task.complete>0 && task.accepted<1)?accept(task.id,task.gprice,$event):false">{{status(task.accepted)}}</span></div>
             </div>
