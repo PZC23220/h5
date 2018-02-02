@@ -1,0 +1,73 @@
+.content {
+    padding-top: 0;
+    min-height: 100vh;
+    background: #fff6f8;
+    box-sizing: border-box;
+}
+.live_banner {
+    display: block;
+    width: 100%;
+}
+.live_title {
+    margin-top: 15px;
+    line-height: 37px;
+    text-align: center;
+    font-size: 18px;
+    color: #630526;
+}
+.live_border_bottom {
+    display: block;
+    margin: 0 auto;
+    width: 35px;
+    height: 3px;
+    background: #FC4083;
+}
+.live_desc {
+    font-size: 16px;
+    color: #9E6572;
+    padding: 15px 16px;
+}
+.live_step {
+    display: block;
+    width: 75px;
+    margin-top: 43px;
+    margin-left: 16px;
+}
+.live_process {
+    text-align: center;line-height: 47px;
+    .process_tips {
+        background: rgba(252,64,131,0.6);
+        border: 2px solid #FFC0D6;
+        border-radius: 50%;
+        width: 47px;
+        height: 47px;
+        padding: 8px 0;
+        box-sizing: border-box;
+        display: inline-block;
+        line-height: 27px;
+        vertical-align: middle;
+        color: #fff;
+    }
+    .process_tips.two {
+        line-height: 13.5px;
+    }
+    .process_img {
+        width: 37px;
+        margin: 0 20px;
+        vertical-align: middle;
+    }
+}
+.live_imgs {
+    display: flex;
+    padding: 11px 8px;
+    img {
+        flex: 1;
+        height: 213px;
+        box-sizing: border-box;
+        padding: 0 8px;
+    }
+}
+.live_process_blue .process_tips {
+    background: rgba(0, 180, 187,0.6);
+    border: 2px solid #2BCAD0;
+}

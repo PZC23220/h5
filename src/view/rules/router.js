@@ -17,6 +17,8 @@ import rule_chinese from './components/rule_chinese.vue'
 import rule from './components/rule.vue'
 import fans_rule_japanese from './components/fans_rule.vue'
 import fans_rule_chinese from './components/fans_rule_chinese.vue'
+import livebuy_chinese from './components/livebuy_chinese.vue'
+import livebuy_japanese from './components/livebuy_japanese.vue'
 
 let Terminal = {
     // 辨别移动终端的语言：zh-cn、en-us、ko-kr、ja-jp...
@@ -34,6 +36,7 @@ if(Terminal.language == 'zh-cn') {
     indexLanguage.purchaseInstructions = '/purchaseInstructions_chinese';
     indexLanguage.fans_rule = '/fans_rule_chinese';
     indexLanguage.PrivacyPolicy = '/PrivacyPolicy_chinese';
+    indexLanguage.livebuy = '/livebuy_chinese';
 } else {
     indexLanguage.copyright = '/copyright_japanese';
     indexLanguage.ExchangeAndWithdrawals = '/ExchangeAndWithdrawals_japanese';
@@ -42,6 +45,7 @@ if(Terminal.language == 'zh-cn') {
     indexLanguage.purchaseInstructions = '/purchaseInstructions_japanese';
     indexLanguage.fans_rule = '/fans_rule_japanese';
     indexLanguage.PrivacyPolicy = '/PrivacyPolicy';
+    indexLanguage.livebuy = '/livebuy_chinese';
 }
 
 const routes =
@@ -60,13 +64,13 @@ const routes =
             component: PrivacyPolicy_chinese,
         },{
             path: '/purchaseInstructions',
-            redirect: indexLanguage.purchaseInstructions   
+            redirect: indexLanguage.purchaseInstructions
         },{
             path: '/purchaseInstructions_japanese',
-            component: purchaseInstructions   
+            component: purchaseInstructions
         },{
             path: '/purchaseInstructions_chinese',
-            component: purchaseInstructions_chinese   
+            component: purchaseInstructions_chinese
         },{
             path: '/copyright',
             redirect: indexLanguage.copyright
@@ -112,6 +116,15 @@ const routes =
         },{
             path: '/fans_rule_chinese',
             component: fans_rule_chinese
+        },{
+            path: '/livebuy',
+            redirect: indexLanguage.livebuy
+        },{
+            path: '/livebuy_japanese',
+            component: livebuy_japanese
+        },{
+            path: '/livebuy_chinese',
+            component: livebuy_chinese
         }
     ];
 export default routes;

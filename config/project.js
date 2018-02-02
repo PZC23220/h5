@@ -48,5 +48,7 @@ module.exports = {
         fans_protector: './src/view/fans_protector',
         idol_attention_fansDetail: './src/view/idol_attention_fansDetail',
         activity: './src/view/activity',
+        liveList: './src/view/liveList',
+        live_raiders: './src/view/live_raiders',
     },
 };

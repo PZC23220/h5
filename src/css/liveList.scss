@@ -1,0 +1,135 @@
+.content {
+    padding-top: 7px;
+    min-height: 100vh;
+    background: #ebebeb;
+    box-sizing: border-box;
+}
+.live_ul {
+    overflow: hidden;
+    padding: 4px;
+}
+.live_ul li {
+    width: 100%;
+    position: relative;
+    background: #fff;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.17);
+    border-radius: 4px;
+    position: relative;
+}
+// 番号信息
+.live_info {
+    padding: 12px 8px;
+    overflow: hidden;
+    border-bottom: #eee solid 1px;
+}
+.live_number {
+    float: left;
+    border: 3px solid #00B4BB;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: #00B4BB;
+    text-align: center;
+    padding-top: 3px;
+    box-sizing: border-box;
+    margin-right: 8px;
+    font-family: 'Helvetica Condensed Bold Italic';
+    span {
+        display:block;
+        line-height: 30px;
+        font-size: 25px;
+    }
+    i {
+        font-size: 10px;
+        -webkit-transform:scale(0.8);
+        display:block;
+    }
+}
+.live_number.fir {
+    color: #FABC01;
+    border-color: #FABC01;
+}
+.live_number.sec {
+    color: #666;
+    border-color: #666;
+}
+.live_number.thr {
+    color: #FF8500;
+    border-color: #FF8500;
+}
+.live_dates {
+    float: left;
+    width: calc(100% - 68px);
+    padding: 5.5px 0;
+    >p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+.live_name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.live_times {
+    font-size: 14px;
+    color: #999;
+    span:first-child {
+        margin-right: 6px;
+    }
+}
+// 预计时间
+.live_start {
+    padding: 8px 10px;
+    color: #999999;
+}
+.live_startTime {
+    font-size: 14px;
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 4px;
+    span {
+        color: #00B4BB;
+        padding: 0 5px;
+    }
+}
+// 波浪背景
+.live_bg {
+    background: #eee;
+    display: block;
+    width: 100%;
+    padding-bottom: 5px;
+}
+// 结束标示
+.live_end {
+    position: absolute;
+    width: 52px;
+    top: 52px;
+    right: 8px;
+}
+.page_defalt {
+    transition: all 0.3s;
+    padding-top: 0;
+    height: 320px;
+    overflow: hidden;
+    padding: 0 4px;
+    li {
+        background: #FFF;
+        padding: 12px 8px;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.20);
+    }
+    p {
+        background: #eee;
+        height: 18px;
+        line-height: 18px;
+        &:first-child {
+            margin-bottom: 8px;
+            width: 85%;
+        }
+    }
+}
+.page_defalt.active {
+    height: 0;
+}

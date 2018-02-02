@@ -1,0 +1,242 @@
+<template>
+    <div class="main">
+        <div class="content">
+            <v-scroll :on-refresh="refresh" :on-infinite="infinite">
+                <ul class="live_ul">
+                    <div class="page_defalt" :class="{'active': isLoading}">
+                        <li class="activity_li">
+                            <p></p>
+                            <p class="activity_info"></p>
+                        </li>
+                        <li class="activity_li">
+                            <p></p>
+                            <p></p>
+                        </li>
+                        <li class="activity_li">
+                            <p></p>
+                            <p></p>
+                        </li>
+                        <li class="activity_li">
+                            <p></p>
+                            <p></p>
+                        </li>
+                    </div>
+                    <li class="live_li" v-for="(shows,key) in showsList">
+                        <div class="live_info">
+                            <div class="live_number" :class="[{'fir':shows.myTicket.ticketNumber == 0},{'sec':shows.myTicket.ticketNumber == 1},{'thr':shows.myTicket.ticketNumber == 2}]"><span>{{shows.myTicket.ticketNumber}}</span><i>番号</i></div>
+                            <div class="live_dates">
+                                <p class="live_name">{{shows.idol.nickname}}の1V1见面会</p>
+                                <p class="live_times"><span>{{formatTime(shows.meeting.startTime,'yyyy.MM.dd')}}({{formatDay(shows.meeting.startTime)}})</span><span>{{formatTime(shows.meeting.startTime,'hh:mm')}}</span></p>
+                            </div>
+                        </div>
+                        <div class="live_start">
+                            <p class="live_startTime">预计 <span>{{formatTime(shows.myTicket.startTime,'hh:mm')}}</span> 开始与爱豆连线</p>
+                            <p class="live_tips">※请提早进入直播间排队等候，过号则见面券失效</p>
+                        </div>
+                        <img class="live_bg" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/bg_1.jpg">
+                        <img class="live_end" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_cn.png" v-if="isOver(shows.myTicket.endTime)">
+                    </li>
+                    <div class="default_page" v-show="showsList.length == 0 && isLoading">
+                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_noactivity.png" alt="">
+                        <p v-html="showstext.none"></p>
+                    </div>
+                </ul>
+            </v-scroll>
+        </div>
+    </div>
+</template>
+<script>
+    import http from '@api/js/http.js';
+    import Scroll from '../../../components/scroll.vue';
+    export default {
+        data() {
+          return {
+            token_: '',
+            showsList: [],
+            isLoading: false,
+            havedlast: false,
+            token_: '',
+            idx: 0,
+            offset: 0,
+            showstext: {
+                begin: '開催',
+                purpose: '対象',
+                none: 'まだイベントがありません'
+            },
+          }
+        },
+        components: {
+            'v-scroll': Scroll
+        },
+        methods: {
+            formatTime(key,type) {
+                let timer = new Date(key);
+                return timer.Format(type);
+            },
+            formatDay(key) {
+                let timer = new Date(key).getDay();
+                var str;
+                // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+                if(getParams('language') == 'cn') {
+                    switch (timer) {
+                        case 0 :
+                                str = "周日";
+                                break;
+                        case 1 :
+                                str = "周一";
+                                break;
+                        case 2 :
+                                str = "周二";
+                                break;
+                        case 3 :
+                                str = "周三";
+                                break;
+                        case 4 :
+                                str = "周四";
+                                break;
+                        case 5 :
+                                str = "周五";
+                                break;
+                        case 6 :
+                                str = "周六";
+                                break;
+                    }
+                }else {
+                    switch (timer) {
+                        case 0 :
+                                str = "日";
+                                break;
+                        case 1 :
+                                str = "月";
+                                break;
+                        case 2 :
+                                str = "火";
+                                break;
+                        case 3 :
+                                str = "水";
+                                break;
+                        case 4 :
+                                str = "木";
+                                break;
+                        case 5 :
+                                str = "金";
+                                break;
+                        case 6 :
+                                str = "土";
+                                break;
+                    }
+                }
+                return  str;
+            },
+            isOver(key){
+                let newTimes = Date.parse(new Date());
+                if(newTimes < key) {
+                    return false;
+                }else {
+                    return true;
+                }
+            },
+            getInfo(token) {
+                let self = this;
+                if(self.idx < 2) {
+                    let token_ = getParams('token');
+                    if(token) {
+                        http.defaults.headers.common['Authorization'] = 'Token '+token;
+                    }else if(token_!='(null)' && token_!='') {
+                        http.defaults.headers.common['Authorization'] = 'Token ' + token_;
+                    }
+                    http.get('/meetings/listOfFans',{
+                        params: {
+                            offset: self.offset,
+                            limit: 10
+                        }
+                    })
+                    .then(function(res){
+                        console.log(res)
+                        self.isLoading = true;
+                        if(res.data.length > 0 ) {
+                            for(var i=0;i<res.data.length;i++){
+                                self.showsList.push(res.data[i]);
+                            }
+                            self.havedlast = false;
+                        }else {
+                            self.havedlast = true;
+                        }
+                    }).catch(function(err){
+                        self.idx++;
+                        window.setupWebViewJavascriptBridge(function(bridge) {
+                            bridge.callHandler('getToken', {'targetType':'1','targetId':0}, function responseCallback(responseData) {
+                                self.getRanking3(responseData.token);
+                            })
+                        })
+                    })
+                }else {
+                    window.setupWebViewJavascriptBridge(function(bridge) {
+                         if(getParams('language') == 'cn') {
+                            bridge.callHandler('makeToast', '服务器出错，请稍后重试');
+                         }else {
+                            bridge.callHandler('makeToast', 'エラーが発生しました\nしばらくしてからもう一度お試しください');
+                         }
+                    })
+                }
+            },
+            refresh (done) {
+                var self = this;
+                http.get('/activities/all',{
+                    params: {
+                        offset: 0
+                    }
+                }).then(function(res){
+                    self.offset = 0;
+                    self.havedlast = false;
+                    self.showsList = res.data;
+                }).catch(function(){
+                    self.showsList = [];
+                });
+                setTimeout(() => {
+                    done(true);
+                }, 500)
+            },
+            infinite (done) {
+                var self = this;
+                if(self.showsList.length>0) {
+                   if (self.havedlast) {
+                      setTimeout(() => {
+                        done(true)
+                      }, 500)
+                      return;
+                    } else {
+                        setTimeout(() => {
+                          self.offset += 10;
+                          self.getInfo();
+                          done()
+                        }, 500)
+                    }
+                }else {
+                  setTimeout(() => {
+                    done(true)
+                  }, 1500)
+                  return;
+                }
+            }
+        },
+        created() {
+            let self = this;
+            self.getInfo();
+             if(getParams('language') == 'cn') {
+                self.showstext = {
+                    begin: '开始',
+                    purpose: '目标',
+                    none: '还没有购买见面券'
+                }
+            }else {
+                self.showstext = {
+                    begin: '開催',
+                    purpose: '対象',
+                    none: 'まだイベントがありません'
+                }
+            }
+
+        }
+      }
+</script>
