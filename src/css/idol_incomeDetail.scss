@@ -24,7 +24,7 @@
             box-sizing: border-box;
             font-size: 14px;
             color: #666;
-            
+
             &:first-child {
                 color: #FC4083;
                 font-size: 12px;
@@ -71,6 +71,43 @@
     li {
         width: calc((96.8vw - 24px)/2);
         max-width: 232px;
+    }
+ }
+ .meeting_content {
+    background: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/bg_ticket.png) no-repeat center center;
+    background-size: 100%;
+    width: 160px;
+    height: 80px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 3px;
+    padding: 10px 0;
+    box-sizing: border-box;
+ }
+ .meeting_tips {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    em {
+        padding: 0 5px;
+    }
+    >* {
+       display: inline-block;
+       vertical-align: middle;
+    }
+    span {
+        width: 20px;
+        height: 1px;
+        background: #fff;
+    }
+ }
+ .meeting_gcoins {
+    height: 30px;
+    line-height: 30px;
+    img {
+        width: 14px;
+        margin-right: 4.5px;
     }
  }
  .left {

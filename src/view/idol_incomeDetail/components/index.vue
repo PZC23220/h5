@@ -11,19 +11,17 @@
                     <span class="detail_gcoin" style="height: 27px;overflow: hidden;"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="" class="icon"><i class="video_money left" :class="{'left_show':incomeList.incomeYesterday || incomeList.incomeYesterday == 0}">{{incomeList.incomeYesterday?Number(incomeList.incomeYesterday).toLocaleString():0}}</i></span>
                 </p>
             </div>
-            <div class="income_details eBorder">
-                <p class="detail_title">{{income_text.vip}}</p>
+            <div class="income_details eBorder" v-if="incomeList.liveMeetingIncomes">
+                <p class="detail_title">{{income_text.meeting}}</p>
                 <ul class="income_img income_img_vip">
-                    <li>
-                        <img class="gift" :src="income_text.free" alt="">
-                        <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[0].numbers?incomeList.groupFeeList[0].numbers:0):0).toLocaleString()}}</span></p>
-                    </li>
-                    <li>
-                        <img class="gift" :src="income_text.month" alt="">
-                        <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[1].numbers?incomeList.groupFeeList[1].numbers:0):0).toLocaleString()}}</span></p>
+                    <li v-for="meeting in incomeList.liveMeetingIncomes">
+                        <div class="meeting_content">
+                            <div class="meeting_tips"><span></span><em>{{income_text.meeting1}}</em><span></span></div>
+                            <div class="meeting_gcoins"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>500</em></div>
+                        </div>
+                        <p><span class="left maxWidth left_show">&times;{{Number(meeting.count?meeting.count:0).toLocaleString()}}</span></p>
                     </li>
                 </ul>
-                <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><i class="totalNum">{{incomeList.groupIncome?Number(incomeList.groupIncome).toLocaleString():0}}</i></div>
             </div>
             <div class="income_details eBorder">
                 <p class="detail_title">{{income_text.detail}}</p>
@@ -96,6 +94,20 @@
                 <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><i class="totalNum">{{incomeList.giftsIncome?Number(incomeList.giftsIncome).toLocaleString():0}}</i></div>
             </div>
             <div class="income_details eBorder">
+                <p class="detail_title">{{income_text.vip}}</p>
+                <ul class="income_img income_img_vip">
+                    <li>
+                        <img class="gift" :src="income_text.free" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[0].numbers?incomeList.groupFeeList[0].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                    <li>
+                        <img class="gift" :src="income_text.month" alt="">
+                        <p><span class="left maxWidth" :class="{'left_show': incomeList.groupFeeList}">&times;{{Number(incomeList.groupFeeList?(incomeList.groupFeeList[1].numbers?incomeList.groupFeeList[1].numbers:0):0).toLocaleString()}}</span></p>
+                    </li>
+                </ul>
+                <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><i class="totalNum">{{incomeList.groupIncome?Number(incomeList.groupIncome).toLocaleString():0}}</i></div>
+            </div>
+            <div class="income_details eBorder">
                 <p class="detail_title">{{income_text.task}}</p>
                 <div class="coinsTotal"><span>{{income_text.coins}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><i class="totalNum">{{incomeList.incomeMission?Number(incomeList.incomeMission).toLocaleString():0}}</i></div>
             </div>
@@ -141,6 +153,8 @@
                     today:'今月獲得コイン数',
                     yesterday: '昨日獲得コイン数',
                     vip: '守護者人数',
+                    meeting: 'チケット枚数',
+                    meeting1: '1V1生配信',
                     detail: 'ギフトリスト',
                     task: '新規応援ミッション',
                     record: 'コイン履歴',
@@ -242,6 +256,8 @@
                     today:' 本月G币',
                     yesterday: '昨日G币',
                     vip: '守护者数',
+                    meeting: '见面券',
+                    meeting1: '见面会',
                     detail: '礼物数量',
                     task: '新手任务',
                     record: 'G币记录',
@@ -263,6 +279,8 @@
                     today:'今月獲得コイン数',
                     yesterday: '昨日獲得コイン数',
                     vip: '守護者人数',
+                    meeting: 'チケット枚数',
+                    meeting1: '1V1生配信',
                     detail: 'ギフトリスト',
                     task: '新規応援ミッション',
                     record: 'コイン履歴',

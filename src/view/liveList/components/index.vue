@@ -23,22 +23,22 @@
                     </div>
                     <li class="live_li" v-for="(shows,key) in showsList">
                         <div class="live_info">
-                            <div class="live_number" :class="[{'fir':shows.myTicket.ticketNumber == 0},{'sec':shows.myTicket.ticketNumber == 1},{'thr':shows.myTicket.ticketNumber == 2}]"><span>{{shows.myTicket.ticketNumber}}</span><i>番号</i></div>
+                            <div class="live_number" :class="[{'fir':shows.myTicket.ticketNumber == 0},{'sec':shows.myTicket.ticketNumber == 1},{'thr':shows.myTicket.ticketNumber == 2}]"><span>{{shows.myTicket.ticketNumber}}</span><i>{{liveText.number}}</i></div>
                             <div class="live_dates">
-                                <p class="live_name">{{shows.idol.nickname}}の1V1见面会</p>
+                                <p class="live_name">{{shows.idol.nickname}}{{liveText.meeting}}</p>
                                 <p class="live_times"><span>{{formatTime(shows.meeting.startTime,'yyyy.MM.dd')}}({{formatDay(shows.meeting.startTime)}})</span><span>{{formatTime(shows.meeting.startTime,'hh:mm')}}</span></p>
                             </div>
                         </div>
                         <div class="live_start">
-                            <p class="live_startTime">预计 <span>{{formatTime(shows.myTicket.startTime,'hh:mm')}}</span> 开始与爱豆连线</p>
-                            <p class="live_tips">※请提早进入直播间排队等候，过号则见面券失效</p>
+                            <p class="live_startTime">{{liveText.forecast}}<span>{{formatTime(shows.myTicket.startTime,'hh:mm')}}</span>{{liveText.connect}}</p>
+                            <p class="live_tips">{{liveText.tips}}</p>
                         </div>
                         <img class="live_bg" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/bg_1.jpg">
-                        <img class="live_end" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_cn.png" v-if="isOver(shows.myTicket.endTime)">
+                        <img class="live_end" :src="liveText.endImg" v-if="isOver(shows.myTicket.endTime)">
                     </li>
                     <div class="default_page" v-show="showsList.length == 0 && isLoading">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_noactivity.png" alt="">
-                        <p v-html="showstext.none"></p>
+                        <p v-html="liveText.none"></p>
                     </div>
                 </ul>
             </v-scroll>
@@ -58,10 +58,14 @@
             token_: '',
             idx: 0,
             offset: 0,
-            showstext: {
-                begin: '開催',
-                purpose: '対象',
-                none: 'まだイベントがありません'
+            liveText: {
+                number: '番',
+                meeting: 'の1V1生配信',
+                none: 'まだチケットがありません',
+                forecast: 'アイドルと',
+                connect: 'に接続予定',
+                tips: '※チケットを購入された方は、お早めに入室してお待ちください。順番が過ぎた場合、チケットは無効となります。',
+                endImg: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_cn.png'
             },
           }
         },
@@ -224,16 +228,24 @@
             let self = this;
             self.getInfo();
              if(getParams('language') == 'cn') {
-                self.showstext = {
-                    begin: '开始',
-                    purpose: '目标',
-                    none: '还没有购买见面券'
+                self.liveText = {
+                    number: '番号',
+                    meeting: '的1V1见面会',
+                    none: '还没有购买见面券',
+                    forecast: '预计',
+                    connect: '开始与爱豆连线',
+                    tips: '※请提早进入直播间排队等候，过号则见面券无效',
+                    endImg: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_cn.png'
                 }
             }else {
-                self.showstext = {
-                    begin: '開催',
-                    purpose: '対象',
-                    none: 'まだイベントがありません'
+                self.liveText = {
+                    number: '番',
+                    meeting: 'の1V1生配信',
+                    none: 'まだチケットがありません',
+                    forecast: 'アイドルと',
+                    connect: 'に接続予定',
+                    tips: '※チケットを購入された方は、お早めに入室してお待ちください。順番が過ぎた場合、チケットは無効となります。',
+                    endImg: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_jp.png'
                 }
             }
 

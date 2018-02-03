@@ -1,19 +1,19 @@
 <template>
     <div class="main">
         <div class="content">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_cn.jpg" class="live_banner">
-            <h2 class="live_title">是什么</h2>
+            <img :src="meeting_text.banner" class="live_banner">
+            <h2 class="live_title">{{meeting_text.what}}</h2>
             <span class="live_border_bottom"></span>
-            <p class="live_desc">1V1见面会是Groupy推出的偶像粉丝互动新模式：偶像进行线上直播，与粉丝一对一视频连线，即可单独见面。</p>
-            <h2 class="live_title">怎么参加</h2>
+            <p class="live_desc">{{meeting_text.what_desc}}</p>
+            <h2 class="live_title">{{meeting_text.how}}</h2>
             <span class="live_border_bottom"></span>
             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_1.png" class="live_step">
-            <p class="live_desc"> 购买见面券 在Groupy-【LIVE】发现偶像的见面会，购买见面券获得入场番号，当天根据番号进行见面。</p>
-            <div class="live_process"><span class="process_tips">入口</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips">购票</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips two">获得<br>番号</span></div>
+            <p class="live_desc">{{meeting_text.live}}</p>
+            <div class="live_process"><span class="process_tips">{{meeting_text.entrance}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips">{{meeting_text.tickets}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips two" v-html="meeting_text.numbers"></span></div>
             <div class="live_imgs"><img src=""><img src=""><img src=""></div>
             <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_2.png" class="live_step">
-            <p class="live_desc"> 视频连线见面 见面会当天，从【首页】进入直播间等候，到了番号即自动与偶像进行视频连线。见面时间结束后，将自动断开连接。</p>
-            <div class="live_process live_process_blue"><span class="process_tips">进入</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips">等候</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips">见面</span></div>
+            <p class="live_desc">{{meeting_text.videos}}</p>
+            <div class="live_process live_process_blue"><span class="process_tips" :class="{'two': meeting_text.coming != '进入'}" v-html="meeting_text.coming"></span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.waitng != '等候'}" v-html="meeting_text.waitng"></span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.meet != '见面'}" v-html="meeting_text.meet"></span></div>
             <div class="live_imgs"><img src=""><img src=""><img src=""></div>
         </div>
     </div>
@@ -25,11 +25,19 @@
     export default {
         data() {
             return {
-                medal_text: {
-                    title: '成長レベル',
-                    desc: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。<br><br>高レベルのファンに特典（無料会員体験など）もご用意していますので、ぜひレベルアップを！',
-                    how: 'レベルアップのヒントは？',
-                    pubMsg: ' 成長レベル'
+                meeting_text: {
+                    what: '1V1生配信とは？',
+                    what_desc: '1V1生配信とは、アイドルがオンラインでファンミーティングを開催することができるGroupyの絶賛新機能です。1対1生配信にて、アイドルとファンは1対1ビデオチャットすることができます。',
+                    how: '参加方法',
+                    live: 'チケットを購入  Groupy-【LIVE】画面にアイドルの1V1生配信チケットを購入してください。整理番号順に配信していただきます',
+                    entrance: '選択',
+                    tickets: '購入',
+                    numbers: '番号を<br>入手',
+                    videos: 'アイドルと生配信  配信当日にホームからお早めに入室してお待ちください。順番になると、自動的にアイドル側との接続を行います。配信の終了時間になると、接続が自動的に切断されます。',
+                    coming: '入室<br>する',
+                    waitng: '順番を<br>待つ',
+                    meet: '生配信<br>開始',
+                    banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg'
                 },
                 lvNow: '',
                 lvNext: '',
@@ -37,7 +45,6 @@
                 style: 'width: calc(320px * 0)',
                 android: false,
                 idx: 0,
-                level_img: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.png'
             }
         },
         methods: {
@@ -90,21 +97,35 @@
             self.getLevel();
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(getParams('language') == 'cn') {
-                 self.medal_text= {
-                    title: 'Groupy等级',
-                    desc: 'level是根据粉丝在Groupy平台所送的人气划分的。送出人气和礼物越多，代表该粉丝是越资深的用户，level也会越高。<br><br>在Groupy里面也会更有机会与爱豆直接互动，邀请进入VIP社群等福利!',
-                    how: '如何可以快速升级？',
-                    pubMsg: ' Groupy等级'
+                 self.meeting_text= {
+                    what: '是什么',
+                    what_desc: '1V1见面会是Groupy推出的偶像粉丝互动新模式：偶像进行线上直播，与粉丝一对一视频连线，即可单独见面。',
+                    how: '怎么参加',
+                    live: '购买见面券   在Groupy-【LIVE】发现偶像的见面会，购买见面券获得入场番号，当天根据番号进行见面',
+                    entrance: '入口',
+                    tickets: '购票',
+                    numbers: '获得<br>番号',
+                    videos: '视频连线见面   见面会当天，从首页进入直播间等候，到了番号即自动与偶像进行视频连线。见面时间结束后，将自动断开连接。',
+                    coming: '进入',
+                    waitng: '等候',
+                    meet: '见面',
+                    banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_cn.jpg'
                 }
-                self.level_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.jpg';
             } else {
-                self.medal_text= {
-                    title: '成長レベル',
-                    desc: 'ファンがGroupyでの総合応援アクションを表現したものです。アイドルを応援すればするほど、レベルアップを達成できます。<br><br>高レベルのファンに特典（無料会員体験など）もご用意していますので、ぜひレベルアップを！',
-                    how: 'レベルアップのヒントは？',
-                    pubMsg: ' 成長レベル'
+                self.meeting_text= {
+                    what: '1V1生配信とは？',
+                    what_desc: '1V1生配信とは、アイドルがオンラインでファンミーティングを開催することができるGroupyの絶賛新機能です。1対1生配信にて、アイドルとファンは1対1ビデオチャットすることができます。',
+                    how: '参加方法',
+                    live: 'チケットを購入  Groupy-【LIVE】画面にアイドルの1V1生配信チケットを購入してください。整理番号順に配信していただきます',
+                    entrance: '選択',
+                    tickets: '購入',
+                    numbers: '番号を<br>入手',
+                    videos: 'アイドルと生配信  配信当日にホームからお早めに入室してお待ちください。順番になると、自動的にアイドル側との接続を行います。配信の終了時間になると、接続が自動的に切断されます。',
+                    coming: '入室<br>する',
+                    waitng: '順番を<br>待つ',
+                    meet: '生配信<br>開始',
+                    banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg'
                 }
-                self.level_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.png';
             }
         }
     }
