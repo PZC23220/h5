@@ -21,7 +21,7 @@
                             <p></p>
                         </li>
                     </div>
-                    <li class="live_li" v-for="(shows,key) in showsList">
+                    <li class="live_li" v-for="(shows,key) in showsList" @click="ticketInfo(shows)">
                         <div class="live_info">
                             <div class="live_number" :class="[{'fir':shows.myTicket.ticketNumber == 0},{'sec':shows.myTicket.ticketNumber == 1},{'thr':shows.myTicket.ticketNumber == 2}]"><span>{{shows.myTicket.ticketNumber}}</span><i>{{liveText.number}}</i></div>
                             <div class="live_dates">
@@ -73,6 +73,13 @@
             'v-scroll': Scroll
         },
         methods: {
+            ticketInfo(val) {
+                console.log(val)
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    // bridge.callHandler('umeng',{'event_key':'rankpage_enter_idol'});
+                    bridge.callHandler('ticketInfo', {'info': val})
+                })
+            },
             formatTime(key,type) {
                 let timer = new Date(key);
                 return timer.Format(type);
