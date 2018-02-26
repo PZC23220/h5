@@ -34,7 +34,7 @@
                             <p class="live_tips">{{liveText.tips}}</p>
                         </div>
                         <img class="live_bg" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/bg_1.jpg">
-                        <img class="live_end" :src="liveText.endImg" v-if="isOver(shows.myTicket.endTime)">
+                        <img class="live_end" :src="liveText.endImg" v-if="isOver(shows.meeting.endTime)">
                     </li>
                     <div class="default_page" v-show="showsList.length == 0 && isLoading">
                         <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_noactivity.png" alt="">
