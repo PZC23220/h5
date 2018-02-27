@@ -193,9 +193,10 @@
             },
             refresh (done) {
                 var self = this;
-                http.get('/activities/all',{
+                http.get('/meetings/listOfFans',{
                     params: {
-                        offset: 0
+                        offset: self.offset,
+                        limit: 10
                     }
                 }).then(function(res){
                     self.offset = 0;
