@@ -17,7 +17,7 @@
                     <li v-for="meeting in incomeList.liveMeetingIncomes">
                         <div class="meeting_content">
                             <div class="meeting_tips"><span></span><em>{{income_text.meeting1}}</em><span></span></div>
-                            <div class="meeting_gcoins"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>500</em></div>
+                            <div class="meeting_gcoins"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png"><em>{{meeting.gcoins?meeting.gcoins:0}}</em></div>
                         </div>
                         <p><span class="left maxWidth left_show">&times;{{Number(meeting.count?meeting.count:0).toLocaleString()}}</span></p>
                     </li>
