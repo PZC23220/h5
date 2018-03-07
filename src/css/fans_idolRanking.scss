@@ -95,10 +95,13 @@
             }
         }
         .introduction {
-            margin-top: 18px;
+            margin-top: 8px;
             width: calc(100vw - 202px);
             .fans_imgList {
                 margin-top: 3.3px;
+                display: block;
+                overflow: hidden;
+                text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
             }
             .fans_list {
                 border-top: none;
@@ -195,8 +198,9 @@
                 text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
             }
             .detail {
-                font-size: 12px;
+                font-size: 15px;
                 display: flex;
+                color: #FC4083;
                 span {
                     flex: 1;
                     img {
