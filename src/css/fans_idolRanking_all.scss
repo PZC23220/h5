@@ -120,3 +120,15 @@
         border:1px solid #FC4083;
     }
 }
+.no-ranking {
+    flex: 1;
+    text-align: center;
+    color: #999;
+    line-height: 20px;
+    >img {
+        width: 50px;
+        display: block;
+        margin: 0 auto 5px;
+
+    }
+}

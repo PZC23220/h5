@@ -192,6 +192,7 @@
                 // idx2: 0,
                 idx3: 0,
                 idx4: 0,
+                lang: 'Japanese',
                 idol_text: {
                     me: '推しメン',
                     all: '全体ランキング',
@@ -280,12 +281,13 @@
                     }
                     http.get('/ranking/idolsFromFans',{
                         params: {
-                            filter: 'today'
+                            filter: 'today',
+                            lang: self.lang
                         }
                     }).then(function(res){
-                        let allFansList = [],meFansList = [];
+                        let allFansList = [];
                             if(res.data) {
-                                if(!res.data.rankingList) {
+                                if(res.data.rankingList.length <= 0) {
                                     self.top3None = true;
                                 }else {
                                     self.rakingList = res.data.rankingList;
@@ -322,12 +324,13 @@
                     }
                     http.get('/ranking/idolsFromFans',{
                         params: {
-                            filter: 'week'
+                            filter: 'week',
+                            lang: self.lang
                         }
                     }).then(function(res){
-                        let allFansList3 = [],meFansList3 = [];
+                        let allFansList3 = [];
                             if(res.data) {
-                                if(!res.data.rankingList) {
+                                if(res.data.rankingList <= 0) {
                                     self.top3None3 = true;
                                 }else {
                                     self.rakingList3 = res.data.rankingList;
@@ -364,13 +367,14 @@
                     }
                     http.get('/ranking/idolsFromFans',{
                         params: {
-                            filter: 'month'
+                            filter: 'month',
+                            lang: self.lang
                         }
                     }).then(function(res){
                         console.log(res)
-                        let allFansList4 = [],meFansList4 = [];
+                        let allFansList4 = [];
                             if(res.data) {
-                                if(!res.data.rankingList) {
+                                if(res.data.rankingList <= 0) {
                                     self.top3None4 = true;
                                 }else {
                                     self.rakingList4 = res.data.rankingList;
@@ -586,6 +590,11 @@
                 }
                 this.ranking_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg';
               }
+            if(this.$route.query.type == 'all') {
+                this.lang = '';
+            }else{
+                this.lang = this.$route.query.type;
+            }
             this.getRanking();
             this.getRanking3();
             this.getRanking4();

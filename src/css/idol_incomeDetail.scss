@@ -72,6 +72,9 @@
         width: calc((96.8vw - 24px)/2);
         max-width: 232px;
     }
+    li:not(:nth-child(2n-1)) {
+        margin-left: 3.2vw;
+    }
  }
  .meeting_content {
     background: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/bg_ticket.png) no-repeat center center;
