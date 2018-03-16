@@ -45,7 +45,7 @@ if(Terminal.language == 'zh-cn') {
     indexLanguage.purchaseInstructions = '/purchaseInstructions_japanese';
     indexLanguage.fans_rule = '/fans_rule_japanese';
     indexLanguage.PrivacyPolicy = '/PrivacyPolicy';
-    indexLanguage.livebuy = '/livebuy_chinese';
+    indexLanguage.livebuy = '/livebuy_japanese';
 }
 
 const routes =
