@@ -58,11 +58,11 @@
     }
 }
 .live_imgs {
-    display: flex;
+    overflow: hidden;
     padding: 11px 8px;
     img {
-        flex: 1;
-        height: 213px;
+        float: left;
+        width: 33.33333%;
         box-sizing: border-box;
         padding: 0 8px;
     }
