@@ -192,7 +192,7 @@
                 // idx2: 0,
                 idx3: 0,
                 idx4: 0,
-                lang: 'Japanese',
+                lang: '',
                 idol_text: {
                     me: '推しメン',
                     all: '全体ランキング',
@@ -590,11 +590,11 @@
                 }
                 this.ranking_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg';
               }
-            if(this.$route.query.type == 'all') {
-                this.lang = '';
-            }else{
-                this.lang = this.$route.query.type;
-            }
+            // if(this.$route.query.type == 'all') {
+            //     this.lang = '';
+            // }else{
+            //     this.lang = this.$route.query.type;
+            // }
             this.getRanking();
             this.getRanking3();
             this.getRanking4();
