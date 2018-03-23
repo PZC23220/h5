@@ -68,7 +68,7 @@
                     banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_cn.jpg',
                     img1: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/1.jpg',
                     img2: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/2.jpg',
-                    img3: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/3.jpg',
+                    img3: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/3%20.jpg',
                     img4: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/4.jpg',
                     img5: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/5.jpg',
                     img6: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/6.jpg',
