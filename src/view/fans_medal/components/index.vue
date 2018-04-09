@@ -79,7 +79,7 @@
                 }
             }
         }
-    } 
+    }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -114,7 +114,7 @@
         min-height: 100vh;
     }
     .content {
-        
+
         color: #666;
         // font-weight: 200;
         background: #eee;
@@ -162,7 +162,7 @@
                             width: 58px;
                             height: 16px;
                             line-height: 16px;
-                            background: url(/img/medal/bg_medal.png) no-repeat;
+                            background: url(http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/big_medal/bg_medal.png) no-repeat;
                             background-size: 100% 100%;
                             color: #fff;
                             font-size: 11px;
