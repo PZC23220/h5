@@ -114,7 +114,6 @@
         min-height: 100vh;
     }
     .content {
-
         color: #666;
         // font-weight: 200;
         background: #eee;
