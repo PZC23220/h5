@@ -1,7 +1,7 @@
 <template>
     <div class="main">
        <div class="header" v-if="android">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/nav_icon_arrow_white.png" alt="" @click="close()">
+            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/nav_icon_arrow_white.png" alt="" @click="close()">
             <span>{{medal_text.pubMsg}}</span>
         </div>
         <div class="content" :class="{'ios': android == false}">
@@ -9,7 +9,7 @@
                 <div class="header_banner">
                     <div class="level_bg">
                         <span class="con_left" :class="{'left_show':lvNow||lvNow==0}">Lv {{lvNow?lvNow:'0'}}</span>
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/bg_level.png" alt="">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/bg_level.png" alt="">
                     </div>
                     <p class="score con_left" :class="{'left_show':lvNow||lvNow==0}">{{score?score:'0/0'}}</p>
                     <div class="progress">
@@ -45,7 +45,7 @@
                 style: 'width: calc(320px * 0)',
                 android: false,
                 idx: 0,
-                level_img: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.png'
+                level_img: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.png'
             }
         },
         methods: {
@@ -104,7 +104,7 @@
                     how: '如何可以快速升级？',
                     pubMsg: ' Groupy等级'
                 }
-                self.level_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.jpg';
+                self.level_img = 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.jpg';
             } else {
                 self.medal_text= {
                     title: '成長レベル',
@@ -112,7 +112,7 @@
                     how: 'レベルアップのヒントは？',
                     pubMsg: ' 成長レベル'
                 }
-                self.level_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.png';
+                self.level_img = 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/level/pic_upgrade.png';
             }
         }
     }

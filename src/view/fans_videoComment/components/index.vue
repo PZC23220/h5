@@ -1,13 +1,13 @@
 <template>
     <div class="main">
         <div class="header" style="border-bottom: 1px solid #eee;">
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="close()">
+            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="close()">
             <span>{{video_text.pubMsg}}({{commentList.length}})</span>
         </div>
         <div class="content" ref="viewBox">
             <!-- <scroller ref="my_scroller" class="my-scroller"
               :on-refresh="refresh"
-              :on-infinite="infinite" 
+              :on-infinite="infinite"
               :noDataText="''"> -->
             <v-scroll :on-refresh="refresh" :on-infinite="infinite">
                 <ul class="comment_list dynamic">
@@ -18,7 +18,7 @@
                     <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                         <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                             <div class="userinfo">
-                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -29,7 +29,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -40,7 +40,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -51,7 +51,7 @@
                         </li>
                         <li class="defalt_msg">
                             <div class="userinfo">
-                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
+                                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" alt="" class="avatar">
                                 <span></span>
                                 <i></i>
                             </div>
@@ -66,14 +66,14 @@
                                 <span class="avatar"><img  v-lazy="comment.avatar" alt=""></span>
                                 <span class="name">{{comment.nickname?comment.nickname:'...'}}</span>
                                 <span class="level" style="margin-top: 11px;">Lv.{{comment.levelPlatform}}</span>
-                                <img class="medal_level" style="margin-top: 11px;" :src="'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
+                                <img class="medal_level" style="margin-top: 11px;" :src="'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(comment.medal)+'.png'" v-if="comment.medal&&comment.medal>0" alt="">
                             </div>
                             <div class="comment_content" v-html="TransferString(comment.content)"></div>
                             <div class="comment_reply" v-if="comment.referencePostView"><span>{{comment.referencePostView.nickname}}</span> <p v-html="TransferString(comment.referencePostView.content)"></p></div>
-                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="autoFocus(comment)" v-if="isIdol"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>{{video_text.reply}}</em></span><img @click="report(comment)" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_more.png" class="icon_more" alt=""></div>
+                            <div class="reply"><span v-html="formatTime(comment.createTime)"></span><span @click="autoFocus(comment)" v-if="isIdol"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_comment_blue.png"><em>{{video_text.reply}}</em></span><img @click="report(comment)" src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_more.png" class="icon_more" alt=""></div>
                         </li>
                     <div class="default_page default_page3" v-show="commentList.length == 0 && loadingBig == false">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no comment.png" alt="">
                         <p v-html="video_text.noneComment"></p>
                     </div>
                 </ul>
@@ -81,9 +81,9 @@
             </v-scroll>
         </div>
         <!-- <div class="publich_comment" @click="publishComment()"><img src="/img/timeline_icon_edit.png" alt=""><span>{{msg_text.publish}}</span></div> -->
-        <div class="publich_comment" @click="autoFocus()"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/edit/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
+        <div class="publich_comment" @click="autoFocus()"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/edit/timeline_icon_edit.png" alt=""><span>{{video_text.publish}}</span></div>
         <div class="comment_view" v-show="win_show" @touchmove.prevent>
-            <div class="comment_desc"><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="isClose()"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
+            <div class="comment_desc"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="isClose()"><i>{{video_text.pubMsg}}({{commentList.length}})</i><span @click="publish()">{{video_text.load}}</span></div>
             <div class="reply_comment_content" v-if="reply_comment_content"><span>{{reply_comment_content_fans}}</span>{{reply_comment_content}}</div>
             <textarea :placeholder="video_text.pla" autofocus v-model="comment_text"></textarea>
             <!-- <div class="publish" @click="publish()">发表</div> -->
@@ -174,14 +174,14 @@
                 })
             },
             TransferString(content) {
-                 let string = content;    
-                 try{    
-                    string=string.replace(/\r\n/g,"<br>")    
-                    string=string.replace(/\n/g,"<br>");    
-                 }catch(e) {    
-                    console.log(e.message);    
+                 let string = content;
+                 try{
+                    string=string.replace(/\r\n/g,"<br>")
+                    string=string.replace(/\n/g,"<br>");
+                 }catch(e) {
+                    console.log(e.message);
                  }
-                 return string;    
+                 return string;
             },
             getComments() {
                 let self = this;
@@ -202,7 +202,7 @@
                         if(res.data.length > 0 ) {
                             for(var i=0;i<res.data.length;i++){
                                 self.commentList.push(res.data[i]);
-                            }                    
+                            }
                         }else {
                             self.havedlast = true;
                         }
@@ -211,7 +211,7 @@
                         self.loadingBig = false;
                         self.getComments();
                     });
-                }else {  
+                }else {
                     // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         if(getParams('language') == 'cn') {
@@ -348,7 +348,7 @@
                     self.commentList = res.data;
                     self.reply_comment_content = '';
                     self.reply_comment_content_fans = '';
-                    self.commentId = '';                  
+                    self.commentId = '';
                     console.log(self.commentList);
                 }).catch(function(){
                     self.showLoading2 = false;

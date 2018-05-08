@@ -17,29 +17,29 @@
                         <li>
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_2.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingListToday.length>1?rakingListToday[1].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListToday.length>1?rakingListToday[1].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_2.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingListToday.length>1?rakingListToday[1].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListToday.length>1?rakingListToday[1].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingListToday.length>1?rakingListToday[1].name:false}">{{rakingListToday.length>1?(rakingListToday[1].name?rakingListToday[1].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.length>1?rakingListToday[1].score || rakingListToday[1].score==0:false}">{{Number(rakingListToday.length>1?(rakingListToday[1].score?rakingListToday[1].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.length>1?rakingListToday[1].score || rakingListToday[1].score==0:false}">{{Number(rakingListToday.length>1?(rakingListToday[1].score?rakingListToday[1].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_1.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingListToday.length>0?rakingListToday[0].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListToday.length>0?rakingListToday[0].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_1.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingListToday.length>0?rakingListToday[0].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListToday.length>0?rakingListToday[0].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingListToday.length>0?rakingListToday[0].name:false}">{{rakingListToday.length>0?(rakingListToday[0].name?rakingListToday[0].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.length>0?rakingListToday[0].score || rakingListToday[0].score==0:false}">{{Number(rakingListToday.length>0?(rakingListToday[0].score?rakingListToday[0].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.length>0?rakingListToday[0].score || rakingListToday[0].score==0:false}">{{Number(rakingListToday.length>0?(rakingListToday[0].score?rakingListToday[0].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_3.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingListToday.length>2?rakingListToday[2].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListToday.length>2?rakingListToday[2].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_3.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingListToday.length>2?rakingListToday[2].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListToday.length>2?rakingListToday[2].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingListToday.length>2?rakingListToday[2].name:false}">{{rakingListToday.length>2?(rakingListToday[2].name?rakingListToday[2].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.length>2?rakingListToday[2].score || rakingListToday[2].score==0:false}">{{Number(rakingListToday.length>2?(rakingListToday[2].score?rakingListToday[2].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListToday.length>2?rakingListToday[2].score || rakingListToday[2].score==0:false}">{{Number(rakingListToday.length>2?(rakingListToday[2].score?rakingListToday[2].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">
@@ -48,12 +48,12 @@
                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                             <span>{{idol.name?idol.name:'...'}}</span>
                             <i>
-                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{Number(idol.score?idol.score:'0').toLocaleString()}}
+                                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{Number(idol.score?idol.score:'0').toLocaleString()}}
                             </i>
                         </li>
                     </ul>
                     <div class="default_page" v-show="top3NoneToday">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
                         <p>ただ今集計中です</p>
                     </div>
                 </swiper-slide>
@@ -62,29 +62,29 @@
                         <li>
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_2.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingListWeek.length>1?rakingListWeek[1].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListWeek.length>1?rakingListWeek[1].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_2.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingListWeek.length>1?rakingListWeek[1].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListWeek.length>1?rakingListWeek[1].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingListWeek.length>1?rakingListWeek[1].name:false}">{{rakingListWeek.length>1?(rakingListWeek[1].name?rakingListWeek[1].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListWeek.length>1?rakingListWeek[1].score || rakingListWeek[1].score==0:false}">{{Number(rakingListWeek.length>1?(rakingListWeek[1].score?rakingListWeek[1].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListWeek.length>1?rakingListWeek[1].score || rakingListWeek[1].score==0:false}">{{Number(rakingListWeek.length>1?(rakingListWeek[1].score?rakingListWeek[1].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_1.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingListWeek.length>0?rakingListWeek[0].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListWeek.length>0?rakingListWeek[0].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_1.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingListWeek.length>0?rakingListWeek[0].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListWeek.length>0?rakingListWeek[0].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingListWeek.length>0?rakingListWeek[0].name:false}">{{rakingListWeek.length>0?(rakingListWeek[0].name?rakingListWeek[0].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListWeek.length>0?rakingListWeek[0].score || rakingListWeek[0].score==0:false}">{{Number(rakingListWeek.length>0?(rakingListWeek[0].score?rakingListWeek[0].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListWeek.length>0?rakingListWeek[0].score || rakingListWeek[0].score==0:false}">{{Number(rakingListWeek.length>0?(rakingListWeek[0].score?rakingListWeek[0].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_3.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingListWeek.length>2?rakingListWeek[2].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListWeek.length>2?rakingListWeek[2].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_3.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingListWeek.length>2?rakingListWeek[2].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListWeek.length>2?rakingListWeek[2].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingListWeek.length>2?rakingListWeek[2].name:false}">{{rakingListWeek.length>2?(rakingListWeek[2].name?rakingListWeek[2].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListWeek.length>2?rakingListWeek[2].score || rakingListWeek[2].score==0:false}">{{Number(rakingListWeek.length>2?(rakingListWeek[2].score?rakingListWeek[2].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListWeek.length>2?rakingListWeek[2].score || rakingListWeek[2].score==0:false}">{{Number(rakingListWeek.length>2?(rakingListWeek[2].score?rakingListWeek[2].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">
@@ -93,12 +93,12 @@
                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                             <span>{{idol.name?idol.name:'...'}}</span>
                             <i>
-                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{Number(idol.score?idol.score:'0').toLocaleString()}}
+                                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{Number(idol.score?idol.score:'0').toLocaleString()}}
                             </i>
                         </li>
                     </ul>
                     <div class="default_page" v-show="top3NoneWeek">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
                         <p>ただ今集計中です</p>
                     </div>
                 </swiper-slide>
@@ -107,29 +107,29 @@
                         <li>
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_2.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingListMonth.length>1?rakingListMonth[1].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListMonth.length>1?rakingListMonth[1].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_2.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingListMonth.length>1?rakingListMonth[1].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListMonth.length>1?rakingListMonth[1].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingListMonth.length>1?rakingListMonth[1].name:false}">{{rakingListMonth.length>1?(rakingListMonth[1].name?rakingListMonth[1].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListMonth.length>1?rakingListMonth[1].score || rakingListMonth[1].score==0:false}">{{Number(rakingListMonth.length>1?(rakingListMonth[1].score?rakingListMonth[1].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListMonth.length>1?rakingListMonth[1].score || rakingListMonth[1].score==0:false}">{{Number(rakingListMonth.length>1?(rakingListMonth[1].score?rakingListMonth[1].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_1.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingListMonth.length>0?rakingListMonth[0].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListMonth.length>0?rakingListMonth[0].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_1.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingListMonth.length>0?rakingListMonth[0].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListMonth.length>0?rakingListMonth[0].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingListMonth.length>0?rakingListMonth[0].name:false}">{{rakingListMonth.length>0?(rakingListMonth[0].name?rakingListMonth[0].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListMonth.length>0?rakingListMonth[0].score || rakingListMonth[0].score==0:false}">{{Number(rakingListMonth.length>0?(rakingListMonth[0].score?rakingListMonth[0].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListMonth.length>0?rakingListMonth[0].score || rakingListMonth[0].score==0:false}">{{Number(rakingListMonth.length>0?(rakingListMonth[0].score?rakingListMonth[0].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_3.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingListMonth.length>2?rakingListMonth[2].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListMonth.length>2?rakingListMonth[2].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_3.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingListMonth.length>2?rakingListMonth[2].avatar:false}" class="idol_img con_left"><img v-lazy="rakingListMonth.length>2?rakingListMonth[2].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingListMonth.length>2?rakingListMonth[2].name:false}">{{rakingListMonth.length>2?(rakingListMonth[2].name?rakingListMonth[2].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListMonth.length>2?rakingListMonth[2].score || rakingListMonth[2].score==0:false}">{{Number(rakingListMonth.length>2?(rakingListMonth[2].score?rakingListMonth[2].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingListMonth.length>2?rakingListMonth[2].score || rakingListMonth[2].score==0:false}">{{Number(rakingListMonth.length>2?(rakingListMonth[2].score?rakingListMonth[2].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">
@@ -138,12 +138,12 @@
                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                             <span>{{idol.name?idol.name:'...'}}</span>
                             <i>
-                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{Number(idol.score?idol.score:'0').toLocaleString()}}
+                                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{Number(idol.score?idol.score:'0').toLocaleString()}}
                             </i>
                         </li>
                     </ul>
                     <div class="default_page" v-show="top3NoneMonth">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
                         <p>ただ今集計中です</p>
                     </div>
                 </swiper-slide>
@@ -152,29 +152,29 @@
                         <li>
                              <p class="idol_num" style="color: #A0A0A0;">2</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_2.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingList.length>1?rakingList[1].avatar:false}" class="idol_img con_left"><img v-lazy="rakingList.length>1?rakingList[1].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_2.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingList.length>1?rakingList[1].avatar:false}" class="idol_img con_left"><img v-lazy="rakingList.length>1?rakingList[1].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingList.length>1?rakingList[1].name:false}">{{rakingList.length>1?(rakingList[1].name?rakingList[1].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.length>1?rakingList[1].score || rakingList[1].score==0:false}">{{Number(rakingList.length>1?(rakingList[1].score?rakingList[1].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.length>1?rakingList[1].score || rakingList[1].score==0:false}">{{Number(rakingList.length>1?(rakingList[1].score?rakingList[1].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="font-size: 28px;font-weight: 600;color: #FABC01;">1</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_1.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingList.length>0?rakingList[0].avatar:false}" class="idol_img con_left"><img v-lazy="rakingList.length>0?rakingList[0].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_1.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingList.length>0?rakingList[0].avatar:false}" class="idol_img con_left"><img v-lazy="rakingList.length>0?rakingList[0].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingList.length>0?rakingList[0].name:false}">{{rakingList.length>0?(rakingList[0].name?rakingList[0].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.length>0?rakingList[0].score || rakingList[0].score==0:false}">{{Number(rakingList.length>0?(rakingList[0].score?rakingList[0].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.length>0?rakingList[0].score || rakingList[0].score==0:false}">{{Number(rakingList.length>0?(rakingList[0].score?rakingList[0].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                          <li>
                              <p class="idol_num" style="color: #FA8505;">3</p>
                              <div>
-                                 <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_3.png" alt="" class="crown">
-                                 <span :class="{'left_show':rakingList.length>2?rakingList[2].avatar:false}" class="idol_img con_left"><img v-lazy="rakingList.length>2?rakingList[2].avatar:'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
+                                 <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/bg_3.png" alt="" class="crown">
+                                 <span :class="{'left_show':rakingList.length>2?rakingList[2].avatar:false}" class="idol_img con_left"><img v-lazy="rakingList.length>2?rakingList[2].avatar:'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png'" alt=""></span>
                              </div>
                              <p class="idol_name con_left" :class="{'left_show':rakingList.length>2?rakingList[2].name:false}">{{rakingList.length>2?(rakingList[2].name?rakingList[2].name:'...'):'...'}}</p>
-                             <span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.length>2?rakingList[2].score || rakingList[2].score==0:false}">{{Number(rakingList.length>2?(rakingList[2].score?rakingList[2].score:'0'):'0').toLocaleString()}}</i></span>
+                             <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt=""><i class="con_left" :class="{'left_show':rakingList.length>2?rakingList[2].score || rakingList[2].score==0:false}">{{Number(rakingList.length>2?(rakingList[2].score?rakingList[2].score:'0'):'0').toLocaleString()}}</i></span>
                          </li>
                      </ul>
                      <ul class="comment_list">
@@ -183,12 +183,12 @@
                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
                             <span>{{idol.name?idol.name:'...'}}</span>
                             <i>
-                                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{Number(idol.score?idol.score:'0').toLocaleString()}}
+                                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{Number(idol.score?idol.score:'0').toLocaleString()}}
                             </i>
                         </li>
                     </ul>
                     <div class="default_page" v-show="top3None">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no message.png" alt="">
                         <p>ただ今集計中です</p>
                     </div>
                 </swiper-slide>
@@ -239,7 +239,7 @@
                 rakingListMonthme: [],
                 rakingListMonthmeShow: false,
                 isShow: false,
-                tottleImg: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray_down.png',
+                tottleImg: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/icon_arrow_gray_down.png',
                 tokens: '',
                 // loadingBig: true,
                 top3None: false,
@@ -281,7 +281,7 @@
                             // self.loadingBig = false;
                             if(val == 'all') {
                                 if(!res.data.rankingList) {
-                                  self.top3None = true;   
+                                  self.top3None = true;
                                 }else {
 
                                     self.rakingList = res.data.rankingList;

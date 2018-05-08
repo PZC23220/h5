@@ -7,13 +7,13 @@
             <p class="live_desc">{{meeting_text.what_desc}}</p>
             <h2 class="live_title">{{meeting_text.how}}</h2>
             <span class="live_border_bottom"></span>
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_1.png" class="live_step">
+            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_1.png" class="live_step">
             <p class="live_desc">{{meeting_text.live}}</p>
-            <div class="live_process"><span class="process_tips">{{meeting_text.entrance}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips">{{meeting_text.tickets}}</span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips two" v-html="meeting_text.numbers"></span></div>
+            <div class="live_process"><span class="process_tips">{{meeting_text.entrance}}</span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips">{{meeting_text.tickets}}</span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips two" v-html="meeting_text.numbers"></span></div>
             <div class="live_imgs"><img :src="meeting_text.img1"><img :src="meeting_text.img2"><img :src="meeting_text.img3"></div>
-            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_2.png" class="live_step">
+            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_step_2.png" class="live_step">
             <p class="live_desc">{{meeting_text.videos}}</p>
-            <div class="live_process live_process_blue"><span class="process_tips" :class="{'two': meeting_text.coming != '进入'}" v-html="meeting_text.coming"></span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.waitng != '等候'}" v-html="meeting_text.waitng"></span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.meet != '见面'}" v-html="meeting_text.meet"></span></div>
+            <div class="live_process live_process_blue"><span class="process_tips" :class="{'two': meeting_text.coming != '进入'}" v-html="meeting_text.coming"></span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.waitng != '等候'}" v-html="meeting_text.waitng"></span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/arrow.jpg" class="process_img"><span class="process_tips" :class="{'two': meeting_text.meet != '见面'}" v-html="meeting_text.meet"></span></div>
             <div class="live_imgs"><img  :src="meeting_text.img4"><img  :src="meeting_text.img5"><img  :src="meeting_text.img6"></div>
         </div>
     </div>
@@ -37,13 +37,13 @@
                     coming: '入室<br>する',
                     waitng: '順番を<br>待つ',
                     meet: '生配信<br>開始',
-                    banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg',
-                    img1: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/1.jpg',
-                    img2: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/2.jpg',
-                    img3: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/3.jpg',
-                    img4: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/4.jpg',
-                    img5: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/5.jpg',
-                    img6: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/6.jpg',
+                    banner: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg',
+                    img1: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/1.jpg',
+                    img2: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/2.jpg',
+                    img3: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/3.jpg',
+                    img4: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/4.jpg',
+                    img5: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/5.jpg',
+                    img6: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/6.jpg',
                 },
             }
         },
@@ -65,13 +65,13 @@
                     coming: '进入',
                     waitng: '等候',
                     meet: '见面',
-                    banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_cn.jpg',
-                    img1: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/1.jpg',
-                    img2: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/2.jpg',
-                    img3: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/3%20.jpg',
-                    img4: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/4.jpg',
-                    img5: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/5.jpg',
-                    img6: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/6.jpg',
+                    banner: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_cn.jpg',
+                    img1: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/1.jpg',
+                    img2: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/2.jpg',
+                    img3: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/3%20.jpg',
+                    img4: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/4.jpg',
+                    img5: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/5.jpg',
+                    img6: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/cn/6.jpg',
                 }
             } else {
                 self.meeting_text= {
@@ -86,13 +86,13 @@
                     coming: '入室<br>する',
                     waitng: '順番を<br>待つ',
                     meet: '生配信<br>開始',
-                    banner: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg',
-                    img1: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/1.jpg',
-                    img2: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/2.jpg',
-                    img3: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/3.jpg',
-                    img4: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/4.jpg',
-                    img5: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/5.jpg',
-                    img6: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/6.jpg',
+                    banner: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/pic_jp.jpg',
+                    img1: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/1.jpg',
+                    img2: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/2.jpg',
+                    img3: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/3.jpg',
+                    img4: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/4.jpg',
+                    img5: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/5.jpg',
+                    img6: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/jp/6.jpg',
                 }
             }
         }

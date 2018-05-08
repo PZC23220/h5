@@ -1,7 +1,7 @@
 <template>
     <div class="main">
        <div class="header">
-            <img src="http://h1.groupy.vip/groupy_h5/close/close.png" alt=""  onclick=history.go(-1)>
+            <img src="https://h1.groupy.vip/groupy_h5/close/close.png" alt=""  onclick=history.go(-1)>
             <span>参加アイドル向け利用規約</span>
       </div>
         <div class="content">

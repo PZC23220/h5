@@ -33,11 +33,11 @@
                             <p class="live_startTime">{{liveText.forecast}}<span>{{formatTime(shows.myTicket.startTime,'hh:mm')}}</span>{{liveText.connect}}</p>
                             <p class="live_tips">{{liveText.tips}}</p>
                         </div>
-                        <img class="live_bg" src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/bg_1.jpg">
+                        <img class="live_bg" src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/bg_1.jpg">
                         <img class="live_end" :src="liveText.endImg" v-if="isOver(shows.meeting.endTime)">
                     </li>
                     <div class="default_page" v-show="showsList.length == 0 && isLoading">
-                        <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_noactivity.png" alt="">
+                        <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_noactivity.png" alt="">
                         <p v-html="liveText.none"></p>
                     </div>
                 </ul>
@@ -65,7 +65,7 @@
                 forecast: 'アイドルと',
                 connect: 'に接続予定',
                 tips: '※チケットを購入された方は、お早めに入室してお待ちください。順番が過ぎた場合、チケットは無効となります。',
-                endImg: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_cn.png'
+                endImg: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_cn.png'
             },
           }
         },
@@ -243,7 +243,7 @@
                     forecast: '预计',
                     connect: '开始与爱豆连线',
                     tips: '※请提早进入直播间排队等候，过号则见面券无效',
-                    endImg: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_cn.png'
+                    endImg: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_cn.png'
                 }
             }else {
                 self.liveText = {
@@ -253,7 +253,7 @@
                     forecast: 'アイドルと',
                     connect: 'に接続予定',
                     tips: '※チケットを購入された方は、お早めに入室してお待ちください。順番が過ぎた場合、チケットは無効となります。',
-                    endImg: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_jp.png'
+                    endImg: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/Live/icon_concert_end_jp.png'
                 }
             }
 

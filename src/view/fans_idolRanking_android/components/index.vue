@@ -1,6 +1,10 @@
 <template>
     <div class="main">
         <div class="header">
+             <div class="go_back" v-if="android">
+                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/nav_icon_arrow_black.png" alt="" @click="close()">
+                <span>{{idol_text.pubMsg}}</span>
+            </div>
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">{{idol_text.today}}</a>
                 <a class="tabs" @click="changePages(1)">{{idol_text.week}}</a>
@@ -36,15 +40,15 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" v-if="key == 2" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/pic_ranking_1.png" class="ranking1" v-if="key == 0" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" v-if="key == 2" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/pic_ranking_1.png" class="ranking1" v-if="key == 0" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name" :class="{'none':!idol.organization}">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.organization?'@'+idol.organization:''}}</p>
-                                            <p class="detail" :class="{'none':!idol.organization}"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
+                                            <p class="detail" :class="{'none':!idol.organization}"><span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
                                             <div class="fans_list"  v-for="fans in allFans" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<br><div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
@@ -55,7 +59,7 @@
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None">
-                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
+                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
                     </v-scroll>
@@ -86,15 +90,15 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" v-if="key == 2" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/pic_ranking_1.png" class="ranking1" v-if="key == 0" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" v-if="key == 2" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/pic_ranking_1.png" class="ranking1" v-if="key == 0" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name" :class="{'none':!idol.organization}">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.organization?'@'+idol.organization:''}}</p>
-                                            <p class="detail" :class="{'none':!idol.organization}"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
+                                            <p class="detail" :class="{'none':!idol.organization}"><span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
                                             <div class="fans_list"  v-for="fans in allFans3" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<br><div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
@@ -105,7 +109,7 @@
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None3">
-                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
+                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
                             <!-- </scroller> -->
@@ -137,15 +141,15 @@
                                     <div class="idol_border">
                                         <div class="avatar_content">
                                             <span class="avatar"><img v-lazy="idol.avatar" alt=""></span>
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" v-if="key == 0" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" v-if="key == 1" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" v-if="key == 2" alt="">
-                                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/pic_ranking_1.png" class="ranking1" v-if="key == 0" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_1.png" class="crown" v-if="key == 0" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_2.png" class="crown" v-if="key == 1" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_ranking_3.png" class="crown" v-if="key == 2" alt="">
+                                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/pic_ranking_1.png" class="ranking1" v-if="key == 0" alt="">
                                         </div>
                                         <div class="introduction">
                                             <p class="name" :class="{'none':!idol.organization}">{{idol.name?idol.name:'...'}}</p>
                                             <p class="signature">{{idol.organization?'@'+idol.organization:''}}</p>
-                                            <p class="detail" :class="{'none':!idol.organization}"><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
+                                            <p class="detail" :class="{'none':!idol.organization}"><span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_likes.png" alt=""><em>{{idol.popularity?Number(idol.popularity).toLocaleString():'0'}}</em></span></p>
                                             <div class="fans_list"  v-for="fans in allFans4" v-if="(fans.id == idol.idolId) && (key == 0)">{{idol_text.fans}}<br><div class="fans_imgList"><span v-for="img in fans.topFans"><img v-lazy="img.avatar" alt=""></span></div><div class="no_fans" v-if="fans.topFans.length == 0">{{idol_text.no1}}</div></div>
                                         </div>
                                         <div class="support" @click.stop="support(idol.idolId?idol.idolId:'')">{{idol_text.support}}</div>
@@ -156,7 +160,7 @@
                             </div>
                         </div>
                         <div class="default_page" v-if="top3None4">
-                            <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
+                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20message.png" alt="">
                             <p v-html="idol_text.noneIdol"></p>
                         </div>
                         <div class="top_20"><span class="left"></span>{{idol_text.top20}}<span class="right"></span></div>
@@ -193,6 +197,7 @@
                 idx3: 0,
                 idx4: 0,
                 lang: '',
+                android: false,
                 idol_text: {
                     me: '推しメン',
                     all: '全体ランキング',
@@ -205,9 +210,10 @@
                     week: '今週',
                     month: '今月',
                     alltop: '総合',
-                    top20: '上位20名まで表示'
+                    top20: '上位20名まで表示',
+                    pubMsg: 'ランキング'
                 },
-                ranking_img: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg',
+                ranking_img: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg',
                 swiperOption: {
                   notNextTick: false,
                   // grabCursor : false,
@@ -238,6 +244,11 @@
             'v-scroll': Scroll
         },
         methods: {
+            close() {
+                window.setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('close');
+                });
+            },
             changePages(val) {
                 let tabs = $('.tabs');
                 tabs.removeClass('active');
@@ -557,6 +568,9 @@
         },
         created() {
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
+            if(getParams('platform') == 'android') {
+                this.android = true;
+            }
              if(getParams('language') == 'cn') {
                  this.idol_text= {
                     me: ' 我的守护',
@@ -570,9 +584,10 @@
                     week: '本周',
                     month: '本月',
                     alltop: '总榜',
-                    top20: '月榜只显示前20名'
+                    top20: '月榜只显示前20名',
+                    pubMsg: '排行榜'
                 }
-                this.ranking_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-chn.jpg';
+                this.ranking_img = 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-chn.jpg';
               } else {
                 this.idol_text= {
                     me: '推しメン',
@@ -586,9 +601,10 @@
                     week: '今週',
                     month: '今月',
                     alltop: '総合',
-                    top20: '上位20名まで表示'
+                    top20: '上位20名まで表示',
+                    pubMsg: 'ランキング'
                 }
-                this.ranking_img = 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg';
+                this.ranking_img = 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/banner-jp.jpg';
               }
             // if(this.$route.query.type == 'all') {
             //     this.lang = '';

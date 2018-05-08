@@ -13,8 +13,8 @@ Vue.config.debug = true
 // Vue.http.options.emulateJSON = true;
 Vue.use(VueLazyload, {
         preLoad: 1,
-	    error: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
-	    loading: 'http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
+	    error: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
+	    loading: 'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png',
 	    attempt: 1
 })
 // 3. 创建 router 实例，然后传 `routes` 配置

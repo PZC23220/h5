@@ -1,6 +1,31 @@
     .header {
         border-color: #eee;
         background: #eee;
+        .go_back {
+            font-size: 18px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+            line-height: 43px;
+            background: #fafafa;
+            color: #666;
+            img {
+                position: absolute;
+                left: 12px;
+                width: 22px;
+                padding: 10.5px 5px;
+            }
+            p {
+                float: right;
+                border: 1px solid #FC4083;
+                border-radius: 50px;
+                font-size: 16px;
+                color: #FC4083;
+                width: 72px;
+                height: 32px;
+                line-height: 32px;
+                margin-top: 3px;
+            }
+        }
         // box-shadow: 0 1.5px 1.5px 0 rgba(0,0,0,0.10);
     }
     .content {

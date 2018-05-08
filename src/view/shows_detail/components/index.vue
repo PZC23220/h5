@@ -3,7 +3,7 @@
         <div class="content" :class="{'bottom':applyInfo.id}">
             <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                 <div class="idolInfo eBorder">
-                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar">
+                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_img.png" class="avatar">
                     <p>
                         <span><i class="idol_name">...</i>  {{showstext.pub}}</span>
                         <span>@Groupy</span>
@@ -12,7 +12,7 @@
                 <ul class="shows_detail">
                     <li>
                         <p class="shows_name">@Groupy</p>
-                        <p class="shows_time"><span>--.-- --</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_time.png">{{showstext.start}}--:--/{{showstext.shows}}--:--</span></p>
+                        <p class="shows_time"><span>--.-- --</span><span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_time.png">{{showstext.start}}--:--/{{showstext.shows}}--:--</span></p>
                     </li>
                     <li>
                         <h5 class="li_title">{{showstext.performer}}</h5>
@@ -47,12 +47,12 @@
                     <p>{{applyInfo.firstName}}  {{applyInfo.lastName}}</p>
                     <span><i>{{applyInfo.nums}}</i>{{showstext.nums}} | {{applyInfo.email}}</span>
                 </div>
-                <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/bg_booked_750.png">
+                <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/banner_bg/bg_booked_750.png">
             </div>
             <ul class="shows_detail" v-if="loadingBig == false">
                 <li>
                     <p class="shows_name">{{showsInfo.title}}</p>
-                    <p class="shows_time"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_time.png">{{showstext.start}}{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/{{showstext.shows}}{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
+                    <p class="shows_time"><span>{{showsInfo.startTime?formatTime(showsInfo.startTime,'MM.dd'):'--.--'}} {{showsInfo.startTime?formatDay(showsInfo.startTime):'--'}}</span><span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/icon_time.png">{{showstext.start}}{{showsInfo.startTime?formatTime(showsInfo.startTime,'hh:mm'):'--:--'}}/{{showstext.shows}}{{showsInfo.showTime?formatTime(showsInfo.showTime,'hh:mm'):'--:--'}}</span></p>
                 </li>
                 <li v-if="showsInfo.groups">
                     <h5 class="li_title">{{showstext.performer}}</h5>
@@ -145,51 +145,51 @@
                 // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
                 if(getParams('language') == 'cn') {
                     switch (timer) {
-                        case 0 :  
-                                str = "周日";  
-                                break;  
-                        case 1 :  
-                                str = "周一";  
-                                break;  
-                        case 2 :  
-                                str = "周二";  
-                                break;  
-                        case 3 :  
-                                str = "周三";  
-                                break;  
-                        case 4 :  
-                                str = "周四";  
-                                break;  
-                        case 5 :  
-                                str = "周五";  
-                                break;  
-                        case 6 :  
-                                str = "周六";  
-                                break;  
+                        case 0 :
+                                str = "周日";
+                                break;
+                        case 1 :
+                                str = "周一";
+                                break;
+                        case 2 :
+                                str = "周二";
+                                break;
+                        case 3 :
+                                str = "周三";
+                                break;
+                        case 4 :
+                                str = "周四";
+                                break;
+                        case 5 :
+                                str = "周五";
+                                break;
+                        case 6 :
+                                str = "周六";
+                                break;
                     }
                 }else {
                     switch (timer) {
-                        case 0 :  
-                                str = "日";  
-                                break;  
-                        case 1 :  
-                                str = "月";  
-                                break;  
-                        case 2 :  
-                                str = "火";  
-                                break;  
-                        case 3 :  
-                                str = "水";  
-                                break;  
-                        case 4 :  
-                                str = "木";  
-                                break;  
-                        case 5 :  
-                                str = "金";  
-                                break;  
-                        case 6 :  
-                                str = "土";  
-                                break;  
+                        case 0 :
+                                str = "日";
+                                break;
+                        case 1 :
+                                str = "月";
+                                break;
+                        case 2 :
+                                str = "火";
+                                break;
+                        case 3 :
+                                str = "水";
+                                break;
+                        case 4 :
+                                str = "木";
+                                break;
+                        case 5 :
+                                str = "金";
+                                break;
+                        case 6 :
+                                str = "土";
+                                break;
                     }
                 }
                 return  str;

@@ -34,7 +34,7 @@
                     <p class="idol_money" @click.stop="idol.idol_id?support(idol):false">{{showstext.support}}</p>
                 </li>
                 <div class="default_page" v-show="idolList.length == 0 && isLoading">
-                    <img src="http://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_join.png" alt="">
+                    <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_join.png" alt="">
                     <p v-html="showstext.none"></p>
                 </div>
             </ul>
