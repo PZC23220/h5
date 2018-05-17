@@ -229,8 +229,10 @@
             }else {
               self.scrollData.noFlag = true;
             }
-            this.$el.querySelector('.load-more').style.display = 'none';
-            done();
+            setTimeout(function(){
+                self.$el.querySelector('.load-more').style.display = 'none';
+                done();
+            },2500)
           }
         },
         mounted() {

@@ -379,8 +379,10 @@
             }else {
               self.scrollData.noFlag = true;
             }
-            $('.load-more').css('display','none');
-            done();
+            setTimeout(function(){
+                $('.load-more').css('display','none');
+                done();
+            },2500)
         },
         refresh2 (done) {
             var self = this;
@@ -418,8 +420,10 @@
             }else {
                 self.scrollData2.noFlag = true;
             }
-            $('.load-more').css('display','none');
-            done();
+            setTimeout(function(){
+                $('.load-more').css('display','none');
+                done();
+            },2500)
         },
         },
         computed: {
