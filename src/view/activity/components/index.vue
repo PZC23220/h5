@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="content">
-            <v-scroll :on-refresh="refresh" :on-infinite="infinite">
+            <v-scroll :on-refresh="refresh" :on-infinite="infinite" :dataList="scrollData">
                 <ul class="idol_activity">
                     <div class="page_defalt" :class="{'active': isLoading}">
                         <li class="activity_li">
@@ -145,6 +145,9 @@
                 purpose: '対象',
                 none: 'まだイベントがありません'
             },
+            scrollData:{
+              noFlag: false //暂无更多数据显示
+            },
           }
         },
         components: {
@@ -222,6 +225,8 @@
                             self.havedlast = false;
                         }else {
                             self.havedlast = true;
+                            self.scrollData.noFlag = true;
+                            self.$el.querySelector('.load-more').style.display = 'none';
                         }
                     }).catch(function(err){
                         self.idx++;
@@ -258,23 +263,16 @@
                 var self = this;
                 if(self.showsList.length>0) {
                    if (self.havedlast) {
-                      setTimeout(() => {
-                        done(true)
-                      }, 500)
-                      return;
+                      self.scrollData.noFlag = true;
                     } else {
-                        setTimeout(() => {
-                          self.offset += 10;
-                          self.getInfo();
-                          done()
-                        }, 500)
+                      self.offset += 10;
+                      self.getInfo();
                     }
                 }else {
-                  setTimeout(() => {
-                    done(true)
-                  }, 1500)
-                  return;
+                 self.scrollData.noFlag = true;
                 }
+                this.$el.querySelector('.load-more').style.display = 'none';
+                done();
             }
         },
         created() {

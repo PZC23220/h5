@@ -5,7 +5,7 @@
               :on-refresh="refresh"
               :on-infinite="infinite"
               :noDataText="noDataText"> -->
-              <v-scroll :on-refresh="refresh" :on-infinite="infinite">
+              <v-scroll :on-refresh="refresh" :on-infinite="infinite" :dataList="scrollData">
                 <ul class="comment_list dynamic">
                     <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                         <li class="defalt_msg" :class="{'firstLi':loadingBig}">
@@ -118,7 +118,10 @@
                     reply: 'リプライ'
 
                 },
-                noDataText: '全て表示されました'
+                noDataText: '全て表示されました',
+                scrollData:{
+                  noFlag: false //暂无更多数据显示
+                },
             }
         },
         components : {
@@ -158,6 +161,8 @@
                         self.havedlast = false;
                     }else {
                         self.havedlast = true;
+                        self.scrollData.noFlag = true;
+                        self.$el.querySelector('.load-more').style.display = 'none';
                     }
                     // console.log(self.commentList);
                 }).catch(function(){
@@ -216,23 +221,16 @@
             var self = this;
             if(self.commentList.length>0) {
                if (self.havedlast) {
-                  setTimeout(() => {
-                    done(true)
-                  }, 500)
-                  return;
+                  self.scrollData.noFlag = true;
                 } else {
-                    setTimeout(() => {
                       self.start = self.start + self.num;
                       self.getComments();
-                      done()
-                    }, 500)
                 }
             }else {
-              setTimeout(() => {
-                done(true)
-              }, 1500)
-              return;
+              self.scrollData.noFlag = true;
             }
+            this.$el.querySelector('.load-more').style.display = 'none';
+            done();
           }
         },
         mounted() {

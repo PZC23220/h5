@@ -15,7 +15,7 @@
         <div class="content">
             <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                 <swiper-slide class="swiper-no-swiping" id="swiper1">
-                    <v-scroll :on-refresh="refresh" :on-infinite="infinite">
+                    <v-scroll :on-refresh="refresh" :on-infinite="infinite" :dataList="scrollData">
                         <div class="idol_all" v-if="top3None ==false">
                             <div class="page_none" :class="{'fans_none': rakingList.length>0}">
                                 <div class="idol_detail">
@@ -65,7 +65,7 @@
                     </v-scroll>
                 </swiper-slide>
                 <swiper-slide class="swiper-no-swiping" id="swiper3">
-                    <v-scroll :on-refresh="refresh3" :on-infinite="infinite3">
+                    <v-scroll :on-refresh="refresh3" :on-infinite="infinite3" :dataList="scrollData3">
                         <div class="idol_all" v-if="top3None3 ==false">
                             <div class="page_none" :class="{'fans_none': rakingList3.length>0}">
                                 <div class="idol_detail">
@@ -116,7 +116,7 @@
                     </v-scroll>
                 </swiper-slide>
                 <swiper-slide class="swiper-no-swiping" id="swiper4">
-                    <v-scroll :on-refresh="refresh4">
+                    <v-scroll :on-refresh="refresh4" :dataList="scrollData4">
                         <div class="idol_all" v-if="top3None4 ==false">
                             <div class="page_none" :class="{'fans_none': rakingList4.length>0}">
                                 <div class="idol_detail">
@@ -237,7 +237,16 @@
                 // allFans2: [],
                 allFans3: [],
                 allFans4: [],
-                android: false
+                android: false,
+                scrollData:{
+                  noFlag: false //暂无更多数据显示
+                },
+                scrollData4:{
+                  noFlag: false //暂无更多数据显示
+                },
+                scrollData3:{
+                  noFlag: false //暂无更多数据显示
+                }
             }
         },
         components: {
@@ -464,64 +473,43 @@
                 var self = this;
                 if(self.rakingList) {
                    if (self.rakingList.length < self.len) {
-                      setTimeout(() => {
-                        done(true)
-                      }, 500)
-                      return;
+                      self.scrollData.noFlag = true;
                     } else {
-                        setTimeout(() => {
-                          self.len += 20;
-                          done()
-                        }, 500)
+                      self.len += 20;
                     }
                 }else {
-                  setTimeout(() => {
-                    done(true)
-                  }, 500)
-                  return;
+                  self.scrollData.noFlag = true;
                 }
+                this.$el.querySelector('.load-more').style.display = 'none';
+                done();
             },
             infinite3 (done) {
                 var self = this;
                 if(self.rakingList3) {
                    if (self.rakingList3.length < self.len3) {
-                      setTimeout(() => {
-                        done(true)
-                      }, 500)
-                      return;
+                      self.scrollData3.noFlag = true;
                     } else {
-                        setTimeout(() => {
-                          self.len3 += 20;
-                          done()
-                        }, 500)
+                      self.len3 += 20;
                     }
                 }else {
-                  setTimeout(() => {
-                    done(true)
-                  }, 500)
-                  return;
+                  self.scrollData3.noFlag = true;
                 }
+                this.$el.querySelector('.load-more').style.display = 'none';
+                done();
             },
             infinite4 (done) {
                 var self = this;
                 if(self.rakingList4) {
                    if (self.rakingList4.length < self.len4) {
-                      setTimeout(() => {
-                        done(true)
-                      }, 500)
-                      return;
+                     self.scrollData4.noFlag = true;
                     } else {
-                        setTimeout(() => {
-                          self.len4 += 20;
-                          done()
-                        }, 500)
+                      self.len4 += 20;
                     }
                 }else {
-                  setTimeout(() => {
-                    done(true)
-                  }, 500)
-                  return;
+                  self.scrollData4.noFlag = true;
                 }
+                this.$el.querySelector('.load-more').style.display = 'none';
+                done();
             },
             support(val) {
                 console.log('support');

@@ -1,10 +1,10 @@
 <template>
     <div class="main">
         <div class="header" style="border-bottom: 1px solid #eee;">
-        <div class="go_back" v-if="android">
+        <!-- <div class="go_back" v-if="android">
             <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/arrow/nav_icon_arrow_black.png" alt="" @click="close()">
             <span>{{fans_text.pubMsg}}</span>
-        </div>
+        </div> -->
             <div class="detailPages">
                 <a class="tabs active" @click="changePages(0)">{{fans_text.Gcoin}}</a>
                 <a class="tabs" @click="changePages(1)">{{fans_text.like}}</a>
@@ -15,13 +15,9 @@
             <swiper :options="swiperOption" ref="mySwiper" class="banner_container">
                 <!-- slides -->
                 <swiper-slide id="swiper1">
-                    <!-- <scroller ref="my_scroller" class="my-scroller"
-                          :on-refresh="refresh"
-                          :on-infinite="infinite"
-                          :noDataText="rakingList.length == 0 ? '':'全て表示されました'"> -->
-                    <v-scroll :on-refresh="refresh" :on-infinite="infinite">
-                         <ul class="comment_list" v-if="default1==false">
-                            <h3 class="ranking_type"  :class="{'left_hide':!meObj.position}">{{fans_text.me}}</h3>
+                    <v-scroll :on-refresh="refresh" :on-infinite="infinite" :dataList="scrollData">
+                         <ul class="comment_list">
+                           <!--  <h3 class="ranking_type"  :class="{'left_hide':!meObj.position}">{{fans_text.me}}</h3>
                             <li class="con_left" :class="{'left_show':meObj.position}" v-if="meObj.position">
                                 <span v-if="!meObj.position">0</span>
                                 <span v-if="meObj.position==1"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
@@ -32,15 +28,13 @@
                                 <div class="fans_content">
                                     <span>
                                         <em>{{meObj.userFans?(meObj.userFans.nickname?meObj.userFans.nickname:'...'):'...'}}</em>
-                                        <!-- <img :src="meObj.userFans?('/static/images/icon_level_'+ (meObj.userFans.levelPlatform) +'.png'): '/static/images/icon_level_0.png'" onerror="this.src='https://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{meObj.userFans?(meObj.userFans.levelPlatform?meObj.userFans.levelPlatform:0):0}}</span>
                                         <img class="medal_level" :src="'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(meObj.userFans.medal)+'.png'" v-if="meObj.userFans?(meObj.userFans.medal&&meObj.userFans.medal>0):false" alt="">
                                     </span>
                                     <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">{{meObj.expendGprice?Number(meObj.expendGprice).toLocaleString(): 0}}</span>
                                 </div>
-                                <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
-                            <h3 class="ranking_type">{{fans_text.all}}</h3>
+                            <h3 class="ranking_type">{{fans_text.all}}</h3>-->
                             <div class="con_left" :class="{'left_hide':rakingList.length>0}">
                                 <li>
                                     <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
@@ -91,7 +85,7 @@
                                     </div>
                                 </li>
                             </div>
-                            <li v-for="(idol,key) in rakingList" v-if="key < len">
+                            <li v-for="(idol,key) in rakingList">
                                 <span v-if="key==0"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
                                 <span v-if="key==1"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="key==2"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
@@ -100,44 +94,22 @@
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.userFans?idol.userFans.nickname:'...'}}</em>
-                                        <!-- <img :src="idol.userFans?('/static/images/icon_level_'+ (idol.userFans.levelPlatform+1) +'.png'): 'https://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='https://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{idol.userFans?(idol.userFans.levelPlatform?idol.userFans.levelPlatform:0):0}}</span>
                                         <img class="medal_level" :src="'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(idol.userFans.medal)+'.png'" v-if="idol.userFans?(idol.userFans.medal&&idol.userFans.medal>0):false" alt="">
                                     </span>
                                     <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_coins.png" alt="">{{idol.expendGprice?Number(idol.expendGprice).toLocaleString(): 0}}</span>
                                 </div>
-                                <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                         </ul>
-                        <div class="default_page default_page3"  v-if="default1">
+                        <div class="default_page default_page3" v-show="rakingList.length == 0 && idx!=0">
                             <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no coin.png" alt="">
                             <p v-html="fans_text.noneGcoin"></p>
                         </div>
-                    <!-- </scroller> -->
                     </v-scroll>
                 </swiper-slide>
                 <swiper-slide id="swiper2">
-                    <!-- <scroller ref="my_scroller" class="my-scroller"
-                          :on-refresh="refresh2"
-                          :on-infinite="infinite2"
-                          :noDataText="rankingHeat.length == 0 ? '':'全て表示されました'"> -->
-                    <v-scroll :on-refresh="refresh2" :on-infinite="infinite2">
-                        <ul class="comment_list" v-if="default2==false">
-                            <h3 class="ranking_type" v-if="meHeatObj.position">{{fans_text.me}}</h3>
-                            <li class="con_left" :class="{'left_show':meHeatObj.position}" v-if="meHeatObj.position">
-                                <span v-if="!meHeatObj.position">0</span>
-                                <span v-if="meHeatObj.position==1"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
-                                <span v-if="meHeatObj.position==2"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
-                                <span v-if="meHeatObj.position==3"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
-                                <span v-if="meObj.position>3" :class="[{'second':meHeatObj.position>9},{'three':meHeatObj.position>99}]">{{meObj.position?meObj.position:'-'}}</span>
-                                <span class="avatar" v-if="meHeatObj.userFans"><img v-lazy="meHeatObj.userFans.avatar" alt=""></span>
-                                <div class="fans_content">
-                                    <span><em>{{meHeatObj.userFans?meHeatObj.userFans.nickname:'...'}}</em><span class="level">Lv.{{meObj.userFans?(meObj.userFans.levelPlatform?meObj.userFans.levelPlatform:0):0}}</span></span>
-                                    <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{meHeatObj.totalNums?Number(meHeatObj.totalNums).toLocaleString(): 0}}</span>
-                                </div>
-                                <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
-                            </li>
-                            <h3 class="ranking_type">{{fans_text.all}}</h3>
+                    <v-scroll :on-refresh="refresh2" :on-infinite="infinite2" :dataList="scrollData2">
+                        <ul class="comment_list">
                             <div class="con_left" :class="{'left_hide':rankingHeat.length>0}">
                                 <li>
                                     <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
@@ -164,7 +136,7 @@
                                     </div>
                                 </li>
                             </div>
-                            <li v-for="(idol,key) in rankingHeat" v-if="key < len2">
+                            <li v-for="(idol,key) in rankingHeat">
                                 <span v-if="key==0"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_1.png" alt=""></span>
                                 <span v-if="key==1"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_2.png" alt=""></span>
                                 <span v-if="key==2"><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/crown_metal/icon_metal_3.png" alt=""></span>
@@ -173,17 +145,15 @@
                                 <div class="fans_content">
                                     <span>
                                         <em>{{idol.userFans?idol.userFans.nickname:'...'}}</em>
-                                        <!-- <img :src="idol.userFans?('/static/images/icon_level_'+ (idol.userFans.levelPlatform) +'.png'): 'https://h5.groupy.vip/static/images/icon_level_0.png'" onerror="this.src='https://h5.groupy.vip/static/images/icon_level_0.png'" class="level" alt=""> -->
                                         <span class="level">Lv.{{idol.userFans?(idol.userFans.levelPlatform?idol.userFans.levelPlatform:0):0}}</span>
                                         <img class="medal_level" :src="'https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/medal/icon_medal_'+(idol.userFans.medal)+'.png'" v-if="idol.userFans?(idol.userFans.medal&&idol.userFans.medal>0):false" alt="">
                                     </span>
                                     <span><img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/icon/timeline_icon_likes.png" alt="">{{idol.totalNums?Number(idol.totalNums).toLocaleString(): 0}}</span>
                                 </div>
-                                <!-- <i class="fans_medal"><img src="" alt="" class="avatar"><img src="" alt="" class="medal"></i> -->
                             </li>
                         </ul>
-                        <div class="default_page default_page3"  v-if="default2">
-                            <img src="/img/default_no like.png" alt="">
+                        <div class="default_page default_page3" v-show="rankingHeat.length == 0 && idx2!=0">
+                            <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/default_img/default_no%20like.png" alt="">
                             <p v-html="fans_text.noneLike"></p>
                         </div>
                     <!-- </scroller> -->
@@ -204,7 +174,6 @@
     import Scroll from '../../../components/scroll.vue';
     import $ from 'n-zepto';
     import http from '@api/js/http.js';
-    require('@api/js/common.js')
     export default {
         data() {
             return {
@@ -229,11 +198,17 @@
                 meHeatObj: {},
                 meObj: {},
                 loadingBig: false,
+                start: 0,
+                num: 20,
+                start2: 0,
+                num2: 20,
                 len: 20,
                 len2: 20,
                 default1: false,
                 default2: false,
                 android: false,
+                havedlast: false,
+                havedlast2: false,
                 idx: 0,
                 idx2: 0,
                 fans_text: {
@@ -245,6 +220,12 @@
                     noneLike: 'まだLikeはないようです',
                     pubMsg: '応援ランキング'
                 },
+                scrollData:{
+                  noFlag: false //暂无更多数据显示
+                },
+                scrollData2:{
+                  noFlag: false //暂无更多数据显示
+                }
             }
         },
         components: {
@@ -267,97 +248,85 @@
               let timer = new Date(key*1000);
               return timer.Format('MM.dd')+ '&nbsp;&nbsp;&nbsp;&nbsp;' + timer.Format('hh:mm')
           },
-          getRanking(token) {
+        getRanking(token) {
             let self = this;
             if(self.idx < 2) {
-                self.idx++;
-                let token_ = getParams('token');
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else if(token_!='(null)' && token_!='') {
-                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
-                }
+                // let token_ = getParams('token');
+                // if(token) {
+                //     http.defaults.headers.common['Authorization'] = 'Token '+token;
+                // }else if(token_!='(null)' && token_!='') {
+                //     http.defaults.headers.common['Authorization'] = 'Token ' + token_;
+                // }
                 http.get('/statistic/gb',{
                     params: {
-                        idolId: getParams('idolId')
+                        idolId: getParams('idolId'),
+                        start: self.start,
+                        limit: 20
                     }
                 }).then(function(res){
+                    self.idx++;
                     if(res.status == 200) {
-                        self.loadingBig = true;
                         if(res.data.fansList.length > 0) {
-                            self.default1 = false;
-                            self.rakingList = res.data.fansList;
-                            for(var i=0;i<self.rakingList.length;i++) {
-                                // console.log(self.rakingList[i].fansId == 160)
-                                if(self.rakingList[i].fansId == getParams('fansId')) {
-                                    self.meObj = self.rakingList[i];
-                                    self.meObj.position = (i+1);
-                                    console.log(self.rakingList)
-                                    return;
-                                }
+                            for(var i=0;i<res.data.fansList.length;i++){
+                                self.rakingList.push(res.data.fansList[i]);
                             }
+                            self.havedlast = false;
                         }else {
-                            self.default1 = true;
+                            self.havedlast = true;
+                            self.scrollData.noFlag = true;
+                            $('.load-more').css('display','none');
                         }
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                                self.getRanking(responseData.token);
+                                self.getRanking();
                             })
                         })
                     }
                 }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getRanking(responseData.token);
+                            self.getRanking();
                         })
                     })
                 });
 
             }
-          },
-          getRankingHeat(token) {
+        },
+        getRankingHeat(token) {
             let self = this;
             if(self.idx2 < 2) {
-                self.idx2++
-                let token_ = getParams('token');
-                if(token) {
-                    http.defaults.headers.common['Authorization'] = 'Token '+token;
-                }else if(token_!='(null)' && token_!='') {
-                    http.defaults.headers.common['Authorization'] = 'Token ' + token_;
-                }
                 http.get('/statistic/heat',{
                     params: {
-                        idolId: getParams('idolId')
+                        idolId: getParams('idolId'),
+                        start: self.start2,
+                        limit: 20
                     }
                 }).then(function(res){
+                    self.idx2++
                     if(res.status == 200) {
                         if(res.data.fansList.length > 0) {
-                            self.default2 = false;
-                            self.rankingHeat = res.data.fansList;
-                            for(var i=0;i<self.rankingHeat.length;i++) {
-                                if(self.rankingHeat[i].fansId == getParams('fansId')) {
-                                    self.meHeatObj = self.rankingHeat[i];
-                                    self.meHeatObj.position = (i+1);
-                                    console.log(self.rankingHeat)
-                                    console.log(self.meHeatObj)
-                                    return;
-                                }
+                            for(var i=0;i<res.data.fansList.length;i++){
+                                self.rankingHeat.push(res.data.fansList[i]);
                             }
+                            self.havedlast2 = false;
                         }else {
-                            self.default2 = true;
+                            self.havedlast2 = true;
+                            // self.infinite2();
+                            self.scrollData2.noFlag = true;
+                            $('.load-more').css('display','none');
                         }
                     }else {
                         window.setupWebViewJavascriptBridge(function(bridge) {
                             bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                                self.getRankingHeat(responseData.token);
+                                self.getRankingHeat();
                             })
                         })
                     }
                 }).catch(function(err){
                     window.setupWebViewJavascriptBridge(function(bridge) {
                         bridge.callHandler('getToken', {'targetType':'0','targetId':'0'}, function responseCallback(responseData) {
-                            self.getRankingHeat(responseData.token);
+                            self.getRankingHeat();
                         })
                     })
                 });
@@ -371,53 +340,87 @@
                      }
                 })
             }
-          },
-          refresh (done) {
+        },
+        refresh (done) {
             var self = this;
+            self.idx = 0;
+            http.get('/statistic/gb',{
+                params: {
+                    idolId: getParams('idolId'),
+                    start: 0,
+                    limit: 20
+                }
+            }).then(function(res){
+                self.start = 0;
+                self.default1 = false;
+                self.havedlast = false;
+                if(res.status == 200) {
+                    if(res.data.fansList.length > 0) {
+                        self.rakingList = res.data.fansList;
+                    }
+                }
+            })
             setTimeout(() => {
-              self.idx = 0;
-              self.getRanking();
-              done()
-            }, 1500)
-          },
-
-          infinite (done) {
+                done(true);
+                // console.log(document.querySelector('._v-content'));
+                // document.querySelector('._v-content').style.transform = 'translate3d(0px, 0px, 0px) scale(1) !important';
+            }, 500)
+        },
+        infinite (done) {
             var self = this;
-           if (self.rakingList.length < self.len) {
-              setTimeout(() => {
-                done(true)
-              }, 1500)
-              return;
-            } else {
-                setTimeout(() => {
-                  self.len += 20;
-                  done()
-                }, 1500)
+            self.idx = 0;
+            if(self.rakingList.length>0) {
+               if (self.havedlast) {
+                 self.scrollData.noFlag = true;
+                } else {
+                  self.start = self.start + 20;
+                  self.getRanking();
+                }
+            }else {
+              self.scrollData.noFlag = true;
             }
-          },
-          refresh2 (done) {
+            $('.load-more').css('display','none');
+            done();
+        },
+        refresh2 (done) {
             var self = this;
+            self.idx2 = 0;
+            http.get('/statistic/heat',{
+                params: {
+                    idolId: getParams('idolId'),
+                    start: 0,
+                    limit: 20
+                }
+            }).then(function(res){
+                self.start2 = 0;
+                self.default2 = false;
+                self.havedlast2 = false;
+                if(res.status == 200) {
+                    if(res.data.fansList.length > 0) {
+                        self.rankingHeat = res.data.fansList;
+                    }
+                }
+            })
             setTimeout(() => {
-              self.idx2 = 0;
-              self.getRankingHeat();
-              done()
-            }, 1500)
-          },
-
-          infinite2 (done) {
+                done(true);
+            }, 500)
+        },
+        infinite2 (done) {
             var self = this;
-           if (self.rankingHeat.length < self.len2) {
-              setTimeout(() => {
-                done(true)
-              }, 1500)
-              return;
-            } else {
-                setTimeout(() => {
-                  self.len2 += 20;
-                  done()
-                }, 1500)
+            self.idx2 = 0;
+            if(self.rankingHeat.length>0) {
+               if (self.havedlast2) {
+                    self.scrollData2.noFlag = true;
+                } else {
+                    self.start2 = self.start2 + 20;
+                    self.getRankingHeat();
+                }
+            }else {
+                self.scrollData2.noFlag = true;
             }
-          }
+            $('.load-more').css('display','none');
+            done();
+        },
         },
         computed: {
             swiper() {
@@ -426,9 +429,9 @@
         },
         created() {
             var self = this;
-            if(getParams('platform') == 'android') {
-                self.android = true;
-            }
+            // if(getParams('platform') == 'android') {
+            //     self.android = true;
+            // }
             // let _lan = (navigator.browserLanguage || navigator.language).toLowerCase();
              if(getParams('language') == 'cn') {
                  self.fans_text= {

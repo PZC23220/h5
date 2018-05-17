@@ -1,20 +1,12 @@
 <template>
     <div class="main">
-        <div class="header" style="border-bottom: 1px solid #eee;">
+       <!--  <div class="header" style="border-bottom: 1px solid #eee;">
             <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="close()">
             <span>{{video_text.pubMsg}}({{commentList.length}})</span>
-        </div>
+        </div> -->
         <div class="content" ref="viewBox">
-            <!-- <scroller ref="my_scroller" class="my-scroller"
-              :on-refresh="refresh"
-              :on-infinite="infinite"
-              :noDataText="''"> -->
-            <v-scroll :on-refresh="refresh" :on-infinite="infinite">
+            <v-scroll :on-refresh="refresh" :on-infinite="infinite" :dataList="scrollData">
                 <ul class="comment_list dynamic">
-                    <!-- <div class="loading_top" :class="{'loading_top_show': showLoading2}">
-                        <p>{{msg_text.load}}</p>
-                        <span></span>
-                    </div> -->
                     <div class="page_defalt" :class="{'page_defalt_none': loadingBig ==false}">
                         <li class="defalt_msg" :class="{'firstLi':loadingBig}">
                             <div class="userinfo">
@@ -131,7 +123,10 @@
                 reply_content: '',
                 reply_comment_content: '',
                 reply_comment_content_fans: '',
-                commentId: ''
+                commentId: '',
+                scrollData:{
+                  noFlag: false //暂无更多数据显示
+                },
             }
         },
         components: {
@@ -198,16 +193,17 @@
                     }).then(function(res){
                         self.loadingBig = false;
                         self.showLoading = false;
-                        console.log(res.data);
                         if(res.data.length > 0 ) {
                             for(var i=0;i<res.data.length;i++){
                                 self.commentList.push(res.data[i]);
                             }
+                            self.havedlast2 = false;
                         }else {
                             self.havedlast = true;
+                            self.scrollData.noFlag = true;
+                            self.$el.querySelector('.load-more').style.display = 'none';
                         }
-                        console.log(self.commentList);
-                    }).catch(function(){
+                    }).catch(function(err){
                         self.loadingBig = false;
                         self.getComments();
                     });
@@ -362,23 +358,16 @@
             self.idx = 0;
             if(self.commentList.length>0) {
                if (self.havedlast) {
-                  setTimeout(() => {
-                    done(true)
-                  }, 500)
-                  return;
+                  self.scrollData.noFlag = true;
                 } else {
-                    setTimeout(() => {
-                      self.start = self.start + self.num;
-                      self.getComments();
-                      done()
-                    }, 500)
+                  self.start = self.start + self.num;
+                  self.getComments();
                 }
             }else {
-              setTimeout(() => {
-                done(true)
-              }, 1500)
-              return;
+              self.scrollData.noFlag = true;
             }
+            this.$el.querySelector('.load-more').style.display = 'none';
+            done();
           }
         },
         mounted() {
@@ -390,9 +379,6 @@
           });
           window.setupWebViewJavascriptBridge(function(bridge) {
                 bridge.registerHandler('keyboard_status_changed', function(data) {
-                    // self.autoHeight='bottom:'+(data.height)+ 'px;transition: all '+ data.duration +'s;';
-                    // self.autoHarder='top:'+(data.height)+ 'px;transition: all '+ data.duration +'s;';
-                    // self.autoContent='top:'+(data.height+66)+ 'px;height:calc(100vh - '+(data.height+66)+'px);transition: all '+ data.duration +'s;';
                 })
             });
           window.setupWebViewJavascriptBridge(function(bridge) {
@@ -435,7 +421,6 @@
                 }
               }
             self.getComments();
-
         }
     }
 </script>
