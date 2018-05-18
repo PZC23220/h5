@@ -1,9 +1,9 @@
 <template>
     <div class="main">
-       <!--  <div class="header" style="border-bottom: 1px solid #eee;">
+        <div class="header" style="border-bottom: 1px solid #eee;">
             <img src="https://photoh5-jp.oss-ap-northeast-1.aliyuncs.com/h5_groupy/close/close.png" alt="" @click="close()">
             <span>{{video_text.pubMsg}}({{commentList.length}})</span>
-        </div> -->
+        </div>
         <div class="content" ref="viewBox">
             <v-scroll :on-refresh="refresh" :on-infinite="infinite" :dataList="scrollData">
                 <ul class="comment_list dynamic">
