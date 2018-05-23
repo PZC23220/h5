@@ -5,8 +5,8 @@
                 <video-player  ref="videoPlayer" :options="playerOptions"></video-player>
             </div> -->
             <div class="video_content">
-                <video :src="videoSrc"
-                :poster="videoPoster"
+                <video :src="TransferSrc(videoSrc)"
+                :poster="TransferSrc(videoPoster)"
                 loop
                 @click="videoPaused()"
                 :muted="dMuted"
@@ -443,6 +443,16 @@
                  try{
                     string=string.replace(/\r\n/g,"<br>")
                     string=string.replace(/\n/g,"<br>");
+                 }catch(e) {
+                    console.log(e.message);
+                 }
+                 return string;
+            },
+            TransferSrc(content) {
+                 let string = content;
+                 try{
+                    string=string.replace(/http:\/\/videodebug.groupy.vip/g,"https://videodebugoutput.oss-cn-hongkong.aliyuncs.com")
+                    string=string.replace(/http:/g,"https:");
                  }catch(e) {
                     console.log(e.message);
                  }
