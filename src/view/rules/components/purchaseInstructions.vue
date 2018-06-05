@@ -11,7 +11,7 @@
             <p class="rule_content"> ・アカウントの他者への貸与が行われたと疑われる場合、不正ルートまたは悪質なハッキングでコインを増やした場合その他不正利用の疑いがある場合には、調査のためご利用を制限させていただくことがあります。管理人によってアカウントが凍結される可能性もございます。また法律に基づき当社からお客様への損害請求が発生する場合がございますのでご了承ください。</p>
             <p class="rule_content">・法規定に従い、Groupyはコイン制度に関して変更、調整、中止及び停止を自由に行うっ権利を有するものとします。</p>
             <h3 class="rule_tile">4.お問い合わせ</h3>
-            <p class="rule_content"> お支払いは終了しているのに購入が完了しないの場合等は以下のお問い合わせ先までお願いいたします。<br>&nbsp;&nbsp;&nbsp;&nbsp;ニュースジェット株式会社<br>&nbsp;&nbsp;&nbsp;&nbsp;〒130-0026　東京都墨田区両国2丁目2-10  702室<br>&nbsp;&nbsp;&nbsp;&nbsp;メール：<i>fans@groupy.vip</i></p>
+            <p class="rule_content"> お支払いは終了しているのに購入が完了しないの場合等は以下のお問い合わせ先までお願いいたします。<br>&nbsp;&nbsp;&nbsp;&nbsp;ニュースジェット株式会社<br>&nbsp;&nbsp;&nbsp;&nbsp;〒130-0026　東京都墨田区両国2丁目2-10  702室<br>&nbsp;&nbsp;&nbsp;&nbsp;メール：<i>contact@groupy.vip</i></p>
         </div>
     </div>
 </template>

@@ -11,7 +11,7 @@
             <p class="rule_content"> ・如果用户违规将Groupy账号出借给第三方、通过其他非Groupy认可的渠道充值G币、非法使用G币等，则Groupy有权冻结该账户进行调查，严重者可以进行封号处理。同时，Groupy有权依法向用户索取相应赔偿。</p>
             <p class="rule_content">・Groupy保留不在事先通知用户的情况下，随时依法更改、中断、或终止部分或全部网络充值服务的权利。</p>
             <h3 class="rule_tile">4.帮助与反馈</h3>
-            <p class="rule_content"> 如果由于Groupy系统故障等原因导致您支付后G币却没到账等困扰，请通过以下方式及时与Groupy取得联系。<br>&nbsp;&nbsp;&nbsp;&nbsp;NewsJet科技有限公司<br>&nbsp;&nbsp;&nbsp;&nbsp;〒130-0026　東京都墨田区两国2丁目2-10  702室<br>&nbsp;&nbsp;&nbsp;&nbsp;邮箱：<i>fans@groupy.vip</i></p>
+            <p class="rule_content"> 如果由于Groupy系统故障等原因导致您支付后G币却没到账等困扰，请通过以下方式及时与Groupy取得联系。<br>&nbsp;&nbsp;&nbsp;&nbsp;NewsJet科技有限公司<br>&nbsp;&nbsp;&nbsp;&nbsp;〒130-0026　東京都墨田区两国2丁目2-10  702室<br>&nbsp;&nbsp;&nbsp;&nbsp;邮箱：<i>contact@groupy.vip</i></p>
         </div>
     </div>
 </template>
